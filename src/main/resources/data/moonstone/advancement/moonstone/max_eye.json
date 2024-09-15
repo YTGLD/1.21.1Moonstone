@@ -1,0 +1,41 @@
+{
+  "parent": "moonstone:moonstone/maxamout",
+  "criteria": {
+    "max_eye": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "moonstone:max_eye"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tooltip.max_eye.text"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "moonstone:max_eye"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tooltip.max_eye.hand"
+    }
+  },
+  "requirements": [
+    [
+      "max_eye"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

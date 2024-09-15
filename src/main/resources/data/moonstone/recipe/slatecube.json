@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "moonstone:bigslate"
+    },
+    {
+      "item": "moonstone:bigslate"
+    },
+    {
+      "item": "moonstone:bigslate"
+    },
+    {
+      "item": "moonstone:ectoplasmcube"
+    }
+  ],
+  "result": {
+    "id": "moonstone:slatecube",
+    "count": 1
+  }
+}

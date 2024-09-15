@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "CBC",
+    "AAA"
+  ],
+  "key":
+  {
+    "A":
+    {
+      "item": "moonstone:ectoplasmcloub"
+    },
+    "B":
+    {
+      "item": "moonstone:battery"
+    },
+    "C":
+    {
+      "item": "moonstone:ectoplasmcube"
+    }
+  },
+  "result": {
+    "id": "moonstone:ectoplasmbattery",
+    "count": 1
+  }
+}

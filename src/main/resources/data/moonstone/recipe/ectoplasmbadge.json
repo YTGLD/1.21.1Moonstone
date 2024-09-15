@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    "ABA",
+    " A "
+  ],
+  "key":
+  {
+    "A":
+    {
+      "item": "moonstone:ectoplasmcloub"
+    },
+    "B":
+    {
+      "item": "moonstone:badgeofthedead"
+    }
+  },
+  "result": {
+    "id": "moonstone:ectoplasmbadge",
+    "count": 1
+  }
+}

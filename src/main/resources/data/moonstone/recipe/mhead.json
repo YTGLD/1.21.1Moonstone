@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "key":
+  {
+    "A":
+    {
+      "item": "minecraft:slime_ball"
+    },
+    "B":
+    {
+      "item": "moonstone:brain"
+    }
+  },
+  "result": {
+    "id": "moonstone:mhead",
+    "count": 1
+  }
+}

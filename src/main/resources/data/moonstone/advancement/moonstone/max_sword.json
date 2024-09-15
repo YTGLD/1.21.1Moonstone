@@ -1,0 +1,41 @@
+{
+  "parent": "moonstone:moonstone/max_eye",
+  "criteria": {
+    "max_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "moonstone:max_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tooltip.max_sword.text"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "moonstone:max_sword"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tooltip.max_sword.hand"
+    }
+  },
+  "requirements": [
+    [
+      "max_sword"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

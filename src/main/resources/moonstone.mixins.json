@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.moonstone.moonstonemod.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "moonstone.refmap.json",
+  "mixins": [
+    "EnchantmentMenuMixin",
+    "EntityMixin",
+    "ItemMixin",
+    "ItemStackMixin",
+    "LivingEntityMixin",
+    "WardenMixin"
+  ],
+  "client": [
+    "client.GuiGraphicsMixin",
+    "client.ItemRendererMixin",
+    "client.LivingEntityRendererMixin",
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

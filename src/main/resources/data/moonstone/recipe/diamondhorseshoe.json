@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "key":
+  {
+    "A":
+    {
+      "item": "minecraft:diamond"
+    },
+    "B":
+    {
+      "item": "moonstone:goldhorseshoe"
+    }
+  },
+  "result": {
+    "id": "moonstone:diamondhorseshoe",
+    "count": 1
+  }
+}

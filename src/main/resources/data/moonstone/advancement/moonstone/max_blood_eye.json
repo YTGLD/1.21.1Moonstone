@@ -1,0 +1,41 @@
+{
+  "parent": "moonstone:moonstone/max_eye",
+  "criteria": {
+    "max_blood_eye": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "moonstone:max_blood_eye"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tooltip.max_blood_eye.text"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "moonstone:max_blood_eye"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tooltip.max_blood_eye.hand"
+    }
+  },
+  "requirements": [
+    [
+      "max_blood_eye"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

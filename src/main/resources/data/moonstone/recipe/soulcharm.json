@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "key":
+  {
+    "A":
+    {
+      "item": "moonstone:soulball"
+    },
+    "B":
+    {
+      "item": "moonstone:whiteorb"
+    }
+  },
+  "result": {
+    "id": "moonstone:soulcharm",
+    "count": 1
+  }
+}

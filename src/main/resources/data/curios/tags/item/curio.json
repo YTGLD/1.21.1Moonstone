@@ -1,0 +1,40 @@
+{
+  "replace": false,
+  "values": [
+    "moonstone:max_blood_eye",
+
+
+    "moonstone:nightmareanchor",
+    "moonstone:nightmarecharm",
+    "moonstone:nightmareeye",
+    "moonstone:nightmaremoai",
+    "moonstone:nightmarerotten",
+    "moonstone:nightmarestone",
+    "moonstone:nightmaretreasure",
+    "moonstone:nightmarewater",
+
+    "moonstone:biggreedcrystal",
+    "moonstone:bigwarcrystal",
+    "moonstone:greedcrystal",
+    "moonstone:warcrystal",
+    "moonstone:blackeorb",
+    "moonstone:whiteorb",
+
+    "moonstone:bloodvirus",
+    "moonstone:necora",
+
+    "moonstone:ectoplasmstone",
+    "moonstone:twistedstone",
+
+    "moonstone:maxamout",
+
+    "moonstone:fortunecrystal",
+    "moonstone:mayhemcrystal",
+    "moonstone:plague",
+    "moonstone:wind",
+
+    "moonstone:gorillacake",
+    "moonstone:nightmare_head",
+    "moonstone:nightmare_cube"
+  ]
+}

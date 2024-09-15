@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "key":
+  {
+    "A":
+    {
+      "item": "minecraft:gold_ingot"
+    },
+    "B":
+    {
+      "item": "moonstone:ironhorseshoe"
+    }
+  },
+  "result": {
+    "id": "moonstone:goldhorseshoe",
+    "count": 1
+  }
+}
