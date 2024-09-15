@@ -5,8 +5,6 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.MGuiGraphics;
 import com.moonstone.moonstonemod.client.renderer.MRender;
-import com.moonstone.moonstonemod.item.blood.max_eye;
-import com.moonstone.moonstonemod.item.blood.max_sword;
 import com.moonstone.moonstonemod.item.necora;
 import com.moonstone.moonstonemod.moonstoneitem.*;
 import net.minecraft.client.gui.Font;

@@ -3,7 +3,6 @@ package com.moonstone.moonstonemod.item.plague.medicine.med;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Config;
-import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.moonstoneitem.extend.medIC;
 import com.moonstone.moonstonemod.moonstoneitem.extend.medicinebox;
 import net.minecraft.ChatFormatting;
@@ -20,7 +19,6 @@ import net.minecraft.world.item.TooltipFlag;
 import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
-import java.util.UUID;
 
 public class  quadriceps extends medIC {
 

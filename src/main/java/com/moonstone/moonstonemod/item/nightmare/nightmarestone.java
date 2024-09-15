@@ -3,7 +3,6 @@ package com.moonstone.moonstonemod.item.nightmare;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Handler;
-import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.event.AllEvent;
 import com.moonstone.moonstonemod.init.Items;
 import com.moonstone.moonstonemod.moonstoneitem.nightmare;
@@ -24,7 +23,6 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 
 public class nightmarestone extends nightmare {
 

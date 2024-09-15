@@ -2,7 +2,6 @@ package com.moonstone.moonstonemod.item.maxitem;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.moonstoneitem.UnCommonItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -19,7 +18,6 @@ import net.neoforged.neoforge.common.NeoForgeMod;
 import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
-import java.util.UUID;
 
 public class maxamout extends UnCommonItem {
     @Override

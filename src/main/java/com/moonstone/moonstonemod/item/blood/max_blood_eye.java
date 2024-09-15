@@ -9,8 +9,6 @@ import com.moonstone.moonstonemod.moonstoneitem.Blood;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -23,7 +21,6 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class max_blood_eye extends Item implements ICurioItem , Blood {

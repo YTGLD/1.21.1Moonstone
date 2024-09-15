@@ -2,7 +2,6 @@ package com.moonstone.moonstonemod.item.amout;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.init.DataReg;
 import com.moonstone.moonstonemod.moonstoneitem.CommonItem;
 import net.minecraft.ChatFormatting;
@@ -18,7 +17,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
 import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;

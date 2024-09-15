@@ -2,7 +2,6 @@ package com.moonstone.moonstonemod.item.nanodoom;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.moonstoneitem.Doom;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
@@ -17,7 +16,6 @@ import net.minecraft.world.item.TooltipFlag;
 import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
-import java.util.UUID;
 
 public class wind extends Doom {
 

@@ -36,7 +36,6 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
 public class max_blood_cube extends Item implements ICurioItem, Blood {
     public max_blood_cube() {

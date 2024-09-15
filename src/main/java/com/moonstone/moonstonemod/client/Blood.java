@@ -2,24 +2,12 @@ package com.moonstone.moonstonemod.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
-import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.entity.zombie.blood_zombie_fly;
-import com.moonstone.moonstonemod.init.DataReg;
-import com.moonstone.moonstonemod.init.Items;
-import com.moonstone.moonstonemod.item.blood.max_eye;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
-import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
-
-import java.util.Map;
 
 public class Blood {
     public Blood(@NotNull PoseStack matrices,
