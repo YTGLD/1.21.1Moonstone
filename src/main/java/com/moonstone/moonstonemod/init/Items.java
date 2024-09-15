@@ -8,10 +8,7 @@ import com.moonstone.moonstonemod.item.BloodVirus.ex.botton;
 import com.moonstone.moonstonemod.item.BloodVirus.ex.catalyzer;
 import com.moonstone.moonstonemod.item.amout.ectoplasmstone;
 import com.moonstone.moonstonemod.item.amout.twistedstone;
-import com.moonstone.moonstonemod.item.blood.max_blood_cube;
-import com.moonstone.moonstonemod.item.blood.max_blood_eye;
-import com.moonstone.moonstonemod.item.blood.max_eye;
-import com.moonstone.moonstonemod.item.blood.max_sword;
+import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.bloodvirus;
 import com.moonstone.moonstonemod.item.ectoplasm.*;
 import com.moonstone.moonstonemod.item.ectoplasm.soul.soulbattery;
@@ -192,6 +189,7 @@ public class Items {
     public static final DeferredHolder<Item,?> max_eye =REGISTRY.register("max_eye", (ResourceLocation pProperties) -> new max_eye());
     public static final DeferredHolder<Item,?> max_blood_eye =REGISTRY.register("max_blood_eye", (ResourceLocation pProperties) -> new max_blood_eye());
     public static final DeferredHolder<Item,?> max_blood_cube =REGISTRY.register("max_blood_cube", (ResourceLocation pProperties) -> new max_blood_cube());
+    public static final DeferredHolder<Item,?> blood_amout =REGISTRY.register("blood_amout", (ResourceLocation pProperties) -> new blood_amout());
 
 
 

@@ -35,7 +35,9 @@ public class LineRenderer   <T extends line> extends EntityRenderer<T> {
             Vec3 adjustedPrevPos = new Vec3(prevPos.x - entity.getX(), prevPos.y - entity.getY(), prevPos.z - entity.getZ());
             Vec3 adjustedCurrPos = new Vec3(currPos.x - entity.getX(), currPos.y - entity.getY(), currPos.z - entity.getZ());
 
-            Handler.renderLine(matrices, vertexConsumers, adjustedPrevPos, adjustedCurrPos, 1, RenderType.lines());
+            float alpha = (float)(i) / (float)(entity.getTrailPositions().size());
+
+            Handler.renderLine(matrices, vertexConsumers, adjustedPrevPos, adjustedCurrPos, alpha, RenderType.lines());
 
         }
         matrices.popPose();

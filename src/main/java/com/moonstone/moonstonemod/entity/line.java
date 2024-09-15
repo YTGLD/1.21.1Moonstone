@@ -1,13 +1,16 @@
 package com.moonstone.moonstonemod.entity;
 
-import com.moonstone.moonstonemod.entity.zombie.cell_zombie;
+import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.init.EntityTs;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -18,12 +21,49 @@ import java.util.UUID;
 
 public class line  extends TamableAnimal {
 
+    private LivingEntity target;
+
     public line(EntityType<? extends line> p_27412_, Level p_27413_) {
         super(p_27412_, p_27413_);
     }
 
+    private int cloudTime = 0;
     public void tick() {
         super.tick();
+
+        if (cloudTime > 0){
+            cloudTime--;
+        }
+        Vec3 playerPos = this.position().add(0, 0.75, 0);
+        int range = 1;
+        List<LivingEntity> entities = this.level().getEntitiesOfClass(LivingEntity.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
+
+        for (LivingEntity living : entities){
+            if (this.target!= null && living.is(this.target)){
+                cloudTime=20;
+                if (this.age % 10 ==0) {
+                    this.target.invulnerableTime = 0;
+
+                    this.target.hurt(living.damageSources().dryOut(), 1);
+
+                }
+            }
+        }
+
+
+
+
+
+        if (target == null || !target.isAlive()) {
+            findNewTarget();
+        }
+
+        if (target != null&&this.cloudTime<=0) {
+            Vec3 targetPos = target.position().add(0, 0.5, 0);
+            Vec3 currentPos = this.position();
+            Vec3 direction = targetPos.subtract(currentPos).normalize();
+            this.setDeltaMovement(direction.x *0.5f, direction.y *0.5f, direction.z *0.5f);
+        }
         trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
 
         if (trailPositions.size() > 50) {
@@ -88,6 +128,28 @@ public class line  extends TamableAnimal {
             }
         }
         return wolf;
+    }
+    private void findNewTarget() {
+        AABB searchBox = this.getBoundingBox().inflate(16);
+        List<LivingEntity> entities = this.level().getEntitiesOfClass(LivingEntity.class, searchBox);
+        double closestDistance = Double.MAX_VALUE;
+        LivingEntity closestEntity = null;
+
+
+        for (LivingEntity entity : entities) {
+            ResourceLocation name = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
+            if (this.getOwner() != null) {
+                if (!name.getNamespace().equals(MoonStoneMod.MODID) && !(entity.is(this.getOwner()))) {
+                    double distance = this.distanceToSqr(entity);
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestEntity = entity;
+                    }
+                }
+            }
+        }
+
+        this.target = closestEntity;
     }
 }
 

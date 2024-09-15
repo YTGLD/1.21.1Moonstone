@@ -168,6 +168,7 @@ public class Tab {
                 b.accept(new ItemStack(Items.max_eye.get()));
                 b.accept(new ItemStack(Items.max_blood_eye.get()));
                 b.accept(new ItemStack(Items.max_blood_cube.get()));
+                b.accept(new ItemStack(Items.blood_amout.get()));
 
 
             })
