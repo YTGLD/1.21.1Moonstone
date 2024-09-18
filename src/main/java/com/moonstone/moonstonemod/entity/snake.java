@@ -5,6 +5,8 @@ import com.moonstone.moonstonemod.init.EntityTs;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -21,26 +23,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class line  extends TamableAnimal {
+public class snake  extends TamableAnimal {
 
     private LivingEntity target;
 
-    public line(EntityType<? extends line> p_27412_, Level p_27413_) {
+    public snake(EntityType<? extends snake> p_27412_, Level p_27413_) {
         super(p_27412_, p_27413_);
     }
 
     private int cloudTime = 0;
 
-  private   int time  = 0;
+    private int time  = 0;
     public void tick() {
         super.tick();
         time++;
-        if (this.time>600){
+        if (this.time>300){
             this.discard();
         }
         if (cloudTime > 0){
             cloudTime--;
         }
+        this.teleportTo(this.getX(),this.getY()+ Math.sin(this.time/20f)/20,this.getZ());
         Vec3 playerPos = this.position().add(0, 0.75, 0);
         int range = 1;
         List<LivingEntity> entities = this.level().getEntitiesOfClass(LivingEntity.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
@@ -52,12 +55,15 @@ public class line  extends TamableAnimal {
                         && living.is(this.target)
                         && player.getAttribute(Attributes.ATTACK_DAMAGE)!=null)
                 {
-                    cloudTime = 20;
+                    cloudTime = 5;
                     float dam = (float) player.getAttribute(Attributes.ATTACK_DAMAGE).getValue();
-                    dam/=20;
-                    if (this.target.tickCount % 5 == 0) {
-                        this.target.invulnerableTime = 0;
-                        this.target.hurt(living.damageSources().dryOut(), dam);
+                    dam*=1.5f;
+
+                    this.target.invulnerableTime = 0;
+                    this.target.hurt(living.damageSources().dryOut(), dam);
+
+                    if (target.isAlive()&&this.time>10) {
+                        this.discard();
                     }
                 }
             }
@@ -75,11 +81,11 @@ public class line  extends TamableAnimal {
             Vec3 targetPos = target.position().add(0, 0.5, 0);
             Vec3 currentPos = this.position();
             Vec3 direction = targetPos.subtract(currentPos).normalize();
-            this.setDeltaMovement(direction.x *0.5f, direction.y *0.5f, direction.z *0.5f);
+            this.setDeltaMovement(direction.x *0.15f, direction.y *0.15f, direction.z *0.15f);
         }
         trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
 
-        if (trailPositions.size() > 40) {
+        if (trailPositions.size() > 30) {
             trailPositions.removeFirst();
         }
 
@@ -132,7 +138,7 @@ public class line  extends TamableAnimal {
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
-        line wolf = EntityTs.line.get().create(p_146743_);
+        snake wolf = EntityTs.snake.get().create(p_146743_);
         if (wolf != null) {
             UUID uuid = this.getOwnerUUID();
             if (uuid != null) {
@@ -165,7 +171,3 @@ public class line  extends TamableAnimal {
         this.target = closestEntity;
     }
 }
-
-
-
-

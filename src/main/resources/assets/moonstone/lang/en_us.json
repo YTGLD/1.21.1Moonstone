@@ -825,6 +825,9 @@
   "advancements.tooltip.max_sword.hand": "Eat me an axe！",
   "advancements.tooltip.max_sword.text": "Max Sword",
 
+  "advancements.tooltip.blood_snake.hand": "blood snake",
+  "advancements.tooltip.blood_snake.text": "sweet snake",
+
   "advancements.tooltip.max_blood_eye.hand": "max blood eye",
   "advancements.tooltip.max_blood_eye.text": "out",
   "item.nightmare_head.tool.string": "Immune to all non biological injuries",
@@ -837,6 +840,23 @@
   "item.nightmare_head.tool.string.7": "Unable to remove normally",
   "item.nightmare_head.tool.string.8": "And there will always be a ratio between your health and maximum health",
 
+  "item.moonstone.the_prison_of_sin": "the prison of sin",
+  "item.the_prison_of_sin.tool.string": "Since wearing it, you have killed:",
+  "item.the_prison_of_sin.tool.string.1": "+50% of all attributes",
+  "item.the_prison_of_sin.tool.string.2": "-90% life limit",
+  "item.the_prison_of_sin.tool.string.3": "But for every different creature killed, this punishment will be reduced by 1%",
+  "item.the_prison_of_sin.tool.string.4": "Unable to remove",
+  "item.the_prison_of_sin.tool.string.5": "",
+  "item.the_prison_of_sin.tool.string.6": "",
+
+  "item.moonstone.blood_amout": "blood amout",
+  "item.blood_amout.tool.string": "Injured Summon Blood Spirit",
+
+  "item.moonstone.blood_snake": "blood amout",
+  "item.blood_snake.tool.string": "Kill the creature and launch 3 blood snakes",
+  "item.blood_snake.tool.string.1": "The number of blood snakes increases with the maximum health of the organism",
+  "item.blood_snake.tool.string.2": "But not exceeding 10",
+  "item.blood_snake.tool.string.3": "-20% Damage",
 
   "advancements.tooltip.max_blood_cube.hand": "see me！",
   "advancements.tooltip.max_blood_cube.text": "max blood cube",

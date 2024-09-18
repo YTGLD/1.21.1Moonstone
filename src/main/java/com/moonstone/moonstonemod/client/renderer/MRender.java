@@ -20,6 +20,12 @@ public class MRender extends RenderType {
     private static ShaderInstance ShaderInstance_trail;
     public static ShaderInstance meteorTrailShader;
     public static ShaderInstance Shader_EYE;
+    public static ShaderInstance Shader_snake;
+    protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_Shader_snake = new RenderStateShard.ShaderStateShard(MRender::getShader_snake);
+
+
+
+
 
     protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_meteorTrailShader = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_meteorTrailShader);
     protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_Shader_EYE = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_Shader_EYE);
@@ -29,16 +35,23 @@ public class MRender extends RenderType {
     protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_ging = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_ging);
 
     protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_trail = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_trail);
-    public static final RenderType METEOR_TRAIL = create("meteor_trail",
-            DefaultVertexFormat.POSITION_TEX_COLOR, VertexFormat.Mode.QUADS, 256, false, false,
+    public static final RenderType Snake_render = create(
+            "lines_render",
+            DefaultVertexFormat.POSITION_COLOR_NORMAL,
+            VertexFormat.Mode.LINES,
+            1536,
             RenderType.CompositeState.builder()
-                    .setShaderState(RENDER_STATE_SHARD_meteorTrailShader)
-                    .setTextureState(new RenderStateShard.TextureStateShard(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID, "textures/ging.png"), false, false))
+                    .setShaderState(RENDER_STATE_SHARD_Shader_snake)
+                    .setLineState(new RenderStateShard.LineStateShard(OptionalDouble.empty()))
+                    .setLayeringState(VIEW_OFFSET_Z_LAYERING)
                     .setTransparencyState(TRANSLUCENT_TRANSPARENCY)
+                    .setOutputState(ITEM_ENTITY_TARGET)
+                    .setWriteMaskState(COLOR_DEPTH_WRITE)
                     .setCullState(NO_CULL)
-                    .setLightmapState(LIGHTMAP)
-                    .setOverlayState(OVERLAY)
                     .createCompositeState(false));
+
+
+
     public static final RenderType TRAIL =
             create("lines",
                     DefaultVertexFormat.POSITION_COLOR_NORMAL,
@@ -117,6 +130,9 @@ public class MRender extends RenderType {
     public static RenderType gateways() {
         return GATEWAY;
     }
+    public static RenderType Snake() {
+        return Snake_render;
+    }
     public static RenderType t() {
         return TRAIL;
     }
@@ -151,6 +167,14 @@ public class MRender extends RenderType {
     }
     public static void setShaderInstance_trail(ShaderInstance shaderInstance_ging) {
         ShaderInstance_trail = shaderInstance_ging;
+    }
+
+    public static void setShader_snake(ShaderInstance shader_snake) {
+        Shader_snake = shader_snake;
+    }
+
+    public static ShaderInstance getShader_snake() {
+        return Shader_snake;
     }
 
     public static void setShaderInstance_mls(ShaderInstance shaderInstance_mls) {

@@ -870,6 +870,26 @@
   "item.max_blood_eye.tool.string.3": "被波及者获得流血，如果状态已存在，则转换成重伤",
   "item.max_blood_eye.tool.string.4": "冷却时间1秒",
 
+  "item.moonstone.blood_amout": "§4血符",
+  "item.blood_amout.tool.string": "受伤召唤血灵",
+
+  "advancements.tooltip.blood_snake.hand": "血之审判",
+  "advancements.tooltip.blood_snake.text": "获得蛇血魔符",
+
+  "item.moonstone.the_prison_of_sin": "罪孽囚笼",
+  "item.the_prison_of_sin.tool.string": "自佩戴以来，你杀死了：",
+  "item.the_prison_of_sin.tool.string.1": "+50% 所有属性",
+  "item.the_prison_of_sin.tool.string.2": "-90% 生命上限",
+  "item.the_prison_of_sin.tool.string.3": "但每杀死1种不同的生物，此惩罚都将减少1%",
+  "item.the_prison_of_sin.tool.string.4": "无法取下",
+  "item.the_prison_of_sin.tool.string.5": "诅咒降低了：",
+  "item.the_prison_of_sin.tool.string.6": "你还无法参悟它的本质",
+
+  "item.moonstone.blood_snake": "§4蛇血魔符",
+  "item.blood_snake.tool.string": "杀死生物发射3条会造成150%伤害的血蛇",
+  "item.blood_snake.tool.string.1": "血蛇数量会随着生物的最大生命值来增加",
+  "item.blood_snake.tool.string.2": "但不超过10条",
+  "item.blood_snake.tool.string.3": "-20% 伤害",
 
   "item.moonstone.max_blood_cube": "§4复仇之骰",
   "item.max_blood_cube.tool.string": "拿着任意物品对准生物潜行并长按右键释放技能",

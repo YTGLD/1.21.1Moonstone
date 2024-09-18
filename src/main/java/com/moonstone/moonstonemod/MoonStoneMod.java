@@ -77,6 +77,7 @@ public class MoonStoneMod {
             event.registerEntityRenderer(EntityTs.blood_zombie_boom.get(), com.moonstone.moonstonemod.entity.client.red.ZombieRenderer::new);
 
             event.registerEntityRenderer(EntityTs.line.get(), com.moonstone.moonstonemod.entity.client.LineRenderer::new);
+            event.registerEntityRenderer(EntityTs.snake.get(), com.moonstone.moonstonemod.entity.client.SnakeRenderer::new);
 
         }
         @SubscribeEvent
@@ -103,6 +104,11 @@ public class MoonStoneMod {
                 event.registerShader(new ShaderInstance(event.getResourceProvider(),
                         ResourceLocation.fromNamespaceAndPath(MODID,"eye"),
                         DefaultVertexFormat.POSITION_TEX_COLOR),MRender::setShaderInstance_EYE);
+
+                event.registerShader(new ShaderInstance(event.getResourceProvider(),
+                        ResourceLocation.fromNamespaceAndPath(MODID,"snake"),
+                        DefaultVertexFormat.POSITION_TEX_COLOR),MRender::setShader_snake);
+
             }catch (IOException exception){
                 exception.printStackTrace();
             }

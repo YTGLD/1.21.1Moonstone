@@ -1438,7 +1438,6 @@ public class AllEvent {
                             if (stack.getItem() instanceof com.moonstone.moonstonemod.item.plague.ALL.virus) {
                                 CompoundTag tag = stack.get(DataReg.tag);
                                 if (tag != null) {
-                                    ;
                                     String name = event.getEntity().getEncodeId();
                                     if (name != null) {
                                         int size = tag.getInt(name);

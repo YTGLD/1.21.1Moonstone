@@ -1,0 +1,41 @@
+{
+  "parent": "moonstone:moonstone/max_blood_eye",
+  "criteria": {
+    "blood_snake": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "moonstone:blood_snake"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tooltip.blood_snake.text"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "moonstone:blood_snake"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tooltip.blood_snake.hand"
+    }
+  },
+  "requirements": [
+    [
+      "blood_snake"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

@@ -40,7 +40,9 @@ public class NewEvent {
         nightmare_heart.Nig(event);
         nightmare_head.LivingDeathEvent(event);
         max_eye.Die(event);
+        blood_snake.Die(event);
         max_sword.die(event);
+        the_prison_of_sin.LivingDeathEvent(event);
 
     }
     @SubscribeEvent

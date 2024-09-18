@@ -23,7 +23,7 @@ public class whiteorb extends CommonItem {
         if (Handler.hascurio(slotContext.entity(), Items.blackeorb.get())){
             a *= 2;
         }
-        modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), a, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-        return super.getAttributeModifiers(slotContext, id, stack);
+        modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(id, a, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        return modifierMultimap;
     }
 }

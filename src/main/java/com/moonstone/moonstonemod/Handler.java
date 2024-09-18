@@ -119,4 +119,19 @@ public class Handler {
                 .setColor(220/255f,20/255f,60/255f,a)
                 .setNormal(1,0,0);
     }
+    public static void renderSnake(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType) {
+        VertexConsumer vertexConsumer = bufferSource.getBuffer(renderType);
+
+        // 设置线条的起点
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) start.x, (float) start.y, (float) start.z)
+                .setColor(1,0,0,a)
+                .setUv2(240,240)
+                .setNormal(1,0,0);
+
+        // 设置线条的终点
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) end.x, (float) end.y, (float) end.z)
+                .setColor(220/255f,20/255f,60/255f,a)
+                .setUv2(240,240)
+                .setNormal(1,0,0);
+    }
 }

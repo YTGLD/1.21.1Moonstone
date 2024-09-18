@@ -191,6 +191,8 @@ public class Items {
     public static final DeferredHolder<Item,?> max_blood_cube =REGISTRY.register("max_blood_cube", (ResourceLocation pProperties) -> new max_blood_cube());
     public static final DeferredHolder<Item,?> blood_amout =REGISTRY.register("blood_amout", (ResourceLocation pProperties) -> new blood_amout());
 
+    public static final DeferredHolder<Item,?> blood_snake =REGISTRY.register("blood_snake", (ResourceLocation pProperties) -> new blood_snake());
+    public static final DeferredHolder<Item,?> the_prison_of_sin =REGISTRY.register("the_prison_of_sin", (ResourceLocation pProperties) -> new the_prison_of_sin());
 
 
 
