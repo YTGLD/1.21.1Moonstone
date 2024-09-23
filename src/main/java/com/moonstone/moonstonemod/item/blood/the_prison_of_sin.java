@@ -35,7 +35,6 @@ import java.util.List;
 import java.util.Map;
 
 public class the_prison_of_sin extends Item implements ICurioItem, Blood {
-    public static final String health = "ThePrisonOfSin";
     public the_prison_of_sin() {
         super(new Item.Properties().stacksTo(1).durability(1000000000).rarity(Rarity.UNCOMMON));
     }
@@ -69,9 +68,12 @@ public class the_prison_of_sin extends Item implements ICurioItem, Blood {
     }
 
     @Override
-    public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        return false;
+    public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
+
+        slotContext.entity().getAttributes().addTransientAttributeModifiers(getAttributeModifiers(stack));
+        slotContext.entity().getAttributes().addTransientAttributeModifiers(Health());
     }
+
 
     @NotNull
     @Override
@@ -85,39 +87,32 @@ public class the_prison_of_sin extends Item implements ICurioItem, Blood {
             stack.set(DataReg.tag, new CompoundTag());
         }
 
-        slotContext.entity().getAttributes().addTransientAttributeModifiers(getAttributeModifiers());
-        slotContext.entity().getAttributes().addTransientAttributeModifiers(Health(stack));
+        stack.setDamageValue(stack.getDamageValue()+1);
     }
 
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
-        slotContext.entity().getAttributes().removeAttributeModifiers(Health(stack));
-        slotContext.entity().getAttributes().removeAttributeModifiers(getAttributeModifiers());
+        slotContext.entity().getAttributes().removeAttributeModifiers(Health());
+        slotContext.entity().getAttributes().removeAttributeModifiers(getAttributeModifiers(stack));
     }
 
-    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers() {
+    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
+        float s = 110;
+        if (stack.get(DataReg.tag)!=null){
+            s += stack.get(DataReg.tag).getAllKeys().size();
+        }
+        s -= 100;
+        s /= 100;
         for (Holder<Attribute> attribute : BuiltInRegistries.ATTRIBUTE.asHolderIdMap()) {
-            if (!(attribute == Attributes.MAX_HEALTH)) {
-                modifierMultimap.put(attribute, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-            }
+            modifierMultimap.put(attribute, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), s, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         }
         return modifierMultimap;
     }
-    public Multimap<Holder<Attribute>, AttributeModifier> Health(ItemStack stack) {
+    public Multimap<Holder<Attribute>, AttributeModifier> Health() {
         Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
-
-        float s = 90;
-        if (stack.get(DataReg.tag)!=null){
-            s-=stack.get(DataReg.tag).getAllKeys().size();
-        }
-
-        s/=100f;
-
-        if (s<0){
-            s=0;
-        }
-        modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("health" + this.getDescriptionId()), -0.80, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.withDefaultNamespace("health" + this.getDescriptionId()), -0.80, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
 
         return modifierMultimap;
     }
@@ -127,7 +122,6 @@ public class the_prison_of_sin extends Item implements ICurioItem, Blood {
         if (pStack.get(DataReg.tag)!=null) {
             if (Screen.hasShiftDown()) {
                 if (pStack.get(DataReg.tag) != null) {
-                    pTooltipComponents.add(Component.translatable("item.the_prison_of_sin.tool.string.5").append(String.valueOf(pStack.get(DataReg.tag).getAllKeys().size())).append("%").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
                     pTooltipComponents.add(Component.translatable("item.the_prison_of_sin.tool.string").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
 
                     pTooltipComponents.add(Component.translatable(""));
@@ -147,13 +141,16 @@ public class the_prison_of_sin extends Item implements ICurioItem, Blood {
                 pTooltipComponents.add(Component.translatable("item.the_prison_of_sin.tool.string.2").withStyle(ChatFormatting.RED));
                 pTooltipComponents.add(Component.translatable("item.the_prison_of_sin.tool.string.3").withStyle(ChatFormatting.RED));
                 pTooltipComponents.add(Component.translatable(""));
-                pTooltipComponents.add(Component.translatable("item.the_prison_of_sin.tool.string.4").withStyle(ChatFormatting.RED));
-                pTooltipComponents.add(Component.translatable(""));
                 pTooltipComponents.add(Component.translatable("key.keyboard.left.shift").withStyle(ChatFormatting.RED));
-
+                pTooltipComponents.add(Component.translatable(""));
+                pTooltipComponents.add(Component.translatable("item.the_prison_of_sin.tool.string.5").append(String.valueOf(pStack.get(DataReg.tag).getAllKeys().size())).append("%").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
             }
         }else {
-            pTooltipComponents.add(Component.translatable("item.the_prison_of_sin.tool.string.6").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
+            pTooltipComponents.add(Component.translatable("item.the_prison_of_sin.tool.string.7").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
+            pTooltipComponents.add(Component.translatable("item.the_prison_of_sin.tool.string.8").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
+            pTooltipComponents.add(Component.translatable(""));
+            pTooltipComponents.add(Component.translatable("item.the_prison_of_sin.tool.string.6").withStyle(ChatFormatting.RED));
+            pTooltipComponents.add(Component.translatable(""));
         }
     }
 }

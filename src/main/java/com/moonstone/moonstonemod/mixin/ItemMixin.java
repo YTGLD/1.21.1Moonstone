@@ -39,7 +39,10 @@ public abstract class ItemMixin {
                                     tag.putBoolean(wind_and_rain.wind, true);
                                     Other.shrink(1);
                                 }
+                            }else {
+                                me.set(DataReg.tag,new CompoundTag());
                             }
+
                         }
                     }
                 }

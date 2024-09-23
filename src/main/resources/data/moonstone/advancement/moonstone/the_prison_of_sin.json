@@ -1,0 +1,41 @@
+{
+  "parent": "moonstone:moonstone/blood_snake",
+  "criteria": {
+    "the_prison_of_sin": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "moonstone:the_prison_of_sin"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tooltip.the_prison_of_sin.text"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "moonstone:the_prison_of_sin"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tooltip.the_prison_of_sin.hand"
+    }
+  },
+  "requirements": [
+    [
+      "the_prison_of_sin"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

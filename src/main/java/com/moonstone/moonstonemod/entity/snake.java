@@ -60,7 +60,7 @@ public class snake  extends TamableAnimal {
                     dam*=1.5f;
 
                     this.target.invulnerableTime = 0;
-                    this.target.hurt(living.damageSources().dryOut(), dam);
+                    this.target.hurt(living.damageSources().mobAttack(this), dam);
 
                     if (target.isAlive()&&this.time>10) {
                         this.discard();
@@ -81,7 +81,7 @@ public class snake  extends TamableAnimal {
             Vec3 targetPos = target.position().add(0, 0.5, 0);
             Vec3 currentPos = this.position();
             Vec3 direction = targetPos.subtract(currentPos).normalize();
-            this.setDeltaMovement(direction.x *0.15f, direction.y *0.15f, direction.z *0.15f);
+            this.setDeltaMovement(direction.x *0.25f, direction.y *0.25f, direction.z *0.25f);
         }
         trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
 
@@ -100,8 +100,14 @@ public class snake  extends TamableAnimal {
 
     @Override
     public boolean hurt(DamageSource p_30386_, float p_30387_) {
-        return false;
+        if (p_30386_.getEntity()!=null &&
+                this.getOwner()!=null &&
+                p_30386_.getEntity().is(this.getOwner())){
+            return false;
+        }
+        return true;
     }
+
 
     protected void doPush(Entity p_27415_) {
     }

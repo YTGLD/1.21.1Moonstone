@@ -7,6 +7,7 @@ import com.moonstone.moonstonemod.client.MGuiGraphics;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.item.necora;
 import com.moonstone.moonstonemod.moonstoneitem.*;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
@@ -18,6 +19,7 @@ import net.minecraft.util.FastColor;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.client.ClientHooks;
 import net.neoforged.neoforge.client.event.RenderTooltipEvent;
 import org.joml.Matrix4f;
@@ -30,6 +32,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Mixin(GuiGraphics.class)
@@ -41,15 +44,17 @@ public abstract class GuiGraphicsMixin {
 
     @Shadow public abstract int guiHeight();
 
+    @Unique
+    private final List<Vec3> moonstone1_21_1$trailPositions = new ArrayList<>();
+
     @Shadow @Final private PoseStack pose;
-
     @Inject(at = {@At("RETURN")}, method = {"renderItem(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/item/ItemStack;III)V"})
-    public void ca$renderItemDecorations(LivingEntity p_283524_, Level p_282461_, ItemStack stack, int x, int y, int p_282425_, CallbackInfo ci) {
+    public void ca$renderItemDecorationsRenderItem(LivingEntity living, Level level, ItemStack stack, int x, int y, int is, CallbackInfo ci) {
         GuiGraphics guiGraphics = (GuiGraphics) (Object) this;
-        if (p_283524_ != null) {
 
+        if (living != null) {
             if (stack.getItem() instanceof necora) {
-                int tickCount = p_283524_.tickCount;
+                int tickCount = living.tickCount;
                 float s = (float) Math.sin((double) tickCount / 20);
                 if (s < 0) {
                     s = 0;
@@ -77,6 +82,9 @@ public abstract class GuiGraphicsMixin {
 
     @Shadow private boolean managed;
 
+    @Shadow @Final private Minecraft minecraft;
+
+    @Shadow public abstract PoseStack pose();
     @Inject(at = @At("RETURN"), method = "renderTooltipInternal(Lnet/minecraft/client/gui/Font;Ljava/util/List;IILnet/minecraft/client/gui/screens/inventory/tooltip/ClientTooltipPositioner;)V")
     public void moonstone$ClientTooltipPositioner(Font p_282675_, List<ClientTooltipComponent> p_282615_, int p_283230_, int p_283417_, ClientTooltipPositioner p_282442_, CallbackInfo ci) {
         moon1_21$drawManaged(()->{

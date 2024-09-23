@@ -3,6 +3,7 @@ package com.moonstone.moonstonemod;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.logging.LogUtils;
 import com.moonstone.moonstonemod.client.entitys.blood.BloodBatRenderer;
+import com.moonstone.moonstonemod.client.particle.blood;
 import com.moonstone.moonstonemod.client.particle.blue;
 import com.moonstone.moonstonemod.client.particle.popr;
 import com.moonstone.moonstonemod.client.particle.red;
@@ -59,6 +60,7 @@ public class MoonStoneMod {
             event.registerSpriteSet(Particles.gold.get(), red.Provider::new);
             event.registerSpriteSet(Particles.blue.get(), blue.Provider::new);
             event.registerSpriteSet(Particles.popr.get(), popr.Provider::new);
+            event.registerSpriteSet(Particles.blood.get(), blood.Provider::new);
         }
         @SubscribeEvent
         public static void EntityRenderersEvent(EntityRenderersEvent.RegisterRenderers event) {
@@ -78,6 +80,8 @@ public class MoonStoneMod {
 
             event.registerEntityRenderer(EntityTs.line.get(), com.moonstone.moonstonemod.entity.client.LineRenderer::new);
             event.registerEntityRenderer(EntityTs.snake.get(), com.moonstone.moonstonemod.entity.client.SnakeRenderer::new);
+
+            event.registerEntityRenderer(EntityTs.blood.get(), com.moonstone.moonstonemod.entity.client.BloodRender::new);
 
         }
         @SubscribeEvent

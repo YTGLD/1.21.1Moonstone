@@ -3,11 +3,13 @@ package com.moonstone.moonstonemod.entity.nightmare;
 import com.google.common.annotations.VisibleForTesting;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
+import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.init.EntityTs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.protocol.Packet;
@@ -17,6 +19,7 @@ import net.minecraft.network.protocol.game.DebugPackets;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -60,11 +63,15 @@ import net.minecraft.world.level.pathfinder.Node;
 import net.minecraft.world.level.pathfinder.PathFinder;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.jetbrains.annotations.Contract;
 import org.slf4j.Logger;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.function.BiConsumer;
@@ -142,6 +149,7 @@ public class nightmare_giant extends TamableAnimal implements OwnableEntity,Vibr
         this.targetSelector.addGoal(7, new com.moonstone.moonstonemod.entity.nightmare.NearestAttackableTargetGoal<>(this, Creeper.class, false));
         this.targetSelector.addGoal(7, new com.moonstone.moonstonemod.entity.nightmare.NearestAttackableTargetGoal<>(this, EnderMan.class, false));
         this.targetSelector.addGoal(7, new com.moonstone.moonstonemod.entity.nightmare.NearestAttackableTargetGoal<>(this, Monster.class, false));
+        this.targetSelector.addGoal(7, new net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal<>(this, Monster.class, false));
 
     }
     public void recreateFromPacket(ClientboundAddEntityPacket p_219420_) {
@@ -232,6 +240,22 @@ public class nightmare_giant extends TamableAnimal implements OwnableEntity,Vibr
         time++;
         if (time > 1200){
             this.discard();
+        }
+        Vec3 playerPos = this.position().add(0, 0.75, 0);
+        int range = 10;
+        List<Mob> entities = this.level().getEntitiesOfClass(Mob.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
+        for (Mob mob : entities) {
+            if (!this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).isPresent()) {
+                ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType());
+                if (!entity.getNamespace().equals(MoonStoneMod.MODID)) {
+                    this.setAttackTarget(mob);
+                }
+            }
+        }
+        if (this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).isPresent()) {
+            if (!this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get().isAlive()) {
+                this.setAttackTarget(null);
+            }
         }
         if (this.getOwner()!= null) {
             if (this.getOwner().getLastHurtByMob()!= null) {

@@ -3,11 +3,13 @@ package com.moonstone.moonstonemod.entity.zombie;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Handler;
+import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.event.AllEvent;
 import com.moonstone.moonstonemod.init.EntityTs;
 import com.moonstone.moonstonemod.init.Items;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -27,9 +29,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.UUID;
 
 public class cell_zombie extends TamableAnimal {
@@ -41,6 +46,42 @@ public class cell_zombie extends TamableAnimal {
     @Override
     public void tick() {
         super.tick();
+
+        Vec3 playerPos = this.position().add(0, 0.75, 0);
+        int range = 20;
+        List<Mob> entities = this.level().getEntitiesOfClass(Mob.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
+        for (Mob mob : entities) {
+            if (this.getTarget() == null) {
+                ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType());
+                if (!entity.getNamespace().equals(MoonStoneMod.MODID)) {
+                    this.setTarget(mob);
+                }
+            }
+        }
+        if (this.getTarget() != null) {
+            if (!this.getTarget().isAlive()) {
+                this.setTarget(null);
+            }
+        }
+        if (this.getOwner()!= null) {
+            if (this.getOwner().getLastHurtByMob()!= null) {
+                if (!this.getOwner().getLastHurtByMob().is(this)) {
+                    this.setTarget(this.getOwner().getLastHurtByMob());
+                }
+            }
+            if (this.getOwner().getLastAttacker()!= null) {
+                if (!this.getOwner().getLastAttacker().is(this)) {
+                    this.setTarget(this.getOwner().getLastAttacker());
+                }
+
+            }
+            if (this.getOwner().getLastHurtMob()!= null) {
+                if (!this.getOwner().getLastHurtMob().is(this)) {
+                    this.setTarget(this.getOwner().getLastHurtMob());
+                }
+
+            }
+        }
         if (!this.getTags().contains(AllEvent.muMMY)) {
             this.time+=2;
         }else {

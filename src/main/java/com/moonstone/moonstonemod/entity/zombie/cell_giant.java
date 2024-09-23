@@ -3,6 +3,7 @@ package com.moonstone.moonstonemod.entity.zombie;
 import com.google.common.annotations.VisibleForTesting;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
+import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.entity.ai.AIgiant;
 import com.moonstone.moonstonemod.entity.nightmare.AInightmare;
 import com.moonstone.moonstonemod.entity.nightmare.SonicBoom;
@@ -12,6 +13,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.protocol.Packet;
@@ -21,6 +23,7 @@ import net.minecraft.network.protocol.game.DebugPackets;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -62,12 +65,15 @@ import net.minecraft.world.level.pathfinder.Node;
 import net.minecraft.world.level.pathfinder.PathFinder;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.function.BiConsumer;
@@ -134,6 +140,7 @@ public class cell_giant extends TamableAnimal implements OwnableEntity {
         this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(3, (new HurtByTargetGoal(this)).setAlertOthers());
         this.targetSelector.addGoal(6, new NonTameRandomTargetGoal<>(this, Turtle.class, false, Turtle.BABY_ON_LAND_SELECTOR));
+        this.targetSelector.addGoal(7, new NearestAttackableTargetGoal<>(this, Monster.class, false));
 
     }
     public void recreateFromPacket(ClientboundAddEntityPacket p_219420_) {
@@ -222,6 +229,7 @@ public class cell_giant extends TamableAnimal implements OwnableEntity {
 
     public void tick() {
         time++;
+
         if (time > 1200){
             this.discard();
         }
@@ -245,13 +253,49 @@ public class cell_giant extends TamableAnimal implements OwnableEntity {
             }
         }
         Level level = this.level();
-        if (level instanceof ServerLevel serverlevel) {
+        if (level instanceof ServerLevel) {
             if (this.isPersistenceRequired() || this.requiresCustomPersistence()) {
                 AInightmare.setDigCooldown(this);
             }
         }
 
         super.tick();
+
+        Vec3 playerPos = this.position().add(0, 0.75, 0);
+        int range = 10;
+        List<Mob> entities = this.level().getEntitiesOfClass(Mob.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
+        for (Mob mob : entities) {
+            if (!this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).isPresent()) {
+                ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType());
+                if (!entity.getNamespace().equals(MoonStoneMod.MODID)) {
+                    this.setAttackTarget(mob);
+                }
+            }
+        }
+        if (this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).isPresent()) {
+            if (!this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get().isAlive()) {
+                this.setAttackTarget(null);
+            }
+        }
+        if (this.getOwner()!= null) {
+            if (this.getOwner().getLastHurtByMob()!= null) {
+                if (!this.getOwner().getLastHurtByMob().is(this)) {
+                    this.setTarget(this.getOwner().getLastHurtByMob());
+                }
+            }
+            if (this.getOwner().getLastAttacker()!= null) {
+                if (!this.getOwner().getLastAttacker().is(this)) {
+                    this.setTarget(this.getOwner().getLastAttacker());
+                }
+
+            }
+            if (this.getOwner().getLastHurtMob()!= null) {
+                if (!this.getOwner().getLastHurtMob().is(this)) {
+                    this.setTarget(this.getOwner().getLastHurtMob());
+                }
+
+            }
+        }
         if (this.level().isClientSide()) {
             if (this.tickCount % this.getHeartBeatDelay() == 0) {
                 this.heartAnimation = 10;
@@ -509,6 +553,7 @@ public class cell_giant extends TamableAnimal implements OwnableEntity {
         this.getBrain().eraseMemory(MemoryModuleType.ROAR_TARGET);
         this.getBrain().setMemory(MemoryModuleType.ATTACK_TARGET, p_219460_);
         this.getBrain().eraseMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
+
         SonicBoom.setCooldown(this, 20);
     }
 

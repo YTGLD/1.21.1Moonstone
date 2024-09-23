@@ -57,7 +57,7 @@ public class line  extends TamableAnimal {
                     dam/=20;
                     if (this.target.tickCount % 5 == 0) {
                         this.target.invulnerableTime = 0;
-                        this.target.hurt(living.damageSources().dryOut(), dam);
+                        this.target.hurt(living.damageSources().mobAttack(this), dam);
                     }
                 }
             }
@@ -94,7 +94,12 @@ public class line  extends TamableAnimal {
 
     @Override
     public boolean hurt(DamageSource p_30386_, float p_30387_) {
-        return false;
+        if (p_30386_.getEntity()!=null &&
+                this.getOwner()!=null &&
+                p_30386_.getEntity().is(this.getOwner())){
+            return false;
+        }
+        return true;
     }
 
     protected void doPush(Entity p_27415_) {

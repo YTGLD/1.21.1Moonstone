@@ -15,7 +15,7 @@
   "client": [
     "client.GuiGraphicsMixin",
     "client.ItemRendererMixin",
-    "client.LivingEntityRendererMixin",
+    "client.LivingEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

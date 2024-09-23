@@ -1,5 +1,6 @@
 {
   "curios.modifiers.dna": "植入DNA时",
+  "itemGroup.tabmoonstone.blood": "月之石：血魔 ",
 
   "key.moonstone.category": "月之石",
   "key.moonstone.desc": "技能",
@@ -659,6 +660,8 @@
 
   "entity.moonstone.cell_giant": "巨型细胞僵尸",
   "entity.moonstone.cell_zombie": "细胞僵尸",
+  "entity.moonstone.line": "血灵",
+  "entity.moonstone.snake": "血蛇",
 
   "entity.moonstone.flysword": "飞剑",
   "entity.moonstone.suddenrain": "雨刃",
@@ -876,14 +879,25 @@
   "advancements.tooltip.blood_snake.hand": "血之审判",
   "advancements.tooltip.blood_snake.text": "获得蛇血魔符",
 
-  "item.moonstone.the_prison_of_sin": "罪孽囚笼",
+  "item.moonstone.the_prison_of_sin": "§4罪孽囚笼",
   "item.the_prison_of_sin.tool.string": "自佩戴以来，你杀死了：",
-  "item.the_prison_of_sin.tool.string.1": "+50% 所有属性",
-  "item.the_prison_of_sin.tool.string.2": "-90% 生命上限",
-  "item.the_prison_of_sin.tool.string.3": "但每杀死1种不同的生物，此惩罚都将减少1%",
+  "item.the_prison_of_sin.tool.string.5": "属性提高了：",
+
+
+  "item.the_prison_of_sin.tool.string.1": "-80% 护甲，最大生命值",
+
+  "item.the_prison_of_sin.tool.string.2": "+10% 全部属性",
+  "item.the_prison_of_sin.tool.string.3": "每杀死1种不同的生物，此奖励都将增加1%",
+
   "item.the_prison_of_sin.tool.string.4": "无法取下",
-  "item.the_prison_of_sin.tool.string.5": "诅咒降低了：",
+
+
   "item.the_prison_of_sin.tool.string.6": "你还无法参悟它的本质",
+  "item.the_prison_of_sin.tool.string.7": "无限制的能力增长和超强的适应能力",
+  "item.the_prison_of_sin.tool.string.8": "但...代价是什么?",
+
+  "advancements.tooltip.the_prison_of_sin.hand": "好奇心害死猫",
+  "advancements.tooltip.the_prison_of_sin.text": "获得罪孽囚笼",
 
   "item.moonstone.blood_snake": "§4蛇血魔符",
   "item.blood_snake.tool.string": "杀死生物发射3条会造成150%伤害的血蛇",
@@ -893,7 +907,11 @@
 
   "item.moonstone.max_blood_cube": "§4复仇之骰",
   "item.max_blood_cube.tool.string": "拿着任意物品对准生物潜行并长按右键释放技能",
-  "item.max_blood_cube.tool.string.1": "技能期间无法移动"
+  "item.max_blood_cube.tool.string.1": "技能期间无法移动",
+  "item.moonstone.blood_magic_box": "血之魔盒",
+  "item.moonstone.blood": "血球",
+  "item.blood_magic_box.tool.string": "杀死生物获得它们的血液"
+
 }
 
 

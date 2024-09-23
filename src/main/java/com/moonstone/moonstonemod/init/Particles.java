@@ -14,6 +14,7 @@ public class Particles {
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> gold;
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> blue;
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> popr;
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> blood;
 
     static {
         PARTICLE_TYPES = DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, MoonStoneMod.MODID);
@@ -27,6 +28,8 @@ public class Particles {
         popr = PARTICLE_TYPES.register("popr", ()->{
             return new SimpleParticleType(false);
         });
-
+        blood = PARTICLE_TYPES.register("blood", ()->{
+            return new SimpleParticleType(false);
+        });
     }
 }

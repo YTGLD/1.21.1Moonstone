@@ -55,9 +55,11 @@ public class EntityTs {
     public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.zombie.blood_zombie_boom>> blood_zombie_boom = REGISTRY.register("blood_zombie_boom",
             ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.zombie.blood_zombie_boom::new, MobCategory.MONSTER).sized(1, 1).clientTrackingRange(16).build("blood_zombie_boom"));
     public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.line>> line = REGISTRY.register("line",
-            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.line::new, MobCategory.MONSTER).sized(1, 1).clientTrackingRange(16).build("line"));
+            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.line::new, MobCategory.MONSTER).sized(1, 0.2f).clientTrackingRange(16).build("line"));
     public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.snake>> snake = REGISTRY.register("snake",
-            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.snake::new, MobCategory.MONSTER).sized(1, 1).clientTrackingRange(16).build("snake"));
+            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.snake::new, MobCategory.MONSTER).sized(1, 0.2f).clientTrackingRange(16).build("snake"));
+    public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.blood>> blood = REGISTRY.register("blood",
+            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.blood::new, MobCategory.MISC).sized(0.5f, 0.5f).clientTrackingRange(16).build("blood"));
 
 
     @SubscribeEvent
@@ -72,8 +74,8 @@ public class EntityTs {
         event.put(EntityTs.blood_bat.get(), Zombie.createAttributes().build());
         event.put(EntityTs.blood_zombie.get(), Zombie.createAttributes().build());
         event.put(EntityTs.blood_zombie_boom.get(), Zombie.createAttributes().build());
-        event.put(EntityTs.line.get(), Zombie.createAttributes().build());
-        event.put(EntityTs.snake.get(), Zombie.createAttributes().build());
+        event.put(EntityTs.line.get(), Bat.createAttributes().build());
+        event.put(EntityTs.snake.get(), Bat.createAttributes().build());
 
     }
 }

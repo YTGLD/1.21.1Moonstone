@@ -5,7 +5,10 @@
       "item": "moonstone:blood_amout"
     },
     {
-      "item": "moonstone:plague"
+      "item": "moonstone:mayhemcrystal"
+    },
+    {
+      "item": "moonstone:fortunecrystal"
     }
   ],
   "result": {

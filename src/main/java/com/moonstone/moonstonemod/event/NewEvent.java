@@ -3,6 +3,7 @@ package com.moonstone.moonstonemod.event;
 import com.moonstone.moonstonemod.init.Effects;
 import com.moonstone.moonstonemod.item.BloodVirus.dna.bat_cell;
 import com.moonstone.moonstonemod.item.blood.*;
+import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_head;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_heart;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_orb;
@@ -43,6 +44,7 @@ public class NewEvent {
         blood_snake.Die(event);
         max_sword.die(event);
         the_prison_of_sin.LivingDeathEvent(event);
+        blood_magic_box.Did(event);
 
     }
     @SubscribeEvent

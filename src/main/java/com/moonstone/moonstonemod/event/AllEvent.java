@@ -357,6 +357,7 @@ public class AllEvent {
                         }
                         suddenrain item = new suddenrain(EntityTs.suddenrain.get(),player.level());
                         item.teleportTo(player.getX()+Mth.nextFloat(RandomSource.create(), -s,s),player.getY()+2+s,player.getZ()+Mth.nextFloat(RandomSource.create(), -s,s));
+                        item.setOwner(player);
                         item.setDeltaMovement(Mth.nextFloat(RandomSource.create(), -s/1.5f,s/1.5f),s/1.5f,Mth.nextFloat(RandomSource.create(), -s/1.5f,s/1.5f));
                         player.level().addFreshEntity(item);
                         player.getCooldowns().addCooldown(Items.doomswoud.get(), 20);
@@ -378,6 +379,7 @@ public class AllEvent {
                     suddenrain item = new suddenrain(EntityTs.suddenrain.get(), player.level());
                     item.teleportTo(player.getX() + Mth.nextFloat(RandomSource.create(), -s, s), player.getY() + 2 + s, player.getZ() + Mth.nextFloat(RandomSource.create(), -s, s));
                     item.setDeltaMovement(Mth.nextFloat(RandomSource.create(), -s / 1.5f, s / 1.5f), s / 1.5f, Mth.nextFloat(RandomSource.create(), -s / 1.5f, s / 1.5f));
+                    item.setOwner(player);
                     player.level().addFreshEntity(item);
                     player.getCooldowns().addCooldown(Items.doomswoud.get(), 50);
                 }
@@ -392,21 +394,8 @@ public class AllEvent {
             int is = 16;
             List<suddenrain> items = livingEntity.level().getEntitiesOfClass(suddenrain.class, new AABB(position.x - is, position.y - is, position.z - is, position.x + is, position.y + is, position.z + is));
             for (suddenrain item : items) {
-                if (!Handler.hascurio(livingEntity,Items.doomswoud.get())) {
-                    if (item.isAlive()) {
-                        if (item.level() instanceof ServerLevel serverLevel) {
-                            serverLevel.sendParticles(Particles.popr.get(), item.getX(), item.getEyeY(), item.getZ(), 1, 0.0D, 0.0D, 0.0D, 0);
-                        }
-                        Vec3 motion = position.subtract(item.position().add(0, item.getBbHeight() / 2, 0));
-                        if (Math.sqrt(motion.x * motion.x + motion.y * motion.y + motion.z * motion.z) > 1) {
-                            motion = motion.normalize();
-                        }
-                        if (item.age > 30) {
-                            item.setDeltaMovement(motion.scale(1));
-                        } else {
-                            item.setDeltaMovement(motion.scale(-0.25));
-                        }
-                    }
+                if (item.level() instanceof ServerLevel serverLevel) {
+                    serverLevel.sendParticles(Particles.popr.get(), item.getX(), item.getEyeY(), item.getZ(), 1, 0.0D, 0.0D, 0.0D, 0);
                 }
             }
         }
@@ -419,25 +408,8 @@ public class AllEvent {
             int is = 16;
             List<flysword> items = livingEntity.level().getEntitiesOfClass(flysword.class, new AABB(position.x - is, position.y - is, position.z - is, position.x + is, position.y + is, position.z + is));
             for (flysword item : items) {
-                if (!Handler.hascurio(livingEntity,Items.doomeye.get())) {
-                    if (item.isAlive()) {
-
-                        if (item.age > 20) {
-                            if (item.level() instanceof ServerLevel serverLevel) {
-                                serverLevel.sendParticles(Particles.blue.get(), item.getX(), item.getEyeY(), item.getZ(), 1, 0.0D, 0.0D, 0.0D, 0);
-                            }
-                            if (item.getTags().contains(FlySword)) {
-                                if (item.level() instanceof ServerLevel serverLevel) {
-                                    serverLevel.sendParticles(Particles.blue.get(), item.getX(), item.getEyeY(), item.getZ(), 1, 0.0D, 0.0D, 0.0D, 0);
-                                }
-                                Vec3 motion = position.subtract(item.position().add(0, item.getBbHeight() / 2, 0));
-                                if (Math.sqrt(motion.x * motion.x + motion.y * motion.y + motion.z * motion.z) > 1) {
-                                    motion = motion.normalize();
-                                }
-                                item.setDeltaMovement(motion.scale(0.5));
-                            }
-                        }
-                    }
+                if (item.level() instanceof ServerLevel serverLevel) {
+                    serverLevel.sendParticles(Particles.blue.get(), item.getX(), item.getEyeY(), item.getZ(), 1, 0.0D, 0.0D, 0.0D, 0);
                 }
             }
         }
@@ -457,6 +429,7 @@ public class AllEvent {
                         item.teleportTo(player.getX()+Mth.nextFloat(RandomSource.create(), -s,s),player.getY()+2+s,player.getZ()+Mth.nextFloat(RandomSource.create(), -s,s));
                         item.setDeltaMovement(Mth.nextFloat(RandomSource.create(), -s/1.5f,s/1.5f),s/1.5f,Mth.nextFloat(RandomSource.create(), -s/1.5f,s/1.5f));
                         item.setNoGravity(true);
+                        item.setOwner(player);
                         item.addTag(FlySword);
                         player.level().addFreshEntity(item);
                         player.getCooldowns().addCooldown(Items.doomeye.get(), 40);
@@ -2311,8 +2284,10 @@ public class AllEvent {
                         suddenrain item = new suddenrain(EntityTs.suddenrain.get(), player.level());
                         item.teleportTo(player.getX() + Mth.nextFloat(RandomSource.create(), -s, s), player.getY() + 2 + s, player.getZ() + Mth.nextFloat(RandomSource.create(), -s, s));
                         item.setDeltaMovement(0, s / 1.5f, 0);
+                        item.setOwner(player);
                         if (!player.getCooldowns().isOnCooldown(stack.getItem())) {
                             player.level().addFreshEntity(item);
+
                             stack.hurtAndBreak(3, player, event.getEntity().getEquipmentSlotForItem(stack));
                         }
 
@@ -2323,6 +2298,7 @@ public class AllEvent {
                         flysword item = new flysword(EntityTs.flysword.get(), player.level());
                         item.teleportTo(player.getX() + Mth.nextFloat(RandomSource.create(), -s, s), player.getY() + 2 + s, player.getZ() + Mth.nextFloat(RandomSource.create(), -s, s));
                         item.setDeltaMovement(0, s / 1.5f, 0);
+                        item.setOwner(player);
                         item.addTag(AllEvent.FlySword);
                         if (!player.getCooldowns().isOnCooldown(stack.getItem())) {
                             player.level().addFreshEntity(item);
