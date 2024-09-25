@@ -875,6 +875,39 @@
 
   "item.moonstone.blood_magic_box": "blood magic box",
   "item.moonstone.blood": "blood",
-  "item.blood_magic_box.tool.string": "Kill mob , Now!"
+  "item.blood_magic_box.tool.string": "Kill mob , Now!",
+
+  "item.moonstone.blood_candle": "blood candle",
+
+  "item.moonstone.the_blood_book": "Sealing Record",
+  "item.the_blood_book.tool.string": "It can be ignited twice ",
+  "item.blood.tool.string.evil": "evil",
+  "item.blood.tool.string.evil.1": "There is a 33% chance that killing a creature will regenerate into a blood cell",
+  "item.blood.tool.string.evil.2": "Harvest blood cells to restore 4 health points",
+  "item.blood.tool.string.evil.3": "If you wear Shadow Plague, the health value restored by Evil Mind Demon will be changed to percentage form",
+
+  "item.blood.tool.string.sword.1": "Summon 1 Flying Sword for every 10% loss of health",
+  "item.blood.tool.string.sword.2": " If you wear the Seven Swords of Asura Heart or Sudden Rain, you will lose 50% of your health",
+  "item.blood.tool.string.sword": "sword",
+
+
+  "item.blood_candle.tool.string": "Summon a giant blood spirit growth body to assist you in battle",
+
+
+
+
+
+
+
+
+
+
+
+  "item.blood.tool.string.winds.1": "5% speed bonus converted to attack damage",
+  "item.blood.tool.string.winds.2": "If you wear a nightmare item, the damage doubles",
+  "item.blood.tool.string.winds": "winds"
+
+
+
 }
 

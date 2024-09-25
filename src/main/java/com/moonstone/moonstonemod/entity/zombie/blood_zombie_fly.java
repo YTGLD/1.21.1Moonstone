@@ -1,6 +1,5 @@
 package com.moonstone.moonstonemod.entity.zombie;
 
-import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.init.EntityTs;
 import net.minecraft.core.registries.BuiltInRegistries;

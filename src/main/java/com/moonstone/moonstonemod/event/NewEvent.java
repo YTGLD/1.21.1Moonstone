@@ -3,6 +3,7 @@ package com.moonstone.moonstonemod.event;
 import com.moonstone.moonstonemod.init.Effects;
 import com.moonstone.moonstonemod.item.BloodVirus.dna.bat_cell;
 import com.moonstone.moonstonemod.item.blood.*;
+import com.moonstone.moonstonemod.item.blood.magic.blood_candle;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_head;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_heart;
@@ -10,6 +11,7 @@ import com.moonstone.moonstonemod.item.nightmare.nightmare_orb;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
@@ -35,7 +37,11 @@ public class NewEvent {
     public void EntityInteract(PlayerInteractEvent.RightClickItem event){
         max_blood_cube.RightClickItem(event);
     }
+    @SubscribeEvent
+    public  void SwordEventLivingEntityUseItemEvent(LivingEntityUseItemEvent.Stop event){
 
+
+    }
     @SubscribeEvent
     public void LivingHealEvent(LivingDeathEvent event) {
         nightmare_heart.Nig(event);

@@ -910,8 +910,44 @@
   "item.max_blood_cube.tool.string.1": "技能期间无法移动",
   "item.moonstone.blood_magic_box": "血之魔盒",
   "item.moonstone.blood": "血球",
-  "item.blood_magic_box.tool.string": "杀死生物获得它们的血液"
+  "item.blood_magic_box.tool.string": "杀死生物获得它们的血液",
 
+  "item.moonstone.blood_candle": "封魔烛台",
+
+  "item.moonstone.the_blood_book": "封魔录",
+  "item.the_blood_book.tool.string": "它可以被点燃两次",
+
+  "item.blood.tool.string.evil.1": "  杀死生物有33%的概率再生成一颗血球",
+  "item.blood.tool.string.evil.2": "  收获血球恢复4点生命值",
+
+  "item.blood.tool.string.evil.3": "  如果你佩戴了 暗影瘟疫 则邪念之魔恢复的生命值改为百分比形式",
+
+  "item.blood.tool.string.evil": "邪念之魔",
+  "item.blood.tool.string.sword": "剑魔",
+  "item.blood.tool.string.winds": "梦魇风魔",
+
+  "item.blood.tool.string.sword.1": "  损失生命值有10%的概率召唤1把飞剑",
+  "item.blood.tool.string.sword.2": "  如果你佩戴了 七剑修罗之心 或 骤雨 则需要概率提高100%",
+
+
+
+  "item.blood_candle.tool.string": "召唤一个巨型血灵增生体协助你作战",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  "item.blood.tool.string.winds.1": "  50%的速度加成转换成攻击伤害",
+  "item.blood.tool.string.winds.2": "  如果你佩戴了 梦魇之眼 物品，则伤害加倍"
 }
 
 

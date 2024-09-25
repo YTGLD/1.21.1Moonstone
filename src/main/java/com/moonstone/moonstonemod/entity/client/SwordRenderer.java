@@ -13,8 +13,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import org.jetbrains.annotations.NotNull;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
 
 public class SwordRenderer <T extends ThrowableItemProjectile> extends EntityRenderer<T> {
     public SwordRenderer(EntityRendererProvider.Context p_173917_) {

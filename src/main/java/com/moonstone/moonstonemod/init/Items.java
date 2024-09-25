@@ -9,7 +9,9 @@ import com.moonstone.moonstonemod.item.BloodVirus.ex.catalyzer;
 import com.moonstone.moonstonemod.item.amout.ectoplasmstone;
 import com.moonstone.moonstonemod.item.amout.twistedstone;
 import com.moonstone.moonstonemod.item.blood.*;
+import com.moonstone.moonstonemod.item.blood.magic.blood_candle;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
+import com.moonstone.moonstonemod.item.blood.magic.the_blood_book;
 import com.moonstone.moonstonemod.item.bloodvirus;
 import com.moonstone.moonstonemod.item.ectoplasm.*;
 import com.moonstone.moonstonemod.item.ectoplasm.soul.soulbattery;
@@ -195,11 +197,13 @@ public class Items {
     public static final DeferredHolder<Item,?> blood_snake =REGISTRY.register("blood_snake", (ResourceLocation pProperties) -> new blood_snake());
     public static final DeferredHolder<Item,?> the_prison_of_sin =REGISTRY.register("the_prison_of_sin", (ResourceLocation pProperties) -> new the_prison_of_sin());
     public static final DeferredHolder<Item,?> blood_magic_box =REGISTRY.register("blood_magic_box", (ResourceLocation pProperties) -> new blood_magic_box());
+    public static final DeferredHolder<Item,?> the_blood_book =REGISTRY.register("the_blood_book", (ResourceLocation pProperties) -> new the_blood_book());
 
 
 
     public static final DeferredHolder<Item,?> the_heart_image =REGISTRY.register("the_heart_image", ()-> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
     public static final DeferredHolder<Item,?> blood =REGISTRY.register("blood", ()-> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
+    public static final DeferredHolder<Item,?> blood_candle =REGISTRY.register("blood_candle", com.moonstone.moonstonemod.item.blood.magic.blood_candle::new);
 
 
     public static final DeferredHolder<Item,?> gorillacake =REGISTRY.register("gorillacake", com.moonstone.moonstonemod.moonstoneitem.gorillacake::new);

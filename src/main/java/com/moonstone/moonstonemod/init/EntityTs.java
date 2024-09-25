@@ -6,6 +6,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ambient.Bat;
+import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -61,6 +62,11 @@ public class EntityTs {
     public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.blood>> blood = REGISTRY.register("blood",
             ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.blood::new, MobCategory.MISC).sized(0.5f, 0.5f).clientTrackingRange(16).build("blood"));
 
+    public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.attack_blood>> attack_blood = REGISTRY.register("attack_blood",
+            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.attack_blood::new, MobCategory.MISC).sized(0.5f, 0.2f).clientTrackingRange(16).build("attack_blood"));
+    public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.owner_blood>> owner_blood = REGISTRY.register("owner_blood",
+            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.owner_blood::new, MobCategory.MISC).sized(0.5f, 0.2f).clientTrackingRange(16).build("owner_blood"));
+
 
     @SubscribeEvent
     public static void EntityAttributeCreationEvent(EntityAttributeCreationEvent event){
@@ -76,6 +82,7 @@ public class EntityTs {
         event.put(EntityTs.blood_zombie_boom.get(), Zombie.createAttributes().build());
         event.put(EntityTs.line.get(), Bat.createAttributes().build());
         event.put(EntityTs.snake.get(), Bat.createAttributes().build());
+        event.put(EntityTs.owner_blood.get(), IronGolem.createAttributes().build());
 
     }
 }

@@ -8,7 +8,8 @@ import com.moonstone.moonstonemod.client.particle.blue;
 import com.moonstone.moonstonemod.client.particle.popr;
 import com.moonstone.moonstonemod.client.particle.red;
 import com.moonstone.moonstonemod.client.renderer.MRender;
-import com.moonstone.moonstonemod.entity.client.*;
+import com.moonstone.moonstonemod.entity.client.BloodSwordRenderer;
+import com.moonstone.moonstonemod.entity.client.SwordRenderer;
 import com.moonstone.moonstonemod.entity.client.zombie.CellZombieG;
 import com.moonstone.moonstonemod.entity.client.zombie.CellZombieN;
 import com.moonstone.moonstonemod.entity.client.zombie.ZombieRenderer;
@@ -80,8 +81,9 @@ public class MoonStoneMod {
 
             event.registerEntityRenderer(EntityTs.line.get(), com.moonstone.moonstonemod.entity.client.LineRenderer::new);
             event.registerEntityRenderer(EntityTs.snake.get(), com.moonstone.moonstonemod.entity.client.SnakeRenderer::new);
-
+            event.registerEntityRenderer(EntityTs.attack_blood.get(), com.moonstone.moonstonemod.entity.client.AttackBloodRender::new);
             event.registerEntityRenderer(EntityTs.blood.get(), com.moonstone.moonstonemod.entity.client.BloodRender::new);
+            event.registerEntityRenderer(EntityTs.owner_blood.get(), com.moonstone.moonstonemod.entity.client.OwnerBloodRenderer::new);
 
         }
         @SubscribeEvent

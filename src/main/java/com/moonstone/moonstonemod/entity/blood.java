@@ -1,15 +1,10 @@
 package com.moonstone.moonstonemod.entity;
 
 import com.moonstone.moonstonemod.init.Items;
-import com.moonstone.moonstonemod.init.Particles;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
@@ -17,7 +12,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,22 +53,29 @@ public class blood extends ThrowableItemProjectile {
     public void tick() {
         super.tick();
 
-        if (this.tickCount % 100 == 0) {
-            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ELYTRA_FLYING, SoundSource.NEUTRAL, 0.31F, 0.31F);
-        }
-        if (target == null || !target.isAlive()) {
-            findNewTarget();
-        }
+        if (!this.getTags().contains("Blood")) {
+            if (this.tickCount % 100 == 0) {
+                this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ELYTRA_FLYING, SoundSource.NEUTRAL, 0.31F, 0.31F);
+            }
+            if (target == null || !target.isAlive()) {
+                findNewTarget();
+            }
 
-        float s  = this.tickCount / 200f;
-        if (target != null) {
-            if (this.tickCount > 25) {
-                Vec3 targetPos = target.position().add(0, 0.5, 0);
-                Vec3 currentPos = this.position();
-                Vec3 direction = targetPos.subtract(currentPos).normalize();
-                this.setDeltaMovement(direction.x * (0.02f+s), direction.y * (0.02f+s), direction.z * (0.02f+s));
+            float s = this.tickCount / 200f;
+            if (target != null) {
+                if (this.tickCount > 25) {
+                    Vec3 targetPos = target.position().add(0, 0.5, 0);
+                    Vec3 currentPos = this.position();
+                    Vec3 direction = targetPos.subtract(currentPos).normalize();
+                    this.setDeltaMovement(direction.x * (0.02f + s), direction.y * (0.02f + s), direction.z * (0.02f + s));
+                }
+            }
+        } else {
+            if (tickCount>6){
+                this.discard();
             }
         }
+
         trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
 
         if (trailPositions.size() > 50) {
@@ -89,10 +90,13 @@ public class blood extends ThrowableItemProjectile {
     @Override
     public void playerTouch(@NotNull Player entity) {
         if (this.tickCount > 20) {
-            super.playerTouch(entity);
-            entity.addItem(new ItemStack(Items.blood.get()));
-            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.RESPAWN_ANCHOR_DEPLETE, SoundSource.NEUTRAL, 1.45f, 1.45f);
-            this.discard();
+
+            if (!entity.getCooldowns().isOnCooldown(Items.blood_candle.get())) {
+                super.playerTouch(entity);
+                entity.addItem(new ItemStack(Items.blood.get()));
+                this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.RESPAWN_ANCHOR_DEPLETE, SoundSource.NEUTRAL, 1.45f, 1.45f);
+                this.discard();
+            }
         }
     }
     private void findNewTarget() {

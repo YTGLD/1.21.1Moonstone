@@ -1,8 +1,6 @@
 package com.moonstone.moonstonemod.moonstoneitem;
 
-import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.init.DataReg;
-import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.Item;

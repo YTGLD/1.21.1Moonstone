@@ -76,10 +76,7 @@ public class max_blood_cube extends Item implements ICurioItem, Blood {
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
-
         stack.setDamageValue(stack.getDamageValue()+1);
-
-
         if (slotContext.entity() instanceof Player player){
             if (player.getCooldowns().isOnCooldown(this)){
                 Entity entity = getPlayerLookTarget(player.level(),player);

@@ -37,7 +37,7 @@ public class LineRenderer   <T extends line> extends EntityRenderer<T> {
 
             float alpha = (float)(i) / (float)(entity.getTrailPositions().size());
 
-            Handler.renderLine(matrices, vertexConsumers, adjustedPrevPos, adjustedCurrPos, alpha, RenderType.lines());
+            Handler.renderLine(matrices, vertexConsumers, adjustedPrevPos, adjustedCurrPos, alpha, RenderType.lightning());
 
         }
         matrices.popPose();

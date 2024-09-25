@@ -53,6 +53,7 @@ public class blood_snake extends Item implements ICurioItem, Blood {
                 for (int i = 0; i < s; i++) {
                     snake line = new snake(EntityTs.snake.get(), player.level());
                     line.setPos(new Vec3(event.getEntity().getX()+i/5f* Mth.nextFloat(RandomSource.create(),-1,1),event.getEntity().getY()+i/5f* Mth.nextFloat(RandomSource.create(),-1.01f,1.01f),event.getEntity().getZ()+i/5f* Mth.nextFloat(RandomSource.create(),-1.011f,1.011f)));
+                    line.setDeltaMovement(0,1,0);
                     line.setOwnerUUID(player.getUUID());
 
                     player.level().addFreshEntity(line);

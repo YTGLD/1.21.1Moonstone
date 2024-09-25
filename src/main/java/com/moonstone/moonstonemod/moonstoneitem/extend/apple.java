@@ -1,7 +1,6 @@
 package com.moonstone.moonstonemod.moonstoneitem.extend;
 
 import com.moonstone.moonstonemod.moonstoneitem.Iplague;
-import net.minecraft.ChatFormatting;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;

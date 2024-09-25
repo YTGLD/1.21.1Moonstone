@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "chest_boat",
+  "ingredients": [
+    {
+      "item": "moonstone:fortunecrystal"
+    },
+    {
+      "item": "moonstone:max_sword"
+    },
+    {
+      "item": "moonstone:ectoplasmcube"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "moonstone:blood_magic_box"
+  }
+}

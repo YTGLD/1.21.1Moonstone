@@ -69,7 +69,6 @@ public class the_heart extends BundleItem implements ICurioItem {
     }
     @Override
     public int getBarWidth(ItemStack pStack) {
-        BundleContents bundlecontents = pStack.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
         return 4;
     }
     public InteractionResultHolder<ItemStack> use(Level p_150760_, Player p_150761_, InteractionHand p_150762_) {

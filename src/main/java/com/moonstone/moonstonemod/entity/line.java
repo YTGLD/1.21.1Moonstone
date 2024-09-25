@@ -24,7 +24,15 @@ import java.util.UUID;
 public class line  extends TamableAnimal {
 
     private LivingEntity target;
+    @Override
+    public float getXRot() {
+        return 0;
+    }
 
+    @Override
+    public float getYRot() {
+        return 0;
+    }
     public line(EntityType<? extends line> p_27412_, Level p_27413_) {
         super(p_27412_, p_27413_);
     }

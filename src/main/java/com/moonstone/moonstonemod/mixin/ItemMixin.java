@@ -1,6 +1,8 @@
 package com.moonstone.moonstonemod.mixin;
 
+import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.init.DataReg;
+import com.moonstone.moonstonemod.init.Items;
 import com.moonstone.moonstonemod.item.nanodoom.buyme.wind_and_rain;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
@@ -52,7 +54,7 @@ public abstract class ItemMixin {
     @Inject(at = @At("HEAD"), method = "use")
     public void moonstone$clickMenuButton(Level level, Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResultHolder<ItemStack>> cir) {
         ItemStack stack = player.getItemInHand(hand);
-       CompoundTag tag = stack.get(DataReg.tag);
+        CompoundTag tag = stack.get(DataReg.tag);
         if (tag != null){
             if (!player.getCooldowns().isOnCooldown(stack.getItem())) {
                 if (tag.getBoolean(wind_and_rain.wind)) {

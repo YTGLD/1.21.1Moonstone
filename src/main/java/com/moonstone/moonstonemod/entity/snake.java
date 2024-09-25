@@ -5,8 +5,6 @@ import com.moonstone.moonstonemod.init.EntityTs;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -30,7 +28,15 @@ public class snake  extends TamableAnimal {
     public snake(EntityType<? extends snake> p_27412_, Level p_27413_) {
         super(p_27412_, p_27413_);
     }
+    @Override
+    public float getXRot() {
+        return 0;
+    }
 
+    @Override
+    public float getYRot() {
+        return 0;
+    }
     private int cloudTime = 0;
 
     private int time  = 0;
@@ -77,11 +83,30 @@ public class snake  extends TamableAnimal {
             findNewTarget();
         }
 
-        if (target != null&&this.cloudTime<=0) {
+        if (target != null && this.cloudTime <= 0) {
             Vec3 targetPos = target.position().add(0, 0.5, 0);
             Vec3 currentPos = this.position();
             Vec3 direction = targetPos.subtract(currentPos).normalize();
-            this.setDeltaMovement(direction.x *0.25f, direction.y *0.25f, direction.z *0.25f);
+
+            // 获取当前运动方向
+            Vec3 currentDirection = this.getDeltaMovement().normalize();
+
+            // 计算目标方向与当前方向之间的夹角
+            double angle = Math.acos(currentDirection.dot(direction)) * (180.0 / Math.PI);
+
+            // 如果夹角超过10度，则限制方向
+            if (angle > 14) {
+                // 计算旋转后的新方向
+                double angleLimit = Math.toRadians(14); // 将10度转为弧度
+
+                // 根据正弦法则计算限制后的方向
+                Vec3 limitedDirection = currentDirection.scale(Math.cos(angleLimit)) // 计算缩放因子
+                        .add(direction.normalize().scale(Math.sin(angleLimit))); // 根据目标方向进行调整
+
+                this.setDeltaMovement(limitedDirection.x * 0.125f, limitedDirection.y * 0.125f, limitedDirection.z * 0.125f);
+            } else {
+                this.setDeltaMovement(direction.x * 0.125f, direction.y * 0.125f, direction.z * 0.125f);
+            }
         }
         trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
 

@@ -36,7 +36,7 @@ public class SnakeRenderer<T extends snake> extends EntityRenderer<T> {
 
             float alpha = (float)(i) / (float)(entity.getTrailPositions().size());
 
-            Handler.renderSnake(matrices, vertexConsumers, adjustedPrevPos, adjustedCurrPos, alpha, RenderType.lines());
+            Handler.renderSnake(matrices, vertexConsumers, adjustedPrevPos, adjustedCurrPos, alpha, RenderType.lightning());
 
         }
         matrices.popPose();

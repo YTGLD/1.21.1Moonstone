@@ -3,7 +3,6 @@ package com.moonstone.moonstonemod.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.entity.bloodvruis.test_blood;
@@ -124,9 +123,9 @@ public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>
         }
 
         if (entity instanceof blood_zombie){
-
             new BloodBoom(matrices, vertexConsumers, light, entity);
         }
+
 
     }
     public void gorillacake(@NotNull PoseStack matrices,

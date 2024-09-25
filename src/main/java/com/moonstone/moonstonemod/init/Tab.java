@@ -172,6 +172,8 @@ public class Tab {
             .icon(()->new ItemStack(Items.blood_magic_box.get()))
             .title(Component.translatable("itemGroup.tabmoonstone.blood"))
             .displayItems((a,b)->{
+                b.accept(new ItemStack(Items.blood_candle.get()));
+                b.accept(new ItemStack(Items.the_blood_book.get()));
                 b.accept(new ItemStack(Items.blood_magic_box.get()));
                 b.accept(new ItemStack(Items.blood.get()));
                 b.accept(new ItemStack(Items.max_sword.get()));
