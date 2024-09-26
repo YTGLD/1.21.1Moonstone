@@ -878,6 +878,7 @@
   "item.blood_magic_box.tool.string": "Kill mob , Now!",
 
   "item.moonstone.blood_candle": "blood candle",
+  "item.blood_candle.tool.string.1": "",
 
   "item.moonstone.the_blood_book": "Sealing Record",
   "item.the_blood_book.tool.string": "It can be ignited twice ",
@@ -889,11 +890,13 @@
   "item.blood.tool.string.sword.1": "Summon 1 Flying Sword for every 10% loss of health",
   "item.blood.tool.string.sword.2": " If you wear the Seven Swords of Asura Heart or Sudden Rain, you will lose 50% of your health",
   "item.blood.tool.string.sword": "sword",
+  "item.blood_candle.tool.string.2": "",
 
 
   "item.blood_candle.tool.string": "Summon a giant blood spirit growth body to assist you in battle",
 
 
+  "entity.moonstone.owner_blood": "owner blood",
 
 
 

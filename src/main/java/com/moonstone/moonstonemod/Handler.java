@@ -103,10 +103,10 @@ public class Handler {
 
     }
 
-    public static void renderBlood(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType) {
+    public static void renderBlood(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType,float r) {
         VertexConsumer vertexConsumer = bufferSource.getBuffer(renderType);
 
-        float radius = 0.1f; // 半径
+        float radius = r; // 半径
         int segmentCount = 16; // 圆柱横向细分数
 
         for (int i = 0; i < segmentCount; i++) {

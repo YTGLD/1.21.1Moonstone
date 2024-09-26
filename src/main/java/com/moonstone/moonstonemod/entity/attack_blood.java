@@ -76,7 +76,7 @@ public class attack_blood extends ThrowableItemProjectile {
                     ResourceLocation entitys = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
                     if (!entitys.getNamespace().equals(MoonStoneMod.MODID)) {
                         entity.invulnerableTime = 0;
-                        entity.hurt(this.getOwner().damageSources().dryOut(), 4 + player.getMaxHealth() / 50);
+                        entity.hurt(this.getOwner().damageSources().dryOut(), 4 + player.getMaxHealth() / 10);
                         this.discard();
                     }
                 }

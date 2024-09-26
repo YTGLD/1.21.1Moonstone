@@ -44,7 +44,7 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
 
             float alpha = (float)(i) / (float)(entity.getTrailPositions().size());
 
-            Handler.renderBlood(matrices, vertexConsumers, adjustedPrevPos, adjustedCurrPos, alpha, RenderType.lightning());
+            Handler.renderBlood(matrices, vertexConsumers, adjustedPrevPos, adjustedCurrPos, alpha, RenderType.lightning(),0.3f);
         }
         matrices.popPose();
     }

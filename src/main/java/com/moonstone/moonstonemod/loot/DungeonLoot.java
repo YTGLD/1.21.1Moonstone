@@ -143,11 +143,6 @@ public class DungeonLoot extends LootModifier {
                     }
 
 
-                    if (T == 3) {
-                        if (!Handler.hascurio(player,Items.plague.get())) {
-                            generatedLoot.add(new ItemStack(Items.plague.get()));
-                        }
-                    }
                 }
 
 

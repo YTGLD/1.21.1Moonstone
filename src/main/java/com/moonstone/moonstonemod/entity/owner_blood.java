@@ -8,7 +8,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.goal.*;
@@ -77,7 +76,7 @@ public class owner_blood extends TamableAnimal {
         }
         trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
 
-        if (trailPositions.size() > 50) {
+        if (trailPositions.size() > 66) {
             trailPositions.removeFirst();
         }
 
