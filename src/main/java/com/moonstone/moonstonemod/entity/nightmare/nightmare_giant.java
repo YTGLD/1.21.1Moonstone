@@ -3,7 +3,9 @@ package com.moonstone.moonstonemod.entity.nightmare;
 import com.google.common.annotations.VisibleForTesting;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
+import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.event.AllEvent;
 import com.moonstone.moonstonemod.init.EntityTs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -119,10 +121,6 @@ public class nightmare_giant extends TamableAnimal implements OwnableEntity,Vibr
         return new ClientboundAddEntityPacket(this, p_352154_, this.hasPose(Pose.EMERGING) ? 1 : 0);
     }
 
-    @Override
-    public void die(DamageSource p_21809_) {
-
-    }
 
     @Override
     protected void registerGoals() {
@@ -233,11 +231,29 @@ public class nightmare_giant extends TamableAnimal implements OwnableEntity,Vibr
     }
 
     public int time = 0;
+    @Override
+    public void die(DamageSource p_21809_) {
+        if (this.getTags().contains(Handler.Giant_Boom)){
+            this.level().explode(this, this.getX(), this.getY(), this.getZ(), 12.5f, true, Level.ExplosionInteraction.NONE);
+        }
+    }
+
 
     public void tick() {
         time++;
-        if (time > 1200){
+        if (!this.getTags().contains(Handler.Giant_Time)) {
+            time += 3;
+        }else {
+            time+=2;
+        }
+        if (time > 3600){
             this.discard();
+        }
+        if (this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).isPresent()) {
+            ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get().getType());
+            if (entity.getNamespace().equals(MoonStoneMod.MODID)) {
+                this.setAttackTarget(null);
+            }
         }
         Vec3 playerPos = this.position().add(0, 0.75, 0);
         int range = 10;
@@ -257,18 +273,18 @@ public class nightmare_giant extends TamableAnimal implements OwnableEntity,Vibr
         }
         if (this.getOwner()!= null) {
             if (this.getOwner().getLastHurtByMob()!= null) {
-                if (!this.getOwner().getLastHurtByMob().is(this)) {
+                if (!this.getOwner().getLastHurtByMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtByMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setAttackTarget(this.getOwner().getLastHurtByMob());
                 }
             }
             if (this.getOwner().getLastAttacker()!= null) {
-                if (!this.getOwner().getLastAttacker().is(this)) {
+                if (!this.getOwner().getLastAttacker().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastAttacker().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setAttackTarget(this.getOwner().getLastAttacker());
                 }
 
             }
             if (this.getOwner().getLastHurtMob()!= null) {
-                if (!this.getOwner().getLastHurtMob().is(this)) {
+                if (!this.getOwner().getLastHurtMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setAttackTarget(this.getOwner().getLastHurtMob());
                 }
 

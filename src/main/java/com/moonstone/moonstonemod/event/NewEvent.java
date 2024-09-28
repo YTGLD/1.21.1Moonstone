@@ -2,8 +2,8 @@ package com.moonstone.moonstonemod.event;
 
 import com.moonstone.moonstonemod.init.Effects;
 import com.moonstone.moonstonemod.item.BloodVirus.dna.bat_cell;
+import com.moonstone.moonstonemod.item.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.blood.*;
-import com.moonstone.moonstonemod.item.blood.magic.blood_candle;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_head;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_heart;
@@ -32,6 +32,7 @@ public class NewEvent {
         max_eye.A(event);
         max_blood_eye.Att(event);
         blood_amout.Hurt(event);
+        giant_boom_cell.Boom(event);
     }
     @SubscribeEvent
     public void EntityInteract(PlayerInteractEvent.RightClickItem event){

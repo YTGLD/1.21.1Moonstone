@@ -21,6 +21,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.*;
+import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.monster.*;
@@ -46,7 +47,12 @@ public class cell_zombie extends TamableAnimal {
     @Override
     public void tick() {
         super.tick();
-
+        if (this.getTarget() != null) {
+            ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(this.getTarget().getType());
+            if (entity.getNamespace().equals(MoonStoneMod.MODID)) {
+                this.setTarget(null);
+            }
+        }
         Vec3 playerPos = this.position().add(0, 0.75, 0);
         int range = 20;
         List<Mob> entities = this.level().getEntitiesOfClass(Mob.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
@@ -65,18 +71,18 @@ public class cell_zombie extends TamableAnimal {
         }
         if (this.getOwner()!= null) {
             if (this.getOwner().getLastHurtByMob()!= null) {
-                if (!this.getOwner().getLastHurtByMob().is(this)) {
+                if (!this.getOwner().getLastHurtByMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtByMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setTarget(this.getOwner().getLastHurtByMob());
                 }
             }
             if (this.getOwner().getLastAttacker()!= null) {
-                if (!this.getOwner().getLastAttacker().is(this)) {
+                if (!this.getOwner().getLastAttacker().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastAttacker().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setTarget(this.getOwner().getLastAttacker());
                 }
 
             }
             if (this.getOwner().getLastHurtMob()!= null) {
-                if (!this.getOwner().getLastHurtMob().is(this)) {
+                if (!this.getOwner().getLastHurtMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setTarget(this.getOwner().getLastHurtMob());
                 }
 
@@ -98,6 +104,10 @@ public class cell_zombie extends TamableAnimal {
         if (this.getTags().contains(AllEvent.calcification)){
             if (this.getOwner()!= null) {
                 this.getAttributes().addTransientAttributeModifiers(calcificationMultimap(this.getOwner()));
+
+                if (this.tickCount < 5){
+                    this.heal(100);
+                }
             }
         }
     }

@@ -1,15 +1,20 @@
 package com.moonstone.moonstonemod.entity.zombie;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
+import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.entity.ai.AIgiant;
 import com.moonstone.moonstonemod.entity.nightmare.AInightmare;
 import com.moonstone.moonstonemod.entity.nightmare.SonicBoom;
 import com.moonstone.moonstonemod.entity.nightmare.nightmare_giant;
+import com.moonstone.moonstonemod.event.AllEvent;
 import com.moonstone.moonstonemod.init.EntityTs;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -33,6 +38,8 @@ import net.minecraft.util.Unit;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.Brain;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -58,6 +65,7 @@ import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import java.util.Collections;
@@ -107,10 +115,26 @@ public class cell_giant extends TamableAnimal implements OwnableEntity {
     }
 
     @Override
-    public void die(DamageSource p_21809_) {
+    public void die(@NotNull DamageSource p_21809_) {
+        if (this.getTags().contains(Handler.Parasitic_cell_Giant)){
+            for (int i = 0; i < 6; i++) {
+                cell_zombie cell_zombie = new cell_zombie(EntityTs.cell_zombie.get(),this.level());
+                cell_zombie.setPos(this.getX(),this.getY(),this.getY());
+                if (this.getOwnerUUID()!=null) {
+                    cell_zombie.setOwnerUUID(this.getOwnerUUID());
+                }
+                this.level().addFreshEntity(cell_zombie);
 
+            }
+        }
     }
-
+    private Multimap<Holder<Attribute>, AttributeModifier>  AttributeModifier(cell_giant cellGiant, LivingEntity living){
+        Multimap<Holder<Attribute>, AttributeModifier>  modifierMultimap = HashMultimap.create();
+        if (cellGiant.getTags().contains(Handler.Bone_Giant)) {
+            modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+"cell_armor"), living.getAttributeValue(Attributes.ARMOR)* 0.7, AttributeModifier.Operation.ADD_VALUE));
+        }
+        return modifierMultimap;
+    }
     @Override
     protected void registerGoals() {
 
@@ -217,23 +241,31 @@ public class cell_giant extends TamableAnimal implements OwnableEntity {
     public void tick() {
         time++;
 
-        if (time > 1200){
-            this.discard();
+        if (this.getOwner() instanceof Player player) {
+            this.getAttributes().addTransientAttributeModifiers(this.AttributeModifier(this,player));
+        }
+        if (!this.getTags().contains(Handler.Disgusting__cell_Giant)) {
+            time += 2;
+        }else {
+            time++;
+        }
+        if (this.time > 2400){
+            this.kill();
         }
         if (this.getOwner()!= null) {
             if (this.getOwner().getLastHurtByMob()!= null) {
-                if (!this.getOwner().getLastHurtByMob().is(this)) {
+                if (!this.getOwner().getLastHurtByMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtByMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setAttackTarget(this.getOwner().getLastHurtByMob());
                 }
             }
             if (this.getOwner().getLastAttacker()!= null) {
-                if (!this.getOwner().getLastAttacker().is(this)) {
+                if (!this.getOwner().getLastAttacker().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastAttacker().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setAttackTarget(this.getOwner().getLastAttacker());
                 }
 
             }
             if (this.getOwner().getLastHurtMob()!= null) {
-                if (!this.getOwner().getLastHurtMob().is(this)) {
+                if (!this.getOwner().getLastHurtMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setAttackTarget(this.getOwner().getLastHurtMob());
                 }
 
@@ -247,7 +279,12 @@ public class cell_giant extends TamableAnimal implements OwnableEntity {
         }
 
         super.tick();
-
+        if (this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).isPresent()) {
+            ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get().getType());
+            if (entity.getNamespace().equals(MoonStoneMod.MODID)) {
+                this.setAttackTarget(null);
+            }
+        }
         Vec3 playerPos = this.position().add(0, 0.75, 0);
         int range = 10;
         List<Mob> entities = this.level().getEntitiesOfClass(Mob.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
@@ -262,25 +299,6 @@ public class cell_giant extends TamableAnimal implements OwnableEntity {
         if (this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).isPresent()) {
             if (!this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get().isAlive()) {
                 this.setAttackTarget(null);
-            }
-        }
-        if (this.getOwner()!= null) {
-            if (this.getOwner().getLastHurtByMob()!= null) {
-                if (!this.getOwner().getLastHurtByMob().is(this)) {
-                    this.setTarget(this.getOwner().getLastHurtByMob());
-                }
-            }
-            if (this.getOwner().getLastAttacker()!= null) {
-                if (!this.getOwner().getLastAttacker().is(this)) {
-                    this.setTarget(this.getOwner().getLastAttacker());
-                }
-
-            }
-            if (this.getOwner().getLastHurtMob()!= null) {
-                if (!this.getOwner().getLastHurtMob().is(this)) {
-                    this.setTarget(this.getOwner().getLastHurtMob());
-                }
-
             }
         }
         if (this.level().isClientSide()) {

@@ -30,7 +30,6 @@ public class mbottle extends MLS {
                 .addSlotModifier(linkedHashMultimap, "charm", ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 1, AttributeModifier.Operation.ADD_VALUE);
         return linkedHashMultimap;
     }
-    @Override
     public int getLootingLevel(SlotContext slotContext, DamageSource source, LivingEntity target, int baseLooting, ItemStack stack) {
         if (slotContext.entity().hasEffect(MobEffects.WEAKNESS)){
             return 2;

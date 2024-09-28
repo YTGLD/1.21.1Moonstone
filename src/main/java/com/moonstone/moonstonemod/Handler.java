@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.moonstone.moonstonemod.entity.nightmare.nightmare_giant;
 import com.moonstone.moonstonemod.entity.zombie.cell_giant;
+import com.moonstone.moonstonemod.init.Items;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
@@ -22,7 +23,18 @@ import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.List;
 
+import static com.moonstone.moonstonemod.event.AllEvent.*;
+
 public class Handler {
+    public static final String Giant_Time ="Giant_Time";
+    public static final String Giant_Boom ="Giant_Boom";
+    public static final String Subspace_Giant ="Subspace_Giant";
+
+    public static final String Bone_Giant = "Bone_Giant";
+    public static final String Parasitic_cell_Giant = "Parasitic_cell_Giant";
+    public static final String Disgusting__cell_Giant = "Disgusting__cell_Giant";
+
+
 
     public static <T extends TamableAnimal> void trySpawnMob(
             Player player,
@@ -45,6 +57,27 @@ public class Handler {
                     && moveToPossibleSpawnPosition(pLevel, pYOffset, blockpos$mutableblockpos, pStrategy)) {
                 T t = (T)pEntityType.create(pLevel, null, blockpos$mutableblockpos, pSpawnType, false, false);
                 if (t != null) {
+                    t.setOwnerUUID(player.getUUID());
+
+                    if (Handler.hascurio(player, Items.anaerobic_cell.get())) {
+                        t.addTag(Giant_Time);
+                    }
+                    if (Handler.hascurio(player, Items.giant_boom_cell.get())) {
+                        t.addTag(Giant_Boom);
+                    }
+                    if (Handler.hascurio(player, Items.subspace_cell.get())) {
+                        t.addTag(Subspace_Giant);
+                    }
+                    if (Handler.hascurio(player, Items.bone_cell.get())) {
+                        t.addTag(Bone_Giant);
+                    }
+                    if (Handler.hascurio(player, Items.parasitic_cell.get())) {
+                        t.addTag(Parasitic_cell_Giant);
+                    }
+                    if (Handler.hascurio(player, Items.disgusting_cells.get())) {
+                        t.addTag(Disgusting__cell_Giant);
+                    }
+
 
                     if (t instanceof nightmare_giant nightmareGiant){
                         nightmareGiant.setPose(Pose.EMERGING);

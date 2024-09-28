@@ -736,7 +736,7 @@
   "item.moonstone.not_blood_cell": "非嗜血性病变",
   "item.not_blood_cell.tool.string": " 梦魇巨人的远程攻击不会对召唤者造成伤害",
   "item.moonstone.subspace_cell": "子空间细胞病变",
-  "item.subspace_cell.tool.string": "召唤梦魇巨人不再消耗生命值",
+  "item.subspace_cell.tool.string":"召唤梦魇巨人时，再召唤3个巨人僵尸",
 
   "item.moonstone.bone_cell": "骨细胞增生",
   "item.bone_cell.tool.string": "巨型细胞僵尸在召唤时会获得召唤者70%的护甲值",

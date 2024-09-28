@@ -42,7 +42,6 @@ public class mbattery extends MLS {
         return 2;
     }
 
-    @Override
     public int getLootingLevel(SlotContext slotContext, DamageSource source, LivingEntity target, int baseLooting, ItemStack stack) {
         return 2;
     }

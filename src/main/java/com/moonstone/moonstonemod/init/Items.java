@@ -9,7 +9,6 @@ import com.moonstone.moonstonemod.item.BloodVirus.ex.catalyzer;
 import com.moonstone.moonstonemod.item.amout.ectoplasmstone;
 import com.moonstone.moonstonemod.item.amout.twistedstone;
 import com.moonstone.moonstonemod.item.blood.*;
-import com.moonstone.moonstonemod.item.blood.magic.blood_candle;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
 import com.moonstone.moonstonemod.item.blood.magic.the_blood_book;
 import com.moonstone.moonstonemod.item.bloodvirus;
@@ -199,6 +198,13 @@ public class Items {
     public static final DeferredHolder<Item,?> blood_magic_box =REGISTRY.register("blood_magic_box", (ResourceLocation pProperties) -> new blood_magic_box());
     public static final DeferredHolder<Item,?> the_blood_book =REGISTRY.register("the_blood_book", (ResourceLocation pProperties) -> new the_blood_book());
 
+    public static final DeferredHolder<Item,?> anaerobic_cell =REGISTRY.register("anaerobic_cell", com.moonstone.moonstonemod.item.TheNecora.bnabush.anaerobic_cell::new);
+    public static final DeferredHolder<Item,?> giant_boom_cell =REGISTRY.register("giant_boom_cell", com.moonstone.moonstonemod.item.TheNecora.bnabush.giant_boom_cell::new);
+    public static final DeferredHolder<Item,?> subspace_cell =REGISTRY.register("subspace_cell", com.moonstone.moonstonemod.item.TheNecora.bnabush.subspace_cell::new);
+    public static final DeferredHolder<Item,?> bone_cell =REGISTRY.register("bone_cell", com.moonstone.moonstonemod.item.TheNecora.bnabush.bone_cell::new);
+    public static final DeferredHolder<Item,?> parasitic_cell =REGISTRY.register("parasitic_cell", com.moonstone.moonstonemod.item.TheNecora.bnabush.parasitic_cell::new);
+    public static final DeferredHolder<Item,?> mother_cell =REGISTRY.register("mother_cell", com.moonstone.moonstonemod.item.TheNecora.bnabush.mother_cell::new);
+    public static final DeferredHolder<Item,?> disgusting_cells =REGISTRY.register("disgusting_cells", com.moonstone.moonstonemod.item.TheNecora.bnabush.disgusting_cells::new);
 
 
     public static final DeferredHolder<Item,?> the_heart_image =REGISTRY.register("the_heart_image", ()-> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
