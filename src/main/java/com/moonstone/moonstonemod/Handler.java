@@ -23,8 +23,6 @@ import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.List;
 
-import static com.moonstone.moonstonemod.event.AllEvent.*;
-
 public class Handler {
     public static final String Giant_Time ="Giant_Time";
     public static final String Giant_Boom ="Giant_Boom";
@@ -134,6 +132,52 @@ public class Handler {
         }
         return false;
 
+    }
+    public static void renderColor(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType,float r,int red,int g, int b) {
+        VertexConsumer vertexConsumer = bufferSource.getBuffer(renderType);
+
+        float radius = r; // 半径
+        int segmentCount = 16; // 圆柱横向细分数
+
+        for (int i = 0; i < segmentCount; i++) {
+            double angle1 = (2 * Math.PI * i) / segmentCount;
+            double angle2 = (2 * Math.PI * (i + 1)) / segmentCount;
+
+            double x1 = Math.cos(angle1) * radius;
+            double z1 = Math.sin(angle1) * radius;
+            double x2 = Math.cos(angle2) * radius;
+            double z2 = Math.sin(angle2) * radius;
+
+            Vec3 up1 = start.add(x1, 0, z1);
+            Vec3 up2 = start.add(x2, 0, z2);
+            Vec3 down1 = end.add(x1, 0, z1);
+            Vec3 down2 = end.add(x2, 0, z2);
+
+
+            addSquareColor(vertexConsumer, poseStack, up1, up2, down1, down2, a,red,g,b);
+        }
+    }
+    private static void addSquareColor(VertexConsumer vertexConsumer, PoseStack poseStack, Vec3 up1, Vec3 up2, Vec3 down1, Vec3 down2, float alpha, int r, int g, int b) {
+        // 添加四个顶点来绘制一个矩形
+        vertexConsumer.addVertex(poseStack.last().pose(), (float)up1.x, (float)up1.y, (float)up1.z)
+                .setColor(r, g, b, (int)(alpha * 255))
+                .setUv2(240, 240)
+                .setNormal(0, 0, 1);
+
+        vertexConsumer.addVertex(poseStack.last().pose(), (float)down1.x, (float)down1.y, (float)down1.z)
+                .setColor(r, g, b, (int)(alpha * 255))
+                .setUv2(240, 240)
+                .setNormal(0, 0, 1);
+
+        vertexConsumer.addVertex(poseStack.last().pose(), (float)down2.x, (float)down2.y, (float)down2.z)
+                .setColor(r, g, b, (int)(alpha * 255))
+                .setUv2(240, 240)
+                .setNormal(0, 0, 1);
+
+        vertexConsumer.addVertex(poseStack.last().pose(), (float)up2.x, (float)up2.y, (float)up2.z)
+                .setColor(r, g, b, (int)(alpha * 255))
+                .setUv2(240, 240)
+                .setNormal(0, 0, 1);
     }
 
     public static void renderBlood(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType,float r) {

@@ -66,6 +66,13 @@ public class EntityTs {
             ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.attack_blood::new, MobCategory.MISC).sized(0.5f, 0.2f).clientTrackingRange(16).build("attack_blood"));
     public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.owner_blood>> owner_blood = REGISTRY.register("owner_blood",
             ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.owner_blood::new, MobCategory.MISC).sized(0.5f, 0.2f).clientTrackingRange(16).build("owner_blood"));
+     public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.bloodvruis.blood_orb_owner>> blood_orb_owner = REGISTRY.register("blood_orb_owner",
+            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.bloodvruis.blood_orb_owner::new, MobCategory.MISC).sized(1, 1).clientTrackingRange(16).build("blood_orb_owner"));
+    public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.bloodvruis.blood_orb_attack>> blood_orb_attack = REGISTRY.register("blood_orb_attack",
+            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.bloodvruis.blood_orb_attack::new, MobCategory.MISC).sized(1, 1).clientTrackingRange(16).build("blood_orb_attack"));
+
+    public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.bloodvruis.blood_orb_small>> blood_orb_small = REGISTRY.register("blood_orb_small",
+            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.bloodvruis.blood_orb_small::new, MobCategory.MISC).sized(1, 1).clientTrackingRange(16).build("blood_orb_small"));
 
 
     @SubscribeEvent
@@ -83,6 +90,7 @@ public class EntityTs {
         event.put(EntityTs.line.get(), Bat.createAttributes().build());
         event.put(EntityTs.snake.get(), Bat.createAttributes().build());
         event.put(EntityTs.owner_blood.get(), IronGolem.createAttributes().build());
+        event.put(EntityTs.blood_orb_owner.get(), IronGolem.createAttributes().build());
 
     }
 }

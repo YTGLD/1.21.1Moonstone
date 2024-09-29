@@ -11,7 +11,6 @@ import com.moonstone.moonstonemod.entity.ai.AIgiant;
 import com.moonstone.moonstonemod.entity.nightmare.AInightmare;
 import com.moonstone.moonstonemod.entity.nightmare.SonicBoom;
 import com.moonstone.moonstonemod.entity.nightmare.nightmare_giant;
-import com.moonstone.moonstonemod.event.AllEvent;
 import com.moonstone.moonstonemod.init.EntityTs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;

@@ -102,7 +102,7 @@ public class MRender extends RenderType {
                     256,
                     false,
                     false,
-                    RenderType.CompositeState.builder()
+                    RenderType.CompositeState.builder().setCullState(NO_CULL)
                             .setShaderState(RENDER_STATE_SHARD_ging)
                             .setTextureState(RenderStateShard.
                                     MultiTextureStateShard.builder().
