@@ -36,25 +36,34 @@ public class blood_orb_attack extends ThrowableItemProjectile {
     }
 
     @Override
-    public @NotNull ItemStack getItem() {
-        return Items.blood.get().getDefaultInstance();
+    public float getYRot() {
+        return 0;
+    }
+
+    @Override
+    public float getXRot() {
+        return 0;
     }
 
     @Override
     public void tick() {
         super.tick();
-        float xRot = this.getXRot();
-        float yRot = this.getYRot();
-        float radX = (float) Math.toRadians(xRot);
-        float radY = (float) Math.toRadians(yRot);
-        float moveX = (float) (Math.sin(radY) * Math.cos(radX));
-        float moveY = (float) Math.sin(radX);
-        float moveZ = (float) (Math.cos(radY) * Math.cos(radX));
+        if (this.getOwner()!=null) {
+            float xRot = -this.getOwner().getXRot();
+            float yRot = -this.getOwner().getYRot();
 
-        float speed = 0.123F;
-        this.setPos(this.position().add(moveX * speed, moveY * speed, moveZ * speed));
+            double radX = Math.toRadians(xRot);
+            double radY = Math.toRadians(yRot);
+            float directionX = (float) (Math.sin(radY) * Math.cos(radX));
+            float directionY = (float) (Math.sin(radX));
+            float directionZ = (float) (Math.cos(radY) * Math.cos(radX));
 
-
+            float speed = 0.2f;
+            this.setPos(this.getX() + directionX * speed, this.getY() + directionY * speed, this.getZ() + directionZ * speed);
+        }
+        this.setXRot(0);
+        this.setYRot(0);
+        this.setYBodyRot(0);
         if (this.tickCount > 200) {
             this.discard();
         }
@@ -63,22 +72,20 @@ public class blood_orb_attack extends ThrowableItemProjectile {
             blood_orb_small attack_blood = new blood_orb_small(EntityTs.blood_orb_small.get(), this.level());
             attack_blood.setPos(this.position());
             attack_blood.setOwner(this.getOwner());
-            playRemoveOneSound(this);
+
             this.level().addFreshEntity(attack_blood);
 
         }
 
         trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
 
-        if (trailPositions.size() > 20) {
+        if (trailPositions.size() > 50) {
             trailPositions.removeFirst();
         }
 
         this.setNoGravity(true);
     }
-    private void playRemoveOneSound(Entity p_186343_) {
-        p_186343_.playSound(SoundEvents.RESPAWN_ANCHOR_DEPLETE.value(), 0.2f, 0.2f);
-    }
+
 }
 
 

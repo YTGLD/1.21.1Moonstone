@@ -5,6 +5,8 @@ import com.moonstone.moonstonemod.entity.attack_blood;
 import com.moonstone.moonstonemod.init.Items;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -60,7 +62,9 @@ public class blood_orb_small extends ThrowableItemProjectile {
     public float getYRot() {
         return 0;
     }
-
+    private void playRemoveOneSound(Entity p_186343_) {
+        p_186343_.playSound(SoundEvents.RESPAWN_ANCHOR_DEPLETE.value(), 0.5f, 0.5f);
+    }
     @Override
     public void tick() {
         super.tick();
@@ -74,6 +78,7 @@ public class blood_orb_small extends ThrowableItemProjectile {
                     if (!entitys.getNamespace().equals(MoonStoneMod.MODID)) {
                         entity.invulnerableTime = 0;
                         entity.hurt(this.getOwner().damageSources().dryOut(), 5 + player.getMaxHealth() / 4);
+                        playRemoveOneSound(this);
                         this.discard();
                     }
                 }
@@ -87,7 +92,7 @@ public class blood_orb_small extends ThrowableItemProjectile {
                 target = null;
             }
         }
-        if (this.tickCount > 3){
+        if (this.tickCount > 3&&this.tickCount < 7){
             if (this.target== null){
                 this.discard();
             }
@@ -95,7 +100,7 @@ public class blood_orb_small extends ThrowableItemProjectile {
         if (target == null || !target.isAlive()) {
             findNewTarget();
         }
-        float s = this.tickCount / 400f;
+        float s = this.tickCount / 70f;
         if (target != null) {
             Vec3 targetPos = target.position().add(0, 0.5, 0);
             Vec3 currentPos = this.position();
@@ -105,7 +110,7 @@ public class blood_orb_small extends ThrowableItemProjectile {
 
         trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
 
-        if (trailPositions.size() > 20) {
+        if (trailPositions.size() > 10) {
             trailPositions.removeFirst();
         }
 
@@ -114,7 +119,7 @@ public class blood_orb_small extends ThrowableItemProjectile {
         this.setXRot(0);
     }
     private void findNewTarget() {
-        AABB searchBox = this.getBoundingBox().inflate(8);
+        AABB searchBox = this.getBoundingBox().inflate(12);
         List<LivingEntity> entities = this.level().getEntitiesOfClass(LivingEntity.class, searchBox);
         double closestDistance = Double.MAX_VALUE;
         LivingEntity closestEntity = null;

@@ -1,7 +1,5 @@
 package com.moonstone.moonstonemod;
 
-import com.moonstone.moonstonemod.entity.bloodvruis.blood_orb_owner;
-import com.moonstone.moonstonemod.init.EntityTs;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -32,10 +30,6 @@ public class book extends Item {
         }else {
             p_41433_.displayClientMessage(Component.translatable("moonstone.book.error").withStyle(ChatFormatting.RED), true);
         }
-        blood_orb_owner blood_orb_owner = new blood_orb_owner(EntityTs.blood_orb_owner.get(),p_41432_);
-        blood_orb_owner.setPos(p_41433_.position());
-        blood_orb_owner.setOwnerUUID(p_41433_.getUUID());
-        p_41432_.addFreshEntity(blood_orb_owner);
         return super.use(p_41432_, p_41433_, p_41434_);
     }
 }

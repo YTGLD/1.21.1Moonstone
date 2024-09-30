@@ -37,6 +37,7 @@ public class blood_orb_owner extends TamableAnimal {
     public void die(@NotNull DamageSource p_21809_) {
 
     }
+
     private final List<Vec3> trailPositions = new ArrayList<>();
     public List<Vec3> getTrailPositions() {
         return trailPositions;
@@ -44,6 +45,7 @@ public class blood_orb_owner extends TamableAnimal {
     @Override
     public void tick() {
         super.tick();
+
         this.setNoGravity(true);
 
         LivingEntity owner = getOwner(); // 获取主人
@@ -116,6 +118,8 @@ public class blood_orb_owner extends TamableAnimal {
         if (this.getTarget()!=null&&this.getOwner() instanceof Player player){
             if (this.tickCount % 100 == 0) {
                 blood_orb_attack attack_blood = new blood_orb_attack(EntityTs.blood_orb_attack.get(), this.level());
+
+
                 attack_blood.setPos(this.position());
                 attack_blood.setOwner(this.getOwner());
 
@@ -127,7 +131,7 @@ public class blood_orb_owner extends TamableAnimal {
         }
     }
     private void playRemoveOneSound(Entity p_186343_) {
-        p_186343_.playSound(SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, 0.8F, 0.8F);
+        p_186343_.playSound(SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, 1.8f, 1.8F);
     }
 
     @Override

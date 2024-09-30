@@ -11,7 +11,6 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.NotNull;
 
 public class BloodOrbOwner extends EntityRenderer<blood_orb_owner> {
@@ -21,15 +20,14 @@ public class BloodOrbOwner extends EntityRenderer<blood_orb_owner> {
 
     @Override
     public void render(blood_orb_owner p_entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
-        renderSphere1(poseStack,bufferSource,240,0.8f,p_entity);
-        renderSphere1s(poseStack,bufferSource,240,0.45f,p_entity);
+        renderSphere1s(poseStack,bufferSource,240,0.8f,p_entity);
 
         super.render(p_entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
     }
     public void renderSphere1s(@NotNull PoseStack matrices, @NotNull MultiBufferSource vertexConsumers, int light, float s,blood_orb_owner p_entity) {
         int stacks = 15; // 垂直方向的分割数
         int slices = 15; // 水平方向的分割数
-        VertexConsumer vertexConsumer = vertexConsumers.getBuffer(MRender.endGateway());
+        VertexConsumer vertexConsumer = vertexConsumers.getBuffer(MRender.ging());
         matrices.pushPose();
 
         matrices.mulPose(Axis.ZP.rotationDegrees(p_entity.tickCount*20));
@@ -67,14 +65,10 @@ public class BloodOrbOwner extends EntityRenderer<blood_orb_owner> {
         }
         matrices.popPose();
     }
-    public void renderSphere1(@NotNull PoseStack matrices, @NotNull MultiBufferSource vertexConsumers, int light, float s, LivingEntity entity) {
+    public void renderSphere1(@NotNull PoseStack matrices, @NotNull MultiBufferSource vertexConsumers, int light, float s, blood_orb_owner entity,float partialTick) {
         int stacks = 20; // 垂直方向的分割数
         int slices = 20; // 水平方向的分割数
         matrices.pushPose();
-
-        matrices.mulPose(Axis.ZP.rotationDegrees(entity.tickCount*3.53f));
-        matrices.mulPose(Axis.YP.rotationDegrees(entity.tickCount*3.53f));
-        matrices.mulPose(Axis.XP.rotationDegrees(entity.tickCount*3.53f));
 
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(MRender.ging());
         for (int i = 0; i < stacks; ++i) {
