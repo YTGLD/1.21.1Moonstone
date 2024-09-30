@@ -143,7 +143,7 @@ public class bloodvirus extends BloodViru {
         UUID uuid = UUID.fromString("ac41f76c-b1dd-32f9-a5d3-3eb94da3e653");
         modifierMultimap.put(Attributes.MAX_HEALTH,
                 new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
-                        -0.25, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
+                        -0.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
 
         );
 

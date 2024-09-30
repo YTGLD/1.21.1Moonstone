@@ -1,5 +1,6 @@
 package com.moonstone.moonstonemod.event;
 
+import com.moonstone.moonstonemod.init.AttReg;
 import com.moonstone.moonstonemod.init.Effects;
 import com.moonstone.moonstonemod.item.BloodVirus.dna.bat_cell;
 import com.moonstone.moonstonemod.item.TheNecora.bnabush.giant_boom_cell;
@@ -9,11 +10,13 @@ import com.moonstone.moonstonemod.item.nightmare.nightmare_head;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_heart;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_orb;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
@@ -22,6 +25,14 @@ public class NewEvent {
     public void LivingHealEvent(LivingHealEvent event) {
         nightmare_orb.nightmare_orb_heal(event);
         nightmare_head.LivingHealEvent(event);
+
+        if (event.getEntity() instanceof LivingEntity living){
+            if (living.getAttribute(AttReg.heal)!=null){
+                float attack = (float) living.getAttribute(AttReg.heal).getValue();
+                event.setAmount(event.getAmount()*(attack));
+            }
+        }
+
     }
     @SubscribeEvent
     public void LivingHurtEvent(LivingIncomingDamageEvent event){
@@ -33,6 +44,24 @@ public class NewEvent {
         max_blood_eye.Att(event);
         blood_amout.Hurt(event);
         giant_boom_cell.Boom(event);
+
+        if (event.getSource().getEntity() instanceof LivingEntity living){
+            if (living.getAttribute(AttReg.alL_attack)!=null){
+                float attack = (float) living.getAttribute(AttReg.alL_attack).getValue();
+                event.setAmount(event.getAmount()*(attack));
+            }
+        }
+
+    }
+    @SubscribeEvent
+    public void soulbattery(CriticalHitEvent event) {
+        if (event.getEntity() instanceof Player living){
+            if (living.getAttribute(AttReg.cit)!=null){
+                float attack = (float) living.getAttribute(AttReg.cit).getValue();
+                event.setDamageMultiplier(event.getDamageMultiplier()*(attack));
+            }
+        }
+
     }
     @SubscribeEvent
     public void EntityInteract(PlayerInteractEvent.RightClickItem event){

@@ -20,8 +20,8 @@ public class ectoplasmbattery extends ectoplasm implements IBattery {
         Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
         modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 10, AttributeModifier.Operation.ADD_VALUE));
         modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 4, AttributeModifier.Operation.ADD_VALUE));
-        modifierMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-        modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        modifierMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         return modifierMultimap;
     }
 }

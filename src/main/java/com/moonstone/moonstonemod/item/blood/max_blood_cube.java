@@ -112,7 +112,7 @@ public class max_blood_cube extends Item implements ICurioItem, Blood {
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier>modifierMultimap = HashMultimap.create();
         if (stack.get(DataReg.tag)!=null) {
-            modifierMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), -stack.get(DataReg.tag).getInt(slowing) / 100F, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            modifierMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), -stack.get(DataReg.tag).getInt(slowing) / 100F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         }
         return modifierMultimap;
     }

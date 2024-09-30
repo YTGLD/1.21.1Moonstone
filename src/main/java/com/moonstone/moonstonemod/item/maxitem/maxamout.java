@@ -68,7 +68,7 @@ public class maxamout extends UnCommonItem {
     }
     public Multimap<Holder<Attribute>, AttributeModifier> swim(Player player, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
-        modifierMultimap.put(NeoForgeMod.SWIM_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 0.75, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        modifierMultimap.put(NeoForgeMod.SWIM_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 0.75, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         return modifierMultimap;
     }
 }

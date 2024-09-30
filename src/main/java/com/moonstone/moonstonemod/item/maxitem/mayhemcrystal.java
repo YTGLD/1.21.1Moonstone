@@ -18,7 +18,7 @@ public class mayhemcrystal extends UnCommonItem  implements Iwar {
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier>modifierMultimap = HashMultimap.create();
-        modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(id, 0.3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(id, 0.3, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         return modifierMultimap;
     }
 }

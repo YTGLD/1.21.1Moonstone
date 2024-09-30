@@ -21,7 +21,7 @@ public class ectoplasmhorseshoe extends ectoplasm {
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
-        modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         return modifierMultimap;
     }
 

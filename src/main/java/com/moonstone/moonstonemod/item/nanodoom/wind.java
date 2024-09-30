@@ -47,7 +47,7 @@ public class wind extends Doom {
         multimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(
                 ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
                 abc,
-                AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+                AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
         return multimap;
     }

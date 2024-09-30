@@ -2,9 +2,11 @@ package com.moonstone.moonstonemod.mixin;
 
 import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
+import com.moonstone.moonstonemod.init.AttReg;
 import com.moonstone.moonstonemod.init.Items;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.FluidState;
@@ -22,6 +24,14 @@ public abstract class LivingEntityMixin {
     @Shadow public abstract ItemStack getItemInHand(InteractionHand p_21121_);
 
     @Shadow protected abstract void setLivingEntityFlag(int p_21156_, boolean p_21157_);
+    @Inject(at = @At("RETURN"), method = "createLivingAttributes", cancellable = true)
+    private static void createLivingAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
+        cir.getReturnValue().add(AttReg.alL_attack,1);
+        cir.getReturnValue().add(AttReg.cit,1);
+        cir.getReturnValue().add(AttReg.heal,1);
+    }
+
+
     @Inject(at = @At("RETURN"), method = "getMaxHealth", cancellable = true)
     public void getMaxHealth(CallbackInfoReturnable<Float> cir) {
         if ((LivingEntity) (Object) this instanceof Player player){

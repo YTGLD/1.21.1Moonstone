@@ -141,6 +141,12 @@ public class LootTableEvent {
                         .add(LootItem.lootTableItem(Items.ectoplasmhorseshoe.get()).setWeight(1))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
+                        .add(LootItem.lootTableItem(Items.soulbattery.get()).setWeight(1))
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+
+                        .add(LootItem.lootTableItem(Items.soulcube.get()).setWeight(1))
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+
                         .build());
 
 

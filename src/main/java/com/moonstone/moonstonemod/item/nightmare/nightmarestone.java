@@ -77,9 +77,9 @@ public class nightmarestone extends nightmare {
         Multimap<Holder<Attribute>, AttributeModifier>modifierMultimap = HashMultimap.create();
 
 
-        modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),AllEvent. EffectInstance(player)/25, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-        modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), AllEvent. EffectInstance(player)/25, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-        modifierMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), AllEvent. EffectInstance(player)/25, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),AllEvent. EffectInstance(player)/25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), AllEvent. EffectInstance(player)/25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        modifierMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), AllEvent. EffectInstance(player)/25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
         return modifierMultimap;
     }

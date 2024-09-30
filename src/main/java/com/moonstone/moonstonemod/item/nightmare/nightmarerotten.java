@@ -30,7 +30,7 @@ public class nightmarerotten extends nightmare {
 
         for (Holder<Attribute> attribute : BuiltInRegistries.ATTRIBUTE.asHolderIdMap()){
 
-            get.put(attribute, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), as, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            get.put(attribute, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), as, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         }
         return get;
     }

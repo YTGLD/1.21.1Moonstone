@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.item.ectoplasm.soul;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.moonstone.moonstonemod.init.AttReg;
 import com.moonstone.moonstonemod.moonstoneitem.CommonItem;
 import com.moonstone.moonstonemod.moonstoneitem.IBattery;
 import net.minecraft.ChatFormatting;
@@ -23,10 +24,16 @@ public class soulbattery extends CommonItem implements IBattery {
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
-        modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 0.02, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-        modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-        modifierMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 0.02, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        modifierMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+
+        modifierMultimap.put(AttReg.cit, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+
         return modifierMultimap;
+
+
+
     }
 
 

@@ -56,7 +56,7 @@ public class necora extends TheNecoraIC {
         multimap.put(NeoForgeMod.SWIM_SPEED, new AttributeModifier(
                 ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
                 -acc,
-                AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+                AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
         multimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier( ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
                 3,

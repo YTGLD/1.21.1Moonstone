@@ -899,6 +899,9 @@
   "entity.moonstone.owner_blood": "owner blood",
 
 
+  "attribute.name.moonstone.allattack": "all damage",
+  "attribute.name.moonstone.cit": "cit damage",
+  "attribute.name.moonstone.heal": "heal",
 
 
 

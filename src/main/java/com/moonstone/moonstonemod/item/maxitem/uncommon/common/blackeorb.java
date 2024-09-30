@@ -20,7 +20,7 @@ public class blackeorb extends CommonItem {
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier>modifierMultimap = HashMultimap.create();
-        modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(id, 0.15, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(id, 0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         return modifierMultimap;
     }
 

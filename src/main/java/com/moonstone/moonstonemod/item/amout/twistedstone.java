@@ -53,7 +53,7 @@ public class twistedstone extends CommonItem {
     public Multimap<Holder<Attribute>, AttributeModifier> aaa(ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
         if (stack.get(DataReg.tag) != null) {
-            modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), (double) stack.get(DataReg.tag).getInt("double_stone_moonstone_tw") /100, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), (double) stack.get(DataReg.tag).getInt("double_stone_moonstone_tw") /100, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         }
         return modifierMultimap;
     }

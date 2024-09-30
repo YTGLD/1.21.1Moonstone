@@ -497,179 +497,6 @@ public class AllEvent {
     }
 
     @SubscribeEvent
-    public void plagueLivingIncomingDamageEvent(LivingIncomingDamageEvent event) {
-        if (event.getSource().getEntity() instanceof Player player){
-            if (Handler.hascurio(player,  Items.plague.get())){
-                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                        ICurioStacksHandler stacksHandler = entry.getValue();
-                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                            ItemStack stack = stackHandler.getStackInSlot(i);
-                            if (!stack.isEmpty()){
-                                CompoundTag tag = stack.get(DataReg.tag);
-
-                                if (tag != null) {
-                                    if (stack.is(Items.plague.get())) {
-                                        if (tag != null) {
-                                            if (stack.is(Items.plague.get())) {
-                                                if (tag.getBoolean(plague.YanJIuBoolean)) {
-                                                    if (event.getEntity() instanceof Mob) {
-                                                        event.setAmount(event.getAmount() * 2);
-                                                    }
-
-                                                }
-                                            }
-                                        }
-                                    }
-                                }else {
-                                    stack.set(DataReg.tag,new CompoundTag());
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-
-    }
-    @SubscribeEvent
-    public void plagueLBreakSpeed(PlayerEvent.BreakSpeed event) {
-        if (event.getEntity() instanceof Player){
-
-            if (Handler.hascurio(event.getEntity(),  Items.plague.get())){
-                CuriosApi.getCuriosInventory(event.getEntity()).ifPresent(handler -> {
-                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                        ICurioStacksHandler stacksHandler = entry.getValue();
-                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                            ItemStack stack = stackHandler.getStackInSlot(i);
-                            if (!stack.isEmpty()){
-                                CompoundTag tag = stack.get(DataReg.tag);
-                                if (tag != null) {
-                                    ;
-                                    if (stack.is(Items.plague.get())) {
-                                        if (tag.getBoolean(plague.YanJIuBoolean)){
-
-                                            event.setNewSpeed(event.getNewSpeed() * 1.7f);
-                                        }
-                                    }
-                                }else {
-                                    stack.set(DataReg.tag,new CompoundTag());
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-    }
-    @SubscribeEvent
-    public void plagueLivingIncomingDamageEvent(LivingHealEvent event) {
-        if (event.getEntity() instanceof Player player){
-            if (Handler.hascurio(player,  Items.plague.get())){
-                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                        ICurioStacksHandler stacksHandler = entry.getValue();
-                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                            ItemStack stack = stackHandler.getStackInSlot(i);
-                            if (!stack.isEmpty()){
-                                CompoundTag tag = stack.get(DataReg.tag);
-                                if (tag != null) {
-                                    ;
-                                    if (stack.is(Items.plague.get())) {
-                                        if (tag.getBoolean(plague.YanJIuBoolean)){
-
-                                            event.setAmount(event.getAmount() *2);
-                                        }
-                                    }
-                                }else {
-                                    stack.set(DataReg.tag,new CompoundTag());
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-    }
-    @SubscribeEvent
-    public void Boss(LivingIncomingDamageEvent event) {
-        if (event.getSource().getEntity() instanceof Player player){
-            if (Handler.hascurio(player,  Items.plague.get())){
-                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                        ICurioStacksHandler stacksHandler = entry.getValue();
-                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                            ItemStack stack = stackHandler.getStackInSlot(i);
-                            if (!stack.isEmpty()){
-                                CompoundTag tag = stack.get(DataReg.tag);
-                                if (tag != null) {
-                                    ;
-                                    if (stack.is(Items.plague.get())) {
-                                        if (tag.getBoolean(plague.YanJIuBoolean)){
-                                            if (event.getEntity().getMaxHealth() > player.getHealth() * 10){
-                                                event.setAmount(event.getAmount() *2.5f);
-                                            }
-
-                                        }
-                                    }
-                                }else {
-                                    stack.set(DataReg.tag,new CompoundTag());
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-    }
-    @SubscribeEvent
-    public void plague(LivingDropsEvent event) {
-        if (event.getSource().getEntity() instanceof Player player){
-            if (Handler.hascurio(player,  Items.plague.get())){
-                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                        ICurioStacksHandler stacksHandler = entry.getValue();
-                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                            ItemStack stack = stackHandler.getStackInSlot(i);
-                            if (!stack.isEmpty()){
-                                CompoundTag tag = stack.get(DataReg.tag);
-                                if (tag != null) {
-                                    ;
-                                    if (stack.is(Items.plague.get())) {
-                                        tag.putFloat(plague.YanJIu, (float) (tag.getFloat(plague.YanJIu) + Config.plague_speed.get()));
-
-                                        if (!tag.getBoolean(plague.YanJIuBoolean)){
-                                            player.displayClientMessage(Component.translatable(""+(tag.getFloat(plague.YanJIu))).append("%").withStyle(ChatFormatting.RED), true);
-
-                                            if (tag.getFloat(plague.CursePlague)<100) {
-                                                tag.putFloat(plague.CursePlague, tag.getFloat(plague.CursePlague) + 0.1f);
-                                            }
-                                        }
-                                    }
-                                }else {
-                                    stack.set(DataReg.tag,new CompoundTag());
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-
-    }
-
-
-    @SubscribeEvent
     public void thefruitLivingTickEvent(EntityTickEvent.Post event){
         if (event.getEntity() instanceof Player player){
             CuriosApi.getCuriosInventory(player).ifPresent((handler)->{
@@ -1014,11 +841,7 @@ public class AllEvent {
     public void fermentation(LivingIncomingDamageEvent event) {
         if (event.getSource().getEntity() instanceof Player player){
             if (Handler.hascurio(player, Items.fermentation.get())){
-
-                if (player.getCooldowns().isOnCooldown(Items.fermentation.get())){
-                    event.setAmount(event.getAmount() * 0.3f);
-                }else {
-                    event.setAmount(event.getAmount() * 4);
+                if (!player.getCooldowns().isOnCooldown(Items.fermentation.get())){
                     player.getCooldowns().addCooldown(Items.fermentation.get(), 200);
                 }
             }
@@ -1301,12 +1124,10 @@ public class AllEvent {
                             if (stack.is(Items.ragegene.get())) {
                                 CompoundTag tag = stack.get(DataReg.tag);
                                 if (tag != null) {
-                                    ;
                                     if (player.getAttackStrengthScale(1) == 1) {
                                         if (tag != null && tag.getInt(rage) < 100) {
                                             tag.putFloat(rage, tag.getInt(rage) + 5);
                                         }
-                                        event.setAmount(event.getAmount() * (1 + ((float) tag.getInt(rage) / 100)));
                                     }
                                 }else {
                                     stack.set(DataReg.tag,new CompoundTag());
@@ -1402,26 +1223,6 @@ public class AllEvent {
         }
     }
     @SubscribeEvent
-    public void batgene(LivingIncomingDamageEvent event){
-        if (event.getSource().getEntity() instanceof Player player){
-            if (Handler.hascurio(player, Items.batgene.get())){
-                Vec3 playerPos = player.position().add(0, 0.75, 0);
-                int range = 24;
-                List<LivingEntity> entities = player.level().getEntitiesOfClass(LivingEntity.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
-                int integers = 0;
-                for (LivingEntity living : entities) {
-                    if (living instanceof Bat){
-                        integers++;
-                    }
-                }
-                float integer = integers;
-                integer /= 10;
-                event.setAmount((event.getAmount() - event.getAmount() / 10) * (1 + integer));
-
-            }
-        }
-    }
-    @SubscribeEvent
     public  void virus(LivingIncomingDamageEvent event) {
         if (event.getSource().getEntity() instanceof Player player){
             if (Handler.hascurio(player, Items.virus.get())) {
@@ -1440,7 +1241,6 @@ public class AllEvent {
                                         int size = tag.getInt(name);
                                         float Do = (float) size / 400;
                                         event.setAmount(event.getAmount() * (1 + Do));
-
                                     }
                                 }else {
                                     stack.set(DataReg.tag,new CompoundTag());
@@ -1491,38 +1291,6 @@ public class AllEvent {
 
         }
 
-    }
-    @SubscribeEvent
-    public  void parasite(LivingIncomingDamageEvent event) {
-        if (event.getSource().getEntity() instanceof Player player){
-            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-                Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                    ICurioStacksHandler stacksHandler = entry.getValue();
-                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                        ItemStack stack = stackHandler.getStackInSlot(i);
-                        if (stack.is(Items.parasite.get())) {
-                            if (Handler.hascurio(player, Items.parasite.get())) {
-                                if (event.getAmount() >player.getHealth()){
-                                    CompoundTag tag = stack.get(DataReg.tag);
-                                    if (tag != null) {
-                                        ;
-                                    if (tag.getInt(sizeLevel) > 900){
-                                        if (player.getFoodData().getFoodLevel() > player.getFoodData().getFoodLevel() * 0.6){
-                                            event.setAmount(event.getAmount() * 1.4f);
-                                        }
-                                    }
-                                    }else {
-                                        stack.set(DataReg.tag,new CompoundTag());
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
     }
     @SubscribeEvent
     public  void parasite(LivingEntityUseItemEvent.Finish event) {
@@ -1853,12 +1621,7 @@ public class AllEvent {
             }
         }
     }
-    @SubscribeEvent
-    public void soulbattery(CriticalHitEvent event) {
-        if (Handler.hascurio(event.getEntity(), Items.soulbattery.get())){
-            event.setDamageMultiplier(event.getDamageMultiplier() * 1.25f);
-        }
-    }
+
     @SubscribeEvent
     public  void PlayerLoggedInEvent(PlayerEvent.PlayerLoggedInEvent event) {
         if (event.getEntity() != null) {
@@ -2013,15 +1776,7 @@ public class AllEvent {
             }
         }
     }
-    @SubscribeEvent
-    public   void LivingHealEvent(LivingHealEvent event) {
-        if (event.getEntity() instanceof Player player){
-            if (Handler.hascurio(player, Items.mring.get())){
-                event.setAmount(event.getAmount() * 1.4f);
-            }
-        }
 
-    }
     @SubscribeEvent
     public void LivingExperienceDropEvent(LivingExperienceDropEvent event) {
         Player player = event.getAttackingPlayer();
@@ -2138,16 +1893,7 @@ public class AllEvent {
                     }
                 }
             }
-            if (Handler.hascurio(player, Items.nightmareeye.get())) {
-                if (Handler.hascurio(player, Items.nightmaretreasure.get())) {
-                    event.setAmount(event.getAmount() / 2);
-                }
-            }
 
-
-            if (Handler.hascurio(player, Items.mshell.get())) {
-                event.setAmount(event.getAmount() * 0.9f);
-            }
             if (Handler.hascurio(player, Items.mbattery.get())) {
                 if (event.getEntity() instanceof Zombie) {
                     event.setAmount(event.getAmount() * 1.5f);

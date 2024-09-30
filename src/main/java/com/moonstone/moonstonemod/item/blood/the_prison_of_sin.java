@@ -105,14 +105,14 @@ public class the_prison_of_sin extends Item implements ICurioItem, Blood {
         s -= 100;
         s /= 100;
         for (Holder<Attribute> attribute : BuiltInRegistries.ATTRIBUTE.asHolderIdMap()) {
-            modifierMultimap.put(attribute, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), s, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            modifierMultimap.put(attribute, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         }
         return modifierMultimap;
     }
     public Multimap<Holder<Attribute>, AttributeModifier> Health() {
         Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
-        modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("health" + this.getDescriptionId()), -0.80, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-        modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.withDefaultNamespace("health" + this.getDescriptionId()), -0.80, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("health" + this.getDescriptionId()), -0.80, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.withDefaultNamespace("health" + this.getDescriptionId()), -0.80, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
         return modifierMultimap;
     }

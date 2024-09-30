@@ -72,29 +72,29 @@ public class germ extends medIC implements ICurioItem {
         float ss = stack.getOrCreateTag().getInt(lvl);
         if (ss == 0) {
             modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 1, AttributeModifier.Operation.ADDITION));
-            modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 0.15, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
             modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 4, AttributeModifier.Operation.ADDITION));
             modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 8, AttributeModifier.Operation.ADDITION));
-            modifierMultimap.put(ForgeMod.SWIM_SPEED.get(), new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            modifierMultimap.put(ForgeMod.SWIM_SPEED.get(), new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         }else if (ss == 1){
             modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 1.5, AttributeModifier.Operation.ADDITION));
-            modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
             modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 5, AttributeModifier.Operation.ADDITION));
             modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 10, AttributeModifier.Operation.ADDITION));
-            modifierMultimap.put(ForgeMod.SWIM_SPEED.get(), new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            modifierMultimap.put(ForgeMod.SWIM_SPEED.get(), new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         } else  if (ss == 2){
             modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 1.75, AttributeModifier.Operation.ADDITION));
-            modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
             modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 6, AttributeModifier.Operation.ADDITION));
             modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 12, AttributeModifier.Operation.ADDITION));
-            modifierMultimap.put(ForgeMod.SWIM_SPEED.get(), new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 0.3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            modifierMultimap.put(ForgeMod.SWIM_SPEED.get(), new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 0.3, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
         }else  if (ss == 3){
             modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 2, AttributeModifier.Operation.ADDITION));
-            modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 0.3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 0.3, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
             modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 7, AttributeModifier.Operation.ADDITION));
             modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, MoonStoneMod.MODID + "ec",14 , AttributeModifier.Operation.ADDITION));
-            modifierMultimap.put(ForgeMod.SWIM_SPEED.get(), new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 0.35, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            modifierMultimap.put(ForgeMod.SWIM_SPEED.get(), new AttributeModifier(uuid, MoonStoneMod.MODID + "ec", 0.35, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
         }
 

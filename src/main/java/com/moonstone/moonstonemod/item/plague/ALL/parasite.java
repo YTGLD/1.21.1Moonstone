@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.item.plague.ALL;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.moonstone.moonstonemod.init.AttReg;
 import com.moonstone.moonstonemod.init.DataReg;
 import com.moonstone.moonstonemod.moonstoneitem.extend.medIC;
 import net.minecraft.ChatFormatting;
@@ -40,6 +41,7 @@ public class parasite extends medIC implements ICurioItem {
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         if (slotContext .entity() instanceof Player player){
            CompoundTag tag = stack.get(DataReg.tag);
+            player.getAttributes().addTransientAttributeModifiers(Head(stack));
             if (tag != null){
                 {
                     if (player.getFoodData().getFoodLevel() < 7) {
@@ -77,9 +79,27 @@ public class parasite extends medIC implements ICurioItem {
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
         if (slotContext .entity() instanceof Player player){
             player.getAttributes().removeAttributeModifiers(AttributeModifiers(player,stack));
+            player.getAttributes().removeAttributeModifiers(Head(stack));
         }
     }
+    private Multimap<Holder<Attribute>, AttributeModifier> Head(ItemStack stack){
+        Multimap<Holder<Attribute>, AttributeModifier> multimap = HashMultimap.create();
+        CompoundTag tag = stack.get(DataReg.tag);
+        float s = 0;
+        if (tag != null) {
+            if (tag.getInt(sizeLevel) > 900){
+                s=0.4f;
+            }
+        }
 
+
+        multimap.put(AttReg.alL_attack, new AttributeModifier(
+                ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
+                s,
+                AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+
+        return multimap;
+    }
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);

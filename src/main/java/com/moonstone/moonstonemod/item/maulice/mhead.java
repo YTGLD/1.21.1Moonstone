@@ -22,7 +22,7 @@ public class mhead extends MLS {
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = HashMultimap.create();
 
-        linkedHashMultimap.put(NeoForgeMod.NAMETAG_DISTANCE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), -10, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        linkedHashMultimap.put(NeoForgeMod.NAMETAG_DISTANCE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), -10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         return linkedHashMultimap;
     }
     @Override

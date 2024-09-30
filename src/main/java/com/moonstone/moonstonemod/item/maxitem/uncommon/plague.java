@@ -81,13 +81,13 @@ public class plague extends UnCommonItem {
        CompoundTag tag = stack.get(DataReg.tag);
         if (tag != null){
             if (tag.getBoolean(YanJIuBoolean)) {
-                modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-                modifierMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-                modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), 0.66, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-                modifierMultimap.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), 0.9, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-                modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), 0.7, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-                modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), 0.7, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-                modifierMultimap.put(NeoForgeMod.SWIM_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), 0.7, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+                modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                modifierMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), 0.66, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                modifierMultimap.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), 0.9, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), 0.7, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), 0.7, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                modifierMultimap.put(NeoForgeMod.SWIM_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), 0.7, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
             } else {
                 float c = tag.getFloat(plague.CursePlague);
                 c = -c;
@@ -95,16 +95,16 @@ public class plague extends UnCommonItem {
                 c /= 100;
 
                 c *= Config.plague_effect.get();
-                modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), c, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-                modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), c, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+                modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), c, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), c, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
                 float s = tag.getFloat(FanYanJIu) / 100 / 3 / 100;
                 s = -s;
                 s *= Config.plague_effect.get();
 
-                modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), s, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-                modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), s, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-                modifierMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), s, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+                modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                modifierMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
             }
         }
         return modifierMultimap;

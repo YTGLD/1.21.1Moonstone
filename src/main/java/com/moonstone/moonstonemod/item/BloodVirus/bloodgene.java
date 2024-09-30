@@ -49,9 +49,9 @@ public class bloodgene extends BloodViru {
             float as= tag.getFloat(blood) / 100;
 
             UUID uuid = UUID.fromString("0d077092-9045-3af8-b41e-a691f388e76a");
-            modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),(-0.5)+as, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),(-0.5)+as, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
-            modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),(-0.5)+as, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),(-0.5)+as, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
         }
 
