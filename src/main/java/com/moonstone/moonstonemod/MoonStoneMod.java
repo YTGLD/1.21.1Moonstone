@@ -53,7 +53,7 @@ public class MoonStoneMod {
         Items.REGISTRY.register(eventBus);
         Tab.TABS.register(eventBus);
 
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, Config.fc);
     }
     @EventBusSubscriber(modid = MoonStoneMod.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
     public static class Client {

@@ -24,7 +24,7 @@ public class BloodOrbSmall extends EntityRenderer<blood_orb_small> {
     @Override
     public void render(blood_orb_small entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
         setT(poseStack, entity, bufferSource);
-        renderSphere1(poseStack,bufferSource,240,0.15f);
+        renderSphere1(poseStack,bufferSource,240,0.1f);
 
         super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
     }
@@ -44,7 +44,7 @@ public class BloodOrbSmall extends EntityRenderer<blood_orb_small> {
 
             float alpha = (float)(i) / (float)(entity.getTrailPositions().size());
 
-            Handler.renderColor(matrices, vertexConsumers, adjustedPrevPos, adjustedCurrPos, alpha, RenderType.lightning(),0.15f,128,0,128);
+            Handler.renderColor(matrices, vertexConsumers, adjustedPrevPos, adjustedCurrPos, alpha, RenderType.lightning(),0.1f,128,0,128);
         }
         matrices.popPose();
     }

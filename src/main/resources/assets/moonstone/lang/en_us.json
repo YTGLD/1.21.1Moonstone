@@ -906,6 +906,13 @@
 
 
 
+  "item.moonstone.evil_blood": "evil blood",
+  "item.evil_blood.tool.string": "Summon a ？ to assist you in battle",
+
+
+
+  "advancements.tooltip.evil_blood.text": "",
+  "entity.moonstone.blood_orb_owner": "blood orb owner",
 
 
 

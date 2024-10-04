@@ -39,7 +39,7 @@ public class plague extends UnCommonItem {
            tag.putBoolean(DoPlague,true);
             if (slotContext.entity().tickCount%20 == 0) {
                 if (tag.getFloat(FanYanJIu) < 100) {
-                   tag.putFloat(FanYanJIu, (float) (tag.getFloat(FanYanJIu) + Config.plague_pain.get()));
+                   tag.putFloat(FanYanJIu, (float) (tag.getFloat(FanYanJIu) + Config.SERVER.plague_pain.get()));
                 }
             }
 
@@ -94,13 +94,13 @@ public class plague extends UnCommonItem {
                 c /= 3;
                 c /= 100;
 
-                c *= Config.plague_effect.get();
+                c *= Config.SERVER.plague_effect.get();
                 modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), c, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
                 modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), c, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
                 float s = tag.getFloat(FanYanJIu) / 100 / 3 / 100;
                 s = -s;
-                s *= Config.plague_effect.get();
+                s *= Config.SERVER.plague_effect.get();
 
                 modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
                 modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.withDefaultNamespace(MoonStoneMod.MODID+"plague"), s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));

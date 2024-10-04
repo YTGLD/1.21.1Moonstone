@@ -16,6 +16,7 @@ public class nanorobot extends INanoBattery {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         super.curioTick(slotContext,stack);
+        this.setT(340,slotContext.entity() ,stack);
         if (slotContext.entity() instanceof Player player){
             ItemStack ss = player.getItemBySlot(EquipmentSlot.MAINHAND);
             if (!ss.isEmpty()) {
@@ -24,7 +25,7 @@ public class nanorobot extends INanoBattery {
 
                         if (!player.getCooldowns().isOnCooldown(stack.getItem())) {
                             ss.setDamageValue(ss.getDamageValue() - 30);
-                            player.getCooldowns().addCooldown(stack.getItem(), t);
+                            player.getCooldowns().addCooldown(stack.getItem(), getT());
                         }
                     }
                 }

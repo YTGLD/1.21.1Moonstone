@@ -100,12 +100,12 @@ public class blood_orb_small extends ThrowableItemProjectile {
         if (target == null || !target.isAlive()) {
             findNewTarget();
         }
-        float s = this.tickCount / 70f;
+        float s = this.tickCount / 88f;
         if (target != null) {
             Vec3 targetPos = target.position().add(0, 0.5, 0);
             Vec3 currentPos = this.position();
             Vec3 direction = targetPos.subtract(currentPos).normalize();
-            this.setDeltaMovement(direction.x * (0.045f + s), direction.y * (0.045f + s), direction.z * (0.045f + s));
+            this.setDeltaMovement(direction.x * (0.005f + s), direction.y * (0.005f + s), direction.z * (0.005f + s));
         }
 
         trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));

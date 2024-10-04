@@ -84,6 +84,7 @@ public class Tab {
                 b.accept(new ItemStack(Items.cell_not_do.get()));
                 b.accept(new ItemStack(Items.cell_rage.get()));
                 b.accept(new ItemStack(Items.cell_scientist.get()));
+                b.accept(new ItemStack(Items.evil_blood.get()));
 
 
                 b.accept(new ItemStack(Items.bloodvirus.get()));

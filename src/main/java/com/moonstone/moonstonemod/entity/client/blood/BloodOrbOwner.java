@@ -3,14 +3,18 @@ package com.moonstone.moonstonemod.entity.client.blood;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.entity.bloodvruis.blood_orb_owner;
+import com.moonstone.moonstonemod.entity.bloodvruis.blood_orb_small;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 public class BloodOrbOwner extends EntityRenderer<blood_orb_owner> {
@@ -20,9 +24,28 @@ public class BloodOrbOwner extends EntityRenderer<blood_orb_owner> {
 
     @Override
     public void render(blood_orb_owner p_entity, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
-        renderSphere1s(poseStack,bufferSource,240,0.8f,p_entity);
+        renderSphere1s(poseStack,bufferSource,240,0.5f,p_entity);
+        setT(poseStack, p_entity, bufferSource);
 
         super.render(p_entity, entityYaw, partialTick, poseStack, bufferSource, packedLight);
+    }
+    private void setT(PoseStack matrices,
+                      blood_orb_owner entity,
+                      MultiBufferSource vertexConsumers)
+    {
+        matrices.pushPose();
+
+        for (int i = 1; i < entity.getTrailPositions().size(); i++){
+            Vec3 prevPos = entity.getTrailPositions().get(i - 1);
+            Vec3 currPos = entity.getTrailPositions().get(i);
+            Vec3 adjustedPrevPos = new Vec3(prevPos.x - entity.getX(), prevPos.y - entity.getY(), prevPos.z - entity.getZ());
+            Vec3 adjustedCurrPos = new Vec3(currPos.x - entity.getX(), currPos.y - entity.getY(), currPos.z - entity.getZ());
+
+            float alpha = (float)(i) / (float)(entity.getTrailPositions().size());
+
+            Handler.renderColor(matrices, vertexConsumers, adjustedPrevPos, adjustedCurrPos, alpha, RenderType.lightning(),0.3f,128,0,128);
+        }
+        matrices.popPose();
     }
     public void renderSphere1s(@NotNull PoseStack matrices, @NotNull MultiBufferSource vertexConsumers, int light, float s,blood_orb_owner p_entity) {
         int stacks = 15; // 垂直方向的分割数

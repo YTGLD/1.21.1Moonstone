@@ -1,13 +1,19 @@
 package com.moonstone.moonstonemod.item.blood.magic;
 
+import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.owner_blood;
 import com.moonstone.moonstonemod.init.EntityTs;
+import com.moonstone.moonstonemod.init.Items;
+import com.moonstone.moonstonemod.item.BloodVirus.ex.catalyzer;
 import com.moonstone.moonstonemod.moonstoneitem.Blood;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ClickAction;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -23,7 +29,21 @@ public class blood_candle extends Item implements ICurioItem, Blood {
     public blood_candle() {
         super(new Properties().stacksTo(1).component(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY).rarity(Rarity.UNCOMMON));
     }
-
+    public boolean overrideOtherStackedOnMe(ItemStack me, ItemStack Other, Slot p_150744_, ClickAction p_150745_, Player p_150746_, SlotAccess p_150747_) {
+        if (me.getCount() != 1) return false;
+        if (p_150745_ == ClickAction.SECONDARY && p_150744_.allowModification(p_150746_)) {
+            if (Handler.hascurio(p_150746_, Items.bloodvirus.get())) {
+                if (!Other.isEmpty()) {
+                    if (Other.getItem() instanceof catalyzer) {
+                        p_150744_.set(new ItemStack(com.moonstone.moonstonemod.init.Items.evil_blood.get()));
+                        Other.shrink(1);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {

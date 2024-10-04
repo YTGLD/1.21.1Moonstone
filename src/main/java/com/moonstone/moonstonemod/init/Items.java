@@ -206,6 +206,7 @@ public class Items {
     public static final DeferredHolder<Item,?> mother_cell =REGISTRY.register("mother_cell", com.moonstone.moonstonemod.item.TheNecora.bnabush.mother_cell::new);
     public static final DeferredHolder<Item,?> disgusting_cells =REGISTRY.register("disgusting_cells", com.moonstone.moonstonemod.item.TheNecora.bnabush.disgusting_cells::new);
 
+    public static final DeferredHolder<Item,?> evil_blood =REGISTRY.register("evil_blood", com.moonstone.moonstonemod.item.BloodVirus.evil.evil_blood::new);
 
     public static final DeferredHolder<Item,?> the_heart_image =REGISTRY.register("the_heart_image", ()-> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
     public static final DeferredHolder<Item,?> blood =REGISTRY.register("blood", ()-> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));

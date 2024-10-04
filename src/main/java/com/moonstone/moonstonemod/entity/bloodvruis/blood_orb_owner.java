@@ -9,6 +9,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
@@ -45,16 +47,23 @@ public class blood_orb_owner extends TamableAnimal {
     @Override
     public void tick() {
         super.tick();
-
         this.setNoGravity(true);
+        this.setXRot(0);
+        this.setYRot(0);
 
         LivingEntity owner = getOwner(); // 获取主人
         LivingEntity target = getTarget(); // 获取目标
 
+        trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
+
+        if (trailPositions.size() > 66) {
+            trailPositions.removeFirst();
+        }
 
         Vec3 currentPos = this.position();
 
         if ( target != null) {
+            target.addEffect(new MobEffectInstance(MobEffects.GLOWING,10, 2,false,false));
             Vec3 targetPos = target.position().add(0, 0.5, 0);
             Vec3 direction = targetPos.subtract(currentPos).normalize();
             this.setDeltaMovement(direction.x * (0.075f + 0.5), direction.y * (0.075f + 0.5), direction.z * (0.075f + 0.5));
@@ -129,7 +138,16 @@ public class blood_orb_owner extends TamableAnimal {
                 playRemoveOneSound(this);
             }
         }
+
+        if (this.getOwner() != null) {
+            if (this.getOwner() instanceof Player player){
+                if (!Handler.hascurio(player, Items.evil_blood.get())){
+                    this.discard();
+                }
+            }
+        }
     }
+
     private void playRemoveOneSound(Entity p_186343_) {
         p_186343_.playSound(SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, 1.8f, 1.8F);
     }

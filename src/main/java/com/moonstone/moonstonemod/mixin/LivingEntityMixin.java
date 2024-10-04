@@ -69,16 +69,16 @@ public abstract class LivingEntityMixin {
         if (living instanceof Player player) {
             if (player.isSprinting()) {
                 if (Handler.hascurio(player, Items.flygene.get())) {
-                    player.moveRelative((float) (player.getSpeed() * Config.flygene_speed.get()), p_21280_);
+                    player.moveRelative((float) (player.getSpeed() * Config.SERVER.flygene_speed.get()), p_21280_);
                     if (!player.onGround()) {
-                        player.moveRelative((float) (player.getSpeed() * Config.flygene_speed.get()), p_21280_);
+                        player.moveRelative((float) (player.getSpeed() * Config.SERVER.flygene_speed.get()), p_21280_);
                     }
                 }
                 if (Handler.hascurio(player, Items.bloodvirus.get())) {
-                    player.moveRelative((float) (player.getSpeed() * Config.bloodvirus_speed.get()), p_21280_);
+                    player.moveRelative((float) (player.getSpeed() * Config.SERVER.bloodvirus_speed.get()), p_21280_);
                 }
                 if (Handler.hascurio(player, Items.motor.get())) {
-                    player.moveRelative((float) (player.getSpeed() * Config.motor_speed.get()), p_21280_);
+                    player.moveRelative((float) (player.getSpeed() * Config.SERVER.motor_speed.get()), p_21280_);
                 }
             }
         }

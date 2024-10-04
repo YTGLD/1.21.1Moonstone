@@ -1,0 +1,15 @@
+{
+  "name": "渎圣玩偶",
+  "icon": "moonstone:evil_blood",
+  "category": "moonstone:blood",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:evil_blood",
+      "title": "-渎圣玩偶-",
+      "text": "在佩戴暗影瘟疫的情况下，使用暗影基因右键感染封魔烛台"
+    }
+  ]
+}

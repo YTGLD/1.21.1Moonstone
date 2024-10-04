@@ -44,7 +44,8 @@ public class  quadriceps extends medIC {
 
     public Multimap<Holder<Attribute>, AttributeModifier> aaa(Player player , ItemStack stack){
         Multimap<Holder<Attribute>, AttributeModifier>linkedHashMultimap = HashMultimap.create();
-        linkedHashMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), Config.quadriceps_speed.get(), AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        linkedHashMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), Config.SERVER.quadriceps_speed.get(), AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        linkedHashMultimap.put(Attributes.SAFE_FALL_DISTANCE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),3, AttributeModifier.Operation.ADD_VALUE));
         return linkedHashMultimap;
     }
 

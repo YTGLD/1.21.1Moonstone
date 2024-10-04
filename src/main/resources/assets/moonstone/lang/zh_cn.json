@@ -37,7 +37,6 @@
 
 
   "item.moonstone.badgeofthedead": "亡灵徽章",
-  "item.moonstone.battery": "电池",
   "item.moonstone.biggreedcrystal": "大贪婪水晶",
   "item.moonstone.bigwarcrystal": "大战争水晶",
   "item.moonstone.blackeorb": "黑魔球",
@@ -58,6 +57,7 @@
   "item.moonstone.mring": "莫里斯戒指",
   "item.moonstone.mshell": "莫里斯贝壳",
 
+  "item.moonstone.battery": "已用电池改装",
 
 
 
@@ -325,7 +325,7 @@
 
   "item.quadriceps.tool.string": "*使实验者四头肌强化，增强实验者的运动能力",
   "item.quadriceps.tool.string.1": "增加20％移动速度",
-  "item.quadriceps.tool.string.2": "增加50％跳跃高度",
+  "item.quadriceps.tool.string.2": "增加50％跳跃高度和3安全摔落距离",
 
 
   "item.reanimation.tool.string": "*使实验者细胞强化，增强实验者的细胞重生能力",
@@ -343,7 +343,7 @@
   "item.fermentation.tool.string.3": "*病原体依然保有狩猎的本能，这使它们能耐心等待，并给予致命一击！",
 
 
-  "item.putrefactive.tool.string": "增加腐肉的效果",
+  "item.putrefactive.tool.string": "食用食物恢复10%最大生命值，并获得10秒生命恢复",
 
 
   "item.regenerative.tool.string": "每1.5秒恢复一点生命值",
@@ -663,7 +663,7 @@
   "entity.moonstone.line": "血灵",
   "entity.moonstone.snake": "血蛇",
   "entity.moonstone.owner_blood": "巨型血灵增生体",
-
+  "entity.moonstone.blood_orb_owner": "怨念合并体",
   "entity.moonstone.flysword": "飞剑",
   "entity.moonstone.suddenrain": "雨刃",
   "item.moonstone.gorillacake": "观察者种子",
@@ -916,10 +916,10 @@
   "item.moonstone.blood_candle": "§4封魔烛台",
 
   "item.moonstone.the_blood_book": "§4封魔录",
-
   "item.blood_candle.tool.string": "召唤一个巨型血灵增生体协助你作战",
+  "item.blood_candle.tool.string.1": "如果丢失/失踪，请重新佩戴此物品",
 
-  "item.blood_candle.tool.string.1": "如果血灵增生体丢失/失踪，请重新佩戴此物品",
+
   "item.blood_candle.tool.string.2": "血灵增生体的攻击会造成基于你最大生命值的伤害",
 
 
@@ -931,7 +931,11 @@
 
 
 
+  "item.moonstone.evil_blood": "§4渎圣玩偶",
+  "item.evil_blood.tool.string": "召唤一个怨念合并体协助你作战",
 
+
+  "advancements.tooltip.evil_blood.text": "打开深渊的媒介",
 
 
 

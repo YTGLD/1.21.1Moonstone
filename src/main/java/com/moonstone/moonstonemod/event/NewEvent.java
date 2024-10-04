@@ -1,22 +1,29 @@
 package com.moonstone.moonstonemod.event;
 
 import com.moonstone.moonstonemod.init.AttReg;
+import com.moonstone.moonstonemod.init.DataReg;
 import com.moonstone.moonstonemod.init.Effects;
 import com.moonstone.moonstonemod.item.BloodVirus.dna.bat_cell;
 import com.moonstone.moonstonemod.item.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
+import com.moonstone.moonstonemod.item.nanodoom.buyme.wind_and_rain;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_head;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_heart;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_orb;
+import com.moonstone.moonstonemod.moonstoneitem.IBattery;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
@@ -33,6 +40,19 @@ public class NewEvent {
             }
         }
 
+    }
+    @SubscribeEvent
+    public void BatteryName(ItemTooltipEvent event){
+        ItemStack stack = event.getItemStack();
+        if (stack.get(DataReg.tag) !=null){
+            if (stack.get(DataReg.tag).getBoolean("ALLBattery")){
+                event.getToolTip().add(Component.translatable("item.moonstone.battery").withStyle(ChatFormatting.GOLD));
+            }
+        }
+        if (stack.getItem() instanceof IBattery){
+            event.getToolTip().add(Component.translatable("item.moonstone.tooltip.battery").withStyle(ChatFormatting.GOLD));
+
+        }
     }
     @SubscribeEvent
     public void LivingHurtEvent(LivingIncomingDamageEvent event){

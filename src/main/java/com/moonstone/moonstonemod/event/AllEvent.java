@@ -343,8 +343,8 @@ public class AllEvent {
             if (Handler.hascurio(player,Items.brain.get())){
                 String name = event.getEntity().getName().getString();
                 player.getPersistentData().putInt(name, player.getPersistentData().getInt(name) +1);
-                if (player.getPersistentData().getInt(name)>= Config.m_brain_many.get()){
-                    event.setAmount((float) (event.getAmount() * Config.m_brain_critical.get()));
+                if (player.getPersistentData().getInt(name)>= Config.SERVER.m_brain_many.get()){
+                    event.setAmount((float) (event.getAmount() * Config.SERVER.m_brain_critical.get()));
                     player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.WARDEN_HEARTBEAT, SoundSource.NEUTRAL, 4.5F, 4.1F);
                     player.getPersistentData().remove(name);
                 }
@@ -595,17 +595,15 @@ public class AllEvent {
                     for (int i = 0; i < stacksHandler.getSlots(); i++) {
                         ItemStack stack = stackHandler.getStackInSlot(i);
                         if (!stack.isEmpty()){
-                            if (stack.is(Items.necora.get())){
+                            if (stack.is(Items.necora.get())&&event.getItem().getUseAnimation() == UseAnim.EAT){
                                 if (event.getItem().is(net.minecraft.world.item.Items.ROTTEN_FLESH)){
-                                    if (!Handler.hascurio(player, Items.putrefactive.get())) {
-                                        player.heal(player.getMaxHealth() / 20);
-                                        player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 0));
-                                        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 0));
-                                    }else {
-                                        player.heal(player.getMaxHealth() / 15);
-                                        player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 300, 1));
-                                        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 300, 1));
-                                    }
+                                    player.heal(player.getMaxHealth() / 20);
+                                    player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 0));
+                                    player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 0));
+                                }
+                                if (Handler.hascurio(player, Items.putrefactive.get())) {
+                                    player.heal(player.getMaxHealth() / 10);
+                                    player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 0));
                                 }
                             }
                         }
