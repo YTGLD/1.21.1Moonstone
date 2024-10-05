@@ -65,42 +65,44 @@ public class bloodvirus extends BloodViru {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player) {
-           CompoundTag tag = stack.get(DataReg.tag);
-            if (tag != null){
-                if (tag.getBoolean(batskill.batskill)) {
-                    Vec3 playerPos = player.position().add(0, 0.75, 0);
-                    int range = 12;
-                    List<LivingEntity> entities = player.level().getEntitiesOfClass(LivingEntity.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
+            if (Handler.hascurio(player,this)) {
+                CompoundTag tag = stack.get(DataReg.tag);
+                if (tag != null) {
+                    if (tag.getBoolean(batskill.batskill)) {
+                        Vec3 playerPos = player.position().add(0, 0.75, 0);
+                        int range = 12;
+                        List<LivingEntity> entities = player.level().getEntitiesOfClass(LivingEntity.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
 
-                    for (LivingEntity living : entities) {
-                        if (!living.is(player)) {
-                            if (living instanceof Bat bat) {
-                                if (bat.tickCount % 20 == 0) {
-                                    bat.setHealth(bat.getHealth() - (bat.getMaxHealth() / 10));
+                        for (LivingEntity living : entities) {
+                            if (!living.is(player)) {
+                                if (living instanceof Bat bat) {
+                                    if (bat.tickCount % 20 == 0) {
+                                        bat.setHealth(bat.getHealth() - (bat.getMaxHealth() / 10));
+                                    }
                                 }
                             }
                         }
                     }
-                }
 
-                if (!Handler.hascurio(player, Items.sleepgene.get())) {
-                if (!player.level().isClientSide && player.tickCount % 10 == 0) {
-                    if (player.level().isDay()) {
-                        if (player.level().canSeeSky(new BlockPos(player.getBlockX(), player.getBlockY(), player.getBlockZ()))) {
-                            player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 60, 1));
-                            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1));
-                            player.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 60, 1));
-                            player.setRemainingFireTicks(3);
+                    if (!Handler.hascurio(player, Items.sleepgene.get())) {
+                        if (!player.level().isClientSide && player.tickCount % 10 == 0) {
+                            if (player.level().isDay()) {
+                                if (player.level().canSeeSky(new BlockPos(player.getBlockX(), player.getBlockY(), player.getBlockZ()))) {
+                                    player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 60, 1));
+                                    player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1));
+                                    player.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 60, 1));
+                                    player.setRemainingFireTicks(3);
+                                }
+                            } else {
+                                player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 400, 0));
+
+                            }
                         }
-                    } else {
-                        player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 400, 0));
-
                     }
-                }
-            }
 
-            }else {
-                stack.set(DataReg.tag,new CompoundTag());
+                } else {
+                    stack.set(DataReg.tag, new CompoundTag());
+                }
             }
         }
     }

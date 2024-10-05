@@ -89,6 +89,7 @@ public class Tab {
 
                 b.accept(new ItemStack(Items.bloodvirus.get()));
                 b.accept(new ItemStack(Items.necora.get()));
+                b.accept(new ItemStack(Items.deceased_contract.get()));
 
 
             })
@@ -174,13 +175,6 @@ public class Tab {
                 b.accept(new ItemStack(Items.wind.get()));
                 b.accept(new ItemStack(Items.wind_and_rain.get()));
 
-
-            })
-            .build());
-    public static final DeferredHolder<CreativeModeTab,?> Bloods = TABS.register("moonstone_item_magic",()-> CreativeModeTab.builder()
-            .icon(()->new ItemStack(Items.blood_magic_box.get()))
-            .title(Component.translatable("itemGroup.tabmoonstone.blood"))
-            .displayItems((a,b)->{
                 b.accept(new ItemStack(Items.blood_candle.get()));
                 b.accept(new ItemStack(Items.the_blood_book.get()));
                 b.accept(new ItemStack(Items.blood_magic_box.get()));

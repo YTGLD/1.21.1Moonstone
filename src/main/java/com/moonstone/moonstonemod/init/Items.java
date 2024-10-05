@@ -207,11 +207,16 @@ public class Items {
     public static final DeferredHolder<Item,?> disgusting_cells =REGISTRY.register("disgusting_cells", com.moonstone.moonstonemod.item.TheNecora.bnabush.disgusting_cells::new);
 
     public static final DeferredHolder<Item,?> evil_blood =REGISTRY.register("evil_blood", com.moonstone.moonstonemod.item.BloodVirus.evil.evil_blood::new);
-
-    public static final DeferredHolder<Item,?> the_heart_image =REGISTRY.register("the_heart_image", ()-> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
     public static final DeferredHolder<Item,?> blood =REGISTRY.register("blood", ()-> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)));
     public static final DeferredHolder<Item,?> blood_candle =REGISTRY.register("blood_candle", com.moonstone.moonstonemod.item.blood.magic.blood_candle::new);
+    public static final DeferredHolder<Item,?> deceased_contract =REGISTRY.register("deceased_contract", com.moonstone.moonstonemod.item.deceased_contract::new);
 
+
+
+
+
+    public static final DeferredHolder<Item,?> the_heart_image =REGISTRY.register("the_heart_image", ()-> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final DeferredHolder<Item,?> medicinebox_ui =REGISTRY.register("medicinebox_ui", ()-> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 
     public static final DeferredHolder<Item,?> gorillacake =REGISTRY.register("gorillacake", com.moonstone.moonstonemod.moonstoneitem.gorillacake::new);
 

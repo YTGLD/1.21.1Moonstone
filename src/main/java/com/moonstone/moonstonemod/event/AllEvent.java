@@ -1632,7 +1632,7 @@ public class AllEvent {
                 if (a == 2) {
                     player.addItem(Items.twistedstone.get().getDefaultInstance());
                 }
-                player.addItem(Items.apple.get().getDefaultInstance());
+                player.addItem(Items.deceased_contract.get().getDefaultInstance());
                 player.addTag("welcome_to_moonstone");
             }
             if (!player.getTags().contains("give_moonstone_item_book")) {
@@ -2106,23 +2106,25 @@ public class AllEvent {
             tooltipEvent.setBorderStart(0xFF800000);
             tooltipEvent.setBorderEnd(0xFF800080);
 
-            tooltipEvent.setBackgroundStart(0xff000000);
+            tooltipEvent.setBackgroundStart(0x00000000);
             tooltipEvent.setBackgroundEnd(0x00000000);
         }
         if (stack.getItem() instanceof IDoom||stack.getItem() instanceof Perhaps) {
             tooltipEvent.setBorderStart(0xFF83DEFC);
             tooltipEvent.setBorderEnd(0xFF0296FE);
-            tooltipEvent.setBackgroundEnd(0x4d000000);
+
+            tooltipEvent.setBackgroundStart(0x00000000);
+            tooltipEvent.setBackgroundEnd(0x00000000);
 
         }
 
-        if (stack.getItem() instanceof Iplague) {
+        if (stack.getItem() instanceof Iplague||stack.getItem() instanceof Blood) {
             tooltipEvent.setBorderStart(0xFF800000);
             tooltipEvent.setBorderEnd(0x0ff800000);
-            tooltipEvent.setBackgroundEnd(0x80800000);
+            tooltipEvent.setBackgroundStart(0x00000000);
+            tooltipEvent.setBackgroundEnd(0x00000000);
         }
-        if (stack.getItem() instanceof BloodViru) {
-        }
+
         if (stack.getItem() instanceof the_heart) {
             tooltipEvent.setBorderStart(0xFFFF8C00);
             tooltipEvent.setBorderEnd(0xFFFFD700);

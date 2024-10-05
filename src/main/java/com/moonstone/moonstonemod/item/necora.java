@@ -69,13 +69,14 @@ public class necora extends TheNecoraIC {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player){
-            player.getAttributes().addTransientAttributeModifiers(Head(player,stack));
+            if (Handler.hascurio(player,this)) {
+                player.getAttributes().addTransientAttributeModifiers(Head(player, stack));
 
-            if (player.getItemBySlot(EquipmentSlot.HEAD).isEmpty() &&
-                    (player.level().isDay() &&
-                            player.level().canSeeSky(new BlockPos(player.getBlockX(), player.getBlockY(), player.getBlockZ()))))
-            {
-                player.setRemainingFireTicks(2);
+                if (player.getItemBySlot(EquipmentSlot.HEAD).isEmpty() &&
+                        (player.level().isDay() &&
+                                player.level().canSeeSky(new BlockPos(player.getBlockX(), player.getBlockY(), player.getBlockZ())))) {
+                    player.setRemainingFireTicks(2);
+                }
             }
         }
     }

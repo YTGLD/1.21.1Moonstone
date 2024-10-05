@@ -7,6 +7,7 @@ import com.moonstone.moonstonemod.item.BloodVirus.dna.bat_cell;
 import com.moonstone.moonstonemod.item.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
+import com.moonstone.moonstonemod.item.deceased_contract;
 import com.moonstone.moonstonemod.item.nanodoom.buyme.wind_and_rain;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_head;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_heart;
@@ -64,6 +65,7 @@ public class NewEvent {
         max_blood_eye.Att(event);
         blood_amout.Hurt(event);
         giant_boom_cell.Boom(event);
+        deceased_contract.attack(event);
 
         if (event.getSource().getEntity() instanceof LivingEntity living){
             if (living.getAttribute(AttReg.alL_attack)!=null){
@@ -101,7 +103,7 @@ public class NewEvent {
         max_sword.die(event);
         the_prison_of_sin.LivingDeathEvent(event);
         blood_magic_box.Did(event);
-
+        deceased_contract.Did(event);
     }
     @SubscribeEvent
     public void EffectTick(EntityTickEvent.Post event) {

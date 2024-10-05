@@ -1,5 +1,6 @@
 package com.moonstone.moonstonemod.entity;
 
+import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.init.Items;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -90,13 +91,20 @@ public class blood extends ThrowableItemProjectile {
     @Override
     public void playerTouch(@NotNull Player entity) {
         if (this.tickCount > 20) {
+            super.playerTouch(entity);
+            entity.addItem(new ItemStack(Items.blood.get()));
+            this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.RESPAWN_ANCHOR_DEPLETE, SoundSource.NEUTRAL, 1.45f, 1.45f);
 
-            if (!entity.getCooldowns().isOnCooldown(Items.blood_candle.get())) {
-                super.playerTouch(entity);
-                entity.addItem(new ItemStack(Items.blood.get()));
-                this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.RESPAWN_ANCHOR_DEPLETE, SoundSource.NEUTRAL, 1.45f, 1.45f);
-                this.discard();
+            if (Handler.hascurio(entity, Items.deceased_contract.get())){
+                entity.heal(entity.getMaxHealth() / 20);
             }
+
+
+
+
+
+
+            this.discard();
         }
     }
     private void findNewTarget() {

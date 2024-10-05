@@ -15,6 +15,7 @@ import net.minecraft.util.SpawnUtil;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -117,21 +118,41 @@ public class Handler {
         return false;
     }
 
-
+    //            if (hascurio(player,Items.deceased_contract.get())) {
+//                if (curio == Items.necora.get() || curio == Items.bloodvirus.get()) {
+//                    return false;
+//                }
+//            }
     public static boolean hascurio(LivingEntity entity, Item curio) {
         if (entity instanceof Player player) {
             if (player.getCapability(CuriosCapability.INVENTORY) != null) {
                 if (CuriosApi.getCuriosInventory(entity).isPresent()) {
                     List<SlotResult> a = CuriosApi.getCuriosInventory(entity).get().findCurios(curio);
                     for (SlotResult slotResult : a) {
-                        if (slotResult.stack().is(curio))
+                        if (slotResult.stack().is(curio)
+                                && hasDC(player,curio))
+                        {
                             return true;
+                        }
                     }
                 }
             }
         }
         return false;
+    }
+    public static boolean hasDC(LivingEntity entity,Item item) {
+        if (entity instanceof Player player) {
+            if (player.getCapability(CuriosCapability.INVENTORY) != null) {
 
+                if (CuriosApi.getCuriosInventory(player).isPresent()
+                        && CuriosApi.getCuriosInventory(player).get().isEquipped(Items.deceased_contract.get())) {
+                    if (item == Items.necora.get() || item == Items.bloodvirus.get()) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
     public static void renderColor(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType,float r,int red,int g, int b) {
         VertexConsumer vertexConsumer = bufferSource.getBuffer(renderType);
