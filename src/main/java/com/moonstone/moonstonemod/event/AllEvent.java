@@ -253,63 +253,6 @@ public class AllEvent {
             }
         }
     }
-    @SubscribeEvent
-    public void evil_zombie(LivingIncomingDamageEvent event){
-        if (event.getSource().getEntity() instanceof Player player){
-            Vec3 playerPos = player.position().add(0, 0.75, 0);
-            int range = 10;
-            List<cell_zombie> entities = player.level().getEntitiesOfClass(cell_zombie.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
-            if (Handler.hascurio(player, Items.giant.get())) {
-                List<cell_giant> entitie = player.level().getEntitiesOfClass(cell_giant.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
-                for (cell_giant zombie : entitie) {
-                    if (zombie.getOwner() == player) {
-                        if (!(event.getEntity() instanceof cell_giant)) {
-                            zombie.setTarget(event.getEntity());
-                        }
-                    }
-                }
-            }
-            if (Handler.hascurio(player, Items.cell.get())){
-                 for (cell_zombie zombie : entities){
-                    if (zombie.getOwner() == player){
-                        if (!(event.getEntity() instanceof cell_zombie)) {
-                            zombie.setTarget(event.getEntity());
-                        }
-                    }
-                }
-            }
-        }
-        if (event.getEntity() instanceof Player player){
-            if (Handler.hascurio(player, Items.cell.get())){
-                Vec3 playerPos = player.position().add(0, 0.75, 0);
-                int range = 10;
-                List<cell_zombie> entities = player.level().getEntitiesOfClass(cell_zombie.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
-                for (cell_zombie zombie : entities){
-                    if (zombie.getOwner() == player){
-                        if (!(event.getSource().getEntity() instanceof cell_zombie)) {
-                            if (event.getSource().getEntity() instanceof LivingEntity living) {
-                                zombie.setTarget(living);
-                            }
-                        }
-                    }
-                }
-            }
-            if (Handler.hascurio(player, Items.giant.get())){
-                Vec3 playerPos = player.position().add(0, 0.75, 0);
-                int range = 10;
-                List<cell_giant> entities = player.level().getEntitiesOfClass(cell_giant.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
-                for (cell_giant zombie : entities){
-                    if (zombie.getOwner() == player){
-                        if (!(event.getSource().getEntity() instanceof cell_giant)) {
-                            if (event.getSource().getEntity() instanceof LivingEntity living) {
-                                zombie.setTarget(living);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
 
     @SubscribeEvent
     public void beacon(LivingIncomingDamageEvent event){
@@ -2123,6 +2066,12 @@ public class AllEvent {
             tooltipEvent.setBorderEnd(0x0ff800000);
             tooltipEvent.setBackgroundStart(0x00000000);
             tooltipEvent.setBackgroundEnd(0x00000000);
+        }
+        if (stack.getItem() instanceof Die) {
+            tooltipEvent.setBorderStart(0x0ff9C9C9C);
+            tooltipEvent.setBorderEnd(0x0ff9C9C9C);
+            tooltipEvent.setBackgroundStart(0xFF000000);
+            tooltipEvent.setBackgroundEnd(0xFF000000);
         }
 
         if (stack.getItem() instanceof the_heart) {

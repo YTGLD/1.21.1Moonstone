@@ -8,6 +8,8 @@ import com.moonstone.moonstonemod.item.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
 import com.moonstone.moonstonemod.item.deceased_contract;
+import com.moonstone.moonstonemod.item.evil_mob;
+import com.moonstone.moonstonemod.item.malice_die;
 import com.moonstone.moonstonemod.item.nanodoom.buyme.wind_and_rain;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_head;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_heart;
@@ -66,7 +68,7 @@ public class NewEvent {
         blood_amout.Hurt(event);
         giant_boom_cell.Boom(event);
         deceased_contract.attack(event);
-
+        malice_die.att(event);
         if (event.getSource().getEntity() instanceof LivingEntity living){
             if (living.getAttribute(AttReg.alL_attack)!=null){
                 float attack = (float) living.getAttribute(AttReg.alL_attack).getValue();

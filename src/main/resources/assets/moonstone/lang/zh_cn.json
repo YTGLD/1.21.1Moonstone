@@ -57,7 +57,7 @@
   "item.moonstone.mring": "莫里斯戒指",
   "item.moonstone.mshell": "莫里斯贝壳",
 
-  "item.moonstone.battery": "已用电池改装",
+  "item.moonstone.battery": "电池",
 
 
 
@@ -929,6 +929,22 @@
   "attribute.name.moonstone.cit": "暴击伤害",
   "attribute.name.moonstone.heal": "治疗",
 
+
+
+  "item.moonstone.evil_mob": "邪念体",
+  "item.moonstone.god_lead": "战神之铅",
+  "item.moonstone.malice_die": "恶意之殇",
+
+
+  "item.malice_die.tool.string.1": "如果附近生物的攻击目标是你，那么每增加一个生物：",
+  "item.malice_die.tool.string.2": "+10%伤害",
+  "item.malice_die.tool.string.3": "+9%生命恢复",
+  "item.malice_die.tool.string.4": "+8%速度",
+  "item.malice_die.tool.string.5": "+7%攻击速度",
+  "item.malice_die.tool.string.6": "+6%护甲",
+  "item.malice_die.tool.string.7": "+5%暴击",
+  "item.malice_die.tool.string.8": "攻击会使目标8格半径内的生物主动攻击你",
+  "item.malice_die.tool.string.9": "-30% 所有伤害",
 
 
   "item.moonstone.evil_blood": "§4渎圣玩偶",

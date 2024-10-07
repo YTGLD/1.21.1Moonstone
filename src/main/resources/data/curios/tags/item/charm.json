@@ -15,6 +15,9 @@
     "moonstone:max_sword",
     "moonstone:blood_snake",
     "moonstone:blood_candle",
-    "moonstone:evil_blood"
+    "moonstone:evil_blood",
+    "moonstone:evil_mob",
+    "moonstone:god_lead",
+    "moonstone:malice_die"
   ]
 }

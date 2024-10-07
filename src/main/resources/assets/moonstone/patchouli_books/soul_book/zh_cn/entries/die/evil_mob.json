@@ -1,0 +1,15 @@
+{
+  "name": "邪念体",
+  "icon": "moonstone:evil_mob",
+  "category": "moonstone:die",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:evil_mob",
+      "title": "-邪念体-",
+      "text": "$(br2)获得所有莫里斯饰品的能力$(br)获得所有深渊物品的能力$(br)但是每佩戴一件饰品，造成的伤害减少10%$(br)每佩戴一件深渊以及莫里斯饰品，受到的伤害增加25%"
+    }
+  ]
+}

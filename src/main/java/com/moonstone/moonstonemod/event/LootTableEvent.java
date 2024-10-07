@@ -80,6 +80,9 @@ public class LootTableEvent {
                         .add(LootItem.lootTableItem(Items.blood_amout.get()).setWeight(1))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
+                        .add(LootItem.lootTableItem(Items.apple.get()).setWeight(1))
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+
 
                         .build());
             }

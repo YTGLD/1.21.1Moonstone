@@ -915,6 +915,19 @@
 
 
 
+  "item.moonstone.evil_mob": "evil mob",
+  "item.moonstone.god_lead": "god lead",
+  "item.moonstone.malice_die": "malice die",
+
+  "item.malice_die.tool.string.1": "If the target of nearby creatures' attacks is you, then for every additional creature:",
+  "item.malice_die.tool.string.2": "+10% damage",
+  "item.malice_die.tool.string.3": "+9% Life Recovery",
+  "item.malice_die.tool.string.4": "+8% speed",
+  "item.malice_die.tool.string.5": "+7% attack speed",
+  "item.malice_die.tool.string.6": "+6% Armor",
+  "item.malice_die.tool.string.7": "+5% cit value",
+  "item.malice_die.tool.string.8": "Attacking will cause creatures within an 8-grid radius of the target to actively attack you",
+  "item.malice_die.tool.string.9": "-30% all damage",
 
 
   "item.moonstone.deceased_contract": "deceased contract",

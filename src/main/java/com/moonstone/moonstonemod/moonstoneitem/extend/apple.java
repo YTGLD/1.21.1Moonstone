@@ -36,7 +36,7 @@ public class apple extends Item implements Iplague {
                 UUID uuid = UUID.fromString("00000000-0000-300f-95e1-2830b5159532");
                 CuriosApi.getCuriosInventory(player).ifPresent(handler -> handler.getStacksHandler("necora").ifPresent(stacks -> {
                     if (!stacks.getModifiers().containsKey(uuid)) {
-                        stacks.addPermanentModifier(new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),3, AttributeModifier.Operation.ADD_VALUE));
+                        stacks.addPermanentModifier(new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),1, AttributeModifier.Operation.ADD_VALUE));
                     }
                 }));
 
