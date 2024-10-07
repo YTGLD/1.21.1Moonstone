@@ -944,7 +944,8 @@
   "item.malice_die.tool.string.6": "+6%护甲",
   "item.malice_die.tool.string.7": "+5%暴击",
   "item.malice_die.tool.string.8": "攻击会使目标8格半径内的生物主动攻击你",
-  "item.malice_die.tool.string.9": "-30% 所有伤害",
+  "item.malice_die.tool.string.9": "-15% 所有伤害",
+  "item.malice_die.tool.string.10": "如果目标数量少于3，那么你造成的伤害减35%",
 
 
   "item.moonstone.evil_blood": "§4渎圣玩偶",

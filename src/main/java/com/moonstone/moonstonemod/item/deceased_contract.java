@@ -136,6 +136,11 @@ public class deceased_contract extends TheNecoraIC {
                     new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + Items.deceased_contract.get().getDescriptionId()),
                             owner.getAttribute(Attributes.MOVEMENT_SPEED).getValue()/2, AttributeModifier.Operation.ADD_VALUE));
         }
+
+        modifierMultimap.put(Attributes.MAX_HEALTH,
+                new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage_a" + Items.deceased_contract.get().getDescriptionId()),
+                        -0.9f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+
         return modifierMultimap;
     }
 }

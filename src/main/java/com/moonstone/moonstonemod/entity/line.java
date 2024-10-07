@@ -5,6 +5,8 @@ import com.moonstone.moonstonemod.init.EntityTs;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -100,14 +102,17 @@ public class line  extends TamableAnimal {
         return false;
     }
 
+
+    @Nullable
     @Override
-    public boolean hurt(DamageSource p_30386_, float p_30387_) {
-        if (p_30386_.getEntity()!=null &&
-                this.getOwner()!=null &&
-                p_30386_.getEntity().is(this.getOwner())){
-            return false;
-        }
-        return true;
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return SoundEvents.VEX_HURT;
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundEvents.VEX_DEATH;
     }
 
     protected void doPush(Entity p_27415_) {

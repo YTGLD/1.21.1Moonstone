@@ -44,6 +44,8 @@ public class malice_die extends CommonItem implements Die {
       	+6%护甲
       	+5%生命值
 
+        如果目标数量少于3，那么你造成的伤害减35%
+
       	攻击会使目标8格半径内的生物主动攻击你
      */
 
@@ -92,7 +94,6 @@ public class malice_die extends CommonItem implements Die {
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
         slotContext.entity().getAttributes().removeAttributeModifiers(this.Head(stack));
     }
-
     private Multimap<Holder<Attribute>, AttributeModifier> Head(ItemStack stack){
         Multimap<Holder<Attribute>, AttributeModifier> multimap = HashMultimap.create();
         if (stack.get(DataReg.tag)!=null) {
@@ -129,9 +130,13 @@ public class malice_die extends CommonItem implements Die {
                     s*5,
                     AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
+            float ss = 0;
+            if (stack.get(DataReg.tag).getInt(MALICE_DIE)<3){
+                ss = 0.35f;
+            }
             multimap.put(AttReg.alL_attack, new AttributeModifier(
                     ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()),
-                    -0.3f,
+                    -(0.15f+ss),
                     AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         }
         return multimap;
@@ -140,25 +145,22 @@ public class malice_die extends CommonItem implements Die {
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
-        if (Screen.hasShiftDown()) {
-            pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.1").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF483D8B))));
-            pTooltipComponents.add(Component.literal(""));
-            pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.2").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF8B658B))));
-            pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.3").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF8B658B))));
-            pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.4").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF8B658B))));
-            pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.5").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF8B658B))));
-            pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.6").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF8B658B))));
-            pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.7").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF8B658B))));
-            pTooltipComponents.add(Component.literal(""));
-            pTooltipComponents.add(Component.literal(""));
-            pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.8").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF483D8B))));
-            pTooltipComponents.add(Component.literal(""));
-            pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.9").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF483D8B))));
+        pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.1").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF483D8B))));
+        pTooltipComponents.add(Component.literal(""));
+        pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.2").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF8B658B))));
+        pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.3").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF8B658B))));
+        pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.4").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF8B658B))));
+        pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.5").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF8B658B))));
+        pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.6").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF8B658B))));
+        pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.7").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF8B658B))));
+        pTooltipComponents.add(Component.literal(""));
+        pTooltipComponents.add(Component.literal(""));
+        pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.10").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF483D8B))));
+        pTooltipComponents.add(Component.literal(""));
+        pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.8").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF483D8B))));
+        pTooltipComponents.add(Component.literal(""));
+        pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.9").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF483D8B))));
 
 
-        }else {
-            pTooltipComponents.add(Component.literal(""));
-            pTooltipComponents.add(Component.literal("Shift").withStyle(ChatFormatting.ITALIC).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF483D8B))));
-        }
     }
 }

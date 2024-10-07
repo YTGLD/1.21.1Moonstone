@@ -85,6 +85,16 @@ public class LootTableEvent {
 
 
                         .build());
+
+                table.addPool(LootPool.lootPool().name("treasures_moons")
+                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight(50))
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+
+                        .add(LootItem.lootTableItem(Items.malice_die.get()).setWeight(1))
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+
+
+                        .build());
             }
 
             if (event.getName().toString().contains("dungeon") ||event.getName().toString().contains("mineshaft")){

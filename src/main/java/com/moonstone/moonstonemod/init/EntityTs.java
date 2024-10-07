@@ -87,7 +87,7 @@ public class EntityTs {
         event.put(EntityTs.blood_bat.get(), Zombie.createAttributes().build());
         event.put(EntityTs.blood_zombie.get(), Zombie.createAttributes().build());
         event.put(EntityTs.blood_zombie_boom.get(), Zombie.createAttributes().build());
-        event.put(EntityTs.line.get(), Bat.createAttributes().build());
+        event.put(EntityTs.line.get(), Zombie.createAttributes().build());
         event.put(EntityTs.snake.get(), Bat.createAttributes().build());
         event.put(EntityTs.owner_blood.get(), IronGolem.createAttributes().build());
         event.put(EntityTs.blood_orb_owner.get(), IronGolem.createAttributes().build());
