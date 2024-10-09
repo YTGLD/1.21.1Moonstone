@@ -1,0 +1,41 @@
+{
+  "parent": "moonstone:moonstone/blood",
+  "criteria": {
+    "blood_sun": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "moonstone:blood_sun"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tooltip.blood_sun.text"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "moonstone:blood_sun"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tooltip.blood_sun.hand"
+    }
+  },
+  "requirements": [
+    [
+      "blood_sun"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

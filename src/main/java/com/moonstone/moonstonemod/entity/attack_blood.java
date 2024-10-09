@@ -83,17 +83,36 @@ public class attack_blood extends ThrowableItemProjectile {
         }
         if (target != null) {
             if (!target.isAlive()) {
-                target = null;
+                findNewTarget();
+
             }
         }
+
         float s = this.tickCount / 200f;
         if (target != null) {
-
-
             Vec3 targetPos = target.position().add(0, 0.5, 0);
             Vec3 currentPos = this.position();
             Vec3 direction = targetPos.subtract(currentPos).normalize();
-            this.setDeltaMovement(direction.x * (0.075f + s), direction.y * (0.075f + s), direction.z * (0.075f + s));
+
+            // 获取当前运动方向
+            Vec3 currentDirection = this.getDeltaMovement().normalize();
+
+            // 计算目标方向与当前方向之间的夹角
+            double angle = Math.acos(currentDirection.dot(direction)) * (180.0 / Math.PI);
+
+            // 如果夹角超过10度，则限制方向
+            if (angle > 45) {
+                // 计算旋转后的新方向
+                double angleLimit = Math.toRadians(45); // 将10度转为弧度
+
+                // 根据正弦法则计算限制后的方向
+                Vec3 limitedDirection = currentDirection.scale(Math.cos(angleLimit)) // 计算缩放因子
+                        .add(direction.normalize().scale(Math.sin(angleLimit))); // 根据目标方向进行调整
+
+                this.setDeltaMovement(limitedDirection.x * (0.125f+s), limitedDirection.y *(0.125f+s), limitedDirection.z * (0.125f+s));
+            } else {
+                this.setDeltaMovement(direction.x * (0.125f+s), direction.y * (0.125f+s), direction.z * (0.125f+s));
+            }
         }
 
         trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
@@ -106,7 +125,29 @@ public class attack_blood extends ThrowableItemProjectile {
         this.setYRot(0);
         this.setXRot(0);
     }
+    private void findNewTarget() {
 
+        AABB searchBox = this.getBoundingBox().inflate(16);
+        List<LivingEntity> entities = this.level().getEntitiesOfClass(LivingEntity.class, searchBox);
+        double closestDistance = Double.MAX_VALUE;
+        LivingEntity closestEntity = null;
+
+
+        for (LivingEntity entity : entities) {
+            ResourceLocation name = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
+            if (this.getOwner() != null) {
+                if (!name.getNamespace().equals(MoonStoneMod.MODID) && !(entity.is(this.getOwner()))) {
+                    double distance = this.distanceToSqr(entity);
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestEntity = entity;
+                    }
+                }
+            }
+        }
+
+        this.target = closestEntity;
+    }
 
 }
 

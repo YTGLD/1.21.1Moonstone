@@ -55,7 +55,7 @@ public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>
 
         if (entity instanceof blood_zombie_boom){
             matrices.pushPose();
-            matrices.scale(0.25f,0.25f,0.25f);
+            matrices.scale(0.5f,0.5f,0.5f);
             new BloodBoom(matrices, vertexConsumers, light, entity);
             matrices.popPose();
         }

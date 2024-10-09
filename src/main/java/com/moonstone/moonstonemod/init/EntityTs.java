@@ -73,6 +73,8 @@ public class EntityTs {
 
     public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.bloodvruis.blood_orb_small>> blood_orb_small = REGISTRY.register("blood_orb_small",
             ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.bloodvruis.blood_orb_small::new, MobCategory.MISC).sized(1, 1).clientTrackingRange(16).build("blood_orb_small"));
+    public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.sun>> sun = REGISTRY.register("sun",
+            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.sun::new, MobCategory.MISC).sized(1, 1).clientTrackingRange(16).build("sun"));
 
 
     @SubscribeEvent

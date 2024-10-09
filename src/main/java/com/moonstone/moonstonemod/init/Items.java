@@ -214,6 +214,7 @@ public class Items {
     public static final DeferredHolder<Item,?> evil_mob =REGISTRY.register("evil_mob", com.moonstone.moonstonemod.item.evil_mob::new);
     public static final DeferredHolder<Item,?> god_lead =REGISTRY.register("god_lead", com.moonstone.moonstonemod.item.god_lead::new);
     public static final DeferredHolder<Item,?> malice_die =REGISTRY.register("malice_die", com.moonstone.moonstonemod.item.malice_die::new);
+    public static final DeferredHolder<Item,?> blood_sun =REGISTRY.register("blood_sun", com.moonstone.moonstonemod.item.blood.magic.blood_sun::new);
 
 
 

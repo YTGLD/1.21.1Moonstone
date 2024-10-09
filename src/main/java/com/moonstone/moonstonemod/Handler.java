@@ -5,6 +5,8 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.moonstone.moonstonemod.entity.nightmare.nightmare_giant;
 import com.moonstone.moonstonemod.entity.zombie.cell_giant;
 import com.moonstone.moonstonemod.init.Items;
+import com.moonstone.moonstonemod.moonstoneitem.INightmare;
+import com.moonstone.moonstonemod.moonstoneitem.extend.TheNecoraIC;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
@@ -126,6 +128,12 @@ public class Handler {
     public static boolean hascurio(LivingEntity entity, Item curio) {
         if (entity instanceof Player player) {
             if (player.getCapability(CuriosCapability.INVENTORY) != null) {
+                if (CuriosApi.getCuriosInventory(player).isPresent()
+                        && CuriosApi.getCuriosInventory(player).get().isEquipped(Items.evil_mob.get())) {
+                    if (curio == Items.necora.get() || curio == Items.nightmareeye.get()||curio == Items.bloodvirus.get()){
+                        return true;
+                    }
+                }
                 if (CuriosApi.getCuriosInventory(entity).isPresent()) {
                     List<SlotResult> a = CuriosApi.getCuriosInventory(entity).get().findCurios(curio);
                     for (SlotResult slotResult : a) {
@@ -143,7 +151,6 @@ public class Handler {
     public static boolean hasDC(LivingEntity entity,Item item) {
         if (entity instanceof Player player) {
             if (player.getCapability(CuriosCapability.INVENTORY) != null) {
-
                 if (CuriosApi.getCuriosInventory(player).isPresent()
                         && CuriosApi.getCuriosInventory(player).get().isEquipped(Items.deceased_contract.get())) {
                     if (item == Items.necora.get() || item == Items.bloodvirus.get()) {

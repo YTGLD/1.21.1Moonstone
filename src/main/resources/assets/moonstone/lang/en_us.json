@@ -643,6 +643,7 @@
   "entity.moonstone.nightmare_entity": "nightmare entity",
   "entity.moonstone.nightmare_giant": "nightmare giant",
   "entity.moonstone.cell_slime": "cell slime",
+  "entity.moonstone.sun": "sun",
 
   "entity.moonstone.line": "line",
   "entity.moonstone.snake": "snake",
@@ -918,6 +919,12 @@
   "item.moonstone.evil_mob": "evil mob",
   "item.moonstone.god_lead": "god lead",
   "item.moonstone.malice_die": "malice die",
+  "item.evil_mob.tool.string.1": "Allow you to use and discover corresponding items without wearing Abyss Eye or Necrora virus",
+  "item.evil_mob.tool.string.2": "null",
+  "item.evil_mob.tool.string.3": "null",
+  "item.god_lead.tool.string.1": "When fatally injured, the damage is transferred to nearby creatures (cool down for 10 seconds)",
+  "item.god_lead.tool.string.2": "If this organism dies, then cool it down and clear it",
+  "item.god_lead.tool.string.3": "+150% injured",
 
   "item.malice_die.tool.string.1": "If the target of nearby creatures' attacks is you, then for every additional creature:",
   "item.malice_die.tool.string.2": "+10% damage",
@@ -932,7 +939,18 @@
 
 
   "item.moonstone.deceased_contract": "deceased contract",
+  "item.moonstone.blood_sun": "blood sun",
+  "item.blood_sun.tool.string": "kill the mob",
 
+
+  "advancements.tooltip.blood.hand": "",
+  "advancements.tooltip.blood.text": "=",
+
+  "advancements.tooltip.blood_magic_box.hand": "",
+  "advancements.tooltip.blood_magic_box.text": "",
+
+  "advancements.tooltip.blood_sun.hand": "",
+  "advancements.tooltip.blood_sun.text": "",
 
   "item.blood.tool.string.winds.1": "5% speed bonus converted to attack damage",
   "item.blood.tool.string.winds.2": "If you wear a nightmare item, the damage doubles",

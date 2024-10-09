@@ -567,6 +567,19 @@
   "advancements.tooltip.quadriceps.hand": "四头肌强化",
   "advancements.tooltip.quadriceps.text": "跳跃500次",
 
+
+
+  "advancements.tooltip.blood.hand": "一血",
+  "advancements.tooltip.blood.text": "获得血球",
+
+  "advancements.tooltip.blood_magic_box.hand": "魔物末日",
+  "advancements.tooltip.blood_magic_box.text": "获得血之魔盒",
+
+  "advancements.tooltip.blood_sun.hand": "血日东升",
+  "advancements.tooltip.blood_sun.text": "获得血日",
+
+
+
   "advancements.tooltip.reanimation.hand": "细胞重生",
   "advancements.tooltip.reanimation.text": "死掉",
 
@@ -932,7 +945,7 @@
 
 
   "item.moonstone.evil_mob": "邪念体",
-  "item.moonstone.god_lead": "战神之铅",
+  "item.moonstone.god_lead": "血虐之铅",
   "item.moonstone.malice_die": "恶意之殇",
 
 
@@ -946,7 +959,13 @@
   "item.malice_die.tool.string.8": "攻击会使目标8格半径内的生物主动攻击你",
   "item.malice_die.tool.string.9": "-15% 所有伤害",
   "item.malice_die.tool.string.10": "如果目标数量少于3，那么你造成的伤害减35%",
+  "item.evil_mob.tool.string.1": "允许你在不佩戴深渊之眼,necora病毒，暗影瘟疫的情况下使用和发现相应的物品",
+  "item.evil_mob.tool.string.2": "佩戴后，自动获得深渊之眼，necora病毒，暗影瘟疫的一些特殊能力",
 
+
+  "item.god_lead.tool.string.1":"受到致命伤害时，伤害转移到附近的生物身上(冷却10秒)",
+  "item.god_lead.tool.string.2":"如果此生物死亡，那么冷却清除",
+  "item.god_lead.tool.string.3":"+150%受到伤害",
 
   "item.moonstone.evil_blood": "§4渎圣玩偶",
   "item.evil_blood.tool.string": "召唤一个怨念合并体协助你作战",
@@ -954,9 +973,12 @@
 
   "advancements.tooltip.evil_blood.text": "打开深渊的媒介",
 
-  "item.moonstone.deceased_contract": "死灵契约",
+  "item.moonstone.deceased_contract": "§4死灵契约",
 
 
+  "item.moonstone.blood_sun": "§4血日",
+  "item.blood_sun.tool.string": "杀死生物召唤末日之灵",
+  "entity.moonstone.sun": "末日之灵",
 
   "item.blood.tool.string.winds.1": "  50%的速度加成转换成攻击伤害",
   "item.blood.tool.string.winds.2": "  如果你佩戴了 梦魇之眼 物品，则伤害加倍"

@@ -190,6 +190,7 @@ public class Tab {
                 b.accept(new ItemStack(Items.evil_mob.get()));
                 b.accept(new ItemStack(Items.god_lead.get()));
                 b.accept(new ItemStack(Items.malice_die.get()));
+                b.accept(new ItemStack(Items.blood_sun.get()));
 
             })
             .build());

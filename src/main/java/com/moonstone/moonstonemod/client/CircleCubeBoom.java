@@ -17,8 +17,6 @@ public class CircleCubeBoom {
                           @NotNull Entity entity) {
 
 
-        float s = entity.tickCount;
-        s /= 10;
 
         float alp =100;
         alp -= entity.tickCount;

@@ -1,0 +1,41 @@
+{
+  "parent": "moonstone:moonstone/blood_snake",
+  "criteria": {
+    "blood_magic_box": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "moonstone:blood_magic_box"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tooltip.blood_magic_box.text"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "moonstone:blood_magic_box"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tooltip.blood_magic_box.hand"
+    }
+  },
+  "requirements": [
+    [
+      "blood_magic_box"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}
