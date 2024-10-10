@@ -2,7 +2,7 @@ package com.moonstone.moonstonemod.item.nanodoom;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.moonstone.moonstonemod.moonstoneitem.Doom;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.Doom;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;

@@ -1,6 +1,6 @@
 package com.moonstone.moonstonemod.item.maxitem.uncommon;
 
-import com.moonstone.moonstonemod.moonstoneitem.UnCommonItem;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.UnCommonItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;

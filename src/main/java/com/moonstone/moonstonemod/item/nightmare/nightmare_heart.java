@@ -4,7 +4,7 @@ import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.nightmare.nightmare_entity;
 import com.moonstone.moonstonemod.init.EntityTs;
 import com.moonstone.moonstonemod.init.Items;
-import com.moonstone.moonstonemod.moonstoneitem.nightmare;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;

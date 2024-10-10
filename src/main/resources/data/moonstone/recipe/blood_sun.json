@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "moonstone:blood"
+      "item": "moonstone:blood_jelly"
     },
     {
       "item": "moonstone:blood"
@@ -26,7 +26,7 @@
       "item": "moonstone:blood"
     },
     {
-      "item": "moonstone:ectoplasmcube"
+      "item": "moonstone:blood"
     }
   ],
   "result": {

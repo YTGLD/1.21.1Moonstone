@@ -2,6 +2,8 @@ package com.moonstone.moonstonemod.init;
 
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.book;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.apple;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.medicinebox;
 import com.moonstone.moonstonemod.item.BloodVirus.Skill.batskill;
 import com.moonstone.moonstonemod.item.BloodVirus.*;
 import com.moonstone.moonstonemod.item.BloodVirus.ex.botton;
@@ -26,8 +28,6 @@ import com.moonstone.moonstonemod.item.necora;
 import com.moonstone.moonstonemod.item.nightmare.*;
 import com.moonstone.moonstonemod.item.plague.ALL.*;
 import com.moonstone.moonstonemod.item.plague.medicine.med.*;
-import com.moonstone.moonstonemod.moonstoneitem.extend.apple;
-import com.moonstone.moonstonemod.moonstoneitem.extend.medicinebox;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -211,10 +211,11 @@ public class Items {
     public static final DeferredHolder<Item,?> blood_candle =REGISTRY.register("blood_candle", com.moonstone.moonstonemod.item.blood.magic.blood_candle::new);
     public static final DeferredHolder<Item,?> deceased_contract =REGISTRY.register("deceased_contract", com.moonstone.moonstonemod.item.deceased_contract::new);
 
-    public static final DeferredHolder<Item,?> evil_mob =REGISTRY.register("evil_mob", com.moonstone.moonstonemod.item.evil_mob::new);
-    public static final DeferredHolder<Item,?> god_lead =REGISTRY.register("god_lead", com.moonstone.moonstonemod.item.god_lead::new);
-    public static final DeferredHolder<Item,?> malice_die =REGISTRY.register("malice_die", com.moonstone.moonstonemod.item.malice_die::new);
+    public static final DeferredHolder<Item,?> evil_mob =REGISTRY.register("evil_mob", com.moonstone.moonstonemod.item.maxitem.evil_mob::new);
+    public static final DeferredHolder<Item,?> god_lead =REGISTRY.register("god_lead", com.moonstone.moonstonemod.item.maxitem.god_lead::new);
+    public static final DeferredHolder<Item,?> malice_die =REGISTRY.register("malice_die", com.moonstone.moonstonemod.item.maxitem.malice_die::new);
     public static final DeferredHolder<Item,?> blood_sun =REGISTRY.register("blood_sun", com.moonstone.moonstonemod.item.blood.magic.blood_sun::new);
+    public static final DeferredHolder<Item,?> blood_jelly =REGISTRY.register("blood_jelly", com.moonstone.moonstonemod.item.blood.blood_jelly::new);
 
 
 
@@ -222,6 +223,6 @@ public class Items {
     public static final DeferredHolder<Item,?> the_heart_image =REGISTRY.register("the_heart_image", ()-> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
     public static final DeferredHolder<Item,?> medicinebox_ui =REGISTRY.register("medicinebox_ui", ()-> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 
-    public static final DeferredHolder<Item,?> gorillacake =REGISTRY.register("gorillacake", com.moonstone.moonstonemod.moonstoneitem.gorillacake::new);
+    public static final DeferredHolder<Item,?> gorillacake =REGISTRY.register("gorillacake", com.moonstone.moonstonemod.init.moonstoneitem.extend.gorillacake::new);
 
 }

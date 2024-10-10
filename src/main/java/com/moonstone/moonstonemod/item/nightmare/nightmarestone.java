@@ -5,7 +5,7 @@ import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.event.AllEvent;
 import com.moonstone.moonstonemod.init.Items;
-import com.moonstone.moonstonemod.moonstoneitem.nightmare;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
@@ -25,7 +25,6 @@ import java.util.Collection;
 import java.util.List;
 
 public class nightmarestone extends nightmare {
-
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {

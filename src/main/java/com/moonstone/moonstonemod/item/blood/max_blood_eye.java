@@ -5,7 +5,7 @@ import com.moonstone.moonstonemod.entity.zombie.blood_zombie;
 import com.moonstone.moonstonemod.init.Effects;
 import com.moonstone.moonstonemod.init.EntityTs;
 import com.moonstone.moonstonemod.init.Items;
-import com.moonstone.moonstonemod.moonstoneitem.Blood;
+import com.moonstone.moonstonemod.init.moonstoneitem.i.Blood;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;

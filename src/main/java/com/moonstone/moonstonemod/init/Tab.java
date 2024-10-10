@@ -17,6 +17,28 @@ public class Tab {
             .icon(()->new ItemStack(Items.necora.get()))
             .title(Component.translatable("itemGroup.tabmoonstone.dna"))
             .displayItems((a,b)->{
+                b.accept(new ItemStack(DNAItems.atp_height.get()));
+                b.accept(new ItemStack(DNAItems.cell_god.get()));
+                b.accept(new ItemStack(DNAItems.cell_ground.get()));
+                b.accept(new ItemStack(DNAItems.cell_inheritance.get()));
+                b.accept(new ItemStack(DNAItems.cell_oxygen.get()));
+                b.accept(new ItemStack(DNAItems.cell_big_boom.get()));
+                b.accept(new ItemStack(DNAItems.cell_break_down_water.get()));
+                b.accept(new ItemStack(DNAItems.cell_darwin.get()));
+                b.accept(new ItemStack(DNAItems.cell_disorder.get()));
+                b.accept(new ItemStack(DNAItems.cell_in_air.get()));
+                b.accept(new ItemStack(DNAItems.cell_in_water.get()));
+                b.accept(new ItemStack(DNAItems.cell_off_on.get()));
+                b.accept(new ItemStack(DNAItems.speed_metabolism.get()));
+
+
+
+
+
+
+
+
+
                 b.accept(new ItemStack(Items.dna.get()));
                 b.accept(new ItemStack(Items.fungus.get()));
                 b.accept(new ItemStack(Items.germ.get()));
@@ -90,6 +112,7 @@ public class Tab {
                 b.accept(new ItemStack(Items.bloodvirus.get()));
                 b.accept(new ItemStack(Items.necora.get()));
                 b.accept(new ItemStack(Items.deceased_contract.get()));
+
 
 
             })
@@ -191,6 +214,7 @@ public class Tab {
                 b.accept(new ItemStack(Items.god_lead.get()));
                 b.accept(new ItemStack(Items.malice_die.get()));
                 b.accept(new ItemStack(Items.blood_sun.get()));
+                b.accept(new ItemStack(Items.blood_jelly.get()));
 
             })
             .build());

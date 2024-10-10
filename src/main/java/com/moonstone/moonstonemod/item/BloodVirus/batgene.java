@@ -2,7 +2,6 @@ package com.moonstone.moonstonemod.item.BloodVirus;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.moonstone.moonstonemod.event.AllEvent;
 import com.moonstone.moonstonemod.init.AttReg;
 import com.moonstone.moonstonemod.init.DataReg;
 import com.moonstone.moonstonemod.item.BloodVirus.ex.BloodViru;

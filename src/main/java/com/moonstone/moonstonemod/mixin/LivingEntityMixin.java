@@ -30,8 +30,6 @@ public abstract class LivingEntityMixin {
         cir.getReturnValue().add(AttReg.cit,1);
         cir.getReturnValue().add(AttReg.heal,1);
     }
-
-
     @Inject(at = @At("RETURN"), method = "getMaxHealth", cancellable = true)
     public void getMaxHealth(CallbackInfoReturnable<Float> cir) {
         if ((LivingEntity) (Object) this instanceof Player player){

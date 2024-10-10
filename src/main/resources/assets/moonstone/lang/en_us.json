@@ -941,6 +941,22 @@
   "item.moonstone.deceased_contract": "deceased contract",
   "item.moonstone.blood_sun": "blood sun",
   "item.blood_sun.tool.string": "kill the mob",
+  "item.moonstone.blood_jelly": "blood jelly",
+
+  "item.moonstone.atp_height": "",
+  "item.moonstone.cell_god": "",
+  "item.moonstone.cell_ground": "",
+  "item.moonstone.cell_inheritance": "",
+  "item.moonstone.cell_oxygen": "",
+  "item.moonstone.cell_big_boom":"",
+  "item.moonstone.cell_break_down_water": "",
+  "item.moonstone.cell_darwin": "",
+  "item.moonstone.cell_disorder":"",
+  "item.moonstone.cell_in_air": "",
+  "item.moonstone.cell_in_water": "",
+  "item.moonstone.cell_off_on": "",
+  "item.moonstone.speed_metabolism":"",
+
 
 
   "advancements.tooltip.blood.hand": "",

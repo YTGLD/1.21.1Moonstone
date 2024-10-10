@@ -1,8 +1,9 @@
 package com.moonstone.moonstonemod.item.nightmare;
 
 import com.moonstone.moonstonemod.Handler;
+import com.moonstone.moonstonemod.init.Effects;
 import com.moonstone.moonstonemod.init.Items;
-import com.moonstone.moonstonemod.moonstoneitem.INightmare;
+import com.moonstone.moonstonemod.init.moonstoneitem.i.INightmare;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -32,7 +33,14 @@ public class nightmarewater extends Item implements INightmare {
         living.addEffect(new MobEffectInstance(MobEffects.UNLUCK, 300, 0));
         living.addEffect(new MobEffectInstance(MobEffects.GLOWING, 300, 0));
         living.addEffect(new MobEffectInstance(MobEffects.HUNGER, 300, 2));
-
+        living.addEffect(new MobEffectInstance(Effects.blood, 300, 0));
+        living.addEffect(new MobEffectInstance(Effects.rage, 300, 0));
+        living.addEffect(new MobEffectInstance(Effects.rage, 300, 0));
+        living.addEffect(new MobEffectInstance(Effects.blood, 300, 0));
+        living.addEffect(new MobEffectInstance(MobEffects.WIND_CHARGED, 300, 0));
+        living.addEffect(new MobEffectInstance(MobEffects.WEAVING, 300, 0));
+        living.addEffect(new MobEffectInstance(MobEffects.OOZING, 300, 0));
+        living.addEffect(new MobEffectInstance(MobEffects.INFESTED, 300, 0));
         if (Handler.hascurio(living, Items.nightmareeye.get())) {
             living.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 1200, 2));
             living.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1200, 1));

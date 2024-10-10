@@ -2,7 +2,7 @@ package com.moonstone.moonstonemod.item.BloodVirus.evil;
 
 import com.moonstone.moonstonemod.entity.bloodvruis.blood_orb_owner;
 import com.moonstone.moonstonemod.init.EntityTs;
-import com.moonstone.moonstonemod.moonstoneitem.Blood;
+import com.moonstone.moonstonemod.init.moonstoneitem.i.Blood;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;

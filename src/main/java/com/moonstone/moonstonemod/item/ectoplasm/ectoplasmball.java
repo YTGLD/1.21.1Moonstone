@@ -1,6 +1,6 @@
 package com.moonstone.moonstonemod.item.ectoplasm;
 
-import com.moonstone.moonstonemod.moonstoneitem.IEctoplasm;
+import com.moonstone.moonstonemod.init.moonstoneitem.i.IEctoplasm;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;

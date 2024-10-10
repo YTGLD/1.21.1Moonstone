@@ -2,7 +2,7 @@ package com.moonstone.moonstonemod.item.ectoplasm.soul;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.moonstone.moonstonemod.moonstoneitem.CommonItem;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.CommonItem;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;

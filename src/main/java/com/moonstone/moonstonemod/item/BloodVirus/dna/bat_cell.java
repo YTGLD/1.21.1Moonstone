@@ -6,7 +6,7 @@ import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.bloodvruis.blood_bat;
 import com.moonstone.moonstonemod.init.EntityTs;
 import com.moonstone.moonstonemod.init.Items;
-import com.moonstone.moonstonemod.moonstoneitem.BloodViru;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.BloodViru;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;

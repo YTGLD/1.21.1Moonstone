@@ -3,7 +3,7 @@ package com.moonstone.moonstonemod.item.TheNecora.bnabush;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.nightmare.nightmare_giant;
 import com.moonstone.moonstonemod.init.Items;
-import com.moonstone.moonstonemod.moonstoneitem.extend.TheNecoraIC;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.TheNecoraIC;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;

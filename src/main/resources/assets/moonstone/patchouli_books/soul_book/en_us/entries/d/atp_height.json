@@ -1,0 +1,15 @@
+{
+  "name": "ATP高能量",
+  "icon": "moonstone:atp_height",
+  "category": "moonstone:d",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:atp_height",
+      "title": "-ATP高能量-",
+      "text":"使用任意瘟疫物品右击医药箱，再手持右键即可有概率获得$(br2)右键存入培养皿内$(br)每4个ATP高能量提供2点最大生命值"
+    }
+  ]
+}

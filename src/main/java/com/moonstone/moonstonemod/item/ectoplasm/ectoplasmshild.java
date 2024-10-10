@@ -1,7 +1,7 @@
 package com.moonstone.moonstonemod.item.ectoplasm;
 
 import com.moonstone.moonstonemod.init.DataReg;
-import com.moonstone.moonstonemod.moonstoneitem.ectoplasm;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.ectoplasm;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;

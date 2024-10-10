@@ -1,7 +1,7 @@
 package com.moonstone.moonstonemod.item.maulice;
 
 import com.moonstone.moonstonemod.init.DataReg;
-import com.moonstone.moonstonemod.moonstoneitem.MLS;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.MLS;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;

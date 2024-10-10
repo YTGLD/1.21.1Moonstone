@@ -5,14 +5,15 @@ import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.flysword;
 import com.moonstone.moonstonemod.entity.suddenrain;
-import com.moonstone.moonstonemod.entity.zombie.cell_giant;
 import com.moonstone.moonstonemod.entity.zombie.cell_zombie;
 import com.moonstone.moonstonemod.init.DataReg;
 import com.moonstone.moonstonemod.init.EntityTs;
 import com.moonstone.moonstonemod.init.Items;
 import com.moonstone.moonstonemod.init.Particles;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.MLS;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.Perhaps;
+import com.moonstone.moonstonemod.init.moonstoneitem.i.*;
 import com.moonstone.moonstonemod.item.BloodVirus.Skill.batskill;
-import com.moonstone.moonstonemod.item.BloodVirus.ex.BloodViru;
 import com.moonstone.moonstonemod.item.TheNecora.bnabush.cell_blood;
 import com.moonstone.moonstonemod.item.TheNecora.bnabush.cell_boom;
 import com.moonstone.moonstonemod.item.TheNecora.bnabush.cell_calcification;
@@ -23,7 +24,6 @@ import com.moonstone.moonstonemod.item.maxitem.uncommon.plague;
 import com.moonstone.moonstonemod.item.nanodoom.buyme.wind_and_rain;
 import com.moonstone.moonstonemod.item.nanodoom.thefruit;
 import com.moonstone.moonstonemod.item.plague.ALL.dna;
-import com.moonstone.moonstonemod.moonstoneitem.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
@@ -65,7 +65,6 @@ import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.RenderTooltipEvent;
 import net.neoforged.neoforge.event.entity.living.*;
-import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
@@ -1758,7 +1757,7 @@ public class AllEvent {
     public void nightmarestone(LivingIncomingDamageEvent event){
         if (event.getEntity() instanceof Player player) {
             if (Handler.hascurio(player, Items.nightmarestone.get())) {
-                int s = Mth.nextInt(RandomSource.create(), 1, 5);
+                int s = Mth.nextInt(RandomSource.create(), 1, 6);
                 if (s == 1)
                     player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 100, 0));
                 if (s == 2)
@@ -2052,7 +2051,7 @@ public class AllEvent {
             tooltipEvent.setBackgroundStart(0x00000000);
             tooltipEvent.setBackgroundEnd(0x00000000);
         }
-        if (stack.getItem() instanceof IDoom||stack.getItem() instanceof Perhaps) {
+        if (stack.getItem() instanceof IDoom ||stack.getItem() instanceof Perhaps) {
             tooltipEvent.setBorderStart(0xFF83DEFC);
             tooltipEvent.setBorderEnd(0xFF0296FE);
 
@@ -2061,7 +2060,7 @@ public class AllEvent {
 
         }
 
-        if (stack.getItem() instanceof Iplague||stack.getItem() instanceof Blood) {
+        if (stack.getItem() instanceof Iplague ||stack.getItem() instanceof Blood) {
             tooltipEvent.setBorderStart(0xFF800000);
             tooltipEvent.setBorderEnd(0x0ff800000);
             tooltipEvent.setBackgroundStart(0x00000000);

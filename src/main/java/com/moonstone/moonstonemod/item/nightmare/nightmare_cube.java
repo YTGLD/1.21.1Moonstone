@@ -3,7 +3,7 @@ package com.moonstone.moonstonemod.item.nightmare;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.zombie.red_entity;
 import com.moonstone.moonstonemod.init.EntityTs;
-import com.moonstone.moonstonemod.moonstoneitem.nightmare;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;

@@ -2,8 +2,8 @@ package com.moonstone.moonstonemod.item.maxitem;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.moonstone.moonstonemod.moonstoneitem.Iwar;
-import com.moonstone.moonstonemod.moonstoneitem.UnCommonItem;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.UnCommonItem;
+import com.moonstone.moonstonemod.init.moonstoneitem.i.Iwar;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;

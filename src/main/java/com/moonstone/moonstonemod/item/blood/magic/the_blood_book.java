@@ -1,6 +1,6 @@
 package com.moonstone.moonstonemod.item.blood.magic;
 
-import com.moonstone.moonstonemod.moonstoneitem.Blood;
+import com.moonstone.moonstonemod.init.moonstoneitem.i.Blood;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;

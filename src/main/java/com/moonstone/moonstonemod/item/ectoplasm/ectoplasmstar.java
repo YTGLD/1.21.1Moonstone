@@ -2,7 +2,7 @@ package com.moonstone.moonstonemod.item.ectoplasm;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.moonstone.moonstonemod.moonstoneitem.ectoplasm;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.ectoplasm;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;

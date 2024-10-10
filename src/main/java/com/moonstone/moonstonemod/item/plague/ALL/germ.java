@@ -1,6 +1,6 @@
 package com.moonstone.moonstonemod.item.plague.ALL;
 
-import com.moonstone.moonstonemod.moonstoneitem.extend.medIC;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.medIC;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 public class germ extends medIC implements ICurioItem {

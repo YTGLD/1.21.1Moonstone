@@ -38,6 +38,8 @@ public class MoonStoneMod {
     public static final String MODID = "moonstone";
     public static final Logger LOGGER = LogUtils.getLogger();
     public MoonStoneMod(IEventBus eventBus, ModContainer modContainer){
+
+
         NeoForge.EVENT_BUS.register(new AllEvent());
         NeoForge.EVENT_BUS.register(new LootEvent());
         NeoForge.EVENT_BUS.register(new Village());
@@ -45,6 +47,7 @@ public class MoonStoneMod {
         NeoForge.EVENT_BUS.register(new NewEvent());
         AttReg.REGISTRY.register(eventBus);
 
+        DNAItems.REGISTRY.register(eventBus);
         LootReg.REGISTRY.register(eventBus);
         EntityTs.REGISTRY.register(eventBus);
         DataReg.REGISTRY.register(eventBus);
@@ -52,9 +55,9 @@ public class MoonStoneMod {
         Particles.PARTICLE_TYPES.register(eventBus);
         Items.REGISTRY.register(eventBus);
         Tab.TABS.register(eventBus);
-
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.fc);
     }
+
     @EventBusSubscriber(modid = MoonStoneMod.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
     public static class Client {
         @SubscribeEvent
