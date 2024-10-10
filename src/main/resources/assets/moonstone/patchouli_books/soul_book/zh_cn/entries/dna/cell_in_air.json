@@ -1,0 +1,15 @@
+{
+  "name": "大气亲和性",
+  "icon": "moonstone:cell_in_air",
+  "category": "moonstone:dna",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:cell_in_air",
+      "title": "-大气亲和性-",
+      "text":"使用任意瘟疫物品右击医药箱，再手持右键即可有概率获得$(br2)右键存入培养皿内$(br2)增加跳跃高度，其效果取决于进化基因的数量"
+    }
+  ]
+}

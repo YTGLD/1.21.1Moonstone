@@ -16,6 +16,7 @@ import com.moonstone.moonstonemod.item.maxitem.malice_die;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_head;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_heart;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_orb;
+import com.moonstone.moonstonemod.item.plague.ALL.dna;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -33,6 +34,10 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 public class NewEvent {
+    @SubscribeEvent
+    public  void doBreak(LivingEntityUseItemEvent.Start event){
+        dna.doBreak(event);
+    }
     @SubscribeEvent
     public void LivingHealEvent(LivingHealEvent event) {
         nightmare_orb.nightmare_orb_heal(event);
@@ -72,6 +77,7 @@ public class NewEvent {
         deceased_contract.attack(event);
         malice_die.att(event);
         god_lead.hurtS(event);
+        dna.hur(event);
         if (event.getSource().getEntity() instanceof LivingEntity living){
             if (living.getAttribute(AttReg.alL_attack)!=null){
                 float attack = (float) living.getAttribute(AttReg.alL_attack).getValue();
@@ -110,6 +116,7 @@ public class NewEvent {
         blood_magic_box.Did(event);
         deceased_contract.Did(event);
         blood_sun.Did(event);
+        dna.dieD(event);
     }
     @SubscribeEvent
     public void EffectTick(EntityTickEvent.Post event) {

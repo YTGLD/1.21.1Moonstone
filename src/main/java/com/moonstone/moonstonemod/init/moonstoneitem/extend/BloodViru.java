@@ -11,10 +11,8 @@ import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
-public class BloodViru extends Item implements ICurioItem {
-    public BloodViru() {
-        super(new Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
-    }
+public class BloodViru extends TheNecoraIC implements ICurioItem {
+
     @Override
     public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
         if (stack.get(DataReg.tag)==null){

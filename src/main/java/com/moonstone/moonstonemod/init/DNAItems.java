@@ -10,7 +10,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class DNAItems {
     public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(BuiltInRegistries.ITEM, MoonStoneMod.MODID);
-
     public static final DeferredHolder<Item,?> atp_height =REGISTRY.register("atp_height",()->{return new DNAS(new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
     public static final DeferredHolder<Item,?> cell_big_boom =REGISTRY.register("cell_big_boom",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
     public static final DeferredHolder<Item,?> speed_metabolism =REGISTRY.register("speed_metabolism",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});

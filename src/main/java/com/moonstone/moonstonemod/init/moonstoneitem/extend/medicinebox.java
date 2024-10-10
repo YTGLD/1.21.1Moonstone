@@ -223,12 +223,15 @@ public class medicinebox extends TheNecoraIC {
                 }
             }
         }else {
+            pTooltipComponents.add(Component.literal(""));
+            pTooltipComponents.add(Component.translatable("item.moonstone.medicinebox.tool").withStyle(ChatFormatting.GOLD).withStyle(ChatFormatting.BOLD));
+            pTooltipComponents.add(Component.literal(""));
             pTooltipComponents.add(Component.translatable("key.keyboard.left.shift").withStyle(ChatFormatting.GOLD).withStyle(ChatFormatting.BOLD));
             pTooltipComponents.add(Component.literal(""));
             CompoundTag tag = pStack.get(DataReg.tag);
             if (tag != null){
                 for (String s : tag.getAllKeys()) {
-                    pTooltipComponents.add(Component.translatable(s).withStyle(ChatFormatting.GOLD).withStyle(ChatFormatting.BOLD));
+                    pTooltipComponents.add(Component.translatable(s).withStyle(ChatFormatting.YELLOW).withStyle(ChatFormatting.BOLD));
                 }
             }
         }

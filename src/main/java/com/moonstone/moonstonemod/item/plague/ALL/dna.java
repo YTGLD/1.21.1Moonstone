@@ -17,6 +17,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -26,9 +27,14 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -42,14 +48,23 @@ import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.BundleContents;
 import net.minecraft.world.level.Level;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
 import org.apache.commons.lang3.math.Fraction;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
+import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
+import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class dna extends Item implements Iplague, ICurioItem {
@@ -160,6 +175,28 @@ public class dna extends Item implements Iplague, ICurioItem {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         slotContext.entity().getAttributes().addTransientAttributeModifiers(Head(stack));
+        if (slotContext.entity() instanceof Player player){
+            BundleContents bundlecontents = stack.get(DataComponents.BUNDLE_CONTENTS);
+            if (bundlecontents != null) {
+                bundlecontents.items().forEach((itemStack -> {
+                    if (itemStack.is(DNAItems.speed_metabolism)) {
+                        int count = itemStack.getCount();
+                        int a = count / 32;
+                        if (player.getFoodData().getSaturationLevel() < a&&player.getFoodData().getFoodLevel()>18) {
+                            player.getFoodData().setFoodLevel(player.getFoodData().getFoodLevel() - 1);
+                        }
+                    }
+                    if (itemStack.is(DNAItems.cell_disorder)) {
+                        int count = itemStack.getCount();
+                        int a = count * 10;
+                        if (!player.level().isClientSide&&player.tickCount % a == 0){
+                            player.removeAllEffects();
+                        }
+                    }
+                }));
+
+            }
+        }
     }
 
     @Override
@@ -178,6 +215,100 @@ public class dna extends Item implements Iplague, ICurioItem {
 
     }
 
+    public  static void doBreak(LivingEntityUseItemEvent.Start event){
+        LivingEntity player = event.getEntity();
+        if (Handler.hascurio(player, Items.dna.get())) {
+            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                    ICurioStacksHandler stacksHandler = entry.getValue();
+                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                        ItemStack stack = stackHandler.getStackInSlot(i);
+                        if (stack.is( Items.dna.get())) {
+                            BundleContents bundlecontents = stack.get(DataComponents.BUNDLE_CONTENTS);
+                            if (bundlecontents != null) {
+                                bundlecontents.items().forEach((itemStack -> {
+                                    if (itemStack.is(DNAItems.cell_big_boom)) {
+                                        int count = itemStack.getCount();
+                                        if (event.getItem().getUseAnimation() ==UseAnim.EAT){
+                                            event.setDuration((int) (event.getDuration() * (1 - (count/100f))));
+                                        }
+                                    }
+                                }));
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+    public  static void hur(LivingIncomingDamageEvent event){
+        Entity p = event.getEntity();
+        if (p instanceof Player player) {
+            if (Handler.hascurio(player, Items.dna.get())) {
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.dna.get())) {
+                                BundleContents bundlecontents = stack.get(DataComponents.BUNDLE_CONTENTS);
+                                if (bundlecontents != null) {
+                                    bundlecontents.items().forEach((itemStack -> {
+                                        if (itemStack.is(DNAItems.cell_inheritance)) {
+                                            float s = itemStack.getCount();//64
+                                            s/=100f;//0.64
+                                            s/=3.2f;//0.2
+                                            event.setAmount(event.getAmount()*(1-s));
+                                        }
+                                    }));
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+    public  static void dieD(LivingDeathEvent event){
+        Entity p = event.getSource().getEntity();
+        if (p instanceof Player player) {
+            if (Handler.hascurio(player, Items.dna.get())) {
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.dna.get())) {
+                                BundleContents bundlecontents = stack.get(DataComponents.BUNDLE_CONTENTS);
+                                if (bundlecontents != null) {
+                                    bundlecontents.items().forEach((itemStack -> {
+                                        if (itemStack.is(DNAItems.cell_darwin)) {
+                                            float count = itemStack.getCount();
+                                            if (Mth.nextInt(RandomSource.create(),1,2)==1){
+                                                player.heal(count/8);
+                                            }else {
+                                                player.hurt(player.damageSources().magic(),count/32);
+                                            }
+                                        }
+                                        if (itemStack.is(DNAItems.cell_god)) {
+                                            float count = itemStack.getCount();
+                                            player.heal(count/32);
+                                        }
+                                    }));
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
     private Multimap<Holder<Attribute>, AttributeModifier> Head(ItemStack stack){
         Multimap<Holder<Attribute>, AttributeModifier> multimap = HashMultimap.create();
 
@@ -187,15 +318,68 @@ public class dna extends Item implements Iplague, ICurioItem {
                 if (itemStack.is(DNAItems.atp_height)) {
                     int count = itemStack.getCount();
                     int a = count / 4;
-
-
                     multimap.put(Attributes.MAX_HEALTH, new AttributeModifier(
                             ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
                             a,
                             AttributeModifier.Operation.ADD_VALUE));
-
                 }
 
+                if (itemStack.is(DNAItems.cell_off_on)) {
+                    float count = itemStack.getCount();
+                    count /= 100f;
+                    multimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(
+                            ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
+                            count,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                }
+
+                if (itemStack.is(DNAItems.cell_oxygen)) {
+                    float count = itemStack.getCount();
+                    count /= 100f;
+                    count *= 0.5F;
+                    multimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(
+                            ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
+                            count,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                }
+
+
+                if (itemStack.is(DNAItems.cell_in_water)) {
+                    float count = itemStack.getCount();
+                    count /= 100f;
+                    multimap.put(Attributes.WATER_MOVEMENT_EFFICIENCY, new AttributeModifier(
+                            ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
+                            count,
+                            AttributeModifier.Operation.ADD_VALUE));
+                }
+
+                if (itemStack.is(DNAItems.cell_break_down_water)) {
+                    float count = itemStack.getCount();
+                    count /= 100f;
+                    count *= 1.5F;
+                    multimap.put(NeoForgeMod.SWIM_SPEED, new AttributeModifier(
+                            ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
+                            count,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                }
+
+                if (itemStack.is(DNAItems.cell_in_air)) {
+                    float count = itemStack.getCount();
+                    count /= 100f;
+                    multimap.put(Attributes.JUMP_STRENGTH, new AttributeModifier(
+                            ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
+                            count,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                }
+                if (itemStack.is(DNAItems.cell_ground)) {
+                    float count = itemStack.getCount();
+                    count /= 100f;
+                    count *= 2F;
+                    multimap.put(Attributes.BLOCK_BREAK_SPEED, new AttributeModifier(
+                            ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
+                            count,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                }
             }));
         }
         return multimap;
