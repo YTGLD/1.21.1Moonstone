@@ -17,6 +17,7 @@ public class Tab {
             .icon(()->new ItemStack(Items.necora.get()))
             .title(Component.translatable("itemGroup.tabmoonstone.dna"))
             .displayItems((a,b)->{
+                b.accept(new ItemStack(Items.dna_box.get()));
                 b.accept(new ItemStack(DNAItems.atp_height.get()));
                 b.accept(new ItemStack(DNAItems.cell_god.get()));
                 b.accept(new ItemStack(DNAItems.cell_ground.get()));
