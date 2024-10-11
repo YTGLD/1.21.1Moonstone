@@ -6,6 +6,7 @@ import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.flysword;
 import com.moonstone.moonstonemod.entity.suddenrain;
 import com.moonstone.moonstonemod.entity.zombie.cell_zombie;
+import com.moonstone.moonstonemod.event.loot.DungeonLoot;
 import com.moonstone.moonstonemod.init.DataReg;
 import com.moonstone.moonstonemod.init.EntityTs;
 import com.moonstone.moonstonemod.init.Items;
@@ -2023,10 +2024,12 @@ public class AllEvent {
     }
     @SubscribeEvent
     public void SwordEventLivingEntityUseItemEvent(ItemTooltipEvent event){
+
+
         ItemStack stack = event.getItemStack();
         CompoundTag tag = stack.get(DataReg.tag);
+
         if (tag != null) {
-            ;
             if (tag.getBoolean(wind_and_rain.wind)) {
                 event.getToolTip().add(Component.translatable("item.moonstone.wind_and_rain").withStyle(ChatFormatting.AQUA).withStyle(ChatFormatting.ITALIC));
             }

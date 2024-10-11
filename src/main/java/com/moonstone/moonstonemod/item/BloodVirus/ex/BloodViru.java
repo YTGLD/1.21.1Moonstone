@@ -1,6 +1,7 @@
 package com.moonstone.moonstonemod.item.BloodVirus.ex;
 
 import com.moonstone.moonstonemod.init.DataReg;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.TheNecoraIC;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.damagesource.DamageSource;
@@ -13,10 +14,8 @@ import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
-public class BloodViru extends Item implements ICurioItem {
-    public BloodViru() {
-        super(new Properties().stacksTo(1).rarity(Rarity.UNCOMMON).component(DataComponents.CUSTOM_DATA,CustomData.EMPTY));
-    }
+public class BloodViru extends TheNecoraIC implements ICurioItem {
+
     @Override
     public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
        CompoundTag tag = stack.get(DataReg.tag);

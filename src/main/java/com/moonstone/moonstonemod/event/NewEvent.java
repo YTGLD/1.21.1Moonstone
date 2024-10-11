@@ -1,5 +1,6 @@
 package com.moonstone.moonstonemod.event;
 
+import com.moonstone.moonstonemod.event.loot.DungeonLoot;
 import com.moonstone.moonstonemod.init.AttReg;
 import com.moonstone.moonstonemod.init.DataReg;
 import com.moonstone.moonstonemod.init.Effects;
@@ -19,18 +20,19 @@ import com.moonstone.moonstonemod.item.nightmare.nightmare_orb;
 import com.moonstone.moonstonemod.item.plague.ALL.dna;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
-import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
-import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.entity.player.*;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 public class NewEvent {
@@ -38,6 +40,7 @@ public class NewEvent {
     public  void doBreak(LivingEntityUseItemEvent.Start event){
         dna.doBreak(event);
     }
+
     @SubscribeEvent
     public void LivingHealEvent(LivingHealEvent event) {
         nightmare_orb.nightmare_orb_heal(event);
@@ -59,10 +62,35 @@ public class NewEvent {
                 event.getToolTip().add(Component.translatable("item.moonstone.battery").withStyle(ChatFormatting.GOLD));
             }
         }
+
         if (stack.getItem() instanceof IBattery){
             event.getToolTip().add(Component.translatable("item.moonstone.tooltip.battery").withStyle(ChatFormatting.GOLD));
 
         }
+        if (stack.get(DataReg.tag) !=null) {
+            if (stack.get(DataReg.tag).getBoolean(Difficulty.PEACEFUL.getKey())) {
+
+                event.getToolTip().add(1,Component.translatable("moonstone.difficulty.name.peaceful").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F)))
+                        .append(Component.translatable("moonstone.difficulty.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFDEB887)))));
+
+            }
+            if (stack.get(DataReg.tag).getBoolean(Difficulty.EASY.getKey())) {
+
+                event.getToolTip().add(1,Component.translatable("moonstone.difficulty.name.easy").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F)))
+                        .append(Component.translatable("moonstone.difficulty.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFDEB887)))));
+
+            }
+            if (stack.get(DataReg.tag).getBoolean(Difficulty.NORMAL.getKey())) {
+                event.getToolTip().add(1,Component.translatable("moonstone.difficulty.name.normal").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F)))
+                        .append(Component.translatable("moonstone.difficulty.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFDEB887)))));
+
+            }
+            if (stack.get(DataReg.tag).getBoolean(Difficulty.HARD.getKey())) {
+                event.getToolTip().add(1,Component.translatable("moonstone.difficulty.name.hard").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F)))
+                        .append(Component.translatable("moonstone.difficulty.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFDEB887)))));
+            }
+        }
+
     }
     @SubscribeEvent
     public void LivingHurtEvent(LivingIncomingDamageEvent event){

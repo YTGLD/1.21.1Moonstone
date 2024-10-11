@@ -990,12 +990,21 @@
   "item.moonstone.speed_metabolism": "极速代谢",
   "item.moonstone.medicinebox.tool": "用于粉碎药物或任意基因物品",
   "item.moonstone.dna_box": "药物回收盒",
-  "item.moonstone.medicinebox.tool.2": "你需要右键这个物品来存入，然后长按右键咀嚼",
+  "item.moonstone.medicinebox.tool.2": "你需要右键这个物品来存入，然后长按右键咀嚼，直到下方的红色字体消失",
 
   "item.moonstone.blood_sun": "§4血日",
   "item.moonstone.blood_jelly": "血浆果冻",
   "item.blood_sun.tool.string": "杀死生物召唤末日之灵",
   "entity.moonstone.sun": "末日之灵",
+  "error.moonstone.dna_box": "检测到未知物品ID",
+
+  "moonstone.difficulty.name.all": "的DNA序列",
+  "moonstone.difficulty.name.peaceful": "简单",
+  "moonstone.difficulty.name.easy": "普通",
+  "moonstone.difficulty.name.normal": "复杂",
+  "moonstone.difficulty.name.hard": "极度复杂",
+
+
 
   "item.blood.tool.string.winds.1": "  50%的速度加成转换成攻击伤害",
   "item.blood.tool.string.winds.2": "  如果你佩戴了 梦魇之眼 物品，则伤害加倍"

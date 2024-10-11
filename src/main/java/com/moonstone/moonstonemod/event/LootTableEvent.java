@@ -5,9 +5,13 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.LootTableLoadEvent;
+
+import java.util.Map;
 
 public class LootTableEvent {
 
@@ -15,6 +19,12 @@ public class LootTableEvent {
     public void ItemTooltipEventASD(LootTableLoadEvent event){
 
         LootTable table = event.getTable();
+
+        for (LootContextParam<?> param : event.getTable().getParamSet().getAllowed()){
+            if (param == LootContextParams.THIS_ENTITY){
+
+            }
+        }
 
         if (event.getName().toString().contains("chests/")){
 

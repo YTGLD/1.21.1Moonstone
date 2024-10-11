@@ -4,12 +4,23 @@ import com.google.common.base.Suppliers;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.moonstone.moonstonemod.Handler;
+import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.init.DataReg;
 import com.moonstone.moonstonemod.init.Items;
 import com.moonstone.moonstonemod.init.LootReg;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.TheNecoraIC;
+import com.moonstone.moonstonemod.init.moonstoneitem.i.Iplague;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -18,6 +29,7 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.common.loot.LootModifier;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
@@ -33,6 +45,7 @@ public class DungeonLoot extends LootModifier {
     public @NotNull MapCodec<? extends IGlobalLootModifier> codec() {
         return LootReg.TD.get();
     }
+
     @Override
     protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
 
@@ -269,10 +282,42 @@ public class DungeonLoot extends LootModifier {
             }
         }
 
+        for (ItemStack itemStack : generatedLoot){
+            ServerLevel serverLevel= context.getLevel();
+
+            if (itemStack.getItem() instanceof Iplague){
+                if (serverLevel.getDifficulty()==(Difficulty.PEACEFUL)) {
+                    itemStack.set(DataReg.tag, new CompoundTag());
+                    if (itemStack.get(DataReg.tag) != null) {
+                        itemStack.get(DataReg.tag).putBoolean(Difficulty.PEACEFUL.getKey(), true);
+                    }
+                }
+                if (serverLevel.getDifficulty()==(Difficulty.EASY)) {
+                    itemStack.set(DataReg.tag, new CompoundTag());
+                    if (itemStack.get(DataReg.tag) != null) {
+                        itemStack.get(DataReg.tag).putBoolean(Difficulty.EASY.getKey(), true);
+                    }
+                }
+                if (serverLevel.getDifficulty()==(Difficulty.NORMAL)) {
+                    itemStack.set(DataReg.tag, new CompoundTag());
+                    if (itemStack.get(DataReg.tag) != null) {
+                        itemStack.get(DataReg.tag).putBoolean(Difficulty.NORMAL.getKey(), true);
+                    }
+                }
+                if (serverLevel.getDifficulty()==(Difficulty.HARD)) {
+                    itemStack.set(DataReg.tag, new CompoundTag());
+                    if (itemStack.get(DataReg.tag) != null) {
+                        itemStack.get(DataReg.tag).putBoolean(Difficulty.HARD.getKey(), true);
+                    }
+                }
+            }
+        }
 
 
 
-    return generatedLoot;
+
+
+        return generatedLoot;
     }
 
 }

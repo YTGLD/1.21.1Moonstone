@@ -945,7 +945,7 @@
   "item.moonstone.dna_box": "dna box",
   "item.moonstone.medicinebox.tool.2": "",
 
-
+  "error.moonstone.dna_box": "",
   "item.moonstone.atp_height": "",
   "item.moonstone.cell_god": "",
   "item.moonstone.cell_ground": "",
@@ -971,6 +971,12 @@
   "advancements.tooltip.blood_sun.hand": "",
   "advancements.tooltip.blood_sun.text": "",
   "item.moonstone.medicinebox.tool": "",
+  "moonstone.difficulty.name.all": " DNA",
+
+  "moonstone.difficulty.name.peaceful": "peaceful",
+  "moonstone.difficulty.name.easy": "easy",
+  "moonstone.difficulty.name.normal": "normal",
+  "moonstone.difficulty.name.hard": "hard",
 
   "item.blood.tool.string.winds.1": "5% speed bonus converted to attack damage",
   "item.blood.tool.string.winds.2": "If you wear a nightmare item, the damage doubles",
