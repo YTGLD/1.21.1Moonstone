@@ -1,0 +1,15 @@
+{
+  "name": "眼镜蛇式锁定",
+  "icon": "moonstone:cell_eyes",
+  "category": "moonstone:dna",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:cell_eyes",
+      "title": "-眼镜蛇式锁定-",
+      "text":"这种进化基因只能在普通/复杂/极度复杂的DNA序列物品的内部发现$(br2)右键存入培养皿内$(br2)使附近的生物发光，其效果取决于培养皿内部的进化基因数量"
+    }
+  ]
+}

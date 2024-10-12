@@ -23,4 +23,16 @@ public class DNAItems {
     public static final DeferredHolder<Item,?> cell_ground =REGISTRY.register("cell_ground",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
     public static final DeferredHolder<Item,?> cell_in_water =REGISTRY.register("cell_in_water",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
     public static final DeferredHolder<Item,?> cell_in_air =REGISTRY.register("cell_in_air",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
+
+
+    //10.12
+    public static final DeferredHolder<Item,?> cell_necrosis =REGISTRY.register("cell_necrosis",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
+    public static final DeferredHolder<Item,?> cell_digestion =REGISTRY.register("cell_digestion",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
+    public static final DeferredHolder<Item,?> cell_acid =REGISTRY.register("cell_acid",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
+    public static final DeferredHolder<Item,?> cell_eyes =REGISTRY.register("cell_eyes",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
+    public static final DeferredHolder<Item,?> cell_bone_add =REGISTRY.register("cell_bone_add",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
+    public static final DeferredHolder<Item,?> cell_sense =REGISTRY.register("cell_sense",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
+
+
+
 }

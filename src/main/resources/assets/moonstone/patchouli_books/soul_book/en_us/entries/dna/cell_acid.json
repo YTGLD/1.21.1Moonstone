@@ -1,0 +1,15 @@
+{
+  "name": "酸性液体逆流",
+  "icon": "moonstone:cell_acid",
+  "category": "moonstone:dna",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:cell_acid",
+      "title": "-酸性液体逆流-",
+      "text":"这种进化基因只能在普通/复杂/极度复杂的DNA序列物品的内部发现$(br2)右键存入培养皿内$(br2)攻击会腐蚀目标身上的装备，其效果取决于培养皿内部的进化基因数量"
+    }
+  ]
+}

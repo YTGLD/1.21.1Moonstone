@@ -40,7 +40,10 @@ public class NewEvent {
     public  void doBreak(LivingEntityUseItemEvent.Start event){
         dna.doBreak(event);
     }
-
+    @SubscribeEvent
+    public  void Finish(LivingEntityUseItemEvent.Finish event){
+        dna.eat(event);
+    }
     @SubscribeEvent
     public void LivingHealEvent(LivingHealEvent event) {
         nightmare_orb.nightmare_orb_heal(event);

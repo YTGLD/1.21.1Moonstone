@@ -18,6 +18,15 @@ public class Tab {
             .title(Component.translatable("itemGroup.tabmoonstone.dna"))
             .displayItems((a,b)->{
                 b.accept(new ItemStack(Items.dna_box.get()));
+
+                b.accept(new ItemStack(DNAItems.cell_necrosis.get()));
+                b.accept(new ItemStack(DNAItems.cell_digestion.get()));
+                b.accept(new ItemStack(DNAItems.cell_acid.get()));
+                b.accept(new ItemStack(DNAItems.cell_eyes.get()));
+                b.accept(new ItemStack(DNAItems.cell_bone_add.get()));
+                b.accept(new ItemStack(DNAItems.cell_sense.get()));
+
+
                 b.accept(new ItemStack(DNAItems.atp_height.get()));
                 b.accept(new ItemStack(DNAItems.cell_god.get()));
                 b.accept(new ItemStack(DNAItems.cell_ground.get()));

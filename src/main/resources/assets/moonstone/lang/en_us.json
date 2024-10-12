@@ -960,6 +960,13 @@
   "item.moonstone.cell_off_on": "",
   "item.moonstone.speed_metabolism":"",
 
+  "item.moonstone.cell_necrosis":"",
+  "item.moonstone.cell_digestion":"",
+  "item.moonstone.cell_acid":"",
+  "item.moonstone.cell_eyes":"",
+  "item.moonstone.cell_bone_add":"",
+  "item.moonstone.cell_sense":"",
+
 
 
   "advancements.tooltip.blood.hand": "",
@@ -977,6 +984,7 @@
   "moonstone.difficulty.name.easy": "easy",
   "moonstone.difficulty.name.normal": "normal",
   "moonstone.difficulty.name.hard": "hard",
+
 
   "item.blood.tool.string.winds.1": "5% speed bonus converted to attack damage",
   "item.blood.tool.string.winds.2": "If you wear a nightmare item, the damage doubles",

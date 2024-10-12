@@ -111,6 +111,11 @@ public class dna_box extends TheNecoraIC {
         int count2 = Mth.nextInt(RandomSource.create(),3,7);
         int count3 = Mth.nextInt(RandomSource.create(),2,8);
         int count4 = Mth.nextInt(RandomSource.create(),1,2);
+        int cn = Mth.nextInt(RandomSource.create(),2,4);
+        int cn1 = Mth.nextInt(RandomSource.create(),3,5);
+        int cn2 = Mth.nextInt(RandomSource.create(),1,5);
+        int cn3 = Mth.nextInt(RandomSource.create(),2,6);
+        int cn4 = Mth.nextInt(RandomSource.create(),1,6);
 
         int count5 = Mth.nextInt(RandomSource.create(),1,2);
         if (stack.get(DataReg.tag)!=null){
@@ -230,6 +235,7 @@ public class dna_box extends TheNecoraIC {
                         stack.get(DataReg.tag).getAllKeys().remove(itemId);
                         break;
                     }
+
                     if (itemId.contains(Difficulty.EASY.getKey())) {
                         int b = 2;
                         switch (Mth.nextInt(RandomSource.create(), 1, 13)) {
@@ -271,6 +277,25 @@ public class dna_box extends TheNecoraIC {
                                 break;
                             case 13:
                                 player.addItem(new ItemStack(DNAItems.cell_in_air, count * b));
+                                break;
+
+                            case 14:
+                                player.addItem(new ItemStack(DNAItems.cell_necrosis, cn * b));
+                                break;
+                            case 15:
+                                player.addItem(new ItemStack(DNAItems.cell_digestion, cn1 * b));
+                                break;
+                            case 16:
+                                player.addItem(new ItemStack(DNAItems.cell_acid, cn2 * b));
+                                break;
+                            case 17:
+                                player.addItem(new ItemStack(DNAItems.cell_eyes, cn3 * b));
+                                break;
+                            case 18:
+                                player.addItem(new ItemStack(DNAItems.cell_bone_add, cn4 * b));
+                                break;
+                            case 19:
+                                player.addItem(new ItemStack(DNAItems.cell_sense, count5 * b));
                                 break;
                         }
                         stack.get(DataReg.tag).getAllKeys().remove(itemId);
@@ -318,13 +343,32 @@ public class dna_box extends TheNecoraIC {
                             case 13:
                                 player.addItem(new ItemStack(DNAItems.cell_in_air, count * b));
                                 break;
+
+                            case 14:
+                                player.addItem(new ItemStack(DNAItems.cell_necrosis, cn * b));
+                                break;
+                            case 15:
+                                player.addItem(new ItemStack(DNAItems.cell_digestion, cn1 * b));
+                                break;
+                            case 16:
+                                player.addItem(new ItemStack(DNAItems.cell_acid, cn2 * b));
+                                break;
+                            case 17:
+                                player.addItem(new ItemStack(DNAItems.cell_eyes, cn3 * b));
+                                break;
+                            case 18:
+                                player.addItem(new ItemStack(DNAItems.cell_bone_add, cn4 * b));
+                                break;
+                            case 19:
+                                player.addItem(new ItemStack(DNAItems.cell_sense, count5 * b));
+                                break;
                         }
                         stack.get(DataReg.tag).getAllKeys().remove(itemId);
                         break;
                     }
                     if (itemId.contains(Difficulty.HARD.getKey())) {
                         int b = 4;
-                        switch (Mth.nextInt(RandomSource.create(), 1, 13)) {
+                        switch (Mth.nextInt(RandomSource.create(), 1, 19)) {
                             case 1:
                                 player.addItem(new ItemStack(DNAItems.atp_height, count * b));
                                 break;
@@ -363,6 +407,25 @@ public class dna_box extends TheNecoraIC {
                                 break;
                             case 13:
                                 player.addItem(new ItemStack(DNAItems.cell_in_air, count * b));
+                                break;
+
+                            case 14:
+                                player.addItem(new ItemStack(DNAItems.cell_necrosis, cn * b));
+                                break;
+                            case 15:
+                                player.addItem(new ItemStack(DNAItems.cell_digestion, cn1 * b));
+                                break;
+                            case 16:
+                                player.addItem(new ItemStack(DNAItems.cell_acid, cn2 * b));
+                                break;
+                            case 17:
+                                player.addItem(new ItemStack(DNAItems.cell_eyes, cn3 * b));
+                                break;
+                            case 18:
+                                player.addItem(new ItemStack(DNAItems.cell_bone_add, cn4 * b));
+                                break;
+                            case 19:
+                                player.addItem(new ItemStack(DNAItems.cell_sense, count5 * b));
                                 break;
                         }
                         stack.get(DataReg.tag).getAllKeys().remove(itemId);

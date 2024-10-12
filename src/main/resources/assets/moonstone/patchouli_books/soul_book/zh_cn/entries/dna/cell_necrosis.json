@@ -1,0 +1,15 @@
+{
+  "name": "液化性坏死",
+  "icon": "moonstone:cell_necrosis",
+  "category": "moonstone:dna",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:cell_necrosis",
+      "title": "-液化性坏死-",
+      "text":"这种进化基因只能在普通/复杂/极度复杂的DNA序列物品的内部发现$(br2)右键存入培养皿内$(br2)提高治疗速度，其效果取决于培养皿内部的进化基因数量"
+    }
+  ]
+}

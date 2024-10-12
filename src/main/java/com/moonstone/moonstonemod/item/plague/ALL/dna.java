@@ -34,6 +34,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -48,6 +49,8 @@ import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.BundleContents;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
@@ -193,6 +196,17 @@ public class dna extends Item implements Iplague, ICurioItem {
                             player.removeAllEffects();
                         }
                     }
+                    if (itemStack.is(DNAItems.cell_eyes)) {
+                        float count = itemStack.getCount();//64
+                        count/=4;
+                        Vec3 playerPos = player.position().add(0, 0.75, 0);
+                        List<LivingEntity> entities = player.level().getEntitiesOfClass(LivingEntity.class, new AABB(playerPos.x - count, playerPos.y - count, playerPos.z - count, playerPos.x + count, playerPos.y + count, playerPos.z + count));
+
+                        for (LivingEntity living : entities){
+                            living.addEffect(new MobEffectInstance(MobEffects.GLOWING,100,0,false,false));
+                        }
+
+                    }
                 }));
 
             }
@@ -229,6 +243,7 @@ public class dna extends Item implements Iplague, ICurioItem {
                             BundleContents bundlecontents = stack.get(DataComponents.BUNDLE_CONTENTS);
                             if (bundlecontents != null) {
                                 bundlecontents.items().forEach((itemStack -> {
+
                                     if (itemStack.is(DNAItems.cell_big_boom)) {
                                         int count = itemStack.getCount();
                                         if (event.getItem().getUseAnimation() ==UseAnim.EAT){
@@ -241,6 +256,38 @@ public class dna extends Item implements Iplague, ICurioItem {
                     }
                 }
             });
+        }
+    }
+    public  static void eat(LivingEntityUseItemEvent.Finish event){
+        LivingEntity kl = event.getEntity();
+        if (kl instanceof Player player) {
+            if (Handler.hascurio(player, Items.dna.get())) {
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.dna.get())) {
+                                BundleContents bundlecontents = stack.get(DataComponents.BUNDLE_CONTENTS);
+                                if (bundlecontents != null) {
+                                    bundlecontents.items().forEach((itemStack -> {
+                                        if (itemStack.is(DNAItems.cell_digestion)) {
+
+                                            int count = itemStack.getCount();
+                                            if (event.getItem().getUseAnimation() == UseAnim.EAT) {
+                                                player.getFoodData().setFoodLevel(player.getFoodData().getFoodLevel()+count/10);
+                                                player.getFoodData().setSaturation(player.getFoodData().getSaturationLevel()+count/10f);
+                                            }
+                                        }
+                                    }));
+                                }
+                            }
+                        }
+                    }
+                });
+            }
         }
     }
     public  static void hur(LivingIncomingDamageEvent event){
@@ -263,6 +310,46 @@ public class dna extends Item implements Iplague, ICurioItem {
                                             s/=100f;//0.64
                                             s/=3.2f;//0.2
                                             event.setAmount(event.getAmount()*(1-s));
+                                        }
+                                    }));
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+        if (event.getSource().getEntity() instanceof Player player) {
+            if (Handler.hascurio(player, Items.dna.get())) {
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.dna.get())) {
+                                BundleContents bundlecontents = stack.get(DataComponents.BUNDLE_CONTENTS);
+                                if (bundlecontents != null) {
+                                    bundlecontents.items().forEach((itemStack -> {
+                                        if (itemStack.is(DNAItems.cell_acid)) {
+                                            int count = itemStack.getCount();//64
+                                            ItemStack head = event.getEntity().getItemBySlot(EquipmentSlot.HEAD);
+                                            if (!head.isEmpty()&&head.getMaxDamage()!=0){
+                                                head.hurtAndBreak(count, event.getEntity(),EquipmentSlot.HEAD);
+                                            }
+                                            ItemStack CHEST = event.getEntity().getItemBySlot(EquipmentSlot.CHEST);
+                                            if (!CHEST.isEmpty()&&CHEST.getMaxDamage()!=0){
+                                                CHEST.hurtAndBreak(count, event.getEntity(),EquipmentSlot.CHEST);
+                                            }
+                                            ItemStack LEGS = event.getEntity().getItemBySlot(EquipmentSlot.LEGS);
+                                            if (!LEGS.isEmpty()&&LEGS.getMaxDamage()!=0){
+                                                LEGS.hurtAndBreak(count, event.getEntity(),EquipmentSlot.LEGS);
+                                            }
+                                            ItemStack FEET = event.getEntity().getItemBySlot(EquipmentSlot.FEET);
+                                            if (!FEET.isEmpty()&&FEET.getMaxDamage()!=0){
+                                                FEET.hurtAndBreak(count, event.getEntity(),EquipmentSlot.HEAD);
+                                            }
                                         }
                                     }));
                                 }
@@ -380,6 +467,36 @@ public class dna extends Item implements Iplague, ICurioItem {
                             count,
                             AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
                 }
+                if (itemStack.is(DNAItems.cell_necrosis)) {
+                    float count = itemStack.getCount();
+                    count /= 100f;
+                    multimap.put(AttReg.heal, new AttributeModifier(
+                            ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
+                            count,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                }
+                if (itemStack.is(DNAItems.cell_bone_add)) {
+                    float count = itemStack.getCount();
+                    count /= 4f;
+                    multimap.put(Attributes.ARMOR, new AttributeModifier(
+                            ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
+                            count,
+                            AttributeModifier.Operation.ADD_VALUE));
+                }
+                if (itemStack.is(DNAItems.cell_sense)) {
+                    float count = itemStack.getCount();
+                    count /= 100f;
+                    multimap.put(Attributes.OXYGEN_BONUS, new AttributeModifier(
+                            ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
+                            count,
+                            AttributeModifier.Operation.ADD_VALUE));
+
+                    multimap.put(Attributes.SUBMERGED_MINING_SPEED, new AttributeModifier(
+                            ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
+                            count*10,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                }
+
             }));
         }
         return multimap;

@@ -1004,6 +1004,13 @@
   "moonstone.difficulty.name.normal": "复杂",
   "moonstone.difficulty.name.hard": "极度复杂",
 
+  "item.moonstone.cell_necrosis":"液化性坏死",
+  "item.moonstone.cell_digestion":"表皮消化",
+  "item.moonstone.cell_acid":"酸性液体逆流",
+  "item.moonstone.cell_eyes":"眼镜蛇式锁定",
+  "item.moonstone.cell_bone_add":"骨骼结构异化",
+  "item.moonstone.cell_sense":"感官系统强化",
+
 
 
   "item.blood.tool.string.winds.1": "  50%的速度加成转换成攻击伤害",
