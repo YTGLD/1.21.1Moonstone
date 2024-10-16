@@ -967,7 +967,16 @@
   "item.moonstone.cell_bone_add":"",
   "item.moonstone.cell_sense":"",
 
+  "item.moonstone.cell_cranial":"",
+  "item.moonstone.cell_dna_suppression":"",
+  "item.moonstone.cell_putrefactive":"",
+  "item.moonstone.cell_synthesis":"",
 
+  "item.moonstone.cell_compress":"",
+  "item.moonstone.cell_preferential":"",
+  "item.moonstone.cell_flu":"",
+  "item.moonstone.cell_constant":"",
+  "item.moonstone.cell_chromosome":"",
 
   "advancements.tooltip.blood.hand": "",
   "advancements.tooltip.blood.text": "=",
@@ -980,17 +989,29 @@
   "item.moonstone.medicinebox.tool": "",
   "moonstone.difficulty.name.all": " DNA",
 
+  "moonstone.curse.name.all.this": "this item is",
+  "moonstone.curse.name.meet": "meet",
+  "moonstone.curse.name.all": "curse",
+
   "moonstone.difficulty.name.peaceful": "peaceful",
   "moonstone.difficulty.name.easy": "easy",
   "moonstone.difficulty.name.normal": "normal",
   "moonstone.difficulty.name.hard": "hard",
 
+  "moonstone.curse.name.die": "die",
+  "moonstone.curse.name.doctor": "doctor",
+  "moonstone.curse.name.cell_cell": "cell ",
+  "moonstone.curse.name.chromosome": "chromosome",
+  "item.deceased_contract.tool.string": "you can find in curse item",
+
+  "moonstone.curse.name.bone": "bone",
+  "moonstone.curse.name.die_body": "die body",
+  "moonstone.difficulty.name.god": "god",
 
   "item.blood.tool.string.winds.1": "5% speed bonus converted to attack damage",
   "item.blood.tool.string.winds.2": "If you wear a nightmare item, the damage doubles",
-  "item.blood.tool.string.winds": "winds"
+  "item.blood.tool.string.winds": "winds",
 
-
-
+  "item.moonstone.body_stone":"body stone"
 }
 

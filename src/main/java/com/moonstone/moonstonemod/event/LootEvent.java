@@ -16,6 +16,7 @@ import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 
 public class LootEvent {
@@ -70,9 +71,8 @@ public class LootEvent {
                 if (Handler.hascurio(player, Items.nightmareeye.get())){
                     if (Handler.hascurio(player, Items.giant.get())){
                         if (!Handler.hascurio(player, Items.giant_nightmare.get())){
-                            EntityType<?> entity = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.fromNamespaceAndPath(Config.SERVER.ZombieNightmareGiantModID.get(),Config.SERVER.ZombieNightmareGiant.get()));
 
-                            if (event.getEntity().getType() == entity) {
+                            if (event.getEntity() instanceof Warden) {
                                 if (ng == 1) {
                                     event.getDrops().add(new ItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), new ItemStack(Items.giant_nightmare.get())));
                                 }

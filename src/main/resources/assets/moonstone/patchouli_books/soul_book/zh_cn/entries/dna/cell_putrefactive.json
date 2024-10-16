@@ -1,0 +1,15 @@
+{
+  "name": "热分解抑制",
+  "icon": "moonstone:cell_putrefactive",
+  "category": "moonstone:dna",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:cell_putrefactive",
+      "title": "-热分解抑制-",
+      "text":"这种进化基因只能在普通/复杂/极度复杂的DNA序列物品的内部发现$(br2)右键存入培养皿内$(br2)降低火焰伤害和燃烧时间，其效果取决于培养皿内部的进化基因数量"
+    }
+  ]
+}

@@ -37,6 +37,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.SpawnUtil;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffect;
@@ -112,7 +113,35 @@ public class AllEvent {
     public static final  String calcification = cell_calcification.cc;
     public static final  String cb_blood = cell_blood.c_blood;
     public static final String Gorillas ="Gorillas";
-
+    @SubscribeEvent
+    public void th_dna(LivingIncomingDamageEvent event){
+        if ((event.getSource().getEntity() instanceof Player player)){
+            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                    ICurioStacksHandler stacksHandler = entry.getValue();
+                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                        ItemStack stack = stackHandler.getStackInSlot(i);
+                        if (stack.get(DataReg.tag)!=null){
+                            if (stack.get(DataReg.tag).getBoolean(Difficulty.EASY.getKey())){
+                                event.setAmount(event.getAmount()+0);
+                            }
+                            if (stack.get(DataReg.tag).getBoolean(Difficulty.NORMAL.getKey())){
+                                event.setAmount(event.getAmount()+0.25f);
+                            }
+                            if (stack.get(DataReg.tag).getBoolean(Difficulty.HARD.getKey())){
+                                event.setAmount(event.getAmount()+0.5f);
+                            }
+                            if (stack.get(DataReg.tag).getBoolean(NewEvent.lootTable)){
+                                event.setAmount(event.getAmount()+0.75f);
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
     @SubscribeEvent
     public void the_heart(LivingDropsEvent event){
         if ((event.getSource().getEntity() instanceof Player player)) {
@@ -1581,6 +1610,10 @@ public class AllEvent {
             if (!player.getTags().contains("give_moonstone_item_book")) {
                 player.addItem(Items.book.get().getDefaultInstance());
                 player.addTag("give_moonstone_item_book");
+            }
+            if (!player.getTags().contains("give_moonstone_item_body_stone")) {
+                player.addItem(Items.body_stone.get().getDefaultInstance());
+                player.addTag("give_moonstone_item_body_stone");
             }
 
         }

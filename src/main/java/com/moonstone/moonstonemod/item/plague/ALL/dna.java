@@ -3,21 +3,15 @@ package com.moonstone.moonstonemod.item.plague.ALL;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Handler;
-import com.moonstone.moonstonemod.event.AllEvent;
 import com.moonstone.moonstonemod.init.AttReg;
 import com.moonstone.moonstonemod.init.DNAItems;
 import com.moonstone.moonstonemod.init.DataReg;
 import com.moonstone.moonstonemod.init.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.DNAS;
-import com.moonstone.moonstonemod.init.moonstoneitem.i.DNA;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Iplague;
-import com.moonstone.moonstonemod.init.moonstoneitem.extend.medIC;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -30,7 +24,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -51,15 +45,11 @@ import net.minecraft.world.item.component.BundleContents;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
-import net.neoforged.neoforge.event.level.BlockEvent;
 import org.apache.commons.lang3.math.Fraction;
-import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -207,6 +197,21 @@ public class dna extends Item implements Iplague, ICurioItem {
                         }
 
                     }
+
+                    if (itemStack.is(DNAItems.cell_flu)) {
+                        float count = itemStack.getCount();//64
+                        count/=4;
+                        Vec3 playerPos = player.position().add(0, 0.75, 0);
+                        List<LivingEntity> entities = player.level().getEntitiesOfClass(LivingEntity.class, new AABB(playerPos.x - count, playerPos.y - count, playerPos.z - count, playerPos.x + count, playerPos.y + count, playerPos.z + count));
+
+                        for (LivingEntity living : entities){
+                            if (!living.is(player)) {
+                                living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1, false, false));
+                                living.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1, false, false));
+                                living.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 100, 1, false, false));
+                            }
+                        }
+                    }
                 }));
 
             }
@@ -228,7 +233,6 @@ public class dna extends Item implements Iplague, ICurioItem {
         slotContext.entity().getAttributes().removeAttributeModifiers(Head(stack));
 
     }
-
     public  static void doBreak(LivingEntityUseItemEvent.Start event){
         LivingEntity player = event.getEntity();
         if (Handler.hascurio(player, Items.dna.get())) {
@@ -310,6 +314,34 @@ public class dna extends Item implements Iplague, ICurioItem {
                                             s/=100f;//0.64
                                             s/=3.2f;//0.2
                                             event.setAmount(event.getAmount()*(1-s));
+                                        }
+                                        if (itemStack.is(DNAItems.cell_cranial)) {
+                                            float s = itemStack.getCount();//64
+                                            s/=100f;//0.64
+                                            if (event.getSource().is(DamageTypes.FALLING_ANVIL)
+                                                    && event.getSource().is(DamageTypes.FALLING_STALACTITE)
+                                                    && event.getSource().is(DamageTypes.FALLING_BLOCK)
+                                                    && event.getSource().is(DamageTypes.MOB_PROJECTILE))
+                                            {
+                                                event.setAmount(event.getAmount()*(1-s));
+                                            }
+                                        }
+
+                                        if (itemStack.is(DNAItems.cell_compress)) {
+                                            float s = itemStack.getCount();//64
+                                            s/=100f;//0.64
+                                            if (event.getSource().getEntity() instanceof LivingEntity living){
+                                                float dam = event.getAmount() * s;
+                                                living.hurt(living.damageSources().dryOut(),dam);
+                                            }
+                                        }
+                                        if (itemStack.is(DNAItems.cell_constant)) {
+                                            if (!player.getCooldowns().isOnCooldown(DNAItems.cell_constant.get())) {
+                                                float s = itemStack.getCount();//64
+                                                s /= 100f;//0.64
+                                                player.invulnerableTime = player.invulnerableTime + ((int) (player.invulnerableTime * s));
+                                                player.getCooldowns().addCooldown(DNAItems.cell_constant.get(), player.invulnerableTime);
+                                            }
                                         }
                                     }));
                                 }
@@ -494,6 +526,57 @@ public class dna extends Item implements Iplague, ICurioItem {
                     multimap.put(Attributes.SUBMERGED_MINING_SPEED, new AttributeModifier(
                             ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
                             count*10,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                }
+                if (itemStack.is(DNAItems.cell_synthesis)) {
+                    float count = itemStack.getCount();
+                    count /= 100f;
+                    multimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(
+                            ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
+                            count,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                }
+                if (itemStack.is(DNAItems.cell_putrefactive)) {
+                    float count = itemStack.getCount();
+                    count /= 100f;
+                    multimap.put(Attributes.BURNING_TIME, new AttributeModifier(
+                            ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
+                            -count,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                }
+                if (itemStack.is(DNAItems.cell_dna_suppression)) {
+                    float count = itemStack.getCount();
+                    count /= 100f;
+                    multimap.put(AttReg.cit, new AttributeModifier(
+                            ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
+                            count,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                }
+
+                if (itemStack.is(DNAItems.cell_preferential)) {
+                    {
+                        float count = itemStack.getCount();
+                        count /= 100;
+                        multimap.put(AttReg.heal, new AttributeModifier(
+                                ResourceLocation.withDefaultNamespace("base_attack_damage_heal_cell_preferential" + this.getDescriptionId()),
+                                count,
+                                AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                    }
+                    {
+                        float count = itemStack.getCount();
+                        count /= 4;
+                        multimap.put(Attributes.MAX_HEALTH, new AttributeModifier(
+                                ResourceLocation.withDefaultNamespace("base_attack_damage_max_health_cell_preferential" + this.getDescriptionId()),
+                                count,
+                                AttributeModifier.Operation.ADD_VALUE));
+                    }
+                }
+                if (itemStack.is(DNAItems.cell_chromosome)) {
+                    float count = itemStack.getCount();
+                    count /= 10;
+                    multimap.put(Attributes.SAFE_FALL_DISTANCE, new AttributeModifier(
+                            ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
+                            count,
                             AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
                 }
 

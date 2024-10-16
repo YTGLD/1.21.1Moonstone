@@ -1011,8 +1011,39 @@
   "item.moonstone.cell_bone_add":"骨骼结构异化",
   "item.moonstone.cell_sense":"感官系统强化",
 
+  "item.moonstone.cell_cranial":"脑组织转移",
+  "item.moonstone.cell_dna_suppression":"神经递质抑制",
+  "item.moonstone.cell_putrefactive":"热分解抑制",
+  "item.moonstone.cell_synthesis":"肽合成增强",
+
+  "item.moonstone.body_stone":"万魔石",
+
+  "moonstone.curse.name.meet": "肉瘤",
+  "moonstone.curse.name.all": "施加了诅咒[Ctrl]",
+  "moonstone.curse.name.die": "死灵",
+  "moonstone.curse.name.doctor": "巫医",
+
+  "moonstone.curse.name.cell_cell": "细胞",
+  "moonstone.curse.name.chromosome": "染色体",
+  "moonstone.curse.name.bone": "骨头",
+  "moonstone.curse.name.die_body": "尸体",
 
 
+
+
+
+
+
+
+
+  "item.moonstone.cell_compress":"致命基因压缩",
+  "item.moonstone.cell_preferential":"择优进化论",
+  "item.moonstone.cell_flu":"病毒性流感",
+  "item.moonstone.cell_constant":"常量因子激增",
+  "item.moonstone.cell_chromosome":"染色体结构变异",
+  "moonstone.curse.name.all.this": "这个物品被",
+  "item.deceased_contract.tool.string": "你可以在箱子里找到被诅咒的饰品",
+  "moonstone.difficulty.name.god": "类神",
   "item.blood.tool.string.winds.1": "  50%的速度加成转换成攻击伤害",
   "item.blood.tool.string.winds.2": "  如果你佩戴了 梦魇之眼 物品，则伤害加倍"
 }

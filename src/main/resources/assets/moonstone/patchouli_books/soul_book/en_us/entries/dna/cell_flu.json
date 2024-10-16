@@ -1,0 +1,15 @@
+{
+  "name": "病毒性流感",
+  "icon": "moonstone:cell_flu",
+  "category": "moonstone:dna",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:cell_flu",
+      "title": "-病毒性流感-",
+      "text":"这种进化基因只能在类神的DNA序列物品的内部发现$(br2)右键存入培养皿内$(br2)附近生物获得负面BUFF，其效果取决于培养皿内部的进化基因数量"
+    }
+  ]
+}

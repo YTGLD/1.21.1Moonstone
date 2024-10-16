@@ -59,9 +59,6 @@ public class Config {
         motor_speed = BUILDER
                 .comment("The speed of the motor")
                 .defineInRange("motor", 0.15, 0, 999);
-        ZombieNightmareGiant = BUILDER
-                .comment("What creatures should be killed and dropped")
-                .define("Mob","minecraft:warden");
 
         BUILDER.build();
     }
@@ -84,11 +81,6 @@ public class Config {
     public ModConfigSpec.DoubleValue flygene_speed;
     public ModConfigSpec.DoubleValue bloodvirus_speed;
     public ModConfigSpec.DoubleValue motor_speed;
-
-    public ModConfigSpec.ConfigValue<String> ZombieNightmareGiant;
-    public ModConfigSpec.ConfigValue<String> ZombieNightmareGiantModID = BUILDER
-            .comment("What modID with ZombieNightmareGiant Config")
-            .define("ModId","minecraft");
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {

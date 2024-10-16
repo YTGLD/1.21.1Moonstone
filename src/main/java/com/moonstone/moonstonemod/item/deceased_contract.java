@@ -7,10 +7,16 @@ import com.moonstone.moonstonemod.entity.blood;
 import com.moonstone.moonstonemod.entity.zombie.cell_giant;
 import com.moonstone.moonstonemod.entity.zombie.cell_zombie;
 import com.moonstone.moonstonemod.init.AttReg;
+import com.moonstone.moonstonemod.init.DataReg;
 import com.moonstone.moonstonemod.init.EntityTs;
 import com.moonstone.moonstonemod.init.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.TheNecoraIC;
+import com.moonstone.moonstonemod.item.BloodVirus.Skill.batskill;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -23,21 +29,25 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import top.theillusivec4.curios.api.SlotContext;
 
+import java.util.List;
+
 public class deceased_contract extends TheNecoraIC {
-    public static void attack(LivingIncomingDamageEvent event){
-        if (event.getEntity() instanceof Player player){
-            if (Handler.hascurio(player, Items.deceased_contract.get())){
-                event.setAmount(event.getAmount()*1.1f);
+    public static void attack(LivingIncomingDamageEvent event) {
+        if (event.getEntity() instanceof Player player) {
+            if (Handler.hascurio(player, Items.deceased_contract.get())) {
+                event.setAmount(event.getAmount() * 1.1f);
             }
         }
     }
-    public static void Did(LivingDeathEvent event){
-        if (event.getSource().getEntity() instanceof Player player){
-            if (Handler.hascurio(player, Items.deceased_contract.get())){
+
+    public static void Did(LivingDeathEvent event) {
+        if (event.getSource().getEntity() instanceof Player player) {
+            if (Handler.hascurio(player, Items.deceased_contract.get())) {
                 if (!player.getCooldowns().isOnCooldown(Items.deceased_contract.get())) {
                     if (Mth.nextInt(RandomSource.create(), 1, 100) <= 40) {
                         cell_zombie z = new cell_zombie(EntityTs.cell_zombie.get(), player.level());
@@ -82,11 +92,12 @@ public class deceased_contract extends TheNecoraIC {
 
                         player.level().addFreshEntity(blood);
                     }
-                    player.getCooldowns().addCooldown(Items.deceased_contract.get(),1);
+                    player.getCooldowns().addCooldown(Items.deceased_contract.get(), 1);
                 }
             }
         }
     }
+
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         slotContext.entity().getAttributes().addTransientAttributeModifiers(getAttributeModifiers());
@@ -99,39 +110,39 @@ public class deceased_contract extends TheNecoraIC {
 
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers() {
         Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
-        modifierMultimap.put(AttReg.alL_attack, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),  -0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        modifierMultimap.put(AttReg.cit, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),  -0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        modifierMultimap.put(AttReg.heal, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),  -0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        modifierMultimap.put(AttReg.alL_attack, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), -0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        modifierMultimap.put(AttReg.cit, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), -0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        modifierMultimap.put(AttReg.heal, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), -0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         return modifierMultimap;
     }
 
-    private static  Multimap<Holder<Attribute>, AttributeModifier> zombieAtt(Player owner) {
+    private static Multimap<Holder<Attribute>, AttributeModifier> zombieAtt(Player owner) {
         Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
 
-        if (owner.getAttribute(Attributes.ATTACK_DAMAGE)!=null) {
+        if (owner.getAttribute(Attributes.ATTACK_DAMAGE) != null) {
             modifierMultimap.put(Attributes.ATTACK_DAMAGE,
                     new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + Items.deceased_contract.get().getDescriptionId()),
-                            owner.getAttribute(Attributes.ATTACK_DAMAGE).getValue()/2, AttributeModifier.Operation.ADD_VALUE));
+                            owner.getAttribute(Attributes.ATTACK_DAMAGE).getValue() / 2, AttributeModifier.Operation.ADD_VALUE));
         }
-        if (owner.getAttribute(Attributes.ARMOR)!=null) {
+        if (owner.getAttribute(Attributes.ARMOR) != null) {
             modifierMultimap.put(Attributes.ARMOR,
                     new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + Items.deceased_contract.get().getDescriptionId()),
-                            owner.getAttribute(Attributes.ARMOR).getValue()/2, AttributeModifier.Operation.ADD_VALUE));
+                            owner.getAttribute(Attributes.ARMOR).getValue() / 2, AttributeModifier.Operation.ADD_VALUE));
         }
-        if (owner.getAttribute(Attributes.MAX_HEALTH)!=null) {
+        if (owner.getAttribute(Attributes.MAX_HEALTH) != null) {
             modifierMultimap.put(Attributes.MAX_HEALTH,
                     new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + Items.deceased_contract.get().getDescriptionId()),
-                            owner.getAttribute(Attributes.MAX_HEALTH).getValue()/2, AttributeModifier.Operation.ADD_VALUE));
+                            owner.getAttribute(Attributes.MAX_HEALTH).getValue() / 2, AttributeModifier.Operation.ADD_VALUE));
         }
-        if (owner.getAttribute(Attributes.ATTACK_DAMAGE)!=null) {
+        if (owner.getAttribute(Attributes.ATTACK_DAMAGE) != null) {
             modifierMultimap.put(Attributes.ATTACK_DAMAGE,
                     new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + Items.deceased_contract.get().getDescriptionId()),
-                            owner.getAttribute(Attributes.ATTACK_DAMAGE).getValue()/2, AttributeModifier.Operation.ADD_VALUE));
+                            owner.getAttribute(Attributes.ATTACK_DAMAGE).getValue() / 2, AttributeModifier.Operation.ADD_VALUE));
         }
-        if (owner.getAttribute(Attributes.MOVEMENT_SPEED)!=null) {
+        if (owner.getAttribute(Attributes.MOVEMENT_SPEED) != null) {
             modifierMultimap.put(Attributes.MOVEMENT_SPEED,
                     new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + Items.deceased_contract.get().getDescriptionId()),
-                            owner.getAttribute(Attributes.MOVEMENT_SPEED).getValue()/2, AttributeModifier.Operation.ADD_VALUE));
+                            owner.getAttribute(Attributes.MOVEMENT_SPEED).getValue() / 2, AttributeModifier.Operation.ADD_VALUE));
         }
 
         modifierMultimap.put(Attributes.MAX_HEALTH,

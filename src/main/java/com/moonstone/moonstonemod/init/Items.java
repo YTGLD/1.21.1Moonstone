@@ -217,6 +217,7 @@ public class Items {
     public static final DeferredHolder<Item,?> blood_sun =REGISTRY.register("blood_sun", com.moonstone.moonstonemod.item.blood.magic.blood_sun::new);
     public static final DeferredHolder<Item,?> blood_jelly =REGISTRY.register("blood_jelly", com.moonstone.moonstonemod.item.blood.blood_jelly::new);
     public static final DeferredHolder<Item,?> dna_box =REGISTRY.register("dna_box", com.moonstone.moonstonemod.item.plague.dna.dna_box::new);
+    public static final DeferredHolder<Item,?> body_stone =REGISTRY.register("body_stone", com.moonstone.moonstonemod.item.body_stone::new);
 
 
 

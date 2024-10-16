@@ -25,7 +25,7 @@ public class DNAItems {
     public static final DeferredHolder<Item,?> cell_in_air =REGISTRY.register("cell_in_air",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
 
 
-    //10.12
+
     public static final DeferredHolder<Item,?> cell_necrosis =REGISTRY.register("cell_necrosis",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
     public static final DeferredHolder<Item,?> cell_digestion =REGISTRY.register("cell_digestion",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
     public static final DeferredHolder<Item,?> cell_acid =REGISTRY.register("cell_acid",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
@@ -34,5 +34,18 @@ public class DNAItems {
     public static final DeferredHolder<Item,?> cell_sense =REGISTRY.register("cell_sense",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
 
 
+    public static final DeferredHolder<Item,?> cell_cranial =REGISTRY.register("cell_cranial",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
+    public static final DeferredHolder<Item,?> cell_dna_suppression =REGISTRY.register("cell_dna_suppression",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
+    public static final DeferredHolder<Item,?> cell_putrefactive =REGISTRY.register("cell_putrefactive",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
+    public static final DeferredHolder<Item,?> cell_synthesis =REGISTRY.register("cell_synthesis",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
+
+
+
+
+    public static final DeferredHolder<Item,?> cell_compress =REGISTRY.register("cell_compress",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
+    public static final DeferredHolder<Item,?> cell_preferential =REGISTRY.register("cell_preferential",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
+    public static final DeferredHolder<Item,?> cell_flu =REGISTRY.register("cell_flu",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
+    public static final DeferredHolder<Item,?> cell_constant =REGISTRY.register("cell_constant",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
+    public static final DeferredHolder<Item,?> cell_chromosome =REGISTRY.register("cell_chromosome",()->{return new DNAS (new Item.Properties().stacksTo(64).rarity(Rarity.EPIC));});
 
 }

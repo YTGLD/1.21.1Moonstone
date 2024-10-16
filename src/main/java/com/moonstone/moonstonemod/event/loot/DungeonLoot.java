@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.event.NewEvent;
 import com.moonstone.moonstonemod.init.DataReg;
 import com.moonstone.moonstonemod.init.Items;
 import com.moonstone.moonstonemod.init.LootReg;
@@ -29,9 +30,18 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.common.loot.LootModifier;
+import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import org.jetbrains.annotations.NotNull;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
+import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
+import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
+import java.util.Map;
 import java.util.function.Supplier;
 
 public class DungeonLoot extends LootModifier {
@@ -284,6 +294,69 @@ public class DungeonLoot extends LootModifier {
 
         for (ItemStack itemStack : generatedLoot){
             ServerLevel serverLevel= context.getLevel();
+            if (itemStack.getItem() instanceof ICurioItem) {
+                if (entity instanceof Player player) {
+                    if (Handler.hascurio(player,Items.body_stone.get())) {
+                        if (itemStack.get(DataReg.tag) == null) {
+                            itemStack.set(DataReg.tag, new CompoundTag());
+                        }
+                        float meet = Mth.nextFloat(RandomSource.create(), -0.5f, 0.5f);
+                        //health
+
+                        float die = Mth.nextFloat(RandomSource.create(), -0.2f, 0.2f);
+                        //伤害
+
+                        float doctor = Mth.nextFloat(RandomSource.create(), -0.01f, 0.01f);
+                        //治疗
+
+                        float cell_cell = Mth.nextFloat(RandomSource.create(), -0.5f, 0.5f);
+                        //暴击
+
+                        float chromosome = Mth.nextFloat(RandomSource.create(), -1, 1);
+                        //挖掘
+
+                        float bone = Mth.nextFloat(RandomSource.create(), -0.005f, 0.005f);
+                        //速度
+
+                        float die_body = Mth.nextFloat(RandomSource.create(), -1, 1);
+                        //护甲
+
+
+                        int t = Mth.nextInt(RandomSource.create(),1,7);
+                        if (t==1) {
+                            if (itemStack.get(DataReg.tag) != null) {
+                                itemStack.get(DataReg.tag).putFloat(NewEvent.meet, meet);
+                            }
+                        }else if (t==2) {
+                            if (itemStack.get(DataReg.tag) != null) {
+                                itemStack.get(DataReg.tag).putFloat(NewEvent.die, die);
+                            }
+                        }else if (t==3) {
+                            if (itemStack.get(DataReg.tag) != null) {
+                                itemStack.get(DataReg.tag).putFloat(NewEvent.doctor, doctor);
+                            }
+                        } else  if (t==4) {
+                            if (itemStack.get(DataReg.tag) != null) {
+                                itemStack.get(DataReg.tag).putFloat(NewEvent.cell_cell, cell_cell);
+                            }
+                        } else if (t==5) {
+                            if (itemStack.get(DataReg.tag) != null) {
+                                itemStack.get(DataReg.tag).putFloat(NewEvent.chromosome, chromosome);
+                            }
+                        }else  if (t==6) {
+                            if (itemStack.get(DataReg.tag) != null) {
+                                itemStack.get(DataReg.tag).putFloat(NewEvent.bone, bone);
+                            }
+                        }else if (t==7) {
+                            if (itemStack.get(DataReg.tag) != null) {
+                                itemStack.get(DataReg.tag).putFloat(NewEvent.die_body, die_body);
+                            }
+                        }
+                    }
+                }
+            }
+
+
 
             if (itemStack.getItem() instanceof Iplague){
                 if (serverLevel.getDifficulty()==(Difficulty.PEACEFUL)) {
@@ -306,18 +379,103 @@ public class DungeonLoot extends LootModifier {
                 }
                 if (serverLevel.getDifficulty()==(Difficulty.HARD)) {
                     itemStack.set(DataReg.tag, new CompoundTag());
-                    if (itemStack.get(DataReg.tag) != null) {
-                        itemStack.get(DataReg.tag).putBoolean(Difficulty.HARD.getKey(), true);
+                    if (Mth.nextInt(RandomSource.create(),1,2) ==1) {
+                        if (itemStack.get(DataReg.tag) != null) {
+                            itemStack.get(DataReg.tag).putBoolean(Difficulty.HARD.getKey(), true);
+                        }
+                    }else {
+                        if (itemStack.get(DataReg.tag) != null) {
+                            itemStack.get(DataReg.tag).putBoolean(NewEvent.lootTable, true);
+                        }
                     }
                 }
+
             }
         }
 
-
-
-
-
         return generatedLoot;
+    }
+
+    public static void heal(LivingHealEvent event){
+        if (event.getEntity() instanceof Player player){
+            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                    ICurioStacksHandler stacksHandler = entry.getValue();
+                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                        ItemStack stack = stackHandler.getStackInSlot(i);
+                        if (stack.get(DataReg.tag)!=null){
+                            float h = stack.get(DataReg.tag).getFloat(NewEvent.doctor);//20
+                            if (h!=0) {
+                                event.setAmount(event.getAmount() + h);
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+    public static void heal(PlayerEvent.BreakSpeed event){
+        if (event.getEntity() instanceof Player player){
+            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                    ICurioStacksHandler stacksHandler = entry.getValue();
+                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                        ItemStack stack = stackHandler.getStackInSlot(i);
+                        if (stack.get(DataReg.tag)!=null){
+                            float h = stack.get(DataReg.tag).getFloat(NewEvent.chromosome);
+                            if (h!=0) {
+                                event.setNewSpeed(event.getNewSpeed()  + h);
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+    public static void cit(CriticalHitEvent event){
+        if (event.getEntity() instanceof Player player){
+            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                    ICurioStacksHandler stacksHandler = entry.getValue();
+                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                        ItemStack stack = stackHandler.getStackInSlot(i);
+                        if (stack.get(DataReg.tag)!=null){
+                            float h = stack.get(DataReg.tag).getFloat(NewEvent.cell_cell);//20
+                            if (h!=0) {
+                                event.setDamageMultiplier(event.getDamageMultiplier()+ h);
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    public static void attack(LivingIncomingDamageEvent event){
+        if (event.getSource().getEntity() instanceof Player player){
+            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                    ICurioStacksHandler stacksHandler = entry.getValue();
+                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                        ItemStack stack = stackHandler.getStackInSlot(i);
+                        if (stack.get(DataReg.tag)!=null){
+                            float h = stack.get(DataReg.tag).getFloat(NewEvent.die);//5
+                            if (h!=0) {
+                                event.setAmount(event.getAmount() + h);
+                            }
+                        }
+                    }
+                }
+            });
+        }
     }
 
 }

@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.mixin.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.MGuiGraphics;
 import com.moonstone.moonstonemod.client.renderer.MRender;
@@ -52,10 +53,10 @@ public abstract class GuiGraphicsMixin {
     private final List<Vec3> moonstone1_21_1$trailPositions = new ArrayList<>();
 
     @Shadow @Final private PoseStack pose;
+
     @Inject(at = {@At("RETURN")}, method = {"renderItem(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/item/ItemStack;III)V"})
     public void ca$renderItemDecorationsRenderItem(LivingEntity living, Level level, ItemStack stack, int x, int y, int is, CallbackInfo ci) {
         GuiGraphics guiGraphics = (GuiGraphics) (Object) this;
-
         if (living != null) {
             if (stack.getItem() instanceof necora) {
                 int tickCount = living.tickCount;
@@ -90,9 +91,9 @@ public abstract class GuiGraphicsMixin {
 
     @Shadow public abstract PoseStack pose();
     @Inject(at = @At(value = "INVOKE",target = "Lnet/minecraft/client/gui/GuiGraphics;drawManaged(Ljava/lang/Runnable;)V"),method = "renderTooltipInternal(Lnet/minecraft/client/gui/Font;Ljava/util/List;IILnet/minecraft/client/gui/screens/inventory/tooltip/ClientTooltipPositioner;)V")
-    public void moonstone$ClientTooltipPositioner(Font p_282675_, List<ClientTooltipComponent> p_282615_, int p_283230_, int p_283417_, ClientTooltipPositioner p_282442_, CallbackInfo ci) {
+    public void moonstone$ClientTooltipPositioner(Font p_282675_, List<ClientTooltipComponent> p_282615_, int x, int y, ClientTooltipPositioner p_282442_, CallbackInfo ci) {
         moon1_21$drawManaged(()->{
-            RenderTooltipEvent.Pre preEvent = ClientHooks.onRenderTooltipPre(this.tooltipStack, (GuiGraphics)(Object)this, p_283230_, p_283417_, guiWidth(), guiHeight(), p_282615_, p_282675_, p_282442_);
+            RenderTooltipEvent.Pre preEvent = ClientHooks.onRenderTooltipPre(this.tooltipStack, (GuiGraphics)(Object)this, x, y, guiWidth(), guiHeight(), p_282615_, p_282675_, p_282442_);
 
             int i = 0;
             int j = p_282615_.size() == 1 ? -2 : 0;
@@ -137,7 +138,6 @@ public abstract class GuiGraphicsMixin {
         });
 
     }
-
 
 
     @Unique

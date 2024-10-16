@@ -94,6 +94,9 @@ public class malice_die extends CommonItem implements Die {
         if (stack.get(DataReg.tag)!=null) {
 
             float s = stack.get(DataReg.tag).getInt(MALICE_DIE);//1 == 100%
+            if (s > 18) {
+                s=18;
+            }
             s /= 100f;//0.01 = 1%
             multimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(
                     ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()),

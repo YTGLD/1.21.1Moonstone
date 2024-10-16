@@ -19,12 +19,22 @@ public class Tab {
             .displayItems((a,b)->{
                 b.accept(new ItemStack(Items.dna_box.get()));
 
+                b.accept(new ItemStack(DNAItems.cell_compress.get()));
+                b.accept(new ItemStack(DNAItems.cell_preferential.get()));
+                b.accept(new ItemStack(DNAItems.cell_flu.get()));
+                b.accept(new ItemStack(DNAItems.cell_constant.get()));
+                b.accept(new ItemStack(DNAItems.cell_chromosome.get()));
+
                 b.accept(new ItemStack(DNAItems.cell_necrosis.get()));
                 b.accept(new ItemStack(DNAItems.cell_digestion.get()));
                 b.accept(new ItemStack(DNAItems.cell_acid.get()));
                 b.accept(new ItemStack(DNAItems.cell_eyes.get()));
                 b.accept(new ItemStack(DNAItems.cell_bone_add.get()));
                 b.accept(new ItemStack(DNAItems.cell_sense.get()));
+                b.accept(new ItemStack(DNAItems.cell_cranial.get()));
+                b.accept(new ItemStack(DNAItems.cell_dna_suppression.get()));
+                b.accept(new ItemStack(DNAItems.cell_putrefactive.get()));
+                b.accept(new ItemStack(DNAItems.cell_synthesis.get()));
 
 
                 b.accept(new ItemStack(DNAItems.atp_height.get()));
