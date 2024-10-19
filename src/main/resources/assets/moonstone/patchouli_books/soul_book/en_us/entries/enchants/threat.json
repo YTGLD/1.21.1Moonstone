@@ -1,0 +1,15 @@
+{
+  "name": "威胁",
+  "icon": "moonstone:body_stone",
+  "category": "moonstone:enchants",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:body_stone",
+      "title": "-威胁-",
+      "text": "受到伤害有概率使失去的血量翻倍，每级增加1%的概率"
+    }
+  ]
+}

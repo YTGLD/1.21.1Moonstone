@@ -1,0 +1,21 @@
+{
+  "anvil_cost": 1,
+  "description": {
+    "translate": "enchantment.moonstone.threat"
+  },
+  "effects": {},
+  "max_cost": {
+    "base": 30,
+    "per_level_above_first": 10
+  },
+  "max_level": 7,
+  "min_cost": {
+    "base": 1,
+    "per_level_above_first": 10
+  },
+  "slots": [
+    "any"
+  ],
+  "supported_items": "#curios:curio",
+  "weight": 1
+}

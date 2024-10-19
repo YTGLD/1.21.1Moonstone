@@ -488,6 +488,7 @@
 
   "item.moonstone.doomeye": "七剑修罗之心",
   "item.doomeye.tool.string": "受伤召唤7把飞剑攻击敌人",
+  "item.doomeye.tool.string.1": "命中后使目标在5秒内受到的伤害+33%",
 
   "item.moonstone.soulbook": "一本书",
   "item.masticatory.tool.string.2": "吃8个金苹果",
@@ -1028,13 +1029,43 @@
   "moonstone.curse.name.bone": "骨头",
   "moonstone.curse.name.die_body": "尸体",
 
+  "item.moonstone.probability":"机运之石",
 
 
 
+  "item.probability.tool.string.1": "你的攻击伤害将在10%~200%之间浮动",
+  "item.probability.tool.string.2": "你受到的伤害将在25%~200%之间浮动",
+  "item.probability.tool.string.3": "每一点幸运，都会使最小值加1%",
+  "item.probability.tool.string.4": "对于万魔石",
+  "item.probability.tool.string.5": "获得的诅咒的最大和最小值加1",
+  "item.probability.tool.string.6": "每一点幸运都会使最大和最小值加5%",
+
+    "item.body_stone.tool.string": "这个物品会使箱子里的所有饰品附加负面附魔",
+  "item.body_stone.tool.string.1": "并且随机附加1~2个负面附魔",
+  "item.body_stone.tool.string.2": "作为补偿，每个具有负面附魔的物品，都会获得强大的增益",
+  "item.body_stone.tool.string.3": "每级附魔：",
+  "item.body_stone.tool.string.4": "  +3%伤害，暴击，最大生命",
+  "item.body_stone.tool.string.5": "  +6%治疗",
+  "item.body_stone.tool.string.6": "  +6%挖掘速度",
+  "item.body_stone.tool.string.7": "  +9%抗击退",
+  "item.body_stone.tool.string.8": "  +1.2%速度，近战伤害，攻速",
 
 
+  "item.moonstone.luck_ring":"幸运魔戒",
+  "item.luck_ring.tool.string.1":"每5级经验",
+  "item.luck_ring.tool.string.2": "+1 幸运",
 
+  "item.moonstone.luck_stone":"幸运石头",
+  "item.luck_stone.tool.string.1":"每10幸运：",
+  "item.luck_stone.tool.string.2": "+1 抢夺和时运",
 
+  "moonstone.difficulty.name.god_loot_a": "异变",
+  "moonstone.difficulty.name.god_loot_b": "神创",
+  "moonstone.difficulty.name.god_loot_c": "未知",
+  "entity.moonstone.blood_bat": "暗影蝠",
+
+  "enchantment.moonstone.terror": "恐怖",
+  "enchantment.moonstone.threat": "威胁",
 
   "item.moonstone.cell_compress":"致命基因压缩",
   "item.moonstone.cell_preferential":"择优进化论",
@@ -1043,6 +1074,7 @@
   "item.moonstone.cell_chromosome":"染色体结构变异",
   "moonstone.curse.name.all.this": "这个物品被",
   "item.deceased_contract.tool.string": "你可以在箱子里找到被诅咒的饰品",
+  "enchantment.moonstone.malice": "恶意",
   "moonstone.difficulty.name.god": "类神",
   "item.blood.tool.string.winds.1": "  50%的速度加成转换成攻击伤害",
   "item.blood.tool.string.winds.2": "  如果你佩戴了 梦魇之眼 物品，则伤害加倍"

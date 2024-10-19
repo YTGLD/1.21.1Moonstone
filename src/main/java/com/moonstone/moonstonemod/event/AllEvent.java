@@ -136,6 +136,7 @@ public class AllEvent {
                             if (stack.get(DataReg.tag).getBoolean(NewEvent.lootTable)){
                                 event.setAmount(event.getAmount()+0.75f);
                             }
+
                         }
                     }
                 }

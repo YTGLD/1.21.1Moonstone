@@ -16,6 +16,9 @@ import com.moonstone.moonstonemod.entity.client.zombie.ZombieRenderer;
 import com.moonstone.moonstonemod.event.*;
 import com.moonstone.moonstonemod.init.*;
 import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -29,9 +32,13 @@ import net.neoforged.neoforge.client.event.RegisterClientTooltipComponentFactori
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.event.RegisterShadersEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.event.TagsUpdatedEvent;
 import org.slf4j.Logger;
 
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
 @Mod(MoonStoneMod.MODID)
 public class MoonStoneMod {
@@ -58,6 +65,7 @@ public class MoonStoneMod {
         Tab.TABS.register(eventBus);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.fc);
     }
+
 
     @EventBusSubscriber(modid = MoonStoneMod.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
     public static class Client {

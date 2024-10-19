@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 public class red extends TextureSheetParticle {
     public red(ClientLevel level, double x, double y, double z, float movementX, float movementY, float movementZ) {
         super(level, x, y, z, movementX, movementY, movementZ);
-        this.lifetime = 450;
+        this.lifetime = 200;
         this.quadSize *= 0.8f;
     }
     @Override
@@ -56,6 +56,7 @@ public class red extends TextureSheetParticle {
     public void tick() {
 
         this.alpha -= 0.01f;
+        this.quadSize*=0.9f;
         if (alpha<=0){
             this.remove();
         }

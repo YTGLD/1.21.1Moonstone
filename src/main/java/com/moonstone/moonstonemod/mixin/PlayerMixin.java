@@ -3,6 +3,7 @@ package com.moonstone.moonstonemod.mixin;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.event.NewEvent;
 import com.moonstone.moonstonemod.init.DataReg;
+import com.moonstone.moonstonemod.init.Enchants;
 import com.moonstone.moonstonemod.init.Items;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,6 +24,7 @@ public class PlayerMixin {
     @Inject(at = @At("RETURN"), method = "getSpeed", cancellable = true)
     public void getMaxHealth(CallbackInfoReturnable<Float> cir){
         if ((Player) (Object) this instanceof Player player){
+
             CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
                 Map<String, ICurioStacksHandler> curios = handler.getCurios();
                 for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {

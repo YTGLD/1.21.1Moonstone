@@ -644,6 +644,8 @@
   "entity.moonstone.nightmare_giant": "nightmare giant",
   "entity.moonstone.cell_slime": "cell slime",
   "entity.moonstone.sun": "sun",
+  "entity.moonstone.blood_bat": "blood bat",
+  "item.doomeye.tool.string.1": "+33% damage when hit",
 
   "entity.moonstone.line": "line",
   "entity.moonstone.snake": "snake",
@@ -997,6 +999,9 @@
   "moonstone.difficulty.name.easy": "easy",
   "moonstone.difficulty.name.normal": "normal",
   "moonstone.difficulty.name.hard": "hard",
+  "moonstone.difficulty.name.god_loot_a": "",
+  "moonstone.difficulty.name.god_loot_b": "",
+  "moonstone.difficulty.name.god_loot_c": "",
 
   "moonstone.curse.name.die": "die",
   "moonstone.curse.name.doctor": "doctor",
@@ -1011,7 +1016,35 @@
   "item.blood.tool.string.winds.1": "5% speed bonus converted to attack damage",
   "item.blood.tool.string.winds.2": "If you wear a nightmare item, the damage doubles",
   "item.blood.tool.string.winds": "winds",
+  "item.moonstone.body_stone":"body stone",
 
-  "item.moonstone.body_stone":"body stone"
+   "item.probability.tool.string.1":"Your attack damage will fluctuate between 10% and 400%,",
+  "item.probability.tool.string.2": "The damage you receive will fluctuate between 25% and 200%,",
+  "item.probability.tool.string.3": "Every bit of luck adds 1% to the minimum value,",
+  "item.probability.tool.string.4": "For the Wanmo Stone,",
+  "item.probability.tool.string.5": "Add 400% to the maximum and minimum values of the curse attribute obtained,",
+  "item.probability.tool.string.6": "Every bit of luck adds 5% to the maximum and minimum values,",
+
+    "item.body_stone.tool.string": "This item will curse all the accessories in the box",
+  "item.body_stone.tool.string.1": "And randomly add 1-2 negative enchantments",
+  "item.body_stone.tool.string.2": "As compensation, every item with negative enchantments will receive powerful gains",
+  "item.body_stone.tool.string.3": "Each level of enchantment:",
+  "item.body_stone.tool.string.4": "+0.1 damage, critical strike, maximum life",
+  "item.body_stone.tool.string.5": "+0.002 treatment",
+  "item.body_stone.tool.string.6": "+2% excavation speed",
+  "item.body_stone.tool.string.7": "+3% resistance and retreat",
+  "item.body_stone.tool.string.8": "+0.4% speed, melee damage, attack speed",
+
+  "item.moonstone.luck_ring":"luck ring",
+  "item.luck_ring.tool.string.1":"when 5 exp level:",
+  "item.luck_ring.tool.string.2": "+1 luck",
+
+  "item.moonstone.luck_stone":"luck stone",
+  "item.luck_stone.tool.string.1":"when 10 luck:",
+  "item.luck_stone.tool.string.2": "+1 looting and fortune",
+  "enchantment.moonstone.terror": "terror",
+  "enchantment.moonstone.malice": "malice",
+  "enchantment.moonstone.threat": "threat",
+  "item.moonstone.probability":"probability stone"
 }
 

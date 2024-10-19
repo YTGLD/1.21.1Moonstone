@@ -16,6 +16,8 @@ public class doomswoud extends Doom {
         pTooltipComponents.add(Component.translatable("item.doomswoud.tool.string.1").withStyle(ChatFormatting.GOLD));
         pTooltipComponents.add(Component.translatable(""));
         pTooltipComponents.add(Component.translatable("item.doomswoud.tool.string.2").withStyle(ChatFormatting.GOLD));
+        pTooltipComponents.add(Component.translatable(""));
+        pTooltipComponents.add(Component.translatable("item.doomeye.tool.string.1").withStyle(ChatFormatting.GOLD));
 
     }
 }

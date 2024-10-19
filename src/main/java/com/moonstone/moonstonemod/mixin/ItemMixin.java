@@ -1,5 +1,6 @@
 package com.moonstone.moonstonemod.mixin;
 
+import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.event.NewEvent;
 import com.moonstone.moonstonemod.init.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.DNAS;
@@ -87,6 +88,12 @@ public abstract class ItemMixin {
             }
         }
     }
-
+    @Inject(at = @At("HEAD"), method = "getEnchantmentValue", cancellable = true)
+    public void getEnchantmentValue(CallbackInfoReturnable<Integer> cir) {
+        Item stack = (Item) (Object) this;
+        if (BuiltInRegistries.ITEM.getKey(stack).getNamespace().equals(MoonStoneMod.MODID)){
+            cir.setReturnValue(10);
+        }
+    }
 }
 

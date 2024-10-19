@@ -2,9 +2,11 @@ package com.moonstone.moonstonemod.entity;
 
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.init.Effects;
 import com.moonstone.moonstonemod.init.Items;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -92,6 +94,7 @@ public class suddenrain extends ThrowableItemProjectile {
                     } else {
                         livingEntity.invulnerableTime = 0;
                         entity.hurt(this.damageSources().magic(), 2 + living.getMaxHealth()/20);
+                        (living).addEffect(new MobEffectInstance(Effects.fear,100,0));
                         this.discard();
 
                     }
@@ -100,6 +103,7 @@ public class suddenrain extends ThrowableItemProjectile {
                     } else {
                         livingEntity.invulnerableTime = 0;
                         entity.hurt(this.damageSources().magic(), 2 + living.getMaxHealth()/20);
+                        (living).addEffect(new MobEffectInstance(Effects.fear,100,0));
                         this.discard();
 
                     }

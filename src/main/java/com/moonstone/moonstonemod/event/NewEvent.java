@@ -4,19 +4,18 @@ import com.mojang.datafixers.util.Either;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.event.loot.DungeonLoot;
-import com.moonstone.moonstonemod.init.AttReg;
-import com.moonstone.moonstonemod.init.DataReg;
-import com.moonstone.moonstonemod.init.Effects;
-import com.moonstone.moonstonemod.init.Items;
+import com.moonstone.moonstonemod.init.*;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.IBattery;
 import com.moonstone.moonstonemod.item.BloodVirus.dna.bat_cell;
 import com.moonstone.moonstonemod.item.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
 import com.moonstone.moonstonemod.item.blood.magic.blood_sun;
+import com.moonstone.moonstonemod.item.body_stone;
 import com.moonstone.moonstonemod.item.deceased_contract;
 import com.moonstone.moonstonemod.item.maxitem.god_lead;
 import com.moonstone.moonstonemod.item.maxitem.malice_die;
+import com.moonstone.moonstonemod.item.maxitem.probability;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_head;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_heart;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_orb;
@@ -46,6 +45,7 @@ import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.*;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
 
@@ -70,8 +70,6 @@ public class NewEvent {
             }
         }
     }
-
-
     @SubscribeEvent
     public  void doBreak(LivingEntityUseItemEvent.Start event){
         dna.doBreak(event);
@@ -133,6 +131,8 @@ public class NewEvent {
                 event.getToolTip().add(1,Component.translatable("moonstone.difficulty.name.god").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F)))
                         .append(Component.translatable("moonstone.difficulty.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFDEB887)))));
             }
+
+
 
             DecimalFormat df = new DecimalFormat("#.###");
 
@@ -229,8 +229,16 @@ public class NewEvent {
         god_lead.hurtS(event);
         dna.hur(event);
         DungeonLoot.attack(event);
+        probability.att(event);
+
+        Enchants.LivingHurtEvent(event);
+        Enchants.maliceAttack(event);
+        Enchants.threatHurtEvent(event);
 
 
+        if (event.getEntity().hasEffect(Effects.fear)&&event.getEntity().getEffect(Effects.fear)!=null){
+            event.setAmount(event.getAmount()*(1+(event.getEntity().getEffect(Effects.fear).getAmplifier()*0.33f)));
+        }
         if (event.getSource().getEntity() instanceof LivingEntity living){
             if (living.getAttribute(AttReg.alL_attack)!=null){
                 float attack = (float) living.getAttribute(AttReg.alL_attack).getValue();
@@ -246,6 +254,18 @@ public class NewEvent {
             if (living.getAttribute(AttReg.cit)!=null){
                 float attack = (float) living.getAttribute(AttReg.cit).getValue();
                 event.setDamageMultiplier(event.getDamageMultiplier()*(attack));
+            }
+        }
+
+    }
+    @SubscribeEvent
+    public void soulbattery(PlayerEvent.BreakSpeed event) {
+        if (event.getEntity() instanceof Player living){
+            if (living.getAttribute(AttReg.dig)!=null){
+
+                float dig = (float) living.getAttribute(AttReg.dig).getValue();
+
+                event.setNewSpeed(event.getNewSpeed()*(dig));
             }
         }
 
@@ -271,6 +291,10 @@ public class NewEvent {
         deceased_contract.Did(event);
         blood_sun.Did(event);
         dna.dieD(event);
+    }
+    @SubscribeEvent
+    public void heal(PlayerEvent.BreakSpeed event){
+        DungeonLoot.heal(event);
     }
     @SubscribeEvent
     public void EffectTick(EntityTickEvent.Post event) {

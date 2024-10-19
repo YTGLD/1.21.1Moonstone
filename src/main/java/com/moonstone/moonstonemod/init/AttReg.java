@@ -18,5 +18,7 @@ public class AttReg {
     public static final DeferredHolder<Attribute,?> cit = REGISTRY.register("cit",()->{
         return new RangedAttribute("attribute.name.moonstone.cit", 1, -1024, 1024).setSyncable(true);
     });
-
+    public static final DeferredHolder<Attribute,?> dig = REGISTRY.register("dig",()->{
+        return new RangedAttribute("attribute.name.moonstone.dig", 1, -1024, 1024).setSyncable(true);
+    });
 }

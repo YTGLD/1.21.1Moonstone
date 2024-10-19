@@ -44,9 +44,8 @@ public abstract class EnchantmentMenuMixin {
     @Shadow protected abstract List<EnchantmentInstance> getEnchantmentList(RegistryAccess p_345264_, ItemStack p_39472_, int p_39473_, int p_39474_);
 
     @Inject(at = @At("HEAD"), method = "clickMenuButton", cancellable = true)
-    public void moonstone$clickMenuButton(Player p_39465_, int p_39466_, CallbackInfoReturnable<Boolean> cir) {
+    public void moonstone$clickMenuButton(Player player, int p_39466_, CallbackInfoReturnable<Boolean> cir) {
         ItemStack itemstack = enchantSlots.getItem(0);
-        Player player = p_39465_;
         if (Handler.hascurio(player, Items.nightmaremoai.get())) {
             if (Handler.hascurio(player, Items.nightmareeye.get())) {
                 if (!(itemstack.getItem() instanceof BookItem)) {

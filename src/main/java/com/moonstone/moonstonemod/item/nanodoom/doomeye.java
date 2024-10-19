@@ -14,6 +14,8 @@ public class doomeye extends Doom {
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
         pTooltipComponents.add(Component.translatable("item.doomeye.tool.string").withStyle(ChatFormatting.GOLD));
+        pTooltipComponents.add(Component.translatable(""));
+        pTooltipComponents.add(Component.translatable("item.doomeye.tool.string.1").withStyle(ChatFormatting.GOLD));
 
     }
 }

@@ -56,9 +56,9 @@ public class bat_cell extends BloodViru {
             if (Handler.hascurio(living,Items.bloodvirus.get())) {
                 if (!living.getCooldowns().isOnCooldown(Items.bat_cell.get())) {
                     if (Handler.hascurio(living, Items.bat_cell.get())) {
-                        int j = Mth.nextInt(RandomSource.create(), 1, 7);
+                        int j = Mth.nextInt(RandomSource.create(), 1, 10);
                         if (Handler.hascurio(living, Items.cell_harvest.get())) {
-                            j = Mth.nextInt(RandomSource.create(), 1, 4);
+                            j = Mth.nextInt(RandomSource.create(), 1, 8);
                         }
                         if (j == 1) {
                             blood_bat blood_bat = new blood_bat(EntityTs.blood_bat.get(), living.level());
@@ -92,7 +92,7 @@ public class bat_cell extends BloodViru {
                             }
 
                             living.level().addFreshEntity(blood_bat);
-                            living.getCooldowns().addCooldown(Items.bat_cell.get(), 20);
+                            living.getCooldowns().addCooldown(Items.bat_cell.get(), 100);
                             if (Handler.hascurio(living, Items.cell_not_do.get())) {
                                 living.hurt(living.damageSources().dryOut(), living.getHealth() * 0.15f);
                             }

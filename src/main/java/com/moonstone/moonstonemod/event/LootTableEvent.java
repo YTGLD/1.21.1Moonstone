@@ -97,7 +97,7 @@ public class LootTableEvent {
                         .build());
 
                 table.addPool(LootPool.lootPool().name("treasures_moons")
-                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight(50))
+                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight(40))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
                         .add(LootItem.lootTableItem(Items.malice_die.get()).setWeight(1))
@@ -107,6 +107,9 @@ public class LootTableEvent {
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
                         .add(LootItem.lootTableItem(Items.evil_mob.get()).setWeight(1))
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+
+                        .add(LootItem.lootTableItem(Items.probability.get()).setWeight(1))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
 
@@ -174,6 +177,12 @@ public class LootTableEvent {
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
                         .add(LootItem.lootTableItem(Items.soulcube.get()).setWeight(1))
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+
+                        .add(LootItem.lootTableItem(Items.luck_stone.get()).setWeight(1))
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+
+                        .add(LootItem.lootTableItem(Items.luck_ring.get()).setWeight(1))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
                         .build());

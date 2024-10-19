@@ -4,6 +4,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.init.EntityTs;
+import com.moonstone.moonstonemod.init.Particles;
 import com.moonstone.moonstonemod.item.BloodVirus.dna.bat_cell;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -59,6 +60,64 @@ public class blood_bat extends TamableAnimal {
         super.tick();
         this.setupAnimationStates();
         this.setNoGravity(true);
+        Vec3 playerPos = this.position().add(0, 0.75, 0);
+        if ( this.getTarget()!= null) {
+            float m  = (float) calculateDistance(this.getTarget() ,this);
+            if (m>4) {
+                double d2 = this.getTarget().getX() + 0.5D - this.getX();
+                double d0 = this.getTarget().getY() + 0.1D - this.getY();
+                double d1 = this.getTarget().getZ() + 0.5D - this.getZ();
+                Vec3 vec3 = this.getDeltaMovement();
+                Vec3 vec31 = vec3.add((Math.signum(d2) * 0.5D - vec3.x) * (double) 0.1F, (Math.signum(d0) * (double) 0.7F - vec3.y) * (double) 0.1F, (Math.signum(d1) * 0.5D - vec3.z) * (double) 0.1F);
+                this.setDeltaMovement(new Vec3(vec31.x,vec31.y*1.1,vec31.z));
+                float f = (float) (Mth.atan2(vec31.z, vec31.x) * (double) (180F / (float) Math.PI)) - 90.0F;
+                float f1 = Mth.wrapDegrees(f - this.getYRot());
+                this.zza = 0.5F;
+                this.setYRot(this.getYRot() + f1);
+            }else {
+                double d2 = this.getTarget().getX() + 0.5D - this.getX();
+                double d0 = this.getTarget().getY() + 0.1D - this.getY();
+                double d1 = this.getTarget().getZ() + 0.5D - this.getZ();
+                Vec3 vec3 = this.getDeltaMovement();
+                Vec3 vec31 = vec3.add((Math.signum(d2) * 0.5D - vec3.x) * (double) 0.1F, (Math.signum(d0) * (double) 0.7F - vec3.y) * (double) 0.1F, (Math.signum(d1) * 0.5D - vec3.z) * (double) 0.1F);
+                this.setDeltaMovement(new Vec3(-vec31.x,-vec31.y,-vec31.z));
+
+            }
+        }
+        int range = 20;
+        List<Mob> entities = this.level().getEntitiesOfClass(Mob.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
+        for (Mob mob : entities) {
+            if (this.getTarget() == null) {
+                ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType());
+                if (!entity.getNamespace().equals(MoonStoneMod.MODID)) {
+                    this.setTarget(mob);
+                }
+            }
+        }
+        if (this.getTarget() != null) {
+            if (!this.getTarget().isAlive()) {
+                this.setTarget(null);
+            }
+        }
+        if (this.getOwner()!= null) {
+            if (this.getOwner().getLastHurtByMob()!= null) {
+                if (!this.getOwner().getLastHurtByMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtByMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
+                    this.setTarget(this.getOwner().getLastHurtByMob());
+                }
+            }
+            if (this.getOwner().getLastAttacker()!= null) {
+                if (!this.getOwner().getLastAttacker().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastAttacker().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
+                    this.setTarget(this.getOwner().getLastAttacker());
+                }
+
+            }
+            if (this.getOwner().getLastHurtMob()!= null) {
+                if (!this.getOwner().getLastHurtMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
+                    this.setTarget(this.getOwner().getLastHurtMob());
+                }
+
+            }
+        }
         if (this.getTags().contains(bat_cell.cell_immortal)){
             this.getAttributes().addTransientAttributeModifiers(getAtt());
         }
@@ -95,14 +154,10 @@ public class blood_bat extends TamableAnimal {
                                     for (int i = 1; i < Mth.floor(vec31.length()) + 10; ++i) {
                                         Vec3 vec33 = vec3.add(vec32.scale(i));
 
-                                        test_blood z = new test_blood(EntityTs.test_blood.get(), this.level());
 
-                                        z.teleportTo(vec33.x, vec33.y - 1, vec33.z);
-                                        z.setNoAi(true);
-                                        z.setNoGravity(true);
-                                        z.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 12000, 0, false, false));
+                                        this.level().addParticle(Particles.gold.get(),vec33.x,vec33.y,vec33.z,0,0,0);
 
-                                        this.level().addFreshEntity(z);
+
                                     }
                                     if (this.getAttribute(Attributes.ATTACK_DAMAGE)!= null) {
                                         if (this.getTags().contains(bat_cell.cell_doctor)) {
@@ -143,10 +198,6 @@ public class blood_bat extends TamableAnimal {
         return SoundEvents.BAT_HURT;
     }
 
-    public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 10).add(Attributes.ATTACK_DAMAGE, 4.0D).add(Attributes.ARMOR,2);
-    }
-
     @Override
     public void die(@NotNull DamageSource p_21809_) {
 
@@ -176,7 +227,6 @@ public class blood_bat extends TamableAnimal {
         this.goalSelector.addGoal(2, new SitWhenOrderedToGoal(this));
         this.goalSelector.addGoal(4, new LeapAtTargetGoal(this, 0.4F));
         this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
-        this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
         this.goalSelector.addGoal(7, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -208,55 +258,7 @@ public class blood_bat extends TamableAnimal {
 
         return Math.sqrt(dx * dx + dy * dy + dz * dz);
     }
-    protected void customServerAiStep() {
-        super.customServerAiStep();
-        if ( this.getTarget()!= null) {
-            float m  = (float) calculateDistance(this.getTarget() ,this);
-            if (m>4) {
-                double d2 = this.getTarget().getX() + 0.5D - this.getX();
-                double d0 = this.getTarget().getY() + 0.1D - this.getY();
-                double d1 = this.getTarget().getZ() + 0.5D - this.getZ();
-                Vec3 vec3 = this.getDeltaMovement();
-                Vec3 vec31 = vec3.add((Math.signum(d2) * 0.5D - vec3.x) * (double) 0.1F, (Math.signum(d0) * (double) 0.7F - vec3.y) * (double) 0.1F, (Math.signum(d1) * 0.5D - vec3.z) * (double) 0.1F);
-                this.setDeltaMovement(new Vec3(vec31.x,vec31.y*1.1,vec31.z));
-                float f = (float) (Mth.atan2(vec31.z, vec31.x) * (double) (180F / (float) Math.PI)) - 90.0F;
-                float f1 = Mth.wrapDegrees(f - this.getYRot());
-                this.zza = 0.5F;
-                this.setYRot(this.getYRot() + f1);
-            }else {
-                double d2 = this.getTarget().getX() + 0.5D - this.getX();
-                double d0 = this.getTarget().getY() + 0.1D - this.getY();
-                double d1 = this.getTarget().getZ() + 0.5D - this.getZ();
-                Vec3 vec3 = this.getDeltaMovement();
-                Vec3 vec31 = vec3.add((Math.signum(d2) * 0.5D - vec3.x) * (double) 0.1F, (Math.signum(d0) * (double) 0.7F - vec3.y) * (double) 0.1F, (Math.signum(d1) * 0.5D - vec3.z) * (double) 0.1F);
-                this.setDeltaMovement(new Vec3(-vec31.x,-vec31.y,-vec31.z));
 
-            }
-        }
-        if ( this.getOwner()!= null) {
-            float m  = (float) calculateDistance(this.getOwner() ,this);
-            if (m>4) {
-                double d2 = this.getOwner().getX() + 0.5D - this.getX();
-                double d0 = this.getOwner().getY() + 0.1D - this.getY();
-                double d1 = this.getOwner().getZ() + 0.5D - this.getZ();
-                Vec3 vec3 = this.getDeltaMovement();
-                Vec3 vec31 = vec3.add((Math.signum(d2) * 0.5D - vec3.x) * (double) 0.1F, (Math.signum(d0) * (double) 0.7F - vec3.y) * (double) 0.1F, (Math.signum(d1) * 0.5D - vec3.z) * (double) 0.1F);
-                this.setDeltaMovement(new Vec3(vec31.x,vec31.y*1.1,vec31.z));
-                float f = (float) (Mth.atan2(vec31.z, vec31.x) * (double) (180F / (float) Math.PI)) - 90.0F;
-                float f1 = Mth.wrapDegrees(f - this.getYRot());
-                this.zza = 0.5F;
-                this.setYRot(this.getYRot() + f1);
-            }else {
-                double d2 = this.getOwner().getX() + 0.5D - this.getX();
-                double d0 = this.getOwner().getY() + 0.1D - this.getY();
-                double d1 = this.getOwner().getZ() + 0.5D - this.getZ();
-                Vec3 vec3 = this.getDeltaMovement();
-                Vec3 vec31 = vec3.add((Math.signum(d2) * 0.5D - vec3.x) * (double) 0.1F, (Math.signum(d0) * (double) 0.7F - vec3.y) * (double) 0.1F, (Math.signum(d1) * 0.5D - vec3.z) * (double) 0.1F);
-                this.setDeltaMovement(new Vec3(-vec31.x,-vec31.y,-vec31.z));
-
-            }
-        }
-    }
 
     private void setupAnimationStates() {
 

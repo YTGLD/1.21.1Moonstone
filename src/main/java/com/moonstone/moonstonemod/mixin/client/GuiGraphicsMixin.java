@@ -6,6 +6,8 @@ import com.mojang.math.Axis;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.MGuiGraphics;
 import com.moonstone.moonstonemod.client.renderer.MRender;
+import com.moonstone.moonstonemod.init.Enchants;
+import com.moonstone.moonstonemod.init.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.Perhaps;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Blood;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.IDoom;
@@ -22,6 +24,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -58,6 +61,19 @@ public abstract class GuiGraphicsMixin {
     public void ca$renderItemDecorationsRenderItem(LivingEntity living, Level level, ItemStack stack, int x, int y, int is, CallbackInfo ci) {
         GuiGraphics guiGraphics = (GuiGraphics) (Object) this;
         if (living != null) {
+            if (living instanceof Player player) {
+                if (Enchants.getEnchantmentLevel(Enchants.Terror,stack,player)>0
+                        && Enchants.getEnchantmentLevel(Enchants.threat,stack,player)>0
+                        && Enchants.getEnchantmentLevel(Enchants.malice,stack,player)>0)
+                {
+                    int tickCount = living.tickCount;
+                    float sin = (float) Math.sin((double) tickCount / 10);
+                    if (sin < 0) {
+                        sin = -sin;
+                    }
+                    MGuiGraphics.blit(guiGraphics, ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID, "textures/gui/curse_2.png"), x - 8, y - 8, 0, 0, 32, 32, 32, 32,160/255f ,32/255f ,240/255f	, sin);
+                }
+            }
             if (stack.getItem() instanceof necora) {
                 int tickCount = living.tickCount;
                 float s = (float) Math.sin((double) tickCount / 20);

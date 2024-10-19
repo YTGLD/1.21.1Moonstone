@@ -5,6 +5,7 @@ import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.event.NewEvent;
 import com.moonstone.moonstonemod.init.AttReg;
 import com.moonstone.moonstonemod.init.DataReg;
+import com.moonstone.moonstonemod.init.Enchants;
 import com.moonstone.moonstonemod.init.Items;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.Difficulty;
@@ -41,6 +42,7 @@ public abstract class LivingEntityMixin {
         cir.getReturnValue().add(AttReg.alL_attack,1);
         cir.getReturnValue().add(AttReg.cit,1);
         cir.getReturnValue().add(AttReg.heal,1);
+        cir.getReturnValue().add(AttReg.dig,1);
     }
     @Inject(at = @At("RETURN"), method = "getArmorValue", cancellable = true)
     public void getArmorValue(CallbackInfoReturnable<Integer> cir){
@@ -132,6 +134,7 @@ public abstract class LivingEntityMixin {
     public void moonstone$travel(Vec3 p_21280_, CallbackInfo ci) {
         LivingEntity living = (LivingEntity) (Object) this;
         if (living instanceof Player player) {
+
             if (player.isSprinting()) {
                 if (Handler.hascurio(player, Items.flygene.get())) {
                     player.moveRelative((float) (player.getSpeed() * Config.SERVER.flygene_speed.get()), p_21280_);
@@ -145,6 +148,7 @@ public abstract class LivingEntityMixin {
                 if (Handler.hascurio(player, Items.motor.get())) {
                     player.moveRelative((float) (player.getSpeed() * Config.SERVER.motor_speed.get()), p_21280_);
                 }
+
             }
         }
     }

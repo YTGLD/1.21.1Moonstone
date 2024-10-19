@@ -7,27 +7,34 @@ import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.event.NewEvent;
 import com.moonstone.moonstonemod.init.DataReg;
+import com.moonstone.moonstonemod.init.Enchants;
 import com.moonstone.moonstonemod.init.Items;
 import com.moonstone.moonstonemod.init.LootReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.TheNecoraIC;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Iplague;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.neoforged.neoforge.client.event.sound.SoundEvent;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.common.loot.LootModifier;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
@@ -294,102 +301,149 @@ public class DungeonLoot extends LootModifier {
 
         for (ItemStack itemStack : generatedLoot){
             ServerLevel serverLevel= context.getLevel();
-            if (itemStack.getItem() instanceof ICurioItem) {
-                if (entity instanceof Player player) {
-                    if (Handler.hascurio(player,Items.body_stone.get())) {
-                        if (itemStack.get(DataReg.tag) == null) {
-                            itemStack.set(DataReg.tag, new CompoundTag());
-                        }
-                        float meet = Mth.nextFloat(RandomSource.create(), -0.5f, 0.5f);
-                        //health
+//            if (itemStack.getItem() instanceof ICurioItem) {
+//                if (entity instanceof Player player) {
+//                    if (Handler.hascurio(player,Items.body_stone.get())) {
+//                        if (itemStack.get(DataReg.tag) == null) {
+//                            itemStack.set(DataReg.tag, new CompoundTag());
+//                        }
+//                        float meet = Mth.nextFloat(RandomSource.create(), -0.5f, 0.5f);
+//                        //health
+//
+//                        float die = Mth.nextFloat(RandomSource.create(), -0.2f, 0.2f);
+//                        //伤害
+//
+//                        float doctor = Mth.nextFloat(RandomSource.create(), -0.01f, 0.01f);
+//                        //治疗
+//
+//                        float cell_cell = Mth.nextFloat(RandomSource.create(), -0.5f, 0.5f);
+//                        //暴击
+//
+//                        float chromosome = Mth.nextFloat(RandomSource.create(), -0.15f, 0.15f);
+//                        //挖掘
+//
+//                        float bone = Mth.nextFloat(RandomSource.create(), -0.005f, 0.005f);
+//                        //速度
+//
+//                        float die_body = Mth.nextFloat(RandomSource.create(), -1, 1);
+//                        //护甲
+//
+//                        float l = player.getLuck()/20;//5%
+//                        float lv = 5f;
+//
+//                        if (Handler.hascurio(player,Items.probability.get())){
+//                            meet*=(lv+l);
+//                            die*=(lv+l);
+//                            doctor*=(lv+l);
+//                            cell_cell*=(lv+l);
+//                            chromosome*=(lv+l);
+//                            bone*=(lv+l);
+//                            die_body*=(lv+l);
+//                        }
+//
+//                        int t = Mth.nextInt(RandomSource.create(),1,7);
+//                        if (t==1) {
+//                            if (itemStack.get(DataReg.tag) != null) {
+//                                itemStack.get(DataReg.tag).putFloat(NewEvent.meet, meet);
+//                            }
+//                        }else if (t==2) {
+//                            if (itemStack.get(DataReg.tag) != null) {
+//                                itemStack.get(DataReg.tag).putFloat(NewEvent.die, die);
+//                            }
+//                        }else if (t==3) {
+//                            if (itemStack.get(DataReg.tag) != null) {
+//                                itemStack.get(DataReg.tag).putFloat(NewEvent.doctor, doctor);
+//                            }
+//                        } else  if (t==4) {
+//                            if (itemStack.get(DataReg.tag) != null) {
+//                                itemStack.get(DataReg.tag).putFloat(NewEvent.cell_cell, cell_cell);
+//                            }
+//                        } else if (t==5) {
+//                            if (itemStack.get(DataReg.tag) != null) {
+//                                itemStack.get(DataReg.tag).putFloat(NewEvent.chromosome, chromosome);
+//                            }
+//                        }else  if (t==6) {
+//                            if (itemStack.get(DataReg.tag) != null) {
+//                                itemStack.get(DataReg.tag).putFloat(NewEvent.bone, bone);
+//                            }
+//                        }else if (t==7) {
+//                            if (itemStack.get(DataReg.tag) != null) {
+//                                itemStack.get(DataReg.tag).putFloat(NewEvent.die_body, die_body);
+//                            }
+//                        }
+//
+//
+//                    }
+//                }
+//            }
 
-                        float die = Mth.nextFloat(RandomSource.create(), -0.2f, 0.2f);
-                        //伤害
+            if (entity instanceof Player player) {
+                int lv = Mth.nextInt(RandomSource.create(),1,100);
+                if (Handler.hascurio(player,Items.body_stone.get())
+                        && !itemStack.isEmpty()
+                        && itemStack.getItem() instanceof ICurioItem)
+                {
+                    int Terror_size = Mth.nextInt(RandomSource.create(), 1, 6);
+                    int malice_size = Mth.nextInt(RandomSource.create(), 1, 6);
+                    int threat_size = Mth.nextInt(RandomSource.create(), 1, 6);
 
-                        float doctor = Mth.nextFloat(RandomSource.create(), -0.01f, 0.01f);
-                        //治疗
+                    if (Handler.hascurio(player,Items.probability.get())){
+                        Terror_size++;
+                        malice_size++;
+                        threat_size++;
+                    }
 
-                        float cell_cell = Mth.nextFloat(RandomSource.create(), -0.5f, 0.5f);
-                        //暴击
-
-                        float chromosome = Mth.nextFloat(RandomSource.create(), -1, 1);
-                        //挖掘
-
-                        float bone = Mth.nextFloat(RandomSource.create(), -0.005f, 0.005f);
-                        //速度
-
-                        float die_body = Mth.nextFloat(RandomSource.create(), -1, 1);
-                        //护甲
-
-
-                        int t = Mth.nextInt(RandomSource.create(),1,7);
-                        if (t==1) {
-                            if (itemStack.get(DataReg.tag) != null) {
-                                itemStack.get(DataReg.tag).putFloat(NewEvent.meet, meet);
-                            }
-                        }else if (t==2) {
-                            if (itemStack.get(DataReg.tag) != null) {
-                                itemStack.get(DataReg.tag).putFloat(NewEvent.die, die);
-                            }
-                        }else if (t==3) {
-                            if (itemStack.get(DataReg.tag) != null) {
-                                itemStack.get(DataReg.tag).putFloat(NewEvent.doctor, doctor);
-                            }
-                        } else  if (t==4) {
-                            if (itemStack.get(DataReg.tag) != null) {
-                                itemStack.get(DataReg.tag).putFloat(NewEvent.cell_cell, cell_cell);
-                            }
-                        } else if (t==5) {
-                            if (itemStack.get(DataReg.tag) != null) {
-                                itemStack.get(DataReg.tag).putFloat(NewEvent.chromosome, chromosome);
-                            }
-                        }else  if (t==6) {
-                            if (itemStack.get(DataReg.tag) != null) {
-                                itemStack.get(DataReg.tag).putFloat(NewEvent.bone, bone);
-                            }
-                        }else if (t==7) {
-                            if (itemStack.get(DataReg.tag) != null) {
-                                itemStack.get(DataReg.tag).putFloat(NewEvent.die_body, die_body);
-                            }
-                        }
+                    if (lv<=50){
+                        Holder.Reference<Enchantment> Terror = Enchants.getEnchantHolder(player,Enchants.Terror);
+                        itemStack.enchant(Terror, Terror_size);
+                        player.level().playSound(null,player.getX(),player.getY(),player.getZ(),SoundEvents.ELDER_GUARDIAN_CURSE, SoundSource.AMBIENT,1,1);
+                    }
+                    if (lv<=40){
+                        Holder.Reference<Enchantment> malice = Enchants.getEnchantHolder(player,Enchants.malice);
+                        itemStack.enchant(malice, malice_size);
+                        player.level().playSound(null,player.getX(),player.getY(),player.getZ(),SoundEvents.ELDER_GUARDIAN_CURSE, SoundSource.AMBIENT,1,1);
+                    }
+                    if (lv<=30){
+                        Holder.Reference<Enchantment> threat = Enchants.getEnchantHolder(player,Enchants.threat);
+                        itemStack.enchant(threat, threat_size);
+                        player.level().playSound(null,player.getX(),player.getY(),player.getZ(),SoundEvents.ELDER_GUARDIAN_CURSE, SoundSource.AMBIENT,1,1);
                     }
                 }
             }
 
 
-
             if (itemStack.getItem() instanceof Iplague){
-                if (serverLevel.getDifficulty()==(Difficulty.PEACEFUL)) {
+                if (itemStack.get(DataReg.tag) == null) {
                     itemStack.set(DataReg.tag, new CompoundTag());
+                }
+                if (serverLevel.getDifficulty()==(Difficulty.PEACEFUL)) {
                     if (itemStack.get(DataReg.tag) != null) {
                         itemStack.get(DataReg.tag).putBoolean(Difficulty.PEACEFUL.getKey(), true);
                     }
                 }
                 if (serverLevel.getDifficulty()==(Difficulty.EASY)) {
-                    itemStack.set(DataReg.tag, new CompoundTag());
                     if (itemStack.get(DataReg.tag) != null) {
                         itemStack.get(DataReg.tag).putBoolean(Difficulty.EASY.getKey(), true);
                     }
                 }
                 if (serverLevel.getDifficulty()==(Difficulty.NORMAL)) {
-                    itemStack.set(DataReg.tag, new CompoundTag());
                     if (itemStack.get(DataReg.tag) != null) {
                         itemStack.get(DataReg.tag).putBoolean(Difficulty.NORMAL.getKey(), true);
                     }
                 }
                 if (serverLevel.getDifficulty()==(Difficulty.HARD)) {
-                    itemStack.set(DataReg.tag, new CompoundTag());
-                    if (Mth.nextInt(RandomSource.create(),1,2) ==1) {
+                    int lv = Mth.nextInt(RandomSource.create(),1,2);
+
+                    if (lv == 1) {
                         if (itemStack.get(DataReg.tag) != null) {
                             itemStack.get(DataReg.tag).putBoolean(Difficulty.HARD.getKey(), true);
                         }
-                    }else {
+                    } else if (lv == 2){
                         if (itemStack.get(DataReg.tag) != null) {
                             itemStack.get(DataReg.tag).putBoolean(NewEvent.lootTable, true);
                         }
                     }
                 }
-
             }
         }
 
