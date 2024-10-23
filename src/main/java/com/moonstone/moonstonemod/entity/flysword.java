@@ -1,6 +1,5 @@
 package com.moonstone.moonstonemod.entity;
 
-import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.init.Effects;
 import com.moonstone.moonstonemod.init.Particles;
@@ -83,28 +82,14 @@ public class flysword extends ThrowableItemProjectile {
     }
     @Override
     protected void onHitEntity(@NotNull EntityHitResult hitResult) {
-        if (age > 10) {
-            Entity entity = hitResult.getEntity();
-            if (entity instanceof LivingEntity livingEntity){
-                if (this.getOwner() instanceof LivingEntity living) {
-                    if (Handler.hascurio(livingEntity, com.moonstone.moonstonemod.init.Items.doomeye.get())) {
-
-                    } else {
-                        livingEntity.invulnerableTime = 0;
-                        entity.hurt(this.damageSources().magic(), 2 + living.getMaxHealth()/20);
-                        (living).addEffect(new MobEffectInstance(Effects.fear,100,0));
-                        this.discard();
-
-                    }
-                    if (Handler.hascurio(livingEntity, com.moonstone.moonstonemod.init.Items.doomswoud.get())) {
-
-                    } else {
-                        livingEntity.invulnerableTime = 0;
-                        entity.hurt(this.damageSources().magic(), 2 + living.getMaxHealth()/20);
-                        (living).addEffect(new MobEffectInstance(Effects.fear,100,0));
-                        this.discard();
-
-                    }
+        Entity entity = hitResult.getEntity();
+        if (entity instanceof LivingEntity livingEntity){
+            if (this.getOwner() instanceof LivingEntity living) {
+                if (!livingEntity.is(living)){
+                    livingEntity.invulnerableTime = 0;
+                    livingEntity.hurt(this.damageSources().magic(), 2 + living.getMaxHealth()/20);
+                    (livingEntity).addEffect(new MobEffectInstance(Effects.fear,100,0));
+                    this.discard();
                 }
             }
         }

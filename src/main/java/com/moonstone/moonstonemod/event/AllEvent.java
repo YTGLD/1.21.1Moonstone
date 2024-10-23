@@ -6,7 +6,6 @@ import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.flysword;
 import com.moonstone.moonstonemod.entity.suddenrain;
 import com.moonstone.moonstonemod.entity.zombie.cell_zombie;
-import com.moonstone.moonstonemod.event.loot.DungeonLoot;
 import com.moonstone.moonstonemod.init.DataReg;
 import com.moonstone.moonstonemod.init.EntityTs;
 import com.moonstone.moonstonemod.init.Items;

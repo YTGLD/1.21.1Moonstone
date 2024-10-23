@@ -37,18 +37,23 @@ public class MRender extends RenderType {
     protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_trail = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_trail);
     public static final RenderType Snake_render = create(
             "lines_render",
-            DefaultVertexFormat.POSITION_COLOR_NORMAL,
-            VertexFormat.Mode.LINES,
-            1536,
+            DefaultVertexFormat.POSITION,
+            VertexFormat.Mode.QUADS,
+            256,
+            false,
+            false,
             RenderType.CompositeState.builder()
-                    .setShaderState(RENDER_STATE_SHARD_Shader_snake)
-                    .setLineState(new RenderStateShard.LineStateShard(OptionalDouble.empty()))
-                    .setLayeringState(VIEW_OFFSET_Z_LAYERING)
-                    .setTransparencyState(TRANSLUCENT_TRANSPARENCY)
-                    .setOutputState(ITEM_ENTITY_TARGET)
+                    .setShaderState(RENDER_STATE_SHARD)
                     .setWriteMaskState(COLOR_DEPTH_WRITE)
-                    .setCullState(NO_CULL)
-                    .createCompositeState(false));
+
+                    .setTransparencyState(LIGHTNING_TRANSPARENCY)
+                    .setOutputState(WEATHER_TARGET)
+                    .setTextureState(RenderStateShard.
+                            MultiTextureStateShard.builder().
+                            add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/necr_image_1.png"),
+                                    false,
+                                    false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/necr_image_1.png"),
+                                    false, false).build()).createCompositeState(false));
 
 
 

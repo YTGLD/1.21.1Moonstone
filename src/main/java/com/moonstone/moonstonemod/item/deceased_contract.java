@@ -7,16 +7,10 @@ import com.moonstone.moonstonemod.entity.blood;
 import com.moonstone.moonstonemod.entity.zombie.cell_giant;
 import com.moonstone.moonstonemod.entity.zombie.cell_zombie;
 import com.moonstone.moonstonemod.init.AttReg;
-import com.moonstone.moonstonemod.init.DataReg;
 import com.moonstone.moonstonemod.init.EntityTs;
 import com.moonstone.moonstonemod.init.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.TheNecoraIC;
-import com.moonstone.moonstonemod.item.BloodVirus.Skill.batskill;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -29,12 +23,9 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import top.theillusivec4.curios.api.SlotContext;
-
-import java.util.List;
 
 public class deceased_contract extends TheNecoraIC {
     public static void attack(LivingIncomingDamageEvent event) {

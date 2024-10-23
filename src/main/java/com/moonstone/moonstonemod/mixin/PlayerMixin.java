@@ -1,12 +1,7 @@
 package com.moonstone.moonstonemod.mixin;
 
-import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.event.NewEvent;
 import com.moonstone.moonstonemod.init.DataReg;
-import com.moonstone.moonstonemod.init.Enchants;
-import com.moonstone.moonstonemod.init.Items;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;

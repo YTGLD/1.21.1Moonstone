@@ -9,7 +9,7 @@
       "type": "spotlight",
       "item": "moonstone:body_stone",
       "title": "-威胁-",
-      "text": "受到伤害有概率使失去的血量翻倍，每级增加1%的概率"
+      "text": "每级减少1%的治疗"
     }
   ]
 }

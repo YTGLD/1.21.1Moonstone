@@ -1034,6 +1034,7 @@
   "item.body_stone.tool.string.6": "+2% excavation speed",
   "item.body_stone.tool.string.7": "+3% resistance and retreat",
   "item.body_stone.tool.string.8": "+0.4% speed, melee damage, attack speed",
+  "attribute.name.moonstone.dig": "dig",
 
   "item.moonstone.luck_ring":"luck ring",
   "item.luck_ring.tool.string.1":"when 5 exp level:",

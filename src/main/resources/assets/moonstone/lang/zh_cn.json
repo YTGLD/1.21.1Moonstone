@@ -942,6 +942,7 @@
 
   "attribute.name.moonstone.cit": "暴击伤害",
   "attribute.name.moonstone.heal": "治疗",
+  "attribute.name.moonstone.dig": "挖掘速度",
 
 
 
@@ -1040,15 +1041,15 @@
   "item.probability.tool.string.5": "获得的诅咒的最大和最小值加1",
   "item.probability.tool.string.6": "每一点幸运都会使最大和最小值加5%",
 
-    "item.body_stone.tool.string": "这个物品会使箱子里的所有饰品附加负面附魔",
+    "item.body_stone.tool.string": "这个物品有概率使箱子里的饰品附加负面附魔",
   "item.body_stone.tool.string.1": "并且随机附加1~2个负面附魔",
   "item.body_stone.tool.string.2": "作为补偿，每个具有负面附魔的物品，都会获得强大的增益",
   "item.body_stone.tool.string.3": "每级附魔：",
-  "item.body_stone.tool.string.4": "  +3%伤害，暴击，最大生命",
-  "item.body_stone.tool.string.5": "  +6%治疗",
-  "item.body_stone.tool.string.6": "  +6%挖掘速度",
-  "item.body_stone.tool.string.7": "  +9%抗击退",
-  "item.body_stone.tool.string.8": "  +1.2%速度，近战伤害，攻速",
+  "item.body_stone.tool.string.4": "  +0.45%伤害，最大生命; +0.1%暴击",
+  "item.body_stone.tool.string.5": "  +1%护甲",
+  "item.body_stone.tool.string.6": "  +2%挖掘速度",
+  "item.body_stone.tool.string.7": "  +1%抗击退",
+  "item.body_stone.tool.string.8": "  +0.15%速度，近战伤害，攻速",
 
 
   "item.moonstone.luck_ring":"幸运魔戒",

@@ -5,17 +5,13 @@ import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.event.NewEvent;
 import com.moonstone.moonstonemod.init.AttReg;
 import com.moonstone.moonstonemod.init.DataReg;
-import com.moonstone.moonstonemod.init.Enchants;
 import com.moonstone.moonstonemod.init.Items;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.BundleContents;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.Vec3;
@@ -29,7 +25,6 @@ import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
-import java.util.Collection;
 import java.util.Map;
 
 @Mixin(LivingEntity.class)

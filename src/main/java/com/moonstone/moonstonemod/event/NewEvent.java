@@ -1,17 +1,18 @@
 package com.moonstone.moonstonemod.event;
 
-import com.mojang.datafixers.util.Either;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.event.loot.DungeonLoot;
-import com.moonstone.moonstonemod.init.*;
+import com.moonstone.moonstonemod.init.AttReg;
+import com.moonstone.moonstonemod.init.DataReg;
+import com.moonstone.moonstonemod.init.Effects;
+import com.moonstone.moonstonemod.init.Enchants;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.IBattery;
 import com.moonstone.moonstonemod.item.BloodVirus.dna.bat_cell;
 import com.moonstone.moonstonemod.item.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
 import com.moonstone.moonstonemod.item.blood.magic.blood_sun;
-import com.moonstone.moonstonemod.item.body_stone;
 import com.moonstone.moonstonemod.item.deceased_contract;
 import com.moonstone.moonstonemod.item.maxitem.god_lead;
 import com.moonstone.moonstonemod.item.maxitem.malice_die;
@@ -22,35 +23,29 @@ import com.moonstone.moonstonemod.item.nightmare.nightmare_orb;
 import com.moonstone.moonstonemod.item.plague.ALL.dna;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.locale.Language;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.client.event.RenderTooltipEvent;
 import net.neoforged.neoforge.common.util.TriState;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
-import net.neoforged.neoforge.event.entity.player.*;
+import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
 
 import java.text.DecimalFormat;
-import java.util.stream.Stream;
 
 public class NewEvent {
     public static final String lootTable = "god_loot";
@@ -82,7 +77,7 @@ public class NewEvent {
     public void LivingHealEvent(LivingHealEvent event) {
         nightmare_orb.nightmare_orb_heal(event);
         nightmare_head.LivingHealEvent(event);
-
+        Enchants.threatHeal(event);
         DungeonLoot.heal(event);
         if (event.getEntity() instanceof LivingEntity living){
             if (living.getAttribute(AttReg.heal)!=null){
@@ -233,7 +228,6 @@ public class NewEvent {
 
         Enchants.LivingHurtEvent(event);
         Enchants.maliceAttack(event);
-        Enchants.threatHurtEvent(event);
 
 
         if (event.getEntity().hasEffect(Effects.fear)&&event.getEntity().getEffect(Effects.fear)!=null){

@@ -16,9 +16,6 @@ import com.moonstone.moonstonemod.entity.client.zombie.ZombieRenderer;
 import com.moonstone.moonstonemod.event.*;
 import com.moonstone.moonstonemod.init.*;
 import net.minecraft.client.renderer.ShaderInstance;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -28,17 +25,12 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.event.RegisterShadersEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
-import net.neoforged.neoforge.data.event.GatherDataEvent;
-import net.neoforged.neoforge.event.TagsUpdatedEvent;
 import org.slf4j.Logger;
 
 import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
 
 @Mod(MoonStoneMod.MODID)
 public class MoonStoneMod {
@@ -69,10 +61,8 @@ public class MoonStoneMod {
 
     @EventBusSubscriber(modid = MoonStoneMod.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
     public static class Client {
-        @SubscribeEvent
-        public static void RegisterClientTooltipComponentFactoriesEvent(RegisterClientTooltipComponentFactoriesEvent event){
 
-        }
+
         @SubscribeEvent
         public static void registerFactories(RegisterParticleProvidersEvent event) {
             event.registerSpriteSet(Particles.gold.get(), red.Provider::new);
@@ -105,6 +95,7 @@ public class MoonStoneMod {
             event.registerEntityRenderer(EntityTs.blood_orb_owner.get(), com.moonstone.moonstonemod.entity.client.blood.BloodOrbOwner::new);
             event.registerEntityRenderer(EntityTs.blood_orb_small.get(), com.moonstone.moonstonemod.entity.client.blood.BloodOrbSmall::new);
             event.registerEntityRenderer(EntityTs.sun.get(), com.moonstone.moonstonemod.entity.client.SunRenderer::new);
+            event.registerEntityRenderer(EntityTs.sword_soul.get(), com.moonstone.moonstonemod.entity.client.SwordSoulRenderer::new);
 
         }
         @SubscribeEvent

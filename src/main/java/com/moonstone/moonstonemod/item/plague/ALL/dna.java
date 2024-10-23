@@ -3,6 +3,7 @@ package com.moonstone.moonstonemod.item.plague.ALL;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Handler;
+import com.moonstone.moonstonemod.contents.BundleContents;
 import com.moonstone.moonstonemod.init.AttReg;
 import com.moonstone.moonstonemod.init.DNAItems;
 import com.moonstone.moonstonemod.init.DataReg;
@@ -38,10 +39,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.inventory.tooltip.BundleTooltip;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.component.BundleContents;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -58,11 +56,10 @@ import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 public class dna extends Item implements Iplague, ICurioItem {
     public dna() {
-        super(new Item.Properties().stacksTo(1).component(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY).rarity(Rarity.UNCOMMON));
+        super(new Item.Properties().stacksTo(1).component(DataReg.BUNDLE_CONTENTS, BundleContents.EMPTY).rarity(Rarity.UNCOMMON));
     }
     private static final int BAR_COLOR = Mth.color(0.4F, 0.4F, 1.0F);
     public boolean overrideOtherStackedOnMe(ItemStack stack, ItemStack other, Slot slot, ClickAction action, Player player, SlotAccess access) {
@@ -72,7 +69,7 @@ public class dna extends Item implements Iplague, ICurioItem {
         if (stack.getCount() != 1) {
             return false;
         } else if (action == ClickAction.SECONDARY && slot.allowModification(player)) {
-            BundleContents bundlecontents = (BundleContents)stack.get(DataComponents.BUNDLE_CONTENTS);
+            BundleContents bundlecontents = stack.get(DataReg.BUNDLE_CONTENTS);
             if (bundlecontents == null) {
                 return false;
             } else {
@@ -90,7 +87,7 @@ public class dna extends Item implements Iplague, ICurioItem {
                     }
                 }
 
-                stack.set(DataComponents.BUNDLE_CONTENTS, bundlecontents$mutable.toImmutable());
+                stack.set(DataReg.BUNDLE_CONTENTS, bundlecontents$mutable.toImmutable());
                 return true;
             }
         } else {
@@ -110,12 +107,13 @@ public class dna extends Item implements Iplague, ICurioItem {
     }
 
     public boolean isBarVisible(ItemStack stack) {
-        BundleContents bundlecontents = stack.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
+        BundleContents bundlecontents = stack.getOrDefault(DataReg.BUNDLE_CONTENTS, BundleContents.EMPTY);
         return bundlecontents.weight().compareTo(Fraction.ZERO) > 0;
     }
 
+    @Override
     public int getBarWidth(ItemStack stack) {
-        BundleContents bundlecontents = stack.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
+        net.minecraft.world.item.component.BundleContents bundlecontents = stack.getOrDefault(DataComponents.BUNDLE_CONTENTS, net.minecraft.world.item.component.BundleContents.EMPTY);
         return Math.min(1 + Mth.mulAndTruncate(bundlecontents.weight(), 12), 13);
     }
 
@@ -124,9 +122,9 @@ public class dna extends Item implements Iplague, ICurioItem {
     }
 
     private static boolean dropContents(ItemStack stack, Player player) {
-        BundleContents bundlecontents = stack.get(DataComponents.BUNDLE_CONTENTS);
+        BundleContents bundlecontents = stack.get(DataReg.BUNDLE_CONTENTS);
         if (bundlecontents != null && !bundlecontents.isEmpty()) {
-            stack.set(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
+            stack.set(DataReg.BUNDLE_CONTENTS, BundleContents.EMPTY);
             if (player instanceof ServerPlayer) {
                 bundlecontents.itemsCopy().forEach((p_330078_) -> {
                     player.drop(p_330078_, true);
@@ -138,16 +136,10 @@ public class dna extends Item implements Iplague, ICurioItem {
             return false;
         }
     }
-
-    public Optional<TooltipComponent> getTooltipImage(ItemStack stack) {
-        return !stack.has(DataComponents.HIDE_TOOLTIP) && !stack.has(DataComponents.HIDE_ADDITIONAL_TOOLTIP) ? Optional.ofNullable(stack.get(DataComponents.BUNDLE_CONTENTS)).map(BundleTooltip::new) : Optional.empty();
-    }
-
-
     public void onDestroyed(ItemEntity itemEntity) {
-        BundleContents bundlecontents = itemEntity.getItem().get(DataComponents.BUNDLE_CONTENTS);
+        BundleContents bundlecontents = itemEntity.getItem().get(DataReg.BUNDLE_CONTENTS);
         if (bundlecontents != null) {
-            itemEntity.getItem().set(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
+            itemEntity.getItem().set(DataReg.BUNDLE_CONTENTS, BundleContents.EMPTY);
             ItemUtils.onContainerDestroyed(itemEntity, bundlecontents.itemsCopy());
         }
 
@@ -169,7 +161,7 @@ public class dna extends Item implements Iplague, ICurioItem {
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         slotContext.entity().getAttributes().addTransientAttributeModifiers(Head(stack));
         if (slotContext.entity() instanceof Player player){
-            BundleContents bundlecontents = stack.get(DataComponents.BUNDLE_CONTENTS);
+            BundleContents bundlecontents = stack.get(DataReg.BUNDLE_CONTENTS);
             if (bundlecontents != null) {
                 bundlecontents.items().forEach((itemStack -> {
                     if (itemStack.is(DNAItems.speed_metabolism)) {
@@ -244,7 +236,7 @@ public class dna extends Item implements Iplague, ICurioItem {
                     for (int i = 0; i < stacksHandler.getSlots(); i++) {
                         ItemStack stack = stackHandler.getStackInSlot(i);
                         if (stack.is( Items.dna.get())) {
-                            BundleContents bundlecontents = stack.get(DataComponents.BUNDLE_CONTENTS);
+                            BundleContents bundlecontents = stack.get(DataReg.BUNDLE_CONTENTS);
                             if (bundlecontents != null) {
                                 bundlecontents.items().forEach((itemStack -> {
 
@@ -274,7 +266,7 @@ public class dna extends Item implements Iplague, ICurioItem {
                         for (int i = 0; i < stacksHandler.getSlots(); i++) {
                             ItemStack stack = stackHandler.getStackInSlot(i);
                             if (stack.is(Items.dna.get())) {
-                                BundleContents bundlecontents = stack.get(DataComponents.BUNDLE_CONTENTS);
+                                BundleContents bundlecontents = stack.get(DataReg.BUNDLE_CONTENTS);
                                 if (bundlecontents != null) {
                                     bundlecontents.items().forEach((itemStack -> {
                                         if (itemStack.is(DNAItems.cell_digestion)) {
@@ -306,7 +298,7 @@ public class dna extends Item implements Iplague, ICurioItem {
                         for (int i = 0; i < stacksHandler.getSlots(); i++) {
                             ItemStack stack = stackHandler.getStackInSlot(i);
                             if (stack.is(Items.dna.get())) {
-                                BundleContents bundlecontents = stack.get(DataComponents.BUNDLE_CONTENTS);
+                                BundleContents bundlecontents = stack.get(DataReg.BUNDLE_CONTENTS);
                                 if (bundlecontents != null) {
                                     bundlecontents.items().forEach((itemStack -> {
                                         if (itemStack.is(DNAItems.cell_inheritance)) {
@@ -361,7 +353,7 @@ public class dna extends Item implements Iplague, ICurioItem {
                         for (int i = 0; i < stacksHandler.getSlots(); i++) {
                             ItemStack stack = stackHandler.getStackInSlot(i);
                             if (stack.is(Items.dna.get())) {
-                                BundleContents bundlecontents = stack.get(DataComponents.BUNDLE_CONTENTS);
+                                BundleContents bundlecontents = stack.get(DataReg.BUNDLE_CONTENTS);
                                 if (bundlecontents != null) {
                                     bundlecontents.items().forEach((itemStack -> {
                                         if (itemStack.is(DNAItems.cell_acid)) {
@@ -404,7 +396,7 @@ public class dna extends Item implements Iplague, ICurioItem {
                         for (int i = 0; i < stacksHandler.getSlots(); i++) {
                             ItemStack stack = stackHandler.getStackInSlot(i);
                             if (stack.is(Items.dna.get())) {
-                                BundleContents bundlecontents = stack.get(DataComponents.BUNDLE_CONTENTS);
+                                BundleContents bundlecontents = stack.get(DataReg.BUNDLE_CONTENTS);
                                 if (bundlecontents != null) {
                                     bundlecontents.items().forEach((itemStack -> {
                                         if (itemStack.is(DNAItems.cell_darwin)) {
@@ -431,7 +423,7 @@ public class dna extends Item implements Iplague, ICurioItem {
     private Multimap<Holder<Attribute>, AttributeModifier> Head(ItemStack stack){
         Multimap<Holder<Attribute>, AttributeModifier> multimap = HashMultimap.create();
 
-        BundleContents bundlecontents = stack.get(DataComponents.BUNDLE_CONTENTS);
+        BundleContents bundlecontents = stack.get(DataReg.BUNDLE_CONTENTS);
         if (bundlecontents != null) {
             bundlecontents.items().forEach((itemStack -> {
                 if (itemStack.is(DNAItems.atp_height)) {
@@ -589,7 +581,7 @@ public class dna extends Item implements Iplague, ICurioItem {
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
 
         if (Screen.hasShiftDown()) {
-            BundleContents bundlecontents = pStack.get(DataComponents.BUNDLE_CONTENTS);
+            BundleContents bundlecontents = pStack.get(DataReg.BUNDLE_CONTENTS);
             if (bundlecontents != null) {
                 bundlecontents.items().forEach((itemStack -> {
                     pTooltipComponents.add(Component.translatable(itemStack.getDescriptionId()).append("："+ itemStack.getCount()).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEE6363))));

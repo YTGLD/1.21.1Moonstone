@@ -11,8 +11,6 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.LootTableLoadEvent;
 
-import java.util.Map;
-
 public class LootTableEvent {
 
     @SubscribeEvent
