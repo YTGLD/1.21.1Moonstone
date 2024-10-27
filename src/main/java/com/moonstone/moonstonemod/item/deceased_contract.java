@@ -31,60 +31,62 @@ public class deceased_contract extends TheNecoraIC {
     public static void attack(LivingIncomingDamageEvent event) {
         if (event.getEntity() instanceof Player player) {
             if (Handler.hascurio(player, Items.deceased_contract.get())) {
-                event.setAmount(event.getAmount() * 1.1f);
+                if (event.getAmount()<Integer.MAX_VALUE) {
+                    event.setAmount(event.getAmount() * 1.1f);
+                }
             }
         }
     }
 
     public static void Did(LivingDeathEvent event) {
+        int ss = Mth.nextInt(RandomSource.create(), 1, 100);
         if (event.getSource().getEntity() instanceof Player player) {
             if (Handler.hascurio(player, Items.deceased_contract.get())) {
-                if (!player.getCooldowns().isOnCooldown(Items.deceased_contract.get())) {
-                    if (Mth.nextInt(RandomSource.create(), 1, 100) <= 40) {
-                        cell_zombie z = new cell_zombie(EntityTs.cell_zombie.get(), player.level());
-                        z.teleportTo(event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ());
-                        z.setOwnerUUID(player.getUUID());
-                        z.getAttributes().addTransientAttributeModifiers(zombieAtt(player));
-                        z.heal(1000);
 
-                        for (MobEffectInstance effect : player.getActiveEffects()) {
-                            if (effect != null
-                                    && effect.getEffect().value().isBeneficial()) {
-                                z.addEffect(effect);
-                            }
+                if (ss <= 40) {
+                    cell_zombie z = new cell_zombie(EntityTs.cell_zombie.get(), player.level());
+                    z.teleportTo(event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ());
+                    z.setOwnerUUID(player.getUUID());
+                    z.getAttributes().addTransientAttributeModifiers(zombieAtt(player));
+                    z.heal(1000);
+
+                    for (MobEffectInstance effect : player.getActiveEffects()) {
+                        if (effect != null
+                                && effect.getEffect().value().isBeneficial()) {
+                            z.addEffect(effect);
                         }
-
-
-                        player.level().addFreshEntity(z);
-                    }
-                    if (Mth.nextInt(RandomSource.create(), 1, 100) <= 20) {
-                        cell_giant g = new cell_giant(EntityTs.cell_giant.get(), player.level());
-                        g.teleportTo(event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ());
-                        g.setOwnerUUID(player.getUUID());
-                        g.getAttributes().addTransientAttributeModifiers(zombieAtt(player));
-                        g.heal(1000);
-                        g.setPose(Pose.EMERGING);
-                        for (MobEffectInstance effect : player.getActiveEffects()) {
-                            if (effect != null
-                                    && effect.getEffect().value().isBeneficial()) {
-                                g.addEffect(effect);
-                            }
-                        }
-                        player.level().playSound(null, player.blockPosition(), SoundEvents.WARDEN_EMERGE, SoundSource.NEUTRAL, 1.0F, 1.0F);
-
-                        player.level().addFreshEntity(g);
                     }
 
-                    if (Mth.nextInt(RandomSource.create(), 1, 10) == 1) {
-                        blood blood = new blood(EntityTs.blood.get(), player.level());
-                        blood.setDeltaMovement(Mth.nextDouble(RandomSource.create(), 0.1, 0.11), Mth.nextDouble(RandomSource.create(), 0.095, 0.1), Mth.nextDouble(RandomSource.create(), 0.099, 0.1));
-                        blood.setOwner(player);
-                        blood.setPos(event.getEntity().getX(), event.getEntity().getY() + 1.5f, event.getEntity().getZ());
 
-                        player.level().addFreshEntity(blood);
-                    }
-                    player.getCooldowns().addCooldown(Items.deceased_contract.get(), 1);
+                    player.level().addFreshEntity(z);
                 }
+                if (ss <= 20) {
+                    cell_giant g = new cell_giant(EntityTs.cell_giant.get(), player.level());
+                    g.teleportTo(event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ());
+                    g.setOwnerUUID(player.getUUID());
+                    g.getAttributes().addTransientAttributeModifiers(zombieAtt(player));
+                    g.heal(1000);
+                    g.setPose(Pose.EMERGING);
+                    for (MobEffectInstance effect : player.getActiveEffects()) {
+                        if (effect != null
+                                && effect.getEffect().value().isBeneficial()) {
+                            g.addEffect(effect);
+                        }
+                    }
+                    player.level().playSound(null, player.blockPosition(), SoundEvents.WARDEN_EMERGE, SoundSource.NEUTRAL, 1.0F, 1.0F);
+
+                    player.level().addFreshEntity(g);
+                }
+
+                if (ss <=  10) {
+                    blood blood = new blood(EntityTs.blood.get(), player.level());
+                    blood.setDeltaMovement(Mth.nextDouble(RandomSource.create(), 0.1, 0.11), Mth.nextDouble(RandomSource.create(), 0.095, 0.1), Mth.nextDouble(RandomSource.create(), 0.099, 0.1));
+                    blood.setOwner(player);
+                    blood.setPos(event.getEntity().getX(), event.getEntity().getY() + 1.5f, event.getEntity().getZ());
+
+                    player.level().addFreshEntity(blood);
+                }
+
             }
         }
     }

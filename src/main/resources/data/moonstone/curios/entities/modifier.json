@@ -1,4 +1,6 @@
 {
-  "entities": ["player"],
+  "entities": [
+    "player",
+    "moonstone:sword_soul"],
   "slots": [ "back", "belt","charm", "ring","head","curio","medicine","necora","nanos","body","hands","ncrdna","dna"]
 }

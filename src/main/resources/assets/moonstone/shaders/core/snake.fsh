@@ -58,5 +58,5 @@ vec3 color = textureProj(Sampler0, texProj0).rgb * COLORS[0];
 for (int i = 0; i < EndPortalLayers; i++) {
 color += textureProj(Sampler1, texProj0 * end_portal_layer(float(i + 1))).rgb * COLORS[i];
 }
-fragColor = vec4(color, 0.3);
+fragColor = vec4(color, 1);
 }

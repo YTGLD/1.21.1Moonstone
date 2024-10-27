@@ -21,6 +21,9 @@
     "moonstone:malice_die",
     "moonstone:body_stone",
     "moonstone:probability",
-    "moonstone:luck_stone"
+    "moonstone:luck_stone",
+    "moonstone:moon_stone",
+
+    "moonstone:necora_baby"
   ]
 }

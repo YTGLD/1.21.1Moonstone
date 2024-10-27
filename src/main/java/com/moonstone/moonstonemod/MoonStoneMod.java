@@ -2,7 +2,6 @@ package com.moonstone.moonstonemod;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.logging.LogUtils;
-import com.moonstone.moonstonemod.client.entitys.blood.BloodBatRenderer;
 import com.moonstone.moonstonemod.client.particle.blood;
 import com.moonstone.moonstonemod.client.particle.blue;
 import com.moonstone.moonstonemod.client.particle.popr;
@@ -10,6 +9,7 @@ import com.moonstone.moonstonemod.client.particle.red;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.entity.client.BloodSwordRenderer;
 import com.moonstone.moonstonemod.entity.client.SwordRenderer;
+import com.moonstone.moonstonemod.entity.client.blood.BloodBatRenderer;
 import com.moonstone.moonstonemod.entity.client.zombie.CellZombieG;
 import com.moonstone.moonstonemod.entity.client.zombie.CellZombieN;
 import com.moonstone.moonstonemod.entity.client.zombie.ZombieRenderer;
@@ -24,6 +24,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.event.RegisterShadersEvent;
@@ -37,6 +38,8 @@ public class MoonStoneMod {
 
     public static final String MODID = "moonstone";
     public static final Logger LOGGER = LogUtils.getLogger();
+
+
     public MoonStoneMod(IEventBus eventBus, ModContainer modContainer){
 
 
@@ -46,7 +49,7 @@ public class MoonStoneMod {
         NeoForge.EVENT_BUS.register(new LootTableEvent());
         NeoForge.EVENT_BUS.register(new NewEvent());
         AttReg.REGISTRY.register(eventBus);
-
+        Blocks.REGISTRY.register(eventBus);
         DNAItems.REGISTRY.register(eventBus);
         LootReg.REGISTRY.register(eventBus);
         EntityTs.REGISTRY.register(eventBus);
@@ -61,6 +64,7 @@ public class MoonStoneMod {
 
     @EventBusSubscriber(modid = MoonStoneMod.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
     public static class Client {
+
 
 
         @SubscribeEvent

@@ -1,4 +1,4 @@
-package com.moonstone.moonstonemod.client.entitys.blood;
+package com.moonstone.moonstonemod.entity.client.blood;
 
 import com.moonstone.moonstonemod.entity.bloodvruis.blood_bat;
 import net.minecraft.client.animation.definitions.BatAnimation;

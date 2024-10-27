@@ -1,4 +1,4 @@
-package com.moonstone.moonstonemod.client.entitys.blood;
+package com.moonstone.moonstonemod.entity.client.blood;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.moonstone.moonstonemod.entity.bloodvruis.blood_bat;

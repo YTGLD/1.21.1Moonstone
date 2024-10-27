@@ -645,6 +645,7 @@
   "entity.moonstone.cell_slime": "cell slime",
   "entity.moonstone.sun": "sun",
   "entity.moonstone.blood_bat": "blood bat",
+  "entity.moonstone.sword_soul": "sword soul",
   "item.doomeye.tool.string.1": "+33% damage when hit",
 
   "entity.moonstone.line": "line",
@@ -1040,9 +1041,24 @@
   "item.luck_ring.tool.string.1":"when 5 exp level:",
   "item.luck_ring.tool.string.2": "+1 luck",
 
+  "item.moonstone.moon_stone":"moon stone",
+  "item.moon_stone.tool.string.1": "Hit the creature and immediately trigger all killing effects, cool down for 20 seconds",
+
   "item.moonstone.luck_stone":"luck stone",
   "item.luck_stone.tool.string.1":"when 10 luck:",
   "item.luck_stone.tool.string.2": "+1 looting and fortune",
+
+
+
+
+
+  "item.moonstone.necora_baby":"necora baby",
+    "item.necora_baby.tool.string":"Summon a corrupt soul",
+  "item.necora_baby.tool.string.1":"You can implant gene fragments into it",
+  "item.necora_baby.tool.string.2":"If the Soul of Corruption dies/is lost, you can re equip this item",
+  "item.necora_baby.tool.string.3":"The soul of corruption will also teleport items to your side after death",
+
+
   "enchantment.moonstone.terror": "terror",
   "enchantment.moonstone.malice": "malice",
   "enchantment.moonstone.threat": "threat",

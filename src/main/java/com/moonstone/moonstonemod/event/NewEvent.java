@@ -2,11 +2,9 @@ package com.moonstone.moonstonemod.event;
 
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.entity.zombie.sword_soul;
 import com.moonstone.moonstonemod.event.loot.DungeonLoot;
-import com.moonstone.moonstonemod.init.AttReg;
-import com.moonstone.moonstonemod.init.DataReg;
-import com.moonstone.moonstonemod.init.Effects;
-import com.moonstone.moonstonemod.init.Enchants;
+import com.moonstone.moonstonemod.init.*;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.IBattery;
 import com.moonstone.moonstonemod.item.BloodVirus.dna.bat_cell;
 import com.moonstone.moonstonemod.item.TheNecora.bnabush.giant_boom_cell;
@@ -16,6 +14,7 @@ import com.moonstone.moonstonemod.item.blood.magic.blood_sun;
 import com.moonstone.moonstonemod.item.deceased_contract;
 import com.moonstone.moonstonemod.item.maxitem.god_lead;
 import com.moonstone.moonstonemod.item.maxitem.malice_die;
+import com.moonstone.moonstonemod.item.maxitem.moon_stone;
 import com.moonstone.moonstonemod.item.maxitem.probability;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_head;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_heart;
@@ -27,7 +26,10 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -43,9 +45,13 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
+import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
+import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import java.text.DecimalFormat;
+import java.util.Map;
 
 public class NewEvent {
     public static final String lootTable = "god_loot";
@@ -228,7 +234,7 @@ public class NewEvent {
 
         Enchants.LivingHurtEvent(event);
         Enchants.maliceAttack(event);
-
+        moon_stone.LivingIncomingDamageEvent(event);
 
         if (event.getEntity().hasEffect(Effects.fear)&&event.getEntity().getEffect(Effects.fear)!=null){
             event.setAmount(event.getAmount()*(1+(event.getEntity().getEffect(Effects.fear).getAmplifier()*0.33f)));
@@ -240,6 +246,86 @@ public class NewEvent {
             }
         }
 
+    }
+    @SubscribeEvent
+    public void PlayerInteractEvent(PlayerInteractEvent.EntityInteract event) {
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.cell.get(),"ncrdna");
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.motor.get(),"ncrdna");
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.watergen.get(),"ncrdna");
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.air.get(),"ncrdna");
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.giant.get(),"ncrdna");
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.bat_cell.get(),"ncrdna");
+
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.adrenaline.get(),"dna");
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.cell_blood.get(),"dna");
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.cell_boom.get(),"dna");
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.cell_calcification.get(),"dna");
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.cell_mummy.get(),"dna");
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.giant_nightmare.get(),"dna");
+
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.bone_cell.get(),"dna");
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.disgusting_cells.get(),"dna");
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.mother_cell.get(),"dna");
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.parasitic_cell.get(),"dna");
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.anaerobic_cell.get(),"dna");
+
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.giant_boom_cell.get(),"dna");
+        PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.subspace_cell.get(),"dna");
+
+
+    }
+    public void PlayerInteractZombie(Player player, Entity target, Item doItem, String slot) {
+        if (target instanceof sword_soul smallZombie){
+            if (player.getMainHandItem().is(doItem)&&!player.isShiftKeyDown()){
+
+                CuriosApi.getCuriosInventory(smallZombie).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            if (!Handler.hascurio(smallZombie,doItem)
+                                    && stacksHandler.getIdentifier().contains(slot)) {
+                                ItemStack present = stackHandler.getStackInSlot(i);
+                                if (present.isEmpty()) {
+                                    if (stackHandler.getStackInSlot(i).isEmpty()) {
+                                        stackHandler.setStackInSlot(i, new ItemStack(doItem));
+                                        player.getMainHandItem().shrink(1);
+                                        player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARMOR_EQUIP_GENERIC, SoundSource.NEUTRAL, 1F, 1F);
+                                        player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARMOR_EQUIP_NETHERITE, SoundSource.NEUTRAL, 1F, 1F);
+
+
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            } else if (player.getMainHandItem().isEmpty()&&player.isShiftKeyDown()) {
+                CuriosApi.getCuriosInventory(smallZombie).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            if (!stackHandler.getStackInSlot(i).isEmpty()
+                                    && stackHandler.getStackInSlot(i).is(doItem)
+                                    && stacksHandler.getIdentifier().contains(slot))
+                            {
+
+                                player.addItem(new ItemStack(doItem));
+
+                                stackHandler.getStackInSlot(i).shrink(1);
+
+
+                                break;
+                            }
+                        }
+                    }
+                });
+            }
+        }
     }
     @SubscribeEvent
     public void soulbattery(CriticalHitEvent event) {
@@ -285,6 +371,8 @@ public class NewEvent {
         deceased_contract.Did(event);
         blood_sun.Did(event);
         dna.dieD(event);
+
+        sword_soul.evil(event);
     }
     @SubscribeEvent
     public void heal(PlayerEvent.BreakSpeed event){

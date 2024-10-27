@@ -45,9 +45,10 @@ public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>
                        float limbAngle, float limbDistance,
                        float tickDelta, float animationProgress,
                        float headYaw, float headPitch) {
+
+
         EntityModel<?> model = this.getParentModel();
 
-//        new MedicineboxUi(matrices,vertexConsumers,light,entity,model);
 
         new orb(matrices, vertexConsumers, light, entity);
 

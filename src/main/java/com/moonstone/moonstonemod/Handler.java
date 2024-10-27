@@ -35,7 +35,7 @@ public class Handler {
 
 
     public static <T extends TamableAnimal> void trySpawnMob(
-            Player player,
+            LivingEntity player,
             EntityType<T> pEntityType,
             MobSpawnType pSpawnType,
             ServerLevel pLevel,
@@ -123,7 +123,7 @@ public class Handler {
 //                }
 //            }
     public static boolean hascurio(LivingEntity entity, Item curio) {
-        if (entity instanceof Player player) {
+        if (entity instanceof LivingEntity player) {
             if (player.getCapability(CuriosCapability.INVENTORY) != null) {
                 if (CuriosApi.getCuriosInventory(player).isPresent()
                         && CuriosApi.getCuriosInventory(player).get().isEquipped(Items.evil_mob.get())) {

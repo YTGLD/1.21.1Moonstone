@@ -132,6 +132,7 @@ public class Tab {
                 b.accept(new ItemStack(Items.bloodvirus.get()));
                 b.accept(new ItemStack(Items.necora.get()));
                 b.accept(new ItemStack(Items.deceased_contract.get()));
+                b.accept(new ItemStack(Items.necora_baby.get()));
 
 
 
@@ -143,6 +144,7 @@ public class Tab {
             .title(Component.translatable("itemGroup.tabmoonstone"))
             .displayItems((a,b)->{
                 b.accept(new ItemStack(Items.book.get()));
+                b.accept(new ItemStack(Items.moon_stone.get()));
                 b.accept(new ItemStack(Items.body_stone.get()));
                 b.accept(new ItemStack(Items.probability.get()));
                 b.accept(new ItemStack(Items.luck_ring.get()));

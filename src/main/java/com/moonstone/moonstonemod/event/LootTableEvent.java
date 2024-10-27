@@ -17,6 +17,7 @@ public class LootTableEvent {
     public void ItemTooltipEventASD(LootTableLoadEvent event){
 
         LootTable table = event.getTable();
+        int bc = 2;
 
         for (LootContextParam<?> param : event.getTable().getParamSet().getAllowed()){
             if (param == LootContextParams.THIS_ENTITY){
@@ -30,7 +31,7 @@ public class LootTableEvent {
                 table.addPool(LootPool.lootPool().name("ancien_moon")
 
 
-                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight(30))
+                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight(bc*30))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
                         .add(LootItem.lootTableItem(Items.magicstone.get()).setWeight(1))
@@ -69,7 +70,7 @@ public class LootTableEvent {
 
             if (event.getName().toString().contains("treasure")){
                 table.addPool(LootPool.lootPool().name("treasures")
-                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight(20))
+                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight(bc*20))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
                         .add(LootItem.lootTableItem(Items.the_heart.get()).setWeight(1))
@@ -95,7 +96,7 @@ public class LootTableEvent {
                         .build());
 
                 table.addPool(LootPool.lootPool().name("treasures_moons")
-                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight(40))
+                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight(bc*40))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
                         .add(LootItem.lootTableItem(Items.malice_die.get()).setWeight(1))
@@ -110,13 +111,16 @@ public class LootTableEvent {
                         .add(LootItem.lootTableItem(Items.probability.get()).setWeight(1))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
+                        .add(LootItem.lootTableItem(Items.moon_stone.get()).setWeight(1))
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+
 
                         .build());
             }
 
             if (event.getName().toString().contains("dungeon") ||event.getName().toString().contains("mineshaft")){
                 table.addPool(LootPool.lootPool().name("dungeon_or_mineshaft")
-                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight(40))
+                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight(bc*40))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
                         .add(LootItem.lootTableItem(Items.badgeofthedead.get()).setWeight(1))
