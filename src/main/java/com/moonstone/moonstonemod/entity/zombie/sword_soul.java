@@ -203,6 +203,10 @@ public class sword_soul  extends TamableAnimal {
             }
         }
         if (this.getTarget() != null) {
+            ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(this.getTarget().getType());
+            if (entity.getNamespace().equals(MoonStoneMod.MODID)) {
+                this.setTarget(null);
+            }
             if (!this.getTarget().isAlive()) {
                 this.setTarget(null);
             }

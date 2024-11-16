@@ -1611,10 +1611,6 @@ public class AllEvent {
                 player.addItem(Items.book.get().getDefaultInstance());
                 player.addTag("give_moonstone_item_book");
             }
-            if (!player.getTags().contains("give_moonstone_item_body_stone")) {
-                player.addItem(Items.body_stone.get().getDefaultInstance());
-                player.addTag("give_moonstone_item_body_stone");
-            }
 
         }
 

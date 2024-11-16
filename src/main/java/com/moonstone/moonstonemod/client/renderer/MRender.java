@@ -14,20 +14,16 @@ public class MRender extends RenderType {
     public MRender(String p_173178_, VertexFormat p_173179_, VertexFormat.Mode p_173180_, int p_173181_, boolean p_173182_, boolean p_173183_, Runnable p_173184_, Runnable p_173185_) {
         super(p_173178_, p_173179_, p_173180_, p_173181_, p_173182_, p_173183_, p_173184_, p_173185_);
     }
+
     private static ShaderInstance ShaderInstance_gateway;
     private static ShaderInstance ShaderInstance_mls;
     private static ShaderInstance ShaderInstance_ging;
     private static ShaderInstance ShaderInstance_trail;
-    public static ShaderInstance meteorTrailShader;
     public static ShaderInstance Shader_EYE;
     public static ShaderInstance Shader_snake;
-    protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_Shader_snake = new RenderStateShard.ShaderStateShard(MRender::getShader_snake);
 
 
 
-
-
-    protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_meteorTrailShader = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_meteorTrailShader);
     protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_Shader_EYE = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_Shader_EYE);
 
     protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_gateway);
@@ -56,7 +52,6 @@ public class MRender extends RenderType {
                                     false, false).build()).createCompositeState(false));
 
 
-
     public static final RenderType TRAIL =
             create("lines",
                     DefaultVertexFormat.POSITION_COLOR_NORMAL,
@@ -69,7 +64,9 @@ public class MRender extends RenderType {
                             .setLayeringState(VIEW_OFFSET_Z_LAYERING).setTransparencyState(TRANSLUCENT_TRANSPARENCY)
                             .setOutputState(ITEM_ENTITY_TARGET).setWriteMaskState(COLOR_DEPTH_WRITE).setCullState(NO_CULL)
                             .createCompositeState(false));
-        private static final RenderType EYE =
+
+
+    private static final RenderType EYE =
             create("eye",
                     DefaultVertexFormat.POSITION,
                     VertexFormat.Mode.QUADS,
@@ -144,13 +141,13 @@ public class MRender extends RenderType {
     public static RenderType getMls() {
         return MLS;
     }
-
     public static RenderType ging() {
         return GING;
     }
     public static RenderType eye() {
         return EYE;
     }
+
 
     public static ShaderInstance getShaderInstance_Shader_EYE() {
         return Shader_EYE;
@@ -178,10 +175,6 @@ public class MRender extends RenderType {
         Shader_snake = shader_snake;
     }
 
-    public static ShaderInstance getShader_snake() {
-        return Shader_snake;
-    }
-
     public static void setShaderInstance_mls(ShaderInstance shaderInstance_mls) {
         ShaderInstance_mls = shaderInstance_mls;
     }
@@ -189,9 +182,7 @@ public class MRender extends RenderType {
     public static ShaderInstance getShaderInstance_gateway() {
         return ShaderInstance_gateway;
     }
-    public static ShaderInstance getShaderInstance_meteorTrailShader() {
-        return meteorTrailShader;
-    }
+
     public static void setShaderInstance_gateway(ShaderInstance instance) {
         ShaderInstance_gateway = instance;
     }

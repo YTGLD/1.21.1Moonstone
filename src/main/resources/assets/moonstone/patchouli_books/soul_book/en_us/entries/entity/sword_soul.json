@@ -1,0 +1,23 @@
+{
+  "name": "腐败之魂",
+  "icon": "moonstone:necora_baby",
+  "category": "moonstone:entity",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "entity",
+      "scale": 1,
+      "name": "sword_soul",
+      "rotate": true,
+      "defaultRotation": -45,
+      "entity": "moonstone:sword_soul"
+    },
+    {
+      "type": "spotlight",
+      "item": "moonstone:necora_baby",
+      "title": "-腐败之魂-",
+      "text": "这个是有腐败傀儡召唤而出，具有铁傀儡的一些基本属性特征，你可以右键给他装备基因片段，并且在此之后可以装备分段基因组，以达到召唤僵尸的效果，同样的，这些召唤的僵尸和玩家的没有什么区别"
+    }
+  ]
+}

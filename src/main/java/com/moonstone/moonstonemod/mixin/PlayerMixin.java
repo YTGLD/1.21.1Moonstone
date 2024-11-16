@@ -1,7 +1,9 @@
 package com.moonstone.moonstonemod.mixin;
 
 import com.moonstone.moonstonemod.event.NewEvent;
+import com.moonstone.moonstonemod.init.AttReg;
 import com.moonstone.moonstonemod.init.DataReg;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,10 +18,18 @@ import java.util.Map;
 
 @Mixin(Player.class)
 public class PlayerMixin {
+    @Inject(at = @At("RETURN"), method = "createAttributes", cancellable = true)
+    private static void createAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir){
+        cir.setReturnValue(cir.getReturnValue()
+                .add(AttReg.alL_attack,1)
+                .add(AttReg.cit,1)
+                .add(AttReg.heal,1)
+                .add(AttReg.dig,1)
+        );
+    }
     @Inject(at = @At("RETURN"), method = "getSpeed", cancellable = true)
     public void getMaxHealth(CallbackInfoReturnable<Float> cir){
         if ((Player) (Object) this instanceof Player player){
-
             CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
                 Map<String, ICurioStacksHandler> curios = handler.getCurios();
                 for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
