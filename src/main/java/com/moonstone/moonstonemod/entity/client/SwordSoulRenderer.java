@@ -6,11 +6,9 @@ import com.mojang.math.Axis;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
-import com.moonstone.moonstonemod.entity.attack_blood;
 import com.moonstone.moonstonemod.entity.zombie.sword_soul;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -30,7 +28,7 @@ public class SwordSoulRenderer  extends EntityRenderer<sword_soul> {
     public void render(sword_soul entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
         MedicineboxUi(poseStack,bufferSource,240,entity);
         setT(poseStack, entity,bufferSource);
-        for (int i = 0; i < 33; i++) {
+        for (int i = 0; i < 1; i++) {
             poseStack.pushPose();
             poseStack.scale(1.75f, 1.75f, 1.75f);
             float ss = i / 33f;
@@ -40,7 +38,7 @@ public class SwordSoulRenderer  extends EntityRenderer<sword_soul> {
 
 
             poseStack.scale(as,as,as);
-            renderSphere1(poseStack, bufferSource, 240, ss, 0 + (i * 5f), 255f-(i*5f), 245 / 255f, 0.25F, 6);
+            renderSphere1(entity,poseStack, bufferSource, 240, ss, 0 + (i * 5f), 255f-(i*5f), 245 / 255f, 0.25F, 6);
 
             poseStack.popPose();
         }
@@ -91,10 +89,11 @@ public class SwordSoulRenderer  extends EntityRenderer<sword_soul> {
         matrices.popPose();
 
     }
-    public void renderSphere1(@NotNull PoseStack matrices, @NotNull MultiBufferSource vertexConsumers, int light, float s,float r,float g,float b,float a,int size) {
-        int stacks = size+6; // 垂直方向的分割数
-        int slices = size+6 ; // 水平方向的分割数
+    public void renderSphere1(Entity entity,@NotNull PoseStack matrices, @NotNull MultiBufferSource vertexConsumers, int light, float s,float r,float g,float b,float a,int size) {
+        int stacks = size + 6; // 垂直方向的分割数
+        int slices = size + 6; // 水平方向的分割数
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(MRender.Snake());
+
         for (int i = 0; i < stacks; ++i) {
             float phi0 = (float) Math.PI * ((i + 0) / (float) stacks);
             float phi1 = (float) Math.PI * ((i + 1) / (float) stacks);

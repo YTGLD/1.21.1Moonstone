@@ -4,7 +4,9 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import com.moonstone.moonstonemod.Handler;
+import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
+import com.moonstone.moonstonemod.client.renderer.MoonPost;
 import com.moonstone.moonstonemod.entity.bloodvruis.test_blood;
 import com.moonstone.moonstonemod.entity.nightmare.nightmare_giant;
 import com.moonstone.moonstonemod.entity.zombie.blood_zombie;
@@ -46,9 +48,7 @@ public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>
                        float tickDelta, float animationProgress,
                        float headYaw, float headPitch) {
 
-
-        EntityModel<?> model = this.getParentModel();
-
+        MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
 
         new orb(matrices, vertexConsumers, light, entity);
 

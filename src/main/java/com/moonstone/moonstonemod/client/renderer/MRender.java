@@ -1,8 +1,10 @@
 package com.moonstone.moonstonemod.client.renderer;
 
+import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShaderInstance;
@@ -15,6 +17,9 @@ public class MRender extends RenderType {
         super(p_173178_, p_173179_, p_173180_, p_173181_, p_173182_, p_173183_, p_173184_, p_173185_);
     }
 
+    private static ShaderInstance ShaderInstance_outline;
+
+
     private static ShaderInstance ShaderInstance_gateway;
     private static ShaderInstance ShaderInstance_mls;
     private static ShaderInstance ShaderInstance_ging;
@@ -23,6 +28,18 @@ public class MRender extends RenderType {
     public static ShaderInstance Shader_snake;
 
 
+    protected static final OutputStateShard setOutputState = new OutputStateShard("set", () -> {
+        RenderTarget target = MoonPost.getRenderTargetFor(MoonStoneMod.POST);
+        if (target != null) {
+            target.copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
+            target.bindWrite(false);
+        }
+    }, () -> {
+        Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
+    });
+
+
+    protected static final RenderStateShard.ShaderStateShard RENDERTYPE_OUTLINE = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_outline);
 
     protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_Shader_EYE = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_Shader_EYE);
 
@@ -31,6 +48,20 @@ public class MRender extends RenderType {
     protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_ging = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_ging);
 
     protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_trail = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_trail);
+
+    public static RenderType O(ResourceLocation locationIn) {
+        return create("outline", DefaultVertexFormat.POSITION_TEX_COLOR, VertexFormat.Mode.QUADS,
+                256, false, true, RenderType.CompositeState.builder()
+                .setShaderState(RENDERTYPE_OUTLINE)
+                .setCullState(NO_CULL)
+                .setTextureState(new RenderStateShard.TextureStateShard(locationIn, false, false))
+                .setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY)
+                .setDepthTestState(LEQUAL_DEPTH_TEST)
+                .setOutputState(setOutputState)
+                .createCompositeState(false));
+    }
+
+
     public static final RenderType Snake_render = create(
             "lines_render",
             DefaultVertexFormat.POSITION,
@@ -41,9 +72,8 @@ public class MRender extends RenderType {
             RenderType.CompositeState.builder()
                     .setShaderState(RENDER_STATE_SHARD)
                     .setWriteMaskState(COLOR_DEPTH_WRITE)
-
                     .setTransparencyState(LIGHTNING_TRANSPARENCY)
-                    .setOutputState(WEATHER_TARGET)
+                    .setOutputState(setOutputState)
                     .setTextureState(RenderStateShard.
                             MultiTextureStateShard.builder().
                             add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/necr_image_1.png"),
@@ -148,6 +178,9 @@ public class MRender extends RenderType {
         return EYE;
     }
 
+    public static ShaderInstance getShaderInstance_outline() {
+        return ShaderInstance_outline;
+    }
 
     public static ShaderInstance getShaderInstance_Shader_EYE() {
         return Shader_EYE;
@@ -169,6 +202,9 @@ public class MRender extends RenderType {
     }
     public static void setShaderInstance_trail(ShaderInstance shaderInstance_ging) {
         ShaderInstance_trail = shaderInstance_ging;
+    }
+    public static void setShaderInstance_outline(ShaderInstance shader_snake) {
+        ShaderInstance_outline = shader_snake;
     }
 
     public static void setShader_snake(ShaderInstance shader_snake) {

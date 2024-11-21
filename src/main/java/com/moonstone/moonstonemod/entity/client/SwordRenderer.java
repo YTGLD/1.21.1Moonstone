@@ -27,6 +27,7 @@ public class SwordRenderer <T extends ThrowableItemProjectile> extends EntityRen
         pPoseStack.scale(0.05625F, 0.05625F, 0.05625F);
         pPoseStack.translate(-4.0F, 0.0F, 0.0F);
         VertexConsumer vertexconsumer = pBuffer.getBuffer(RenderType.entityCutout(this.getTextureLocation(pEntity)));
+
         PoseStack.Pose posestack$pose = pPoseStack.last();
         this.vertex(posestack$pose, vertexconsumer, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, pPackedLight);
         this.vertex(posestack$pose, vertexconsumer, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, pPackedLight);

@@ -21,14 +21,14 @@ import net.minecraft.world.item.TooltipFlag;
 import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
-import java.util.UUID;
 
 public class nightmareeye extends nightmare {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
-       CompoundTag tag = stack.get(DataReg.tag);
-        if (tag != null){
-            tag.putString("TestTag", "TestTag");
+        if (stack.get(DataReg.tag) == null){
+            stack.set(DataReg.tag,new CompoundTag());
+        }
+        if (stack.get(DataReg.tag) != null){
             if (slotContext.entity() instanceof Player player) {
                 player.getAttributes().addTransientAttributeModifiers(un_un_pla(player, stack));
             }
@@ -45,7 +45,6 @@ public class nightmareeye extends nightmare {
     }
     public Multimap<Holder<Attribute>, AttributeModifier> un_un_pla(Player player, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
-        UUID uuid = UUID.fromString("83f9fb4e-5c3f-3b02-a19a-70f2fa258dfa");
 
 
         float s = 0.25f;
