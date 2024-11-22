@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
+import com.moonstone.moonstonemod.client.renderer.MoonPost;
 import com.moonstone.moonstonemod.entity.owner_blood;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -33,6 +34,7 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
                       owner_blood entity,
                       MultiBufferSource vertexConsumers)
     {
+        MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
         matrices.pushPose();
 
         for (int i = 1; i < entity.getTrailPositions().size(); i++){

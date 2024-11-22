@@ -48,8 +48,6 @@ public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>
                        float tickDelta, float animationProgress,
                        float headYaw, float headPitch) {
 
-        MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
-
         new orb(matrices, vertexConsumers, light, entity);
 
         new Sword(matrices, vertexConsumers, light, entity);
@@ -65,23 +63,9 @@ public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>
             new CircleCubeBoom(matrices, vertexConsumers, light, entity);
         }
         if (entity instanceof nightmare_giant){
+            MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
             matrices.pushPose();
-            renderCircle3(matrices, vertexConsumers, light, 0.0F, 1, 0.0F, 0.33f, entity);
-            matrices.popPose();
-            matrices.pushPose();
-            renderCircle4(matrices, vertexConsumers, light, 0.0F, 1, 0.0F, 0.33f, entity);
-            matrices.popPose();
-            matrices.pushPose();
-            renderCircle6(matrices, vertexConsumers, light, 0.0F, 1, 0.0F, 0.33f, entity);
-            matrices.popPose();
-            matrices.pushPose();
-            renderCircle5(matrices, vertexConsumers, light, 0.0F, 1, 0.0F, 0.33f, entity);
-            matrices.popPose();
-            matrices.pushPose();
-            renderCircle7(matrices, vertexConsumers, light, 0.0F, 1, 0.0F, 0.33f, entity);
-            matrices.popPose();
-            matrices.pushPose();
-            renderCircle8(matrices, vertexConsumers, light, 0.0F, 1, 0.0F, 0.33f, entity);
+            renderSphere1(matrices,vertexConsumers,240,0.375f);
             matrices.popPose();
         }
         if (entity instanceof Player player) {
@@ -129,37 +113,78 @@ public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>
         if (entity instanceof blood_zombie){
             new BloodBoom(matrices, vertexConsumers, light, entity);
         }
-
-
     }
-    public void gorillacake(@NotNull PoseStack matrices,
-                    @NotNull MultiBufferSource vertexConsumers,
-                    int light,
-                    @NotNull Entity entity,
-                    float limbAngle, float limbDistance,
-                    float tickDelta, float animationProgress,
-                    float headYaw, float headPitch) {
+    public void renderSphere1(@NotNull PoseStack matrices, @NotNull MultiBufferSource vertexConsumers, int light, float s) {
+        {
+            int stacks = 20; // 垂直方向的分割数
+            int slices = 20; // 水平方向的分割数
+            VertexConsumer vertexConsumer = vertexConsumers.getBuffer(MRender.ging());
+            for (int i = 0; i < stacks; ++i) {
+                float phi0 = (float) Math.PI * ((i + 0) / (float) stacks);
+                float phi1 = (float) Math.PI * ((i + 1) / (float) stacks);
 
-        EntityRenderer<? super LivingEntity> render = Minecraft.getInstance().getEntityRenderDispatcher().getRenderer(entity);
-        if (render instanceof LivingEntityRenderer) {
-            matrices.translate(0, 0, 0);
-            float s = (float) Math.sin((double) entity.tickCount / 22.5);
-            s /= 5;
-            s += 1;
-            matrices.scale(s/2, s/2, s/2);
+                for (int j = 0; j < slices; ++j) {
+                    float theta0 = (float) (2 * Math.PI) * ((j + 0) / (float) slices);
+                    float theta1 = (float) (2 * Math.PI) * ((j + 1) / (float) slices);
 
+                    float x0 = s * (float) Math.sin(phi0) * (float) Math.cos(theta0);
+                    float y0 = s * (float) Math.cos(phi0);
+                    float z0 = s * (float) Math.sin(phi0) * (float) Math.sin(theta0);
 
-            Minecraft.getInstance().getItemRenderer().renderStatic(
-                    Items.gorillacake.get().getDefaultInstance(),
-                    ItemDisplayContext.GROUND,
-                    light,
-                    OverlayTexture.NO_OVERLAY,
-                    matrices,
-                    vertexConsumers,
-                    entity.level(),
-                    0);
+                    float x1 = s * (float) Math.sin(phi0) * (float) Math.cos(theta1);
+                    float y1 = s * (float) Math.cos(phi0);
+                    float z1 = s * (float) Math.sin(phi0) * (float) Math.sin(theta1);
+
+                    float x2 = s * (float) Math.sin(phi1) * (float) Math.cos(theta1);
+                    float y2 = s * (float) Math.cos(phi1);
+                    float z2 = s * (float) Math.sin(phi1) * (float) Math.sin(theta1);
+
+                    float x3 = s * (float) Math.sin(phi1) * (float) Math.cos(theta0);
+                    float y3 = s * (float) Math.cos(phi1);
+                    float z3 = s * (float) Math.sin(phi1) * (float) Math.sin(theta0);
+
+                    vertexConsumer.addVertex(matrices.last().pose(), x0, y0, z0).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x1, y1, z1).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x2, y2, z2).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x3, y3, z3).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                }
+            }
         }
+        {
+            int stacks = 20; // 垂直方向的分割数
+            int slices = 20; // 水平方向的分割数
+            VertexConsumer vertexConsumer = vertexConsumers.getBuffer(MRender.Snake_p_blood);
+            for (int i = 0; i < stacks; ++i) {
+                float phi0 = (float) Math.PI * ((i + 0) / (float) stacks);
+                float phi1 = (float) Math.PI * ((i + 1) / (float) stacks);
 
+                for (int j = 0; j < slices; ++j) {
+                    float theta0 = (float) (2 * Math.PI) * ((j + 0) / (float) slices);
+                    float theta1 = (float) (2 * Math.PI) * ((j + 1) / (float) slices);
+
+                    float x0 = s * (float) Math.sin(phi0) * (float) Math.cos(theta0);
+                    float y0 = s * (float) Math.cos(phi0);
+                    float z0 = s * (float) Math.sin(phi0) * (float) Math.sin(theta0);
+
+                    float x1 = s * (float) Math.sin(phi0) * (float) Math.cos(theta1);
+                    float y1 = s * (float) Math.cos(phi0);
+                    float z1 = s * (float) Math.sin(phi0) * (float) Math.sin(theta1);
+
+                    float x2 = s * (float) Math.sin(phi1) * (float) Math.cos(theta1);
+                    float y2 = s * (float) Math.cos(phi1);
+                    float z2 = s * (float) Math.sin(phi1) * (float) Math.sin(theta1);
+
+                    float x3 = s * (float) Math.sin(phi1) * (float) Math.cos(theta0);
+                    float y3 = s * (float) Math.cos(phi1);
+                    float z3 = s * (float) Math.sin(phi1) * (float) Math.sin(theta0);
+
+                    vertexConsumer.addVertex(matrices.last().pose(), x0, y0, z0).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x1, y1, z1).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x2, y2, z2).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x3, y3, z3).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                }
+            }
+        }
     }
     public void Nig(@NotNull PoseStack matrices,
                           @NotNull MultiBufferSource vertexConsumers,

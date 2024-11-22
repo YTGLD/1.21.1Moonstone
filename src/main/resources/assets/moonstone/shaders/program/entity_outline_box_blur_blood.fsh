@@ -9,7 +9,7 @@ out vec4 fragColor;
 
 void main() {
     vec4 blurred = vec4(0.0);
-    float radius = 6.5;
+    float radius = 3.2;
     for (float a = -radius + 0.05; a <= radius; a += 0.20) {
         blurred += texture(DiffuseSampler, texCoord + sampleStep * a);
     }

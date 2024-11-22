@@ -18,6 +18,7 @@ public class MRender extends RenderType {
     }
 
     private static ShaderInstance ShaderInstance_outline;
+    private static ShaderInstance ShaderInstance_p_blood;
 
 
     private static ShaderInstance ShaderInstance_gateway;
@@ -38,8 +39,7 @@ public class MRender extends RenderType {
         Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
     });
 
-
-    protected static final RenderStateShard.ShaderStateShard RENDERTYPE_OUTLINE = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_outline);
+    protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_p_blood = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_p_blood);
 
     protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_Shader_EYE = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_Shader_EYE);
 
@@ -49,17 +49,25 @@ public class MRender extends RenderType {
 
     protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_trail = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_trail);
 
-    public static RenderType O(ResourceLocation locationIn) {
-        return create("outline", DefaultVertexFormat.POSITION_TEX_COLOR, VertexFormat.Mode.QUADS,
-                256, false, true, RenderType.CompositeState.builder()
-                .setShaderState(RENDERTYPE_OUTLINE)
-                .setCullState(NO_CULL)
-                .setTextureState(new RenderStateShard.TextureStateShard(locationIn, false, false))
-                .setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY)
-                .setDepthTestState(LEQUAL_DEPTH_TEST)
-                .setOutputState(setOutputState)
-                .createCompositeState(false));
-    }
+    public static final RenderType Snake_p_blood = create(
+            "p_blood",
+            DefaultVertexFormat.POSITION,
+            VertexFormat.Mode.QUADS,
+            256,
+            false,
+            false,
+            RenderType.CompositeState.builder()
+                    .setShaderState(RENDER_STATE_SHARD_p_blood)
+                    .setWriteMaskState(COLOR_DEPTH_WRITE)
+                    .setTransparencyState(LIGHTNING_TRANSPARENCY)
+                    .setOutputState(setOutputState)
+                    .setTextureState(RenderStateShard.
+                            MultiTextureStateShard.builder().
+                            add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/ging.png"),
+                                    false,
+                                    false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/ging.png"),
+                                    false, false).build()).createCompositeState(false));
+
 
 
     public static final RenderType Snake_render = create(
@@ -185,6 +193,15 @@ public class MRender extends RenderType {
     public static ShaderInstance getShaderInstance_Shader_EYE() {
         return Shader_EYE;
     }
+
+    public static ShaderInstance getShaderInstance_p_blood() {
+        return ShaderInstance_p_blood;
+    }
+
+    public static void setShaderInstance_p_blood(ShaderInstance shaderInstance_p_blood) {
+        ShaderInstance_p_blood = shaderInstance_p_blood;
+    }
+
     public static ShaderInstance getShaderInstance_mls() {
         return ShaderInstance_mls;
     }

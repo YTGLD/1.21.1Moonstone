@@ -4,7 +4,9 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import com.moonstone.moonstonemod.Handler;
+import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
+import com.moonstone.moonstonemod.client.renderer.MoonPost;
 import com.moonstone.moonstonemod.init.DataReg;
 import com.moonstone.moonstonemod.init.Items;
 import com.moonstone.moonstonemod.item.blood.max_sword;
@@ -25,6 +27,7 @@ public class Sword {
                  @NotNull MultiBufferSource vertexConsumers,
                  int light,
                  @NotNull Entity entity) {
+        MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
         if (entity instanceof LivingEntity living) {
             if (Handler.hascurio(living,Items.max_sword.get())) {
                 CuriosApi.getCuriosInventory(living).ifPresent(handler -> {

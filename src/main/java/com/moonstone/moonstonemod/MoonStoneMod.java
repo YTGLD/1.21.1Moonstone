@@ -42,6 +42,8 @@ public class MoonStoneMod {
     public static final ResourceLocation POST = ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,
             "shaders/post/entity_outline.json");
 
+    public static final ResourceLocation POST_Blood = ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,
+            "shaders/post/entity_outline_blood.json");
 
 
     public MoonStoneMod(IEventBus eventBus, ModContainer modContainer){
@@ -134,8 +136,8 @@ public class MoonStoneMod {
                         DefaultVertexFormat.POSITION_TEX_COLOR),MRender::setShader_snake);
 
                 event.registerShader(new ShaderInstance(event.getResourceProvider(),
-                        ResourceLocation.fromNamespaceAndPath(MODID,"rendertype_outline"),
-                        DefaultVertexFormat.POSITION_TEX_COLOR),MRender::setShaderInstance_outline);
+                        ResourceLocation.fromNamespaceAndPath(MODID,"p_blood"),
+                        DefaultVertexFormat.POSITION_TEX_COLOR),MRender::setShaderInstance_p_blood);
 
             }catch (IOException exception){
                 exception.printStackTrace();

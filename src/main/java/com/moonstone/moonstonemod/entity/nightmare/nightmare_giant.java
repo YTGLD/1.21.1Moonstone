@@ -97,6 +97,8 @@ public class nightmare_giant extends TamableAnimal implements OwnableEntity,Vibr
 
     public nightmare_giant(EntityType<? extends nightmare_giant> p_219350_, Level p_219351_) {
         super(p_219350_, p_219351_);
+
+
         this.vibrationUser = new VibrationUser();
         this.vibrationData = new VibrationSystem.Data();
         this.dynamicGameEventListener = new DynamicGameEventListener<>(new VibrationSystem.Listener(this));
@@ -239,6 +241,7 @@ public class nightmare_giant extends TamableAnimal implements OwnableEntity,Vibr
 
 
     public void tick() {
+        setNoAi(true);
         time++;
         if (!this.getTags().contains(Handler.Giant_Time)) {
             time += 3;

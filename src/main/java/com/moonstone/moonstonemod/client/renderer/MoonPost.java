@@ -33,6 +33,7 @@ public class MoonPost {
 
     public static void onInitializeOutline(Minecraft minecraft) {
         registry.add(MoonStoneMod.POST);
+        registry.add(MoonStoneMod.POST_Blood);
 
         clear();
         for (ResourceLocation resourceLocation : registry) {

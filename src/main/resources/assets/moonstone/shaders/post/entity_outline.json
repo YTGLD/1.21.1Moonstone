@@ -17,7 +17,7 @@
             "uniforms": [
                 {
                     "name": "BlurDir",
-                    "values": [ 2.75, 0.0 ]
+                    "values": [ 3.75, 0.0 ]
                 }
             ]
         },
@@ -29,7 +29,7 @@
             "uniforms": [
                 {
                     "name": "BlurDir",
-                    "values": [ 0.0, 2.75 ]
+                    "values": [ 0.0, 3.75 ]
                 }
             ]
         },
