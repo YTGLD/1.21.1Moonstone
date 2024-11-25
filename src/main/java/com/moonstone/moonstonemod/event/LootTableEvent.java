@@ -19,12 +19,6 @@ public class LootTableEvent {
         LootTable table = event.getTable();
         int bc = 2;
 
-        for (LootContextParam<?> param : event.getTable().getParamSet().getAllowed()){
-            if (param == LootContextParams.THIS_ENTITY){
-
-            }
-        }
-
         if (event.getName().toString().contains("chests/")){
 
             if (event.getName().toString().contains("ancien")){
@@ -63,6 +57,10 @@ public class LootTableEvent {
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
                         .add(LootItem.lootTableItem(Items.wind.get()).setWeight(1))
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+
+
+                        .add(LootItem.lootTableItem(Items.rage_blood_head.get()).setWeight(1))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
                         .build());

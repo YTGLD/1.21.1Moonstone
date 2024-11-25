@@ -5,9 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
-import com.moonstone.moonstonemod.entity.flysword;
-import com.moonstone.moonstonemod.entity.owner_blood;
-import com.moonstone.moonstonemod.entity.suddenrain;
+import com.moonstone.moonstonemod.entity.as_sword;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -15,12 +13,11 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
-public class SwordRenderer <T extends ThrowableItemProjectile> extends EntityRenderer<T> {
-    public SwordRenderer(EntityRendererProvider.Context p_173917_) {
+public class AsSwordRender <T extends as_sword> extends EntityRenderer<T> {
+    public AsSwordRender(EntityRendererProvider.Context p_173917_) {
         super(p_173917_);
     }
 
@@ -28,7 +25,7 @@ public class SwordRenderer <T extends ThrowableItemProjectile> extends EntityRen
 
         pPoseStack.pushPose();
         setT(pPoseStack,pEntity,pBuffer);
-        setTRed(pPoseStack,pEntity,pBuffer);
+
         pPoseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(pPartialTicks, pEntity.yRotO, pEntity.getYRot()) - 90.0F));
         pPoseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(pPartialTicks, pEntity.xRotO, pEntity.getXRot())));
         pPoseStack.mulPose(Axis.XP.rotationDegrees(45.0F));
@@ -59,52 +56,26 @@ public class SwordRenderer <T extends ThrowableItemProjectile> extends EntityRen
     }
 
     private void setT(PoseStack matrices,
-                      T flyswords,
+                      T entity,
                       MultiBufferSource vertexConsumers)
     {
-        if (flyswords instanceof flysword entity) {
-            matrices.pushPose();
+        matrices.pushPose();
 
-            matrices.mulPose(Axis.ZP.rotationDegrees(0));
-            matrices.mulPose(Axis.YP.rotationDegrees(0));
-            matrices.mulPose(Axis.XP.rotationDegrees(0));
+        matrices.mulPose(Axis.ZP.rotationDegrees(0));
+        matrices.mulPose(Axis.YP.rotationDegrees(0));
+        matrices.mulPose(Axis.XP.rotationDegrees(0));
 
-            for (int i = 1; i < entity.getTrailPositions().size(); i++) {
-                Vec3 prevPos = entity.getTrailPositions().get(i - 1);
-                Vec3 currPos = entity.getTrailPositions().get(i);
-                Vec3 adjustedPrevPos = new Vec3(prevPos.x - entity.getX(), prevPos.y - entity.getY(), prevPos.z - entity.getZ());
-                Vec3 adjustedCurrPos = new Vec3(currPos.x - entity.getX(), currPos.y - entity.getY(), currPos.z - entity.getZ());
+        for (int i = 1; i < entity.getTrailPositions().size(); i++) {
+            Vec3 prevPos = entity.getTrailPositions().get(i - 1);
+            Vec3 currPos = entity.getTrailPositions().get(i);
+            Vec3 adjustedPrevPos = new Vec3(prevPos.x - entity.getX(), prevPos.y - entity.getY(), prevPos.z - entity.getZ());
+            Vec3 adjustedCurrPos = new Vec3(currPos.x - entity.getX(), currPos.y - entity.getY(), currPos.z - entity.getZ());
 
-                float alpha = (float) (i) / (float) (entity.getTrailPositions().size());
+            float alpha = (float) (i) / (float) (entity.getTrailPositions().size());
 
-                Handler.renderSword(matrices, vertexConsumers, adjustedPrevPos, adjustedCurrPos, alpha, RenderType.lightning(), 0.0375f);
-            }
-            matrices.popPose();
+            Handler.renderSword(matrices, vertexConsumers, adjustedPrevPos, adjustedCurrPos, alpha, RenderType.lightning(), 0.0375f);
         }
-    }
-    private void setTRed(PoseStack matrices,
-                      T flyswords,
-                      MultiBufferSource vertexConsumers)
-    {
-        if (flyswords instanceof suddenrain entity) {
-            matrices.pushPose();
-
-            matrices.mulPose(Axis.ZP.rotationDegrees(0));
-            matrices.mulPose(Axis.YP.rotationDegrees(0));
-            matrices.mulPose(Axis.XP.rotationDegrees(0));
-
-            for (int i = 1; i < entity.getTrailPositions().size(); i++) {
-                Vec3 prevPos = entity.getTrailPositions().get(i - 1);
-                Vec3 currPos = entity.getTrailPositions().get(i);
-                Vec3 adjustedPrevPos = new Vec3(prevPos.x - entity.getX(), prevPos.y - entity.getY(), prevPos.z - entity.getZ());
-                Vec3 adjustedCurrPos = new Vec3(currPos.x - entity.getX(), currPos.y - entity.getY(), currPos.z - entity.getZ());
-
-                float alpha = (float) (i) / (float) (entity.getTrailPositions().size());
-
-                Handler.renderBlood(matrices, vertexConsumers, adjustedPrevPos, adjustedCurrPos, alpha, RenderType.lightning(), 0.0375f);
-            }
-            matrices.popPose();
-        }
+        matrices.popPose();
     }
     @Override
     public @NotNull ResourceLocation getTextureLocation(T p_114482_) {
@@ -132,3 +103,4 @@ public class SwordRenderer <T extends ThrowableItemProjectile> extends EntityRen
                 .setNormal(pPose, (float)pNormalX, (float)pNormalZ, (float)pNormalY);
     }
 }
+

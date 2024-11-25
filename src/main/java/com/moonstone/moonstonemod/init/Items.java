@@ -223,6 +223,9 @@ public class Items {
     public static final DeferredHolder<Item,?> luck_ring =REGISTRY.register("luck_ring", com.moonstone.moonstonemod.item.maxitem.uncommon.luck_ring::new);
     public static final DeferredHolder<Item,?> luck_stone =REGISTRY.register("luck_stone", com.moonstone.moonstonemod.item.maxitem.uncommon.luck_stone::new);
     public static final DeferredHolder<Item,?> necora_baby =REGISTRY.register("necora_baby", com.moonstone.moonstonemod.item.necora_baby::new);
+    public static final DeferredHolder<Item,?> rage_blood_head =REGISTRY.register("rage_blood_head", com.moonstone.moonstonemod.item.blood.magic.rage_blood_head::new);
+    public static final DeferredHolder<Item,?> killer =REGISTRY.register("killer", com.moonstone.moonstonemod.item.blood.killer::new);
+    public static final DeferredHolder<Item,?> as_amout =REGISTRY.register("as_amout", com.moonstone.moonstonemod.item.nanodoom.as_amout::new);
 
 
 

@@ -11,11 +11,13 @@ import com.moonstone.moonstonemod.item.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
 import com.moonstone.moonstonemod.item.blood.magic.blood_sun;
+import com.moonstone.moonstonemod.item.blood.magic.rage_blood_head;
 import com.moonstone.moonstonemod.item.deceased_contract;
 import com.moonstone.moonstonemod.item.maxitem.god_lead;
 import com.moonstone.moonstonemod.item.maxitem.malice_die;
 import com.moonstone.moonstonemod.item.maxitem.moon_stone;
 import com.moonstone.moonstonemod.item.maxitem.probability;
+import com.moonstone.moonstonemod.item.nanodoom.as_amout;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_head;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_heart;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_orb;
@@ -231,7 +233,8 @@ public class NewEvent {
         dna.hur(event);
         DungeonLoot.attack(event);
         probability.att(event);
-
+        rage_blood_head.hurt(event);
+        as_amout.hurt(event);
         Enchants.LivingHurtEvent(event);
         Enchants.maliceAttack(event);
         moon_stone.LivingIncomingDamageEvent(event);
@@ -372,7 +375,7 @@ public class NewEvent {
         deceased_contract.Did(event);
         blood_sun.Did(event);
         dna.dieD(event);
-
+        rage_blood_head.Did(event);
         sword_soul.evil(event);
     }
     @SubscribeEvent

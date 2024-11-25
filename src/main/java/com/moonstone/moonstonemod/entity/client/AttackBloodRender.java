@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
+import com.moonstone.moonstonemod.client.renderer.MoonPost;
 import com.moonstone.moonstonemod.entity.attack_blood;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -22,6 +23,7 @@ public class AttackBloodRender extends EntityRenderer<attack_blood> {
 
     @Override
     public void render(attack_blood entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
+        MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
         setT(poseStack, entity, bufferSource);
         renderSphere1(poseStack,bufferSource,240,0.15f);
 

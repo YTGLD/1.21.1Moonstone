@@ -241,6 +241,9 @@ public class Tab {
                 b.accept(new ItemStack(Items.malice_die.get()));
                 b.accept(new ItemStack(Items.blood_sun.get()));
                 b.accept(new ItemStack(Items.blood_jelly.get()));
+                b.accept(new ItemStack(Items.rage_blood_head.get()));
+                b.accept(new ItemStack(Items.killer.get()));
+                b.accept(new ItemStack(Items.as_amout.get()));
 
             })
             .build());

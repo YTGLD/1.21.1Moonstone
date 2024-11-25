@@ -67,10 +67,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 public class cell_giant extends TamableAnimal implements OwnableEntity {
 
@@ -236,10 +233,17 @@ public class cell_giant extends TamableAnimal implements OwnableEntity {
     }
 
     public int time = 0;
-
+    private final List<Vec3> trailPositions = new ArrayList<>();
+    public List<Vec3> getTrailPositions() {
+        return trailPositions;
+    }
     public void tick() {
         time++;
+        trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
 
+        if (trailPositions.size() > 22) {
+            trailPositions.removeFirst();
+        }
         if (this.getOwner() instanceof Player player) {
             this.getAttributes().addTransientAttributeModifiers(this.AttributeModifier(this,player));
         }

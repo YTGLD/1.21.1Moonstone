@@ -62,17 +62,17 @@ public class blood extends ThrowableItemProjectile {
                 findNewTarget();
             }
 
-            float s = this.tickCount / 200f;
+            float s = this.tickCount / 500f;
             if (target != null) {
                 if (this.tickCount > 25) {
                     Vec3 targetPos = target.position().add(0, 0.5, 0);
                     Vec3 currentPos = this.position();
                     Vec3 direction = targetPos.subtract(currentPos).normalize();
-                    this.setDeltaMovement(direction.x * (0.02f + s), direction.y * (0.02f + s), direction.z * (0.02f + s));
+                    this.setDeltaMovement(direction.x * (0.005f + s), direction.y * (0.005f + s), direction.z * (0.005f + s));
                 }
             }
         } else {
-            if (tickCount>6){
+            if (tickCount>5){
                 this.discard();
             }
         }

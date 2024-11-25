@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
+import com.moonstone.moonstonemod.client.renderer.MoonPost;
 import com.moonstone.moonstonemod.entity.blood;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -22,6 +23,7 @@ public class BloodRender extends EntityRenderer<blood> {
 
     @Override
     public void render(blood entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
+        MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
         setT(poseStack, entity, bufferSource);
         renderSphere1(poseStack,bufferSource,240,0.15f);
 
@@ -49,37 +51,76 @@ public class BloodRender extends EntityRenderer<blood> {
     }
 
     public void renderSphere1(@NotNull PoseStack matrices, @NotNull MultiBufferSource vertexConsumers, int light, float s) {
-        int stacks = 20; // 垂直方向的分割数
-        int slices = 20; // 水平方向的分割数
-        VertexConsumer vertexConsumer = vertexConsumers.getBuffer(MRender.gateways());
-        for (int i = 0; i < stacks; ++i) {
-            float phi0 = (float) Math.PI * ((i + 0) / (float) stacks);
-            float phi1 = (float) Math.PI * ((i + 1) / (float) stacks);
+        {
+            int stacks = 20; // 垂直方向的分割数
+            int slices = 20; // 水平方向的分割数
+            VertexConsumer vertexConsumer = vertexConsumers.getBuffer(MRender.gateways());
+            for (int i = 0; i < stacks; ++i) {
+                float phi0 = (float) Math.PI * ((i + 0) / (float) stacks);
+                float phi1 = (float) Math.PI * ((i + 1) / (float) stacks);
 
-            for (int j = 0; j < slices; ++j) {
-                float theta0 = (float) (2 * Math.PI) * ((j + 0) / (float) slices);
-                float theta1 = (float) (2 * Math.PI) * ((j + 1) / (float) slices);
+                for (int j = 0; j < slices; ++j) {
+                    float theta0 = (float) (2 * Math.PI) * ((j + 0) / (float) slices);
+                    float theta1 = (float) (2 * Math.PI) * ((j + 1) / (float) slices);
 
-                float x0 = s * (float) Math.sin(phi0) * (float) Math.cos(theta0);
-                float y0 = s * (float) Math.cos(phi0);
-                float z0 = s * (float) Math.sin(phi0) * (float) Math.sin(theta0);
+                    float x0 = s * (float) Math.sin(phi0) * (float) Math.cos(theta0);
+                    float y0 = s * (float) Math.cos(phi0);
+                    float z0 = s * (float) Math.sin(phi0) * (float) Math.sin(theta0);
 
-                float x1 = s * (float) Math.sin(phi0) * (float) Math.cos(theta1);
-                float y1 = s * (float) Math.cos(phi0);
-                float z1 = s * (float) Math.sin(phi0) * (float) Math.sin(theta1);
+                    float x1 = s * (float) Math.sin(phi0) * (float) Math.cos(theta1);
+                    float y1 = s * (float) Math.cos(phi0);
+                    float z1 = s * (float) Math.sin(phi0) * (float) Math.sin(theta1);
 
-                float x2 = s * (float) Math.sin(phi1) * (float) Math.cos(theta1);
-                float y2 = s * (float) Math.cos(phi1);
-                float z2 = s * (float) Math.sin(phi1) * (float) Math.sin(theta1);
+                    float x2 = s * (float) Math.sin(phi1) * (float) Math.cos(theta1);
+                    float y2 = s * (float) Math.cos(phi1);
+                    float z2 = s * (float) Math.sin(phi1) * (float) Math.sin(theta1);
 
-                float x3 = s * (float) Math.sin(phi1) * (float) Math.cos(theta0);
-                float y3 = s * (float) Math.cos(phi1);
-                float z3 = s * (float) Math.sin(phi1) * (float) Math.sin(theta0);
+                    float x3 = s * (float) Math.sin(phi1) * (float) Math.cos(theta0);
+                    float y3 = s * (float) Math.cos(phi1);
+                    float z3 = s * (float) Math.sin(phi1) * (float) Math.sin(theta0);
 
-                vertexConsumer.addVertex(matrices.last().pose(), x0, y0, z0).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
-                vertexConsumer.addVertex(matrices.last().pose(), x1, y1, z1).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
-                vertexConsumer.addVertex(matrices.last().pose(), x2, y2, z2).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
-                vertexConsumer.addVertex(matrices.last().pose(), x3, y3, z3).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x0, y0, z0).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x1, y1, z1).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x2, y2, z2).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x3, y3, z3).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                }
+            }
+
+        }
+        {
+            s*=1.2f;
+            int stacks = 20; // 垂直方向的分割数
+            int slices = 20; // 水平方向的分割数
+            VertexConsumer vertexConsumer = vertexConsumers.getBuffer(MRender.Snake());
+            for (int i = 0; i < stacks; ++i) {
+                float phi0 = (float) Math.PI * ((i + 0) / (float) stacks);
+                float phi1 = (float) Math.PI * ((i + 1) / (float) stacks);
+
+                for (int j = 0; j < slices; ++j) {
+                    float theta0 = (float) (2 * Math.PI) * ((j + 0) / (float) slices);
+                    float theta1 = (float) (2 * Math.PI) * ((j + 1) / (float) slices);
+
+                    float x0 = s * (float) Math.sin(phi0) * (float) Math.cos(theta0);
+                    float y0 = s * (float) Math.cos(phi0);
+                    float z0 = s * (float) Math.sin(phi0) * (float) Math.sin(theta0);
+
+                    float x1 = s * (float) Math.sin(phi0) * (float) Math.cos(theta1);
+                    float y1 = s * (float) Math.cos(phi0);
+                    float z1 = s * (float) Math.sin(phi0) * (float) Math.sin(theta1);
+
+                    float x2 = s * (float) Math.sin(phi1) * (float) Math.cos(theta1);
+                    float y2 = s * (float) Math.cos(phi1);
+                    float z2 = s * (float) Math.sin(phi1) * (float) Math.sin(theta1);
+
+                    float x3 = s * (float) Math.sin(phi1) * (float) Math.cos(theta0);
+                    float y3 = s * (float) Math.cos(phi1);
+                    float z3 = s * (float) Math.sin(phi1) * (float) Math.sin(theta0);
+
+                    vertexConsumer.addVertex(matrices.last().pose(), x0, y0, z0).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x1, y1, z1).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x2, y2, z2).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x3, y3, z3).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                }
             }
         }
     }

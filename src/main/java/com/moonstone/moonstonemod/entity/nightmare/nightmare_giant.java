@@ -241,7 +241,6 @@ public class nightmare_giant extends TamableAnimal implements OwnableEntity,Vibr
 
 
     public void tick() {
-        setNoAi(true);
         time++;
         if (!this.getTags().contains(Handler.Giant_Time)) {
             time += 3;

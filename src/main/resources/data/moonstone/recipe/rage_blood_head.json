@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "key":
+  {
+    "A":
+    {
+      "item": "moonstone:blood"
+    },
+    "B":
+    {
+      "item": "moonstone:mhead"
+    }
+  },
+  "result": {
+    "id": "moonstone:rage_blood_head",
+    "count": 1
+  }
+}

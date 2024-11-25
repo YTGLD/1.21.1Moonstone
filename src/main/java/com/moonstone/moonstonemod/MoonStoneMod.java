@@ -102,6 +102,8 @@ public class MoonStoneMod {
             event.registerEntityRenderer(EntityTs.blood_orb_small.get(), com.moonstone.moonstonemod.entity.client.blood.BloodOrbSmall::new);
             event.registerEntityRenderer(EntityTs.sun.get(), com.moonstone.moonstonemod.entity.client.SunRenderer::new);
             event.registerEntityRenderer(EntityTs.sword_soul.get(), com.moonstone.moonstonemod.entity.client.SwordSoulRenderer::new);
+            event.registerEntityRenderer(EntityTs.rage_blood.get(), com.moonstone.moonstonemod.entity.client.RageBloodRender::new);
+            event.registerEntityRenderer(EntityTs.as_sword.get(), com.moonstone.moonstonemod.entity.client.AsSwordRender::new);
 
         }
         @SubscribeEvent
@@ -138,7 +140,7 @@ public class MoonStoneMod {
                 event.registerShader(new ShaderInstance(event.getResourceProvider(),
                         ResourceLocation.fromNamespaceAndPath(MODID,"p_blood"),
                         DefaultVertexFormat.POSITION_TEX_COLOR),MRender::setShaderInstance_p_blood);
-
+                
             }catch (IOException exception){
                 exception.printStackTrace();
             }

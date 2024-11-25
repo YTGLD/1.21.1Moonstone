@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "moonstone:doomeye"
+    },
+    {
+      "item": "moonstone:maxamout"
+    },
+    {
+      "item": "moonstone:ectoplasmcube"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "moonstone:as_amout"
+  }
+}

@@ -6,7 +6,8 @@ import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.client.renderer.MoonPost;
-import com.moonstone.moonstonemod.entity.owner_blood;
+import com.moonstone.moonstonemod.entity.attack_blood;
+import com.moonstone.moonstonemod.entity.rage_blood;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -16,23 +17,23 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
-public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
-    public OwnerBloodRenderer(EntityRendererProvider.Context p_173917_) {
+public class RageBloodRender  extends EntityRenderer<rage_blood> {
+    public RageBloodRender(EntityRendererProvider.Context p_173917_) {
         super(p_173917_);
     }
 
     @Override
-    public void render(owner_blood entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
+    public void render(rage_blood entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
         MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
         setT(poseStack, entity, bufferSource);
-        renderSphere1(poseStack,bufferSource,240,0.5f);
+        renderSphere1(poseStack,bufferSource,240,0.15f);
 
         super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
     }
 
 
     private void setT(PoseStack matrices,
-                      owner_blood entity,
+                      rage_blood entity,
                       MultiBufferSource vertexConsumers)
     {
         matrices.pushPose();
@@ -45,7 +46,7 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
 
             float alpha = (float)(i) / (float)(entity.getTrailPositions().size());
 
-            Handler.renderBlood(matrices, vertexConsumers, adjustedPrevPos, adjustedCurrPos, alpha, RenderType.lightning(),0.3f);
+            Handler.renderBlood(matrices, vertexConsumers, adjustedPrevPos, adjustedCurrPos, alpha, RenderType.lightning(),0.1f);
         }
         matrices.popPose();
     }
@@ -123,11 +124,10 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
         }
     }
     @Override
-    public ResourceLocation getTextureLocation(owner_blood p_114482_) {
+    public ResourceLocation getTextureLocation(rage_blood p_114482_) {
         return ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/entity/flysword.png");
     }
 }
-
 
 
 

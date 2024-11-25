@@ -365,7 +365,7 @@ public class AllEvent {
 
     @SubscribeEvent
     public void suddenrainLivingDeathEvent(LivingDeathEvent event){
-        if (event.getSource().getEntity() instanceof Player player){
+        if (event.getSource().getDirectEntity() instanceof Player player){
             if (Handler.hascurio(player,Items.doomswoud.get())) {
                 for (int i = 0; i < 4; i++) {
                     float s = (float) Math.sin(i);
@@ -383,34 +383,6 @@ public class AllEvent {
         }
     }
 
-    @SubscribeEvent
-    public void suddenrainLivingTickEvent(EntityTickEvent.Post event){
-        if (event.getEntity() instanceof LivingEntity livingEntity) {
-            Vec3 position = livingEntity.position().add(0,0.75,0);
-            int is = 16;
-            List<suddenrain> items = livingEntity.level().getEntitiesOfClass(suddenrain.class, new AABB(position.x - is, position.y - is, position.z - is, position.x + is, position.y + is, position.z + is));
-            for (suddenrain item : items) {
-                if (item.level() instanceof ServerLevel serverLevel) {
-                    serverLevel.sendParticles(Particles.popr.get(), item.getX(), item.getEyeY(), item.getZ(), 1, 0.0D, 0.0D, 0.0D, 0);
-                }
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public void doomeyeLLivingTickEvent(EntityTickEvent.Post event){
-        if (event.getEntity() instanceof LivingEntity livingEntity) {
-            Vec3 position = livingEntity.position();
-            int is = 16;
-            List<flysword> items = livingEntity.level().getEntitiesOfClass(flysword.class, new AABB(position.x - is, position.y - is, position.z - is, position.x + is, position.y + is, position.z + is));
-            for (flysword item : items) {
-                if (item.level() instanceof ServerLevel serverLevel) {
-                    serverLevel.sendParticles(Particles.blue.get(), item.getX(), item.getEyeY(), item.getZ(), 1, 0.0D, 0.0D, 0.0D, 0);
-                }
-            }
-        }
-
-    }
     @SubscribeEvent
     public void doomeyeLivingKnockBackEvent(LivingKnockBackEvent event){
         if (event.getEntity() instanceof Player player){

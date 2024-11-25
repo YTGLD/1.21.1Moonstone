@@ -672,6 +672,7 @@
   "item.giant.tool.string": "杀死生物有些许概率使尸体诱变成巨型细胞僵尸",
   "advancements.tooltip.giant.text": "装备necora病毒并杀死监守者",
 
+  "entity.moonstone.rage_blood": "痛苦球子",
   "entity.moonstone.cell_giant": "巨型细胞僵尸",
   "entity.moonstone.cell_zombie": "细胞僵尸",
   "entity.moonstone.line": "血灵",
@@ -1077,9 +1078,43 @@
   "item.necora_baby.tool.string.2":"如果腐败之魂死亡/丢失你可以重新装备此物品",
   "item.necora_baby.tool.string.3":"腐败之魂死后也会将物品传送到你的边上",
 
+  "item.moonstone.rage_blood_head":"痛苦双颅",
+  "item.rage_blood_head.tool.string":"杀死生物召唤痛苦双子，它们会继承你33%的当前伤害",
+  "item.rage_blood_head.tool.string.1":"免疫其他痛苦双子的爆炸伤害",
+
+  "item.moonstone.killer": "终结者头骨",
+  "item.killer.tool.string.1": "每损失1%的生命值：",
+  "item.killer.tool.string.2": "+1.25%治疗",
+  "item.killer.tool.string.3": "+0.8%速度",
+  "item.killer.tool.string.4": "+0.75%伤害",
+  "item.killer.tool.string.5": "+0.5%攻速",
+  "item.killer.tool.string.6": "+0.35%护甲",
+  "item.killer.tool.string.7": "现在",
+  "item.killer.tool.string.8": "治疗: ",
+  "item.killer.tool.string.9": "速度: ",
+  "item.killer.tool.string.10": "伤害: ",
+  "item.killer.tool.string.11": "攻速: ",
+  "item.killer.tool.string.12": "护甲: ",
   "item.moonstone.cell_compress":"致命基因压缩",
   "item.moonstone.cell_preferential":"择优进化论",
   "item.moonstone.cell_flu":"病毒性流感",
+
+
+
+
+  "item.moonstone.as_amout": "七剑修罗·剑阵之章",
+  "item.as_amout.tool.string.1": "攻击时从目标背后发射7把飞剑",
+  "item.as_amout.tool.string.2": "飞剑可以存在20秒",
+
+  "item.as_amout.tool.string.3": "前10秒会尝试攻击生物",
+  "item.as_amout.tool.string.4": "后10秒会尝试飞向玩家",
+
+  "item.as_amout.tool.string.5": "这些飞剑附带10%玩家攻击属性",
+  "item.as_amout.tool.string.6": "若拾取飞剑，则恢复5%最大生命值",
+
+  "item.as_amout.tool.string.7": "冷却3秒",
+
+
   "item.moonstone.cell_constant":"常量因子激增",
   "item.moonstone.cell_chromosome":"染色体结构变异",
   "moonstone.curse.name.all.this": "这个物品被",

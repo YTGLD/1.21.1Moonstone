@@ -638,6 +638,7 @@
 
   "item.slime.tool.string": "Kill creatures to summon slime zombie (33%)",
   "advancements.tooltip.giant.text": "Wearing NECORA virus, killing Warden",
+  "entity.moonstone.rage_blood": "rage_blood",
   "entity.moonstone.cell_giant": "cell giant",
   "entity.moonstone.cell_zombie": "cell zombie",
   "entity.moonstone.nightmare_entity": "nightmare entity",
@@ -1049,8 +1050,36 @@
   "item.luck_stone.tool.string.2": "+1 looting and fortune",
 
 
+  "item.moonstone.rage_blood_head":"rage blood head",
+  "item.rage_blood_head.tool.string":"Summon rage blood when kill mob",
+  "item.rage_blood_head.tool.string.1":"",
 
 
+  "item.moonstone.killer": "undead head",
+  "item.killer.tool.string.1": "For every 1% loss of health:",
+  "item.killer.tool.string.2": "+1.25% treatment",
+  "item.killer.tool.string.3": "+0.8% speed",
+  "item.killer.tool.string.4": "+0.75% damage",
+  "item.killer.tool.string.5": "+0.5% Attack Speed",
+  "item.killer.tool.string.6": "+0.35% armor",
+  "item.killer.tool.string.7": "Now",
+  "item.killer.tool.string.8": "treatment:",
+  "item.killer.tool.string.9": "speed:",
+  "item.killer.tool.string.10": "damage:",
+  "item.killer.tool.string.11": "Attack Speed:",
+  "item.killer.tool.string.12": "armor:",
+
+  "item.moonstone.as_amout": "a sword amout",
+  "item.as_amout.tool.string.1": "Launches 7 flying swords from behind the target when attacking",
+  "item.as_amout.tool.string.2": "The flying swords can exist for 20 seconds",
+
+  "item.as_amout.tool.string.3": "In the first 10 seconds, they will attempt to attack creatures",
+  "item.as_amout.tool.string.4": "In the last 10 seconds, they will attempt to fly towards players",
+
+  "item.as_amout.tool.string.5": "These flying swords come with 10% of the player's attack attributes",
+  "item.as_amout.tool.string.6": "If a flying sword is picked up, it restores 5% of maximum health",
+
+  "item.as_amout.tool.string.7": "Cooldown of 3 second",
 
   "item.moonstone.necora_baby":"necora baby",
     "item.necora_baby.tool.string":"Summon a corrupt soul",

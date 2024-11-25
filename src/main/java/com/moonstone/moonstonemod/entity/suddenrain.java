@@ -18,6 +18,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class suddenrain extends ThrowableItemProjectile {
@@ -38,10 +39,18 @@ public class suddenrain extends ThrowableItemProjectile {
         return super.getOwner();
     }
     private LivingEntity target;
-
+    private final List<Vec3> trailPositions = new ArrayList<>();
+    public List<Vec3> getTrailPositions() {
+        return trailPositions;
+    }
     @Override
     public void tick() {
         super.tick();
+        trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
+
+        if (trailPositions.size() > 8) {
+            trailPositions.removeFirst();
+        }
         this.setNoGravity(true);
         age++;
 

@@ -26,7 +26,6 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemDisplayContext;
 import org.jetbrains.annotations.NotNull;
 
 public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>> extends  RenderLayer {
@@ -47,7 +46,6 @@ public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>
                        float limbAngle, float limbDistance,
                        float tickDelta, float animationProgress,
                        float headYaw, float headPitch) {
-
         new orb(matrices, vertexConsumers, light, entity);
 
         new Sword(matrices, vertexConsumers, light, entity);

@@ -78,6 +78,10 @@ public class EntityTs {
 
     public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.zombie.sword_soul>> sword_soul = REGISTRY.register("sword_soul",
             ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.zombie.sword_soul::new, MobCategory.MISC).sized(1, 1).clientTrackingRange(16).build("sword_soul"));
+    public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.rage_blood>> rage_blood = REGISTRY.register("rage_blood",
+            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.rage_blood::new, MobCategory.MISC).sized(1, 1).clientTrackingRange(16).build("rage_blood"));
+    public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.as_sword>> as_sword = REGISTRY.register("as_sword",
+            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.as_sword::new, MobCategory.MISC).sized(1, 0.2f).clientTrackingRange(16).build("as_sword"));
 
     @SubscribeEvent
     public static void EntityAttributeCreationEvent(EntityAttributeCreationEvent event){
@@ -96,6 +100,7 @@ public class EntityTs {
         event.put(EntityTs.owner_blood.get(), IronGolem.createAttributes().build());
         event.put(EntityTs.blood_orb_owner.get(), IronGolem.createAttributes().build());
         event.put(EntityTs.sword_soul.get(), IronGolem.createAttributes().build());
+        event.put(EntityTs.rage_blood.get(), IronGolem.createAttributes().build());
 
     }
 }
