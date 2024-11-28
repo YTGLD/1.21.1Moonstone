@@ -6,18 +6,17 @@ import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.flysword;
 import com.moonstone.moonstonemod.entity.suddenrain;
 import com.moonstone.moonstonemod.entity.zombie.cell_zombie;
-import com.moonstone.moonstonemod.init.DataReg;
-import com.moonstone.moonstonemod.init.EntityTs;
-import com.moonstone.moonstonemod.init.Items;
-import com.moonstone.moonstonemod.init.Particles;
+import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
+import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
+import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.MLS;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.Perhaps;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.*;
-import com.moonstone.moonstonemod.item.BloodVirus.Skill.batskill;
-import com.moonstone.moonstonemod.item.TheNecora.bnabush.cell_blood;
-import com.moonstone.moonstonemod.item.TheNecora.bnabush.cell_boom;
-import com.moonstone.moonstonemod.item.TheNecora.bnabush.cell_calcification;
-import com.moonstone.moonstonemod.item.TheNecora.bnabush.cell_mummy;
+import com.moonstone.moonstonemod.item.plague.BloodVirus.Skill.batskill;
+import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.cell_blood;
+import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.cell_boom;
+import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.cell_calcification;
+import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.cell_mummy;
 import com.moonstone.moonstonemod.item.maxitem.the_heart;
 import com.moonstone.moonstonemod.item.maxitem.uncommon.evilmug;
 import com.moonstone.moonstonemod.item.maxitem.uncommon.plague;
@@ -847,7 +846,7 @@ public class AllEvent {
                                                 tag.getBoolean(blood_jump) &&
                                                 tag.getBoolean(blood_spawn) &&
                                                 tag.getBoolean(blood_enchant)) {
-                                            player.addItem(new ItemStack(com.moonstone.moonstonemod.init.Items.catalyzer.get()));
+                                            player.addItem(new ItemStack(Items.catalyzer.get()));
                                         }
                                     }
                                 }else {
@@ -890,7 +889,7 @@ public class AllEvent {
                                 ;
                                 if (tag != null && !tag.getBoolean(spawn)) {
                                     if (Handler.hascurio(player, Items.medicinebox.get())) {
-                                        player.addItem(new ItemStack(com.moonstone.moonstonemod.init.Items.reanimation.get()));
+                                        player.addItem(new ItemStack(Items.reanimation.get()));
                                         tag.putBoolean(spawn, true);
                                         tag.putBoolean(blood_spawn, true);
                                     }
@@ -928,7 +927,7 @@ public class AllEvent {
                                             tag.putInt(apple, tag.getInt(apple) + 1);
                                         }
                                         if (tag.getInt(apple) == 8) {
-                                            player.addItem(new ItemStack(com.moonstone.moonstonemod.init.Items.masticatory.get()));
+                                            player.addItem(new ItemStack(Items.masticatory.get()));
                                             tag.putBoolean(blood_eat, true);
                                         }
 
@@ -966,7 +965,7 @@ public class AllEvent {
                                         tag.putInt(hurt_size, tag.getInt(hurt_size) + 1);
                                     }
                                     if (tag != null && tag.getInt(hurt_size) == 350) {
-                                        player.addItem(new ItemStack(com.moonstone.moonstonemod.init.Items.calcification.get()));
+                                        player.addItem(new ItemStack(Items.calcification.get()));
                                         tag.putBoolean(blood_hurt, true);
                                     }
                                 }else {
@@ -1002,7 +1001,7 @@ public class AllEvent {
 
                                     }
                                     if (tag != null && tag.getInt(jump_size) == 500) {
-                                        player.addItem(new ItemStack(com.moonstone.moonstonemod.init.Items.quadriceps.get()));
+                                        player.addItem(new ItemStack(Items.quadriceps.get()));
                                         tag.putBoolean(blood_jump, true);
 
                                     }
@@ -1036,7 +1035,7 @@ public class AllEvent {
                                     if (tag != null) {
                                         ;
                                         if (!tag.getBoolean(enchant)) {
-                                            player.addItem(new ItemStack(com.moonstone.moonstonemod.init.Items.polyphagia.get()));
+                                            player.addItem(new ItemStack(Items.polyphagia.get()));
                                             tag.putBoolean(enchant, true);
                                             tag.putBoolean(blood_enchant, true);
 
@@ -1410,7 +1409,7 @@ public class AllEvent {
                                             ;
                                             if (Mth.nextInt(RandomSource.create(), 1, 10) == 1) {
                                                 if (tag != null && !tag.getBoolean(fungus)) {
-                                                    player.addItem(new ItemStack(com.moonstone.moonstonemod.init.Items.fungus.get()));
+                                                    player.addItem(new ItemStack(Items.fungus.get()));
                                                     tag.putBoolean(fungus, true);
                                                 }
                                             }
@@ -1430,7 +1429,7 @@ public class AllEvent {
     @SubscribeEvent
     public void LivingEntityUseItemEvent(LivingEntityUseItemEvent.Finish event) {
         if (event.getEntity() instanceof Player player) {
-            if (Handler.hascurio(player, Items.dna.get())&&!Handler.hascurio(player, com.moonstone.moonstonemod.init.Items.parasite.get())) {
+            if (Handler.hascurio(player, Items.dna.get())&&!Handler.hascurio(player, Items.parasite.get())) {
                 CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
                     Map<String, ICurioStacksHandler> curios = handler.getCurios();
                     for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
@@ -1452,7 +1451,7 @@ public class AllEvent {
                                         tag.getBoolean(TROPICAL_FISH))
                                 {
                                     if (!tag.getBoolean(give)){
-                                        player.addItem(new ItemStack(com.moonstone.moonstonemod.init.Items.parasite.get()));
+                                        player.addItem(new ItemStack(Items.parasite.get()));
                                         tag.putBoolean(give, true);
                                     }
                                 }
@@ -1513,7 +1512,7 @@ public class AllEvent {
                                             if (tag != null) {
                                                 ;
                                                 if (tag != null && tag.getString(virus).isEmpty()) {
-                                                    player.addItem(new ItemStack(com.moonstone.moonstonemod.init.Items.virus.get()));
+                                                    player.addItem(new ItemStack(Items.virus.get()));
                                                     tag.putString(virus, virus);
                                                 }
                                             }else {
@@ -1674,7 +1673,7 @@ public class AllEvent {
     @SubscribeEvent
     public void nightmareanchor(LivingDeathEvent event) {
         if (event.getEntity() instanceof Player player){
-            if (Handler.hascurio(player, com.moonstone.moonstonemod.init.Items.nightmareeye.get())) {
+            if (Handler.hascurio(player, Items.nightmareeye.get())) {
                 CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
                     Map<String, ICurioStacksHandler> curios = handler.getCurios();
                     for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {

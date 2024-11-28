@@ -1,6 +1,6 @@
 package com.moonstone.moonstonemod.item.nanodoom;
 
-import com.moonstone.moonstonemod.init.DataReg;
+import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.Doom;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;

@@ -2,6 +2,9 @@ package com.moonstone.moonstonemod.init;
 
 
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.init.items.BookItems;
+import com.moonstone.moonstonemod.init.items.DNAItems;
+import com.moonstone.moonstonemod.init.items.Items;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -18,6 +21,15 @@ public class Tab {
             .title(Component.translatable("itemGroup.tabmoonstone.dna"))
             .displayItems((a,b)->{
                 b.accept(new ItemStack(Items.dna_box.get()));
+
+
+                b.accept(new ItemStack(Items.deceased_contract.get()));
+
+                b.accept(new ItemStack(BookItems.blood_stasis.get()));
+                b.accept(new ItemStack(BookItems.bone_structure.get()));
+                b.accept(new ItemStack(BookItems.mummification.get()));
+                b.accept(new ItemStack(BookItems.tumour.get()));
+                b.accept(new ItemStack(BookItems.organizational_regeneration.get()));
 
                 b.accept(new ItemStack(DNAItems.cell_compress.get()));
                 b.accept(new ItemStack(DNAItems.cell_preferential.get()));
@@ -131,9 +143,7 @@ public class Tab {
 
                 b.accept(new ItemStack(Items.bloodvirus.get()));
                 b.accept(new ItemStack(Items.necora.get()));
-                b.accept(new ItemStack(Items.deceased_contract.get()));
                 b.accept(new ItemStack(Items.necora_baby.get()));
-
 
 
             })
@@ -244,6 +254,7 @@ public class Tab {
                 b.accept(new ItemStack(Items.rage_blood_head.get()));
                 b.accept(new ItemStack(Items.killer.get()));
                 b.accept(new ItemStack(Items.as_amout.get()));
+                b.accept(new ItemStack(Items.million.get()));
 
             })
             .build());

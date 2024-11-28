@@ -1,6 +1,9 @@
 package com.moonstone.moonstonemod.entity;
 
+import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
+import com.moonstone.moonstonemod.item.nanodoom.million;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -12,12 +15,18 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.*;
+import org.jetbrains.annotations.NotNull;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
+import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class as_sword extends ThrowableItemProjectile {
     public as_sword(EntityType<? extends as_sword> entityType, Level level) {
@@ -31,8 +40,30 @@ public class as_sword extends ThrowableItemProjectile {
     }
 
     @Override
-    public void playerTouch(Player entity) {
+    public void playerTouch(@NotNull Player entity) {
+        if (Handler.hascurio(entity, com.moonstone.moonstonemod.init.items.Items.million.get())) {
+            CuriosApi.getCuriosInventory(entity).ifPresent(handler -> {
+                Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                    ICurioStacksHandler stacksHandler = entry.getValue();
+                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                        ItemStack stack = stackHandler.getStackInSlot(i);
+                        if (stack.get(DataReg.tag) != null) {
 
+                            if (stack.get(DataReg.tag).getInt(million.sizeLvl) < 30) {
+                                stack.get(DataReg.tag).putInt(million.sizeLvl,stack.get(DataReg.tag).getInt(million.sizeLvl)+1);
+                            }
+                            if (stack.get(DataReg.tag).getInt(million.attackLvl) < 100) {
+                                stack.get(DataReg.tag).putInt(million.attackLvl,stack.get(DataReg.tag).getInt(million.attackLvl)+1);
+                            }
+                            stack.get(DataReg.tag).putInt(million.allAttackTime,200);
+
+                        }
+                    }
+                }
+            });
+        }
 
         if (this.tickCount > 33) {
             entity.heal(entity.getMaxHealth() / 20);
@@ -90,7 +121,7 @@ public class as_sword extends ThrowableItemProjectile {
                                 entity.invulnerableTime = 0;
                                 entity.knockback(0.1f, Mth.nextFloat(RandomSource.create(),-0.1f,0.1f), Mth.nextFloat(RandomSource.create(),-0.1f,0.1f));
                                 entity.hurt(this.getOwner().damageSources().dryOut(),
-                                        (float) (3 + player.getAttribute(Attributes.ATTACK_DAMAGE).getValue() * 0.1f));
+                                        (float) (0.3f + player.getAttribute(Attributes.ATTACK_DAMAGE).getValue() * 0.07f));
                                 coll=20;
                             }
                         }
@@ -112,6 +143,7 @@ public class as_sword extends ThrowableItemProjectile {
         }
 
 
+        this.addDeltaMovement(new Vec3(Math.sin(this.tickCount / 2.5f)/200f,Math.sin(this.tickCount/ 2.5f)/200f,Math.sin(this.tickCount/ 2.5f)/200f));
         if (target != null) {
             if (this.tickCount > 30) {
 

@@ -2,7 +2,7 @@ package com.moonstone.moonstonemod.entity.nightmare;
 
 import com.google.common.collect.ImmutableMap;
 import com.moonstone.moonstonemod.entity.zombie.test_e;
-import com.moonstone.moonstonemod.init.EntityTs;
+import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;

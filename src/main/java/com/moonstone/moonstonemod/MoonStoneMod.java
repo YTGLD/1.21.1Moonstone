@@ -7,7 +7,6 @@ import com.moonstone.moonstonemod.client.particle.blue;
 import com.moonstone.moonstonemod.client.particle.popr;
 import com.moonstone.moonstonemod.client.particle.red;
 import com.moonstone.moonstonemod.client.renderer.MRender;
-import com.moonstone.moonstonemod.client.renderer.MoonPost;
 import com.moonstone.moonstonemod.entity.client.BloodSwordRenderer;
 import com.moonstone.moonstonemod.entity.client.SwordRenderer;
 import com.moonstone.moonstonemod.entity.client.blood.BloodBatRenderer;
@@ -16,6 +15,10 @@ import com.moonstone.moonstonemod.entity.client.zombie.CellZombieN;
 import com.moonstone.moonstonemod.entity.client.zombie.ZombieRenderer;
 import com.moonstone.moonstonemod.event.*;
 import com.moonstone.moonstonemod.init.*;
+import com.moonstone.moonstonemod.init.items.BookItems;
+import com.moonstone.moonstonemod.init.items.DNAItems;
+import com.moonstone.moonstonemod.init.items.Items;
+import com.moonstone.moonstonemod.init.moonstoneitem.*;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
@@ -47,15 +50,13 @@ public class MoonStoneMod {
 
 
     public MoonStoneMod(IEventBus eventBus, ModContainer modContainer){
-
-
         NeoForge.EVENT_BUS.register(new AllEvent());
         NeoForge.EVENT_BUS.register(new LootEvent());
         NeoForge.EVENT_BUS.register(new Village());
         NeoForge.EVENT_BUS.register(new LootTableEvent());
         NeoForge.EVENT_BUS.register(new NewEvent());
+        BookItems.REGISTRY.register(eventBus);
         AttReg.REGISTRY.register(eventBus);
-        Blocks.REGISTRY.register(eventBus);
         DNAItems.REGISTRY.register(eventBus);
         LootReg.REGISTRY.register(eventBus);
         EntityTs.REGISTRY.register(eventBus);

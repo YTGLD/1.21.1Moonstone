@@ -2,8 +2,8 @@ package com.moonstone.moonstonemod.entity.nightmare;
 
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.zombie.cell_zombie;
-import com.moonstone.moonstonemod.init.Items;
-import com.moonstone.moonstonemod.init.Particles;
+import com.moonstone.moonstonemod.init.items.Items;
+import com.moonstone.moonstonemod.init.moonstoneitem.Particles;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;

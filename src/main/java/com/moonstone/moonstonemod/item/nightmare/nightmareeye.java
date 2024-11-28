@@ -3,8 +3,8 @@ package com.moonstone.moonstonemod.item.nightmare;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Handler;
-import com.moonstone.moonstonemod.init.DataReg;
-import com.moonstone.moonstonemod.init.Items;
+import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
+import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
@@ -48,13 +48,13 @@ public class nightmareeye extends nightmare {
 
 
         float s = 0.25f;
-        if (Handler.hascurio(player, com.moonstone.moonstonemod.init.Items.nightmarecharm.get())){
+        if (Handler.hascurio(player, Items.nightmarecharm.get())){
             s -= 0.15f;
         }
-        if (Handler.hascurio(player, com.moonstone.moonstonemod.init.Items.nightmareanchor.get())){
+        if (Handler.hascurio(player, Items.nightmareanchor.get())){
             s -= 0.05f;
         }
-        if (Handler.hascurio(player, com.moonstone.moonstonemod.init.Items.nightmarerotten.get())){
+        if (Handler.hascurio(player, Items.nightmarerotten.get())){
             float a = BuiltInRegistries.ATTRIBUTE.size();
             a /= 100;
             a *= 1.1F;

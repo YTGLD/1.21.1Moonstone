@@ -1,7 +1,7 @@
 package com.moonstone.moonstonemod.entity.zombie;
 
 import com.moonstone.moonstonemod.MoonStoneMod;
-import com.moonstone.moonstonemod.init.EntityTs;
+import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;

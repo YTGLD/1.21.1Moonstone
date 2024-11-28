@@ -2,8 +2,8 @@ package com.moonstone.moonstonemod.item.blood;
 
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.line;
-import com.moonstone.moonstonemod.init.EntityTs;
-import com.moonstone.moonstonemod.init.Items;
+import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
+import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Blood;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;

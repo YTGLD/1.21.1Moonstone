@@ -8,10 +8,11 @@ import com.mojang.serialization.Dynamic;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.entity.ai.AIgiant;
+import com.moonstone.moonstonemod.entity.extend.MoonTamableAnimal;
 import com.moonstone.moonstonemod.entity.nightmare.AInightmare;
 import com.moonstone.moonstonemod.entity.nightmare.SonicBoom;
 import com.moonstone.moonstonemod.entity.nightmare.nightmare_giant;
-import com.moonstone.moonstonemod.init.EntityTs;
+import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -69,7 +70,7 @@ import org.slf4j.Logger;
 
 import java.util.*;
 
-public class cell_giant extends TamableAnimal implements OwnableEntity {
+public class cell_giant extends MoonTamableAnimal implements OwnableEntity {
 
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final EntityDataAccessor<Integer> CLIENT_ANGER_LEVEL = SynchedEntityData.defineId(cell_giant.class, EntityDataSerializers.INT);
@@ -112,6 +113,7 @@ public class cell_giant extends TamableAnimal implements OwnableEntity {
 
     @Override
     public void die(@NotNull DamageSource p_21809_) {
+        super.die(p_21809_);
         if (this.getTags().contains(Handler.Parasitic_cell_Giant)){
             for (int i = 0; i < 6; i++) {
                 cell_zombie cell_zombie = new cell_zombie(EntityTs.cell_zombie.get(),this.level());
@@ -232,7 +234,6 @@ public class cell_giant extends TamableAnimal implements OwnableEntity {
         this.entityData.set(CLIENT_ANGER_LEVEL, this.getActiveAnger());
     }
 
-    public int time = 0;
     private final List<Vec3> trailPositions = new ArrayList<>();
     public List<Vec3> getTrailPositions() {
         return trailPositions;

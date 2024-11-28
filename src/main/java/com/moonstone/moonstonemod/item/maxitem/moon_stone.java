@@ -1,8 +1,8 @@
 package com.moonstone.moonstonemod.item.maxitem;
 
 import com.moonstone.moonstonemod.Handler;
-import com.moonstone.moonstonemod.init.DataReg;
-import com.moonstone.moonstonemod.init.Items;
+import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
+import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.CommonItem;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Die;
 import net.minecraft.ChatFormatting;

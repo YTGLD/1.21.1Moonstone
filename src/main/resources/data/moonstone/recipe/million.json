@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "moonstone:doomswoud"
+    },
+    {
+      "item": "moonstone:god_lead"
+    },
+    {
+      "item": "moonstone:ectoplasmcube"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "moonstone:million"
+  }
+}

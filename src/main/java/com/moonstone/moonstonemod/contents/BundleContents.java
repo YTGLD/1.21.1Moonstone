@@ -2,7 +2,7 @@ package com.moonstone.moonstonemod.contents;
 
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.moonstone.moonstonemod.init.DataReg;
+import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;

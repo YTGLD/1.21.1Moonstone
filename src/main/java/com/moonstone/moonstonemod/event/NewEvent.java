@@ -4,20 +4,25 @@ import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.entity.zombie.sword_soul;
 import com.moonstone.moonstonemod.event.loot.DungeonLoot;
-import com.moonstone.moonstonemod.init.*;
+import com.moonstone.moonstonemod.init.items.Items;
+import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
+import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
+import com.moonstone.moonstonemod.init.moonstoneitem.Effects;
+import com.moonstone.moonstonemod.init.moonstoneitem.Enchants;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.IBattery;
-import com.moonstone.moonstonemod.item.BloodVirus.dna.bat_cell;
-import com.moonstone.moonstonemod.item.TheNecora.bnabush.giant_boom_cell;
+import com.moonstone.moonstonemod.item.plague.BloodVirus.dna.bat_cell;
+import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
 import com.moonstone.moonstonemod.item.blood.magic.blood_sun;
 import com.moonstone.moonstonemod.item.blood.magic.rage_blood_head;
-import com.moonstone.moonstonemod.item.deceased_contract;
+import com.moonstone.moonstonemod.item.decorated.deceased_contract;
 import com.moonstone.moonstonemod.item.maxitem.god_lead;
 import com.moonstone.moonstonemod.item.maxitem.malice_die;
 import com.moonstone.moonstonemod.item.maxitem.moon_stone;
 import com.moonstone.moonstonemod.item.maxitem.probability;
 import com.moonstone.moonstonemod.item.nanodoom.as_amout;
+import com.moonstone.moonstonemod.item.nanodoom.million;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_head;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_heart;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_orb;
@@ -238,6 +243,7 @@ public class NewEvent {
         Enchants.LivingHurtEvent(event);
         Enchants.maliceAttack(event);
         moon_stone.LivingIncomingDamageEvent(event);
+        million.hurt(event);
 
         if (event.getEntity().hasEffect(Effects.fear)&&event.getEntity().getEffect(Effects.fear)!=null){
             event.setAmount(event.getAmount()*(1+(event.getEntity().getEffect(Effects.fear).getAmplifier()*0.33f)));

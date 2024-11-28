@@ -1,7 +1,7 @@
 package com.moonstone.moonstonemod.entity;
 
 import com.moonstone.moonstonemod.Handler;
-import com.moonstone.moonstonemod.init.Items;
+import com.moonstone.moonstonemod.init.items.Items;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;

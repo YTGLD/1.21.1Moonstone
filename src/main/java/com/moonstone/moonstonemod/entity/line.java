@@ -1,7 +1,7 @@
 package com.moonstone.moonstonemod.entity;
 
 import com.moonstone.moonstonemod.MoonStoneMod;
-import com.moonstone.moonstonemod.init.EntityTs;
+import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -89,7 +89,7 @@ public class line  extends TamableAnimal {
         }
         trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
 
-        if (trailPositions.size() > 40) {
+        if (trailPositions.size() > 10) {
             trailPositions.removeFirst();
         }
 

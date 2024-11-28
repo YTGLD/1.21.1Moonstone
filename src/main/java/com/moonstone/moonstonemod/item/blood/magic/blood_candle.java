@@ -2,10 +2,10 @@ package com.moonstone.moonstonemod.item.blood.magic;
 
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.owner_blood;
-import com.moonstone.moonstonemod.init.EntityTs;
-import com.moonstone.moonstonemod.init.Items;
+import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
+import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Blood;
-import com.moonstone.moonstonemod.item.BloodVirus.ex.catalyzer;
+import com.moonstone.moonstonemod.item.plague.BloodVirus.ex.catalyzer;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.component.DataComponents;
@@ -35,7 +35,7 @@ public class blood_candle extends Item implements ICurioItem, Blood {
             if (Handler.hascurio(p_150746_, Items.bloodvirus.get())) {
                 if (!Other.isEmpty()) {
                     if (Other.getItem() instanceof catalyzer) {
-                        p_150744_.set(new ItemStack(com.moonstone.moonstonemod.init.Items.evil_blood.get()));
+                        p_150744_.set(new ItemStack(Items.evil_blood.get()));
                         Other.shrink(1);
                         return true;
                     }

@@ -2,7 +2,7 @@ package com.moonstone.moonstonemod.item.ectoplasm.soul;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.moonstone.moonstonemod.init.AttReg;
+import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.CommonItem;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.IBattery;
 import net.minecraft.ChatFormatting;

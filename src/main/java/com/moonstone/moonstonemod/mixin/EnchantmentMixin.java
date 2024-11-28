@@ -1,6 +1,6 @@
 package com.moonstone.moonstonemod.mixin;
 
-import com.moonstone.moonstonemod.init.Enchants;
+import com.moonstone.moonstonemod.init.moonstoneitem.Enchants;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;

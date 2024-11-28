@@ -1,7 +1,7 @@
 package com.moonstone.moonstonemod.entity;
 
 import com.moonstone.moonstonemod.MoonStoneMod;
-import com.moonstone.moonstonemod.init.EntityTs;
+import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -61,15 +61,17 @@ public class snake  extends TamableAnimal {
                         && living.is(this.target)
                         && player.getAttribute(Attributes.ATTACK_DAMAGE)!=null)
                 {
-                    cloudTime = 5;
-                    float dam = (float) player.getAttribute(Attributes.ATTACK_DAMAGE).getValue();
-                    dam*=1.5f;
+                    if (cloudTime<=0) {
+                        cloudTime = 15;
+                        float dam = (float) player.getAttribute(Attributes.ATTACK_DAMAGE).getValue();
+                        dam *= 1.5f;
 
-                    this.target.invulnerableTime = 0;
-                    this.target.hurt(living.damageSources().mobAttack(this), dam);
+                        living.invulnerableTime = 0;
+                        living.hurt(living.damageSources().mobAttack(this), dam);
 
-                    if (target.isAlive()&&this.time>10) {
-                        this.discard();
+                        if (this.time>15) {
+                            this.discard();
+                        }
                     }
                 }
             }
@@ -103,9 +105,9 @@ public class snake  extends TamableAnimal {
                 Vec3 limitedDirection = currentDirection.scale(Math.cos(angleLimit)) // 计算缩放因子
                         .add(direction.normalize().scale(Math.sin(angleLimit))); // 根据目标方向进行调整
 
-                this.setDeltaMovement(limitedDirection.x * 0.125f, limitedDirection.y * 0.125f, limitedDirection.z * 0.125f);
+                this.setDeltaMovement(limitedDirection.x * 0.25f, limitedDirection.y * 0.25f, limitedDirection.z * 0.25f);
             } else {
-                this.setDeltaMovement(direction.x * 0.125f, direction.y * 0.125f, direction.z * 0.125f);
+                this.setDeltaMovement(direction.x * 0.25f, direction.y * 0.25f, direction.z * 0.25f);
             }
         }
         trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));

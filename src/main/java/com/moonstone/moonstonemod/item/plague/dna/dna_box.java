@@ -2,8 +2,8 @@ package com.moonstone.moonstonemod.item.plague.dna;
 
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.event.NewEvent;
-import com.moonstone.moonstonemod.init.DNAItems;
-import com.moonstone.moonstonemod.init.DataReg;
+import com.moonstone.moonstonemod.init.items.DNAItems;
+import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.TheNecoraIC;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.medIC;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Iplague;

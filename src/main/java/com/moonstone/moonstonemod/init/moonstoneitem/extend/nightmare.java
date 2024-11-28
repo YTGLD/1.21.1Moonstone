@@ -1,6 +1,6 @@
 package com.moonstone.moonstonemod.init.moonstoneitem.extend;
 
-import com.moonstone.moonstonemod.init.DataReg;
+import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.INightmare;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.damagesource.DamageSource;

@@ -3,8 +3,9 @@ package com.moonstone.moonstonemod.init.moonstoneitem.extend;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.event.AllEvent;
-import com.moonstone.moonstonemod.init.DataReg;
-import com.moonstone.moonstonemod.item.BloodVirus.ex.catalyzer;
+import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
+import com.moonstone.moonstonemod.init.items.Items;
+import com.moonstone.moonstonemod.item.plague.BloodVirus.ex.catalyzer;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
@@ -33,7 +34,7 @@ public class medicinebox extends TheNecoraIC {
         if (p_150745_ == ClickAction.SECONDARY && p_150744_.allowModification(p_150746_)) {
             if (!Other.isEmpty()) {
                 if (Other.getItem() instanceof catalyzer) {
-                    p_150744_.set(new ItemStack(com.moonstone.moonstonemod.init.Items.botton.get()));
+                    p_150744_.set(new ItemStack(Items.botton.get()));
                     Other.shrink(1);
 
                     return true;

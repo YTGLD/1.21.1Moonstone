@@ -671,6 +671,7 @@
   "item.moonstone.giant": "巨人僵尸基因片段",
   "item.giant.tool.string": "杀死生物有些许概率使尸体诱变成巨型细胞僵尸",
   "advancements.tooltip.giant.text": "装备necora病毒并杀死监守者",
+  "entity.moonstone.as_sword": "飞剑",
 
   "entity.moonstone.rage_blood": "痛苦球子",
   "entity.moonstone.cell_giant": "巨型细胞僵尸",
@@ -1114,6 +1115,27 @@
 
   "item.as_amout.tool.string.7": "冷却3秒",
 
+
+  "item.moonstone.million": "七剑修罗·万法",
+  "item.million.tool.string.1": "这个盒子里存储了30把飞剑",
+  "item.million.tool.string.2": "每次全力斩击都会召唤3把",
+  "item.million.tool.string.3": "每当飞剑被拾取时都会恢复1把",
+  "item.million.tool.string.4": "每次拾取飞剑都会获得1%的伤害加成",
+  "item.million.tool.string.5": "持续10秒，最多叠加到100%",
+  "item.million.tool.string.6": "Shift",
+  "item.million.tool.string.7": "获得的加成：",
+  "item.million.tool.string.8": "储存的飞剑数量：",
+
+  "item.moonstone.blood_stasis": "瘀血",
+  "item.blood_stasis.tool.string": "僵尸死亡后恢复召唤者10%的最大生命值",
+  "item.moonstone.bone_structure": "骨结构异常",
+  "item.bone_structure.tool.string": "僵尸继承玩家70%的护甲值和30%最大生命值",
+  "item.moonstone.mummification": "干尸化",
+  "item.mummification.tool.string": "有效抑制僵尸的腐化速度，但是会减低20%的攻击伤害",
+  "item.moonstone.organizational_regeneration": "组织再生",
+  "item.organizational_regeneration.tool.string": "僵尸会缓慢恢复生命值，并提高腐化速度",
+  "item.moonstone.tumour": "肿瘤",
+  "item.tumour.tool.string": "僵尸伤害减半，但是生命值加倍",
 
   "item.moonstone.cell_constant":"常量因子激增",
   "item.moonstone.cell_chromosome":"染色体结构变异",

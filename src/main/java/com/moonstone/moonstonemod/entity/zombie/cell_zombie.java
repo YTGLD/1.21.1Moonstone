@@ -4,9 +4,10 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.entity.extend.MoonTamableAnimal;
 import com.moonstone.moonstonemod.event.AllEvent;
-import com.moonstone.moonstonemod.init.EntityTs;
-import com.moonstone.moonstonemod.init.Items;
+import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
+import com.moonstone.moonstonemod.init.items.Items;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -37,12 +38,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.UUID;
 
-public class cell_zombie extends TamableAnimal {
+public class cell_zombie extends MoonTamableAnimal {
     public cell_zombie(EntityType<? extends cell_zombie> c  , Level p_34272_) {
         super(c, p_34272_);
     }
 
-    public int time = 0;
     @Override
     public void tick() {
         super.tick();
@@ -143,6 +143,7 @@ public class cell_zombie extends TamableAnimal {
 
     @Override
     public void die(@NotNull DamageSource p_21809_) {
+        super.die(p_21809_);
 
         if (this.getTags().contains(AllEvent.boom)){
             this.level().explode(null, this.getX(), this.getY(), this.getZ(), 5.5f, false, Level.ExplosionInteraction.NONE);

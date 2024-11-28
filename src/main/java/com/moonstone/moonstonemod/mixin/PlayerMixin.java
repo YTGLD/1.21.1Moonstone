@@ -1,8 +1,8 @@
 package com.moonstone.moonstonemod.mixin;
 
 import com.moonstone.moonstonemod.event.NewEvent;
-import com.moonstone.moonstonemod.init.AttReg;
-import com.moonstone.moonstonemod.init.DataReg;
+import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
+import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;

@@ -638,6 +638,7 @@
 
   "item.slime.tool.string": "Kill creatures to summon slime zombie (33%)",
   "advancements.tooltip.giant.text": "Wearing NECORA virus, killing Warden",
+  "entity.moonstone.as_sword": "sword",
   "entity.moonstone.rage_blood": "rage_blood",
   "entity.moonstone.cell_giant": "cell giant",
   "entity.moonstone.cell_zombie": "cell zombie",
@@ -1087,6 +1088,29 @@
   "item.necora_baby.tool.string.2":"If the Soul of Corruption dies/is lost, you can re equip this item",
   "item.necora_baby.tool.string.3":"The soul of corruption will also teleport items to your side after death",
 
+
+
+
+  "item.moonstone.million": "Seven Swords of Asura: All Methods",
+  "item.million.tool.string.1": "This box contains 30 flying swords",
+  "item.million.tool.string.2": "Each attack will summon 3 flying swords",
+  "item.million.tool.string.3": "Each time a flying sword is picked up, 1 will be restored",
+  "item.million.tool.string.4": "Each flying sword picked up grants a 1% damage boost",
+  "item.million.tool.string.5": "Lasts for 10 seconds, can stack up to 100%",
+  "item.million.tool.string.6": "Shift",
+  "item.million.tool.string.7": "Gain boost:",
+  "item.million.tool.string.8": "Stored flying sword count:",
+
+  "item.moonstone.blood_stasis": "Blood Stasis",
+  "item.blood_stasis.tool.string": "Restores 10% of the summoner's maximum health after the zombie's death",
+  "item.moonstone.bone_structure": "Abnormal Bone Structure",
+  "item.bone_structure.tool.string": "Zombies inherit 70% of the player's armor value and 30% of the maximum health",
+  "item.moonstone.mummification": "Mummification",
+  "item.mummification.tool.string": "Effectively slows down the zombie's corruption rate but reduces attack damage by 20%",
+  "item.moonstone.organizational_regeneration": "Organizational Regeneration",
+  "item.organizational_regeneration.tool.string": "Zombies will slowly regain health while increasing their corruption rate",
+  "item.moonstone.tumour": "Tumor",
+  "item.tumour.tool.string": "Zombie damage is halved, but health is doubled",
 
   "enchantment.moonstone.terror": "terror",
   "enchantment.moonstone.malice": "malice",

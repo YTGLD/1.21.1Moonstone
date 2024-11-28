@@ -1,8 +1,8 @@
 package com.moonstone.moonstonemod.item.nightmare;
 
 import com.moonstone.moonstonemod.Handler;
-import com.moonstone.moonstonemod.init.Effects;
-import com.moonstone.moonstonemod.init.Items;
+import com.moonstone.moonstonemod.init.moonstoneitem.Effects;
+import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.INightmare;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;

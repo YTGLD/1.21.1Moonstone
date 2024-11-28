@@ -5,10 +5,11 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.event.NewEvent;
-import com.moonstone.moonstonemod.init.DataReg;
-import com.moonstone.moonstonemod.init.Enchants;
-import com.moonstone.moonstonemod.init.Items;
-import com.moonstone.moonstonemod.init.LootReg;
+import com.moonstone.moonstonemod.init.items.BookItems;
+import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
+import com.moonstone.moonstonemod.init.moonstoneitem.Enchants;
+import com.moonstone.moonstonemod.init.items.Items;
+import com.moonstone.moonstonemod.init.moonstoneitem.LootReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Iplague;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.Holder;
@@ -72,6 +73,7 @@ public class DungeonLoot extends LootModifier {
         int giant = Mth.nextInt(RandomSource.create(), 1, bi*10);
         int bat = Mth.nextInt(RandomSource.create(), 1, bi*18);
         int giant_p = Mth.nextInt(RandomSource.create(), 1, bi*10);
+        int des = Mth.nextInt(RandomSource.create(), 1, bi*50);
 
         if (idSting.contains("chests/")) {
             if (idSting.contains("treasure")){
@@ -195,6 +197,24 @@ public class DungeonLoot extends LootModifier {
             }
             if (idSting.contains("dungeon") || idSting.contains("mineshaft")) {
                 if (entity instanceof Player player) {
+                    if (Handler.hascurio(player, Items.deceased_contract.get())) {
+                        if (des == 1){
+                            generatedLoot.add(new ItemStack(BookItems.organizational_regeneration.get()));
+                        }
+                        if (des == 2){
+                            generatedLoot.add(new ItemStack(BookItems.tumour.get()));
+                        }
+                        if (des == 3){
+                            generatedLoot.add(new ItemStack(BookItems.mummification.get()));
+                        }
+                        if (des == 4){
+                            generatedLoot.add(new ItemStack(BookItems.bone_structure.get()));
+                        }
+                        if (des == 5){
+                            generatedLoot.add(new ItemStack(BookItems.blood_stasis.get()));
+                        }
+
+                    }
                     if (Handler.hascurio(player, Items.necora.get())) {
                         if (ne == 1) {
                             generatedLoot.add(new ItemStack(Items.ambush.get()));

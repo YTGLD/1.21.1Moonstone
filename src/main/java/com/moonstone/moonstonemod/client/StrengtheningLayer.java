@@ -13,7 +13,7 @@ import com.moonstone.moonstonemod.entity.zombie.blood_zombie;
 import com.moonstone.moonstonemod.entity.zombie.blood_zombie_boom;
 import com.moonstone.moonstonemod.entity.zombie.red_entity;
 import com.moonstone.moonstonemod.entity.zombie.test_e;
-import com.moonstone.moonstonemod.init.Items;
+import com.moonstone.moonstonemod.init.items.Items;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;

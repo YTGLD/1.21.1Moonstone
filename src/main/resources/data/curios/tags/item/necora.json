@@ -14,6 +14,13 @@
     "moonstone:autolytic",
     "moonstone:fermentation",
     "moonstone:putrefactive",
-    "moonstone:regenerative"
+    "moonstone:regenerative",
+
+
+    "moonstone:blood_stasis",
+    "moonstone:bone_structure",
+    "moonstone:mummification",
+    "moonstone:organizational_regeneration",
+    "moonstone:tumour"
   ]
 }

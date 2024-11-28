@@ -3,7 +3,7 @@ package com.moonstone.moonstonemod.item.maxitem.uncommon.common;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Handler;
-import com.moonstone.moonstonemod.init.Items;
+import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.CommonItem;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;

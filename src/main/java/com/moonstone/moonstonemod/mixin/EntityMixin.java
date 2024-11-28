@@ -1,7 +1,7 @@
 package com.moonstone.moonstonemod.mixin;
 
 import com.moonstone.moonstonemod.Handler;
-import com.moonstone.moonstonemod.init.Items;
+import com.moonstone.moonstonemod.init.items.Items;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;

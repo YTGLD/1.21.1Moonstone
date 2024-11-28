@@ -1,8 +1,8 @@
 package com.moonstone.moonstonemod.item;
 
 import com.moonstone.moonstonemod.entity.zombie.sword_soul;
-import com.moonstone.moonstonemod.init.DataReg;
-import com.moonstone.moonstonemod.init.EntityTs;
+import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
+import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.TheNecoraIC;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
