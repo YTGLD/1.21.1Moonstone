@@ -21,6 +21,13 @@
     "moonstone:bone_structure",
     "moonstone:mummification",
     "moonstone:organizational_regeneration",
-    "moonstone:tumour"
+    "moonstone:tumour",
+
+    "moonstone:bloodstain",
+    "moonstone:detect",
+    "moonstone:exercise_reinforcement",
+    "moonstone:plague_book",
+    "moonstone:spore_outbreak",
+    "moonstone:weak"
   ]
 }

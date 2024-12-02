@@ -64,6 +64,7 @@ public class deceased_contract extends TheNecoraIC {
                     }
 
                     addTag(z,player);
+                    z.invulnerableTime = 60;
                     player.level().addFreshEntity(z);
                 }
                 if (ss <= 20) {
@@ -82,6 +83,7 @@ public class deceased_contract extends TheNecoraIC {
                     player.level().playSound(null, player.blockPosition(), SoundEvents.WARDEN_EMERGE, SoundSource.NEUTRAL, 1.0F, 1.0F);
 
                     addTag(g,player);
+                    g.invulnerableTime = 60;
                     player.level().addFreshEntity(g);
                 }
 

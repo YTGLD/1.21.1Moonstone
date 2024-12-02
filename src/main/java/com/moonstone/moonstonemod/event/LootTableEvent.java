@@ -1,5 +1,6 @@
 package com.moonstone.moonstonemod.event;
 
+import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.init.items.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -23,7 +24,7 @@ public class LootTableEvent {
                 table.addPool(LootPool.lootPool().name("ancien_moon")
 
 
-                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight(bc*30))
+                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight((int) (bc*30* Config.SERVER.common.get())))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
                         .add(LootItem.lootTableItem(Items.magicstone.get()).setWeight(1))
@@ -69,7 +70,7 @@ public class LootTableEvent {
 
             if (event.getName().toString().contains("treasure")){
                 table.addPool(LootPool.lootPool().name("treasures")
-                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight(bc*20))
+                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight((int) (bc*20* Config.SERVER.common.get())))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
                         .add(LootItem.lootTableItem(Items.the_heart.get()).setWeight(1))
@@ -97,7 +98,7 @@ public class LootTableEvent {
                         .build());
 
                 table.addPool(LootPool.lootPool().name("treasures_moons")
-                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight(bc*40))
+                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight((int) (bc*40* Config.SERVER.common.get())))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
                         .add(LootItem.lootTableItem(Items.malice_die.get()).setWeight(1))
@@ -121,7 +122,7 @@ public class LootTableEvent {
 
             if (event.getName().toString().contains("dungeon") ||event.getName().toString().contains("mineshaft")){
                 table.addPool(LootPool.lootPool().name("dungeon_or_mineshaft")
-                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight(bc*40))
+                        .add(LootItem.lootTableItem(Items.ectoplasmball.get()).setWeight((int) (bc*40* Config.SERVER.common.get())))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
                         .add(LootItem.lootTableItem(Items.badgeofthedead.get()).setWeight(1))

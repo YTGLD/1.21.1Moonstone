@@ -43,7 +43,7 @@ public class as_amout  extends Doom {
                         player.level().addFreshEntity(as_sword);
                         as_sword.setTarget(target);
 
-                        player.getCooldowns().addCooldown(Items.as_amout.get(),60);
+                        player.getCooldowns().addCooldown(Items.as_amout.get(),100);
                     }
 
                 }

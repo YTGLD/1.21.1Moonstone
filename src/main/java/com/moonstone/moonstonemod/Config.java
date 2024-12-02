@@ -60,9 +60,27 @@ public class Config {
                 .comment("The speed of the motor")
                 .defineInRange("motor", 0.15, 0, 999);
 
+        giveBook = BUILDER
+                .comment("Starting with a book or not")
+                .define("give",true);
+        bat = BUILDER
+                .comment("The probability of discovering Shadow Plague items from the chests")
+                .defineInRange("Plague_probability", 10, 1, 100);
+        necora = BUILDER
+                .comment("The probability of Necora items from the chests")
+                .defineInRange("Necora_probability", 10, 1, 100);
+
+        night = BUILDER
+                .comment("The probability of Nightmare items from the chests")
+                .defineInRange("Nightmare_probability", 10, 1, 100);
+
+        common = BUILDER
+                .comment("The larger this value, the lower the probability of discovering the item")
+                .defineInRange("Common_probability", 1, 0.1, 100);
+
         BUILDER.build();
     }
-    private ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
+    private final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
     public ModConfigSpec.DoubleValue plague_speed;
     public ModConfigSpec.DoubleValue plague_pain;
@@ -81,6 +99,12 @@ public class Config {
     public ModConfigSpec.DoubleValue flygene_speed;
     public ModConfigSpec.DoubleValue bloodvirus_speed;
     public ModConfigSpec.DoubleValue motor_speed;
+    public ModConfigSpec.BooleanValue giveBook;
+    public  ModConfigSpec.IntValue bat ;
+    public  ModConfigSpec.IntValue necora ;
+    public  ModConfigSpec.IntValue night ;
+    public  ModConfigSpec.DoubleValue common ;
+
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {

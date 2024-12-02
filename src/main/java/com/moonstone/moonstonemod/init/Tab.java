@@ -25,6 +25,13 @@ public class Tab {
 
                 b.accept(new ItemStack(Items.deceased_contract.get()));
 
+                b.accept(new ItemStack(BookItems.weak.get()));
+                b.accept(new ItemStack(BookItems.spore_outbreak.get()));
+                b.accept(new ItemStack(BookItems.plague_book.get()));
+                b.accept(new ItemStack(BookItems.exercise_reinforcement.get()));
+                b.accept(new ItemStack(BookItems.detect.get()));
+                b.accept(new ItemStack(BookItems.bloodstain.get()));
+
                 b.accept(new ItemStack(BookItems.blood_stasis.get()));
                 b.accept(new ItemStack(BookItems.bone_structure.get()));
                 b.accept(new ItemStack(BookItems.mummification.get()));

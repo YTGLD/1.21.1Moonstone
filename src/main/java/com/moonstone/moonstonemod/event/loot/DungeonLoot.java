@@ -3,6 +3,7 @@ package com.moonstone.moonstonemod.event.loot;
 import com.google.common.base.Suppliers;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.event.NewEvent;
 import com.moonstone.moonstonemod.init.items.BookItems;
@@ -23,6 +24,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -40,7 +42,9 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.function.Supplier;
 
 public class DungeonLoot extends LootModifier {
@@ -54,339 +58,200 @@ public class DungeonLoot extends LootModifier {
     public @NotNull MapCodec<? extends IGlobalLootModifier> codec() {
         return LootReg.TD.get();
     }
-
+    private void addLoot(ObjectArrayList<ItemStack> generatedLoot,
+                         Random random ,
+                         Item mustHas ,
+                         Entity entity ,
+                         List<Item> itemList,
+                         int gLvl){
+        if (entity instanceof Player player ){
+            if (Handler.hascurio(player,mustHas)){
+                int i = random.nextInt(itemList.size());
+                if (gLvl >= 100){
+                    gLvl = 100;
+                }
+                if (Mth.nextInt(net.minecraft.util.RandomSource.create(), 1, 100) <= gLvl) {
+                    generatedLoot.add(new ItemStack(itemList.get(i)));
+                }
+            }
+        }
+    }
+    private void addLootHasB(ObjectArrayList<ItemStack> generatedLoot,
+                             Random random ,
+                             boolean a,
+                             List<Item> itemList,
+                             int gLvl) {
+        if (a) {
+            int i = random.nextInt(itemList.size());
+            if (gLvl >= 100) {
+                gLvl = 100;
+            }
+            if (Mth.nextInt(net.minecraft.util.RandomSource.create(), 1, 100) <= gLvl) {
+                generatedLoot.add(new ItemStack(itemList.get(i)));
+            }
+        }
+    }
     @Override
     protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-
-
         ResourceLocation s = context.getQueriedLootTableId();
         String idSting = String.valueOf(s);
         Entity entity = context.getParamOrNull(LootContextParams.THIS_ENTITY);
-        int bi = 2;
-        int W = Mth.nextInt(RandomSource.create(), 1, bi*20);
-        int N = Mth.nextInt(RandomSource.create(), 1, bi*60);
-        int a = Mth.nextInt(RandomSource.create(), 1, bi*35);
-        int ne = Mth.nextInt(RandomSource.create(), 1,bi* 40);
-        int T = Mth.nextInt(RandomSource.create(), 1, bi*10);
+        Random random = new Random();
 
-        int cell = Mth.nextInt(RandomSource.create(), 1, bi*50);
-        int giant = Mth.nextInt(RandomSource.create(), 1, bi*10);
-        int bat = Mth.nextInt(RandomSource.create(), 1, bi*18);
-        int giant_p = Mth.nextInt(RandomSource.create(), 1, bi*10);
-        int des = Mth.nextInt(RandomSource.create(), 1, bi*50);
+        if (idSting.contains("chests/")) {
+            if (idSting.contains("treasure")){
+                addLoot(generatedLoot, random, Items.bat_cell.get(), entity, List.of(
+                        Items.cell_blood_attack.get(),
+                        Items.cell_desecrate.get(),
+                        Items.cell_doctor.get(),
+                        Items.cell_fear.get(),
+                        Items.cell_harvest.get(),
+                        Items.cell_immortal.get(),
+                        Items.cell_not_do.get(),
+                        Items.cell_rage.get(),
+                        Items.cell_scientist.get()
+                ), Config.SERVER.bat.get());
+            }
+            if (idSting.contains("dungeon") || idSting.contains("mineshaft") || idSting.contains("city")||idSting.contains("treasure")) {
+                addLoot(generatedLoot, random, Items.nightmareeye.get(), entity, List.of(
+                        Items.nightmare_heart.get(),
+                        Items.nightmare_orb.get(),
+                        Items.nightmareanchor.get(),
+                        Items.nightmarecharm.get(),
+                        Items.nightmareeye.get(),
+                        Items.nightmaremoai.get(),
+                        Items.nightmarerotten.get(),
+                        Items.nightmarestone.get(),
+                        Items.nightmaretreasure.get(),
+                        Items.nightmarewater.get()
+                ),  Config.SERVER.night.get());
+
+                addLoot(generatedLoot, random, Items.deceased_contract.get(), entity, List.of(
+
+                        BookItems.bone_structure.get(),
+                        BookItems.tumour.get(),
+                        BookItems.organizational_regeneration.get(),
+                        BookItems.mummification.get(),
+                        BookItems.blood_stasis.get(),
+                        BookItems.weak.get(),
+                        BookItems.spore_outbreak.get(),
+                        BookItems.plague_book.get(),
+                        BookItems.exercise_reinforcement.get(),
+                        BookItems.detect.get(),
+                        BookItems.bloodstain.get()
+
+                        ),  Config.SERVER.necora.get());
+
+                addLoot(generatedLoot, random, Items.bloodvirus.get(), entity, List.of(
+                        Items.batgene.get(),
+                        Items.batskill.get(),
+                        Items.bloodgene.get(),
+                        Items.botton.get(),
+                        Items.catalyzer.get(),
+                        Items.flygene.get(),
+                        Items.heathgene.get(),
+                        Items.ragegene.get(),
+                        Items.sleepgene.get()
+                ), Config.SERVER.bat.get());
+
+                addLoot(generatedLoot, random, Items.necora.get(), entity, List.of(
+                        Items.ambush.get(),
+                        Items.atpoverdose.get(),
+                        Items.autolytic.get(),
+                        Items.fermentation.get(),
+                        Items.putrefactive.get(),
+                        Items.regenerative.get(),
+                        Items.air.get(),
+                        Items.motor.get(),
+                        Items.watergen.get()
+
+                ), Config.SERVER.necora.get());
+
+
+                if (entity instanceof Player player) {
+                    boolean wind = Handler.hascurio(player, Items.doomeye.get())
+                            && Handler.hascurio(player, Items.doomswoud.get());
+                    addLootHasB(generatedLoot, random, wind, List.of(
+                            Items.wind_and_rain.get()
+                    ), 5);
+                }
+            }
+        }
+        if (idSting.contains("chests/")) {
+            if (entity instanceof Player player) {
+                if (idSting.contains("treasure")) {
+                    boolean ab = !Handler.hascurio(player, Items.cell.get())
+                            && !Handler.hascurio(player, Items.giant.get())
+                            && Handler.hascurio(player, Items.necora.get());
+
+                    addLootHasB(generatedLoot, random, ab, List.of(
+                            Items.cell.get()
+                    ), 100);
+
+
+                    boolean cellBat = !Handler.hascurio(player,Items.bat_cell.get())
+                            && Handler.hascurio(player, Items.bloodvirus.get());
+
+                    addLootHasB(generatedLoot, random, cellBat, List.of(
+                            Items.bat_cell.get()
+                    ), 100);
+
+                    if (Handler.hascurio(player, Items.necora.get())) {
+                        boolean cellGiant = Handler.hascurio(player, Items.giant.get());
+
+                        addLootHasB(generatedLoot, random, cellGiant, List.of(
+                                Items.bone_cell.get(),
+                                Items.parasitic_cell.get(),
+                                Items.mother_cell.get(),
+                                Items.disgusting_cells.get()
+                        ), Config.SERVER.necora.get());
+
+                        boolean cellGiantNig = Handler.hascurio(player, Items.giant_nightmare.get());
+
+                        addLootHasB(generatedLoot, random, cellGiantNig, List.of(
+                                Items.giant_boom_cell.get(),
+                                Items.anaerobic_cell.get(),
+                                Items.subspace_cell.get()
+                        ), Config.SERVER.necora.get());
+
+                        boolean cell = Handler.hascurio(player, Items.cell.get())
+                                && !Handler.hascurio(player,Items.giant.get());
+
+                        addLootHasB(generatedLoot, random, cell, List.of(
+                                Items.adrenaline.get(),
+                                Items.cell_mummy.get(),
+                                Items.cell_boom.get(),
+                                Items.cell_calcification.get(),
+                                Items.cell_blood.get()
+                        ), Config.SERVER.necora.get());
+                    }
+                }
+            }
+        }
 
         if (idSting.contains("chests/")) {
             if (idSting.contains("treasure")){
                 if (entity instanceof Player player) {
-                    if (Handler.hascurio(player,Items.bloodvirus.get())) {
-                        if (!Handler.hascurio(player, Items.bat_cell.get())) {
+                    if (Handler.hascurio(player, Items.bloodvirus.get())){
+                        if (!Handler.hascurio(player,Items.bat_cell.get())) {
                             generatedLoot.add(new ItemStack(Items.bat_cell.get()));
-                        }
-                        if (Handler.hascurio(player, Items.bat_cell.get())) {
-                            if (bat == 1) {
-                                generatedLoot.add(new ItemStack(Items.cell_blood_attack.get()));
-
-                            }
-                            if (bat == 2) {
-                                generatedLoot.add(new ItemStack(Items.cell_desecrate.get()));
-
-                            }
-                            if (bat == 3) {
-                                generatedLoot.add(new ItemStack(Items.cell_doctor.get()));
-
-                            }
-                            if (bat == 4) {
-                                generatedLoot.add(new ItemStack(Items.cell_fear.get()));
-
-                            }
-                            if (bat == 5) {
-                                generatedLoot.add(new ItemStack(Items.cell_harvest.get()));
-
-                            }
-                            if (bat == 6) {
-
-                                generatedLoot.add(new ItemStack(Items.cell_immortal.get()));
-                            }
-                            if (bat == 7) {
-
-                                generatedLoot.add(new ItemStack(Items.cell_not_do.get()));
-                            }
-                            if (bat == 8) {
-
-                                generatedLoot.add(new ItemStack(Items.cell_rage.get()));
-                            }
-                            if (bat == 9) {
-
-                                generatedLoot.add(new ItemStack(Items.cell_scientist.get()));
-                            }
                         }
                     }
                     if (Handler.hascurio(player, Items.necora.get())){
-                        if (Handler.hascurio(player, Items.giant_nightmare.get())) {
-                            if (giant == 2) {
-                                generatedLoot.add(new ItemStack(Items.giant_boom_cell.get()));
-                            }
-
-                            if (giant == 4) {
-                                generatedLoot.add(new ItemStack(Items.anaerobic_cell.get()));
-                            }
-                            if (giant == 5) {
-                                generatedLoot.add(new ItemStack(Items.subspace_cell.get()));
-                            }
-                        }
-                        if (!Handler.hascurio(player,Items.giant.get())){
-                            if (giant == 1) {
+                        if (!Handler.hascurio(player,Items.giant.get())) {
+                            if (Mth.nextInt(RandomSource.create(),1,10) == 1) {
                                 generatedLoot.add(new ItemStack(Items.giant.get()));
                             }
-                            if (giant_p  == 2) {
-                                generatedLoot.add(new ItemStack(Items.bone_cell.get()));
-                            }
-                            if (giant_p == 3) {
-                                generatedLoot.add(new ItemStack(Items.parasitic_cell.get()));
-                            }
-                            if (giant_p == 4) {
-                                generatedLoot.add(new ItemStack(Items.mother_cell.get()));
-                            }
-                            if (giant_p == 5) {
-                                generatedLoot.add(new ItemStack(Items.disgusting_cells.get()));
-                            }
-                        }
-
-                        if (!Handler.hascurio(player, Items.cell.get()) && !Handler.hascurio(player,Items.giant.get())){
-                            generatedLoot.add(new ItemStack(Items.cell.get()));
-                        }
-                        if (Handler.hascurio(player, Items.cell.get()) && !Handler.hascurio(player,Items.giant.get())) {
-                            if (cell == 2) {
-                                generatedLoot.add(new ItemStack(Items.adrenaline.get()));
-                            }
-                            if (cell == 3) {
-                                generatedLoot.add(new ItemStack(Items.cell_mummy.get()));
-                            }
-                            if (cell == 4) {
-                                generatedLoot.add(new ItemStack(Items.cell_boom.get()));
-                            }
-                            if (cell == 5) {
-                                generatedLoot.add(new ItemStack(Items.cell_calcification.get()));
-                            }
-                            if (cell == 6) {
-                                generatedLoot.add(new ItemStack(Items.cell_blood.get()));
-                            }
-                        }
-
-                        if (cell == 7) {
-                            generatedLoot.add(new ItemStack(Items.motor.get()));
-                        }
-                        if (cell == 8) {
-                            generatedLoot.add(new ItemStack(Items.air.get()));
-                        }
-                        if (cell == 9) {
-                            generatedLoot.add(new ItemStack(Items.watergen.get()));
-                        }
-                    }
-
-                    if (Handler.hascurio(player, Items.doomswoud.get()) && Handler.hascurio(player, Items.doomeye.get())) {
-                        if (T == 1) {
-                            generatedLoot.add(new ItemStack(Items.wind_and_rain.get()));
-                        }
-                    }
-
-
-                }
-
-
-            }
-            if (idSting.contains("dungeon") || idSting.contains("mineshaft")) {
-                if (entity instanceof Player player) {
-                    if (Handler.hascurio(player, Items.deceased_contract.get())) {
-                        if (des == 1){
-                            generatedLoot.add(new ItemStack(BookItems.organizational_regeneration.get()));
-                        }
-                        if (des == 2){
-                            generatedLoot.add(new ItemStack(BookItems.tumour.get()));
-                        }
-                        if (des == 3){
-                            generatedLoot.add(new ItemStack(BookItems.mummification.get()));
-                        }
-                        if (des == 4){
-                            generatedLoot.add(new ItemStack(BookItems.bone_structure.get()));
-                        }
-                        if (des == 5){
-                            generatedLoot.add(new ItemStack(BookItems.blood_stasis.get()));
-                        }
-
-                    }
-                    if (Handler.hascurio(player, Items.necora.get())) {
-                        if (ne == 1) {
-                            generatedLoot.add(new ItemStack(Items.ambush.get()));
-                        }
-                        if (ne == 2) {
-                            generatedLoot.add(new ItemStack(Items.atpoverdose.get()));
-                        }
-                        if (ne == 3) {
-                            generatedLoot.add(new ItemStack(Items.autolytic.get()));
-                        }
-                        if (ne == 4) {
-                            generatedLoot.add(new ItemStack(Items.fermentation.get()));
-                        }
-                        if (ne == 5) {
-                            generatedLoot.add(new ItemStack(Items.putrefactive.get()));
-                        }
-                        if (ne == 6) {
-                            generatedLoot.add(new ItemStack(Items.regenerative.get()));
-                        }
-                    }
-
-                    if (Handler.hascurio(player, Items.nightmareeye.get())) {
-                        if (N == 1) {
-                            generatedLoot.add(new ItemStack(Items.nightmaremoai.get()));
-                        }
-                        if (N == 2) {
-                            generatedLoot.add(new ItemStack(Items.nightmarewater.get()));
-                        }
-                        if (N == 3) {
-                            generatedLoot.add(new ItemStack(Items.nightmarestone.get()));
-                        }
-                        if (N == 4) {
-                            generatedLoot.add(new ItemStack(Items.nightmareanchor.get()));
-                        }
-                        if (N == 5) {
-                            generatedLoot.add(new ItemStack(Items.nightmaretreasure.get()));
-                        }
-                        if (N == 6) {
-                            generatedLoot.add(new ItemStack(Items.nightmarecharm.get()));
-                        }
-                        if (N == 7) {
-                            generatedLoot.add(new ItemStack(Items.nightmarerotten.get()));
-                        }
-                        if (N == 8) {
-                            generatedLoot.add(new ItemStack(Items.nightmare_orb.get()));
-                        }
-                        if (N == 9) {
-                            generatedLoot.add(new ItemStack(Items.nightmare_heart.get()));
                         }
                     }
                 }
-
-            }
-
-            if (idSting.contains("city")) {
-                if (context.getParamOrNull(LootContextParams.THIS_ENTITY) instanceof Player player) {
-                    if (Handler.hascurio(player,Items.dna.get())){
-                        if (a == 7) {
-                            generatedLoot.add(new ItemStack(Items.germ.get()));
-                        }
-                    }
-
-                    if (Handler.hascurio(player, Items.bloodvirus.get())) {
-                        if (a == 1) {
-                            generatedLoot.add(new ItemStack(Items.bloodgene.get()));
-                        }
-                        if (a == 2) {
-                            generatedLoot.add(new ItemStack(Items.ragegene.get()));
-                        }
-                        if (a == 3) {
-                            generatedLoot.add(new ItemStack(Items.flygene.get()));
-                        }
-                        if (a == 4) {
-                            generatedLoot.add(new ItemStack(Items.heathgene.get()));
-                        }
-                        if (a == 5) {
-                            generatedLoot.add(new ItemStack(Items.sleepgene.get()));
-                        }
-                        if (a == 6) {
-                            generatedLoot.add(new ItemStack(Items.batgene.get()));
-                        }
-                    }
-                }
-                if (entity instanceof Player player) {
-                    if (Handler.hascurio(player, Items.doomswoud.get()) && Handler.hascurio(player, Items.doomeye.get())) {
-                        if (W == 1) {
-                            generatedLoot.add(new ItemStack(Items.wind_and_rain.get()));
-                        }
-                    }
-                }
-
-
             }
         }
 
+
+
         for (ItemStack itemStack : generatedLoot){
             ServerLevel serverLevel= context.getLevel();
-//            if (itemStack.getItem() instanceof ICurioItem) {
-//                if (entity instanceof Player player) {
-//                    if (Handler.hascurio(player,Items.body_stone.get())) {
-//                        if (itemStack.get(DataReg.tag) == null) {
-//                            itemStack.set(DataReg.tag, new CompoundTag());
-//                        }
-//                        float meet = Mth.nextFloat(RandomSource.create(), -0.5f, 0.5f);
-//                        //health
-//
-//                        float die = Mth.nextFloat(RandomSource.create(), -0.2f, 0.2f);
-//                        //伤害
-//
-//                        float doctor = Mth.nextFloat(RandomSource.create(), -0.01f, 0.01f);
-//                        //治疗
-//
-//                        float cell_cell = Mth.nextFloat(RandomSource.create(), -0.5f, 0.5f);
-//                        //暴击
-//
-//                        float chromosome = Mth.nextFloat(RandomSource.create(), -0.15f, 0.15f);
-//                        //挖掘
-//
-//                        float bone = Mth.nextFloat(RandomSource.create(), -0.005f, 0.005f);
-//                        //速度
-//
-//                        float die_body = Mth.nextFloat(RandomSource.create(), -1, 1);
-//                        //护甲
-//
-//                        float l = player.getLuck()/20;//5%
-//                        float lv = 5f;
-//
-//                        if (Handler.hascurio(player,Items.probability.get())){
-//                            meet*=(lv+l);
-//                            die*=(lv+l);
-//                            doctor*=(lv+l);
-//                            cell_cell*=(lv+l);
-//                            chromosome*=(lv+l);
-//                            bone*=(lv+l);
-//                            die_body*=(lv+l);
-//                        }
-//
-//                        int t = Mth.nextInt(RandomSource.create(),1,7);
-//                        if (t==1) {
-//                            if (itemStack.get(DataReg.tag) != null) {
-//                                itemStack.get(DataReg.tag).putFloat(NewEvent.meet, meet);
-//                            }
-//                        }else if (t==2) {
-//                            if (itemStack.get(DataReg.tag) != null) {
-//                                itemStack.get(DataReg.tag).putFloat(NewEvent.die, die);
-//                            }
-//                        }else if (t==3) {
-//                            if (itemStack.get(DataReg.tag) != null) {
-//                                itemStack.get(DataReg.tag).putFloat(NewEvent.doctor, doctor);
-//                            }
-//                        } else  if (t==4) {
-//                            if (itemStack.get(DataReg.tag) != null) {
-//                                itemStack.get(DataReg.tag).putFloat(NewEvent.cell_cell, cell_cell);
-//                            }
-//                        } else if (t==5) {
-//                            if (itemStack.get(DataReg.tag) != null) {
-//                                itemStack.get(DataReg.tag).putFloat(NewEvent.chromosome, chromosome);
-//                            }
-//                        }else  if (t==6) {
-//                            if (itemStack.get(DataReg.tag) != null) {
-//                                itemStack.get(DataReg.tag).putFloat(NewEvent.bone, bone);
-//                            }
-//                        }else if (t==7) {
-//                            if (itemStack.get(DataReg.tag) != null) {
-//                                itemStack.get(DataReg.tag).putFloat(NewEvent.die_body, die_body);
-//                            }
-//                        }
-//
-//
-//                    }
-//                }
-//            }
 
             if (entity instanceof Player player) {
                 int lv = Mth.nextInt(RandomSource.create(),1,100);

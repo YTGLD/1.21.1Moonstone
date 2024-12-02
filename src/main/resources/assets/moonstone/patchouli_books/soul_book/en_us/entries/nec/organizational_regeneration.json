@@ -1,0 +1,15 @@
+{
+  "name": "组织再生",
+  "icon": "moonstone:organizational_regeneration",
+  "category": "moonstone:nec",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:organizational_regeneration",
+      "title": "-组织再生-",
+      "text": "发现在地牢,矿井（需要佩戴死灵契约）"
+    }
+  ]
+}

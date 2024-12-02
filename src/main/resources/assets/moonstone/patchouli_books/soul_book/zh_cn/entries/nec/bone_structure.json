@@ -1,0 +1,15 @@
+{
+  "name": "骨结构异常",
+  "icon": "moonstone:bone_structure",
+  "category": "moonstone:nec",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:bone_structure",
+      "title": "-骨结构异常-",
+      "text": "发现在地牢,矿井（需要佩戴死灵契约）"
+    }
+  ]
+}

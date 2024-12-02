@@ -29,12 +29,15 @@ public class blood_magic_box extends Item implements ICurioItem, Blood {
         if (event.getSource().getEntity() instanceof Player player){
             if (Handler.hascurio(player, Items.blood_magic_box.get())){
 
-                blood blood = new blood(EntityTs.blood.get(),player.level());
-                blood.setDeltaMovement(Mth.nextDouble(RandomSource.create(),0.1,0.11),Mth.nextDouble(RandomSource.create(),0.095,0.1),Mth.nextDouble(RandomSource.create(),0.099,0.1));
-                blood.setOwner(player);
-                blood.setPos(event.getEntity().getX(),event.getEntity().getY()+1.5f,  event.getEntity().getZ());
+                if (!player.getCooldowns().isOnCooldown(Items.blood_magic_box.get())) {
+                    blood blood = new blood(EntityTs.blood.get(), player.level());
+                    blood.setDeltaMovement(Mth.nextDouble(RandomSource.create(), 0.1, 0.11), Mth.nextDouble(RandomSource.create(), 0.095, 0.1), Mth.nextDouble(RandomSource.create(), 0.099, 0.1));
+                    blood.setOwner(player);
+                    blood.setPos(event.getEntity().getX(), event.getEntity().getY() + 1.5f, event.getEntity().getZ());
 
-                player.level().addFreshEntity(blood);
+                    player.level().addFreshEntity(blood);
+                    player.getCooldowns().addCooldown(Items.blood_magic_box.get(),100);
+                }
             }
         }
     }

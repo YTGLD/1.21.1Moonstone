@@ -1089,6 +1089,23 @@
   "item.necora_baby.tool.string.3":"The soul of corruption will also teleport items to your side after death",
 
 
+  "item.moonstone.bloodstain": "Bloodstain",
+  "item.bloodstain.tool.string": "Picking up blood orbs causes an explosion, but does not break blocks",
+
+  "item.moonstone.detect": "Element Detection",
+  "item.detect.tool.string": "Creatures locked by zombies will glow",
+
+  "item.moonstone.exercise_reinforcement": "Exercise Reinforcement",
+  "item.exercise_reinforcement.tool.string": "Zombies gain 60% of the summoner's movement speed",
+
+  "item.moonstone.plague_book": "Plague",
+  "item.plague_book.tool.string": "Creatures attacked by zombies will take an additional 33% damage for a short time",
+
+  "item.moonstone.spore_outbreak": "Spore Eruption",
+  "item.spore_outbreak.tool.string": "Picking up blood orbs restores 20% of maximum health",
+
+  "item.moonstone.weak": "Neurasthenia",
+  "item.weak.tool.string": "Picking up blood orbs immediately loses 10% of health but gains 5 yellow hearts",
 
 
   "item.moonstone.million": "Seven Swords of Asura: All Methods",

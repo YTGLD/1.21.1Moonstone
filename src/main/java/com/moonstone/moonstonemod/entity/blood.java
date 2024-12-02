@@ -1,9 +1,12 @@
 package com.moonstone.moonstonemod.entity;
 
 import com.moonstone.moonstonemod.Handler;
+import com.moonstone.moonstonemod.init.items.BookItems;
 import com.moonstone.moonstonemod.init.items.Items;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -99,10 +102,18 @@ public class blood extends ThrowableItemProjectile {
                 entity.heal(entity.getMaxHealth() / 20);
             }
 
-
-
-
-
+            if (this.getOwner()!=null && this.getOwner() instanceof Player player){
+                if (Handler.hascurio(player, BookItems.bloodstain.get())){
+                    player.level().explode(player,player.getX(),player.getY(),player.getZ(),3.5f,false, Level.ExplosionInteraction.NONE);
+                }
+                if (Handler.hascurio(player, BookItems.spore_outbreak.get())){
+                    player.heal(player.getMaxHealth()/5);
+                }
+                if (Handler.hascurio(player, BookItems.weak.get())){
+                    player.hurt(player.damageSources().dryOut(),player.getMaxHealth()/10);
+                    player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION,200,2));
+                }
+            }
 
             this.discard();
         }

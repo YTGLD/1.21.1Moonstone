@@ -1565,24 +1565,23 @@ public class AllEvent {
 
     @SubscribeEvent
     public  void PlayerLoggedInEvent(PlayerEvent.PlayerLoggedInEvent event) {
-        if (event.getEntity() != null) {
-            Player player = event.getEntity();
-            if (!player.getTags().contains("welcome_to_moonstone")) {
-                int a = Mth.nextInt(RandomSource.create(), 1, 2);
-                if (a == 1) {
-                    player.addItem(Items.ectoplasmstone.get().getDefaultInstance());
-                }
-                if (a == 2) {
-                    player.addItem(Items.twistedstone.get().getDefaultInstance());
-                }
-                player.addItem(Items.deceased_contract.get().getDefaultInstance());
-                player.addTag("welcome_to_moonstone");
+        Player player = event.getEntity();
+        if (!player.getTags().contains("welcome_to_moonstone")) {
+            int a = Mth.nextInt(RandomSource.create(), 1, 2);
+            if (a == 1) {
+                player.addItem(Items.ectoplasmstone.get().getDefaultInstance());
             }
+            if (a == 2) {
+                player.addItem(Items.twistedstone.get().getDefaultInstance());
+            }
+            player.addItem(Items.deceased_contract.get().getDefaultInstance());
+            player.addTag("welcome_to_moonstone");
+        }
+        if (Config.SERVER.giveBook.get()) {
             if (!player.getTags().contains("give_moonstone_item_book")) {
                 player.addItem(Items.book.get().getDefaultInstance());
                 player.addTag("give_moonstone_item_book");
             }
-
         }
 
     }

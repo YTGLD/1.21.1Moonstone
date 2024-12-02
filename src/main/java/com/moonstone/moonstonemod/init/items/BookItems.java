@@ -49,6 +49,7 @@ public class BookItems {
                     0.1f,
                     AttributeModifier.Operation.ADD_MULTIPLIED_BASE
                     ,"item.organizational_regeneration.tool.string"));
+
     public static final DeferredHolder<Item, ?> tumour =
             REGISTRY.register("tumour",()-> new BookItem(
                     new Item.Properties().stacksTo(1).rarity(Rarity.EPIC),
@@ -57,4 +58,51 @@ public class BookItems {
                     AttributeModifier.Operation.ADD_MULTIPLIED_BASE
                     ,"item.tumour.tool.string"));
 
+    public static final DeferredHolder<Item, ?> bloodstain =
+            REGISTRY.register("bloodstain",()-> new BookItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC),
+                    Attributes.MAX_HEALTH,
+                    0.07f,
+                    AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                    ,"item.bloodstain.tool.string"));
+
+    public static final DeferredHolder<Item, ?> detect =
+            REGISTRY.register("detect",()-> new BookItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC),
+                    Attributes.ATTACK_SPEED,
+                    0.14f,
+                    AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                    ,"item.detect.tool.string"));
+
+    public static final DeferredHolder<Item, ?> exercise_reinforcement =
+            REGISTRY.register("exercise_reinforcement",()-> new BookItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC),
+                    Attributes.MOVEMENT_SPEED,
+                    0.1f,
+                    AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                    ,"item.exercise_reinforcement.tool.string"));
+
+    public static final DeferredHolder<Item, ?> plague_book =
+            REGISTRY.register("plague_book",()-> new BookItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC),
+                    Attributes.ATTACK_DAMAGE,
+                    0.08f,
+                    AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                    ,"item.plague_book.tool.string"));
+
+    public static final DeferredHolder<Item, ?> spore_outbreak =
+            REGISTRY.register("spore_outbreak",()-> new BookItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC),
+                    Attributes.KNOCKBACK_RESISTANCE,
+                    0.18f,
+                    AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                    ,"item.spore_outbreak.tool.string"));
+
+    public static final DeferredHolder<Item, ?> weak =
+            REGISTRY.register("weak",()-> new BookItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC),
+                    Attributes.MAX_HEALTH,
+                    4,
+                    AttributeModifier.Operation.ADD_VALUE
+                    ,"item.weak.tool.string"));
 }
