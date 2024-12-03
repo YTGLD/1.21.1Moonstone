@@ -38,8 +38,8 @@ public class BundleContents {
         Fraction fraction = Fraction.ZERO;
 
         ItemStack itemstack;
-        for(Iterator var2 = content.iterator(); var2.hasNext(); fraction = fraction.add(getWeight(itemstack).multiplyBy(Fraction.getFraction(itemstack.getCount(), 1)))) {
-            itemstack = (ItemStack)var2.next();
+        for(Iterator<ItemStack> var2 = content.iterator(); var2.hasNext(); fraction = fraction.add(getWeight(itemstack).multiplyBy(Fraction.getFraction(itemstack.getCount(), 1)))) {
+            itemstack = var2.next();
         }
 
         return fraction;
@@ -53,14 +53,6 @@ public class BundleContents {
             List<?> list = stack.getOrDefault(DataComponents.BEES, List.of());
             return !list.isEmpty() ? Fraction.ONE : Fraction.getFraction(1,320);
         }
-    }
-
-    public ItemStack getItemUnsafe(int index) {
-        return (ItemStack)this.items.get(index);
-    }
-
-    public Stream<ItemStack> itemCopyStream() {
-        return this.items.stream().map(ItemStack::copy);
     }
 
     public Iterable<ItemStack> items() {

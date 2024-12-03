@@ -9,6 +9,8 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.util.SpawnUtil;
@@ -32,6 +34,16 @@ public class Handler {
     public static final String Parasitic_cell_Giant = "Parasitic_cell_Giant";
     public static final String Disgusting__cell_Giant = "Disgusting__cell_Giant";
 
+
+    public static boolean hasItemInList(LivingEntity player,List<String> listItemSting){
+        for (String string : listItemSting){
+            Item item = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,string));
+            if (hascurio(player,item)){
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     public static <T extends TamableAnimal> void trySpawnMob(

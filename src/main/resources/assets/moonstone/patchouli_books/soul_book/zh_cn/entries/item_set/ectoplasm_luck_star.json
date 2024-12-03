@@ -1,0 +1,15 @@
+{
+  "name": "灵质幸运儿",
+  "icon": "moonstone:ectoplasmstar",
+  "category": "moonstone:item_set",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:ectoplasmstar",
+      "title": "-灵质幸运儿·套装-",
+      "text": "需要佩戴：灵质幸运星，灵质果，灵魂立方，莫里斯肾结石。$(br2)奖励：+25%治疗，+5%伤害抗性。$(br2)但是：-20%伤害"
+    }
+  ]
+}

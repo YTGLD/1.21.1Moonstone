@@ -21,8 +21,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-import java.awt.print.Book;
-
 public abstract class MoonTamableAnimal extends TamableAnimal {
     protected MoonTamableAnimal(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
@@ -36,7 +34,6 @@ public abstract class MoonTamableAnimal extends TamableAnimal {
             }
         }
     }
-
     @Override
     public boolean doHurtTarget(Entity entity) {
         if (this.getOwner()!=null &&this.getOwner() instanceof Player player){
@@ -59,7 +56,6 @@ public abstract class MoonTamableAnimal extends TamableAnimal {
             }
         }
         if (this.getOwner()!=null &&this.getOwner() instanceof Player player){
-
 
             if (Handler.hascurio(player, BookItems.detect.get())){
                 if (this.getTarget()!=null&&!this.getTarget().is(this.getOwner())){

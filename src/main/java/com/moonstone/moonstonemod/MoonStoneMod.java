@@ -14,7 +14,7 @@ import com.moonstone.moonstonemod.entity.client.zombie.CellZombieG;
 import com.moonstone.moonstonemod.entity.client.zombie.CellZombieN;
 import com.moonstone.moonstonemod.entity.client.zombie.ZombieRenderer;
 import com.moonstone.moonstonemod.event.*;
-import com.moonstone.moonstonemod.init.*;
+import com.moonstone.moonstonemod.init.Tab;
 import com.moonstone.moonstonemod.init.items.BookItems;
 import com.moonstone.moonstonemod.init.items.DNAItems;
 import com.moonstone.moonstonemod.init.items.Items;
@@ -64,8 +64,10 @@ public class MoonStoneMod {
         Effects.REGISTRY.register(eventBus);
         Particles.PARTICLE_TYPES.register(eventBus);
         Items.REGISTRY.register(eventBus);
+        eventBus.register(Config.class);
         Tab.TABS.register(eventBus);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.fc);
+
     }
 
     @EventBusSubscriber(modid = MoonStoneMod.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)

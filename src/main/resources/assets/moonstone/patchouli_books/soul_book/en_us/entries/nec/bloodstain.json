@@ -1,0 +1,15 @@
+{
+  "name": "血污",
+  "icon": "moonstone:bloodstain",
+  "category": "moonstone:nec",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:bloodstain",
+      "title": "-血污-",
+      "text": "发现在地牢,矿井（需要佩戴死灵契约）"
+    }
+  ]
+}

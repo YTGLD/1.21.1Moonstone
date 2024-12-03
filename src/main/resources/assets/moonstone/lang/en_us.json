@@ -1128,7 +1128,7 @@
   "item.organizational_regeneration.tool.string": "Zombies will slowly regain health while increasing their corruption rate",
   "item.moonstone.tumour": "Tumor",
   "item.tumour.tool.string": "Zombie damage is halved, but health is doubled",
-
+  "moonstone.config.ectoplasm": "ectoplasm of luck",
   "enchantment.moonstone.terror": "terror",
   "enchantment.moonstone.malice": "malice",
   "enchantment.moonstone.threat": "threat",

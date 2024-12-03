@@ -3,6 +3,9 @@ package com.moonstone.moonstonemod.event;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.entity.zombie.sword_soul;
+import com.moonstone.moonstonemod.event.itemset.BatteryMan;
+import com.moonstone.moonstonemod.event.itemset.EctoplasmLuckStar;
+import com.moonstone.moonstonemod.event.itemset.LuckStar;
 import com.moonstone.moonstonemod.event.loot.DungeonLoot;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
@@ -33,6 +36,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
+import net.minecraft.server.PlayerAdvancements;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Difficulty;
@@ -43,14 +48,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.util.TriState;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
-import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
-import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
-import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
-import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.entity.living.*;
+import net.neoforged.neoforge.event.entity.player.*;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
@@ -88,7 +87,14 @@ public class NewEvent {
     }
     @SubscribeEvent
     public void LivingHealEvent(LivingHealEvent event) {
+
+        EctoplasmLuckStar.healEvent(event);
+        BatteryMan.healEvent(event);
+
+
         nightmare_orb.nightmare_orb_heal(event);
+
+
         nightmare_head.LivingHealEvent(event);
         Enchants.threatHeal(event);
         DungeonLoot.heal(event);
@@ -98,11 +104,13 @@ public class NewEvent {
                 event.setAmount(event.getAmount()*(attack));
             }
         }
-
     }
+
     @SubscribeEvent
     public void BatteryName(ItemTooltipEvent event){
         ItemStack stack = event.getItemStack();
+        Player player = event.getEntity();
+
         if (stack.get(DataReg.tag) !=null){
             if (stack.get(DataReg.tag).getBoolean("ALLBattery")){
                 event.getToolTip().add(Component.translatable("item.moonstone.battery").withStyle(ChatFormatting.GOLD));
@@ -244,6 +252,13 @@ public class NewEvent {
         Enchants.maliceAttack(event);
         moon_stone.LivingIncomingDamageEvent(event);
         million.hurt(event);
+        LuckStar.hurtEvent(event);
+        EctoplasmLuckStar.attackEvent(event);
+        EctoplasmLuckStar.hurtEvent(event);
+        BatteryMan.attackEvent(event);
+        BatteryMan.hurtEvent(event);
+
+
 
         if (event.getEntity().hasEffect(Effects.fear)&&event.getEntity().getEffect(Effects.fear)!=null){
             event.setAmount(event.getAmount()*(1+(event.getEntity().getEffect(Effects.fear).getAmplifier()*0.33f)));
@@ -340,6 +355,7 @@ public class NewEvent {
     @SubscribeEvent
     public void soulbattery(CriticalHitEvent event) {
         DungeonLoot.cit(event);
+        BatteryMan.criticalHitEvent(event);
         if (event.getEntity() instanceof Player living){
             if (living.getAttribute(AttReg.cit)!=null){
                 float attack = (float) living.getAttribute(AttReg.cit).getValue();
@@ -388,6 +404,10 @@ public class NewEvent {
     public void heal(PlayerEvent.BreakSpeed event){
         DungeonLoot.heal(event);
     }
+    @SubscribeEvent
+    public void LivingExperienceDropEvent(LivingExperienceDropEvent event){
+        LuckStar.experienceDropEvent(event);
+    }
 
     @SubscribeEvent
     public void EffectTick(EntityTickEvent.Post event) {
@@ -410,5 +430,4 @@ public class NewEvent {
             }
         }
     }
-
 }

@@ -1,22 +1,56 @@
 package com.moonstone.moonstonemod;
 
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 
-@EventBusSubscriber(modid = MoonStoneMod.MODID, bus = EventBusSubscriber.Bus.MOD)
-public class Config {
+import java.util.ArrayList;
+import java.util.List;
 
+public class Config {
     public static Config SERVER;
     public static ModConfigSpec fc;
+
     static {
         final Pair<Config, ModConfigSpec> specPair = new ModConfigSpec.Builder().configure(Config::new);
         SERVER = specPair.getLeft();
         fc = specPair.getRight();
     }
     public Config(ModConfigSpec.Builder BUILDER){
+
+        BUILDER.push("Luckstar");
+
+        listEctoplasm  = BUILDER
+                .comment("Items required for the Luck star set")
+                .define("listEctoplasm",new ArrayList<>(List.of(
+                        "ectoplasmstar",
+                        "luck_ring",
+                        "luck_stone"
+                )));
+        BUILDER.pop();
+
+        BUILDER.push("Ectoplasmstar");
+        listEctoplasmLuckStar  = BUILDER
+                .comment("Items required for the Luck Ectoplasm star set")
+                .define("listEctoplasm",new ArrayList<>(List.of(
+                        "ectoplasmstar",
+                        "ectoplasmapple",
+                        "soulcube",
+                        "mkidney"
+                        )));
+        BUILDER.pop();
+
+        BUILDER.push("BatteryMan");
+        listBattery  = BUILDER
+                .comment("Items required for the Battery Man set")
+                .define("listEctoplasm",new ArrayList<>(List.of(
+                        "soulbattery",
+                        "ectoplasmbattery",
+                        "battery"
+                )));
+        BUILDER.pop();
+
         plague_speed = BUILDER
                 .comment("The growth rate of plague research sites")
                 .defineInRange("GrowthSpeed", 0.1, 0, 100);
@@ -25,13 +59,10 @@ public class Config {
                 .comment("The corrosion speed of the plague")
                 .defineInRange("CorrosionSpeed", 0.01, 0, 100);
 
+        plague_effect = BUILDER
+                .comment("The corrosive effect of plague(All effects will be multiplied by this value)")
+                .defineInRange("CorrosionEffect", 1d, 0.01, 100);
 
-        plague_effect = BUILDER
-                .comment("The corrosive effect of plague(All effects will be multiplied by this value)")
-                .defineInRange("CorrosionEffect", 1d, 0.01, 100);
-        plague_effect = BUILDER
-                .comment("The corrosive effect of plague(All effects will be multiplied by this value)")
-                .defineInRange("CorrosionEffect", 1d, 0.01, 100);
         nightmare_moai = BUILDER
                 .comment("Nightmare Moai's enchantment level bonus")
                 .defineInRange("EnchantmentBonus", 2, 0, 100);
@@ -80,7 +111,6 @@ public class Config {
 
         BUILDER.build();
     }
-    private final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
     public ModConfigSpec.DoubleValue plague_speed;
     public ModConfigSpec.DoubleValue plague_pain;
@@ -104,9 +134,18 @@ public class Config {
     public  ModConfigSpec.IntValue necora ;
     public  ModConfigSpec.IntValue night ;
     public  ModConfigSpec.DoubleValue common ;
+    public  ModConfigSpec.ConfigValue<List<String>> listEctoplasm;
+    public  ModConfigSpec.ConfigValue<List<String>> listEctoplasmLuckStar;
+    public  ModConfigSpec.ConfigValue<List<String>> listBattery;
+
 
 
     @SubscribeEvent
-    static void onLoad(final ModConfigEvent event) {
+    public static void onLoad(final ModConfigEvent.Loading configEvent) {
     }
+
+    @SubscribeEvent
+    public static void onFileChange(final ModConfigEvent.Reloading configEvent) {
+    }
+
 }

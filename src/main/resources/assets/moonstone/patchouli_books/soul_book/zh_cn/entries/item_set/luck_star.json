@@ -1,0 +1,15 @@
+{
+  "name": "幸运儿",
+  "icon": "moonstone:ectoplasmstar",
+  "category": "moonstone:item_set",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:ectoplasmstar",
+      "title": "-幸运儿·套装-",
+      "text": "需要佩戴：灵质幸运星，幸运魔戒，幸运石头。$(br2)奖励：生物经验掉落翻倍。$(br2)但是：伤害抗性降低25%"
+    }
+  ]
+}

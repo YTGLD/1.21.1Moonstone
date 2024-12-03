@@ -666,18 +666,26 @@ public class AllEvent {
 
 
                     if (player.level() instanceof ServerLevel serverLevel) {
-                        serverLevel.sendParticles(ParticleTypes.SOUL, event.getEntity().getX(), event.getEntity().getY()+1, event.getEntity().getZ(), 9, 0.33, 0.33, 0.33, 0);
-                        serverLevel.sendParticles(ParticleTypes.SCULK_SOUL, event.getEntity().getX(), event.getEntity().getY()+1, event.getEntity().getZ(), 9, 0.33, 0.33, 0.33, 0);
+                        serverLevel.sendParticles(ParticleTypes.SOUL, event.getEntity().getX(), event.getEntity().getY()+1, event.getEntity().getZ(), 2, 0.33, 0.33, 0.33, 0);
+                        serverLevel.sendParticles(ParticleTypes.SCULK_SOUL, event.getEntity().getX(), event.getEntity().getY()+1, event.getEntity().getZ(), 2, 0.33, 0.33, 0.33, 0);
                     }
                     if (Handler.hascurio(player,  Items.bloodvirus.get())) {
-                        player.heal(event.getAmount() * 0.1f);
+                        float j = event.getAmount() * 0.1f;
+                        if (j>5){
+                            j=5;
+                        }
+                        player.heal(j);
                         if (event.getEntity() instanceof Mob mob) {
                             if (!mob.isInvertedHealAndHarm()) {
                                 event.setAmount(event.getAmount() * 1.25f);
                             }
                         }
                         if (Mth.nextInt(RandomSource.create(), 1, 10) == 1) {
-                            player.heal(event.getAmount() * 0.2f);
+                            float s = event.getAmount() * 0.2f;
+                            if (s>5){
+                                s=5;
+                            }
+                            player.heal(s);
                             event.getEntity().hurt(event.getSource(), 8);
                         }
                     }
@@ -767,7 +775,11 @@ public class AllEvent {
         if (event.getSource().getDirectEntity() instanceof Player player){
             if (Handler.hascurio(player, Items.maxamout.get())) {
                 event.getEntity().addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 20, 0));
-                player.heal(event.getAmount() / 20);
+                float s =event.getAmount() / 20;
+                if (s>5){
+                    s=5;
+                }
+                player.heal(s);
 
                 if (Mth.nextInt(RandomSource.create(), 1, 12) == 1) {
                     player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 60, 0));

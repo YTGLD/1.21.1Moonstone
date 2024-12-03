@@ -8,9 +8,9 @@ import com.moonstone.moonstonemod.entity.extend.MoonTamableAnimal;
 import com.moonstone.moonstonemod.entity.zombie.cell_giant;
 import com.moonstone.moonstonemod.entity.zombie.cell_zombie;
 import com.moonstone.moonstonemod.init.items.BookItems;
+import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
-import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.TheNecoraIC;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
@@ -19,8 +19,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -31,14 +31,12 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 
-import java.awt.print.Book;
-
 public class deceased_contract extends TheNecoraIC {
     public static void attack(LivingIncomingDamageEvent event) {
         if (event.getEntity() instanceof Player player) {
             if (Handler.hascurio(player, Items.deceased_contract.get())) {
                 if (event.getAmount()<Integer.MAX_VALUE) {
-                    event.setAmount(event.getAmount() * 1.1f);
+                    event.setAmount(event.getAmount() * 1.25f);
                 }
             }
         }
@@ -64,7 +62,7 @@ public class deceased_contract extends TheNecoraIC {
                     }
 
                     addTag(z,player);
-                    z.invulnerableTime = 60;
+                    z.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,60, 6,false,false));
                     player.level().addFreshEntity(z);
                 }
                 if (ss <= 20) {
@@ -83,7 +81,7 @@ public class deceased_contract extends TheNecoraIC {
                     player.level().playSound(null, player.blockPosition(), SoundEvents.WARDEN_EMERGE, SoundSource.NEUTRAL, 1.0F, 1.0F);
 
                     addTag(g,player);
-                    g.invulnerableTime = 60;
+                    g.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,60, 6,false,false));
                     player.level().addFreshEntity(g);
                 }
 
@@ -112,9 +110,9 @@ public class deceased_contract extends TheNecoraIC {
 
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers() {
         Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
-        modifierMultimap.put(AttReg.alL_attack, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), -0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        modifierMultimap.put(AttReg.alL_attack, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), -0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         modifierMultimap.put(AttReg.cit, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), -0.15, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        modifierMultimap.put(AttReg.heal, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), -0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        modifierMultimap.put(AttReg.heal, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), -0.3, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         return modifierMultimap;
     }
 

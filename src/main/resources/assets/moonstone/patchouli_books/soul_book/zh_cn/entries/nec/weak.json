@@ -1,0 +1,15 @@
+{
+  "name": "神经衰弱",
+  "icon": "moonstone:weak",
+  "category": "moonstone:nec",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:weak",
+      "title": "-神经衰弱-",
+      "text": "发现在地牢,矿井（需要佩戴死灵契约）"
+    }
+  ]
+}
