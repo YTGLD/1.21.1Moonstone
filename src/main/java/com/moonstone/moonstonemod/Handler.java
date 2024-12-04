@@ -36,13 +36,17 @@ public class Handler {
 
 
     public static boolean hasItemInList(LivingEntity player,List<String> listItemSting){
-        for (String string : listItemSting){
-            Item item = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,string));
-            if (hascurio(player,item)){
-                return true;
+        if (!Config.SERVER.offSet.get()){
+            return false;
+        }
+        for (String itemName : listItemSting) {
+            Item item = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID, itemName));
+            if (!hascurio(player, item)) {
+                return false;
             }
         }
-        return false;
+
+        return true;
     }
 
 

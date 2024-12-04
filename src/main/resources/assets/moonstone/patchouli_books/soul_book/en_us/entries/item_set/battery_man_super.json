@@ -1,0 +1,15 @@
+{
+  "name": "电池狂魔",
+  "icon": "moonstone:battery",
+  "category": "moonstone:item_set",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:battery",
+      "title": "-电池狂魔·套装-",
+      "text": "需要佩戴：电池，灵魂电池，灵质电池，莫里斯巨型电池。$(br2)奖励：+10%伤害抗性，+15%伤害，+15%暴击。$(br2)但是：-50%治疗"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "厌氧复苏",
+  "icon": "moonstone:necora",
+  "category": "moonstone:item_set",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:necora",
+      "title": "-厌氧复苏·套装-",
+      "text": "需要佩戴：necora病毒，再生活性化，莫里斯药品，骨结构异常，组织再生。$(br2)奖励：+30%治疗, +10%抗性, +20%最大生命值。$(br2)但是：-30%伤害, -30%暴击"
+    }
+  ]
+}

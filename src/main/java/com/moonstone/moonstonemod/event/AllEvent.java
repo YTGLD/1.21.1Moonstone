@@ -202,7 +202,7 @@ public class AllEvent {
     public void evil(LivingDeathEvent event){
         if ((event.getEntity() instanceof Player player)) {
             if (Handler.hascurio(player,Items.cell_boom.get())){
-                player.level().explode(null,player.getX(),player.getY(),player.getZ(),5.5f,true , Level.ExplosionInteraction.MOB);
+                player.level().explode(null,player.getX(),player.getY(),player.getZ(),5.5f,true , Level.ExplosionInteraction.NONE);
             }
         }
         if (event.getSource().getEntity() instanceof Player player){

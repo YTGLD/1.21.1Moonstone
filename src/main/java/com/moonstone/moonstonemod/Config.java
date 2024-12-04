@@ -19,11 +19,16 @@ public class Config {
     }
     public Config(ModConfigSpec.Builder BUILDER){
 
-        BUILDER.push("Luckstar");
+        BUILDER.push("EnableAccessory");
+        offSet  = BUILDER
+                .comment("Enable accessory set effect")
+                .define("offOrOn",true);
+        BUILDER.pop();
 
+        BUILDER.push("Luckstar");
         listEctoplasm  = BUILDER
                 .comment("Items required for the Luck star set")
-                .define("listEctoplasm",new ArrayList<>(List.of(
+                .define("listStar",new ArrayList<>(List.of(
                         "ectoplasmstar",
                         "luck_ring",
                         "luck_stone"
@@ -44,12 +49,109 @@ public class Config {
         BUILDER.push("BatteryMan");
         listBattery  = BUILDER
                 .comment("Items required for the Battery Man set")
-                .define("listEctoplasm",new ArrayList<>(List.of(
+                .define("listBattery",new ArrayList<>(List.of(
                         "soulbattery",
                         "ectoplasmbattery",
                         "battery"
                 )));
         BUILDER.pop();
+
+        BUILDER.push("BatteryManSuper");
+        listBatterySuper  = BUILDER
+                .comment("Items required for the Battery Man Super set")
+                .define("listBatteryManSuper",new ArrayList<>(List.of(
+                        "soulbattery",
+                        "ectoplasmbattery",
+                        "battery",
+                        "mbattery"
+                )));
+        BUILDER.pop();
+
+        BUILDER.push("maulice");
+        listMls  = BUILDER
+                .comment("Items required for the maulice set")
+                .define("listMls",new ArrayList<>(List.of(
+                        "mkidney",
+                        "mshell",
+                        "mring"
+                )));
+        BUILDER.pop();
+
+        BUILDER.push("mauliceSuper");
+        listMlsSuper  = BUILDER
+                .comment("Items required for the maulice Super set")
+                .define("listMlsSuper",new ArrayList<>(List.of(
+                        "mshell",
+                        "meye",
+                        "mblock",
+                        "mbottle"
+                )));
+        BUILDER.pop();
+
+        BUILDER.push("AnaerobicRecovery");
+        listRecovery  = BUILDER
+                .comment("Items required for the Anaerobic recovery set")
+                .define("listAnaerobicRecovery",new ArrayList<>(List.of(
+                        "necora",
+                        "regenerative",
+                        "mbottle",
+                        "bone_structure",
+                        "organizational_regeneration"
+                )));
+        BUILDER.pop();
+
+        BUILDER.push("CellularPathologyPromotion");
+        listCellularPathologyPromotion  = BUILDER
+                .comment("Items required for the Cellular Pathology Promotion set")
+                .define("listCellularPathologyPromotion",new ArrayList<>(List.of(
+                        "necora",
+                        "bone_structure",
+                        "exercise_reinforcement",
+                        "detect",
+                        "adrenaline",
+                        "medicinebox"
+                )));
+        BUILDER.pop();
+
+        BUILDER.push("LifeMan");
+        listManOfLife  = BUILDER
+                .comment("Items required for the Life Man set")
+                .define("listManOfLife",new ArrayList<>(List.of(
+                        "medicinebox",
+                        "dna",
+                        "ectoplasmapple",
+                        "bigwarcrystal",
+                        "greedcrystal"
+                )));
+        BUILDER.pop();
+
+        BUILDER.push("MethaneEmission");
+        listMethaneEmission  = BUILDER
+                .comment("Items required for the Methane Emission set")
+                .define("listMethaneEmission",new ArrayList<>(List.of(
+                        "necora",
+                        "cell_boom",
+                        "cell_calcification",
+                        "air",
+                        "giant_boom_cell",
+                        "mbattery"
+                )));
+        BUILDER.pop();
+
+        BUILDER.push("LifeManSuper");
+
+        listLifeManSuper  = BUILDER
+                .comment("Items required for the Life Man Super set")
+                .define("listLifeManSuper",new ArrayList<>(List.of(
+                        "medicinebox",
+                        "dna",
+                        "bigwarcrystal",
+                        "biggreedcrystal",
+                        "maxamout"
+                )));
+        BUILDER.pop();
+
+
 
         plague_speed = BUILDER
                 .comment("The growth rate of plague research sites")
@@ -134,12 +236,22 @@ public class Config {
     public  ModConfigSpec.IntValue necora ;
     public  ModConfigSpec.IntValue night ;
     public  ModConfigSpec.DoubleValue common ;
+    public ModConfigSpec.BooleanValue offSet;
     public  ModConfigSpec.ConfigValue<List<String>> listEctoplasm;
     public  ModConfigSpec.ConfigValue<List<String>> listEctoplasmLuckStar;
     public  ModConfigSpec.ConfigValue<List<String>> listBattery;
 
 
 
+    public  ModConfigSpec.ConfigValue<List<String>> listBatterySuper;
+    public  ModConfigSpec.ConfigValue<List<String>> listMls;
+    public  ModConfigSpec.ConfigValue<List<String>> listMlsSuper;
+    public  ModConfigSpec.ConfigValue<List<String>> listRecovery;
+    public  ModConfigSpec.ConfigValue<List<String>> listCellularPathologyPromotion;
+
+    public  ModConfigSpec.ConfigValue<List<String>> listMethaneEmission;
+    public  ModConfigSpec.ConfigValue<List<String>> listManOfLife;
+    public  ModConfigSpec.ConfigValue<List<String>> listLifeManSuper;
     @SubscribeEvent
     public static void onLoad(final ModConfigEvent.Loading configEvent) {
     }

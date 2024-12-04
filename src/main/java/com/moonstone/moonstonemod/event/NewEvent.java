@@ -3,9 +3,7 @@ package com.moonstone.moonstonemod.event;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.entity.zombie.sword_soul;
-import com.moonstone.moonstonemod.event.itemset.BatteryMan;
-import com.moonstone.moonstonemod.event.itemset.EctoplasmLuckStar;
-import com.moonstone.moonstonemod.event.itemset.LuckStar;
+import com.moonstone.moonstonemod.event.itemset.*;
 import com.moonstone.moonstonemod.event.loot.DungeonLoot;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
@@ -90,14 +88,16 @@ public class NewEvent {
 
         EctoplasmLuckStar.healEvent(event);
         BatteryMan.healEvent(event);
-
-
+        BatteryManSuper.healEvent(event);
+        MlsSet.healEvent(event);
+        SuperMls.healEvent(event);
         nightmare_orb.nightmare_orb_heal(event);
-
-
+        AnaerobicRecovery.healEvent(event);
+        ManOfLife.healEvent(event);
         nightmare_head.LivingHealEvent(event);
         Enchants.threatHeal(event);
         DungeonLoot.heal(event);
+        LifeManSuper.healEvent(event);
         if (event.getEntity() instanceof LivingEntity living){
             if (living.getAttribute(AttReg.heal)!=null){
                 float attack = (float) living.getAttribute(AttReg.heal).getValue();
@@ -257,7 +257,16 @@ public class NewEvent {
         EctoplasmLuckStar.hurtEvent(event);
         BatteryMan.attackEvent(event);
         BatteryMan.hurtEvent(event);
-
+        BatteryManSuper.attackEvent(event);
+        BatteryManSuper.hurtEvent(event);
+        MlsSet.hurtEvent(event);
+        SuperMls.attackEvent(event);
+        SuperMls.hurtEvent(event);
+        AnaerobicRecovery.attackEvent(event);
+        AnaerobicRecovery.hurtEvent(event);
+        ManOfLife.attackEvent(event);
+        CellularPathologyPromotion.attackEvent(event);
+        LifeManSuper.attackEvent(event);
 
 
         if (event.getEntity().hasEffect(Effects.fear)&&event.getEntity().getEffect(Effects.fear)!=null){
@@ -355,7 +364,14 @@ public class NewEvent {
     @SubscribeEvent
     public void soulbattery(CriticalHitEvent event) {
         DungeonLoot.cit(event);
+        BatteryManSuper.criticalHitEvent(event);
         BatteryMan.criticalHitEvent(event);
+        AnaerobicRecovery.criticalHitEvent(event);
+        CellularPathologyPromotion.criticalHitEvent(event);
+        ManOfLife.criticalHitEvent(event);
+
+        LifeManSuper.criticalHitEvent(event);
+
         if (event.getEntity() instanceof Player living){
             if (living.getAttribute(AttReg.cit)!=null){
                 float attack = (float) living.getAttribute(AttReg.cit).getValue();
@@ -399,6 +415,7 @@ public class NewEvent {
         dna.dieD(event);
         rage_blood_head.Did(event);
         sword_soul.evil(event);
+        MethaneEmission.LivingHealEvent(event);
     }
     @SubscribeEvent
     public void heal(PlayerEvent.BreakSpeed event){

@@ -1,0 +1,15 @@
+{
+  "name": "医学神话",
+  "icon": "moonstone:medicinebox",
+  "category": "moonstone:item_set",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:medicinebox",
+      "title": "-医学神话·套装-",
+      "text": "需要佩戴：医药箱，培养皿，大战争水晶，大贪婪水晶，原始纹章。$(br2)奖励：+7%最大生命值, +7%治疗, +7%速度, +7%伤害, +7%暴击。$(br2)但是: 无"
+    }
+  ]
+}

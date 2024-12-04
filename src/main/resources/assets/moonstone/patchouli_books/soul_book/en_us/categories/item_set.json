@@ -1,6 +1,6 @@
 {
   "name": "套装",
-  "description": "套装",
+  "description": "套装效果由配置文件控制，单个字符串是物品的ID，可以添加自己需求的物品。$(br)但要注意一点，这些物品必须是Moonstone内部的，不能是其他模组的物品！$(br)同样，这些套装如果不喜欢可以通过配置文件的[EnableAccessory]的“offOrOn”来进行开或关",
   "icon": "moonstone:ectoplasmcube",
   "sortnum": 0,
   "secret": false

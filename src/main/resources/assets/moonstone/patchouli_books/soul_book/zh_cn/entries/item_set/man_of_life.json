@@ -1,0 +1,15 @@
+{
+  "name": "研究生命之人",
+  "icon": "moonstone:medicinebox",
+  "category": "moonstone:item_set",
+  "priority": false,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "moonstone:medicinebox",
+      "title": "-研究生命之人·套装-",
+      "text": "需要佩戴：医药箱，培养皿，灵质果，战争水晶，贪婪水晶。$(br2)奖励：+5%最大生命值, +5%治疗, +5%速度, +5%伤害, +5%暴击。$(br2)但是: 无"
+    }
+  ]
+}
