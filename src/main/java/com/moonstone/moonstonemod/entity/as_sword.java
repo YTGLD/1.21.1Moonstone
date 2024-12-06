@@ -41,6 +41,9 @@ public class as_sword extends ThrowableItemProjectile {
 
     @Override
     public void playerTouch(@NotNull Player entity) {
+        if (Handler.hascurio(entity, com.moonstone.moonstonemod.init.items.Items.nine_sword_book.get())){
+            entity.heal(entity.getHealth()/100);
+        }
         if (Handler.hascurio(entity, com.moonstone.moonstonemod.init.items.Items.million.get())) {
             CuriosApi.getCuriosInventory(entity).ifPresent(handler -> {
                 Map<String, ICurioStacksHandler> curios = handler.getCurios();

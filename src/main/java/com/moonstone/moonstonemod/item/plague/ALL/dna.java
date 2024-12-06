@@ -159,7 +159,6 @@ public class dna extends Item implements Iplague, ICurioItem {
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
-        slotContext.entity().getAttributes().addTransientAttributeModifiers(Head(stack));
         if (slotContext.entity() instanceof Player player){
             BundleContents bundlecontents = stack.get(DataReg.BUNDLE_CONTENTS);
             if (bundlecontents != null) {
@@ -220,11 +219,6 @@ public class dna extends Item implements Iplague, ICurioItem {
         }
     }
 
-    @Override
-    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
-        slotContext.entity().getAttributes().removeAttributeModifiers(Head(stack));
-
-    }
     public  static void doBreak(LivingEntityUseItemEvent.Start event){
         LivingEntity player = event.getEntity();
         if (Handler.hascurio(player, Items.dna.get())) {
@@ -420,7 +414,9 @@ public class dna extends Item implements Iplague, ICurioItem {
             }
         }
     }
-    private Multimap<Holder<Attribute>, AttributeModifier> Head(ItemStack stack){
+
+    @Override
+    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> multimap = HashMultimap.create();
 
         BundleContents bundlecontents = stack.get(DataReg.BUNDLE_CONTENTS);
@@ -576,6 +572,7 @@ public class dna extends Item implements Iplague, ICurioItem {
         }
         return multimap;
     }
+
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);

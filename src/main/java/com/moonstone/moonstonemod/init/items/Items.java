@@ -232,6 +232,7 @@ public class Items {
     public static final DeferredHolder<Item,?> as_amout =REGISTRY.register("as_amout", com.moonstone.moonstonemod.item.nanodoom.as_amout::new);
 
     public static final DeferredHolder<Item,?> million =REGISTRY.register("million", com.moonstone.moonstonemod.item.nanodoom.million::new);
+    public static final DeferredHolder<Item,?> nine_sword_book =REGISTRY.register("nine_sword_book", com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book::new);
 
 
 

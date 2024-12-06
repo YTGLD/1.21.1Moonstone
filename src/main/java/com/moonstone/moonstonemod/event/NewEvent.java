@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.event;
 
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.book;
 import com.moonstone.moonstonemod.entity.zombie.sword_soul;
 import com.moonstone.moonstonemod.event.itemset.*;
 import com.moonstone.moonstonemod.event.loot.DungeonLoot;
@@ -11,6 +12,7 @@ import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.Effects;
 import com.moonstone.moonstonemod.init.moonstoneitem.Enchants;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.IBattery;
+import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.dna.bat_cell;
 import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.blood.*;
@@ -44,6 +46,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.util.TriState;
 import net.neoforged.neoforge.event.entity.living.*;
@@ -267,8 +270,25 @@ public class NewEvent {
         ManOfLife.attackEvent(event);
         CellularPathologyPromotion.attackEvent(event);
         LifeManSuper.attackEvent(event);
+        nine_sword_book.att(event);
+        book.hurt(event);
+        CuriosApi.getCuriosInventory(event.getEntity()).ifPresent(handler -> {
+            Map<String, ICurioStacksHandler> curios = handler.getCurios();
+            for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                ICurioStacksHandler stacksHandler = entry.getValue();
+                IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                    ItemStack stack = stackHandler.getStackInSlot(i);
+                    if (BuiltInRegistries.ITEM.getKey(stack.getItem()).getNamespace().equals(MoonStoneMod.MODID)){
 
-
+                        float s = event.getAmount();
+                        if (s>Integer.MAX_VALUE){
+                            event.setAmount(Integer.MAX_VALUE);
+                        }
+                    }
+                }
+            }
+        });
         if (event.getEntity().hasEffect(Effects.fear)&&event.getEntity().getEffect(Effects.fear)!=null){
             event.setAmount(event.getAmount()*(1+(event.getEntity().getEffect(Effects.fear).getAmplifier()*0.33f)));
         }
@@ -446,5 +466,68 @@ public class NewEvent {
                 }
             }
         }
+    }
+    @SubscribeEvent
+    public void Book(ItemTooltipEvent event){
+        ItemStack stack = event.getItemStack();
+        Player player = event.getEntity();
+        if (stack.is( Items.nine_sword_book)) {
+            if (!Handler.hascurio(player, Items.book.get())) {
+                event.getToolTip().add(1, Component.translatable("item.book.tool.string.nine_sword.not").withStyle(ChatFormatting.GOLD));
+            }
+        }
+        CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+            Map<String, ICurioStacksHandler> curios = handler.getCurios();
+            for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                ICurioStacksHandler stacksHandler = entry.getValue();
+                IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                    ItemStack soulbook = stackHandler.getStackInSlot(i);
+                    if (stack.is( Items.nine_sword_book)) {
+                        if (soulbook.get(DataReg.tag) != null) {
+                            if (soulbook.get(DataReg.tag).getInt(book.nineSword) <= 300) {
+                                event.getToolTip().add(1, Component.translatable("item.book.tool.string.nine_sword.not").withStyle(ChatFormatting.GOLD));
+                            } else {
+                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.14").withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.literal(""));
+                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.13").withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.12").withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.literal(""));
+                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.11").withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.10").withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.9").withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.literal(""));
+                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.8").withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.7").withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.literal(""));
+                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.6").withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.5").withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.4").withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.3").withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.2").withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.1").withStyle(ChatFormatting.GOLD));
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

@@ -19,13 +19,9 @@ public class Config {
     }
     public Config(ModConfigSpec.Builder BUILDER){
 
-        BUILDER.push("EnableAccessory");
-        offSet  = BUILDER
-                .comment("Enable accessory set effect")
-                .define("offOrOn",true);
-        BUILDER.pop();
+        BUILDER.push("ItemSet");
 
-        BUILDER.push("Luckstar");
+
         listEctoplasm  = BUILDER
                 .comment("Items required for the Luck star set")
                 .define("listStar",new ArrayList<>(List.of(
@@ -33,9 +29,6 @@ public class Config {
                         "luck_ring",
                         "luck_stone"
                 )));
-        BUILDER.pop();
-
-        BUILDER.push("Ectoplasmstar");
         listEctoplasmLuckStar  = BUILDER
                 .comment("Items required for the Luck Ectoplasm star set")
                 .define("listEctoplasm",new ArrayList<>(List.of(
@@ -44,9 +37,6 @@ public class Config {
                         "soulcube",
                         "mkidney"
                         )));
-        BUILDER.pop();
-
-        BUILDER.push("BatteryMan");
         listBattery  = BUILDER
                 .comment("Items required for the Battery Man set")
                 .define("listBattery",new ArrayList<>(List.of(
@@ -54,9 +44,6 @@ public class Config {
                         "ectoplasmbattery",
                         "battery"
                 )));
-        BUILDER.pop();
-
-        BUILDER.push("BatteryManSuper");
         listBatterySuper  = BUILDER
                 .comment("Items required for the Battery Man Super set")
                 .define("listBatteryManSuper",new ArrayList<>(List.of(
@@ -65,9 +52,6 @@ public class Config {
                         "battery",
                         "mbattery"
                 )));
-        BUILDER.pop();
-
-        BUILDER.push("maulice");
         listMls  = BUILDER
                 .comment("Items required for the maulice set")
                 .define("listMls",new ArrayList<>(List.of(
@@ -75,9 +59,6 @@ public class Config {
                         "mshell",
                         "mring"
                 )));
-        BUILDER.pop();
-
-        BUILDER.push("mauliceSuper");
         listMlsSuper  = BUILDER
                 .comment("Items required for the maulice Super set")
                 .define("listMlsSuper",new ArrayList<>(List.of(
@@ -86,9 +67,6 @@ public class Config {
                         "mblock",
                         "mbottle"
                 )));
-        BUILDER.pop();
-
-        BUILDER.push("AnaerobicRecovery");
         listRecovery  = BUILDER
                 .comment("Items required for the Anaerobic recovery set")
                 .define("listAnaerobicRecovery",new ArrayList<>(List.of(
@@ -98,9 +76,7 @@ public class Config {
                         "bone_structure",
                         "organizational_regeneration"
                 )));
-        BUILDER.pop();
 
-        BUILDER.push("CellularPathologyPromotion");
         listCellularPathologyPromotion  = BUILDER
                 .comment("Items required for the Cellular Pathology Promotion set")
                 .define("listCellularPathologyPromotion",new ArrayList<>(List.of(
@@ -111,9 +87,7 @@ public class Config {
                         "adrenaline",
                         "medicinebox"
                 )));
-        BUILDER.pop();
 
-        BUILDER.push("LifeMan");
         listManOfLife  = BUILDER
                 .comment("Items required for the Life Man set")
                 .define("listManOfLife",new ArrayList<>(List.of(
@@ -123,9 +97,7 @@ public class Config {
                         "bigwarcrystal",
                         "greedcrystal"
                 )));
-        BUILDER.pop();
 
-        BUILDER.push("MethaneEmission");
         listMethaneEmission  = BUILDER
                 .comment("Items required for the Methane Emission set")
                 .define("listMethaneEmission",new ArrayList<>(List.of(
@@ -136,9 +108,6 @@ public class Config {
                         "giant_boom_cell",
                         "mbattery"
                 )));
-        BUILDER.pop();
-
-        BUILDER.push("LifeManSuper");
 
         listLifeManSuper  = BUILDER
                 .comment("Items required for the Life Man Super set")
@@ -151,6 +120,12 @@ public class Config {
                 )));
         BUILDER.pop();
 
+
+        BUILDER.push("SetOffOrOn");
+        offSet  = BUILDER
+                .comment("Enable accessory set effect")
+                .define("offOrOn",true);
+        BUILDER.pop();
 
 
         plague_speed = BUILDER
