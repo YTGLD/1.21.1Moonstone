@@ -484,7 +484,7 @@ public class NewEvent {
                 for (int i = 0; i < stacksHandler.getSlots(); i++) {
                     ItemStack soulbook = stackHandler.getStackInSlot(i);
                     if (stack.is( Items.nine_sword_book)) {
-                        if (soulbook.get(DataReg.tag) != null) {
+                        if (soulbook.get(DataReg.tag) != null&&stack.get(DataReg.tag)!=null) {
                             if (soulbook.get(DataReg.tag).getInt(book.nineSword) <= 300) {
                                 event.getToolTip().add(1, Component.translatable("item.book.tool.string.nine_sword.not").withStyle(ChatFormatting.GOLD));
                             } else {
@@ -500,11 +500,11 @@ public class NewEvent {
                                 event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.8").withStyle(ChatFormatting.GOLD));
                                 event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.7").withStyle(ChatFormatting.GOLD));
                                 event.getToolTip().add(1, Component.literal(""));
-                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.6").withStyle(ChatFormatting.GOLD));
-                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.5").withStyle(ChatFormatting.GOLD));
-                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.4").withStyle(ChatFormatting.GOLD));
-                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.3").withStyle(ChatFormatting.GOLD));
-                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.2").withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.literal("+").append(String.valueOf(1)).append(Component.translatable("item.nine_sword_book.tool.string.6")).withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.literal("+").append(String.format("%.2f",1f*(1f+stack.get(DataReg.tag).getInt(nine_sword_book.lvl)/10f))).append("%").append(Component.translatable("item.nine_sword_book.tool.string.5")).withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.literal("+").append(String.format("%.2f",3f*(1f+stack.get(DataReg.tag).getInt(nine_sword_book.lvl)/10f))).append("%").append(Component.translatable("item.nine_sword_book.tool.string.4")).withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.literal("+").append(String.format("%.2f",5f*(1f+stack.get(DataReg.tag).getInt(nine_sword_book.lvl)/10f))).append("%").append(Component.translatable("item.nine_sword_book.tool.string.3")).withStyle(ChatFormatting.GOLD));
+                                event.getToolTip().add(1, Component.literal("+").append(String.format("%.2f",10f*(1f+stack.get(DataReg.tag).getInt(nine_sword_book.lvl)/10f))).append("%").append(Component.translatable("item.nine_sword_book.tool.string.2")).withStyle(ChatFormatting.GOLD));
                                 event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.1").withStyle(ChatFormatting.GOLD));
                             }
                         }

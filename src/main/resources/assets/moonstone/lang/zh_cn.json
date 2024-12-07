@@ -1158,25 +1158,27 @@
   "item.weak.tool.string": "拾取血球立即损失10%的生命值获得5颗黄心",
   "item.moonstone.nine_sword_book": "九剑归一诀",
   "item.nine_sword_book.tool.string.1": "快捷栏内每存在一把剑类武器：",
-  "item.nine_sword_book.tool.string.2": "+10%伤害",
-  "item.nine_sword_book.tool.string.3": "+5%攻速",
-  "item.nine_sword_book.tool.string.4": "+3%速度",
-  "item.nine_sword_book.tool.string.5": "+1%治疗",
-  "item.nine_sword_book.tool.string.6": "+1飞剑",
+  "item.nine_sword_book.tool.string.2": "伤害",
+  "item.nine_sword_book.tool.string.3": "攻速",
+  "item.nine_sword_book.tool.string.4": "速度",
+  "item.nine_sword_book.tool.string.5": "治疗",
+  "item.nine_sword_book.tool.string.6": "飞剑",
 
   "item.nine_sword_book.tool.string.7": "下一次斩击会造成（快捷栏内所有剑类武器伤害的总和）的生命值",
-  "item.nine_sword_book.tool.string.8": "冷却10秒",
+  "item.nine_sword_book.tool.string.8": "冷却5秒",
 
-  "item.nine_sword_book.tool.string.9": "造成伤害时有1%（x飞剑数量）的概率释放所有飞剑",
+  "item.nine_sword_book.tool.string.9": "造成伤害时有5%（x飞剑数量）的概率释放所有飞剑",
   "item.nine_sword_book.tool.string.10": "飞剑会随着时间缓慢恢复",
   "item.nine_sword_book.tool.string.11": "飞剑击中后恢复自身1%当前生命值",
 
-  "item.nine_sword_book.tool.string.12": "-50%所有伤害",
+  "item.nine_sword_book.tool.string.12": "-25%所有伤害",
   "item.nine_sword_book.tool.string.13": "-50%最大生命值",
 
   "item.nine_sword_book.tool.string.14": "你无法使用非剑类武器",
 
-
+  "sword.moonstone.lvl": "重",
+  "item.nine_sword_book_lvl.tool.string.1": "剑仙",
+  "item.nine_sword_book_lvl.tool.string.2": "修炼进度",
   "item.book.tool.string": "你的身体造就了：",
   "item.book.tool.string.nine_sword": "剑骨之力",
   "item.book.tool.string.nine_sword.not": "这种法诀只能在造就剑骨后可以参悟和使用",

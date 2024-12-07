@@ -34,6 +34,7 @@ import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
+import top.theillusivec4.curios.common.CuriosHelper;
 import vazkii.patchouli.api.PatchouliAPI;
 
 import java.util.List;
@@ -148,5 +149,23 @@ public class book extends Item implements ICurioItem {
                 });
             }
         }
+    }
+    public static boolean isHasMaxInt(Player player,String string,int max){
+        if ( CuriosApi.getCuriosInventory(player).isPresent()) {
+            Map<String, ICurioStacksHandler> curios = CuriosApi.getCuriosInventory(player).get().getCurios();
+            for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                ICurioStacksHandler stacksHandler = entry.getValue();
+                IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                    ItemStack stack = stackHandler.getStackInSlot(i);
+                    if (stack.is(Items.book) && stack.get(DataReg.tag) != null) {
+                        if (stack.get(DataReg.tag).getInt(string) >= max) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
     }
 }
