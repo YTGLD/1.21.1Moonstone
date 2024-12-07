@@ -3,6 +3,7 @@ package com.moonstone.moonstonemod;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.init.items.Items;
+import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -79,6 +80,7 @@ public class book extends Item implements ICurioItem {
     }
 
     public static final String nineSword = "nineSword";
+    public static final String MoDiBlood = "MoDiBlood";
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level p_41432_, Player p_41433_, InteractionHand p_41434_) {
@@ -99,7 +101,9 @@ public class book extends Item implements ICurioItem {
             if (pStack.get(DataReg.tag)!=null){
                 if (pStack.get(DataReg.tag).getInt(nineSword)>=300){
                     pTooltipComponents.add(Component.translatable("item.book.tool.string.nine_sword").withStyle(ChatFormatting.AQUA));
-
+                }
+                if (pStack.get(DataReg.tag).getInt(MoDiBlood)>=100){
+                    pTooltipComponents.add(Component.translatable("item.book.tool.string.modi_blood").withStyle(ChatFormatting.AQUA));
                 }
             }
 
@@ -109,6 +113,15 @@ public class book extends Item implements ICurioItem {
     }
     private Multimap<Holder<Attribute>, AttributeModifier> Head(Player player, ItemStack stack){
         Multimap<Holder<Attribute>, AttributeModifier> multimap = HashMultimap.create();
+
+        if (stack.get(DataReg.tag)!=null&&stack.get(DataReg.tag).getInt(MoDiBlood)>=100) {
+            multimap.put(AttReg.heal, new AttributeModifier(
+                    ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()),
+                    0.1,
+                    AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        }
+
+
         if (player.getMainHandItem().getItem() instanceof SwordItem) {
             if (stack.get(DataReg.tag)!=null&&stack.get(DataReg.tag).getInt(nineSword)>=300) {
                 multimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(
@@ -118,7 +131,7 @@ public class book extends Item implements ICurioItem {
 
                 multimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()),
                         0.1,
-                        AttributeModifier.Operation.ADD_VALUE));
+                        AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
             }
         }
 
@@ -136,6 +149,13 @@ public class book extends Item implements ICurioItem {
                         for (int i = 0; i < stacksHandler.getSlots(); i++) {
                             ItemStack stack = stackHandler.getStackInSlot(i);
                             if (!stack.isEmpty()&&stack.is( Items.book.get())){
+                                if (stack.get(DataReg.tag)!=null){
+                                    if (stack.get(DataReg.tag).getInt(MoDiBlood)<=100){
+                                        stack.get(DataReg.tag).putInt(MoDiBlood,stack.get(DataReg.tag).getInt(MoDiBlood)+1);
+                                    }
+                                }
+
+
                                 if (player.getMainHandItem().getItem() instanceof SwordItem){
                                     if (stack.get(DataReg.tag)!=null){
                                         if (stack.get(DataReg.tag).getInt(nineSword)<=300){

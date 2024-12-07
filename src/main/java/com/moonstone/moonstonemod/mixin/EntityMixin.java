@@ -24,6 +24,11 @@ public class EntityMixin {
            if (Handler.hascurio(player, Items.mhead.get())){
                cir.setReturnValue(true);
            }
+           if (Handler.hascurio(player, Items.mhead.get())){
+               if (!(player.getMainHandItem().isEmpty())){
+                   cir.setReturnValue(true);
+               }
+           }
        }
     }
 }

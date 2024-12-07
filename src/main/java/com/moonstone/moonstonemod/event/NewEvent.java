@@ -13,6 +13,7 @@ import com.moonstone.moonstonemod.init.moonstoneitem.Effects;
 import com.moonstone.moonstonemod.init.moonstoneitem.Enchants;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.IBattery;
 import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
+import com.moonstone.moonstonemod.item.maxitem.book.the_blood_book;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.dna.bat_cell;
 import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.blood.*;
@@ -60,6 +61,9 @@ import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 import java.text.DecimalFormat;
 import java.util.Map;
 
+import static com.moonstone.moonstonemod.item.maxitem.book.the_blood_book.getLvl;
+import static com.moonstone.moonstonemod.item.maxitem.book.the_blood_book.heals;
+
 public class NewEvent {
     public static final String lootTable = "god_loot";
     public static final String meet = "the_meet";
@@ -88,6 +92,7 @@ public class NewEvent {
     }
     @SubscribeEvent
     public void LivingHealEvent(LivingHealEvent event) {
+        the_blood_book.heal(event);
 
         EctoplasmLuckStar.healEvent(event);
         BatteryMan.healEvent(event);
@@ -271,6 +276,7 @@ public class NewEvent {
         CellularPathologyPromotion.attackEvent(event);
         LifeManSuper.attackEvent(event);
         nine_sword_book.att(event);
+        the_blood_book.att(event);
         book.hurt(event);
         CuriosApi.getCuriosInventory(event.getEntity()).ifPresent(handler -> {
             Map<String, ICurioStacksHandler> curios = handler.getCurios();
@@ -389,7 +395,6 @@ public class NewEvent {
         AnaerobicRecovery.criticalHitEvent(event);
         CellularPathologyPromotion.criticalHitEvent(event);
         ManOfLife.criticalHitEvent(event);
-
         LifeManSuper.criticalHitEvent(event);
 
         if (event.getEntity() instanceof Player living){
@@ -471,63 +476,90 @@ public class NewEvent {
     public void Book(ItemTooltipEvent event){
         ItemStack stack = event.getItemStack();
         Player player = event.getEntity();
-        if (stack.is( Items.nine_sword_book)) {
-            if (!Handler.hascurio(player, Items.book.get())) {
-                event.getToolTip().add(1, Component.translatable("item.book.tool.string.nine_sword.not").withStyle(ChatFormatting.GOLD));
+        if (player!=null) {
+            if (stack.is(Items.nine_sword_book)) {
+                if (!Handler.hascurio(player, Items.book.get())) {
+                    event.getToolTip().add(1, Component.translatable("item.book.tool.string.nine_sword.not").withStyle(ChatFormatting.GOLD));
+                }
             }
-        }
-        CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-            Map<String, ICurioStacksHandler> curios = handler.getCurios();
-            for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                ICurioStacksHandler stacksHandler = entry.getValue();
-                IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                    ItemStack soulbook = stackHandler.getStackInSlot(i);
-                    if (stack.is( Items.nine_sword_book)) {
-                        if (soulbook.get(DataReg.tag) != null&&stack.get(DataReg.tag)!=null) {
-                            if (soulbook.get(DataReg.tag).getInt(book.nineSword) <= 300) {
-                                event.getToolTip().add(1, Component.translatable("item.book.tool.string.nine_sword.not").withStyle(ChatFormatting.GOLD));
-                            } else {
-                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.14").withStyle(ChatFormatting.GOLD));
-                                event.getToolTip().add(1, Component.literal(""));
-                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.13").withStyle(ChatFormatting.GOLD));
-                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.12").withStyle(ChatFormatting.GOLD));
-                                event.getToolTip().add(1, Component.literal(""));
-                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.11").withStyle(ChatFormatting.GOLD));
-                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.10").withStyle(ChatFormatting.GOLD));
-                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.9").withStyle(ChatFormatting.GOLD));
-                                event.getToolTip().add(1, Component.literal(""));
-                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.8").withStyle(ChatFormatting.GOLD));
-                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.7").withStyle(ChatFormatting.GOLD));
-                                event.getToolTip().add(1, Component.literal(""));
-                                event.getToolTip().add(1, Component.literal("+").append(String.valueOf(1)).append(Component.translatable("item.nine_sword_book.tool.string.6")).withStyle(ChatFormatting.GOLD));
-                                event.getToolTip().add(1, Component.literal("+").append(String.format("%.2f",1f*(1f+stack.get(DataReg.tag).getInt(nine_sword_book.lvl)/10f))).append("%").append(Component.translatable("item.nine_sword_book.tool.string.5")).withStyle(ChatFormatting.GOLD));
-                                event.getToolTip().add(1, Component.literal("+").append(String.format("%.2f",3f*(1f+stack.get(DataReg.tag).getInt(nine_sword_book.lvl)/10f))).append("%").append(Component.translatable("item.nine_sword_book.tool.string.4")).withStyle(ChatFormatting.GOLD));
-                                event.getToolTip().add(1, Component.literal("+").append(String.format("%.2f",5f*(1f+stack.get(DataReg.tag).getInt(nine_sword_book.lvl)/10f))).append("%").append(Component.translatable("item.nine_sword_book.tool.string.3")).withStyle(ChatFormatting.GOLD));
-                                event.getToolTip().add(1, Component.literal("+").append(String.format("%.2f",10f*(1f+stack.get(DataReg.tag).getInt(nine_sword_book.lvl)/10f))).append("%").append(Component.translatable("item.nine_sword_book.tool.string.2")).withStyle(ChatFormatting.GOLD));
-                                event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.1").withStyle(ChatFormatting.GOLD));
+            if (stack.is(Items.the_blood_book)) {
+                if (!Handler.hascurio(player, Items.book.get())) {
+                    event.getToolTip().add(1, Component.translatable("item.book.tool.string.blood_book.not").withStyle(ChatFormatting.DARK_RED));
+                }
+            }
+            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                    ICurioStacksHandler stacksHandler = entry.getValue();
+                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                        ItemStack soulbook = stackHandler.getStackInSlot(i);
+                        if (stack.is(Items.nine_sword_book)) {
+                            if (soulbook.get(DataReg.tag) != null && stack.get(DataReg.tag) != null) {
+                                if (soulbook.get(DataReg.tag).getInt(book.nineSword) <= 300) {
+                                    event.getToolTip().add(1, Component.translatable("item.book.tool.string.nine_sword.not").withStyle(ChatFormatting.GOLD));
+                                } else {
+                                    event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.14").withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.literal(""));
+                                    event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.13").withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.12").withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.literal(""));
+                                    event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.11").withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.10").withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.9").withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.literal(""));
+                                    event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.8").withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.7").withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.literal(""));
+                                    event.getToolTip().add(1, Component.literal("+").append(String.valueOf(1)).append(Component.translatable("item.nine_sword_book.tool.string.6")).withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.literal("+").append(String.format("%.2f", 1f * (1f + stack.get(DataReg.tag).getInt(nine_sword_book.lvl) / 10f))).append("%").append(Component.translatable("item.nine_sword_book.tool.string.5")).withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.literal("+").append(String.format("%.2f", 3f * (1f + stack.get(DataReg.tag).getInt(nine_sword_book.lvl) / 10f))).append("%").append(Component.translatable("item.nine_sword_book.tool.string.4")).withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.literal("+").append(String.format("%.2f", 5f * (1f + stack.get(DataReg.tag).getInt(nine_sword_book.lvl) / 10f))).append("%").append(Component.translatable("item.nine_sword_book.tool.string.3")).withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.literal("+").append(String.format("%.2f", 10f * (1f + stack.get(DataReg.tag).getInt(nine_sword_book.lvl) / 10f))).append("%").append(Component.translatable("item.nine_sword_book.tool.string.2")).withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.1").withStyle(ChatFormatting.GOLD));
+                                }
+                            }
+                        }
+
+                        if (stack.is(Items.the_blood_book)) {
+                            if (soulbook.get(DataReg.tag) != null && stack.get(DataReg.tag) != null) {
+                                if (soulbook.get(DataReg.tag).getInt(book.MoDiBlood) <= 100) {
+                                    event.getToolTip().add(1, Component.translatable("item.book.tool.string.blood_book.not").withStyle(ChatFormatting.DARK_RED));
+                                } else {
+                                    {
+                                        int lvl = stack.get(DataReg.tag).getInt(heals);
+                                        float l = 50f;
+                                        float level = getLvl(stack);//1~4
+                                        level *= 3f;
+                                        l -= level;
+
+                                        l /= 100f;
+                                        event.getToolTip().add(1, Component.translatable("skill.the_blood_book.1").append(String.format("%.2f", lvl * (level / 6))).withStyle(ChatFormatting.RED));
+                                        event.getToolTip().add(1, Component.translatable("skill.the_blood_book.2").append(String.format("%.2f", player.getMaxHealth() * l)).withStyle(ChatFormatting.RED));
+                                    }
+                                    {
+                                        float level= getLvl(stack);
+                                        float doH = stack.get(DataReg.tag).getInt(heals) / 4f/ 100f;//0.25%
+
+                                        event.getToolTip().add(1, Component.translatable("skill.the_blood_book.3").append(String.format("%.2f",  ((doH)*level*100F))).append("%").withStyle(ChatFormatting.RED));
+                                    }
+                                    event.getToolTip().add(1, Component.translatable("skill.the_blood_book.4").append(String.format("%.2f",  0.01f*getLvl(stack)*100F)).append("%").withStyle(ChatFormatting.RED));
+                                    event.getToolTip().add(1, Component.literal(""));
+
+
+                                    event.getToolTip().add(1, Component.translatable("item.the_blood_book.tool.string.5").withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.literal(""));
+                                    event.getToolTip().add(1, Component.translatable("item.the_blood_book.tool.string.4").withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.translatable("item.the_blood_book.tool.string.3").withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.literal(""));
+                                    event.getToolTip().add(1, Component.translatable("item.the_blood_book.tool.string.1").withStyle(ChatFormatting.GOLD));
+
+                                }
                             }
                         }
                     }
                 }
-            }
-        });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            });
+        }
     }
 }

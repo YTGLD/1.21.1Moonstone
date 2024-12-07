@@ -931,7 +931,7 @@
 
   "item.moonstone.blood_candle": "§4封魔烛台",
 
-  "item.moonstone.the_blood_book": "§4封魔录",
+  "item.moonstone.the_blood_book": "§4血魔霸体诀",
   "item.blood_candle.tool.string": "召唤一个巨型血灵增生体协助你作战",
   "item.blood_candle.tool.string.1": "如果丢失/失踪，请重新佩戴此物品",
 
@@ -1164,6 +1164,20 @@
   "item.nine_sword_book.tool.string.5": "治疗",
   "item.nine_sword_book.tool.string.6": "飞剑",
 
+  "item.book.tool.string.modi_blood": "走火入魔",
+  "skill.the_blood_book.1": "爆炸伤害:",
+  "skill.the_blood_book.2": "爆炸前需要恢复的生命值:",
+  "skill.the_blood_book.3": "治疗:",
+  "skill.the_blood_book.4": "攻击失去生命值:",
+  "item.the_blood_book_lvl.tool.string.1": "魔尊",
+  "item.the_blood_book_lvl.tool.string.2": "魔皇",
+  "item.the_blood_book_lvl.tool.string.3": "魔帝",
+  "item.book.tool.string.blood_book.not": "这个物品只能在走火入魔后可以参悟和使用",
+  "item.the_blood_book.tool.string.1": "击中生物受到1%最大生命值的伤害",
+  "item.the_blood_book.tool.string.3": "恢复生命值时加增加治疗直到满血",
+  "item.the_blood_book.tool.string.4": "若在满血之前恢复的生命值超过某个值",
+  "item.the_blood_book.tool.string.5": "则会发生爆炸造成高额伤害",
+  "item.the_blood_book.tool.string.6": "手持物品时无法造成伤害",
   "item.nine_sword_book.tool.string.7": "下一次斩击会造成（快捷栏内所有剑类武器伤害的总和）的生命值",
   "item.nine_sword_book.tool.string.8": "冷却5秒",
 

@@ -6,7 +6,7 @@ import com.moonstone.moonstonemod.init.moonstoneitem.extend.apple;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.medicinebox;
 import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
-import com.moonstone.moonstonemod.item.blood.magic.the_blood_book;
+import com.moonstone.moonstonemod.item.maxitem.book.the_blood_book;
 import com.moonstone.moonstonemod.item.bloodvirus;
 import com.moonstone.moonstonemod.item.ectoplasm.*;
 import com.moonstone.moonstonemod.item.ectoplasm.soul.soulbattery;
