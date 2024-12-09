@@ -4,19 +4,20 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.book;
-import com.moonstone.moonstonemod.entity.as_sword;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
-import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
-import com.moonstone.moonstonemod.init.moonstoneitem.extend.UnCommonItem;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.BookSkill;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Blood;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -28,7 +29,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -39,11 +39,10 @@ import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class the_blood_book  extends UnCommonItem implements Blood {
+public class the_blood_book  extends BookSkill implements Blood {
 
     public static final int lvl1= 300;
     public static final int lvl2= 600;
@@ -65,7 +64,9 @@ public class the_blood_book  extends UnCommonItem implements Blood {
                             if (!stack.isEmpty()&&stack.is(Items.the_blood_book.get())){
                                 if (stack.get(DataReg.tag)!=null) {
                                     if (!player.level().isClientSide) {
-                                        stack.get(DataReg.tag).putInt(exp, stack.get(DataReg.tag).getInt(exp) + 1);
+                                        if (stack.get(DataReg.tag).getInt(exp)<900&Mth.nextInt(RandomSource.create(),1,2)==1) {
+                                            stack.get(DataReg.tag).putInt(exp, stack.get(DataReg.tag).getInt(exp) + 1);
+                                        }
                                         stack.get(DataReg.tag).putInt(heals, stack.get(DataReg.tag).getInt(heals) + 1);
                                     }
                                 }
@@ -150,7 +151,7 @@ public class the_blood_book  extends UnCommonItem implements Blood {
                         player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.GENERIC_EXPLODE, SoundSource.NEUTRAL, 1F, 1F);
 
                         Vec3 playerPos = player.position().add(0, 0.75, 0);
-                        float range = 8;
+                        float range = 12;
                         List<LivingEntity> entities =
                                 player.level().getEntitiesOfClass(LivingEntity.class,
                                         new AABB(playerPos.x - range,
@@ -164,6 +165,10 @@ public class the_blood_book  extends UnCommonItem implements Blood {
                             if (!living.is(player)) {
                                 living.hurt(living.damageSources().dryOut(), lvl * (level / 6));
                             }
+                            if (player.level() instanceof ServerLevel serverLevel){
+                                serverLevel.sendParticles(ParticleTypes.EXPLOSION, player.getX(), player.getEyeY(), player.getZ(), 10, 6, 6, 6, 0);
+
+                            }
                             stack.get(DataReg.tag).putInt(heals, 0);
                         }
                     }
@@ -173,12 +178,20 @@ public class the_blood_book  extends UnCommonItem implements Blood {
             stack.set(DataReg.tag,new CompoundTag());
         }
     }
-
+    @Override
+    public boolean canEquip(SlotContext slotContext, ItemStack stack) {
+        if (Handler.hascurio(slotContext.entity(),Items.nine_sword_book.get())){
+            return false;
+        }
+        return !Handler.hascurio(slotContext.entity(),this);
+    }
     @Override
     public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+        pTooltipComponents.add(Component.literal(""));
         if (pStack.get(DataReg.tag)!=null) {
-           if (pStack.get(DataReg.tag).getInt(exp)<=lvl1){
+            pTooltipComponents.add(Component.translatable("item.the_blood_book.tool.string.6").withStyle(ChatFormatting.RED));
+            if (pStack.get(DataReg.tag).getInt(exp)<=lvl1){
                addNme(pStack,pTooltipComponents,"item.the_blood_book_lvl.tool.string.1");
            }else if (pStack.get(DataReg.tag).getInt(exp)>lvl1&&pStack.get(DataReg.tag).getInt(exp)<=lvl2){
                addNme(pStack,pTooltipComponents,"item.the_blood_book_lvl.tool.string.2");
@@ -199,7 +212,7 @@ public class the_blood_book  extends UnCommonItem implements Blood {
             pStack.get(DataReg.tag).putInt(ss,l / 30);// 计算0到299之间的值
         } else if (l >= 300 && l < 600) {
             pStack.get(DataReg.tag).putInt(ss,(l - 300) / 30); // 计算300到599之间的值，显示从1开始
-        } else if (l >= 600 && l < 900) {
+        } else if (l >= 600 && l <= 1000) {
             pStack.get(DataReg.tag).putInt(ss,(l - 600) / 30); // 计算600到899之间的值，显示从1开始
         }
 

@@ -99,6 +99,19 @@ public class DungeonLoot extends LootModifier {
         Random random = new Random();
 
         if (idSting.contains("chests/")) {
+            if (idSting.contains("ancient")) {
+                addLoot(generatedLoot, random, Items.blood_candle.get(), entity, List.of(
+                        Items.owner_blood_eye.get(),
+                        Items.owner_blood_attack_eye.get(),
+                        Items.owner_blood_speed_eye.get(),
+                        Items.owner_blood_effect_eye.get(),
+                        Items.owner_blood_boom_eye.get()
+                ), 5);
+            }
+        }
+
+
+        if (idSting.contains("chests/")) {
             if (idSting.contains("treasure")){
                 addLoot(generatedLoot, random, Items.bat_cell.get(), entity, List.of(
                         Items.cell_blood_attack.get(),

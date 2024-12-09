@@ -150,8 +150,10 @@ public class book extends Item implements ICurioItem {
                             ItemStack stack = stackHandler.getStackInSlot(i);
                             if (!stack.isEmpty()&&stack.is( Items.book.get())){
                                 if (stack.get(DataReg.tag)!=null){
-                                    if (stack.get(DataReg.tag).getInt(MoDiBlood)<=100){
-                                        stack.get(DataReg.tag).putInt(MoDiBlood,stack.get(DataReg.tag).getInt(MoDiBlood)+1);
+                                    if (player.getMainHandItem().isEmpty()) {
+                                        if (stack.get(DataReg.tag).getInt(MoDiBlood) <= 100) {
+                                            stack.get(DataReg.tag).putInt(MoDiBlood, stack.get(DataReg.tag).getInt(MoDiBlood) + 1);
+                                        }
                                     }
                                 }
 

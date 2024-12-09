@@ -1145,7 +1145,9 @@
   "item.the_blood_book_lvl.tool.string.2": "Demon Emperor",
   "item.the_blood_book_lvl.tool.string.3": "Demon Sovereign",
   "item.nine_sword_book.tool.string.14": "You cannot use non-sword-type weapons",
-
+  "item.nine_sword_book_skill.tool.string.1": "剑仙",
+  "item.nine_sword_book_skill.tool.string.2": "剑神",
+  "item.nine_sword_book_skill.tool.string.3": "剑圣",
   "item.book.tool.string": "Your body has been shaped by:",
   "item.book.tool.string.nine_sword": "Sword Bone Power",
   "item.book.tool.string.nine_sword.not": "This technique can only be comprehended and used after shaping the Sword Bone",
@@ -1169,6 +1171,64 @@
   "enchantment.moonstone.terror": "terror",
   "enchantment.moonstone.malice": "malice",
   "enchantment.moonstone.threat": "threat",
-  "item.moonstone.probability":"probability stone"
+  "item.moonstone.probability":"probability stone",
+
+  "moonstone.jei.ectoplasmstone": "One of the random amulets at the start of the game",
+  "moonstone.jei.twistedstone": "One of the random amulets at the start of the game",
+
+  "moonstone.jei.necora.all": "Requires wearing Necora virus to be found in dungeons and mines",
+  "moonstone.jei.necora.treasure.all": "Requires wearing Necora virus to be found in treasure loot",
+  "moonstone.jei.necora.giant_nightmare.all": "Requires wearing Nightmare Giant genetic fragment to be found in treasure loot",
+
+  "moonstone.jei.necora.bnabush.all": "Requires wearing Necora virus to be found in treasure loot",
+
+  "moonstone.jei.giant": "Requires wearing Necora virus to be found in treasure loot",
+  "moonstone.jei.giant_nightmare": "Requires wearing Giant Zombie genetic fragment and Nightmare Eye, then kill the Guardian for a chance to drop",
+  "moonstone.jei.cell": "Requires wearing Necora virus to be found in treasure loot, once worn it cannot be obtained again",
+  "moonstone.jei.cell.all": "Requires wearing Cell Rebirth gene to be found in treasure loot",
+  "moonstone.jei.maulice.all": "Killing zombies may drop",
+  "moonstone.jei.blood": "Requires wearing Blood Magic Box to acquire by killing creatures",
+
+  "moonstone.jei.bloodvirus.all": "Requires wearing Shadow Plague to be found in dungeons and mines",
+  "moonstone.jei.bloodvirus": "Requires wearing a medical kit that unlocks all medications and killing the Ender Dragon to obtain Shadow Gene, then using the Shadow Gene on Necora virus to get Shadow Plague",
+  "moonstone.jei.bloodvirus.treasure.all": "Requires wearing Shadow Plague to be found in treasures",
+  "moonstone.jei.ectoplasm.all": "Most ectoplasmic items can be eaten, recovering a large amount of hunger",
+  "moonstone.jei.ectoplasm.ectoplasmcloub": "Can be obtained by killing creatures, or it can be crafted",
+  "moonstone.jei.ectoplasm.ectoplasmball": "Can be obtained by killing creatures, there is a very high chance to find it in loot chests",
+  "moonstone.jei.loot.all": "Has a chance to be found in loot chests",
+  "moonstone.jei.maxamout": "Wear three colors of runes, then kill the Ancient Guardian",
+  "moonstone.jei.pain.all": "Found in the Nether",
+  "moonstone.jei.nanodoom.all": "Found in ancient cities",
+  "moonstone.jei.wind_and_rain": "Wear Seven Swords of Asura and Sudden Rain, then touch dungeon/mines/treasures/city type chests",
+  "moonstone.jei.calcification": ": Take 350 damage, requires wearing a medical kit",
+  "moonstone.jei.masticatory": ": Die once, requires wearing a medical kit",
+  "moonstone.jei.polyphagia": ": Eat an enchanted golden apple, requires wearing a medical kit",
+  "moonstone.jei.quadriceps": ": Jump 500 times, requires wearing a medical kit",
+  "moonstone.jei.reanimation": ": Eat 8 golden apples, requires wearing a medical kit",
+  "moonstone.jei.blood.all": "： found in treasure",
+  "moonstone.jei.nightmare": ": Requires wearing nightmare eye to be found in dungeons and mines",
+
+  "moonstone.jei.fortunecrystal": "It can not only be crafted but also exchanged with the toolsmith villagers.",
+  "moonstone.jei.mayhemcrystal": "It can not only be crafted but also exchanged with the weaponsmith villagers.",
+  "moonstone.jei.treasure": "It is an item found in treasure loot chests.",
+  "moonstone.jei.city": "It is an item that can not only be crafted but also found in ancient cities.",
+  "moonstone.jei.deceased_contract": "“I think this is a curse, but its allure is truly hard to resist... Once the contract is signed, it will cling to you forever, but that's not the worst part; it will plunge you into suffering and slaughter, becoming a minion of hell.\nKilling creatures has a 10% chance to obtain their blood.\nCollecting blood restores 5% of maximum health.\n-20% damage\n-25% resistance\n-15% critical hit\n-30% healing\n\nHowever:\nKilling creatures has a 40% chance to summon a zombie.\nKilling creatures has a 20% chance to summon a giant zombie.\nAdditionally:\nSummoned zombies receive 50% of the summoner's damage, speed, defense, and maximum health bonuses.\nSummoned zombies gain all positive potion effects currently existing on the summoner.\n\nNecora virus and its associated items are nullified.\nShadow plague and its associated items are nullified.",
+  "moonstone.jei.deceased_contract.all": "It is an item that can only be discovered in dungeons while wearing the Necromancer Contract.",
+
+  "item.moonstone.owner_blood_eye": "Desecrator",
+  "moonstone.jei.owner_blood_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nReduces the attack interval of Blood Spawn by 20%.",
+
+  "item.moonstone.owner_blood_attack_eye": "Blood Curse",
+  "moonstone.jei.owner_blood_attack_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nIncreases the attack interval of Blood Spawn by 10%.\nIncreases Blood Damage by 20%.",
+
+  "item.moonstone.owner_blood_speed_eye": "Scribe",
+  "moonstone.jei.owner_blood_speed_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nReduces the attack interval of Blood Spawn by 50%.\nIncreases Blood Orb speed by 300%.\nHowever, the launched Blood Orbs will no longer track entities.",
+
+  "item.moonstone.owner_blood_boom_eye": "Laborer",
+  "moonstone.jei.owner_blood_boom_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nBlood Orbs will explode on impact.\nReduces Blood Orb speed by 20%.\nIncreases the attack interval of Blood Spawn by 200%.",
+
+  "item.moonstone.owner_blood_effect_eye": "Judge",
+  "moonstone.jei.owner_blood_effect_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nBlood Orbs will apply a large amount of negative effects upon impact.\nReduces Blood Damage by 50%."
+
 }
 

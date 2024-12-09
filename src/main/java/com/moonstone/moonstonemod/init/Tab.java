@@ -31,7 +31,6 @@ public class Tab {
                 b.accept(new ItemStack(BookItems.exercise_reinforcement.get()));
                 b.accept(new ItemStack(BookItems.detect.get()));
                 b.accept(new ItemStack(BookItems.bloodstain.get()));
-
                 b.accept(new ItemStack(BookItems.blood_stasis.get()));
                 b.accept(new ItemStack(BookItems.bone_structure.get()));
                 b.accept(new ItemStack(BookItems.mummification.get()));
@@ -263,6 +262,12 @@ public class Tab {
                 b.accept(new ItemStack(Items.killer.get()));
                 b.accept(new ItemStack(Items.as_amout.get()));
                 b.accept(new ItemStack(Items.million.get()));
+
+                b.accept(new ItemStack(Items.owner_blood_eye.get()));
+                b.accept(new ItemStack(Items.owner_blood_attack_eye.get()));
+                b.accept(new ItemStack(Items.owner_blood_speed_eye.get()));
+                b.accept(new ItemStack(Items.owner_blood_effect_eye.get()));
+                b.accept(new ItemStack(Items.owner_blood_boom_eye.get()));
 
             })
             .build());

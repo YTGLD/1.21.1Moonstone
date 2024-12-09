@@ -49,6 +49,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.client.event.RenderNameTagEvent;
 import net.neoforged.neoforge.common.util.TriState;
 import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.entity.player.*;
@@ -472,6 +473,7 @@ public class NewEvent {
             }
         }
     }
+
     @SubscribeEvent
     public void Book(ItemTooltipEvent event){
         ItemStack stack = event.getItemStack();
@@ -543,16 +545,16 @@ public class NewEvent {
 
                                         event.getToolTip().add(1, Component.translatable("skill.the_blood_book.3").append(String.format("%.2f",  ((doH)*level*100F))).append("%").withStyle(ChatFormatting.RED));
                                     }
+                                    event.getToolTip().add(1, Component.translatable("attribute.name.generic.max_health").append(String.format("%.2f", getLvl(stack)*100)).append("%").withStyle(ChatFormatting.RED));
+                                    event.getToolTip().add(1, Component.literal(""));
                                     event.getToolTip().add(1, Component.translatable("skill.the_blood_book.4").append(String.format("%.2f",  0.01f*getLvl(stack)*100F)).append("%").withStyle(ChatFormatting.RED));
                                     event.getToolTip().add(1, Component.literal(""));
 
-
-                                    event.getToolTip().add(1, Component.translatable("item.the_blood_book.tool.string.5").withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.translatable("item.the_blood_book.tool.string.5").withStyle(ChatFormatting.RED));
+                                    event.getToolTip().add(1, Component.translatable("item.the_blood_book.tool.string.4").withStyle(ChatFormatting.RED));
+                                    event.getToolTip().add(1, Component.translatable("item.the_blood_book.tool.string.3").withStyle(ChatFormatting.RED));
                                     event.getToolTip().add(1, Component.literal(""));
-                                    event.getToolTip().add(1, Component.translatable("item.the_blood_book.tool.string.4").withStyle(ChatFormatting.GOLD));
-                                    event.getToolTip().add(1, Component.translatable("item.the_blood_book.tool.string.3").withStyle(ChatFormatting.GOLD));
-                                    event.getToolTip().add(1, Component.literal(""));
-                                    event.getToolTip().add(1, Component.translatable("item.the_blood_book.tool.string.1").withStyle(ChatFormatting.GOLD));
+                                    event.getToolTip().add(1, Component.translatable("item.the_blood_book.tool.string.1").withStyle(ChatFormatting.RED));
 
                                 }
                             }
@@ -562,4 +564,5 @@ public class NewEvent {
             });
         }
     }
+
 }

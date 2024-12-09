@@ -119,8 +119,20 @@ repositories {
     maven {
         url 'https://maven.blamejared.com'
     }
+    maven {
+        name = "JEI and AlmostUnified"
+        url = 'https://maven.blamejared.com/'
+        content {
+            includeGroup "mezz.jei"
+            includeGroup "com.almostreliable.mods"
+        }
+    }
 }
 dependencies {
+    compileOnly "mezz.jei:jei-1.21.1-common-api:19.21.0.247"
+    compileOnly "mezz.jei:jei-1.21.1-neoforge-api:19.21.0.247"
+
+    localRuntime "mezz.jei:jei-1.21.1-neoforge:19.21.0.247"
 
     compileOnly "vazkii.patchouli:Patchouli:1.21-87-NEOFORGE:api"
     runtimeOnly "vazkii.patchouli:Patchouli:1.21-87-NEOFORGE"

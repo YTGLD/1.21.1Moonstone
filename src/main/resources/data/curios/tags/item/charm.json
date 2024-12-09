@@ -23,8 +23,13 @@
     "moonstone:probability",
     "moonstone:luck_stone",
     "moonstone:moon_stone",
-
     "moonstone:necora_baby",
-    "moonstone:rage_blood_head"
+    "moonstone:rage_blood_head",
+
+    "moonstone:owner_blood_eye",
+    "moonstone:owner_blood_attack_eye",
+    "moonstone:owner_blood_speed_eye",
+    "moonstone:owner_blood_effect_eye",
+    "moonstone:owner_blood_boom_eye"
   ]
 }

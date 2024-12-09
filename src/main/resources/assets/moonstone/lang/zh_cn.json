@@ -1130,9 +1130,8 @@
   "item.blood_stasis.tool.string": "僵尸死亡后恢复召唤者10%的最大生命值",
   "item.moonstone.bone_structure": "骨结构异常",
   "item.bone_structure.tool.string": "僵尸继承玩家70%的护甲值和30%最大生命值",
-  "item.moonstone.mummification": "干尸organizational_regeneration化",
+  "item.moonstone.mummification": "干尸化",
   "item.mummification.tool.string": "有效抑制僵尸的腐化速度，但是会减低20%的攻击伤害",
-  "item.moonstone.": "组织再生",
   "item.organizational_regeneration.tool.string": "僵尸会缓慢恢复生命值，并提高腐化速度",
   "item.moonstone.tumour": "肿瘤",
   "item.tumour.tool.string": "僵尸伤害减半，但是生命值加倍",
@@ -1173,7 +1172,7 @@
   "item.the_blood_book_lvl.tool.string.2": "魔皇",
   "item.the_blood_book_lvl.tool.string.3": "魔帝",
   "item.book.tool.string.blood_book.not": "这个物品只能在走火入魔后可以参悟和使用",
-  "item.the_blood_book.tool.string.1": "击中生物受到1%最大生命值的伤害",
+  "item.the_blood_book.tool.string.1": "击中生物失去生命值",
   "item.the_blood_book.tool.string.3": "恢复生命值时加增加治疗直到满血",
   "item.the_blood_book.tool.string.4": "若在满血之前恢复的生命值超过某个值",
   "item.the_blood_book.tool.string.5": "则会发生爆炸造成高额伤害",
@@ -1206,7 +1205,67 @@
   "enchantment.moonstone.malice": "恶意",
   "moonstone.difficulty.name.god": "类神",
   "item.blood.tool.string.winds.1": "  50%的速度加成转换成攻击伤害",
-  "item.blood.tool.string.winds.2": "  如果你佩戴了 梦魇之眼 物品，则伤害加倍"
+  "item.blood.tool.string.winds.2": "  如果你佩戴了 梦魇之眼 物品，则伤害加倍",
+
+
+  "moonstone.jei.ectoplasmstone": "开局的随机护身符之一",
+  "moonstone.jei.twistedstone": "开局的随机护身符之一",
+
+  "moonstone.jei.necora.all": "需要佩戴Necora病毒才能发现于地牢，矿井之中",
+  "moonstone.jei.necora.treasure.all": "需要佩戴Necora病毒才能发现于宝藏战利品之中",
+  "moonstone.jei.necora.giant_nightmare.all": "需要佩戴梦魇巨人基因片段后才能发现于宝藏战利品之中",
+
+  "moonstone.jei.necora.bnabush.all": "需要佩戴Necora病毒才能发现于宝藏战利品之中",
+
+  "moonstone.jei.giant": "需要佩戴Necora病毒才能发现于宝藏战利品之中",
+  "moonstone.jei.giant_nightmare": "需要佩戴巨人僵尸基因片段和梦魇之眼再杀死坚守者有概率掉落",
+  "moonstone.jei.cell": "需要佩戴Necora病毒才能发现于宝藏战利品之中，佩戴后将无法再次获得",
+  "moonstone.jei.cell.all": "需要佩戴细胞重生基因佩戴才能发现于宝藏战利品之中",
+  "moonstone.jei.maulice.all": "杀死僵尸有可能掉落",
+  "moonstone.jei.blood": "需要佩戴血之魔盒杀死生物获取",
+
+  "moonstone.jei.bloodvirus.all": "需要佩戴暗影瘟疫才能发现于地牢，矿井之中",
+  "moonstone.jei.bloodvirus": "需要佩戴一个解锁所有药物的医药箱杀死末影龙来获取暗影基因，之后使用暗影基因右键Necora病毒获得暗影瘟疫",
+  "moonstone.jei.bloodvirus.treasure.all": "需要佩戴暗影瘟疫才能发现于宝藏之中",
+  "moonstone.jei.ectoplasm.all": "大部分灵质物品都可以吃，恢复大量饥饿值",
+  "moonstone.jei.ectoplasm.ectoplasmcloub": "可通过杀死生物获取，也可合成",
+  "moonstone.jei.ectoplasm.ectoplasmball": "可通过杀死生物获取，有极高的概率发现于战利品箱子里",
+  "moonstone.jei.loot.all": "有概率发现于战利品箱子里",
+  "moonstone.jei.maxamout": "佩戴三种颜色的符石，然后杀死远古守卫者",
+  "moonstone.jei.pain.all": "发现于下界",
+  "moonstone.jei.nanodoom.all": "发现在古城",
+  "moonstone.jei.wind_and_rain": "同时带上七剑修罗和骤雨然后摸地牢/矿井/宝藏/城市类型箱子",
+  "moonstone.jei.calcification": "： 受到350次伤害，需要佩戴医药箱",
+  "moonstone.jei.masticatory": "： 死掉一次，需要佩戴医药箱",
+  "moonstone.jei.polyphagia": "： 吃个附魔金苹果，需要佩戴医药箱",
+  "moonstone.jei.quadriceps": "： 跳500次，需要佩戴医药箱",
+  "moonstone.jei.reanimation": "： 吃8个金苹果，需要佩戴医药箱",
+  "moonstone.jei.blood.all": "： 发现在宝藏战利品箱",
+  "moonstone.jei.nightmare": ": 需要佩戴使深渊之眼才能发现于地牢，矿井之中",
+  "item.moonstone.organizational_regeneration": "活性化",
+
+  "moonstone.jei.fortunecrystal": "它不仅可以合成，也可以与工具匠职业的村民兑换",
+  "moonstone.jei.mayhemcrystal": "它不仅可以合成，也可以与武器匠职业的村民兑换",
+  "moonstone.jei.treasure": "是一个在宝藏战利品箱里发现物品",
+  "moonstone.jei.city": "是一个它不仅可以合成，也可以发现在古城的物品",
+  "moonstone.jei.deceased_contract": "“我想这是诅咒，但是它的诱惑力实在难以抵御...一旦签订契约，他将永远缠绕着你，但这不是最糟糕的，而是它会让你陷入痛苦与杀戮，成为地狱的使魔“\n杀死生物有10%的概率获得它们的血液\n拾取血液恢复5%最大生命值\n-20%伤害\n-25%抗性\n-15%暴击\n-30%治疗\n\n但是：\n杀死生物有40%的概率召唤一只僵尸\n杀死生物有20%的概率召唤一只巨人僵尸\n并且：\n召唤的僵尸获得50%召唤者的伤害，速度，防御，最大生命值的加成\n召唤的僵尸获得获得召唤者目前存在的所有正面药水状态\n\nNecora病毒及其附属物品无效化\n暗影瘟疫及其附属物品无效化",
+  "moonstone.jei.deceased_contract.all": "是一个只能在佩戴死灵契约才能发现于地牢的物品",
+
+  "item.moonstone.owner_blood_eye":"渎圣者",
+  "moonstone.jei.owner_blood_eye": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n减少20%血灵增生体的攻击间隔”",
+
+  "item.moonstone.owner_blood_attack_eye":"血灵咒",
+  "moonstone.jei.owner_blood_attack_eye": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n增加10%血灵增生体的攻击间隔\n增加20%血灵伤害",
+
+  "item.moonstone.owner_blood_speed_eye":"刻画者",
+  "moonstone.jei.owner_blood_speed_eye": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n减少50%血灵增生体的攻击间隔\n增加300%血珠速度\n但是发射的血珠不再会追踪生物",
+
+  "item.moonstone.owner_blood_boom_eye":"苦力",
+  "moonstone.jei.owner_blood_boom_eye": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n血球会在击中时爆炸\n减少20%血珠速度\n增加200%血灵增生体的攻击间隔",
+
+  "item.moonstone.owner_blood_effect_eye":"判官",
+  "moonstone.jei.owner_blood_effect_eye": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n血球会在击中时附加大量的负面效果\n减少50%血珠伤害"
+
 }
 
 

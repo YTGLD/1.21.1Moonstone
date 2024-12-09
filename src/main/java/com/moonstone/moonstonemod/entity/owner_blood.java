@@ -117,11 +117,41 @@ public class owner_blood extends TamableAnimal {
                 }
             }
         }
-        if (this.getTarget()!=null){
-            if (this.tickCount % 20 == 0) {
+        float s = 20;
+        if (this.getOwner()!= null &&this.getOwner() instanceof Player player){
+            if (Handler.hascurio(player,Items.owner_blood_eye.get())){
+                s*=0.8f;
+            }
+            if (Handler.hascurio(player,Items.owner_blood_attack_eye.get())){
+                s*=1.1f;
+            }
+            if (Handler.hascurio(player,Items.owner_blood_speed_eye.get())){
+                s*=0.5f;
+            }
+            if (Handler.hascurio(player,Items.owner_blood_boom_eye.get())){
+                s*= 3;
+            }
+        }
+
+        if (this.getOwner()!= null &&this.getOwner() instanceof Player player&&this.getTarget()!=null){
+            if (this.tickCount % (int) s == 0) {
                 attack_blood attack_blood = new attack_blood(EntityTs.attack_blood.get(), this.level());
                 attack_blood.setTarget(this.getTarget());
                 attack_blood.setPos(this.position());
+                if (Handler.hascurio(player,Items.owner_blood_speed_eye.get())) {
+                    attack_blood.setCannotFollow(false);
+                    attack_blood.setSpeed(attack_blood.getSpeeds()*4);
+                }
+                if (Handler.hascurio(player,Items.owner_blood_attack_eye.get())){
+                    attack_blood.setDamage(attack_blood.getDamages()*1.2f);
+                }
+                if (Handler.hascurio(player,Items.owner_blood_effect_eye.get())){
+                    attack_blood.setEffect(true);
+                }
+                if (Handler.hascurio(player,Items.owner_blood_boom_eye.get())){
+                    attack_blood.setSpeed(attack_blood.getSpeeds()*0.8f);
+                    attack_blood.setBoom(true);
+                }
                 attack_blood.setOwner(this.getOwner());
                 this.level().addFreshEntity(attack_blood);
 

@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.init.items;
 
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.book;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.BloodItem;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.apple;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.medicinebox;
 import com.moonstone.moonstonemod.item.blood.*;
@@ -233,6 +234,22 @@ public class Items {
 
     public static final DeferredHolder<Item,?> million =REGISTRY.register("million", com.moonstone.moonstonemod.item.nanodoom.million::new);
     public static final DeferredHolder<Item,?> nine_sword_book =REGISTRY.register("nine_sword_book", com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book::new);
+
+    public static final DeferredHolder<Item,?> owner_blood_eye =REGISTRY.register("owner_blood_eye", BloodItem::new);
+
+    public static final DeferredHolder<Item,?> owner_blood_attack_eye =REGISTRY.register("owner_blood_attack_eye", BloodItem::new);
+    public static final DeferredHolder<Item,?> owner_blood_speed_eye =REGISTRY.register("owner_blood_speed_eye", BloodItem::new);
+
+    public static final DeferredHolder<Item,?> owner_blood_boom_eye =REGISTRY.register("owner_blood_boom_eye", BloodItem::new);
+    public static final DeferredHolder<Item,?> owner_blood_effect_eye =REGISTRY.register("owner_blood_effect_eye", BloodItem::new);
+
+
+
+
+
+
+
+
 
 
 
