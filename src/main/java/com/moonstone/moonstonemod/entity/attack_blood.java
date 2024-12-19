@@ -8,7 +8,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
@@ -27,6 +26,7 @@ public class attack_blood extends ThrowableItemProjectile {
 
     public float damages = 4;
     public boolean follow = true;
+    public boolean slime = false;
     public boolean boom = false;
     public boolean effect = false;
     public float speeds = 0.125f;
@@ -72,20 +72,23 @@ public class attack_blood extends ThrowableItemProjectile {
         super.tick();
         Vec3 playerPos = this.position().add(0, 0.75, 0);
         int range = 1;
-        List<Mob> entities = this.level().getEntitiesOfClass(Mob.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
-        for (Mob entity : entities){
-            if (this.getOwner()!=null) {
-                if (!entity.is(this.getOwner())&&this.getOwner() instanceof Player player){
+        List<LivingEntity> entities = this.level().getEntitiesOfClass(LivingEntity.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
+        for (LivingEntity entity : entities) {
+            if (this.getOwner() != null) {
+                if (!entity.is(this.getOwner()) && this.getOwner() instanceof Player player) {
                     ResourceLocation entitys = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
                     if (!entitys.getNamespace().equals(MoonStoneMod.MODID)) {
                         entity.invulnerableTime = 0;
                         if (boom) {
-                           this.level().explode(this, this.getX(), this.getY(), this.getZ(), 3, false, Level.ExplosionInteraction.NONE);
+                            this.level().explode(this, this.getX(), this.getY(), this.getZ(), 3, false, Level.ExplosionInteraction.NONE);
                         }
                         if (effect) {
-                            entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,100,1));
-                            entity.addEffect(new MobEffectInstance(MobEffects.POISON,100,1));
-                            entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS,100,1));
+                            entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1));
+                            entity.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 1));
+                            entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
+                        }
+                        if (slime){
+                            player.heal(damages);
                         }
                         entity.hurt(this.getOwner().damageSources().dryOut(), damages + player.getMaxHealth() / 10);
                         this.discard();
@@ -93,6 +96,7 @@ public class attack_blood extends ThrowableItemProjectile {
                 }
             }
         }
+
         if (this.tickCount > 200) {
             this.discard();
         }
@@ -103,7 +107,7 @@ public class attack_blood extends ThrowableItemProjectile {
             }
         }
 
-        float s = this.tickCount / 200f;
+        float s = 0.075F;
         if (target != null) {
             if (follow) {
                 Vec3 targetPos = target.position().add(0, 0.5, 0);
@@ -195,6 +199,10 @@ public class attack_blood extends ThrowableItemProjectile {
 
     public float getDamages() {
         return damages;
+    }
+
+    public void setHeal(boolean slime) {
+        this.slime = slime;
     }
 
     public void setCannotFollow(boolean t) {

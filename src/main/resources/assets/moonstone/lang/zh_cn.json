@@ -1252,20 +1252,25 @@
   "moonstone.jei.deceased_contract.all": "是一个只能在佩戴死灵契约才能发现于地牢的物品",
 
   "item.moonstone.owner_blood_eye":"渎圣者",
-  "moonstone.jei.owner_blood_eye": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n减少20%血灵增生体的攻击间隔”",
+  "moonstone.jei.item.moonstone.owner_blood_eye": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n减少20%血灵增生体的攻击间隔”",
 
   "item.moonstone.owner_blood_attack_eye":"血灵咒",
-  "moonstone.jei.owner_blood_attack_eye": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n增加10%血灵增生体的攻击间隔\n增加20%血灵伤害",
+  "moonstone.jei.item.moonstone.owner_blood_attack_eye": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n增加10%血灵增生体的攻击间隔\n增加20%血灵伤害",
 
   "item.moonstone.owner_blood_speed_eye":"刻画者",
-  "moonstone.jei.owner_blood_speed_eye": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n减少50%血灵增生体的攻击间隔\n增加300%血珠速度\n但是发射的血珠不再会追踪生物",
+  "moonstone.jei.item.moonstone.owner_blood_speed_eye": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n减少50%血灵增生体的攻击间隔\n增加300%血珠速度\n但是发射的血珠不再会追踪生物",
 
   "item.moonstone.owner_blood_boom_eye":"苦力",
-  "moonstone.jei.owner_blood_boom_eye": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n血球会在击中时爆炸\n减少20%血珠速度\n增加200%血灵增生体的攻击间隔",
+  "moonstone.jei.item.moonstone.owner_blood_boom_eye": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n血球会在击中时爆炸\n减少20%血珠速度\n增加200%血灵增生体的攻击间隔\n每次爆炸都相当于你发起了攻击\n\n我觉得你应该穿点防爆的东西....",
 
   "item.moonstone.owner_blood_effect_eye":"判官",
-  "moonstone.jei.owner_blood_effect_eye": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n血球会在击中时附加大量的负面效果\n减少50%血珠伤害"
+  "moonstone.jei.item.moonstone.owner_blood_effect_eye": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n血球会在击中时附加大量的负面效果\n减少50%血珠伤害",
 
+  "item.moonstone.owner_blood_earth":"乾坤",
+  "moonstone.jei.item.moonstone.owner_blood_earth": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n血灵增生体不会再攻击\n但会变成一个超级磁铁，它不仅可以吸引生物和掉落物并且还可以吸引然后吞噬弹射物\n吞噬弹射物恢复主人生命值\n\n你可以用来运送村民或者干什么别的",
+
+  "item.moonstone.owner_blood_vex": "鬼者",
+  "moonstone.jei.item.moonstone.owner_blood_vex": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n血珠击中后会恢复主人的生命值\n其数值取决于血灵增生体的伤害\n血灵增生体的伤害降低3点"
 }
 
 

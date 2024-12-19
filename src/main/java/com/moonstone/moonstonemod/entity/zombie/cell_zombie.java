@@ -13,6 +13,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -41,6 +42,18 @@ import java.util.UUID;
 public class cell_zombie extends MoonTamableAnimal {
     public cell_zombie(EntityType<? extends cell_zombie> c  , Level p_34272_) {
         super(c, p_34272_);
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return SoundEvents.ZOMBIE_HURT;
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundEvents.ZOMBIE_DEATH;
     }
 
     @Override

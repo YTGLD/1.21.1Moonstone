@@ -268,6 +268,8 @@ public class Tab {
                 b.accept(new ItemStack(Items.owner_blood_speed_eye.get()));
                 b.accept(new ItemStack(Items.owner_blood_effect_eye.get()));
                 b.accept(new ItemStack(Items.owner_blood_boom_eye.get()));
+                b.accept(new ItemStack(Items.owner_blood_vex.get()));
+                b.accept(new ItemStack(Items.owner_blood_earth.get()));
 
             })
             .build());

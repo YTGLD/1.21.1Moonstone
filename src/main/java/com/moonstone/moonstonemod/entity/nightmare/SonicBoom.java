@@ -60,15 +60,12 @@ public class SonicBoom extends Behavior<nightmare_giant> {
                     Vec3 vec31 = p_217704_.getEyePosition().subtract(vec3);
                     Vec3 vec32 = vec31.normalize();
 
-                    for (int i = 1; i < Mth.floor(vec31.length()) + 10; ++i) {
-                        Vec3 vec33 = vec3.add(vec32.scale((double) i));
+                    for (int i = 1; i < Mth.floor(vec31.length()) + 22; ++i) {
+                        Vec3 vec33 = vec3.add(vec32.scale(i));
 
                         test_e z = new test_e(EntityTs.test_e.get(), p_217725_.level());
                         z.teleportTo(vec33.x, vec33.y - 2, vec33.z);
-                        z.setNoAi(true);
                         z.setNoGravity(true);
-                        z.addTag("NoAiMoonstone");
-                        z.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 12000, 0, false, false));
 
                         p_217724_.addFreshEntity(z);
 

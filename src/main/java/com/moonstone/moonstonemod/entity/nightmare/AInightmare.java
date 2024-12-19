@@ -49,7 +49,6 @@ public class AInightmare {
         initCoreActivity(brain);
         initEmergeActivity(brain);
         initIdleActivity(brain);
-        initRoarActivity(brain);
         initFightActivity(p_219521_, brain);
         initInvestigateActivity(brain);
         brain.setCoreActivities(ImmutableSet.of(Activity.CORE));

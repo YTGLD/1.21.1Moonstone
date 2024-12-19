@@ -5,6 +5,7 @@ import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.PostChain;
 import net.minecraft.resources.ResourceLocation;
@@ -33,6 +34,7 @@ public class MoonPost {
     public static void onInitializeOutline(Minecraft minecraft) {
         registry.add(MoonStoneMod.POST);
         registry.add(MoonStoneMod.POST_Blood);
+        registry.add(MoonStoneMod.BLUR_LOCATION);
 
         clear();
         for (ResourceLocation resourceLocation : registry) {
@@ -40,7 +42,7 @@ public class MoonPost {
             RenderTarget renderTarget;
             try {
                 postChain = new PostChain(minecraft.getTextureManager(), minecraft.getResourceManager(), minecraft.getMainRenderTarget(), resourceLocation);
-                postChain.resize(minecraft.getWindow().getWidth(), minecraft.getWindow().getHeight());
+                postChain.resize(minecraft.getMainRenderTarget().width,minecraft.getMainRenderTarget().height);
                 renderTarget = postChain.getTempTarget("final");
 
             } catch (IOException | JsonSyntaxException ioexception) {
@@ -98,10 +100,10 @@ public class MoonPost {
         }
     }
 
-    public static void processEffects(RenderTarget mainTarget) {
+    public static void processEffects(DeltaTracker deltaTracker, RenderTarget mainTarget) {
         for (MoonPost.PostEffect postEffect : postEffects.values()) {
             if (postEffect.isEnabled() && postEffect.postChain != null) {
-                postEffect.postChain.process(Minecraft.getInstance().getFrameTimeNs());
+                postEffect.postChain.process(deltaTracker.getGameTimeDeltaTicks());
                 mainTarget.bindWrite(false);
             }
         }

@@ -89,8 +89,9 @@ public class EntityTs {
         event.put(EntityTs.cell_giant.get(), com.moonstone.moonstonemod.entity.zombie.cell_giant.createAttributes().build());
         event.put(EntityTs.nightmare_entity.get(), Bat.createAttributes().build());
         event.put(EntityTs.red_entity.get(), Zombie.createAttributes().build());
-        event.put(EntityTs.nightmare_giant.get(), Warden.createAttributes().build());
-        event.put(EntityTs.test_e.get(), Warden.createAttributes().build());
+
+        event.put(EntityTs.nightmare_giant.get(), com.moonstone.moonstonemod.entity.nightmare.nightmare_giant.createAttributes().build());
+
         event.put(EntityTs.test_blood.get(), Zombie.createAttributes().build());
         event.put(EntityTs.blood_bat.get(), Zombie.createAttributes().build());
         event.put(EntityTs.blood_zombie.get(), Zombie.createAttributes().build());

@@ -105,7 +105,9 @@ public class DungeonLoot extends LootModifier {
                         Items.owner_blood_attack_eye.get(),
                         Items.owner_blood_speed_eye.get(),
                         Items.owner_blood_effect_eye.get(),
-                        Items.owner_blood_boom_eye.get()
+                        Items.owner_blood_boom_eye.get(),
+                        Items.owner_blood_vex.get(),
+                        Items.owner_blood_earth.get()
                 ), 5);
             }
         }
@@ -210,6 +212,7 @@ public class DungeonLoot extends LootModifier {
                     ), 100);
 
                     if (Handler.hascurio(player, Items.necora.get())) {
+
                         boolean cellGiant = Handler.hascurio(player, Items.giant.get());
 
                         addLootHasB(generatedLoot, random, cellGiant, List.of(

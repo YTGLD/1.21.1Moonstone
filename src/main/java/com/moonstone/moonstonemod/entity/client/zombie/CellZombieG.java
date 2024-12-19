@@ -1,6 +1,7 @@
 package com.moonstone.moonstonemod.entity.client.zombie;
 
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.entity.zombie.cell_giant;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -19,13 +20,13 @@ public class CellZombieG  extends MobRenderer<cell_giant, GModel<cell_giant>> {
 
         this.addLayer(new GEmissiveLay<>(this, PULSATING_SPOTS_TEXTURE_1, (p_234805_, p_234806_, p_234807_) -> {
             return Math.max(0.0F, Mth.cos(p_234807_ * 0.045F) * 0.25F);
-        }, GModel::getPulsatingSpotsLayerModelParts));
+        }, GModel::getPulsatingSpotsLayerModelParts,null));
         this.addLayer(new GEmissiveLay<>(this, PULSATING_SPOTS_TEXTURE_2, (p_234801_, p_234802_, p_234803_) -> {
             return Math.max(0.0F, Mth.cos(p_234803_ * 0.045F + (float)Math.PI) * 0.25F);
-        }, GModel::getPulsatingSpotsLayerModelParts));
+        }, GModel::getPulsatingSpotsLayerModelParts,null));
         this.addLayer(new GEmissiveLay<>(this, HEART_TEXTURE, (p_234793_, p_234794_, p_234795_) -> {
             return p_234793_.getHeartAnimation(p_234794_);
-        }, GModel::getHeartLayerModelParts));
+        }, GModel::getHeartLayerModelParts, MRender.beacon.apply(HEART_TEXTURE,true)));
     }
 
     public ResourceLocation getTextureLocation(cell_giant p_234791_) {

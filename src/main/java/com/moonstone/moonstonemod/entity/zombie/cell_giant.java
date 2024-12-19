@@ -32,6 +32,7 @@ import net.minecraft.server.level.ServerEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Unit;
@@ -186,7 +187,7 @@ public class cell_giant extends MoonTamableAnimal implements OwnableEntity {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 500.0D).add(Attributes.MOVEMENT_SPEED, (double)0.3F).add(Attributes.KNOCKBACK_RESISTANCE, 1.0D).add(Attributes.ATTACK_KNOCKBACK, 1.5D).add(Attributes.ATTACK_DAMAGE, 30.0D);
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 50).add(Attributes.MOVEMENT_SPEED, (double)0.3F).add(Attributes.KNOCKBACK_RESISTANCE, 1.0D).add(Attributes.ATTACK_KNOCKBACK, 1.5D).add(Attributes.ATTACK_DAMAGE, 10);
     }
 
     public boolean dampensVibrations() {
@@ -308,7 +309,12 @@ public class cell_giant extends MoonTamableAnimal implements OwnableEntity {
         if (this.level().isClientSide()) {
             if (this.tickCount % this.getHeartBeatDelay() == 0) {
                 this.heartAnimation = 10;
-
+                if (!this.isSilent()) {
+                    this.level()
+                            .playLocalSound(
+                                    this.getX(), this.getY(), this.getZ(), SoundEvents.WARDEN_HEARTBEAT, this.getSoundSource(), 5.0F, this.getVoicePitch(), false
+                            );
+                }
             }
 
             this.tendrilAnimationO = this.tendrilAnimation;
@@ -369,6 +375,8 @@ public class cell_giant extends MoonTamableAnimal implements OwnableEntity {
     }
 
     public float getHeartAnimation(float p_219470_) {
+
+
         return Mth.lerp(p_219470_, (float)this.heartAnimationO, (float)this.heartAnimation) / 10.0F;
     }
 

@@ -1216,19 +1216,25 @@
   "moonstone.jei.deceased_contract.all": "It is an item that can only be discovered in dungeons while wearing the Necromancer Contract.",
 
   "item.moonstone.owner_blood_eye": "Desecrator",
-  "moonstone.jei.owner_blood_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nReduces the attack interval of Blood Spawn by 20%.",
+  "moonstone.jei.item.moonstone.owner_blood_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nReduces the attack interval of Blood Spawn by 20%.",
 
   "item.moonstone.owner_blood_attack_eye": "Blood Curse",
-  "moonstone.jei.owner_blood_attack_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nIncreases the attack interval of Blood Spawn by 10%.\nIncreases Blood Damage by 20%.",
+  "moonstone.jei.item.moonstone.owner_blood_attack_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nIncreases the attack interval of Blood Spawn by 10%.\nIncreases Blood Damage by 20%.",
 
   "item.moonstone.owner_blood_speed_eye": "Scribe",
-  "moonstone.jei.owner_blood_speed_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nReduces the attack interval of Blood Spawn by 50%.\nIncreases Blood Orb speed by 300%.\nHowever, the launched Blood Orbs will no longer track entities.",
+  "moonstone.jei.item.moonstone.owner_blood_speed_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nReduces the attack interval of Blood Spawn by 50%.\nIncreases Blood Orb speed by 300%.\nHowever, the launched Blood Orbs will no longer track entities.",
 
   "item.moonstone.owner_blood_boom_eye": "Laborer",
-  "moonstone.jei.owner_blood_boom_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nBlood Orbs will explode on impact.\nReduces Blood Orb speed by 20%.\nIncreases the attack interval of Blood Spawn by 200%.",
+  "moonstone.jei.item.moonstone.owner_blood_boom_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nBlood Orbs will explode on impact.\nReduces Blood Orb speed by 20%.\nIncreases the attack interval of Blood Spawn by 200%.",
 
   "item.moonstone.owner_blood_effect_eye": "Judge",
-  "moonstone.jei.owner_blood_effect_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nBlood Orbs will apply a large amount of negative effects upon impact.\nReduces Blood Damage by 50%."
+  "moonstone.jei.item.moonstone.owner_blood_effect_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nBlood Orbs will apply a large amount of negative effects upon impact.\nReduces Blood Damage by 50%.",
+  "item.moonstone.owner_blood_vex": "Wraith",
+  "moonstone.jei.item.moonstone.owner_blood_vex": "It is found in ancient cities, but requires wearing the Sealing Candelabra to be discovered.\n\nBlood Orbs will not disappear upon hitting and will penetrate entities.\nEach penetration increases damage and speed by 50%,\nbut reduces base speed and damage by 50%.",
+
+
+  "item.moonstone.owner_blood_earth":"Qiankun",
+  "moonstone.jei.item.moonstone.owner_blood_earth": "It is found in ancient cities, but requires wearing the Sealing Candelabra to be discovered.\n\nBlood Orbs' damage equals the owner's damage.\nBlood Orbs' speed equals the owner's speed.\nThe attack speed of Blood Spirit proliferators will be multiplied by the owner's attack speed."
 
 }
 

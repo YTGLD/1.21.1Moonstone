@@ -32,7 +32,7 @@ public class CircleCubeBoom {
         {
 
             matrices.pushPose();
-            renderCircle3(matrices, vertexConsumers, light, 0, 0, 0,1, alp, entity);
+            renderCircle3(matrices, vertexConsumers, light, 0, 0, 0,1+entity.tickCount/33f, alp, entity);
             matrices.popPose();
         }
 
@@ -42,11 +42,11 @@ public class CircleCubeBoom {
 
     public  void renderCircle3(@NotNull PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, float x, float y, float z, float radius,float alp , Entity entity) {
         VertexConsumer vertexConsumer = bufferSource.getBuffer(MRender.lines());
-        int verticalSegments = 4; // 垂直段数
-        int horizontalSegments = 4; // 水平段数
-        poseStack.translate(0 ,-1 ,0);
-        poseStack.mulPose(Axis.XP.rotationDegrees((float) (-entity.tickCount*0.1)));
-        poseStack.mulPose(Axis.YP.rotationDegrees((float) (-entity.tickCount * 0.1)));
+        int verticalSegments = 6; // 垂直段数
+        int horizontalSegments = 6; // 水平段数
+        poseStack.translate(0 ,1 ,0);
+        poseStack.mulPose(Axis.XP.rotationDegrees((float) (-entity.tickCount)));
+        poseStack.mulPose(Axis.YP.rotationDegrees((float) (-entity.tickCount)));
 
 
         for (int i = 0; i < verticalSegments; i++) {

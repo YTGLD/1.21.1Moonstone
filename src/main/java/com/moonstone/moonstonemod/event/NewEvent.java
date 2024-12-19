@@ -3,6 +3,7 @@ package com.moonstone.moonstonemod.event;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.book;
+import com.moonstone.moonstonemod.entity.attack_blood;
 import com.moonstone.moonstonemod.entity.zombie.sword_soul;
 import com.moonstone.moonstonemod.event.itemset.*;
 import com.moonstone.moonstonemod.event.loot.DungeonLoot;
@@ -279,6 +280,8 @@ public class NewEvent {
         nine_sword_book.att(event);
         the_blood_book.att(event);
         book.hurt(event);
+
+
         CuriosApi.getCuriosInventory(event.getEntity()).ifPresent(handler -> {
             Map<String, ICurioStacksHandler> curios = handler.getCurios();
             for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {

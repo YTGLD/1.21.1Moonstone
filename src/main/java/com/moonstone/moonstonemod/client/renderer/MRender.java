@@ -4,6 +4,7 @@ import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
@@ -11,6 +12,7 @@ import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.OptionalDouble;
+import java.util.function.BiFunction;
 
 public class MRender extends RenderType {
     public MRender(String p_173178_, VertexFormat p_173179_, VertexFormat.Mode p_173180_, int p_173181_, boolean p_173182_, boolean p_173183_, Runnable p_173184_, Runnable p_173185_) {
@@ -38,7 +40,15 @@ public class MRender extends RenderType {
     }, () -> {
         Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
     });
-
+    protected static final OutputStateShard BEACON = new OutputStateShard("set_beacon", () -> {
+        RenderTarget target = MoonPost.getRenderTargetFor(MoonStoneMod.POST);
+        if (target != null) {
+            target.copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
+            target.bindWrite(false);
+        }
+    }, () -> {
+        Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
+    });
     protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_p_blood = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_p_blood);
 
     protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_Shader_EYE = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_Shader_EYE);
@@ -49,6 +59,20 @@ public class MRender extends RenderType {
 
     protected static final RenderStateShard.ShaderStateShard RENDER_STATE_SHARD_trail = new RenderStateShard.ShaderStateShard(MRender::getShaderInstance_trail);
 
+    public static final BiFunction<ResourceLocation, Boolean, RenderType> beacon =
+            Util.memoize((p_234330_, p_234331_) -> {
+                CompositeState rendertype$compositestate =
+                        RenderType.CompositeState.builder().setShaderState(RENDERTYPE_BEACON_BEAM_SHADER)
+                                .setTextureState(new RenderStateShard.TextureStateShard(p_234330_, false, false))
+                                .setTransparencyState(p_234331_ ? TRANSLUCENT_TRANSPARENCY : NO_TRANSPARENCY)
+                                .setWriteMaskState(p_234331_ ? COLOR_WRITE : COLOR_DEPTH_WRITE)
+                                .setOutputState(BEACON)
+                                .createCompositeState(false);
+
+
+                return create("beacon_beam", DefaultVertexFormat.BLOCK, VertexFormat.Mode.QUADS, 1536,
+                        false, true, rendertype$compositestate);
+            });
     public static final RenderType Snake_p_blood = create(
             "p_blood",
             DefaultVertexFormat.POSITION,

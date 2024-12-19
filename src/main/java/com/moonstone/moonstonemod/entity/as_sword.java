@@ -123,7 +123,7 @@ public class as_sword extends ThrowableItemProjectile {
                             if (player.getAttribute(Attributes.ATTACK_DAMAGE) != null) {
                                 entity.invulnerableTime = 0;
                                 entity.knockback(0.1f, Mth.nextFloat(RandomSource.create(),-0.1f,0.1f), Mth.nextFloat(RandomSource.create(),-0.1f,0.1f));
-                                entity.hurt(this.getOwner().damageSources().dryOut(),
+                                entity.hurt(this.damageSources().dryOut(),
                                         (float) (0.3f + player.getAttribute(Attributes.ATTACK_DAMAGE).getValue() * 0.07f));
                                 coll=20;
                             }

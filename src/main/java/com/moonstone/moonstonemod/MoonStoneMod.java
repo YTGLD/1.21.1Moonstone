@@ -2,14 +2,13 @@ package com.moonstone.moonstonemod;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.logging.LogUtils;
-import com.moonstone.moonstonemod.client.StrengtheningLayer;
 import com.moonstone.moonstonemod.client.particle.blood;
 import com.moonstone.moonstonemod.client.particle.blue;
 import com.moonstone.moonstonemod.client.particle.popr;
 import com.moonstone.moonstonemod.client.particle.red;
 import com.moonstone.moonstonemod.client.renderer.MRender;
-import com.moonstone.moonstonemod.entity.as_sword;
 import com.moonstone.moonstonemod.entity.client.BloodSwordRenderer;
+import com.moonstone.moonstonemod.entity.client.NigBoomRender;
 import com.moonstone.moonstonemod.entity.client.SwordRenderer;
 import com.moonstone.moonstonemod.entity.client.blood.BloodBatRenderer;
 import com.moonstone.moonstonemod.entity.client.zombie.CellZombieG;
@@ -22,17 +21,7 @@ import com.moonstone.moonstonemod.init.items.DNAItems;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.*;
 import net.minecraft.client.renderer.ShaderInstance;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -43,20 +32,10 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.event.RegisterShadersEvent;
-import net.neoforged.neoforge.client.event.RenderNameTagEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.common.util.TriState;
 import org.slf4j.Logger;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
-import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import static com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book.small;
 
 @Mod(MoonStoneMod.MODID)
 public class MoonStoneMod {
@@ -66,6 +45,8 @@ public class MoonStoneMod {
 
     public static final ResourceLocation POST = ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,
             "shaders/post/entity_outline.json");
+    public static final ResourceLocation BLUR_LOCATION =
+            ResourceLocation.withDefaultNamespace("shaders/post/blur.json");
 
     public static final ResourceLocation POST_Blood = ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,
             "shaders/post/entity_outline_blood.json");
@@ -86,10 +67,13 @@ public class MoonStoneMod {
         Effects.REGISTRY.register(eventBus);
         Particles.PARTICLE_TYPES.register(eventBus);
         Items.REGISTRY.register(eventBus);
+
+
+
+
         eventBus.register(Config.class);
         Tab.TABS.register(eventBus);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.fc);
-
     }
 
     @EventBusSubscriber(modid = MoonStoneMod.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
@@ -110,7 +94,7 @@ public class MoonStoneMod {
             event.registerEntityRenderer(EntityTs.nightmare_entity.get(), ZombieRenderer::new);
             event.registerEntityRenderer(EntityTs.red_entity.get(), com.moonstone.moonstonemod.entity.client.red.ZombieRenderer::new);
             event.registerEntityRenderer(EntityTs.nightmare_giant.get(), CellZombieN::new);
-            event.registerEntityRenderer(EntityTs.test_e.get(), com.moonstone.moonstonemod.entity.client.red.ZombieRenderer::new);
+            event.registerEntityRenderer(EntityTs.test_e.get(), NigBoomRender::new);
             event.registerEntityRenderer(EntityTs.blood_bat.get(), BloodBatRenderer::new);
             event.registerEntityRenderer(EntityTs.test_blood.get(), com.moonstone.moonstonemod.entity.client.red.ZombieRenderer::new);
             event.registerEntityRenderer(EntityTs.blood_zombie.get(), com.moonstone.moonstonemod.entity.client.red.ZombieRenderer::new);

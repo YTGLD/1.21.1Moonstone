@@ -10,13 +10,17 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.OwnerHurtTargetGoal;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -37,6 +41,9 @@ public class owner_blood extends TamableAnimal {
     public void die(@NotNull DamageSource p_21809_) {
 
     }
+
+
+
     private final List<Vec3> trailPositions = new ArrayList<>();
     public List<Vec3> getTrailPositions() {
         return trailPositions;
@@ -94,24 +101,31 @@ public class owner_blood extends TamableAnimal {
                 }
             }
         }
+        if (this.getTarget() != null&&this.getOwner()!=null){
+            if (this.getTarget().is(this.getOwner())){
+                this.setTarget(null);
+
+            }
+        }
         if (this.getTarget() != null) {
             if (!this.getTarget().isAlive()) {
                 this.setTarget(null);
             }
         }
         if (this.getOwner()!= null) {
-            if (this.getOwner().getLastHurtByMob()!= null) {
+
+            if (this.getOwner().getLastHurtByMob() != null) {
                 if (!this.getOwner().getLastHurtByMob().is(this)) {
                     this.setTarget(this.getOwner().getLastHurtByMob());
                 }
             }
-            if (this.getOwner().getLastAttacker()!= null) {
+            if (this.getOwner().getLastAttacker() != null) {
                 if (!this.getOwner().getLastAttacker().is(this)) {
                     this.setTarget(this.getOwner().getLastAttacker());
                 }
 
             }
-            if (this.getOwner().getLastHurtMob()!= null) {
+            if (this.getOwner().getLastHurtMob() != null) {
                 if (!this.getOwner().getLastHurtMob().is(this)) {
                     this.setTarget(this.getOwner().getLastHurtMob());
                 }
@@ -132,30 +146,82 @@ public class owner_blood extends TamableAnimal {
                 s*= 3;
             }
         }
-
         if (this.getOwner()!= null &&this.getOwner() instanceof Player player&&this.getTarget()!=null){
             if (this.tickCount % (int) s == 0) {
-                attack_blood attack_blood = new attack_blood(EntityTs.attack_blood.get(), this.level());
-                attack_blood.setTarget(this.getTarget());
-                attack_blood.setPos(this.position());
-                if (Handler.hascurio(player,Items.owner_blood_speed_eye.get())) {
-                    attack_blood.setCannotFollow(false);
-                    attack_blood.setSpeed(attack_blood.getSpeeds()*4);
-                }
-                if (Handler.hascurio(player,Items.owner_blood_attack_eye.get())){
-                    attack_blood.setDamage(attack_blood.getDamages()*1.2f);
-                }
-                if (Handler.hascurio(player,Items.owner_blood_effect_eye.get())){
-                    attack_blood.setEffect(true);
-                }
-                if (Handler.hascurio(player,Items.owner_blood_boom_eye.get())){
-                    attack_blood.setSpeed(attack_blood.getSpeeds()*0.8f);
-                    attack_blood.setBoom(true);
-                }
-                attack_blood.setOwner(this.getOwner());
-                this.level().addFreshEntity(attack_blood);
+                if (!Handler.hascurio(player, Items.owner_blood_earth.get())) {
+                    attack_blood attackBlood = new attack_blood(EntityTs.attack_blood.get(), this.level());
 
-                playRemoveOneSound(this);
+                    attackBlood.setTarget(this.getTarget());
+
+                    if (Handler.hascurio(player, Items.owner_blood_speed_eye.get())) {
+                        attackBlood.setCannotFollow(false);
+                        attackBlood.setSpeed(attackBlood.getSpeeds() * 4);
+                    }
+                    if (Handler.hascurio(player, Items.owner_blood_attack_eye.get())) {
+                        attackBlood.setDamage(attackBlood.getDamages() * 1.2f);
+                    }
+                    if (Handler.hascurio(player, Items.owner_blood_effect_eye.get())) {
+                        attackBlood.setEffect(true);
+                    }
+                    if (Handler.hascurio(player, Items.owner_blood_vex.get())) {
+                        attackBlood.setHeal(true);
+                        attackBlood.setDamage(attackBlood.getDamages() - 3);
+                    }
+                    if (Handler.hascurio(player, Items.owner_blood_boom_eye.get())) {
+                        attackBlood.setSpeed(attackBlood.getSpeeds() * 0.8f);
+                        attackBlood.setBoom(true);
+                    }
+                    attackBlood.setPos(this.position());
+                    attackBlood.setOwner(this.getOwner());
+
+                    this.level().addFreshEntity(attackBlood);
+
+
+                    playRemoveOneSound(this);
+
+                }
+            }
+            if (Handler.hascurio(player,Items.owner_blood_earth.get())){
+                {
+                    Vec3 position = this.position();
+                    int is = 12;
+                    List<Entity> ess = this.level().getEntitiesOfClass(Entity.class, new AABB(position.x - is, position.y - is, position.z - is, position.x + is, position.y + is, position.z + is));
+                    for (Entity es : ess) {
+                        ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(es.getType());
+                        if (!entity.getNamespace().equals(MoonStoneMod.MODID) && es != this.getOwner() && !es.is(this)) {
+                            if (es instanceof ItemEntity item) {
+                                Vec3 motion = position.subtract(item.position().add(0, item.getBbHeight() / 2, 0));
+                                if (Math.sqrt(motion.x * motion.x + motion.y * motion.y + motion.z * motion.z) > 1) {
+                                    motion = motion.normalize();
+                                }
+                                item.setDeltaMovement(motion.scale(1));
+                            }
+                            if (es instanceof LivingEntity item) {
+                                Vec3 motion = position.subtract(item.position().add(0, item.getBbHeight() / 2, 0));
+                                if (Math.sqrt(motion.x * motion.x + motion.y * motion.y + motion.z * motion.z) > 1) {
+                                    motion = motion.normalize();
+                                }
+                                item.setDeltaMovement(motion.scale(0.25));
+                            }
+                            if (es instanceof Projectile item) {
+                                Vec3 motion = position.subtract(item.position().add(0, item.getBbHeight() / 2, 0));
+                                if (Math.sqrt(motion.x * motion.x + motion.y * motion.y + motion.z * motion.z) > 1) {
+                                    motion = motion.normalize();
+                                }
+                                item.setDeltaMovement(motion.scale(3));
+                            }
+                        }
+                    }
+                }
+                {
+                    Vec3 added = this.position().add(0, 0.75, 0);
+                    int r = 1;
+                    List<Projectile> ss = this.level().getEntitiesOfClass(Projectile.class, new AABB(added.x - r, added.y - r, added.z - r, added.x + r, added.y + r, added.z + r));
+                    for (Projectile entity : ss){
+                        entity.discard();
+                        player.heal(4);
+                    }
+                }
             }
         }
     }
@@ -167,6 +233,32 @@ public class owner_blood extends TamableAnimal {
         return false;
     }
     public boolean isPushable() {
+        return false;
+    }
+
+    @Override
+    public boolean doHurtTarget(Entity entity) {
+        return false;
+    }
+
+    @Override
+    public boolean attackable() {
+        return false;
+    }
+
+
+    @Override
+    public boolean wantsToAttack(LivingEntity target, LivingEntity owner) {
+        return false;
+    }
+
+    @Override
+    public boolean canAttack(LivingEntity target) {
+        return false;
+    }
+
+    @Override
+    public boolean canAttack(LivingEntity livingentity, TargetingConditions condition) {
         return false;
     }
 
@@ -185,7 +277,6 @@ public class owner_blood extends TamableAnimal {
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(2, new SitWhenOrderedToGoal(this));
         this.goalSelector.addGoal(4, new LeapAtTargetGoal(this, 0.4F));
-        this.goalSelector.addGoal(5, new MeleeAttackGoal(this, 1.0D, true));
         this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
         this.goalSelector.addGoal(7, new BreedGoal(this, 1.0D));
         this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));

@@ -5,6 +5,8 @@ import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.entity.zombie.cell_zombie;
+import com.moonstone.moonstonemod.event.AllEvent;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -25,12 +27,15 @@ import net.minecraft.server.level.ServerEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.GameEventTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Unit;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -183,7 +188,7 @@ public class nightmare_giant extends TamableAnimal implements OwnableEntity,Vibr
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 500.0D).add(Attributes.MOVEMENT_SPEED, (double)0.3F).add(Attributes.KNOCKBACK_RESISTANCE, 1.0D).add(Attributes.ATTACK_KNOCKBACK, 1.5D).add(Attributes.ATTACK_DAMAGE, 30.0D);
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 150).add(Attributes.MOVEMENT_SPEED, (double)0.3F).add(Attributes.KNOCKBACK_RESISTANCE, 1.0D).add(Attributes.ATTACK_KNOCKBACK, 1.5D).add(Attributes.ATTACK_DAMAGE, 15);
     }
 
     public boolean dampensVibrations() {
@@ -240,12 +245,16 @@ public class nightmare_giant extends TamableAnimal implements OwnableEntity,Vibr
     }
 
 
+    int sZombieTime = 0;
     public void tick() {
         time++;
         if (!this.getTags().contains(Handler.Giant_Time)) {
             time += 3;
         }else {
             time+=2;
+        }
+        if (sZombieTime>0){
+            sZombieTime--;
         }
         if (time > 3600){
             this.discard();
@@ -256,6 +265,27 @@ public class nightmare_giant extends TamableAnimal implements OwnableEntity,Vibr
                 this.setAttackTarget(null);
             }
         }
+
+        {
+            Vec3 playerPos = this.position().add(0, 1.25, 0);
+            float range = 16;
+            List<cell_zombie> entities =
+                    this.level().getEntitiesOfClass(cell_zombie.class,
+                            new AABB(playerPos.x - range,
+                                    playerPos.y - range,
+                                    playerPos.z - range,
+                                    playerPos.x + range,
+                                    playerPos.y + range,
+                                    playerPos.z + range));
+
+            for (Entity c : entities) {
+                if (c instanceof cell_zombie cellZombie) {
+                    if (this.tickCount % 20 == 1) {
+                        this.heal(entities.size());
+                    }
+                }
+            }
+        }
         Vec3 playerPos = this.position().add(0, 0.75, 0);
         int range = 10;
         List<Mob> entities = this.level().getEntitiesOfClass(Mob.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
@@ -263,7 +293,28 @@ public class nightmare_giant extends TamableAnimal implements OwnableEntity,Vibr
             if (!this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).isPresent()) {
                 ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType());
                 if (!entity.getNamespace().equals(MoonStoneMod.MODID)) {
-                    this.setAttackTarget(mob);
+                    if (this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).isEmpty()) {
+                        if (sZombieTime<=0){
+                            if (this.getOwner()!=null) {
+                                for (int i = 0; i < 2; i++) {
+                                    cell_zombie cellZombie = new cell_zombie(EntityTs.cell_zombie.get(), this.level());
+                                    cellZombie.teleportTo(this.getX(), this.getY(), this.getZ());
+                                    cellZombie.setOwnerUUID(this.getOwnerUUID());
+                                    cellZombie.addTag(AllEvent.DamageCell);
+                                    cellZombie.addTag("hasNig");
+                                    this.level().playSound(null,this.getOnPos(),SoundEvents.TRIAL_SPAWNER_OMINOUS_ACTIVATE, SoundSource.AMBIENT,10,10);
+                                    this.level().addFreshEntity(cellZombie);
+                                    sZombieTime = 300;
+                                }
+                            }
+                        }
+                        mob.addEffect(new MobEffectInstance(MobEffects.GLOWING,200,0));
+                        mob.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,200,2));
+                        mob.addEffect(new MobEffectInstance(MobEffects.WEAKNESS,200,2));
+                        mob.addEffect(new MobEffectInstance(MobEffects.BLINDNESS,200,2));
+
+                        this.setAttackTarget(mob);
+                    }
                 }
             }
         }

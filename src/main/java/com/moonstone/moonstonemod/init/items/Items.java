@@ -22,6 +22,7 @@ import com.moonstone.moonstonemod.item.maxitem.uncommon.common.*;
 import com.moonstone.moonstonemod.item.nanodoom.*;
 import com.moonstone.moonstonemod.item.necora;
 import com.moonstone.moonstonemod.item.nightmare.*;
+import com.moonstone.moonstonemod.item.nightmare.super_nightmare.nightmare_base;
 import com.moonstone.moonstonemod.item.plague.ALL.*;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.Skill.batskill;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.batgene;
@@ -242,8 +243,9 @@ public class Items {
 
     public static final DeferredHolder<Item,?> owner_blood_boom_eye =REGISTRY.register("owner_blood_boom_eye", BloodItem::new);
     public static final DeferredHolder<Item,?> owner_blood_effect_eye =REGISTRY.register("owner_blood_effect_eye", BloodItem::new);
-
-
+    public static final DeferredHolder<Item,?> owner_blood_vex =REGISTRY.register("owner_blood_vex", BloodItem::new);
+    public static final DeferredHolder<Item,?> owner_blood_earth =REGISTRY.register("owner_blood_earth", BloodItem::new);
+    public static final DeferredHolder<Item,?> nightmare_base =REGISTRY.register("nightmare_base", nightmare_base::new);
 
 
 

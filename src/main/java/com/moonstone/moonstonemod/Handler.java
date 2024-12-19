@@ -313,10 +313,9 @@ public class Handler {
                 .setUv2(240, 240)
                 .setNormal(0, 0, 1);
     }
-    public static void renderLine(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType) {
+    public static void renderLine(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType,  float radius ) {
         VertexConsumer vertexConsumer = bufferSource.getBuffer(renderType);
 
-        float radius = 0.05f; // 半径
         int segmentCount = 16; // 圆柱横向细分数
 
         for (int i = 0; i < segmentCount; i++) {
@@ -361,4 +360,5 @@ public class Handler {
             addSquare(vertexConsumer, poseStack, up1, up2, down1, down2, a);
         }
     }
+
 }

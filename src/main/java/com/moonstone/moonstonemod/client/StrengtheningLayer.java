@@ -8,6 +8,7 @@ import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.client.renderer.MoonPost;
 import com.moonstone.moonstonemod.entity.bloodvruis.test_blood;
+import com.moonstone.moonstonemod.entity.nightmare.NModel;
 import com.moonstone.moonstonemod.entity.nightmare.nightmare_giant;
 import com.moonstone.moonstonemod.entity.zombie.blood_zombie;
 import com.moonstone.moonstonemod.entity.zombie.blood_zombie_boom;
@@ -15,6 +16,7 @@ import com.moonstone.moonstonemod.entity.zombie.red_entity;
 import com.moonstone.moonstonemod.entity.zombie.test_e;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
+import com.moonstone.moonstonemod.init.moonstoneitem.Effects;
 import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
@@ -71,10 +73,11 @@ public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>
             matrices.scale(0.33f,0.33f,0.33f);
             new CircleCubeBoom(matrices, vertexConsumers, light, entity);
         }
-        if (entity instanceof nightmare_giant){
+        if (entity instanceof nightmare_giant) {
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
             matrices.pushPose();
-            renderSphere1(matrices,vertexConsumers,240,0.375f);
+            matrices.translate(0, 0.175, -0.15);
+            renderSphere1(matrices, vertexConsumers, 240, 0.4f);
             matrices.popPose();
         }
         if (entity instanceof Player player) {
@@ -112,12 +115,10 @@ public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>
                 }
             }
         }
-        if (entity instanceof red_entity entity1) {
+        if (entity instanceof red_entity) {
             new CircleCube(matrices, vertexConsumers, light, entity);
         }
-        if (entity instanceof test_e entity1) {
-            new CircleCubeBoom(matrices, vertexConsumers, light, entity);
-        }
+
 
         if (entity instanceof blood_zombie){
             new BloodBoom(matrices, vertexConsumers, light, entity);

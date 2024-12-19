@@ -47,7 +47,7 @@ public class LevelRendererMixin {
                     shift = At.Shift.BEFORE
             ))
     private void renderLevel2(DeltaTracker deltaTracker, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightTexture lightTexture, Matrix4f frustumMatrix, Matrix4f projectionMatrix, CallbackInfo ci) {
-        MoonPost.processEffects(this.minecraft.getMainRenderTarget());
+        MoonPost.processEffects(deltaTracker,this.minecraft.getMainRenderTarget());
     }
 
     @Inject(method = "renderLevel",

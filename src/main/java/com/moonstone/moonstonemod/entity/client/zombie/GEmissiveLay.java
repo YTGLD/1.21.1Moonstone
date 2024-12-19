@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.entity.client.zombie;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.entity.zombie.cell_giant;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
@@ -22,12 +23,14 @@ public class GEmissiveLay <T extends cell_giant, M extends GModel<T>> extends Re
     private final ResourceLocation texture;
     private final AlphaFunction<T> alphaFunction;
     private final DrawSelector<T, M> drawSelector;
+    private final RenderType renderType;
 
-    public GEmissiveLay(RenderLayerParent<T, M> p_234885_, ResourceLocation p_234886_,AlphaFunction<T> p_234887_, DrawSelector<T, M> p_234888_) {
+    public GEmissiveLay(RenderLayerParent<T, M> p_234885_, ResourceLocation p_234886_, AlphaFunction<T> p_234887_, DrawSelector<T, M> p_234888_, RenderType renderType) {
         super(p_234885_);
         this.texture = p_234886_;
         this.alphaFunction = p_234887_;
         this.drawSelector = p_234888_;
+        this.renderType = renderType;
     }
 
     public void render(PoseStack p_234902_, MultiBufferSource p_234903_, int p_234904_, T p_234905_, float p_234906_, float p_234907_, float p_234908_, float p_234909_, float p_234910_, float p_234911_) {
@@ -35,8 +38,12 @@ public class GEmissiveLay <T extends cell_giant, M extends GModel<T>> extends Re
             this.onlyDrawSelectedParts();
             float f = this.alphaFunction.apply(p_234905_, p_234908_, p_234909_);
             int i = FastColor.ARGB32.color(Mth.floor(f * 255.0F), 255, 255, 255);
-
-            VertexConsumer vertexconsumer = p_234903_.getBuffer(RenderType.entityTranslucentEmissive(this.texture));
+            VertexConsumer vertexconsumer;
+            if (renderType!=null) {
+                vertexconsumer  = p_234903_.getBuffer(renderType);
+            } else {
+                vertexconsumer  = p_234903_.getBuffer(RenderType.entityTranslucentEmissive(this.texture));
+            }
             this.getParentModel().renderToBuffer(p_234902_, vertexconsumer, p_234904_, LivingEntityRenderer.getOverlayCoords(p_234905_, 0.0F), i);
             this.resetDrawForAllParts();
         }

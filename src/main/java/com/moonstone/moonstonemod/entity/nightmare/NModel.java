@@ -11,17 +11,17 @@ import java.util.List;
 
 public class NModel<T extends nightmare_giant> extends HierarchicalModel<T> {
     private final ModelPart root;
-    protected final ModelPart bone;
-    protected final ModelPart body;
-    protected final ModelPart head;
-    protected final ModelPart rightTendril;
-    protected final ModelPart leftTendril;
-    protected final ModelPart leftLeg;
-    protected final ModelPart leftArm;
-    protected final ModelPart leftRibcage;
-    protected final ModelPart rightArm;
-    protected final ModelPart rightLeg;
-    protected final ModelPart rightRibcage;
+    public final ModelPart bone;
+    public final ModelPart body;
+    public final ModelPart head;
+    public final ModelPart rightTendril;
+    public final ModelPart leftTendril;
+    public final ModelPart leftLeg;
+    public final ModelPart leftArm;
+    public final ModelPart leftRibcage;
+    public final ModelPart rightArm;
+    public final ModelPart rightLeg;
+    public final ModelPart rightRibcage;
     private final List<ModelPart> tendrilsLayerModelParts;
     private final List<ModelPart> heartLayerModelParts;
     private final List<ModelPart> bioluminescentLayerModelParts;
@@ -67,6 +67,9 @@ public class NModel<T extends nightmare_giant> extends HierarchicalModel<T> {
     private void animateHeadLookTarget(float pYaw, float pPitch) {
         this.head.xRot = pPitch * (float) (Math.PI / 180.0);
         this.head.yRot = pYaw * (float) (Math.PI / 180.0);
+
+        this.head.xRot  -= 35 * 0.017453292F;
+
     }
 
     private void animateIdlePose(float pAgeInTicks) {
@@ -89,12 +92,19 @@ public class NModel<T extends nightmare_giant> extends HierarchicalModel<T> {
         this.head.xRot = this.head.xRot + 1.2F * Mth.cos(f1 + (float) (Math.PI / 2)) * f4;
         this.body.zRot = 0.1F * f3 * f;
         this.body.xRot = 1.0F * f2 * f4;
+        this.body.y += 1.5f;
         this.leftLeg.xRot = 1.0F * f2 * f;
         this.rightLeg.xRot = 1.0F * Mth.cos(f1 + (float) Math.PI) * f;
         this.leftArm.xRot = -(0.8F * f2 * f);
         this.leftArm.zRot = 0.0F;
         this.rightArm.xRot = -(0.8F * f3 * f);
         this.rightArm.zRot = 0.0F;
+
+        this.body.xRot  += 35 * 0.017453292F;
+
+        this.leftLeg.z +=5;
+        this.rightLeg.z +=5;
+
         this.resetArmPoses();
     }
 
@@ -107,6 +117,10 @@ public class NModel<T extends nightmare_giant> extends HierarchicalModel<T> {
         this.rightArm.z = 1.0F;
         this.rightArm.x = -13.0F;
         this.rightArm.y = -13.0F;
+
+        this.leftArm.xRot  -= 35 * 0.017453292F;
+        this.rightArm.xRot  -= 35 * 0.017453292F;
+
     }
 
     private void animateTendrils(T pEntity, float pAgeInTicks, float pPartialTick) {
