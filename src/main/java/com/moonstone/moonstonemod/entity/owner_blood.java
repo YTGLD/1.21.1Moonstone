@@ -81,6 +81,13 @@ public class owner_blood extends TamableAnimal {
                 if (!Handler.hascurio(player, Items.blood_candle.get())){
                     this.discard();
                 }
+                if (!player.getTags().contains("HasBlood")){
+                    this.discard();
+                }
+                if (player.getCooldowns().isOnCooldown(Items.blood_candle.get())){
+                    this.discard();
+
+                }
             }
         }
         trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));

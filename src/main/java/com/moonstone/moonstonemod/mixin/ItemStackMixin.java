@@ -2,19 +2,31 @@ package com.moonstone.moonstonemod.mixin;
 
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
 import com.moonstone.moonstonemod.item.nanodoom.buyme.wind_and_rain;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
+import org.checkerframework.checker.units.qual.C;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ItemStack.class)
-public class ItemStackMixin {
+public abstract class ItemStackMixin {
+
+    @Shadow public abstract Tag save(HolderLookup.Provider levelRegistryAccess);
+
+    @Shadow public abstract Component getHoverName();
 
     @Inject(at = @At("HEAD"), method = "getUseDuration", cancellable = true)
     public void moonstone$getUseDuration(LivingEntity entity, CallbackInfoReturnable<Integer> cir) {

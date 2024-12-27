@@ -15,6 +15,7 @@
     "WardenMixin"
   ],
   "client": [
+    "client.GameRendererMixin",
     "client.GuiGraphicsMixin",
     "client.ItemRendererMixin",
     "client.LevelRendererMixin",

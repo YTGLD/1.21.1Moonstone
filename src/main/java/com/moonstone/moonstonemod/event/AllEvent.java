@@ -27,8 +27,10 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -74,10 +76,7 @@ import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class AllEvent {
     private int shield = 1;
@@ -154,14 +153,17 @@ public class AllEvent {
                             ItemStack stack = stackHandler.getStackInSlot(i);
                             BundleContents bundlecontents = stack.get(DataComponents.BUNDLE_CONTENTS);
                             if (bundlecontents != null && !bundlecontents.isEmpty()){
-                                bundlecontents.itemsCopy().forEach((itemStack)->{
-                                    Collection<ItemEntity> drop = event.getDrops();
-                                    for (ItemEntity entity : drop) {
-                                        ItemStack i_stack = entity.getItem();
-                                        if (i_stack.is(itemStack.getItem())) {
-                                            if (!(i_stack.getMaxStackSize() < 3)) {
-                                                i_stack.setCount(i_stack.getCount() * 3);
-                                                entity.setItem(i_stack);
+                                Set<ResourceLocation> resourceLocations = new HashSet<>();
+                                bundlecontents.itemsCopy().forEach((itemStack)-> {
+                                    if (resourceLocations.add(BuiltInRegistries.ITEM.getKey(itemStack.getItem()))) {
+                                        Collection<ItemEntity> drop = event.getDrops();
+                                        for (ItemEntity entity : drop) {
+                                            ItemStack i_stack = entity.getItem();
+                                            if (i_stack.is(itemStack.getItem())) {
+                                                if (!(i_stack.getMaxStackSize() < 3)) {
+                                                    i_stack.setCount(i_stack.getCount() * 3);
+                                                    entity.setItem(i_stack);
+                                                }
                                             }
                                         }
                                     }

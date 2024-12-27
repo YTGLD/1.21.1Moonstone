@@ -8,16 +8,11 @@ import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.client.renderer.MoonPost;
 import com.moonstone.moonstonemod.entity.bloodvruis.test_blood;
-import com.moonstone.moonstonemod.entity.nightmare.NModel;
 import com.moonstone.moonstonemod.entity.nightmare.nightmare_giant;
 import com.moonstone.moonstonemod.entity.zombie.blood_zombie;
 import com.moonstone.moonstonemod.entity.zombie.blood_zombie_boom;
 import com.moonstone.moonstonemod.entity.zombie.red_entity;
-import com.moonstone.moonstonemod.entity.zombie.test_e;
 import com.moonstone.moonstonemod.init.items.Items;
-import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
-import com.moonstone.moonstonemod.init.moonstoneitem.Effects;
-import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -27,22 +22,11 @@ import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.client.event.RenderNameTagEvent;
-import net.neoforged.neoforge.common.util.TriState;
 import org.jetbrains.annotations.NotNull;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
-import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
-import java.util.Map;
 public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>> extends  RenderLayer {
     public StrengtheningLayer(RenderLayerParent<T, M> p_117346_) {
         //noinspection unchecked

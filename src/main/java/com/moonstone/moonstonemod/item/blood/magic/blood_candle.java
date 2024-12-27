@@ -46,6 +46,15 @@ public class blood_candle extends Item implements ICurioItem, Blood {
     public boolean overrideOtherStackedOnMe(ItemStack me, ItemStack Other, Slot p_150744_, ClickAction p_150745_, Player p_150746_, SlotAccess p_150747_) {
         if (me.getCount() != 1) return false;
         if (p_150745_ == ClickAction.SECONDARY && p_150744_.allowModification(p_150746_)) {
+            if (Other.isEmpty()){
+                if (p_150746_.getTags().contains("HasBlood")){
+                    p_150746_.getTags().remove("HasBlood");
+
+                    p_150746_.getCooldowns().addCooldown(me.getItem(),20);
+
+                    return true;
+                }
+            }
             if (Handler.hascurio(p_150746_, Items.bloodvirus.get())) {
                 if (!Other.isEmpty()) {
                     if (Other.getItem() instanceof catalyzer) {
@@ -68,7 +77,7 @@ public class blood_candle extends Item implements ICurioItem, Blood {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player) {
-            if (!player.getTags().contains("HasBlood")){
+            if (!player.getTags().contains("HasBlood")&&!player.getCooldowns().isOnCooldown(this)){
                 owner_blood owner_blood = new owner_blood(EntityTs.owner_blood.get(),player.level());
                 owner_blood.setOwnerUUID(player.getUUID());
                 owner_blood.setPos(player.position());

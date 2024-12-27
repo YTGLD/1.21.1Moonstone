@@ -229,6 +229,11 @@ public class Tab {
                 b.accept(new ItemStack(Items.nightmare_heart.get()));
                 b.accept(new ItemStack(Items.nightmare_head.get()));
                 b.accept(new ItemStack(Items.nightmare_cube.get()));
+                b.accept(new ItemStack(Items.nightmare_base.get()));
+                b.accept(new ItemStack(Items.nightmare_base_black_eye.get()));
+                b.accept(new ItemStack(Items.nightmare_base_black_eye_eye.get()));
+                b.accept(new ItemStack(Items.nightmare_base_black_eye_heart.get()));
+                b.accept(new ItemStack(Items.nightmare_base_black_eye_red.get()));
 
 
                 b.accept(new ItemStack(Items.magiceye.get()));

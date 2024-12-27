@@ -99,8 +99,15 @@ public class the_prison_of_sin extends Item implements ICurioItem, Blood {
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
         float s = 110;
+        float incrementFactor = 1.0f;
         if (stack.get(DataReg.tag)!=null){
-            s += stack.get(DataReg.tag).getAllKeys().size();
+            int size = stack.get(DataReg.tag).getAllKeys().size();
+            for (int i = 0; i < size; i++) {
+                incrementFactor *= 0.99f;
+            }
+
+            s += size * incrementFactor;
+
         }
         s -= 100;
         s /= 100;
@@ -143,7 +150,18 @@ public class the_prison_of_sin extends Item implements ICurioItem, Blood {
                 pTooltipComponents.add(Component.translatable(""));
                 pTooltipComponents.add(Component.translatable("key.keyboard.left.shift").withStyle(ChatFormatting.RED));
                 pTooltipComponents.add(Component.translatable(""));
-                pTooltipComponents.add(Component.translatable("item.the_prison_of_sin.tool.string.5").append(String.valueOf(pStack.get(DataReg.tag).getAllKeys().size())).append("%").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
+                float s = 110;
+                float incrementFactor = 1.0f;
+                if (pStack.get(DataReg.tag)!=null){
+                    int size = pStack.get(DataReg.tag).getAllKeys().size();
+                    for (int i = 0; i < size; i++) {
+                        incrementFactor *= 0.99f;
+                    }
+
+                    s += (size * incrementFactor);
+
+                }
+                pTooltipComponents.add(Component.translatable("item.the_prison_of_sin.tool.string.5").append(String.valueOf(s-100)).append("%").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
             }
         }else {
             pTooltipComponents.add(Component.translatable("item.the_prison_of_sin.tool.string.7").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));

@@ -3,6 +3,7 @@
   "key.moonstone.category": "Moonstone",
   "key.moonstone.desc": "Skill",
   "key.moonstone.y": "skill",
+  "allevent.moonstone.cannot": "你必须取出富饶之心内重复的物品",
   "itemGroup.tabmoonstone.blood": "Moonstone : Blood",
   "key.categories.moonstone.moonstone_category": "Moonstone",
   "moonstone.book.error": "you need patchouli mod",
@@ -213,11 +214,13 @@
   "item.redamout.tool.string": "Attacks have a chance to send enemies flying",
   "item.redamout.tool.string.1": "Probability of getting Strength II when injured",
 
+  "curios.identifier.nightmare": "§4噩梦之槽",
   "curios.identifier.medicine": "medicine",
   "curios.identifier.necora": "DNA",
   "curios.identifier.ncrdna": "ncr dna",
   "curios.identifier.dna": "dna",
   "curios.modifiers.ncrdna": "necora",
+  "curios.modifiers.nightmare": "§4接受噩梦洗礼时",
   "curios.modifiers.dna": "DNA",
   "curios.modifiers.medicine": "medicine",
 
@@ -884,7 +887,7 @@
   "item.blood_magic_box.tool.string": "Kill mob , Now!",
 
   "item.moonstone.blood_candle": "blood candle",
-  "item.blood_candle.tool.string.1": "",
+  "item.blood_candle.tool.string.1": "如果丢失/失踪，请重新佩戴此物品 Or right click on this item",
 
   "item.moonstone.the_blood_book": "Sealing Record",
   "item.the_blood_book.tool.string": "It can be ignited twice ",
@@ -1231,6 +1234,59 @@
   "moonstone.jei.item.moonstone.owner_blood_effect_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nBlood Orbs will apply a large amount of negative effects upon impact.\nReduces Blood Damage by 50%.",
   "item.moonstone.owner_blood_vex": "Wraith",
   "moonstone.jei.item.moonstone.owner_blood_vex": "It is found in ancient cities, but requires wearing the Sealing Candelabra to be discovered.\n\nBlood Orbs will not disappear upon hitting and will penetrate entities.\nEach penetration increases damage and speed by 50%,\nbut reduces base speed and damage by 50%.",
+
+
+
+
+
+  "item.moonstone.nightmare_base": "§4噩梦基座",
+
+
+
+  "item.moonstone.nightmare_base_black_eye": "§4邪念之窥眸",
+  "item.nightmare_base_black_eye.tool.string": "白天会让你视力模糊",
+  "item.nightmare_base_black_eye.tool.string.1": "但是你可以解锁下列物品",
+  "item.moonstone.nightmare_base_black_eye_eye": "§4惶恐肉瘤",
+  "item.nightmare_base_black_eye_eye.tool.string": "被注视的生物会无法移动",
+  "item.nightmare_base_black_eye_eye.tool.string.1": "同时他会获得大量负面BUFF",
+  "item.nightmare_base_black_eye_eye.tool.string.2": "当你看向任意生物时，你会获得100%的伤害加成",
+
+  "item.moonstone.nightmare_base_black_eye_red": "§4罪恶之红唇",
+  "item.nightmare_base_black_eye_red.tool.string": "每次杀死生物都会使所有属性增加5%",
+  "item.nightmare_base_black_eye_red.tool.string.1": "最多增加50%",
+  "item.nightmare_base_black_eye_red.tool.string.2": "这些属性会随时间减少",
+
+
+
+  "item.moonstone.nightmare_base_black_eye_heart": "§4死心之胚",
+  "item.nightmare_base_black_eye_heart.tool.string": "附近的生物受到的伤害提高25%",
+  "item.nightmare_base_black_eye_heart.tool.string.1": "他们恢复的生命值会到你身上",
+  "item.nightmare_base_black_eye_heart.tool.string.2": "且他们不再会受到任何治疗",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   "item.moonstone.owner_blood_earth":"Qiankun",

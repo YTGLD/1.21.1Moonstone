@@ -1,6 +1,7 @@
 {
   "curios.modifiers.dna": "植入DNA时",
   "itemGroup.tabmoonstone.blood": "月之石：血魔 ",
+  "allevent.moonstone.cannot": "你必须取出富饶之心内重复的物品",
 
   "key.moonstone.category": "月之石",
   "key.moonstone.desc": "技能",
@@ -904,7 +905,7 @@
   "item.the_prison_of_sin.tool.string.1": "-80% 护甲，最大生命值",
 
   "item.the_prison_of_sin.tool.string.2": "+10% 全部属性",
-  "item.the_prison_of_sin.tool.string.3": "每杀死1种不同的生物，此奖励都将增加1%",
+  "item.the_prison_of_sin.tool.string.3": "每杀死1种不同的生物，此奖励都将增加，但是会越涨越慢",
 
   "item.the_prison_of_sin.tool.string.4": "无法取下",
 
@@ -933,7 +934,7 @@
 
   "item.moonstone.the_blood_book": "§4血魔霸体诀",
   "item.blood_candle.tool.string": "召唤一个巨型血灵增生体协助你作战",
-  "item.blood_candle.tool.string.1": "如果丢失/失踪，请重新佩戴此物品",
+  "item.blood_candle.tool.string.1": "如果丢失/失踪，请重新佩戴此物品或右键这个物品",
 
 
   "item.blood_candle.tool.string.2": "血灵增生体的攻击会造成基于你最大生命值的伤害",
@@ -1271,6 +1272,9 @@
 
   "item.moonstone.owner_blood_vex": "鬼者",
   "moonstone.jei.item.moonstone.owner_blood_vex": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n血珠击中后会恢复主人的生命值\n其数值取决于血灵增生体的伤害\n血灵增生体的伤害降低3点"
+
+
+
 }
 
 

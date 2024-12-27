@@ -14,7 +14,7 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 public class nightmare extends Item implements ICurioItem , INightmare {
     public nightmare() {
-        super(new Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+        super(new Properties().stacksTo(1).durability(1000000000).rarity(Rarity.UNCOMMON));
     }
 
     @Override

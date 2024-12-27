@@ -15,6 +15,9 @@ import com.moonstone.moonstonemod.init.moonstoneitem.Enchants;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.IBattery;
 import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
 import com.moonstone.moonstonemod.item.maxitem.book.the_blood_book;
+import com.moonstone.moonstonemod.item.nightmare.super_nightmare.nightmare_base_black_eye_eye;
+import com.moonstone.moonstonemod.item.nightmare.super_nightmare.nightmare_base_black_eye_heart;
+import com.moonstone.moonstonemod.item.nightmare.super_nightmare.nightmare_base_black_eye_red;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.dna.bat_cell;
 import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.blood.*;
@@ -108,6 +111,7 @@ public class NewEvent {
         Enchants.threatHeal(event);
         DungeonLoot.heal(event);
         LifeManSuper.healEvent(event);
+        nightmare_base_black_eye_heart.heal(event);
         if (event.getEntity() instanceof LivingEntity living){
             if (living.getAttribute(AttReg.heal)!=null){
                 float attack = (float) living.getAttribute(AttReg.heal).getValue();
@@ -280,8 +284,8 @@ public class NewEvent {
         nine_sword_book.att(event);
         the_blood_book.att(event);
         book.hurt(event);
-
-
+        nightmare_base_black_eye_eye.attLook(event);
+        nightmare_base_black_eye_heart.hurt(event);
         CuriosApi.getCuriosInventory(event.getEntity()).ifPresent(handler -> {
             Map<String, ICurioStacksHandler> curios = handler.getCurios();
             for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
@@ -444,6 +448,8 @@ public class NewEvent {
         dna.dieD(event);
         rage_blood_head.Did(event);
         sword_soul.evil(event);
+        nightmare_base_black_eye_red.kill(event);
+
         MethaneEmission.LivingHealEvent(event);
     }
     @SubscribeEvent

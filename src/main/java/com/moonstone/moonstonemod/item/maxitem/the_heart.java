@@ -93,8 +93,6 @@ public class the_heart extends BundleItem implements ICurioItem {
         pTooltipComponents.add(Component.translatable("item.the_heart.tool.string.1").withStyle(ChatFormatting.GOLD));
         pTooltipComponents.add(Component.translatable("item.the_heart.tool.string.2").withStyle(ChatFormatting.GOLD));
         pTooltipComponents.add(Component.translatable(""));
-        pTooltipComponents.add(Component.translatable("item.the_heart.tool.string.3").withStyle(ChatFormatting.DARK_RED));
-        pTooltipComponents.add(Component.translatable(""));
     }
 
     private void playRemoveOneSound(Entity p_186343_) {
