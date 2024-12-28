@@ -32,7 +32,6 @@ public class nightmare_base_stone_meet   extends nightmare {
     }
     @Override
     public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        super.canEquip(slotContext,stack);
         return Handler.hascurio(slotContext.entity(), Items.nightmare_base_stone.get());
     }
 }

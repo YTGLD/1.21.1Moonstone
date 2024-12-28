@@ -1271,10 +1271,65 @@
   "moonstone.jei.item.moonstone.owner_blood_earth": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n血灵增生体不会再攻击\n但会变成一个超级磁铁，它不仅可以吸引生物和掉落物并且还可以吸引然后吞噬弹射物\n吞噬弹射物恢复主人生命值\n\n你可以用来运送村民或者干什么别的",
 
   "item.moonstone.owner_blood_vex": "鬼者",
-  "moonstone.jei.item.moonstone.owner_blood_vex": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n血珠击中后会恢复主人的生命值\n其数值取决于血灵增生体的伤害\n血灵增生体的伤害降低3点"
+  "moonstone.jei.item.moonstone.owner_blood_vex": "它发现于古城，但是需要佩戴封魔烛台才能发现\n\n血珠击中后会恢复主人的生命值\n其数值取决于血灵增生体的伤害\n血灵增生体的伤害降低3点",
 
 
 
+
+  "item.moonstone.nightmare_base": "§4噩梦基座",
+  "item.nightmare_base.tool.string": "攻击伤害,生命值,护甲减少30%",
+  "item.nightmare_base.tool.string.1": "邪念体，血虐之铅，恶意之殇无效化",
+
+
+  "item.moonstone.nightmare_base_stone": "§4死兆方尖碑",
+  "item.nightmare_base_stone.tool.string": "满生命值时受到的伤害增加500%",
+  "item.nightmare_base_stone.tool.string.1": "但是你可以解锁下列物品",
+
+
+  "item.moonstone.nightmare_base_stone_meet": "§4绝望共鸣",
+  "item.nightmare_base_stone_meet.tool.string.1": "强化下列饰品",
+  "item.moonstone.ectoplasmstar.nightmare_base_stone_meet": "幸运值加倍，且每点幸运加2.5%治疗",
+  "item.moonstone.ectoplasmstar.mayhemcrystal": "伤害增幅增加50%",
+  "item.moonstone.ectoplasmstar.maxamout": "所有效果BUFF等级加2",
+  "item.moonstone.ectoplasmstar.maxamout.1": "所有触发概加100%",
+  "item.moonstone.ectoplasmstar.maxamout.2": "反伤效果增加400%",
+
+
+  "item.moonstone.nightmare_base_stone_virus": "§4Nightecora病毒",
+  "item.nightmare_base_stone_virus.tool.string": "伤害增加100%",
+  "item.nightmare_base_stone_virus.tool.string.1": "治疗增加100%",
+  "item.nightmare_base_stone_virus.tool.string.2": "暴击增加100%",
+  "item.nightmare_base_stone_virus.tool.string.3": "受到任意伤害都会额外附加50%最大生命值的惩罚,不受任何加成影响",
+
+  "item.moonstone.nightmare_base_stone_brain": "§4末世之脑",
+  "item.nightmare_base_stone_brain.tool.string": "满血时伤害减少100%",
+  "item.nightmare_base_stone_brain.tool.string.1": "非满血状态伤害提高50%",
+  "item.nightmare_base_stone_brain.tool.string.2": "非满血状态抗性提高50%",
+  "item.moonstone.nightmare_virus":"噩梦之霍乱",
+
+
+
+  "item.moonstone.nightmare_base_black_eye": "§4邪念之窥眸",
+  "item.nightmare_base_black_eye.tool.string": "视力模糊,无药可医",
+  "item.nightmare_base_black_eye.tool.string.1": "但是你可以解锁下列物品",
+
+
+  "item.moonstone.nightmare_base_black_eye_eye": "§4惶恐肉瘤",
+  "item.nightmare_base_black_eye_eye.tool.string": "被注视的生物会无法移动",
+  "item.nightmare_base_black_eye_eye.tool.string.1": "同时他会获得大量负面BUFF",
+  "item.nightmare_base_black_eye_eye.tool.string.2": "当你看向任意生物时，你会获得100%的伤害加成",
+
+  "item.moonstone.nightmare_base_black_eye_red": "§4罪恶之红唇",
+  "item.nightmare_base_black_eye_red.tool.string": "每次杀死生物都会使所有属性增加5%",
+  "item.nightmare_base_black_eye_red.tool.string.1": "最多增加50%",
+  "item.nightmare_base_black_eye_red.tool.string.2": "这些属性会随时间减少",
+
+
+
+  "item.moonstone.nightmare_base_black_eye_heart": "§4死心之胚",
+  "item.nightmare_base_black_eye_heart.tool.string": "附近的生物受到的伤害提高25%",
+  "item.nightmare_base_black_eye_heart.tool.string.1": "他们恢复的生命值会到你身上",
+  "item.nightmare_base_black_eye_heart.tool.string.2": "且他们不再会受到任何治疗"
 }
 
 

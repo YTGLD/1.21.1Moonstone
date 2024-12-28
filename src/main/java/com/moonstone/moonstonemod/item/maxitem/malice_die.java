@@ -65,22 +65,24 @@ public class malice_die extends CommonItem implements Die {
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player){
             if (!player.level().isClientSide) {
-                player.getAttributes().addTransientAttributeModifiers(this.Head(stack));
-                int size = 0;
-                Vec3 playerPos = player.position().add(0, 0.75, 0);
-                int range = 24;
-                List<LivingEntity> entities = player.level().getEntitiesOfClass(LivingEntity.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
-                for (LivingEntity living : entities) {
-                    if (living instanceof Mob mob) {
-                        if (mob.getTarget() != null && mob.getTarget().is(player)) {
-                            size = entities.size();
+                if (Handler.hascurio(player,Items.malice_die.get())) {
+                    player.getAttributes().addTransientAttributeModifiers(this.Head(stack));
+                    int size = 0;
+                    Vec3 playerPos = player.position().add(0, 0.75, 0);
+                    int range = 24;
+                    List<LivingEntity> entities = player.level().getEntitiesOfClass(LivingEntity.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
+                    for (LivingEntity living : entities) {
+                        if (living instanceof Mob mob) {
+                            if (mob.getTarget() != null && mob.getTarget().is(player)) {
+                                size = entities.size();
+                            }
                         }
                     }
-                }
-                if (stack.get(DataReg.tag) != null) {
-                    stack.get(DataReg.tag).putInt(MALICE_DIE, size);
-                } else {
-                    stack.set(DataReg.tag, new CompoundTag());
+                    if (stack.get(DataReg.tag) != null) {
+                        stack.get(DataReg.tag).putInt(MALICE_DIE, size);
+                    } else {
+                        stack.set(DataReg.tag, new CompoundTag());
+                    }
                 }
             }
         }

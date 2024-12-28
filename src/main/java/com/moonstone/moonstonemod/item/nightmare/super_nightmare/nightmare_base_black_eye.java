@@ -21,7 +21,12 @@ import java.util.List;
 public class nightmare_base_black_eye extends nightmare {
     @Override
     public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        return Handler.hascurio(slotContext.entity(), Items.nightmare_base.get());
+        if (!Handler.hascurio(slotContext.entity(), Items.nightmare_base_stone.get())) {
+            if (Handler.hascurio(slotContext.entity(), Items.nightmare_base.get())) {
+                return true;
+            }
+        }
+        return false;
     }
     //白天会视力模糊
     @Override

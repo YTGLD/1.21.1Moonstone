@@ -24,7 +24,6 @@ import java.util.Optional;
 public class nightmare_base_black_eye_eye  extends nightmare {
     @Override
     public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        super.canEquip(slotContext,stack);
         return Handler.hascurio(slotContext.entity(), Items.nightmare_base_black_eye.get());
     }
 

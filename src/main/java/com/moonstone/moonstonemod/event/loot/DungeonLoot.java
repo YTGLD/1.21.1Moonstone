@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
+import com.moonstone.moonstonemod.event.AdvancementEvt;
 import com.moonstone.moonstonemod.event.NewEvent;
 import com.moonstone.moonstonemod.init.items.BookItems;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
@@ -100,6 +101,9 @@ public class DungeonLoot extends LootModifier {
 
         if (idSting.contains("chests/")) {
             if (idSting.contains("ancient")) {
+                AdvancementEvt.addLoot(generatedLoot,entity,5);
+
+
                 addLoot(generatedLoot, random, Items.blood_candle.get(), entity, List.of(
                         Items.owner_blood_eye.get(),
                         Items.owner_blood_attack_eye.get(),

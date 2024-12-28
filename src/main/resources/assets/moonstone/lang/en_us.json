@@ -1239,47 +1239,6 @@
 
 
 
-  "item.moonstone.nightmare_base": "§4噩梦基座",
-
-
-  "item.moonstone.nightmare_base_stone": "§4死兆方尖碑",
-  "item.nightmare_base_stone.tool.string": "满生命值时受到的伤害增加500%",
-  "item.nightmare_base_stone.tool.string.1": "但是你可以解锁下列物品",
-
-  "item.moonstone.nightmare_base_stone_virus": "§4Nightecora病毒",
-  "item.moonstone.nightmare_base_stone_meet": "§4绝望共鸣",
-  "item.nightmare_base_stone_meet.tool.string.1": "强化下列饰品",
-
-  "item.moonstone.ectoplasmstar.nightmare_base_stone_meet": "幸运值加倍，且每点幸运加2.5%治疗",
-  "item.moonstone.ectoplasmstar.mayhemcrystal": "伤害增幅增加50%",
-  "item.moonstone.ectoplasmstar.maxamout": "所有效果BUFF等级加2",
-  "item.moonstone.ectoplasmstar.maxamout.1": "所有触发概加100%",
-  "item.moonstone.ectoplasmstar.maxamout.2": "反伤效果增加400%",
-
-  "item.moonstone.nightmare_base_stone_brain": "§4末世之脑",
-
-
-
-
-  "item.moonstone.nightmare_base_black_eye": "§4邪念之窥眸",
-  "item.nightmare_base_black_eye.tool.string": "白天会让你视力模糊",
-  "item.nightmare_base_black_eye.tool.string.1": "但是你可以解锁下列物品",
-  "item.moonstone.nightmare_base_black_eye_eye": "§4惶恐肉瘤",
-  "item.nightmare_base_black_eye_eye.tool.string": "被注视的生物会无法移动",
-  "item.nightmare_base_black_eye_eye.tool.string.1": "同时他会获得大量负面BUFF",
-  "item.nightmare_base_black_eye_eye.tool.string.2": "当你看向任意生物时，你会获得100%的伤害加成",
-
-  "item.moonstone.nightmare_base_black_eye_red": "§4罪恶之红唇",
-  "item.nightmare_base_black_eye_red.tool.string": "每次杀死生物都会使所有属性增加5%",
-  "item.nightmare_base_black_eye_red.tool.string.1": "最多增加50%",
-  "item.nightmare_base_black_eye_red.tool.string.2": "这些属性会随时间减少",
-
-
-
-  "item.moonstone.nightmare_base_black_eye_heart": "§4死心之胚",
-  "item.nightmare_base_black_eye_heart.tool.string": "附近的生物受到的伤害提高25%",
-  "item.nightmare_base_black_eye_heart.tool.string.1": "他们恢复的生命值会到你身上",
-  "item.nightmare_base_black_eye_heart.tool.string.2": "且他们不再会受到任何治疗",
 
 
 
@@ -1289,16 +1248,78 @@
 
 
 
+  "item.moonstone.nightmare_base": "§4Nightmare Base",
+  "item.nightmare_base.tool.string": "Gain all abilities of the Abyssal Eye",
+  "item.nightmare_base.tool.string.1": "Evil Thought Antimony, Blood Cruel Lead, Malicious Mourning Nullification",
+
+  "item.moonstone.nightmare_base_stone": "§4Deadly Obelisk",
+  "item.nightmare_base_stone.tool.string": "Damage taken increases by 500% when health is full",
+  "item.nightmare_base_stone.tool.string.1": "But you can unlock the following items",
+  "item.moonstone.nightmare_base_stone_meet": "§4Despair Resonance",
+  "item.nightmare_base_stone_meet.tool.string.1": "Enhance the following accessories",
+  "item.moonstone.ectoplasmstar.nightmare_base_stone_meet": "Double luck, and each point of luck increases healing by 2.5%",
+  "item.moonstone.ectoplasmstar.mayhemcrystal": "Damage amplification increases by 50%",
+  "item.moonstone.ectoplasmstar.maxamout": "All effect BUFF levels increase by 2",
+  "item.moonstone.ectoplasmstar.maxamout.1": "All trigger effects add 100%",
+  "item.moonstone.ectoplasmstar.maxamout.2": "Reflection damage increase by 400%",
+  "item.moonstone.nightmare_base_stone_virus": "§4Nightecora Virus",
+  "item.nightmare_base_stone_virus.tool.string": "Damage increases by 100%",
+  "item.nightmare_base_stone_virus.tool.string.1": "Healing increases by 100%",
+  "item.nightmare_base_stone_virus.tool.string.2": "Critical hit chance increases by 100%",
+  "item.nightmare_base_stone_virus.tool.string.3": "Any damage received will additionally inflict a penalty of 50% of the maximum health, unaffected by any bonuses",
+
+  "item.moonstone.nightmare_base_stone_brain": "§4Apocalypse Brain",
+  "item.nightmare_base_stone_brain.tool.string": "Damage reduced by 100% when at full health",
+  "item.nightmare_base_stone_brain.tool.string.1": "Damage increased by 50% when not at full health",
+  "item.nightmare_base_stone_brain.tool.string.2": "Resistance increased by 50% when not at full health",
+
+  "item.moonstone.nightmare_base_black_eye": "§4Evil Eye of Insight",
+  "item.nightmare_base_black_eye.tool.string": "Will blur your vision during the day",
+  "item.nightmare_base_black_eye.tool.string.1": "But you can unlock the following items",
+  "item.moonstone.nightmare_base_black_eye_eye": "§4Dreadful Tumor",
+  "item.nightmare_base_black_eye_eye.tool.string": "Creatures under your gaze will be unable to move",
+  "item.nightmare_base_black_eye_eye.tool.string.1": "They will also receive a large amount of negative BUFFs",
+  "item.nightmare_base_black_eye_eye.tool.string.2": "When you look at any creature, you will gain a 100% damage bonus",
+
+  "item.moonstone.nightmare_base_black_eye_red": "§4Sinful Red Lip",
+  "item.nightmare_base_black_eye_red.tool.string": "Killing creatures increases all attributes by 5%",
+  "item.nightmare_base_black_eye_red.tool.string.1": "Up to a maximum increase of 50%",
+  "item.nightmare_base_black_eye_red.tool.string.2": "These attributes will decrease over time",
+
+  "item.moonstone.nightmare_base_black_eye_heart": "§4Heart of Despair",
+  "item.nightmare_base_black_eye_heart.tool.string": "Nearby creatures take 25% more damage",
+  "item.nightmare_base_black_eye_heart.tool.string.1": "They will restore health to you",
+  "item.nightmare_base_black_eye_heart.tool.string.2": "And they will no longer receive any healing",
 
 
 
+  "advancements.tooltip.nightmare_base_stone.text": "获得死兆方尖碑",
+  "advancements.tooltip.nightmare_base_stone.hand": "噩梦的方尖碑",
+
+  "advancements.tooltip.nightmare_base_black_eye_heart.text": "获得死心之胚",
+  "advancements.tooltip.nightmare_base_black_eye_heart.hand": "无休止的痛苦",
+
+  "advancements.tooltip.nightmare_base_black_eye_eye.text": "获得肉瘤",
+  "advancements.tooltip.nightmare_base_black_eye_eye.hand": "不详因子",
+
+  "advancements.tooltip.nightmare_base_black_eye_red.text": "获得这个口红",
+  "advancements.tooltip.nightmare_base_black_eye_red.hand": "真刺激啊！",
+
+  "advancements.tooltip.nightmare_base_stone_meet.text": "获得绝望共鸣",
+  "advancements.tooltip.nightmare_base_stone_meet.hand": "噩梦降至",
+
+  "advancements.tooltip.nightmare_base_stone_brain.text": "获得末世之脑",
+  "advancements.tooltip.nightmare_base_stone_brain.hand": "疯狂大脑",
+
+  "advancements.tooltip.nightmare_base_black_eye.text": "获得邪念之窥眸",
+  "advancements.tooltip.nightmare_base_black_eye.hand": "永远凝视",
+
+  "advancements.tooltip.nightmare_base_stone_virus.text": "获得Nightecora病毒",
+  "advancements.tooltip.nightmare_base_stone_virus.hand": "融合体",
 
 
 
-
-
-
-
+  "item.moonstone.nightmare_virus":"nightmare virus",
 
 
 

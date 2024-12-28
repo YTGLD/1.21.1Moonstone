@@ -2,9 +2,11 @@ package com.moonstone.moonstonemod.mixin.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.MGuiGraphics;
 import com.moonstone.moonstonemod.client.renderer.MRender;
+import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.Enchants;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.Perhaps;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Blood;
@@ -12,6 +14,7 @@ import com.moonstone.moonstonemod.init.moonstoneitem.i.IDoom;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.INightmare;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Iplague;
 import com.moonstone.moonstonemod.item.necora;
+import com.moonstone.moonstonemod.item.nightmare.super_nightmare.nightmare_base;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -79,6 +82,14 @@ public abstract class GuiGraphicsMixin {
                     s = 0;
                 }
                 MGuiGraphics.blit(guiGraphics, ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID, "textures/necora.png"), x - 8, y - 8, 0, 0, 32, 32, 32, 32, 1, 0, 0, s);
+            }
+            if (stack.getItem() instanceof nightmare_base base) {
+                if (Handler.hascurio(living, Items.nightmare_base.get())) {
+                    float tickCount = base.tick;
+                    tickCount/=100;
+                    float i =32;
+                    MGuiGraphics.blit(guiGraphics, ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID, "textures/gui/curse.png"), x - 8, y - 8, 0,  0, (int) (i), (int) (i), (int) (i), (int) (i), 1, 0, 1, tickCount);
+                }
             }
         }
     }

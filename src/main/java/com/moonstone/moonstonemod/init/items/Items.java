@@ -255,7 +255,10 @@ public class Items {
     public static final DeferredHolder<Item,?> nightmare_base_stone =REGISTRY.register("nightmare_base_stone", nightmare_base_stone::new);
     public static final DeferredHolder<Item,?> nightmare_base_stone_meet =REGISTRY.register("nightmare_base_stone_meet", nightmare_base_stone_meet::new);
 
+    public static final DeferredHolder<Item,?> nightmare_base_stone_virus =REGISTRY.register("nightmare_base_stone_virus", nightmare_base_stone_virus::new);
+    public static final DeferredHolder<Item,?> nightmare_base_stone_brain =REGISTRY.register("nightmare_base_stone_brain", nightmare_base_stone_brain::new);
 
+    public static final DeferredHolder<Item,?> nightmare_virus =REGISTRY.register("nightmare_virus", nightmare_virus::new);
 
 
 

@@ -58,6 +58,7 @@ public class MoonStoneMod {
         NeoForge.EVENT_BUS.register(new Village());
         NeoForge.EVENT_BUS.register(new LootTableEvent());
         NeoForge.EVENT_BUS.register(new NewEvent());
+        NeoForge.EVENT_BUS.register(new AdvancementEvt());
         BookItems.REGISTRY.register(eventBus);
         AttReg.REGISTRY.register(eventBus);
         DNAItems.REGISTRY.register(eventBus);

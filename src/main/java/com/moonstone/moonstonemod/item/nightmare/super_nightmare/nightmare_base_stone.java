@@ -34,9 +34,13 @@ public class nightmare_base_stone extends nightmare {
 
     @Override
     public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        return Handler.hascurio(slotContext.entity(),Items.nightmare_base.get());
+        if (!Handler.hascurio(slotContext.entity(), Items.nightmare_base_black_eye.get())) {
+            if (Handler.hascurio(slotContext.entity(), Items.nightmare_base.get())) {
+                return true;
+            }
+        }
+        return false;
     }
-
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = HashMultimap.create();

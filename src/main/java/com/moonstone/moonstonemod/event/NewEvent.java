@@ -285,11 +285,11 @@ public class NewEvent {
         nine_sword_book.att(event);
         the_blood_book.att(event);
         book.hurt(event);
-
+        nightmare_base_stone_virus.h(event);
         nightmare_base_black_eye_eye.attLook(event);
         nightmare_base_black_eye_heart.hurt(event);
         nightmare_base_stone.LivingHurtEvent(event);
-
+        nightmare_base_stone_brain.hurts(event);
 
         CuriosApi.getCuriosInventory(event.getEntity()).ifPresent(handler -> {
             Map<String, ICurioStacksHandler> curios = handler.getCurios();

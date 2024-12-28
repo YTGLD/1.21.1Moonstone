@@ -236,6 +236,9 @@ public class Tab {
                 b.accept(new ItemStack(Items.nightmare_base_black_eye_red.get()));
                 b.accept(new ItemStack(Items.nightmare_base_stone.get()));
                 b.accept(new ItemStack(Items.nightmare_base_stone_meet.get()));
+                b.accept(new ItemStack(Items.nightmare_base_stone_virus.get()));
+                b.accept(new ItemStack(Items.nightmare_base_stone_brain.get()));
+                b.accept(new ItemStack(Items.nightmare_virus.get()));
 
 
                 b.accept(new ItemStack(Items.magiceye.get()));

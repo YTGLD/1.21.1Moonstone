@@ -141,12 +141,25 @@ public class Handler {
     public static boolean hascurio(LivingEntity entity, Item curio) {
         if (entity instanceof LivingEntity player) {
             if (player.getCapability(CuriosCapability.INVENTORY) != null) {
+
+                if (CuriosApi.getCuriosInventory(player).isPresent()
+                        && CuriosApi.getCuriosInventory(player).get().isEquipped(Items.nightmare_base.get())) {
+                    if (curio == Items.evil_mob.get() || curio == Items.god_lead.get()||curio == Items.malice_die.get()){
+                        return false;
+                    }
+                    if (curio == Items.nightmareeye.get()) {
+                        return true;
+                    }
+                }
+
                 if (CuriosApi.getCuriosInventory(player).isPresent()
                         && CuriosApi.getCuriosInventory(player).get().isEquipped(Items.evil_mob.get())) {
                     if (curio == Items.necora.get() || curio == Items.nightmareeye.get()||curio == Items.bloodvirus.get()){
                         return true;
                     }
                 }
+
+
                 if (CuriosApi.getCuriosInventory(entity).isPresent()) {
                     List<SlotResult> a = CuriosApi.getCuriosInventory(entity).get().findCurios(curio);
                     for (SlotResult slotResult : a) {
