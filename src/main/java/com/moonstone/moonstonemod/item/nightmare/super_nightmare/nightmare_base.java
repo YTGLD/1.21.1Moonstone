@@ -8,6 +8,8 @@ import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
@@ -24,7 +26,13 @@ public class nightmare_base  extends nightmare {
             stack.set(DataReg.tag, new CompoundTag());
         }else if (!stack.get(DataReg.tag).getBoolean("canDo")) {
             if (slotContext.entity() instanceof Player player){
-                player.addItem(new ItemStack(Items.nightmare_base_black_eye));
+                int s = Mth.nextInt(RandomSource.create(),1,2);
+                if (s==1) {
+                    player.addItem(new ItemStack(Items.nightmare_base_black_eye));
+                }else if (s==2){
+                    player.addItem(new ItemStack(Items.nightmare_base_stone));
+
+                }
             }
             stack.get(DataReg.tag).putBoolean("canDo",true);
         }

@@ -15,9 +15,7 @@ import com.moonstone.moonstonemod.init.moonstoneitem.Enchants;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.IBattery;
 import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
 import com.moonstone.moonstonemod.item.maxitem.book.the_blood_book;
-import com.moonstone.moonstonemod.item.nightmare.super_nightmare.nightmare_base_black_eye_eye;
-import com.moonstone.moonstonemod.item.nightmare.super_nightmare.nightmare_base_black_eye_heart;
-import com.moonstone.moonstonemod.item.nightmare.super_nightmare.nightmare_base_black_eye_red;
+import com.moonstone.moonstonemod.item.nightmare.super_nightmare.*;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.dna.bat_cell;
 import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.blood.*;
@@ -52,8 +50,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.RenderNameTagEvent;
+import net.neoforged.neoforge.client.event.RenderTooltipEvent;
 import net.neoforged.neoforge.common.util.TriState;
 import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.entity.player.*;
@@ -284,8 +285,12 @@ public class NewEvent {
         nine_sword_book.att(event);
         the_blood_book.att(event);
         book.hurt(event);
+
         nightmare_base_black_eye_eye.attLook(event);
         nightmare_base_black_eye_heart.hurt(event);
+        nightmare_base_stone.LivingHurtEvent(event);
+
+
         CuriosApi.getCuriosInventory(event.getEntity()).ifPresent(handler -> {
             Map<String, ICurioStacksHandler> curios = handler.getCurios();
             for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
@@ -314,7 +319,62 @@ public class NewEvent {
         }
 
     }
+    @OnlyIn(Dist.CLIENT)
+    @SubscribeEvent
+    public void RenderTooltipEven4t(RenderTooltipEvent.Color tooltipEvent){
+         ItemStack stack =  tooltipEvent.getItemStack();
+         if (stack.is(Items.ectoplasmstar)){
+             if (stack.get(DataReg.tag)!=null){
+                 if (stack.get(DataReg.tag).getBoolean(nightmare_base_stone_meet.curse)){
+                     tooltipEvent.setBorderEnd(0xFFff70b2);
+                     tooltipEvent.setBorderStart(0xFFff70b2);
 
+                     tooltipEvent.setBackgroundEnd(0xFF230613);
+                     tooltipEvent.setBackgroundStart(0xFF230613);
+                 }
+             }
+         }
+        if (stack.is(Items.mayhemcrystal)){
+            if (stack.get(DataReg.tag)!=null){
+                if (stack.get(DataReg.tag).getBoolean(nightmare_base_stone_meet.curse)){
+                    tooltipEvent.setBorderEnd(0xFFff70b2);
+                    tooltipEvent.setBorderStart(0xFFff70b2);
+
+                    tooltipEvent.setBackgroundEnd(0xFF230613);
+                    tooltipEvent.setBackgroundStart(0xFF230613); }
+            }
+        }
+        if (stack.is(Items.maxamout)){
+            if (stack.get(DataReg.tag)!=null){
+                if (stack.get(DataReg.tag).getBoolean(nightmare_base_stone_meet.curse)){
+                    tooltipEvent.setBorderEnd(0xFFff70b2);
+                    tooltipEvent.setBorderStart(0xFFff70b2);
+
+                    tooltipEvent.setBackgroundEnd(0xFF230613);
+                    tooltipEvent.setBackgroundStart(0xFF230613);  }
+            }
+        }
+    }
+    @SubscribeEvent
+    public void Night(ItemTooltipEvent event) {
+        ItemStack stack = event.getItemStack();
+        Player player = event.getEntity();
+        if (Handler.hascurio(player,Items.nightmare_base_stone_meet.get())){
+            if (stack.is(Items.ectoplasmstar)){
+                event.getToolTip().add(Component.translatable("item.moonstone.ectoplasmstar.nightmare_base_stone_meet").withStyle(ChatFormatting.DARK_RED));
+            }
+            if (stack.is(Items.mayhemcrystal)){
+                event.getToolTip().add(Component.translatable("item.moonstone.ectoplasmstar.mayhemcrystal").withStyle(ChatFormatting.DARK_RED));
+
+            }
+            if (stack.is(Items.maxamout)){
+                event.getToolTip().add(Component.translatable("item.moonstone.ectoplasmstar.maxamout").withStyle(ChatFormatting.DARK_RED));
+                event.getToolTip().add(Component.translatable("item.moonstone.ectoplasmstar.maxamout.1").withStyle(ChatFormatting.DARK_RED));
+                event.getToolTip().add(Component.translatable("item.moonstone.ectoplasmstar.maxamout.2").withStyle(ChatFormatting.DARK_RED));
+            }
+        }
+
+    }
     @SubscribeEvent
     public void PlayerInteractEvent(PlayerInteractEvent.EntityInteract event) {
         PlayerInteractZombie(event.getEntity(),event.getTarget(), Items.cell.get(),"ncrdna");

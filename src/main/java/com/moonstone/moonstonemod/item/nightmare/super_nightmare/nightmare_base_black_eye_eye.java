@@ -37,10 +37,12 @@ public class nightmare_base_black_eye_eye  extends nightmare {
     }
     public static void attLook(LivingIncomingDamageEvent event){
         if (event.getSource().getEntity() instanceof Player player ){
-            Entity entity = getPlayerLookTarget(player.level(), player);
-            if (entity instanceof LivingEntity living0){
-                if (living0.is(event.getEntity())){
-                    event.setAmount(event.getAmount()*2);
+            if (Handler.hascurio(player,Items.nightmare_base_black_eye_eye.get())) {
+                Entity entity = getPlayerLookTarget(player.level(), player);
+                if (entity instanceof LivingEntity living0) {
+                    if (living0.is(event.getEntity())) {
+                        event.setAmount(event.getAmount() * 2);
+                    }
                 }
             }
         }

@@ -1242,6 +1242,24 @@
   "item.moonstone.nightmare_base": "§4噩梦基座",
 
 
+  "item.moonstone.nightmare_base_stone": "§4死兆方尖碑",
+  "item.nightmare_base_stone.tool.string": "满生命值时受到的伤害增加500%",
+  "item.nightmare_base_stone.tool.string.1": "但是你可以解锁下列物品",
+
+  "item.moonstone.nightmare_base_stone_virus": "§4Nightecora病毒",
+  "item.moonstone.nightmare_base_stone_meet": "§4绝望共鸣",
+  "item.nightmare_base_stone_meet.tool.string.1": "强化下列饰品",
+
+  "item.moonstone.ectoplasmstar.nightmare_base_stone_meet": "幸运值加倍，且每点幸运加2.5%治疗",
+  "item.moonstone.ectoplasmstar.mayhemcrystal": "伤害增幅增加50%",
+  "item.moonstone.ectoplasmstar.maxamout": "所有效果BUFF等级加2",
+  "item.moonstone.ectoplasmstar.maxamout.1": "所有触发概加100%",
+  "item.moonstone.ectoplasmstar.maxamout.2": "反伤效果增加400%",
+
+  "item.moonstone.nightmare_base_stone_brain": "§4末世之脑",
+
+
+
 
   "item.moonstone.nightmare_base_black_eye": "§4邪念之窥眸",
   "item.nightmare_base_black_eye.tool.string": "白天会让你视力模糊",
