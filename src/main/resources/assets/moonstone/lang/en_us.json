@@ -1321,11 +1321,50 @@
 
   "item.moonstone.nightmare_virus":"nightmare virus",
 
+  "item.moonstone.nightmare_base_reversal":"§4颠倒之物",
+
+  "item.nightmare_base_reversal.tool.string": "每次死亡都会使属性降至0%",
+  "item.nightmare_base_reversal.tool.string.2": "复活后属性以每秒4%的速度逐渐恢复",
+  "item.nightmare_base_reversal.tool.string.3": "中毒对于你来说是致命的",
+
+  "item.moonstone.nightmare_base_reversal_orb": "§4反转球体",
+    "item.nightmare_base_reversal_orb.tool.string": "治疗只会减少生命值",
+  "item.nightmare_base_reversal_orb.tool.string.2": "每隔10秒重置生命值至满血",
+
+  "item.moonstone.nightmare_base_reversal_card": "§4不稳卡片",
+    "item.nightmare_base_reversal_card.tool.string": "每次复活时属性恢复速度减少至2%",
+  "item.nightmare_base_reversal_card.tool.string.2": "但是最多恢复到原先的150%",
+
+  "item.moonstone.nightmare_base_reversal_mysterious": "§4神秘之物",
+  "item.nightmare_base_reversal_mysterious.tool.string": "以减少10%全属性的代价抑制噩梦基座的负面效果",
+
+
+  "moonstone.jei.item.moonstone.nightmare_base.all": "，需要佩戴:",
+
+  "moonstone.jei.item.moonstone.nightmare_base_black_eye_heart": "在同时满足下列条件时触发不死图腾获取：中毒,凋零,缓慢,黑暗,失明并且着火",
+  "moonstone.jei.item.moonstone.nightmare_base_black_eye_eye": "杀死坚守者",
+  "moonstone.jei.item.moonstone.nightmare_base_black_eye_red": "发现在古城，概率在5%左右",
+
+  "moonstone.jei.item.moonstone.nightmare_base_stone_brain": "杀死僵尸，获取材料，不过这种材料只能获得一个",
+  "moonstone.jei.item.moonstone.nightmare_base_stone_meet": "杀死末影龙",
+  "moonstone.jei.item.moonstone.nightmare_base_stone_virus": "被凋零攻击触发不死图腾",
+
+  "moonstone.jei.item.moonstone.nightmare_base_reversal_card": "杀死末影龙",
+  "moonstone.jei.item.moonstone.nightmare_base_reversal_mysterious": "在佩戴反转球体的情况下开古城的箱子，概率100%，但是只能获得一个",
+  "moonstone.jei.item.moonstone.nightmare_base_reversal_orb": "使用颠倒之物的中毒扣血杀死自己",
 
 
 
 
+  "advancements.tooltip.nightmare_base_reversal_card.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_reversal_card.hand": "反转再反转",
+  "advancements.tooltip.nightmare_base_reversal_mysterious.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_reversal_mysterious.hand": "神秘的尸体",
+  "advancements.tooltip.nightmare_base_reversal_orb.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_reversal_orb.hand": "拙劣的演技",
 
+  "advancements.tooltip.nightmare_base_reversal.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_reversal.hand": "轮回",
 
 
   "item.moonstone.owner_blood_earth":"Qiankun",

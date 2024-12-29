@@ -44,6 +44,45 @@ public class AdvancementEvt {
     public static final String nightmare_base_stone_meet = "nightmare_base_stone_meet";
     //4Nightecora病毒
     public static final String nightmare_base_stone_virus = "nightmare_base_stone_virus";
+
+
+
+
+    public static final String nightmare_base_reversal_card = "nightmare_base_reversal_card";
+
+    public static final String nightmare_base_reversal_mysterious = "nightmare_base_reversal_mysterious";
+
+    public static final String nightmare_base_reversal_orb = "nightmare_base_reversal_orb";
+    @SubscribeEvent
+    public void nightmare_base_reversal_card(LivingDropsEvent event){
+        if (event.getSource().getEntity() instanceof Player player){
+            if (Handler.hascurio(player,Items.nightmare_base_reversal.get())){
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.nightmare_base_reversal.get())) {
+                                if (stack.get(DataReg.tag) != null) {
+                                    if (event.getEntity() instanceof EnderDragon warden) {
+                                        if (!stack.get(DataReg.tag).getBoolean(nightmare_base_reversal_card)) {
+
+                                            event.getDrops().add(new ItemEntity(warden.level(),warden.getX(),warden.getY(),warden.getZ(),
+                                                    new ItemStack(Items.nightmare_base_reversal_card)));
+
+                                            stack.get(DataReg.tag).putBoolean(nightmare_base_reversal_card, true);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
     @SubscribeEvent
     public void nightmare_base_stone_meet(LivingDropsEvent event){
         if (event.getSource().getEntity() instanceof Player player){
@@ -78,27 +117,25 @@ public class AdvancementEvt {
     public void nightmare_base_stone_virus(LivingUseTotemEvent event){
         if (event.getEntity() instanceof Player player){
             if (Handler.hascurio(player, Items.nightmare_base_stone.get())){
-                if (event.getSource().getEntity() instanceof WitherBoss witherBoss){
-                    if (witherBoss.hasEffect(MobEffects.WEAKNESS)){
-                        CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-                            Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                            for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                                ICurioStacksHandler stacksHandler = entry.getValue();
-                                IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                                for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                                    ItemStack stack = stackHandler.getStackInSlot(i);
-                                    if (stack.is(Items.nightmare_base_stone.get())) {
-                                        if (stack.get(DataReg.tag) != null) {
-                                            if (!stack.get(DataReg.tag).getBoolean(nightmare_base_stone_virus)){
-                                                player.addItem(new ItemStack(Items.nightmare_base_stone_virus.get()));
-                                                stack.get(DataReg.tag).putBoolean(nightmare_base_stone_virus,true);
-                                            }
+                if (event.getSource().getEntity() instanceof WitherBoss witherBoss) {
+                    CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                        Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                        for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                            ICurioStacksHandler stacksHandler = entry.getValue();
+                            IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                            for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                                ItemStack stack = stackHandler.getStackInSlot(i);
+                                if (stack.is(Items.nightmare_base_stone.get())) {
+                                    if (stack.get(DataReg.tag) != null) {
+                                        if (!stack.get(DataReg.tag).getBoolean(nightmare_base_stone_virus)) {
+                                            player.addItem(new ItemStack(Items.nightmare_base_stone_virus.get()));
+                                            stack.get(DataReg.tag).putBoolean(nightmare_base_stone_virus, true);
                                         }
                                     }
                                 }
                             }
-                        });
-                    }
+                        }
+                    });
                 }
             }
         }
@@ -232,6 +269,34 @@ public class AdvancementEvt {
 
                                             stack.get(DataReg.tag).putBoolean(nightmare_base_black_eye_red, true);
                                         }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+
+
+
+    public static void nightmare_base_reversal_mysteriousLOOT(ObjectArrayList<ItemStack> generatedLoot,
+                               Entity entity){
+        if (entity instanceof Player player ){
+            if (Handler.hascurio(player,Items.nightmare_base_reversal_orb.get())) {
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.nightmare_base_reversal_orb.get())) {
+                                if (stack.get(DataReg.tag) != null) {
+                                    if (!stack.get(DataReg.tag).getBoolean(nightmare_base_reversal_mysterious)) {
+                                        generatedLoot.add(new ItemStack(Items.nightmare_base_reversal_mysterious.get()));
+                                        stack.get(DataReg.tag).putBoolean(nightmare_base_reversal_mysterious, true);
                                     }
                                 }
                             }

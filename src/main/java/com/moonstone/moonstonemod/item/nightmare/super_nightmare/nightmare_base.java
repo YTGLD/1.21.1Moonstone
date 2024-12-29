@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.item.nightmare.super_nightmare;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
@@ -31,9 +32,16 @@ public class nightmare_base  extends nightmare {
     public int tick = 0;
 
     @Override
+    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
+        slotContext.entity().getAttributes().removeAttributeModifiers(gets(slotContext,stack));
+    }
+
+    @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
+        slotContext.entity().getAttributes().addTransientAttributeModifiers(gets(slotContext,stack));
+        int s =Mth.nextInt(RandomSource.create(), 1, 3);;
+        tick = 100;
         if (stack.get(DataReg.tag)==null) {
-            tick = 100;
             slotContext.entity().level().playSound(null, slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ(), SoundEvents.ELDER_GUARDIAN_CURSE, SoundSource.NEUTRAL, 1, 1);
             stack.set(DataReg.tag, new CompoundTag());
         }else {
@@ -45,28 +53,49 @@ public class nightmare_base  extends nightmare {
             }
             if (!stack.get(DataReg.tag).getBoolean("canDo")) {
                 if (slotContext.entity() instanceof Player player) {
-                    int s = Mth.nextInt(RandomSource.create(), 1, 2);
                     if (s == 1) {
                         player.addItem(new ItemStack(Items.nightmare_base_black_eye));
                     } else if (s == 2) {
                         player.addItem(new ItemStack(Items.nightmare_base_stone));
-
+                    } else if (s == 3) {
+                        player.addItem(new ItemStack(Items.nightmare_base_reversal));
                     }
                 }
                 stack.get(DataReg.tag).putBoolean("canDo", true);
             }
         }
     }
+
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = HashMultimap.create();
-        linkedHashMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(id, -0.3, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        linkedHashMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(id, -0.3, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        linkedHashMultimap.put(Attributes.ARMOR, new AttributeModifier(id, -0.3, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-
         CuriosApi.addSlotModifier(linkedHashMultimap, "nightmare", ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 1, AttributeModifier.Operation.ADD_VALUE);
         return linkedHashMultimap;
     }
+
+    public Multimap<Holder<Attribute>, AttributeModifier> gets(SlotContext slotContext, ItemStack stack) {
+        Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = HashMultimap.create();
+        float s= -0.3f;
+        if (Handler.hascurio(slotContext.entity(),Items.nightmare_base_reversal_mysterious.get())){
+            s = 0;
+        }
+        linkedHashMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        linkedHashMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        linkedHashMultimap.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        return linkedHashMultimap;
+    }
+
+    @Override
+    public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
+        if (slotContext.entity() instanceof Player player){
+            if (player.isCreative()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> pTooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, pTooltipComponents, tooltipFlag);

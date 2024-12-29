@@ -32,15 +32,7 @@ public class nightmare_base_stone extends nightmare {
         }
     }
 
-    @Override
-    public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        if (!Handler.hascurio(slotContext.entity(), Items.nightmare_base_black_eye.get())) {
-            if (Handler.hascurio(slotContext.entity(), Items.nightmare_base.get())) {
-                return true;
-            }
-        }
-        return false;
-    }
+    
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = HashMultimap.create();
@@ -58,6 +50,9 @@ public class nightmare_base_stone extends nightmare {
         pTooltipComponents.add(Component.translatable("item.moonstone.nightmare_base_stone_virus").withStyle(ChatFormatting.DARK_RED));
         pTooltipComponents.add(Component.translatable("item.moonstone.nightmare_base_stone_meet").withStyle(ChatFormatting.DARK_RED));
         pTooltipComponents.add(Component.translatable("item.moonstone.nightmare_base_stone_brain").withStyle(ChatFormatting.DARK_RED));
+        pTooltipComponents.add(Component.literal(""));
+
+        pTooltipComponents.add(Component.translatable("item.nightmareeye.tool.string.2").withStyle(ChatFormatting.DARK_RED));
 
 
     }

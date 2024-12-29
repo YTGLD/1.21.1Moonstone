@@ -259,7 +259,11 @@ public class Items {
     public static final DeferredHolder<Item,?> nightmare_base_stone_brain =REGISTRY.register("nightmare_base_stone_brain", nightmare_base_stone_brain::new);
 
     public static final DeferredHolder<Item,?> nightmare_virus =REGISTRY.register("nightmare_virus", nightmare_virus::new);
+    public static final DeferredHolder<Item,?> nightmare_base_reversal =REGISTRY.register("nightmare_base_reversal", nightmare_base_reversal::new);
 
+    public static final DeferredHolder<Item,?> nightmare_base_reversal_orb =REGISTRY.register("nightmare_base_reversal_orb", nightmare_base_reversal_orb::new);
+    public static final DeferredHolder<Item,?> nightmare_base_reversal_card =REGISTRY.register("nightmare_base_reversal_card", nightmare_base_reversal_card::new);
+    public static final DeferredHolder<Item,?> nightmare_base_reversal_mysterious =REGISTRY.register("nightmare_base_reversal_mysterious", nightmare_base_reversal_mysterious::new);
 
 
 

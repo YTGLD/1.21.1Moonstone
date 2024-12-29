@@ -102,6 +102,7 @@ public class DungeonLoot extends LootModifier {
         if (idSting.contains("chests/")) {
             if (idSting.contains("ancient")) {
                 AdvancementEvt.addLoot(generatedLoot,entity,5);
+                AdvancementEvt.nightmare_base_reversal_mysteriousLOOT(generatedLoot,entity);
 
 
                 addLoot(generatedLoot, random, Items.blood_candle.get(), entity, List.of(

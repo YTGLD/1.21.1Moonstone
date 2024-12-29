@@ -21,6 +21,7 @@
     "client.LevelRendererMixin",
     "client.LivingEntityRendererMixin"
   ],
+  "server": [],
   "injectors": {
     "defaultRequire": 1
   }

@@ -99,7 +99,7 @@ public class NewEvent {
     @SubscribeEvent
     public void LivingHealEvent(LivingHealEvent event) {
         the_blood_book.heal(event);
-
+        nightmare_base_reversal_orb.LivingHealEvent(event);
         EctoplasmLuckStar.healEvent(event);
         BatteryMan.healEvent(event);
         BatteryManSuper.healEvent(event);
@@ -247,7 +247,7 @@ public class NewEvent {
     }
     @SubscribeEvent
     public void LivingHurtEvent(LivingIncomingDamageEvent event){
-        nightmare_heart.NigH(event);
+         nightmare_heart.NigH(event);
         nightmare_head.headHurt(event);
         bat_cell.Bat(event);
         max_sword.hurt(event);
@@ -497,6 +497,7 @@ public class NewEvent {
     @SubscribeEvent
     public void LivingHealEvent(LivingDeathEvent event) {
         nightmare_heart.Nig(event);
+        nightmare_base_reversal.LivingDeathEvent(event);
         nightmare_head.LivingDeathEvent(event);
         max_eye.Die(event);
         blood_snake.Die(event);
