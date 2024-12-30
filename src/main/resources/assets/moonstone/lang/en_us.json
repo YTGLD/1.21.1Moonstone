@@ -1266,7 +1266,7 @@
   "item.nightmare_base_stone_virus.tool.string": "Damage increases by 100%",
   "item.nightmare_base_stone_virus.tool.string.1": "Healing increases by 100%",
   "item.nightmare_base_stone_virus.tool.string.2": "Critical hit chance increases by 100%",
-  "item.nightmare_base_stone_virus.tool.string.3": "Any damage received will additionally inflict a penalty of 50% of the maximum health, unaffected by any bonuses",
+  "item.nightmare_base_stone_virus.tool.string.3": "Any damage received will additionally inflict a penalty of 25% of the maximum health, unaffected by any bonuses",
 
   "item.moonstone.nightmare_base_stone_brain": "§4Apocalypse Brain",
   "item.nightmare_base_stone_brain.tool.string": "Damage reduced by 100% when at full health",
@@ -1352,6 +1352,35 @@
   "moonstone.jei.item.moonstone.nightmare_base_reversal_card": "杀死末影龙",
   "moonstone.jei.item.moonstone.nightmare_base_reversal_mysterious": "在佩戴反转球体的情况下开古城的箱子，概率100%，但是只能获得一个",
   "moonstone.jei.item.moonstone.nightmare_base_reversal_orb": "使用颠倒之物的中毒扣血杀死自己",
+
+  "item.moonstone.nightmare_base_redemption":"§4“救赎”",
+  "item.nightmare_base_redemption.tool.string": "增加15%噩梦基座的属性衰败",
+  "advancements.tooltip.nightmare_base_redemption.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_redemption.hand": "谣言",
+
+  "item.moonstone.nightmare_base_redemption_deception":"§4欺骗",
+  "item.nightmare_base_redemption_deception.tool.string": "抵御必死伤害，恢复所有生命值",
+  "item.nightmare_base_redemption_deception.tool.string.1": "并获得7秒的无敌和平息附近生物的怒火，冷却60秒",
+  "advancements.tooltip.nightmare_base_redemption_deception.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_redemption_deception.hand": "尘封的谣言",
+
+
+  "item.moonstone.nightmare_base_redemption_degenerate":"§4堕落",
+  "item.nightmare_base_redemption_degenerate.tool.string": "免疫魔法伤害",
+  "item.nightmare_base_redemption_degenerate.tool.string.1": "免疫坠落伤害",
+  "item.nightmare_base_redemption_degenerate.tool.string.2": "免疫火焰伤害",
+  "advancements.tooltip.nightmare_base_redemption_degenerate.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_redemption_degenerate.hand": "暗影的赞歌",
+
+
+  "item.moonstone.nightmare_base_redemption_down_and_out":"§4落魄",
+  "item.nightmare_base_redemption_down_and_out.tool.string": "减少35%噩梦基座的属性衰败，若减少至负数，则转变成正属性加成",
+  "advancements.tooltip.nightmare_base_redemption_down_and_out.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_redemption_down_and_out.hand": "历史长河",
+
+  "moonstone.jei.item.moonstone.nightmare_base_redemption_deception": "在有不详之兆的情况下杀死100个掠夺者",
+  "moonstone.jei.item.moonstone.nightmare_base_redemption_degenerate": "在有村庄英雄的情况下杀死100个村民",
+  "moonstone.jei.item.moonstone.nightmare_base_redemption_down_and_out": "完成一次失败的袭击",
 
 
 

@@ -12,6 +12,10 @@
     "moonstone:nightmare_base_reversal",
     "moonstone:nightmare_base_reversal_orb",
     "moonstone:nightmare_base_reversal_card",
-    "moonstone:nightmare_base_reversal_mysterious"
+    "moonstone:nightmare_base_reversal_mysterious",
+    "moonstone:nightmare_base_redemption",
+    "moonstone:nightmare_base_redemption_deception",
+    "moonstone:nightmare_base_redemption_degenerate",
+    "moonstone:nightmare_base_redemption_down_and_out"
   ]
 }

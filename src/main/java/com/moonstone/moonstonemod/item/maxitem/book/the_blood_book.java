@@ -179,13 +179,6 @@ public class the_blood_book  extends BookSkill implements Blood {
         }
     }
     @Override
-    public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        if (Handler.hascurio(slotContext.entity(),Items.nine_sword_book.get())){
-            return false;
-        }
-        return !Handler.hascurio(slotContext.entity(),this);
-    }
-    @Override
     public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
         pTooltipComponents.add(Component.literal(""));

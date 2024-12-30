@@ -8,14 +8,19 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.monster.warden.Warden;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingUseTotemEvent;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -53,6 +58,73 @@ public class AdvancementEvt {
     public static final String nightmare_base_reversal_mysterious = "nightmare_base_reversal_mysterious";
 
     public static final String nightmare_base_reversal_orb = "nightmare_base_reversal_orb";
+
+
+
+
+    public static final String nightmare_base_redemption_deception = "nightmare_base_redemption_deception";
+    public static final String nightmare_base_redemption_degenerate = "nightmare_base_redemption_degenerate";
+    public static final String nightmare_base_redemption_down_and_out = "nightmare_base_redemption_down_and_out";
+
+
+    @SubscribeEvent
+    public void nightmare_base_redemption_degenerate(LivingDeathEvent event){
+        if (event.getSource().getEntity() instanceof Player player){
+            if (Handler.hascurio(player,Items.nightmare_base_redemption.get())){
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.nightmare_base_redemption.get())) {
+                                if (stack.get(DataReg.tag) != null) {
+                                    if (event.getEntity() instanceof Villager raider) {
+                                        if (stack.get(DataReg.tag).getInt(nightmare_base_redemption_degenerate)<100) {
+                                            stack.get(DataReg.tag).putInt(nightmare_base_redemption_degenerate, stack.get(DataReg.tag).getInt(nightmare_base_redemption_degenerate)+1);
+                                        }else if (stack.get(DataReg.tag).getInt(nightmare_base_redemption_degenerate) == 100){
+                                            player.addItem(new ItemStack(Items.nightmare_base_redemption_degenerate.get()));
+                                            stack.get(DataReg.tag).putInt(nightmare_base_redemption_degenerate, stack.get(DataReg.tag).getInt(nightmare_base_redemption_degenerate)+1);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+    @SubscribeEvent
+    public void nightmare_base_redemption_deception(LivingDeathEvent event){
+        if (event.getSource().getEntity() instanceof Player player){
+            if (Handler.hascurio(player,Items.nightmare_base_redemption.get())){
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.nightmare_base_redemption.get())) {
+                                if (stack.get(DataReg.tag) != null) {
+                                    if (event.getEntity() instanceof Raider raider) {
+                                        if (stack.get(DataReg.tag).getInt(nightmare_base_redemption_deception)<100) {
+                                            stack.get(DataReg.tag).putInt(nightmare_base_redemption_deception, stack.get(DataReg.tag).getInt(nightmare_base_redemption_deception)+1);
+                                        }else if (stack.get(DataReg.tag).getInt(nightmare_base_redemption_deception) == 100){
+                                            player.addItem(new ItemStack(Items.nightmare_base_redemption_deception.get()));
+                                            stack.get(DataReg.tag).putInt(nightmare_base_redemption_deception, stack.get(DataReg.tag).getInt(nightmare_base_redemption_deception)+1);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
     @SubscribeEvent
     public void nightmare_base_reversal_card(LivingDropsEvent event){
         if (event.getSource().getEntity() instanceof Player player){
@@ -243,11 +315,6 @@ public class AdvancementEvt {
                 });
             }
         }
-    }
-
-    @SubscribeEvent
-    public void dropOf(LivingDropsEvent event){
-
     }
     public static void addLoot(ObjectArrayList<ItemStack> generatedLoot,
                                Entity entity,

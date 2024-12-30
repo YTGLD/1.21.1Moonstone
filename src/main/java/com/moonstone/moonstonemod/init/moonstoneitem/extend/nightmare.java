@@ -24,6 +24,8 @@ public class nightmare extends Item implements ICurioItem , INightmare {
         }
     }
 
+
+
     @NotNull
     @Override
     public ICurio.DropRule getDropRule(SlotContext slotContext, DamageSource source, int lootingLevel, boolean recentlyHit, ItemStack stack) {

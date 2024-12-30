@@ -221,6 +221,10 @@ public class JeiText implements IModPlugin {
         registration.addIngredientInfo(new ItemStack(Items.nightmare_base_reversal_mysterious.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.nightmare_base_reversal_mysterious").append(Component.translatable("moonstone.jei.item.moonstone.nightmare_base.all").append(Component.translatable("item.moonstone.nightmare_base_reversal"))));
         registration.addIngredientInfo(new ItemStack(Items.nightmare_base_reversal_orb.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.nightmare_base_reversal_orb").append(Component.translatable("moonstone.jei.item.moonstone.nightmare_base.all").append(Component.translatable("item.moonstone.nightmare_base_reversal"))));
 
+        registration.addIngredientInfo(new ItemStack(Items.nightmare_base_redemption_deception.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.nightmare_base_redemption_deception").append(Component.translatable("moonstone.jei.item.moonstone.nightmare_base.all").append(Component.translatable("item.moonstone.nightmare_base_redemption"))));
+        registration.addIngredientInfo(new ItemStack(Items.nightmare_base_redemption_degenerate.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.nightmare_base_redemption_degenerate").append(Component.translatable("moonstone.jei.item.moonstone.nightmare_base.all").append(Component.translatable("item.moonstone.nightmare_base_redemption"))));
+        registration.addIngredientInfo(new ItemStack(Items.nightmare_base_redemption_down_and_out.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.nightmare_base_redemption_down_and_out").append(Component.translatable("moonstone.jei.item.moonstone.nightmare_base.all").append(Component.translatable("item.moonstone.nightmare_base_redemption"))));
+
     }
 
 }

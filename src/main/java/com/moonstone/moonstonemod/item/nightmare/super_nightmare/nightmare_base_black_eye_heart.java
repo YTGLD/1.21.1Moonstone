@@ -19,11 +19,7 @@ import top.theillusivec4.curios.api.SlotContext;
 import java.util.List;
 
 public class nightmare_base_black_eye_heart  extends nightmare {
-    @Override
-    public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        return Handler.hascurio(slotContext.entity(), Items.nightmare_base_black_eye.get());
-    }
-    public static void heal(LivingHealEvent event){
+      public static void heal(LivingHealEvent event){
         if (event.getEntity() instanceof LivingEntity living) {
             Vec3 playerPos = living.position().add(0, 0.75, 0);
             float range = 8;

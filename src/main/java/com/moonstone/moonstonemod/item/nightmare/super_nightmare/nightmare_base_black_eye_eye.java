@@ -22,11 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class nightmare_base_black_eye_eye  extends nightmare {
-    @Override
-    public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        return Handler.hascurio(slotContext.entity(), Items.nightmare_base_black_eye.get());
-    }
-
+  
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> pTooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, pTooltipComponents, tooltipFlag);

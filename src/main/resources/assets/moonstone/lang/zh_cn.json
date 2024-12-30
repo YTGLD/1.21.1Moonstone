@@ -1299,7 +1299,7 @@
   "item.nightmare_base_stone_virus.tool.string": "伤害增加100%",
   "item.nightmare_base_stone_virus.tool.string.1": "治疗增加100%",
   "item.nightmare_base_stone_virus.tool.string.2": "暴击增加100%",
-  "item.nightmare_base_stone_virus.tool.string.3": "受到任意伤害都会额外附加50%最大生命值的惩罚,不受任何加成影响",
+  "item.nightmare_base_stone_virus.tool.string.3": "受到任意伤害都会额外附加25%最大生命值的惩罚,不受任何加成影响",
 
   "item.moonstone.nightmare_base_stone_brain": "§4末世之脑",
   "item.nightmare_base_stone_brain.tool.string": "满血时伤害减少100%",

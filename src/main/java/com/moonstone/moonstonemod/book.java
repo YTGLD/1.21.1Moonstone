@@ -47,10 +47,6 @@ public class book extends Item implements ICurioItem {
     }
 
     @Override
-    public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        return !Handler.hascurio(slotContext.entity(),this);
-    }
-    @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = HashMultimap.create();
         CuriosApi

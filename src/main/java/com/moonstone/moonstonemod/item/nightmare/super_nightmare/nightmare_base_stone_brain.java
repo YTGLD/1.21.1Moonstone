@@ -14,10 +14,7 @@ import top.theillusivec4.curios.api.SlotContext;
 import java.util.List;
 
 public class nightmare_base_stone_brain  extends nightmare {
-    @Override
-    public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        return Handler.hascurio(slotContext.entity(), Items.nightmare_base_stone.get());
-    }
+   
     public static void hurts(LivingIncomingDamageEvent event){
         if (event.getSource().getEntity() instanceof Player player){
             if (Handler.hascurio(player,Items.nightmare_base_stone_brain.get())){

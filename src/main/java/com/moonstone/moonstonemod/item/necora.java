@@ -39,7 +39,6 @@ public class necora extends TheNecoraIC {
                 if (Other.getItem() instanceof catalyzer) {
                     p_150744_.set(new ItemStack(Items.bloodvirus.get()));
                     Other.shrink(1);
-
                     return true;
                 }
             }

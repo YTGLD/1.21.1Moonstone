@@ -34,11 +34,7 @@ import java.util.*;
 public class nightmare_base_black_eye_red  extends nightmare {
     public static final String aty  = "NightmareRed";
 
-    @Override
-    public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        return Handler.hascurio(slotContext.entity(), Items.nightmare_base_black_eye.get());
-    }
-    public static void kill(LivingDeathEvent event){
+      public static void kill(LivingDeathEvent event){
         if (event.getSource().getEntity() instanceof Player player ){
             if (Handler.hascurio(player, Items.nightmare_base_black_eye_red.get())){
                 CuriosApi.getCuriosInventory(player).ifPresent(handler -> {

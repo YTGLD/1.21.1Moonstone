@@ -3,7 +3,6 @@ package com.moonstone.moonstonemod.event;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.book;
-import com.moonstone.moonstonemod.entity.attack_blood;
 import com.moonstone.moonstonemod.entity.zombie.sword_soul;
 import com.moonstone.moonstonemod.event.itemset.*;
 import com.moonstone.moonstonemod.event.loot.DungeonLoot;
@@ -39,8 +38,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
-import net.minecraft.server.PlayerAdvancements;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Difficulty;
@@ -49,11 +46,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.client.event.RenderNameTagEvent;
 import net.neoforged.neoforge.client.event.RenderTooltipEvent;
 import net.neoforged.neoforge.common.util.TriState;
 import net.neoforged.neoforge.event.entity.living.*;
@@ -290,6 +285,7 @@ public class NewEvent {
         nightmare_base_black_eye_heart.hurt(event);
         nightmare_base_stone.LivingHurtEvent(event);
         nightmare_base_stone_brain.hurts(event);
+        nightmare_base_redemption_deception.LivingIncomingDamageEvent(event);
 
         CuriosApi.getCuriosInventory(event.getEntity()).ifPresent(handler -> {
             Map<String, ICurioStacksHandler> curios = handler.getCurios();

@@ -243,6 +243,10 @@ public class Tab {
                 b.accept(new ItemStack(Items.nightmare_base_reversal_orb.get()));
                 b.accept(new ItemStack(Items.nightmare_base_reversal_card.get()));
                 b.accept(new ItemStack(Items.nightmare_base_reversal_mysterious.get()));
+                b.accept(new ItemStack(Items.nightmare_base_redemption.get()));
+                b.accept(new ItemStack(Items.nightmare_base_redemption_deception.get()));
+                b.accept(new ItemStack(Items.nightmare_base_redemption_degenerate.get()));
+                b.accept(new ItemStack(Items.nightmare_base_redemption_down_and_out.get()));
 
                 b.accept(new ItemStack(Items.magiceye.get()));
                 b.accept(new ItemStack(Items.magicstone.get()));
