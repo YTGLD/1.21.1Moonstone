@@ -225,6 +225,15 @@ public class JeiText implements IModPlugin {
         registration.addIngredientInfo(new ItemStack(Items.nightmare_base_redemption_degenerate.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.nightmare_base_redemption_degenerate").append(Component.translatable("moonstone.jei.item.moonstone.nightmare_base.all").append(Component.translatable("item.moonstone.nightmare_base_redemption"))));
         registration.addIngredientInfo(new ItemStack(Items.nightmare_base_redemption_down_and_out.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.nightmare_base_redemption_down_and_out").append(Component.translatable("moonstone.jei.item.moonstone.nightmare_base.all").append(Component.translatable("item.moonstone.nightmare_base_redemption"))));
 
+        registration.addIngredientInfo(new ItemStack(Items.nightmare_base_fool_betray.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.nightmare_base_fool_betray").append(Component.translatable("moonstone.jei.item.moonstone.nightmare_base.all").append(Component.translatable("item.moonstone.nightmare_base_fool"))));
+        registration.addIngredientInfo(new ItemStack(Items.nightmare_base_fool_bone.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.nightmare_base_fool_bone").append(Component.translatable("moonstone.jei.item.moonstone.nightmare_base.all").append(Component.translatable("item.moonstone.nightmare_base_fool"))));
+        registration.addIngredientInfo(new ItemStack(Items.nightmare_base_fool_soul.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.nightmare_base_fool_soul").append(Component.translatable("moonstone.jei.item.moonstone.nightmare_base.all").append(Component.translatable("item.moonstone.nightmare_base_fool"))));
+
+
+        registration.addIngredientInfo(new ItemStack(Items.nightmare_base_insight_collapse.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.nightmare_base_insight_collapse").append(Component.translatable("moonstone.jei.item.moonstone.nightmare_base.all").append(Component.translatable("item.moonstone.nightmare_base_insight"))));
+        registration.addIngredientInfo(new ItemStack(Items.nightmare_base_insight_drug.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.nightmare_base_insight_drug").append(Component.translatable("moonstone.jei.item.moonstone.nightmare_base.all").append(Component.translatable("item.moonstone.nightmare_base_insight"))));
+        registration.addIngredientInfo(new ItemStack(Items.nightmare_base_insight_insane.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.nightmare_base_insight_insane").append(Component.translatable("moonstone.jei.item.moonstone.nightmare_base.all").append(Component.translatable("item.moonstone.nightmare_base_insight"))));
+
     }
 
 }

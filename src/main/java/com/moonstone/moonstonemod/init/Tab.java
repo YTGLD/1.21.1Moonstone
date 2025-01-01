@@ -247,6 +247,18 @@ public class Tab {
                 b.accept(new ItemStack(Items.nightmare_base_redemption_deception.get()));
                 b.accept(new ItemStack(Items.nightmare_base_redemption_degenerate.get()));
                 b.accept(new ItemStack(Items.nightmare_base_redemption_down_and_out.get()));
+                b.accept(new ItemStack(Items.nightmare_base_fool.get()));
+                b.accept(new ItemStack(Items.nightmare_base_fool_soul.get()));
+                b.accept(new ItemStack(Items.nightmare_base_fool_betray.get()));
+                b.accept(new ItemStack(Items.nightmare_base_fool_bone.get()));
+                b.accept(new ItemStack(Items.nightmare_base_insight.get()));
+                b.accept(new ItemStack(Items.nightmare_base_insight_drug.get()));
+                b.accept(new ItemStack(Items.nightmare_base_insight_insane.get()));
+                b.accept(new ItemStack(Items.nightmare_base_insight_collapse.get()));
+                b.accept(new ItemStack(Items.nightmare_base_start.get()));
+                b.accept(new ItemStack(Items.nightmare_base_start_pod.get()));
+                b.accept(new ItemStack(Items.nightmare_base_start_egg.get()));
+                b.accept(new ItemStack(Items.nightmare_base_start_power.get()));
 
                 b.accept(new ItemStack(Items.magiceye.get()));
                 b.accept(new ItemStack(Items.magicstone.get()));

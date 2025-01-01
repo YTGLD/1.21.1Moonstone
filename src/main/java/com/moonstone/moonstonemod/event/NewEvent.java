@@ -286,6 +286,13 @@ public class NewEvent {
         nightmare_base_stone.LivingHurtEvent(event);
         nightmare_base_stone_brain.hurts(event);
         nightmare_base_redemption_deception.LivingIncomingDamageEvent(event);
+        nightmare_base_fool_bone.attLook(event);
+        nightmare_base_insight_insane.damage(event);
+        nightmare_base_start.damage(event);
+        nightmare_base_start_pod.damage(event);
+
+
+
 
         CuriosApi.getCuriosInventory(event.getEntity()).ifPresent(handler -> {
             Map<String, ICurioStacksHandler> curios = handler.getCurios();
@@ -506,6 +513,7 @@ public class NewEvent {
         rage_blood_head.Did(event);
         sword_soul.evil(event);
         nightmare_base_black_eye_red.kill(event);
+        nightmare_base_insight_insane.LivingDeathEvents(event);
 
         MethaneEmission.LivingHealEvent(event);
     }

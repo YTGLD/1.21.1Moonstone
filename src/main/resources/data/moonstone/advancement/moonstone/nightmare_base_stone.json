@@ -1,5 +1,5 @@
 {
-  "parent": "moonstone:moonstone/root",
+  "parent": "moonstone:moonstone/nightmare_base",
   "criteria": {
     "nightmare_base_stone": {
       "conditions": {

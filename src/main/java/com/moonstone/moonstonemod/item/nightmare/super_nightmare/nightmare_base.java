@@ -46,7 +46,10 @@ public class nightmare_base  extends nightmare {
                 ArrayList<Item> items= new ArrayList<>(List.of(
                         Items.nightmare_base_stone.get(),
                         Items.nightmare_base_reversal.get(),
-                        Items.nightmare_base_black_eye.get()
+                        Items.nightmare_base_black_eye.get(),
+                        Items.nightmare_base_redemption.get(),
+                        Items.nightmare_base_fool.get(),
+                        Items.nightmare_base_insight.get()
                 ));
                 for (int i = 0; i < 2; i++) {
 
@@ -64,7 +67,7 @@ public class nightmare_base  extends nightmare {
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = HashMultimap.create();
-        CuriosApi.addSlotModifier(linkedHashMultimap, "nightmare", ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 1, AttributeModifier.Operation.ADD_VALUE);
+        CuriosApi.addSlotModifier(linkedHashMultimap, "nightmare", ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 2, AttributeModifier.Operation.ADD_VALUE);
         return linkedHashMultimap;
     }
 

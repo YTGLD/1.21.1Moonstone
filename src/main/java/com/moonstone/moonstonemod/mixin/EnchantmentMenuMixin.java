@@ -46,26 +46,35 @@ public abstract class EnchantmentMenuMixin {
     @Inject(at = @At("HEAD"), method = "clickMenuButton", cancellable = true)
     public void moonstone$clickMenuButton(Player player, int p_39466_, CallbackInfoReturnable<Boolean> cir) {
         ItemStack itemstack = enchantSlots.getItem(0);
-        if (Handler.hascurio(player, Items.nightmaremoai.get())) {
-            if (Handler.hascurio(player, Items.nightmareeye.get())) {
-                if (!(itemstack.getItem() instanceof BookItem)) {
-                    EnchantmentMenu container = (EnchantmentMenu) (Object) this;
-                    access.execute((level, pos) -> {
-                        List<EnchantmentInstance> rolledEnchantments = getEnchantmentList(level.registryAccess(),itemstack, p_39466_, container.costs[p_39466_]);
-                        player.onEnchantmentPerformed(itemstack, p_39466_ + Config.SERVER.nightmare_moai.get());
-                        for (EnchantmentInstance data : rolledEnchantments) {
-                            itemstack.enchant(data.enchantment, data.level +  Config.SERVER.nightmare_moai.get());
-                            enchantSlots.setChanged();
-                            enchantmentSeed.set(player.getEnchantmentSeed());
-                            slotsChanged(enchantSlots);
-
-                        }
-                    });
-                }
-
+        if (Handler.hascurio(player, Items.nightmare_base_insight.get())) {
+            if (!(itemstack.getItem() instanceof BookItem)) {
+                EnchantmentMenu container = (EnchantmentMenu) (Object) this;
+                access.execute((level, pos) -> {
+                    List<EnchantmentInstance> rolledEnchantments = getEnchantmentList(level.registryAccess(), itemstack, p_39466_, container.costs[p_39466_]);
+                    player.onEnchantmentPerformed(itemstack, (p_39466_/2));
+                    for (EnchantmentInstance data : rolledEnchantments) {
+                        itemstack.enchant(data.enchantment, (data.level/2)-1);
+                        enchantSlots.setChanged();
+                        enchantmentSeed.set(player.getEnchantmentSeed());
+                        slotsChanged(enchantSlots);
+                    }
+                });
             }
-
         }
-
+        if (Handler.hascurio(player, Items.nightmaremoai.get())) {
+            if (!(itemstack.getItem() instanceof BookItem)) {
+                EnchantmentMenu container = (EnchantmentMenu) (Object) this;
+                access.execute((level, pos) -> {
+                    List<EnchantmentInstance> rolledEnchantments = getEnchantmentList(level.registryAccess(), itemstack, p_39466_, container.costs[p_39466_]);
+                    player.onEnchantmentPerformed(itemstack, p_39466_ + Config.SERVER.nightmare_moai.get());
+                    for (EnchantmentInstance data : rolledEnchantments) {
+                        itemstack.enchant(data.enchantment, data.level + Config.SERVER.nightmare_moai.get());
+                        enchantSlots.setChanged();
+                        enchantmentSeed.set(player.getEnchantmentSeed());
+                        slotsChanged(enchantSlots);
+                    }
+                });
+            }
+        }
     }
 }

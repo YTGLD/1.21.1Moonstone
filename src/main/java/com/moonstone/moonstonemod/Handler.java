@@ -147,9 +147,6 @@ public class Handler {
                     if (curio == Items.evil_mob.get() || curio == Items.god_lead.get()||curio == Items.malice_die.get()){
                         return false;
                     }
-                    if (curio == Items.nightmareeye.get()) {
-                        return true;
-                    }
                 }
 
                 if (CuriosApi.getCuriosInventory(player).isPresent()

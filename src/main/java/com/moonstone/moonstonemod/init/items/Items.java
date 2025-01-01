@@ -269,7 +269,19 @@ public class Items {
     public static final DeferredHolder<Item,?> nightmare_base_redemption_deception =REGISTRY.register("nightmare_base_redemption_deception", nightmare_base_redemption_deception::new);
     public static final DeferredHolder<Item,?> nightmare_base_redemption_degenerate =REGISTRY.register("nightmare_base_redemption_degenerate", nightmare_base_redemption_degenerate::new);
     public static final DeferredHolder<Item,?> nightmare_base_redemption_down_and_out =REGISTRY.register("nightmare_base_redemption_down_and_out", nightmare_base_redemption_down_and_out::new);
+    public static final DeferredHolder<Item,?> nightmare_base_fool =REGISTRY.register("nightmare_base_fool", nightmare_base_fool::new);
+    public static final DeferredHolder<Item,?> nightmare_base_fool_soul =REGISTRY.register("nightmare_base_fool_soul", nightmare_base_fool_soul::new);
+    public static final DeferredHolder<Item,?> nightmare_base_fool_bone =REGISTRY.register("nightmare_base_fool_bone", nightmare_base_fool_bone::new);
+    public static final DeferredHolder<Item,?> nightmare_base_fool_betray =REGISTRY.register("nightmare_base_fool_betray", nightmare_base_fool_betray::new);
+    public static final DeferredHolder<Item,?> nightmare_base_insight =REGISTRY.register("nightmare_base_insight", nightmare_base_insight::new);
+    public static final DeferredHolder<Item,?> nightmare_base_insight_drug =REGISTRY.register("nightmare_base_insight_drug", nightmare_base_insight_drug::new);
+    public static final DeferredHolder<Item,?> nightmare_base_insight_insane =REGISTRY.register("nightmare_base_insight_insane", nightmare_base_insight_insane::new);
+    public static final DeferredHolder<Item,?> nightmare_base_insight_collapse =REGISTRY.register("nightmare_base_insight_collapse", nightmare_base_insight_collapse::new);
+    public static final DeferredHolder<Item,?> nightmare_base_start =REGISTRY.register("nightmare_base_start", nightmare_base_start::new);
+    public static final DeferredHolder<Item,?> nightmare_base_start_pod =REGISTRY.register("nightmare_base_start_pod", nightmare_base_start_pod::new);
+    public static final DeferredHolder<Item,?> nightmare_base_start_egg =REGISTRY.register("nightmare_base_start_egg", nightmare_base_start_egg::new);
 
+    public static final DeferredHolder<Item,?> nightmare_base_start_power =REGISTRY.register("nightmare_base_start_power", nightmare_base_start_power::new);
 
 
     public static final DeferredHolder<Item,?> the_heart_image =REGISTRY.register("the_heart_image", ()-> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));

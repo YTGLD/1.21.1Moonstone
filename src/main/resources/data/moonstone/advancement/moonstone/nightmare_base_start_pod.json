@@ -1,12 +1,12 @@
 {
-  "parent": "moonstone:moonstone/nightmare_base_redemption",
+  "parent": "moonstone:moonstone/nightmare_base_start",
   "criteria": {
-    "nightmare_base_redemption_down_and_out": {
+    "nightmare_base_start_pod": {
       "conditions": {
         "items": [
           {
             "items": [
-              "moonstone:nightmare_base_redemption_down_and_out"
+              "moonstone:nightmare_base_start_pod"
             ]
           }
         ]
@@ -17,21 +17,21 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.tooltip.nightmare_base_redemption_down_and_out.text"
+      "translate": "advancements.tooltip.nightmare_base_start_pod.text"
     },
     "frame": "challenge",
     "hidden": false,
     "icon": {
-      "id": "moonstone:nightmare_base_redemption_down_and_out"
+      "id": "moonstone:nightmare_base_start_pod"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.tooltip.nightmare_base_redemption_down_and_out.hand"
+      "translate": "advancements.tooltip.nightmare_base_start_pod.hand"
     }
   },
   "requirements": [
     [
-      "nightmare_base_redemption_down_and_out"
+      "nightmare_base_start_pod"
     ]
   ],
   "rewards": {

@@ -129,7 +129,7 @@
 
   "item.nightmareeye.tool.string": "Increase damage taken by 33%",
   "item.nightmareeye.tool.string.1": "Most of your attributes will be reduced by 25%",
-  "item.nightmareeye.tool.string.2": "Can Un equip plague",
+  "item.nightmareeye.tool.string.2": "Can not Unequip ",
 
 
   "item.nightmaremoai.tool.string": "+2 Enchantment level of the enchanted product",
@@ -1382,20 +1382,158 @@
   "moonstone.jei.item.moonstone.nightmare_base_redemption_degenerate": "在有村庄英雄的情况下杀死100个村民",
   "moonstone.jei.item.moonstone.nightmare_base_redemption_down_and_out": "完成一次失败的袭击",
 
-
-
-
   "advancements.tooltip.nightmare_base_reversal_card.text": "获得这个物品",
   "advancements.tooltip.nightmare_base_reversal_card.hand": "反转再反转",
   "advancements.tooltip.nightmare_base_reversal_mysterious.text": "获得这个物品",
   "advancements.tooltip.nightmare_base_reversal_mysterious.hand": "神秘的尸体",
   "advancements.tooltip.nightmare_base_reversal_orb.text": "获得这个物品",
   "advancements.tooltip.nightmare_base_reversal_orb.hand": "拙劣的演技",
-
   "advancements.tooltip.nightmare_base_reversal.text": "获得这个物品",
   "advancements.tooltip.nightmare_base_reversal.hand": "轮回",
 
 
+
+
+
+
+
+
+
+
+
+  "item.moonstone.nightmare_base_fool":"§4愚者之危",
+  "item.nightmare_base_fool.tool.string": "从2件开始，每多佩戴一件饰品都会使生命值减少3%",
+  "item.nightmare_base_fool.tool.string.1": "从5件开始，每多佩戴一件饰品都会使伤害减少5%",
+
+  "advancements.tooltip.nightmare_base_fool.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_fool.hand": "抉择",
+
+  "item.moonstone.nightmare_base_fool_betray":"§4夺舍挂坠",
+  "item.nightmare_base_fool_betray.tool.string": "使附近的部分类型生物主动投靠于你",
+  "item.nightmare_base_fool_betray.tool.string.1": "投靠的生物获得与你一致的正面BUFF",
+  "item.nightmare_base_fool_betray.tool.string.2": "被夺舍侍从的主人将损失10%最大生命值",
+  "item.nightmare_base_fool_betray.tool.string.3": "每夺舍一个目标，冷却增加5秒",
+  "advancements.tooltip.nightmare_base_fool_betray.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_fool_betray.hand": "为什么会这样",
+
+
+  "item.moonstone.nightmare_base_fool_bone":"§4危险的头骨",
+  "item.nightmare_base_fool_bone.tool.string": "如果一个生物的攻击目标是你",
+  "item.nightmare_base_fool_bone.tool.string.1": "那么你对他的伤害翻倍",
+  "item.nightmare_base_fool_bone.tool.string.2": "并且攻击有30%的概率破除无敌帧",
+  "advancements.tooltip.nightmare_base_fool_bone.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_fool_bone.hand": "史莱姆有骨头吗",
+
+
+  "item.moonstone.nightmare_base_fool_soul":"§4幽怨之魂",
+  "item.nightmare_base_fool_soul.tool.string": "愚者之危的伤害处罚判定由5提高到14",
+  "item.nightmare_base_fool_soul.tool.string.1": "愚者之危的生命处罚判定由2提高到9",
+  "item.nightmare_base_fool_soul.tool.string.2": "每佩戴一件饰品，治疗增加3%",
+  "item.nightmare_base_fool_soul.tool.string.3": "每佩戴一件噩梦饰品，生命值增加6",
+  "advancements.tooltip.nightmare_base_fool_soul.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_fool_soul.hand": "历史长河",
+
+  "moonstone.jei.item.moonstone.nightmare_base_fool_betray": "",
+  "moonstone.jei.item.moonstone.nightmare_base_fool_bone": "",
+  "moonstone.jei.item.moonstone.nightmare_base_fool_soul": "",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  "item.moonstone.nightmare_base_insight":"§4噩梦洞悉者",
+  "item.nightmare_base_insight.tool.string": "附魔物品的附魔等级减少1级",
+  "item.nightmare_base_insight.tool.string.1": "附魔物品的附魔等级减少50%",
+
+  "advancements.tooltip.nightmare_base_insight.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_insight.hand": "蹉跎之苦",
+
+  "item.moonstone.nightmare_base_insight_drug":"§4疯狂灵药",
+  "item.nightmare_base_insight_drug.tool.string": "伤害,护甲,生命值提高100%",
+  "item.nightmare_base_insight_drug.tool.string.1": "但是每佩戴一件饰品，此奖励都将减少8%",
+  "advancements.tooltip.nightmare_base_insight_drug.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_insight_drug.hand": "长生者",
+
+
+  "item.moonstone.nightmare_base_insight_insane":"§4癫狂之石",
+  "item.nightmare_base_insight_insane.tool.string": "当你斩杀生物时",
+  "item.nightmare_base_insight_insane.tool.string.1": "根据死亡的生物的强度恢复生命值",
+  "item.nightmare_base_insight_insane.tool.string.2": "并且下一击的伤害提高150%",
+  "advancements.tooltip.nightmare_base_insight_insane.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_insight_insane.hand": "战神之石",
+
+
+  "item.moonstone.nightmare_base_insight_collapse":"§4瓦解魔镜",
+  "item.nightmare_base_insight_collapse.tool.string": "通用饰品栏的数量加倍",
+  "advancements.tooltip.nightmare_base_insight_collapse.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_insight_collapse.hand": "崩解之力",
+
+  "moonstone.jei.item.moonstone.nightmare_base_insight_drug": "",
+  "moonstone.jei.item.moonstone.nightmare_base_insight_insane": "",
+  "moonstone.jei.item.moonstone.nightmare_base_insight_collapse": "",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  "item.moonstone.nightmare_base_start":"§4噩梦之起始",
+  "item.nightmare_base_start.tool.string": "护甲无效化",
+  "item.nightmare_base_start.tool.string.1": "每次受伤都会强制减少1点生命值",
+  "advancements.tooltip.nightmare_base_start.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_start.hand": "”仙人“",
+
+  "item.moonstone.nightmare_base_start_pod":"§4不灭苞荚",
+  "item.nightmare_base_start_pod.tool.string": "抗性提高20%",
+  "advancements.tooltip.nightmare_base_start_pod.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_start_pod.hand": "不灭花，不灭果",
+
+
+  "item.moonstone.nightmare_base_start_egg":"§4起源卵蛋",
+  "item.nightmare_base_start_egg.tool.string": "幸运加10",
+  "item.nightmare_base_start_egg.tool.string.1": "所有伤害加20%",
+  "item.nightmare_base_start_egg.tool.string.2": "治疗加50%",
+
+  "advancements.tooltip.nightmare_base_start_egg.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_start_egg.hand": "懒蛋一个",
+
+
+  "item.moonstone.nightmare_base_start_power":"§4愕然的权力",
+  "item.nightmare_base_start_power.tool.string": "每存在一个正面药水状态",
+  "item.nightmare_base_start_power.tool.string.1": "你的所有属性提高2%",
+  "advancements.tooltip.nightmare_base_start_power.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base_start_power.hand": "崩解之力",
+
+  "moonstone.jei.item.moonstone.nightmare_base_start_power": "",
+  "moonstone.jei.item.moonstone.nightmare_base_start_egg": "",
+  "moonstone.jei.item.moonstone.nightmare_base_start_pod": "",
+
+
+
+
+  "advancements.tooltip.nightmare_base.text": "获得这个物品",
+  "advancements.tooltip.nightmare_base.hand": "起始",
   "item.moonstone.owner_blood_earth":"Qiankun",
   "moonstone.jei.item.moonstone.owner_blood_earth": "It is found in ancient cities, but requires wearing the Sealing Candelabra to be discovered.\n\nBlood Orbs' damage equals the owner's damage.\nBlood Orbs' speed equals the owner's speed.\nThe attack speed of Blood Spirit proliferators will be multiplied by the owner's attack speed."
 
