@@ -1,0 +1,67 @@
+{
+  "targets": [
+    "swap",
+    "final"
+  ],
+  "passes": [
+    {
+      "name": "moonstone:entity_outline",
+      "intarget": "final",
+      "outtarget": "swap"
+    },
+    {
+      "name": "moonstone:entity_outline_box_blur",
+      "intarget": "swap",
+      "outtarget": "final",
+      "use_linear_filter": true,
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "values": [ 1.1, 0.0 ]
+        }
+      ]
+    },
+    {
+      "name": "moonstone:entity_outline_box_blur",
+      "intarget": "final",
+      "outtarget": "swap",
+      "use_linear_filter": true,
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "values": [ 0.0, 1.1 ]
+        }
+      ]
+    },
+
+    {
+      "name": "moonstone:box_blur",
+      "intarget": "swap",
+      "outtarget": "final",
+      "use_linear_filter": true,
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "values": [ 1.1, 0.0 ]
+        }
+      ]
+    },
+    {
+      "name": "moonstone:box_blur",
+      "intarget": "final",
+      "outtarget": "swap",
+      "use_linear_filter": true,
+      "uniforms": [
+        {
+          "name": "BlurDir",
+          "values": [ 0.0, 1.1 ]
+        }
+      ]
+    },
+    {
+      "name": "moonstone:blit",
+      "intarget": "swap",
+      "outtarget": "final"
+    }
+  ]
+}

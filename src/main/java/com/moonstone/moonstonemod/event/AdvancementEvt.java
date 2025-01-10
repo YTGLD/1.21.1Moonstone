@@ -10,6 +10,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.animal.sniffer.Sniffer;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -42,29 +43,225 @@ public class AdvancementEvt {
 
 
 
-
-    //4末世之脑
     public static final String nightmare_base_stone_brain = "nightmare_base_stone_brain";
-    //4绝望共鸣
     public static final String nightmare_base_stone_meet = "nightmare_base_stone_meet";
-    //4Nightecora病毒
     public static final String nightmare_base_stone_virus = "nightmare_base_stone_virus";
 
 
 
 
     public static final String nightmare_base_reversal_card = "nightmare_base_reversal_card";
-
     public static final String nightmare_base_reversal_mysterious = "nightmare_base_reversal_mysterious";
-
     public static final String nightmare_base_reversal_orb = "nightmare_base_reversal_orb";
-
 
 
 
     public static final String nightmare_base_redemption_deception = "nightmare_base_redemption_deception";
     public static final String nightmare_base_redemption_degenerate = "nightmare_base_redemption_degenerate";
     public static final String nightmare_base_redemption_down_and_out = "nightmare_base_redemption_down_and_out";
+
+
+
+    public static final String nightmare_base_fool_betray = "nightmare_base_fool_betray";
+    public static final String nightmare_base_fool_bone = "nightmare_base_fool_bone";
+    public static final String nightmare_base_fool_soul = "nightmare_base_fool_soul";
+
+
+
+
+
+
+
+
+    public static final String nightmare_base_insight_drug = "nightmare_base_insight_drug";
+    public static final String nightmare_base_insight_insane = "nightmare_base_insight_insane";
+    public static final String nightmare_base_insight_collapse = "nightmare_base_insight_collapse";
+
+
+
+
+
+
+
+    public static final String nightmare_base_start_power = "nightmare_base_start_power";
+    public static final String nightmare_base_start_egg = "nightmare_base_start_egg";
+    public static final String nightmare_base_start_pod = "nightmare_base_start_pod";
+
+
+    @SubscribeEvent
+    public void nightmare_base_start_egg(LivingDropsEvent event){
+        if (event.getSource().getEntity() instanceof Player player){
+            if (Handler.hascurio(player,Items.nightmare_base_start.get())){
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.nightmare_base_start.get())) {
+                                if (stack.get(DataReg.tag) != null) {
+                                    if (event.getEntity() instanceof Sniffer warden) {
+                                        if (!stack.get(DataReg.tag).getBoolean(nightmare_base_start_egg)) {
+
+                                            event.getDrops().add(new ItemEntity(warden.level(),warden.getX(),warden.getY(),warden.getZ(),
+                                                    new ItemStack(Items.nightmare_base_start_egg)));
+
+                                            stack.get(DataReg.tag).putBoolean(nightmare_base_start_egg, true);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+    @SubscribeEvent
+    public void nightmare_base_start_power(LivingDropsEvent event){
+        if (event.getSource().getEntity() instanceof Player player){
+            if (Handler.hascurio(player,Items.nightmare_base_start.get())){
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.nightmare_base_start.get())) {
+                                if (stack.get(DataReg.tag) != null) {
+                                    if (event.getEntity() instanceof Warden warden) {
+                                        if (!stack.get(DataReg.tag).getBoolean(nightmare_base_start_power)) {
+
+                                            event.getDrops().add(new ItemEntity(warden.level(),warden.getX(),warden.getY(),warden.getZ(),
+                                                    new ItemStack(Items.nightmare_base_start_power)));
+
+                                            stack.get(DataReg.tag).putBoolean(nightmare_base_start_power, true);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+    @SubscribeEvent
+    public void nightmare_base_insight(LivingDropsEvent event){
+        if (event.getSource().getEntity() instanceof Player player){
+            if (Handler.hascurio(player,Items.nightmare_base_insight.get())){
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.nightmare_base_insight.get())) {
+                                if (stack.get(DataReg.tag) != null) {
+                                    if (event.getEntity() instanceof EnderDragon warden) {
+                                        if (!stack.get(DataReg.tag).getBoolean(nightmare_base_insight_collapse)) {
+
+                                            event.getDrops().add(new ItemEntity(warden.level(),warden.getX(),warden.getY(),warden.getZ(),
+                                                    new ItemStack(Items.nightmare_base_insight_collapse)));
+
+                                            stack.get(DataReg.tag).putBoolean(nightmare_base_insight_collapse, true);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void nightmare_base_insight_insane(LivingDeathEvent event){
+        if (event.getEntity() instanceof Player player){
+            if (Handler.hascurio(player,Items.nightmare_base_insight.get())){
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.nightmare_base_insight.get())) {
+                                if (stack.get(DataReg.tag) != null) {
+                                    if (!stack.get(DataReg.tag).getBoolean(nightmare_base_insight_insane)) {
+                                        player.addItem(new ItemStack(Items.nightmare_base_insight_insane.get()));
+                                        stack.get(DataReg.tag).putBoolean(nightmare_base_insight_insane, true);
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void nightmare_base_fool(LivingDropsEvent event){
+        if (event.getSource().getEntity() instanceof Player player){
+            if (Handler.hascurio(player,Items.nightmare_base_fool.get())){
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.nightmare_base_fool.get())) {
+                                if (stack.get(DataReg.tag) != null) {
+                                    if (event.getEntity() instanceof EnderDragon warden) {
+                                        if (!stack.get(DataReg.tag).getBoolean(nightmare_base_fool_betray)) {
+
+                                            event.getDrops().add(new ItemEntity(warden.level(),warden.getX(),warden.getY(),warden.getZ(),
+                                                    new ItemStack(Items.nightmare_base_fool_betray)));
+
+                                            stack.get(DataReg.tag).putBoolean(nightmare_base_fool_betray, true);
+                                        }
+                                    }
+                                }
+                            }
+                            if (stack.is(Items.nightmare_base_fool.get())) {
+                                if (stack.get(DataReg.tag) != null) {
+                                    if (event.getEntity() instanceof Warden warden) {
+                                        if (!stack.get(DataReg.tag).getBoolean(nightmare_base_fool_bone)) {
+
+                                            event.getDrops().add(new ItemEntity(warden.level(),warden.getX(),warden.getY(),warden.getZ(),
+                                                    new ItemStack(Items.nightmare_base_fool_bone)));
+
+                                            stack.get(DataReg.tag).putBoolean(nightmare_base_fool_bone, true);
+                                        }
+                                    }
+                                }
+                            }
+                            if (stack.is(Items.nightmare_base_fool.get())) {
+                                if (stack.get(DataReg.tag) != null) {
+                                    if (event.getEntity() instanceof WitherBoss warden) {
+                                        if (!stack.get(DataReg.tag).getBoolean(nightmare_base_fool_soul)) {
+
+                                            event.getDrops().add(new ItemEntity(warden.level(),warden.getX(),warden.getY(),warden.getZ(),
+                                                    new ItemStack(Items.nightmare_base_fool_soul)));
+
+                                            stack.get(DataReg.tag).putBoolean(nightmare_base_fool_soul, true);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
 
 
     @SubscribeEvent
@@ -364,6 +561,33 @@ public class AdvancementEvt {
                                     if (!stack.get(DataReg.tag).getBoolean(nightmare_base_reversal_mysterious)) {
                                         generatedLoot.add(new ItemStack(Items.nightmare_base_reversal_mysterious.get()));
                                         stack.get(DataReg.tag).putBoolean(nightmare_base_reversal_mysterious, true);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+    public static void nightmare_base_start_pod(ObjectArrayList<ItemStack> generatedLoot,
+                                                              Entity entity){
+        if (entity instanceof Player player ){
+            if (Handler.hascurio(player,Items.nightmare_base_start.get())) {
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.nightmare_base_start.get())) {
+                                if (Mth.nextInt(RandomSource.create(),1,100)<=25) {
+                                    if (stack.get(DataReg.tag) != null) {
+                                        if (!stack.get(DataReg.tag).getBoolean(nightmare_base_start_pod)) {
+                                            generatedLoot.add(new ItemStack(Items.nightmare_base_start_pod.get()));
+                                            stack.get(DataReg.tag).putBoolean(nightmare_base_start_pod, true);
+                                        }
                                     }
                                 }
                             }

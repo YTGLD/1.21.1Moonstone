@@ -47,9 +47,12 @@ public class nightmare_base  extends nightmare {
                         Items.nightmare_base_stone.get(),
                         Items.nightmare_base_reversal.get(),
                         Items.nightmare_base_black_eye.get(),
+
                         Items.nightmare_base_redemption.get(),
                         Items.nightmare_base_fool.get(),
-                        Items.nightmare_base_insight.get()
+                        Items.nightmare_base_insight.get(),
+
+                        Items.nightmare_base_start.get()
                 ));
                 for (int i = 0; i < 2; i++) {
 

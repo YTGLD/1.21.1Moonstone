@@ -26,7 +26,7 @@ public class nightmarerotten extends nightmare {
 
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers() {
         Multimap<Holder<Attribute>, AttributeModifier> get = HashMultimap.create();
-        double as = 0.33;
+        double as = 0.1;
 
         for (Holder<Attribute> attribute : BuiltInRegistries.ATTRIBUTE.asHolderIdMap()){
 

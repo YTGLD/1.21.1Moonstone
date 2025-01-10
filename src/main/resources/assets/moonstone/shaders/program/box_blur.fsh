@@ -15,8 +15,8 @@ out vec4 fragColor;
 // In the end we sample the last pixel with a half weight, since the amount of pixels to sample is always odd (actualRadius * 2 + 1).
 void main() {
     vec4 blurred = vec4(0.0);
-    float actualRadius = round(Radius * RadiusMultiplier);
-    for (float a = -actualRadius + 0.5; a <= actualRadius; a += 2.0) {
+    float actualRadius = 5;
+    for (float a = -actualRadius + 0.1; a <= actualRadius; a += 0.8) {
         blurred += texture(DiffuseSampler, texCoord + sampleStep * a);
     }
     blurred += texture(DiffuseSampler, texCoord + sampleStep * actualRadius) / 2.0;

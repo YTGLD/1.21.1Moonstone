@@ -103,7 +103,7 @@ public class the_prison_of_sin extends Item implements ICurioItem, Blood {
         if (stack.get(DataReg.tag)!=null){
             int size = stack.get(DataReg.tag).getAllKeys().size();
             for (int i = 0; i < size; i++) {
-                incrementFactor *= 0.99f;
+                incrementFactor *= 0.975f;
             }
 
             s += size * incrementFactor;
@@ -155,7 +155,7 @@ public class the_prison_of_sin extends Item implements ICurioItem, Blood {
                 if (pStack.get(DataReg.tag)!=null){
                     int size = pStack.get(DataReg.tag).getAllKeys().size();
                     for (int i = 0; i < size; i++) {
-                        incrementFactor *= 0.99f;
+                        incrementFactor *= 0.975f;
                     }
 
                     s += (size * incrementFactor);

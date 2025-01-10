@@ -45,12 +45,12 @@ public class MoonStoneMod {
 
     public static final ResourceLocation POST = ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,
             "shaders/post/entity_outline.json");
-    public static final ResourceLocation BLUR_LOCATION =
-            ResourceLocation.withDefaultNamespace("shaders/post/blur.json");
 
     public static final ResourceLocation POST_Blood = ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,
             "shaders/post/entity_outline_blood.json");
 
+    public static final ResourceLocation POST_cube = ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,
+            "shaders/post/entity_outline_cube.json");
 
     public MoonStoneMod(IEventBus eventBus, ModContainer modContainer){
         NeoForge.EVENT_BUS.register(new AllEvent());

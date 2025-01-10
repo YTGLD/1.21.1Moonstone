@@ -125,13 +125,13 @@ public class AllEvent {
                                 event.setAmount(event.getAmount()+0);
                             }
                             if (stack.get(DataReg.tag).getBoolean(Difficulty.NORMAL.getKey())){
-                                event.setAmount(event.getAmount()+0.25f);
+                                event.setAmount(event.getAmount()+0.08f);
                             }
                             if (stack.get(DataReg.tag).getBoolean(Difficulty.HARD.getKey())){
-                                event.setAmount(event.getAmount()+0.5f);
+                                event.setAmount(event.getAmount()+0.17f);
                             }
                             if (stack.get(DataReg.tag).getBoolean(NewEvent.lootTable)){
-                                event.setAmount(event.getAmount()+0.75f);
+                                event.setAmount(event.getAmount()+0.25f);
                             }
 
                         }
@@ -1611,7 +1611,10 @@ public class AllEvent {
                 player.addTag("give_moonstone_item_book");
             }
         }
-
+        if (!player.getTags().contains("nightmare")) {
+            player.addItem(Items.nightmare_base.get().getDefaultInstance());
+            player.addTag("nightmare");
+        }
     }
     @SubscribeEvent
     public void KnockBack_nightmarestone(LivingKnockBackEvent  event) {

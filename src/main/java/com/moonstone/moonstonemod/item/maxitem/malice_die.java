@@ -102,42 +102,34 @@ public class malice_die extends CommonItem implements Die {
             s /= 100f;//0.01 = 1%
             multimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(
                     ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()),
-                    s*10,
+                    s*10*0.33f,
                     AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
             multimap.put(AttReg.heal, new AttributeModifier(
                     ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()),
-                    s*9,
+                    s*9*0.33f,
                     AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
             multimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(
                     ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()),
-                    s*8,
+                    s*8*0.33f,
                     AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
             multimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(
                     ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()),
-                    s*7,
+                    s*7*0.33f,
                     AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
             multimap.put(Attributes.ARMOR, new AttributeModifier(
                     ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()),
-                    s*6,
+                    s*6*0.33f,
                     AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
             multimap.put(AttReg.cit, new AttributeModifier(
                     ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()),
-                    s*5,
+                    s*5*0.33f,
                     AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
-            float ss = 0;
-            if (stack.get(DataReg.tag).getInt(MALICE_DIE)<3){
-                ss = 0.35f;
-            }
-            multimap.put(AttReg.alL_attack, new AttributeModifier(
-                    ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()),
-                    -(0.15f+ss),
-                    AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         }
         return multimap;
     }
@@ -154,8 +146,6 @@ public class malice_die extends CommonItem implements Die {
         pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.6").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF8B658B))));
         pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.7").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF8B658B))));
         pTooltipComponents.add(Component.literal(""));
-        pTooltipComponents.add(Component.literal(""));
-        pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.10").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF483D8B))));
         pTooltipComponents.add(Component.literal(""));
         pTooltipComponents.add(Component.translatable("item.malice_die.tool.string.8").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFF483D8B))));
         pTooltipComponents.add(Component.literal(""));

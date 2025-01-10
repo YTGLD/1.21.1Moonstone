@@ -19,7 +19,6 @@ public class MRender extends RenderType {
         super(p_173178_, p_173179_, p_173180_, p_173181_, p_173182_, p_173183_, p_173184_, p_173185_);
     }
 
-    private static ShaderInstance ShaderInstance_outline;
     private static ShaderInstance ShaderInstance_p_blood;
 
 
@@ -40,6 +39,16 @@ public class MRender extends RenderType {
     }, () -> {
         Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
     });
+    protected static final OutputStateShard setOutputState_CUBE = new OutputStateShard("cube", () -> {
+        RenderTarget target = MoonPost.getRenderTargetFor(MoonStoneMod.POST_cube);
+        if (target != null) {
+            target.copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
+            target.bindWrite(false);
+        }
+    }, () -> {
+        Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
+    });
+
     protected static final OutputStateShard BEACON = new OutputStateShard("set_beacon", () -> {
         RenderTarget target = MoonPost.getRenderTargetFor(MoonStoneMod.POST);
         if (target != null) {
@@ -175,7 +184,7 @@ public class MRender extends RenderType {
                                             false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/ging.png"),
                                             false, false).build()).createCompositeState(false));
 
-    private static final RenderType MLS =
+    public static final RenderType MLS =
             create("mls",
                     DefaultVertexFormat.POSITION,
                     VertexFormat.Mode.QUADS,
@@ -184,11 +193,28 @@ public class MRender extends RenderType {
                     false,
                     RenderType.CompositeState.builder()
                             .setShaderState(RENDER_STATE_SHARD_MLS)
+                            .setCullState(NO_CULL)
                             .setTextureState(RenderStateShard.
                                     MultiTextureStateShard.builder().
                                     add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/mls.png"),
                                             false,
                                             false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/mls.png"),
+                                            false, false).build()).createCompositeState(false));
+    public static final RenderType MLS_OUT =
+            create("mls_out",
+                    DefaultVertexFormat.POSITION,
+                    VertexFormat.Mode.QUADS,
+                    256,
+                    false,
+                    false,
+                    RenderType.CompositeState.builder()
+                            .setShaderState(RENDER_STATE_SHARD_MLS)
+                            .setOutputState(setOutputState_CUBE)
+                            .setTextureState(RenderStateShard.
+                                    MultiTextureStateShard.builder().
+                                    add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/cube.png"),
+                                            false,
+                                            false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/cube.png"),
                                             false, false).build()).createCompositeState(false));
 
     public static RenderType gateways() {
@@ -208,10 +234,6 @@ public class MRender extends RenderType {
     }
     public static RenderType eye() {
         return EYE;
-    }
-
-    public static ShaderInstance getShaderInstance_outline() {
-        return ShaderInstance_outline;
     }
 
     public static ShaderInstance getShaderInstance_Shader_EYE() {
@@ -243,9 +265,6 @@ public class MRender extends RenderType {
     }
     public static void setShaderInstance_trail(ShaderInstance shaderInstance_ging) {
         ShaderInstance_trail = shaderInstance_ging;
-    }
-    public static void setShaderInstance_outline(ShaderInstance shader_snake) {
-        ShaderInstance_outline = shader_snake;
     }
 
     public static void setShader_snake(ShaderInstance shader_snake) {

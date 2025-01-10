@@ -91,16 +91,16 @@ public abstract class LivingEntityMixin {
 
 
                             if (stack.get(DataReg.tag).getBoolean(Difficulty.EASY.getKey())){
-                                cir.setReturnValue(cir.getReturnValue()+0.5f);
+                                cir.setReturnValue(cir.getReturnValue()+0.175f);
                             }
                             if (stack.get(DataReg.tag).getBoolean(Difficulty.NORMAL.getKey())){
-                                cir.setReturnValue(cir.getReturnValue()+1);
+                                cir.setReturnValue(cir.getReturnValue()+0.33f);
                             }
                             if (stack.get(DataReg.tag).getBoolean(Difficulty.HARD.getKey())){
-                                cir.setReturnValue(cir.getReturnValue()+1.5f);
+                                cir.setReturnValue(cir.getReturnValue()+0.5f);
                             }
                             if (stack.get(DataReg.tag).getBoolean(NewEvent.lootTable)){
-                                cir.setReturnValue(cir.getReturnValue()+2);
+                                cir.setReturnValue(cir.getReturnValue()+0.66f);
                             }
                         }
                     }

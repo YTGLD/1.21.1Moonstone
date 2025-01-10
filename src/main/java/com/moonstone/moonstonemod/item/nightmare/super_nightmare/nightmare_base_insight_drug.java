@@ -44,7 +44,7 @@ public class nightmare_base_insight_drug extends nightmare {
                 IDynamicStackHandler stackHandler = stacksHandler.getStacks();
                 for (int i = 0; i < stacksHandler.getSlots(); i++) {
                     ItemStack stack = stackHandler.getStackInSlot(i);
-                    if (!stack.isEmpty()&&stack.getItem() instanceof nightmare) {
+                    if (!stack.isEmpty()) {
                         integersHealth.add(1);
                     }
                 }

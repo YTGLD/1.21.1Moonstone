@@ -80,6 +80,7 @@ public class nightmare_base_fool extends nightmare {
             dam /= 100f;
             dam *= 5f;
 
+            dam=-dam;
 
             linkedHashMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), dam, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         }
@@ -112,6 +113,7 @@ public class nightmare_base_fool extends nightmare {
             }
             health /= 100f;
             health *= 3f;
+            health=-health;
             linkedHashMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), health, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         }
 

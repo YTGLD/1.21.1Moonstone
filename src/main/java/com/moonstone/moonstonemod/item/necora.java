@@ -13,15 +13,22 @@ import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.animal.Ocelot;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
@@ -69,12 +76,33 @@ public class necora extends TheNecoraIC {
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player){
             if (Handler.hascurio(player,this)) {
+                Vec3 playerPos = player.position().add(0, 0.75, 0);
+                float range = 12;
+                List<LivingEntity> entities =
+                        player.level().getEntitiesOfClass(LivingEntity.class,
+                                new AABB(playerPos.x - range,
+                                        playerPos.y - range,
+                                        playerPos.z - range,
+                                        playerPos.x + range,
+                                        playerPos.y + range,
+                                        playerPos.z + range));
+
+                for (LivingEntity living : entities){
+                    if (living instanceof Villager villager){
+                        villager.goalSelector.addGoal(1, new AvoidEntityGoal<>(villager, Player.class, 6.0F, 1.0, 1.2));
+                    }
+                    if (living instanceof IronGolem golem){
+                        if (golem.getTarget()==null) {
+                            golem.setTarget(player);
+                        }
+                    }
+                }
                 player.getAttributes().addTransientAttributeModifiers(Head(player, stack));
 
                 if (player.getItemBySlot(EquipmentSlot.HEAD).isEmpty() &&
                         (player.level().isDay() &&
                                 player.level().canSeeSky(new BlockPos(player.getBlockX(), player.getBlockY(), player.getBlockZ())))) {
-                    player.setRemainingFireTicks(2);
+                    player.setRemainingFireTicks(40);
                 }
             }
         }
