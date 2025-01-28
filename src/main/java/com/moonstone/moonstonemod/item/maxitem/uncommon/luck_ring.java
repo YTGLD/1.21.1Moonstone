@@ -42,7 +42,7 @@ public class luck_ring extends CommonItem implements Die {
         multimap.put(Attributes.LUCK, new AttributeModifier(
                 ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()),
                 s,
-                AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                AttributeModifier.Operation.ADD_VALUE));
 
         return multimap;
     }

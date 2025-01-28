@@ -71,7 +71,6 @@ public class MoonStoneMod {
 
 
 
-
         eventBus.register(Config.class);
         Tab.TABS.register(eventBus);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.fc);
@@ -114,6 +113,8 @@ public class MoonStoneMod {
             event.registerEntityRenderer(EntityTs.sword_soul.get(), com.moonstone.moonstonemod.entity.client.SwordSoulRenderer::new);
             event.registerEntityRenderer(EntityTs.rage_blood.get(), com.moonstone.moonstonemod.entity.client.RageBloodRender::new);
             event.registerEntityRenderer(EntityTs.as_sword.get(), com.moonstone.moonstonemod.entity.client.AsSwordRender::new);
+            event.registerEntityRenderer(EntityTs.axe.get(), com.moonstone.moonstonemod.entity.client.AxeRenderer::new);
+            event.registerEntityRenderer(EntityTs.bolt.get(), com.moonstone.moonstonemod.entity.client.BoltRenderer::new);
 
         }
         @SubscribeEvent

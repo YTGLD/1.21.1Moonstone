@@ -407,39 +407,6 @@ public class AllEvent {
             }
         }
     }
-    @SubscribeEvent
-    public void LivingDeathEvent(LivingDeathEvent event) {
-        if (event.getSource().getEntity() instanceof Player player){
-            if (Handler.hascurio(player,  Items.plague.get())){
-                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                        ICurioStacksHandler stacksHandler = entry.getValue();
-                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                            ItemStack stack = stackHandler.getStackInSlot(i);
-
-                            if (stack.is(Items.plague.get())) {
-                                CompoundTag tag = stack.get(DataReg.tag);
-                                if (tag != null) {
-                                    ;
-                                    tag.putFloat(plague.YanJIu, (float) (tag.getFloat(plague.YanJIu) + 0.1));
-                                    if (tag.getFloat(plague.CursePlague) < 100) {
-                                        tag.putFloat(plague.CursePlague, tag.getFloat(plague.CursePlague) + 0.1f);
-                                    }
-                                }else {
-                                    stack.set(DataReg.tag,new CompoundTag());
-                                }
-                            }
-
-
-                        }
-                    }
-                });
-            }
-        }
-
-    }
 
     @SubscribeEvent
     public void thefruitLivingTickEvent(EntityTickEvent.Post event){
@@ -914,8 +881,7 @@ public class AllEvent {
                         if (stack.is(Items.medicinebox.get())) {
                             CompoundTag tag = stack.get(DataReg.tag);
                             if (tag != null) {
-                                ;
-                                if (tag != null && !tag.getBoolean(spawn)) {
+                                if (!tag.getBoolean(spawn)) {
                                     if (Handler.hascurio(player, Items.medicinebox.get())) {
                                         player.addItem(new ItemStack(Items.reanimation.get()));
                                         tag.putBoolean(spawn, true);
@@ -973,8 +939,6 @@ public class AllEvent {
 
     @SubscribeEvent
     public  void medicinebox(LivingIncomingDamageEvent event) {
-
-
         LivingEntity livingEntity = event.getEntity();
         if (livingEntity instanceof Player player){
             CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
@@ -1008,8 +972,6 @@ public class AllEvent {
     }
     @SubscribeEvent
     public  void medicinebox(LivingEvent.LivingJumpEvent event) {
-
-
         LivingEntity livingEntity = event.getEntity();
         if (livingEntity instanceof Player player){
             CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
@@ -1857,7 +1819,7 @@ public class AllEvent {
                 int range = 4;
                 List<LivingEntity> entities = event.getEntity().level().getEntitiesOfClass(LivingEntity.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
                 for (LivingEntity living : entities) {
-                    if (!living.is(player)) {
+                    if (!(living instanceof Player)) {
                         if (!living.is(event.getEntity())) {
                             living.hurt(living.damageSources().magic(), event.getAmount() / 2);
                         }

@@ -35,7 +35,8 @@ public class BloodItem  extends Item implements ICurioItem, Blood {
     }
     @NotNull
     @Override
-    public ICurio.DropRule getDropRule(SlotContext slotContext, DamageSource source, int lootingLevel, boolean recentlyHit, ItemStack stack) {
+    public ICurio.DropRule getDropRule(SlotContext slotContext, DamageSource source, boolean recentlyHit,
+                               ItemStack stack) {
         return ICurio.DropRule.ALWAYS_KEEP;
     }
 }

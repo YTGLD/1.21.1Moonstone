@@ -21,21 +21,13 @@ public class red_entity extends cell_zombie {
     }
     public int time = 0;
     public float size = 6;
-    public float sw = 1;
     public void tick() {
         super.tick();
         this.time++;
         if (this.time > 120) {
             this.discard();
         }
-        sw-= 0.01f;
-        if (time == 1) {
-            this.level().playSound(null,new BlockPos((int)this.getX(), (int) this.getY(), (int) this.getZ()), SoundEvents.WARDEN_SONIC_BOOM, SoundSource.MASTER,sw,sw);
-        }
-        if (time % 20 == 0) {
-            this.level().playSound(null,new BlockPos((int)this.getX(), (int) this.getY(), (int) this.getZ()), SoundEvents.WARDEN_SONIC_BOOM, SoundSource.MASTER,sw,sw);
-        }
-        size+=0.05f;
+        size+=0.07f;
         Vec3 position = this.position();
         float is = size;
         List<LivingEntity> ess = this.level().getEntitiesOfClass(LivingEntity.class, new AABB(position.x - is, position.y - is, position.z - is, position.x + is, position.y + is, position.z + is));

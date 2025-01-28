@@ -16,14 +16,9 @@ public class CircleCube {
                       int light,
                       @NotNull Entity entity) {
 
-        float s =  entity.tickCount*1.5f;
-        if (s > 100*1.5f) {
+        float s =  entity.tickCount*1.8f;
+        if (s > 100*1.8f) {
             s = 0;
-        }
-
-        float ds = entity.tickCount;
-        if (ds > 100) {
-            ds = 0;
         }
         float alp = 0.1f;
         s /= 10;

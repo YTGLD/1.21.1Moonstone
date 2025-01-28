@@ -7,6 +7,7 @@ import com.moonstone.moonstonemod.entity.zombie.cell_giant;
 import com.moonstone.moonstonemod.init.items.Items;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -19,6 +20,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import org.joml.Matrix4f;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.CuriosCapability;
 import top.theillusivec4.curios.api.SlotResult;
@@ -26,17 +28,17 @@ import top.theillusivec4.curios.api.SlotResult;
 import java.util.List;
 
 public class Handler {
-    public static final String Giant_Time ="Giant_Time";
-    public static final String Giant_Boom ="Giant_Boom";
-    public static final String Subspace_Giant ="Subspace_Giant";
+    public static final String Giant_Time = "Giant_Time";
+    public static final String Giant_Boom = "Giant_Boom";
+    public static final String Subspace_Giant = "Subspace_Giant";
 
     public static final String Bone_Giant = "Bone_Giant";
     public static final String Parasitic_cell_Giant = "Parasitic_cell_Giant";
     public static final String Disgusting__cell_Giant = "Disgusting__cell_Giant";
 
 
-    public static boolean hasItemInList(LivingEntity player,List<String> listItemSting){
-        if (!Config.SERVER.offSet.get()){
+    public static boolean hasItemInList(LivingEntity player, List<String> listItemSting) {
+        if (!Config.SERVER.offSet.get()) {
             return false;
         }
         for (String itemName : listItemSting) {
@@ -69,7 +71,7 @@ public class Handler {
             blockpos$mutableblockpos.setWithOffset(pPos, j, pYOffset, k);
             if (pLevel.getWorldBorder().isWithinBounds(blockpos$mutableblockpos)
                     && moveToPossibleSpawnPosition(pLevel, pYOffset, blockpos$mutableblockpos, pStrategy)) {
-                T t = (T)pEntityType.create(pLevel, null, blockpos$mutableblockpos, pSpawnType, false, false);
+                T t = (T) pEntityType.create(pLevel, null, blockpos$mutableblockpos, pSpawnType, false, false);
                 if (t != null) {
                     t.setOwnerUUID(player.getUUID());
 
@@ -93,11 +95,11 @@ public class Handler {
                     }
 
 
-                    if (t instanceof nightmare_giant nightmareGiant){
+                    if (t instanceof nightmare_giant nightmareGiant) {
                         nightmareGiant.setPose(Pose.EMERGING);
                     }
 
-                    if (t instanceof cell_giant nightmareGiant){
+                    if (t instanceof cell_giant nightmareGiant) {
                         nightmareGiant.setPose(Pose.EMERGING);
                     }
 
@@ -144,14 +146,14 @@ public class Handler {
 
                 if (CuriosApi.getCuriosInventory(player).isPresent()
                         && CuriosApi.getCuriosInventory(player).get().isEquipped(Items.nightmare_base.get())) {
-                    if (curio == Items.evil_mob.get() || curio == Items.god_lead.get()||curio == Items.malice_die.get()){
+                    if (curio == Items.evil_mob.get() || curio == Items.god_lead.get() || curio == Items.malice_die.get()) {
                         return false;
                     }
                 }
 
                 if (CuriosApi.getCuriosInventory(player).isPresent()
                         && CuriosApi.getCuriosInventory(player).get().isEquipped(Items.evil_mob.get())) {
-                    if (curio == Items.necora.get() || curio == Items.nightmareeye.get()||curio == Items.bloodvirus.get()){
+                    if (curio == Items.necora.get() || curio == Items.nightmareeye.get() || curio == Items.bloodvirus.get()) {
                         return true;
                     }
                 }
@@ -161,8 +163,7 @@ public class Handler {
                     List<SlotResult> a = CuriosApi.getCuriosInventory(entity).get().findCurios(curio);
                     for (SlotResult slotResult : a) {
                         if (slotResult.stack().is(curio)
-                                && hasDC(player,curio))
-                        {
+                                && hasDC(player, curio)) {
                             return true;
                         }
                     }
@@ -171,7 +172,8 @@ public class Handler {
         }
         return false;
     }
-    public static boolean hasDC(LivingEntity entity,Item item) {
+
+    public static boolean hasDC(LivingEntity entity, Item item) {
         if (entity instanceof Player player) {
             if (player.getCapability(CuriosCapability.INVENTORY) != null) {
                 if (CuriosApi.getCuriosInventory(player).isPresent()
@@ -184,7 +186,8 @@ public class Handler {
         }
         return true;
     }
-    public static void renderColor(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType,float r,int red,int g, int b) {
+
+    public static void renderColor(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType, float r, int red, int g, int b) {
         VertexConsumer vertexConsumer = bufferSource.getBuffer(renderType);
 
         float radius = r; // 半径
@@ -205,33 +208,34 @@ public class Handler {
             Vec3 down2 = end.add(x2, 0, z2);
 
 
-            addSquareColor(vertexConsumer, poseStack, up1, up2, down1, down2, a,red,g,b);
+            addSquareColor(vertexConsumer, poseStack, up1, up2, down1, down2, a, red, g, b);
         }
     }
+
     private static void addSquareColor(VertexConsumer vertexConsumer, PoseStack poseStack, Vec3 up1, Vec3 up2, Vec3 down1, Vec3 down2, float alpha, int r, int g, int b) {
         // 添加四个顶点来绘制一个矩形
-        vertexConsumer.addVertex(poseStack.last().pose(), (float)up1.x, (float)up1.y, (float)up1.z)
-                .setColor(r, g, b, (int)(alpha * 255))
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) up1.x, (float) up1.y, (float) up1.z)
+                .setColor(r, g, b, (int) (alpha * 255))
                 .setUv2(240, 240)
                 .setNormal(0, 0, 1);
 
-        vertexConsumer.addVertex(poseStack.last().pose(), (float)down1.x, (float)down1.y, (float)down1.z)
-                .setColor(r, g, b, (int)(alpha * 255))
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) down1.x, (float) down1.y, (float) down1.z)
+                .setColor(r, g, b, (int) (alpha * 255))
                 .setUv2(240, 240)
                 .setNormal(0, 0, 1);
 
-        vertexConsumer.addVertex(poseStack.last().pose(), (float)down2.x, (float)down2.y, (float)down2.z)
-                .setColor(r, g, b, (int)(alpha * 255))
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) down2.x, (float) down2.y, (float) down2.z)
+                .setColor(r, g, b, (int) (alpha * 255))
                 .setUv2(240, 240)
                 .setNormal(0, 0, 1);
 
-        vertexConsumer.addVertex(poseStack.last().pose(), (float)up2.x, (float)up2.y, (float)up2.z)
-                .setColor(r, g, b, (int)(alpha * 255))
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) up2.x, (float) up2.y, (float) up2.z)
+                .setColor(r, g, b, (int) (alpha * 255))
                 .setUv2(240, 240)
                 .setNormal(0, 0, 1);
     }
 
-    public static void renderBlood(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType,float r) {
+    public static void renderBlood(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType, float r) {
         VertexConsumer vertexConsumer = bufferSource.getBuffer(renderType);
 
         float radius = r; // 半径
@@ -255,29 +259,76 @@ public class Handler {
             addSquare(vertexConsumer, poseStack, up1, up2, down1, down2, a);
         }
     }
-    private static void addSquare(VertexConsumer vertexConsumer, PoseStack poseStack, Vec3 up1, Vec3 up2, Vec3 down1, Vec3 down2, float alpha) {
+    public static void renderBlack(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType, float r) {
+        VertexConsumer vertexConsumer = bufferSource.getBuffer(renderType);
+
+        float radius = r; // 半径
+        int segmentCount = 16; // 圆柱横向细分数
+
+        for (int i = 0; i < segmentCount; i++) {
+            double angle1 = (2 * Math.PI * i) / segmentCount;
+            double angle2 = (2 * Math.PI * (i + 1)) / segmentCount;
+
+            double x1 = Math.cos(angle1) * radius;
+            double z1 = Math.sin(angle1) * radius;
+            double x2 = Math.cos(angle2) * radius;
+            double z2 = Math.sin(angle2) * radius;
+
+            Vec3 up1 = start.add(x1, 0, z1);
+            Vec3 up2 = start.add(x2, 0, z2);
+            Vec3 down1 = end.add(x1, 0, z1);
+            Vec3 down2 = end.add(x2, 0, z2);
+
+
+            addSquareBlack(vertexConsumer, poseStack, up1, up2, down1, down2, a);
+        }
+    }
+    private static void addSquareBlack(VertexConsumer vertexConsumer, PoseStack poseStack, Vec3 up1, Vec3 up2, Vec3 down1, Vec3 down2, float alpha) {
         // 添加四个顶点来绘制一个矩形
-        vertexConsumer.addVertex(poseStack.last().pose(), (float)up1.x, (float)up1.y, (float)up1.z)
-                .setColor(220, 20, 60, (int)(alpha * 255))
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) up1.x, (float) up1.y, (float) up1.z)
+                .setColor(106 ,90 ,205, (int) (alpha * 255))
                 .setUv2(240, 240)
                 .setNormal(0, 0, 1);
 
-        vertexConsumer.addVertex(poseStack.last().pose(), (float)down1.x, (float)down1.y, (float)down1.z)
-                .setColor(220, 20, 60, (int)(alpha * 255))
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) down1.x, (float) down1.y, (float) down1.z)
+                .setColor(106 ,90 ,205, (int) (alpha * 255))
                 .setUv2(240, 240)
                 .setNormal(0, 0, 1);
 
-        vertexConsumer.addVertex(poseStack.last().pose(), (float)down2.x, (float)down2.y, (float)down2.z)
-                .setColor(220, 20, 60, (int)(alpha * 255))
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) down2.x, (float) down2.y, (float) down2.z)
+                .setColor(106 ,90 ,205, (int) (alpha * 255))
                 .setUv2(240, 240)
                 .setNormal(0, 0, 1);
 
-        vertexConsumer.addVertex(poseStack.last().pose(), (float)up2.x, (float)up2.y, (float)up2.z)
-                .setColor(220, 20, 60, (int)(alpha * 255))
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) up2.x, (float) up2.y, (float) up2.z)
+                .setColor(106 ,90 ,205, (int) (alpha * 255))
                 .setUv2(240, 240)
                 .setNormal(0, 0, 1);
     }
-    public static void renderSword(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType,float r) {
+    private static void addSquare(VertexConsumer vertexConsumer, PoseStack poseStack, Vec3 up1, Vec3 up2, Vec3 down1, Vec3 down2, float alpha) {
+        // 添加四个顶点来绘制一个矩形
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) up1.x, (float) up1.y, (float) up1.z)
+                .setColor(220, 20, 60, (int) (alpha * 255))
+                .setUv2(240, 240)
+                .setNormal(0, 0, 1);
+
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) down1.x, (float) down1.y, (float) down1.z)
+                .setColor(220, 20, 60, (int) (alpha * 255))
+                .setUv2(240, 240)
+                .setNormal(0, 0, 1);
+
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) down2.x, (float) down2.y, (float) down2.z)
+                .setColor(220, 20, 60, (int) (alpha * 255))
+                .setUv2(240, 240)
+                .setNormal(0, 0, 1);
+
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) up2.x, (float) up2.y, (float) up2.z)
+                .setColor(220, 20, 60, (int) (alpha * 255))
+                .setUv2(240, 240)
+                .setNormal(0, 0, 1);
+    }
+
+    public static void renderSword(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType, float r) {
         VertexConsumer vertexConsumer = bufferSource.getBuffer(renderType);
 
         float radius = r; // 半径
@@ -301,29 +352,31 @@ public class Handler {
             addSword(vertexConsumer, poseStack, up1, up2, down1, down2, a);
         }
     }
+
     private static void addSword(VertexConsumer vertexConsumer, PoseStack poseStack, Vec3 up1, Vec3 up2, Vec3 down1, Vec3 down2, float alpha) {
         // 添加四个顶点来绘制一个矩形
-        vertexConsumer.addVertex(poseStack.last().pose(), (float)up1.x, (float)up1.y, (float)up1.z)
-                .setColor(151 ,255 ,255, (int)(alpha * 255))
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) up1.x, (float) up1.y, (float) up1.z)
+                .setColor(151, 255, 255, (int) (alpha * 255))
                 .setUv2(240, 240)
                 .setNormal(0, 0, 1);
 
-        vertexConsumer.addVertex(poseStack.last().pose(), (float)down1.x, (float)down1.y, (float)down1.z)
-                .setColor(151 ,255 ,255, (int)(alpha * 255))
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) down1.x, (float) down1.y, (float) down1.z)
+                .setColor(151, 255, 255, (int) (alpha * 255))
                 .setUv2(240, 240)
                 .setNormal(0, 0, 1);
 
-        vertexConsumer.addVertex(poseStack.last().pose(), (float)down2.x, (float)down2.y, (float)down2.z)
-                .setColor(151 ,255 ,255, (int)(alpha * 255))
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) down2.x, (float) down2.y, (float) down2.z)
+                .setColor(151, 255, 255, (int) (alpha * 255))
                 .setUv2(240, 240)
                 .setNormal(0, 0, 1);
 
-        vertexConsumer.addVertex(poseStack.last().pose(), (float)up2.x, (float)up2.y, (float)up2.z)
-                .setColor(151 ,255 ,255, (int)(alpha * 255))
+        vertexConsumer.addVertex(poseStack.last().pose(), (float) up2.x, (float) up2.y, (float) up2.z)
+                .setColor(151, 255, 255, (int) (alpha * 255))
                 .setUv2(240, 240)
                 .setNormal(0, 0, 1);
     }
-    public static void renderLine(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType,  float radius ) {
+
+    public static void renderLine(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType, float radius) {
         VertexConsumer vertexConsumer = bufferSource.getBuffer(renderType);
 
         int segmentCount = 16; // 圆柱横向细分数
@@ -370,5 +423,4 @@ public class Handler {
             addSquare(vertexConsumer, poseStack, up1, up2, down1, down2, a);
         }
     }
-
 }

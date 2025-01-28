@@ -152,9 +152,9 @@
   "item.nightmaremoai.tool.string.2": "才有资格使用此道具",
 
 
-  "item.nightmarerotten.tool.string": "+10％ 所有属性",
+  "item.nightmarerotten.tool.string": "+20％ 所有属性",
   "item.nightmarerotten.tool.string.1": "但是每增加1种属性",
-  "item.nightmarerotten.tool.string.2": "来自深渊的诅咒都会增加1.1％",
+  "item.nightmarerotten.tool.string.2": "来自深渊的诅咒都会增加0.2％",
   "item.nightmarerotten.tool.string.3": "唯有承受深渊之恐的人",
   "item.nightmarerotten.tool.string.4": "才有资格使用此道具",
 
@@ -870,7 +870,7 @@
   "item.moonstone.max_eye": "§4无懈之眼",
   "item.max_eye.tool.string": "杀死生物获得血液",
   "item.max_eye.tool.string.1": "最多储存4点",
-  "item.max_eye.tool.string.2": "当你拥有血液时，你将减少90%受到伤害",
+  "item.max_eye.tool.string.2": "当你拥有血液时，你将减少75%受到伤害",
   "item.max_eye.tool.string.3": "但每次受到伤害你都会减少一滴血液、",
   "item.max_eye.tool.string.4": "时间推移，血量也会被你吸收并恢复10%最大生命值",
   "item.max_sword.tool.string.5": "每颗血球提供5%的伤害加成",
@@ -980,6 +980,25 @@
 
   "item.moonstone.deceased_contract": "§4死灵契约",
 
+  "item.moonstone.medicinebox.tool": "用于粉碎药物或任意基因物品",
+  "item.moonstone.dna_box": "药物回收盒",
+  "item.moonstone.medicinebox.tool.2": "你需要右键这个物品来存入，然后长按右键咀嚼，直到下方的红色字体消失",
+
+  "item.moonstone.blood_sun": "§4血日",
+  "item.moonstone.blood_jelly": "血浆果冻",
+  "item.blood_sun.tool.string": "杀死生物召唤末日之灵",
+  "entity.moonstone.sun": "末日之灵",
+
+  "error.moonstone.dna_box": "检测到未知物品ID",
+
+  "moonstone.difficulty.name.all": "的DNA序列",
+  "moonstone.difficulty.name.peaceful": "简单",
+  "moonstone.difficulty.name.easy": "普通",
+  "moonstone.difficulty.name.normal": "复杂",
+  "moonstone.difficulty.name.hard": "极度复杂",
+
+
+
   "item.moonstone.atp_height": "ATP高能量",
   "item.moonstone.cell_god": "神创论",
   "item.moonstone.cell_ground": "大地亲和性",
@@ -993,35 +1012,38 @@
   "item.moonstone.cell_in_water": "海洋亲和性",
   "item.moonstone.cell_off_on": "催化剂开关",
   "item.moonstone.speed_metabolism": "极速代谢",
-  "item.moonstone.medicinebox.tool": "用于粉碎药物或任意基因物品",
-  "item.moonstone.dna_box": "药物回收盒",
-  "item.moonstone.medicinebox.tool.2": "你需要右键这个物品来存入，然后长按右键咀嚼，直到下方的红色字体消失",
-
-  "item.moonstone.blood_sun": "§4血日",
-  "item.moonstone.blood_jelly": "血浆果冻",
-  "item.blood_sun.tool.string": "杀死生物召唤末日之灵",
-  "entity.moonstone.sun": "末日之灵",
-  "error.moonstone.dna_box": "检测到未知物品ID",
-
-  "moonstone.difficulty.name.all": "的DNA序列",
-  "moonstone.difficulty.name.peaceful": "简单",
-  "moonstone.difficulty.name.easy": "普通",
-  "moonstone.difficulty.name.normal": "复杂",
-  "moonstone.difficulty.name.hard": "极度复杂",
-
   "item.moonstone.cell_necrosis":"液化性坏死",
   "item.moonstone.cell_digestion":"表皮消化",
   "item.moonstone.cell_acid":"酸性液体逆流",
   "item.moonstone.cell_eyes":"眼镜蛇式锁定",
   "item.moonstone.cell_bone_add":"骨骼结构异化",
   "item.moonstone.cell_sense":"感官系统强化",
-
   "item.moonstone.cell_cranial":"脑组织转移",
   "item.moonstone.cell_dna_suppression":"神经递质抑制",
   "item.moonstone.cell_putrefactive":"热分解抑制",
   "item.moonstone.cell_synthesis":"肽合成增强",
+  "item.moonstone.cell_compress":"致命基因压缩",
+  "item.moonstone.cell_preferential":"择优进化论",
+  "item.moonstone.cell_flu":"病毒性流感",
+  "item.moonstone.cell_constant":"常量因子激增",
+  "item.moonstone.cell_chromosome":"染色体结构变异",
+
+
+
+
+
+
+
+
+
+
+  "moonstone.curse.name.all.this": "这个物品被",
+
+
+
 
   "item.moonstone.body_stone":"万魔石",
+
 
   "moonstone.curse.name.meet": "肉瘤",
   "moonstone.curse.name.all": "施加了诅咒[Ctrl]",
@@ -1097,10 +1119,6 @@
   "item.killer.tool.string.10": "伤害: ",
   "item.killer.tool.string.11": "攻速: ",
   "item.killer.tool.string.12": "护甲: ",
-  "item.moonstone.cell_compress":"致命基因压缩",
-  "item.moonstone.cell_preferential":"择优进化论",
-  "item.moonstone.cell_flu":"病毒性流感",
-
 
 
 
@@ -1199,9 +1217,6 @@
 
   "moonstone.config.ectoplasm": "灵质幸运儿",
 
-  "item.moonstone.cell_constant":"常量因子激增",
-  "item.moonstone.cell_chromosome":"染色体结构变异",
-  "moonstone.curse.name.all.this": "这个物品被",
   "item.deceased_contract.tool.string": "你可以在箱子里找到被诅咒的饰品",
   "enchantment.moonstone.malice": "恶意",
   "moonstone.difficulty.name.god": "类神",
@@ -1249,7 +1264,7 @@
   "moonstone.jei.mayhemcrystal": "它不仅可以合成，也可以与武器匠职业的村民兑换",
   "moonstone.jei.treasure": "是一个在宝藏战利品箱里发现物品",
   "moonstone.jei.city": "是一个它不仅可以合成，也可以发现在古城的物品",
-  "moonstone.jei.deceased_contract": "“我想这是诅咒，但是它的诱惑力实在难以抵御...一旦签订契约，他将永远缠绕着你，但这不是最糟糕的，而是它会让你陷入痛苦与杀戮，成为地狱的使魔“\n杀死生物有10%的概率获得它们的血液\n拾取血液恢复5%最大生命值\n-20%伤害\n-25%抗性\n-15%暴击\n-30%治疗\n\n但是：\n杀死生物有40%的概率召唤一只僵尸\n杀死生物有20%的概率召唤一只巨人僵尸\n并且：\n召唤的僵尸获得50%召唤者的伤害，速度，防御，最大生命值的加成\n召唤的僵尸获得获得召唤者目前存在的所有正面药水状态\n\nNecora病毒及其附属物品无效化\n暗影瘟疫及其附属物品无效化",
+  "moonstone.jei.deceased_contract": "“我想这是诅咒，但是它的诱惑力实在难以抵御...一旦签订契约，他将永远缠绕着你，但这不是最糟糕的，而是它会让你陷入痛苦与杀戮，成为地狱的使魔“\n杀死生物有15%的概率获得它们的血液\n拾取血液恢复15%最大生命值\n-20%伤害\n-25%抗性\n-15%暴击\n-30%治疗\n\n但是：\n杀死生物有30%的概率召唤一只僵尸\n杀死生物有15%的概率召唤一只巨人僵尸\n并且：\n召唤的僵尸获得50%召唤者的伤害，速度，防御，最大生命值的加成\n召唤的僵尸获得获得召唤者目前存在的所有正面药水状态\n\nNecora病毒及其附属物品无效化\n暗影瘟疫及其附属物品无效化",
   "moonstone.jei.deceased_contract.all": "是一个只能在佩戴死灵契约才能发现于地牢的物品",
 
   "item.moonstone.owner_blood_eye":"渎圣者",
@@ -1310,7 +1325,7 @@
 
 
   "item.moonstone.nightmare_base_black_eye": "§4邪念之窥眸",
-  "item.nightmare_base_black_eye.tool.string": "视力模糊,无药可医",
+  "item.nightmare_base_black_eye.tool.string": "受伤视力模糊，随时间恢复",
   "item.nightmare_base_black_eye.tool.string.1": "但是你可以解锁下列物品",
 
 
@@ -1538,7 +1553,12 @@
   "advancements.tooltip.nightmare_base.text": "获得这个物品",
   "advancements.tooltip.nightmare_base.hand": "起始",
 
+  "item.moonstone.nightmare_axe":"混沌战斧",
 
+  "item.nightmare_axe.tool.string": "杀死生物召唤混沌战斧，落下造成300%你的攻击伤害",
+  "item.nightmare_axe.tool.string.1": "附近每有一把混沌战斧：",
+  "item.nightmare_axe.tool.string.2": "+25%伤害",
+  "item.nightmare_axe.tool.string.3": "+25%治疗",
   "item.moonstone.nightmare_base_black_eye_heart": "§4死心之胚",
   "item.nightmare_base_black_eye_heart.tool.string": "附近的生物受到的伤害提高25%",
   "item.nightmare_base_black_eye_heart.tool.string.1": "他们恢复的生命值会到你身上",

@@ -54,7 +54,7 @@ public class nightmare_base  extends nightmare {
 
                         Items.nightmare_base_start.get()
                 ));
-                for (int i = 0; i < 2; i++) {
+                for (int i = 0; i < 3; i++) {
 
                     if (!items.isEmpty()) {
                         int index = random.nextInt(items.size());
@@ -70,7 +70,7 @@ public class nightmare_base  extends nightmare {
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = HashMultimap.create();
-        CuriosApi.addSlotModifier(linkedHashMultimap, "nightmare", ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 2, AttributeModifier.Operation.ADD_VALUE);
+        CuriosApi.addSlotModifier(linkedHashMultimap, "nightmare", ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 3, AttributeModifier.Operation.ADD_VALUE);
         return linkedHashMultimap;
     }
 

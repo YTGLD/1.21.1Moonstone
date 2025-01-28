@@ -63,7 +63,7 @@ public class nightmareeye extends nightmare {
         if (Handler.hascurio(player, Items.nightmarerotten.get())){
             float a = BuiltInRegistries.ATTRIBUTE.size();
             a /= 100;
-            a *= 1.1F;
+            a *= 0.2F;
             s += a;
         }
 

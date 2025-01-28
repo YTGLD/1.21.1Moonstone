@@ -99,7 +99,7 @@ public class blood extends ThrowableItemProjectile {
             this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.RESPAWN_ANCHOR_DEPLETE, SoundSource.NEUTRAL, 1.45f, 1.45f);
 
             if (Handler.hascurio(entity, Items.deceased_contract.get())){
-                entity.heal(entity.getMaxHealth() / 20);
+                entity.heal(entity.getMaxHealth() * 0.15f);
             }
 
             if (this.getOwner()!=null && this.getOwner() instanceof Player player){

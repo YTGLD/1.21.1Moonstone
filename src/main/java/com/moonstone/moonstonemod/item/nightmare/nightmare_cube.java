@@ -5,7 +5,10 @@ import com.moonstone.moonstonemod.entity.zombie.red_entity;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -53,6 +56,7 @@ public class nightmare_cube extends nightmare {
                                 e.setNoGravity(true);
                                 e.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 12000, 0, false, false));
                                 e.setOwnerUUID(player.getUUID());
+                                player.level().playSound(null,new BlockPos((int)player.getX(), (int) player.getY(), (int) player.getZ()), SoundEvents.WARDEN_SONIC_BOOM, SoundSource.MASTER,1,1);
                                 player.level().addFreshEntity(e);
                                 player.getCooldowns().addCooldown(this, 200);
 

@@ -1,0 +1,32 @@
+{
+  "values": {
+    "moonstone:atp_height": {"chance": 0.8},
+    "moonstone:cell_big_boom": {"chance": 0.8},
+    "moonstone:speed_metabolism": {"chance": 0.8},
+    "moonstone:cell_disorder": {"chance": 0.8},
+    "moonstone:cell_off_on": {"chance": 0.8},
+    "moonstone:cell_darwin": {"chance": 0.8},
+    "moonstone:cell_god": {"chance": 0.8},
+    "moonstone:cell_inheritance": {"chance": 0.8},
+    "moonstone:cell_oxygen": {"chance": 0.8},
+    "moonstone:cell_break_down_water": {"chance": 0.8},
+    "moonstone:cell_ground": {"chance": 0.8},
+    "moonstone:cell_in_water": {"chance": 0.8},
+    "moonstone:cell_in_air": {"chance": 0.8},
+    "moonstone:cell_necrosis": {"chance": 0.8},
+    "moonstone:cell_digestion": {"chance": 0.8},
+    "moonstone:cell_acid": {"chance": 0.8},
+    "moonstone:cell_eyes": {"chance": 0.8},
+    "moonstone:cell_bone_add": {"chance": 0.8},
+    "moonstone:cell_sense": {"chance": 0.8},
+    "moonstone:cell_cranial": {"chance": 0.8},
+    "moonstone:cell_dna_suppression": {"chance": 0.8},
+    "moonstone:cell_putrefactive": {"chance": 0.8},
+    "moonstone:cell_synthesis": {"chance": 0.8},
+    "moonstone:cell_compress": {"chance": 0.8},
+    "moonstone:cell_preferential": {"chance": 0.8},
+    "moonstone:cell_flu": {"chance": 0.8},
+    "moonstone:cell_constant": {"chance": 0.8},
+    "moonstone:cell_chromosome": {"chance": 0.8}
+  }
+}

@@ -16,8 +16,9 @@ public class magiceye extends Doom {
 
     @NotNull
     @Override
-    public ICurio.DropRule getDropRule(SlotContext slotContext, DamageSource source, int lootingLevel, boolean recentlyHit, ItemStack stack) {
-        return ICurio.DropRule.ALWAYS_KEEP;
+    public ICurio.DropRule getDropRule(SlotContext slotContext, DamageSource source, boolean recentlyHit,
+                                       ItemStack stack) {
+        return super.getDropRule(slotContext, source, recentlyHit, stack);
     }
 
     @Override

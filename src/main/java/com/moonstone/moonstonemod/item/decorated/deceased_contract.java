@@ -46,7 +46,7 @@ public class deceased_contract extends TheNecoraIC {
         if (event.getSource().getEntity() instanceof Player player) {
             if (Handler.hascurio(player, Items.deceased_contract.get())) {
 
-                if (ss <= 40) {
+                if (ss <= 30) {
                     cell_zombie z = new cell_zombie(EntityTs.cell_zombie.get(), player.level());
                     z.teleportTo(event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ());
                     z.setOwnerUUID(player.getUUID());
@@ -65,7 +65,7 @@ public class deceased_contract extends TheNecoraIC {
                     z.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,60, 6,false,false));
                     player.level().addFreshEntity(z);
                 }
-                if (ss <= 20) {
+                if (ss <= 15) {
                     cell_giant g = new cell_giant(EntityTs.cell_giant.get(), player.level());
                     g.teleportTo(event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ());
                     g.setOwnerUUID(player.getUUID());
@@ -85,7 +85,7 @@ public class deceased_contract extends TheNecoraIC {
                     player.level().addFreshEntity(g);
                 }
 
-                if (ss <=  10) {
+                if (ss <=  15) {
                     blood blood = new blood(EntityTs.blood.get(), player.level());
                     blood.setDeltaMovement(Mth.nextDouble(RandomSource.create(), 0.1, 0.11), Mth.nextDouble(RandomSource.create(), 0.095, 0.1), Mth.nextDouble(RandomSource.create(), 0.099, 0.1));
                     blood.setOwner(player);

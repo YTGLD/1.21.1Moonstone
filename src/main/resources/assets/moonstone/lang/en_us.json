@@ -137,9 +137,9 @@
   "item.nightmaremoai.tool.string.2": "can not Unequip",
 
 
-  "item.nightmarerotten.tool.string": "+33％ All Attributes",
+  "item.nightmarerotten.tool.string": "+20％ All Attributes",
   "item.nightmarerotten.tool.string.1": "But for every additional 1 attribute",
-  "item.nightmarerotten.tool.string.2": "Curses from the Nightmare will increase by 1.1%",
+  "item.nightmarerotten.tool.string.2": "Curses from the Nightmare will increase by 0.2%",
   "item.nightmarerotten.tool.string.3": "Only those who bear the fear of the Nightmare",
   "item.nightmarerotten.tool.string.4": "To be eligible to use this prop",
 
@@ -817,7 +817,7 @@
   "item.moonstone.max_eye": "max eye",
   "item.max_eye.tool.string": "Killing organisms to obtain blood",
   "item.max_eye.tool.string.1": "Up to 4 points can be stored",
-  "item.max_eye.tool.string.2": "When you have blood, you will reduce damage by 90%",
+  "item.max_eye.tool.string.2": "When you have blood, you will reduce damage by 75%",
   "item.max_eye.tool.string.3": "But every time you get hurt, you lose a drop of blood",
   "item.max_eye.tool.string.4": "Over time, your health will also be absorbed and restored to 10% of your maximum health",
 
@@ -945,7 +945,6 @@
   "item.malice_die.tool.string.9": "-30% all damage",
   "item.malice_die.tool.string.10": "If the number of targets is less than 3, the damage you cause will be reduced by 35%",
 
-
   "item.moonstone.deceased_contract": "deceased contract",
   "item.moonstone.blood_sun": "blood sun",
   "item.blood_sun.tool.string": "kill the mob",
@@ -953,39 +952,37 @@
   "item.moonstone.dna_box": "dna box",
   "item.moonstone.medicinebox.tool.2": "",
 
+
+  "item.moonstone.atp_height": "High ATP Energy",
+  "item.moonstone.cell_god": "Creationism",
+  "item.moonstone.cell_ground": "Ground Affinity",
+  "item.moonstone.cell_inheritance": "Simulated Genetic Inheritance",
+  "item.moonstone.cell_oxygen": "Alkaline Oxidation",
+  "item.moonstone.cell_big_boom": "Cytochrome Burst",
+  "item.moonstone.cell_break_down_water": "Alkaline Hydrolysis",
+  "item.moonstone.cell_darwin": "Darwinism",
+  "item.moonstone.cell_disorder": "Metabolic Disorder",
+  "item.moonstone.cell_in_air": "Air Affinity",
+  "item.moonstone.cell_in_water": "Water Affinity",
+  "item.moonstone.cell_off_on": "Catalyst Switch",
+  "item.moonstone.speed_metabolism": "Rapid Metabolism",
+  "item.moonstone.cell_necrosis": "Liquefactive Necrosis",
+  "item.moonstone.cell_digestion": "Epidermal Digestion",
+  "item.moonstone.cell_acid": "Acidic Fluid Reflux",
+  "item.moonstone.cell_eyes": "Cobra Lock",
+  "item.moonstone.cell_bone_add": "Bone Structure Aberration",
+  "item.moonstone.cell_sense": "Enhanced Sensory System",
+  "item.moonstone.cell_cranial": "Brain Tissue Transfer",
+  "item.moonstone.cell_dna_suppression": "Neurotransmitter Inhibition",
+  "item.moonstone.cell_putrefactive": "Heat Decomposition Inhibition",
+  "item.moonstone.cell_synthesis": "Peptide Synthesis Enhancement",
+  "item.moonstone.cell_compress": "Lethal Gene Compression",
+  "item.moonstone.cell_preferential": "Selective Evolution",
+  "item.moonstone.cell_flu": "Flu-like Virus",
+  "item.moonstone.cell_constant": "Constant Factor Surge",
+  "item.moonstone.cell_chromosome": "Chromosome Structure Variation",
+
   "error.moonstone.dna_box": "",
-  "item.moonstone.atp_height": "",
-  "item.moonstone.cell_god": "",
-  "item.moonstone.cell_ground": "",
-  "item.moonstone.cell_inheritance": "",
-  "item.moonstone.cell_oxygen": "",
-  "item.moonstone.cell_big_boom":"",
-  "item.moonstone.cell_break_down_water": "",
-  "item.moonstone.cell_darwin": "",
-  "item.moonstone.cell_disorder":"",
-  "item.moonstone.cell_in_air": "",
-  "item.moonstone.cell_in_water": "",
-  "item.moonstone.cell_off_on": "",
-  "item.moonstone.speed_metabolism":"",
-
-  "item.moonstone.cell_necrosis":"",
-  "item.moonstone.cell_digestion":"",
-  "item.moonstone.cell_acid":"",
-  "item.moonstone.cell_eyes":"",
-  "item.moonstone.cell_bone_add":"",
-  "item.moonstone.cell_sense":"",
-
-  "item.moonstone.cell_cranial":"",
-  "item.moonstone.cell_dna_suppression":"",
-  "item.moonstone.cell_putrefactive":"",
-  "item.moonstone.cell_synthesis":"",
-
-  "item.moonstone.cell_compress":"",
-  "item.moonstone.cell_preferential":"",
-  "item.moonstone.cell_flu":"",
-  "item.moonstone.cell_constant":"",
-  "item.moonstone.cell_chromosome":"",
-
   "advancements.tooltip.blood.hand": "",
   "advancements.tooltip.blood.text": "=",
 
@@ -1274,7 +1271,7 @@
   "item.nightmare_base_stone_brain.tool.string.2": "Resistance increased by 50% when not at full health",
 
   "item.moonstone.nightmare_base_black_eye": "§4Evil Eye of Insight",
-  "item.nightmare_base_black_eye.tool.string": "Will blur your vision during the day",
+  "item.nightmare_base_black_eye.tool.string": "Blurred vision from the injury that recovers over time",
   "item.nightmare_base_black_eye.tool.string.1": "But you can unlock the following items",
   "item.moonstone.nightmare_base_black_eye_eye": "§4Dreadful Tumor",
   "item.nightmare_base_black_eye_eye.tool.string": "Creatures under your gaze will be unable to move",
@@ -1490,6 +1487,11 @@
 
 
 
+  "item.moonstone.nightmare_axe":"nightmare axe",
+  "item.nightmare_axe.tool.string": "Kill creatures to summon the Chaos Battle Axe",
+  "item.nightmare_axe.tool.string.1": "For each nearby Chaos Waraxe:",
+  "item.nightmare_axe.tool.string.2": "+25% damage",
+  "item.nightmare_axe.tool.string.3": "+25% heal",
 
 
 

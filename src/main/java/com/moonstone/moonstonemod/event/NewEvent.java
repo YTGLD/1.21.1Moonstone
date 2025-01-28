@@ -14,6 +14,7 @@ import com.moonstone.moonstonemod.init.moonstoneitem.Enchants;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.IBattery;
 import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
 import com.moonstone.moonstonemod.item.maxitem.book.the_blood_book;
+import com.moonstone.moonstonemod.item.nightmare.nightmare_axe;
 import com.moonstone.moonstonemod.item.nightmare.super_nightmare.*;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.dna.bat_cell;
 import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.giant_boom_cell;
@@ -108,6 +109,7 @@ public class NewEvent {
         DungeonLoot.heal(event);
         LifeManSuper.healEvent(event);
         nightmare_base_black_eye_heart.heal(event);
+        nightmare_axe.heals(event);
         if (event.getEntity() instanceof LivingEntity living){
             if (living.getAttribute(AttReg.heal)!=null){
                 float attack = (float) living.getAttribute(AttReg.heal).getValue();
@@ -290,8 +292,8 @@ public class NewEvent {
         nightmare_base_insight_insane.damage(event);
         nightmare_base_start.damage(event);
         nightmare_base_start_pod.damage(event);
-
-
+        nightmare_base_black_eye.damage(event);
+        nightmare_axe.att(event);
 
 
         CuriosApi.getCuriosInventory(event.getEntity()).ifPresent(handler -> {
@@ -467,7 +469,6 @@ public class NewEvent {
         CellularPathologyPromotion.criticalHitEvent(event);
         ManOfLife.criticalHitEvent(event);
         LifeManSuper.criticalHitEvent(event);
-
         if (event.getEntity() instanceof Player living){
             if (living.getAttribute(AttReg.cit)!=null){
                 float attack = (float) living.getAttribute(AttReg.cit).getValue();
@@ -514,6 +515,7 @@ public class NewEvent {
         sword_soul.evil(event);
         nightmare_base_black_eye_red.kill(event);
         nightmare_base_insight_insane.LivingDeathEvents(event);
+        nightmare_axe.Nig(event);
 
         MethaneEmission.LivingHealEvent(event);
     }

@@ -29,26 +29,23 @@ public class nightmare_heart extends nightmare {
         }
     }
     public static void Nig(LivingDeathEvent event) {
-        if (event.getSource() != null) {
-            if (event.getSource().getEntity() instanceof Player player) {
-                if (Handler.hascurio(player, Items.nightmare_heart.get())) {
-                    if (!player.getCooldowns().isOnCooldown(Items.nightmare_heart.get())) {
-                        nightmare_entity e = new nightmare_entity(EntityTs.nightmare_entity.get(), event.getEntity().level());
-                        e.setPos(new Vec3(event.getEntity().getX(), event.getEntity().getY() - 1, event.getEntity().getZ()));
+        if (event.getSource().getEntity() instanceof Player player) {
+            if (Handler.hascurio(player, Items.nightmare_heart.get())) {
+                if (!player.getCooldowns().isOnCooldown(Items.nightmare_heart.get())) {
+                    nightmare_entity e = new nightmare_entity(EntityTs.nightmare_entity.get(), event.getEntity().level());
+                    e.setPos(new Vec3(event.getEntity().getX(), event.getEntity().getY() - 1, event.getEntity().getZ()));
 
-                        e.setNoAi(true);
-                        e.setNoGravity(true);
-                        e.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 12000, 0, false, false));
+                    e.setNoAi(true);
+                    e.setNoGravity(true);
+                    e.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 12000, 0, false, false));
 
 
-                        event.getEntity().level().addFreshEntity(e);
+                    event.getEntity().level().addFreshEntity(e);
 
-                        player.getCooldowns().addCooldown(Items.nightmare_heart.get(), 50);
+                    player.getCooldowns().addCooldown(Items.nightmare_heart.get(), 50);
 
-                    }
                 }
             }
-
         }
 
     }

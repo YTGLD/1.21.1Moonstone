@@ -24,43 +24,22 @@ import java.util.List;
 import java.util.Map;
 
 public class moon_stone extends CommonItem implements Die {
-    public int time(LivingEntity player){
-        return 400;
-    }
-    public static final String timeName = "timeName";
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         if (stack.get(DataReg.tag) == null) {
             stack.set(DataReg.tag,new CompoundTag());
         }
-        if (stack.get(DataReg.tag) != null){
-            stack.get(DataReg.tag).putInt(timeName,time(slotContext.entity()));
-
-        }
     }
 
     public static void LivingIncomingDamageEvent(LivingIncomingDamageEvent event){
         if (event.getSource().getEntity() instanceof Player living) {
             if  (Handler.hascurio(living, Items.moon_stone.get())) {
-                CuriosApi.getCuriosInventory(living).ifPresent(handler -> {
-                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                        ICurioStacksHandler stacksHandler = entry.getValue();
-                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                            ItemStack stack = stackHandler.getStackInSlot(i);
-                            if (stack.get(DataReg.tag)!=null){
-                                if (!living.getCooldowns().isOnCooldown(Items.moon_stone.get())) {
-                                    LivingDeathEvent deathEvent = new LivingDeathEvent(event.getEntity(), event.getSource());
-                                    NeoForge.EVENT_BUS.post(deathEvent);
-
-                                    living.getCooldowns().addCooldown(Items.moon_stone.get(),stack.get(DataReg.tag).getInt(timeName));
-                                }
-                            }
-                        }
-                    }
-                });
+                if (!living.getCooldowns().isOnCooldown(Items.moon_stone.get())) {
+                    LivingDeathEvent deathEvent = new LivingDeathEvent(event.getEntity(), event.getSource());
+                    NeoForge.EVENT_BUS.post(deathEvent);
+                    living.getCooldowns().addCooldown(Items.moon_stone.get(),400);
+                }
             }
         }
     }

@@ -33,7 +33,7 @@ public class nightmare_base_reversal_orb extends nightmare {
         if (slotContext.entity() instanceof Player player){
             if (!player.getCooldowns().isOnCooldown(this)){
                 player.setHealth(player.getMaxHealth());
-                player.getCooldowns().addCooldown(this,200);
+                player.getCooldowns().addCooldown(this,140);
             }
         }
     }

@@ -82,6 +82,10 @@ public class EntityTs {
             ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.rage_blood::new, MobCategory.MISC).sized(1, 1).clientTrackingRange(16).build("rage_blood"));
     public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.as_sword>> as_sword = REGISTRY.register("as_sword",
             ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.as_sword::new, MobCategory.MISC).sized(1, 0.2f).clientTrackingRange(16).build("as_sword"));
+    public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.axe>> axe = REGISTRY.register("axe",
+            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.axe::new, MobCategory.MISC).sized(0.2f, 1).clientTrackingRange(50).build("axe"));
+    public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.bolt>> bolt = REGISTRY.register("bolt",
+            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.bolt::new, MobCategory.MISC).sized(0.2f, 1).clientTrackingRange(50).build("bolt"));
     @SubscribeEvent
     public static void EntityAttributeCreationEvent(EntityAttributeCreationEvent event){
         event.put(EntityTs.cell_zombie.get(), Zombie.createAttributes().build());

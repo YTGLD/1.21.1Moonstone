@@ -25,9 +25,6 @@ public class LineRenderer   <T extends line> extends EntityRenderer<T> {
     private void setT(PoseStack matrices,
                       T entity,
                       MultiBufferSource vertexConsumers){
-        if (entity.getTrailPositions().size()<20){
-            return;
-        }
         matrices.pushPose();
         for (int i = 1; i < entity.getTrailPositions().size(); i++){
             Vec3 prevPos = entity.getTrailPositions().get(i - 1);

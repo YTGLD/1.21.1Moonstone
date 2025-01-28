@@ -64,7 +64,7 @@ public class max_eye extends Item implements ICurioItem, Blood {
                             if (stack.get(DataReg.tag) != null) {
                                 if (stack.get(DataReg.tag).getFloat(blood)>0){
                                     stack.get(DataReg.tag).putFloat(blood,stack.get(DataReg.tag).getFloat(blood)-0.1f);
-                                    event.setAmount(event.getAmount()*0.1f);
+                                    event.setAmount(event.getAmount()*0.25f);
                                 }
                             }
                         }

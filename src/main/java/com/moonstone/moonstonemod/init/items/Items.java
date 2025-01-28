@@ -282,6 +282,8 @@ public class Items {
     public static final DeferredHolder<Item,?> nightmare_base_start_egg =REGISTRY.register("nightmare_base_start_egg", nightmare_base_start_egg::new);
 
     public static final DeferredHolder<Item,?> nightmare_base_start_power =REGISTRY.register("nightmare_base_start_power", nightmare_base_start_power::new);
+    public static final DeferredHolder<Item,?> god_head =REGISTRY.register("god_head", god_head::new);
+    public static final DeferredHolder<Item,?> nightmare_axe =REGISTRY.register("nightmare_axe", nightmare_axe::new);
 
 
     public static final DeferredHolder<Item,?> the_heart_image =REGISTRY.register("the_heart_image", ()-> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));

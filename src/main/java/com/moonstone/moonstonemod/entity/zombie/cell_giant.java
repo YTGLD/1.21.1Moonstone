@@ -212,7 +212,7 @@ public class cell_giant extends MoonTamableAnimal implements OwnableEntity {
     }
 
     protected void playStepSound(BlockPos p_219431_, BlockState p_219432_) {
-        this.playSound(SoundEvents.ZOMBIE_STEP, 10.0F, 1.0F);
+        this.playSound(SoundEvents.ZOMBIE_STEP, 1, 1.0F);
     }
 
     public boolean doHurtTarget(Entity p_219472_) {
@@ -312,7 +312,7 @@ public class cell_giant extends MoonTamableAnimal implements OwnableEntity {
                 if (!this.isSilent()) {
                     this.level()
                             .playLocalSound(
-                                    this.getX(), this.getY(), this.getZ(), SoundEvents.WARDEN_HEARTBEAT, this.getSoundSource(), 5.0F, this.getVoicePitch(), false
+                                    this.getX(), this.getY(), this.getZ(), SoundEvents.WARDEN_HEARTBEAT, this.getSoundSource(), 1, this.getVoicePitch(), false
                             );
                 }
             }

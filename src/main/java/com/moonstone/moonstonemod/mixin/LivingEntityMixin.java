@@ -33,6 +33,7 @@ public abstract class LivingEntityMixin {
     @Shadow protected abstract void setLivingEntityFlag(int p_21156_, boolean p_21157_);
     @Inject(at = @At("RETURN"), method = "getArmorValue", cancellable = true)
     public void getArmorValue(CallbackInfoReturnable<Integer> cir){
+
         if ((LivingEntity) (Object) this instanceof Player player) {
             CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
                 Map<String, ICurioStacksHandler> curios = handler.getCurios();

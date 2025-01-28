@@ -31,7 +31,15 @@ public class nightmare_base_stone extends nightmare {
             }
         }
     }
-
+    @Override
+    public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
+        if (slotContext.entity() instanceof Player player){
+            if (player.isCreative()){
+                return true;
+            }
+        }
+        return false;
+    }
     
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {

@@ -26,7 +26,7 @@ public class nightmarerotten extends nightmare {
 
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers() {
         Multimap<Holder<Attribute>, AttributeModifier> get = HashMultimap.create();
-        double as = 0.1;
+        double as = 0.2;
 
         for (Holder<Attribute> attribute : BuiltInRegistries.ATTRIBUTE.asHolderIdMap()){
 
@@ -63,7 +63,7 @@ public class nightmarerotten extends nightmare {
         pTooltipComponents.add(Component.translatable(""));
         CompoundTag tag = pStack.get(DataReg.tag);
         if (tag != null){
-            pTooltipComponents.add(Component.translatable("·now：" + ((float) (tag.getInt(nightmarerotten) * 1.1)) + "%").withStyle(ChatFormatting.RED));
+            pTooltipComponents.add(Component.translatable("·now：" + ((float) (tag.getInt(nightmarerotten) * 0.2)) + "%").withStyle(ChatFormatting.RED));
 
         }
         pTooltipComponents.add(Component.translatable(""));
