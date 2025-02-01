@@ -673,6 +673,7 @@
   "item.giant.tool.string": "杀死生物有些许概率使尸体诱变成巨型细胞僵尸",
   "advancements.tooltip.giant.text": "装备necora病毒并杀死监守者",
   "entity.moonstone.as_sword": "飞剑",
+  "entity.moonstone.blood_bat": "暗影蝙蝠",
 
   "entity.moonstone.rage_blood": "痛苦球子",
   "entity.moonstone.cell_giant": "巨型细胞僵尸",
@@ -1546,8 +1547,9 @@
   "moonstone.jei.item.moonstone.nightmare_base_start_power": "杀死坚守者",
   "moonstone.jei.item.moonstone.nightmare_base_start_egg": "杀死嗅探兽",
   "moonstone.jei.item.moonstone.nightmare_base_start_pod": "开地牢的箱子，概率25%，只能获取一个",
+  "item.dnas.tool.string": "提示：使用药物粉碎盒粉碎基因物品",
 
-
+  "moonstone.jei.necora": "这是僵尸病毒，它需要以下材料在工作台上合成：\n48份ATP高能量\n32份达尔文主义\n64份催化剂开关\n24份极速代谢\n20份代谢紊乱\n12份肽合成增强\n24份神经递质抑制\n8份液化性坏死\n1个灵质棱镜\n当你集齐了所有材料，那你就可以进行下一步计划.......",
 
 
   "advancements.tooltip.nightmare_base.text": "获得这个物品",

@@ -84,15 +84,32 @@ public class blood_bat extends TamableAnimal {
         List<Mob> entities = this.level().getEntitiesOfClass(Mob.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
         for (Mob mob : entities) {
             if (this.getTarget() == null) {
-                ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType());
-                if (!entity.getNamespace().equals(MoonStoneMod.MODID)) {
-                    this.setTarget(mob);
+                if (this.getOwner() != null) {
+                    if (!(mob instanceof OwnableEntity tamableAnimal
+                            && tamableAnimal.getOwner() != null
+                            && tamableAnimal.getOwner().equals(this.getOwner()))) {
+                        ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType());
+                        if (!entity.getNamespace().equals(MoonStoneMod.MODID)) {
+                            this.setTarget(mob);
+                        }
+                    }
                 }
             }
         }
+
         if (this.getTarget() != null) {
             if (!this.getTarget().isAlive()) {
                 this.setTarget(null);
+            }
+        }
+        if (this.getTarget() != null&&this.getOwner()!=null){
+            if (this.getTarget() instanceof OwnableEntity entity){
+                if (entity.getOwner()!=null&&this.getOwner()!=null) {
+                    if (entity.getOwner().is(this.getOwner())) {
+                        this.setTarget(null);
+                    }
+                }
+
             }
         }
         if (this.getOwner()!= null) {

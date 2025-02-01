@@ -54,47 +54,49 @@ public class bat_cell extends BloodViru {
         }
         if (event.getEntity() instanceof Player living) {
             if (Handler.hascurio(living,Items.bloodvirus.get())) {
-                if (!living.getCooldowns().isOnCooldown(Items.bat_cell.get())) {
-                    if (Handler.hascurio(living, Items.bat_cell.get())) {
-                        int j = Mth.nextInt(RandomSource.create(), 1, 10);
-                        if (Handler.hascurio(living, Items.cell_harvest.get())) {
-                            j = Mth.nextInt(RandomSource.create(), 1, 8);
-                        }
-                        if (j == 1) {
-                            blood_bat blood_bat = new blood_bat(EntityTs.blood_bat.get(), living.level());
-                            blood_bat.setOwnerUUID(living.getUUID());
-                            blood_bat.teleportTo(living.getX(), living.getY(), living.getZ());
-                            if (!Handler.hascurio(living, Items.cell_scientist.get())) {
-                                blood_bat.getAttributes().addTransientAttributeModifiers(modifierMultimap(blood_bat, living.getHealth() * 0.15f));
-                            } else {
-                                blood_bat.getAttributes().addTransientAttributeModifiers(modifierMultimapA(blood_bat, living.getHealth() * 0.25f));
-                                living.hurt(living.damageSources().dryOut(), living.getHealth() * 0.3f);
-                                living.invulnerableTime = 0;
+                if (event.getSource().getEntity()!=null) {
+                    if (!living.getCooldowns().isOnCooldown(Items.bat_cell.get())) {
+                        if (Handler.hascurio(living, Items.bat_cell.get())) {
+                            int j = Mth.nextInt(RandomSource.create(), 1, 10);
+                            if (Handler.hascurio(living, Items.cell_harvest.get())) {
+                                j = Mth.nextInt(RandomSource.create(), 1, 8);
                             }
-                            if (Handler.hascurio(living, Items.cell_doctor.get())) {
-                                blood_bat.addTag(cell_doctor);
-                            }
-                            if (Handler.hascurio(living, Items.cell_desecrate.get())) {
-                                blood_bat.addTag(cell_desecrate);
-                            }
-                            if (Handler.hascurio(living, Items.cell_immortal.get())) {
-                                blood_bat.addTag(cell_immortal);
-                            }
-                            if (Handler.hascurio(living, Items.cell_rage.get())) {
-                                blood_bat.addTag(cell_rage);
-                            }
-                            if (Handler.hascurio(living, Items.cell_blood_attack.get())) {
-                                blood_bat.addTag(cell_blood_attack);
+                            if (j == 1) {
+                                blood_bat blood_bat = new blood_bat(EntityTs.blood_bat.get(), living.level());
+                                blood_bat.setOwnerUUID(living.getUUID());
+                                blood_bat.teleportTo(living.getX(), living.getY(), living.getZ());
+                                if (!Handler.hascurio(living, Items.cell_scientist.get())) {
+                                    blood_bat.getAttributes().addTransientAttributeModifiers(modifierMultimap(blood_bat, living.getHealth() * 0.15f));
+                                } else {
+                                    blood_bat.getAttributes().addTransientAttributeModifiers(modifierMultimapA(blood_bat, living.getHealth() * 0.25f));
+                                    living.hurt(living.damageSources().dryOut(), living.getHealth() * 0.3f);
+                                    living.invulnerableTime = 0;
+                                }
+                                if (Handler.hascurio(living, Items.cell_doctor.get())) {
+                                    blood_bat.addTag(cell_doctor);
+                                }
+                                if (Handler.hascurio(living, Items.cell_desecrate.get())) {
+                                    blood_bat.addTag(cell_desecrate);
+                                }
+                                if (Handler.hascurio(living, Items.cell_immortal.get())) {
+                                    blood_bat.addTag(cell_immortal);
+                                }
+                                if (Handler.hascurio(living, Items.cell_rage.get())) {
+                                    blood_bat.addTag(cell_rage);
+                                }
+                                if (Handler.hascurio(living, Items.cell_blood_attack.get())) {
+                                    blood_bat.addTag(cell_blood_attack);
 
-                            }
-                            if (Handler.hascurio(living, Items.cell_fear.get())) {
-                                blood_bat.addTag(cell_fear);
-                            }
+                                }
+                                if (Handler.hascurio(living, Items.cell_fear.get())) {
+                                    blood_bat.addTag(cell_fear);
+                                }
 
-                            living.level().addFreshEntity(blood_bat);
-                            living.getCooldowns().addCooldown(Items.bat_cell.get(), 100);
-                            if (Handler.hascurio(living, Items.cell_not_do.get())) {
-                                living.hurt(living.damageSources().dryOut(), living.getHealth() * 0.15f);
+                                living.level().addFreshEntity(blood_bat);
+                                living.getCooldowns().addCooldown(Items.bat_cell.get(), 100);
+                                if (Handler.hascurio(living, Items.cell_not_do.get())) {
+                                    living.hurt(living.damageSources().dryOut(), living.getHealth() * 0.15f);
+                                }
                             }
                         }
                     }

@@ -257,6 +257,7 @@ public class cell_giant extends MoonTamableAnimal implements OwnableEntity {
         if (this.time > 2400){
             this.kill();
         }
+
         if (this.getOwner()!= null) {
             if (this.getOwner().getLastHurtByMob()!= null) {
                 if (!this.getOwner().getLastHurtByMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtByMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
@@ -276,6 +277,8 @@ public class cell_giant extends MoonTamableAnimal implements OwnableEntity {
 
             }
         }
+
+
         Level level = this.level();
         if (level instanceof ServerLevel) {
             if (this.isPersistenceRequired() || this.requiresCustomPersistence()) {
@@ -290,20 +293,19 @@ public class cell_giant extends MoonTamableAnimal implements OwnableEntity {
                 this.setAttackTarget(null);
             }
         }
-        Vec3 playerPos = this.position().add(0, 0.75, 0);
-        int range = 10;
-        List<Mob> entities = this.level().getEntitiesOfClass(Mob.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
-        for (Mob mob : entities) {
-            if (!this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).isPresent()) {
-                ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType());
-                if (!entity.getNamespace().equals(MoonStoneMod.MODID)) {
-                    this.setAttackTarget(mob);
-                }
-            }
-        }
+        this.setAttackT();
+
         if (this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).isPresent()) {
             if (!this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get().isAlive()) {
                 this.setAttackTarget(null);
+            }else {
+                if (this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get() instanceof OwnableEntity entity) {
+                    if (this.getOwner()!=null) {
+                        if (entity.getOwner() != null && entity.getOwner().is(this.getOwner())) {
+                            this.setAttackTarget(null);
+                        }
+                    }
+                }
             }
         }
         if (this.level().isClientSide()) {
@@ -335,9 +337,27 @@ public class cell_giant extends MoonTamableAnimal implements OwnableEntity {
                     this.clientDiggingParticles(this.diggingAnimationState);
             }
         }
-
     }
-
+    private void setAttackT(){
+        Vec3 playerPos = this.position().add(0, 0.75, 0);
+        int range = 10;
+        List<Mob> entities = this.level().getEntitiesOfClass(Mob.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
+        for (Mob mob : entities) {
+            if (!this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).isPresent()) {
+                ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType());
+                if (mob instanceof OwnableEntity entity1){
+                    if (this.getOwner()!=null) {
+                        if (entity1.getOwner() != null && entity1.getOwner().is(this.getOwner())) {
+                            return;
+                        }
+                    }
+                }
+                if (!entity.getNamespace().equals(MoonStoneMod.MODID)) {
+                    this.setAttackTarget(mob);
+                }
+            }
+        }
+    }
     protected void customServerAiStep() {
         ServerLevel serverlevel = (ServerLevel)this.level();
         serverlevel.getProfiler().push("nightmare_giantBrain");

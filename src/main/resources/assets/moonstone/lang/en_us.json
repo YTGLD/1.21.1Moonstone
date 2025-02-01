@@ -1528,7 +1528,9 @@
   "moonstone.jei.item.moonstone.nightmare_base_start_power": "Kill the Guardian",
   "moonstone.jei.item.moonstone.nightmare_base_start_egg": "Kill the Sniffer",
   "moonstone.jei.item.moonstone.nightmare_base_start_pod": "Open dungeon chests, 25% chance, can only get one",
+  "moonstone.jei.necora": "这是僵尸病毒，它需要以下材料在工作台上合成：\n48份ATP高能量\n32份达尔文主义\n64份催化剂开关\n24份极速代谢\n20份代谢紊乱\n12份肽合成增强\n24份神经递质抑制\n8份液化性坏死\n1个灵质棱镜\n当你集齐了所有材料，那你就可以进行下一步计划.......",
 
+  "item.dnas.tool.string": "提示：使用药物粉碎盒粉碎基因物品",
 
 
 

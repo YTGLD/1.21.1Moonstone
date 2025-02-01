@@ -7,6 +7,8 @@ import com.moonstone.moonstonemod.client.particle.blue;
 import com.moonstone.moonstonemod.client.particle.popr;
 import com.moonstone.moonstonemod.client.particle.red;
 import com.moonstone.moonstonemod.client.renderer.MRender;
+import com.moonstone.moonstonemod.crafting.AllCrafting;
+import com.moonstone.moonstonemod.crafting.MoonRecipeProvider;
 import com.moonstone.moonstonemod.entity.client.BloodSwordRenderer;
 import com.moonstone.moonstonemod.entity.client.NigBoomRender;
 import com.moonstone.moonstonemod.entity.client.SwordRenderer;
@@ -21,7 +23,11 @@ import com.moonstone.moonstonemod.init.items.DNAItems;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.*;
 import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Recipe;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -30,12 +36,16 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RecipesUpdatedEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.event.RegisterShadersEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.data.internal.NeoForgeRecipeProvider;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.slf4j.Logger;
 
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
 @Mod(MoonStoneMod.MODID)
 public class MoonStoneMod {
@@ -69,13 +79,20 @@ public class MoonStoneMod {
         Particles.PARTICLE_TYPES.register(eventBus);
         Items.REGISTRY.register(eventBus);
 
-
+        AllCrafting.RECIPE_SERIALIZER_REGISTRY.register(eventBus);
+        eventBus.addListener(this::gatherData);
 
         eventBus.register(Config.class);
         Tab.TABS.register(eventBus);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.fc);
     }
+    public void gatherData(GatherDataEvent event){
+        DataGenerator gen = event.getGenerator();
+        PackOutput packOutput = gen.getPackOutput();
+        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+        gen.addProvider(event.includeServer(), new MoonRecipeProvider(packOutput, lookupProvider));
 
+    }
     @EventBusSubscriber(modid = MoonStoneMod.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
     public static class Client {
         @SubscribeEvent

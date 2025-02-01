@@ -9,6 +9,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
@@ -79,11 +80,15 @@ public class suddenrain extends ThrowableItemProjectile {
         for (LivingEntity entity : entities) {
             ResourceLocation name = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
             if (this.getOwner() != null) {
-                if (!name.getNamespace().equals(MoonStoneMod.MODID) && !(entity.is(this.getOwner()))) {
-                    double distance = this.distanceToSqr(entity);
-                    if (distance < closestDistance) {
-                        closestDistance = distance;
-                        closestEntity = entity;
+                if (!(entity instanceof OwnableEntity tamableAnimal
+                        && tamableAnimal.getOwner() != null
+                        && tamableAnimal.getOwner().equals(this.getOwner()))) {
+                    if (!name.getNamespace().equals(MoonStoneMod.MODID) && !(entity.is(this.getOwner()))) {
+                        double distance = this.distanceToSqr(entity);
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestEntity = entity;
+                        }
                     }
                 }
             }

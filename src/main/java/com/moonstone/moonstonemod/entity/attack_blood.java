@@ -8,6 +8,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.OwnableEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
@@ -77,21 +78,25 @@ public class attack_blood extends ThrowableItemProjectile {
             if (this.getOwner() != null) {
                 if (!entity.is(this.getOwner()) && this.getOwner() instanceof Player player) {
                     ResourceLocation entitys = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
-                    if (!entitys.getNamespace().equals(MoonStoneMod.MODID)) {
-                        entity.invulnerableTime = 0;
-                        if (boom) {
-                            this.level().explode(this, this.getX(), this.getY(), this.getZ(), 3, false, Level.ExplosionInteraction.NONE);
+                    if (!(entity instanceof OwnableEntity tamableAnimal
+                            && tamableAnimal.getOwner() != null
+                            && tamableAnimal.getOwner().equals(player))) {
+                        if (!entitys.getNamespace().equals(MoonStoneMod.MODID)) {
+                            entity.invulnerableTime = 0;
+                            if (boom) {
+                                this.level().explode(this, this.getX(), this.getY(), this.getZ(), 3, false, Level.ExplosionInteraction.NONE);
+                            }
+                            if (effect) {
+                                entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1));
+                                entity.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 1));
+                                entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
+                            }
+                            if (slime) {
+                                player.heal(damages);
+                            }
+                            entity.hurt(this.getOwner().damageSources().dryOut(), damages + player.getMaxHealth() / 10);
+                            this.discard();
                         }
-                        if (effect) {
-                            entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1));
-                            entity.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 1));
-                            entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
-                        }
-                        if (slime){
-                            player.heal(damages);
-                        }
-                        entity.hurt(this.getOwner().damageSources().dryOut(), damages + player.getMaxHealth() / 10);
-                        this.discard();
                     }
                 }
             }
@@ -154,7 +159,6 @@ public class attack_blood extends ThrowableItemProjectile {
         this.setXRot(0);
     }
     private void findNewTarget() {
-
         AABB searchBox = this.getBoundingBox().inflate(16);
         List<LivingEntity> entities = this.level().getEntitiesOfClass(LivingEntity.class, searchBox);
         double closestDistance = Double.MAX_VALUE;
@@ -164,11 +168,15 @@ public class attack_blood extends ThrowableItemProjectile {
         for (LivingEntity entity : entities) {
             ResourceLocation name = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
             if (this.getOwner() != null) {
-                if (!name.getNamespace().equals(MoonStoneMod.MODID) && !(entity.is(this.getOwner()))) {
-                    double distance = this.distanceToSqr(entity);
-                    if (distance < closestDistance) {
-                        closestDistance = distance;
-                        closestEntity = entity;
+                if (!(entity instanceof OwnableEntity tamableAnimal
+                        && tamableAnimal.getOwner() != null
+                        && tamableAnimal.getOwner().equals(this.getOwner()))) {
+                    if (!name.getNamespace().equals(MoonStoneMod.MODID) && !(entity.is(this.getOwner()))) {
+                        double distance = this.distanceToSqr(entity);
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestEntity = entity;
+                        }
                     }
                 }
             }
