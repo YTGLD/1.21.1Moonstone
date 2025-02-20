@@ -40,15 +40,16 @@ public class nightmareeye extends nightmare {
             player.getAttributes().removeAttributeModifiers(un_un_pla(player, stack));
         }
     }
-    @Override
+      @Override
     public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player){
             if (player.isCreative()){
                 return true;
             }
         }
-        return false;
+        return com.moonstone.moonstonemod.Config.SERVER.canUnequipMoonstoneItem.get();
     }
+
     public Multimap<Holder<Attribute>, AttributeModifier> un_un_pla(Player player, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
 

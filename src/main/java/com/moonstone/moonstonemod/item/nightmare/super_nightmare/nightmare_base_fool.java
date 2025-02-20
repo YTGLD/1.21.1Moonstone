@@ -26,15 +26,16 @@ import java.util.List;
 import java.util.Map;
 
 public class nightmare_base_fool extends nightmare {
-    @Override
+      @Override
     public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player){
             if (player.isCreative()){
                 return true;
             }
         }
-        return false;
+        return com.moonstone.moonstonemod.Config.SERVER.canUnequipMoonstoneItem.get();
     }
+
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {

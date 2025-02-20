@@ -15,5 +15,6 @@ public class Effects {
     public static final DeferredHolder<MobEffect,?> fear  =REGISTRY.register("fear",()->new fear());
     public static final DeferredHolder<MobEffect,?> pain  =REGISTRY.register("pain",()->new pain());
     public static final DeferredHolder<MobEffect,?> nightmare  =REGISTRY.register("nightmare",()->new nightmare());
+    public static final DeferredHolder<MobEffect,?> dead  =REGISTRY.register("dead",()->new dead());
 
 }

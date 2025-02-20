@@ -9,6 +9,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.OwnableEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
@@ -30,7 +31,9 @@ public class attack_blood extends ThrowableItemProjectile {
     public boolean slime = false;
     public boolean boom = false;
     public boolean effect = false;
+    public boolean isPlayer = false;
     public float speeds = 0.125f;
+    public float maxTime = 200;
     public attack_blood(EntityType<? extends attack_blood> entityType, Level level) {
         super(entityType, level);
         this.setNoGravity(true);
@@ -78,31 +81,36 @@ public class attack_blood extends ThrowableItemProjectile {
             if (this.getOwner() != null) {
                 if (!entity.is(this.getOwner()) && this.getOwner() instanceof Player player) {
                     ResourceLocation entitys = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
-                    if (!(entity instanceof OwnableEntity tamableAnimal
-                            && tamableAnimal.getOwner() != null
-                            && tamableAnimal.getOwner().equals(player))) {
-                        if (!entitys.getNamespace().equals(MoonStoneMod.MODID)) {
-                            entity.invulnerableTime = 0;
-                            if (boom) {
-                                this.level().explode(this, this.getX(), this.getY(), this.getZ(), 3, false, Level.ExplosionInteraction.NONE);
-                            }
-                            if (effect) {
-                                entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1));
-                                entity.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 1));
-                                entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
-                            }
-                            if (slime) {
-                                player.heal(damages);
-                            }
-                            entity.hurt(this.getOwner().damageSources().dryOut(), damages + player.getMaxHealth() / 10);
-                            this.discard();
+                    if (!entitys.getNamespace().equals(MoonStoneMod.MODID)) {
+                        entity.invulnerableTime = 0;
+                        if (boom) {
+                            this.level().explode(this.getOwner(), this.getX(), this.getY(), this.getZ(), 3, false, Level.ExplosionInteraction.NONE);
                         }
+
+
+                        if (effect) {
+                            entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1));
+                            entity.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 1));
+                            entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
+                        }
+                        if (slime){
+                            player.heal(damages);
+                        }
+                        if (isPlayer){
+                            entity.hurt(this.getOwner().damageSources().playerAttack(player), (float) (damages + player.getMaxHealth() / 10 + player.getAttributeValue(Attributes.ATTACK_DAMAGE) / 10));
+                        }else {
+                            entity.hurt(this.getOwner().damageSources().dryOut(), (float) (damages + player.getMaxHealth() / 10 + player.getAttributeValue(Attributes.ATTACK_DAMAGE) / 10));
+                        }
+                        this.discard();
                     }
                 }
             }
         }
+        if (boom&&tickCount>=maxTime) {
+            this.level().explode(this.getOwner(), this.getX(), this.getY(), this.getZ(), 3, false, Level.ExplosionInteraction.NONE);
+        }
 
-        if (this.tickCount > 200) {
+        if (this.tickCount > maxTime) {
             this.discard();
         }
         if (target != null) {
@@ -151,7 +159,7 @@ public class attack_blood extends ThrowableItemProjectile {
         trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
 
         if (trailPositions.size() > 20) {
-            trailPositions.removeFirst();
+            trailPositions.remove(0);
         }
 
         this.setNoGravity(true);
@@ -159,6 +167,7 @@ public class attack_blood extends ThrowableItemProjectile {
         this.setXRot(0);
     }
     private void findNewTarget() {
+
         AABB searchBox = this.getBoundingBox().inflate(16);
         List<LivingEntity> entities = this.level().getEntitiesOfClass(LivingEntity.class, searchBox);
         double closestDistance = Double.MAX_VALUE;
@@ -168,21 +177,25 @@ public class attack_blood extends ThrowableItemProjectile {
         for (LivingEntity entity : entities) {
             ResourceLocation name = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
             if (this.getOwner() != null) {
-                if (!(entity instanceof OwnableEntity tamableAnimal
-                        && tamableAnimal.getOwner() != null
-                        && tamableAnimal.getOwner().equals(this.getOwner()))) {
-                    if (!name.getNamespace().equals(MoonStoneMod.MODID) && !(entity.is(this.getOwner()))) {
-                        double distance = this.distanceToSqr(entity);
-                        if (distance < closestDistance) {
-                            closestDistance = distance;
-                            closestEntity = entity;
-                        }
+                if (!name.getNamespace().equals(MoonStoneMod.MODID) && !(entity.is(this.getOwner()))) {
+                    double distance = this.distanceToSqr(entity);
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestEntity = entity;
                     }
                 }
             }
         }
 
         this.target = closestEntity;
+    }
+
+    public float getMaxTime() {
+        return maxTime;
+    }
+
+    public void setMaxTime(float maxTime) {
+        this.maxTime = maxTime;
     }
 
     public void setBoom(boolean boom) {

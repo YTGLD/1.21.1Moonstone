@@ -125,6 +125,17 @@
   "item.moonstone.thefruit": "上古果实",
 
 
+
+  "item.moonstone.immortal": "§4不朽轮回之印章",
+  "item.immortal.tool.string": "受到攻击有80%的概率规避并反弹50%的伤害给攻击者",
+  "item.immortal.tool.string.1": "如果攻击者生命值大于70%，则反弹150%的伤害并破除无敌帧",
+  "item.immortal.tool.string.2": "每隔5秒对周围生物施加一层枯朽Buff，最多达到5级",
+  "item.immortal.tool.string.3": "被施加的生物每级减少20%抗性,护甲,治疗和5%的伤害,移速,攻速",
+  "item.immortal.tool.string.4": "若你被杀死，则对攻击者造成20%当前生命值的穿透伤害并附加10级枯朽（10秒）",
+  "item.immortal.tool.string.5": "深渊和噩梦物品无效化",
+  "item.immortal.tool.string.6": "传闻掌握生死轮回之力的人...",
+  "item.immortal.tool.string.7": "即可规避因果的反噬...",
+  "item.immortal.tool.string.8": "但...代价是什么？",
   "item.nightmareanchor.tool.string": "佩戴它并死亡",
   "item.nightmareanchor.tool.string.1": "可记录这一次的死亡地点",
   "item.nightmareanchor.tool.string.2": "右键传送到上个记录点",
@@ -134,6 +145,7 @@
   "item.nightmareanchor.tool.string.6": "唯有承受深渊之恐的人",
   "item.nightmareanchor.tool.string.7": "才有资格使用此道具",
 
+  "effect.moonstone.dead": "枯朽",
 
   "item.nightmarecharm.tool.string": "减少15％来自深渊之眼的诅咒",
   "item.nightmarecharm.tool.string.1": "加法计算",
@@ -933,7 +945,7 @@
 
   "item.moonstone.blood_candle": "§4封魔烛台",
 
-  "item.moonstone.the_blood_book": "§4血魔霸体诀",
+  "item.moonstone.the_blood_book": "§4封魔录",
   "item.blood_candle.tool.string": "召唤一个巨型血灵增生体协助你作战",
   "item.blood_candle.tool.string.1": "如果丢失/失踪，请重新佩戴此物品或右键这个物品",
 
@@ -950,6 +962,14 @@
 
 
 
+  "item.the_blood_book.tool.string": "血灵增生体的伤害增加200%",
+  "item.the_blood_book.tool.string.1": "血灵增生体的血珠速度增加100%",
+  "item.the_blood_book.tool.string.2": "血灵增生体的血珠会爆炸",
+
+  "item.the_blood_book.tool.string.3": "血灵增生体的射击速度增加100%",
+  "item.the_blood_book.tool.string.4": "血灵增生体的血珠寿命降低70%",
+  "item.the_blood_book.tool.string.5": "自带刻画者和渎圣者的所有功能",
+  "item.the_blood_book.tool.string.6": "血灵增生体每次命中都相当于你发起了一次攻击",
   "item.moonstone.evil_mob": "邪念体",
   "item.moonstone.god_lead": "血虐之铅",
   "item.moonstone.malice_die": "恶意之殇",
@@ -963,7 +983,6 @@
   "item.malice_die.tool.string.6": "+2%护甲",
   "item.malice_die.tool.string.7": "+1.7%暴击",
   "item.malice_die.tool.string.8": "攻击会使目标8格半径内的生物主动攻击你",
-  "item.malice_die.tool.string.9": "-15% 所有伤害",
   "item.malice_die.tool.string.10": "如果目标数量少于3，那么你造成的伤害减35%",
   "item.evil_mob.tool.string.1": "允许你在不佩戴深渊之眼,necora病毒，暗影瘟疫的情况下使用和发现相应的物品",
   "item.evil_mob.tool.string.2": "佩戴后，自动获得深渊之眼，necora病毒，暗影瘟疫的一些特殊能力",
@@ -1006,17 +1025,30 @@
   "item.moonstone.cell_inheritance": "模拟遗传基因",
   "item.moonstone.cell_oxygen": "碱性氧化",
   "item.moonstone.cell_big_boom": "细胞色素爆发",
-  "item.moonstone.cell_break_down_water": "碱性水解",
+ "item.moonstone.cell_break_down_water": "碱性水解",
   "item.moonstone.cell_darwin": "达尔文主义",
-  "item.moonstone.cell_disorder": "代谢紊乱",
-  "item.moonstone.cell_in_air": "大气亲和性",
+   "item.moonstone.cell_disorder": "代谢紊乱",
+ "item.moonstone.cell_in_air": "大气亲和性",
   "item.moonstone.cell_in_water": "海洋亲和性",
   "item.moonstone.cell_off_on": "催化剂开关",
   "item.moonstone.speed_metabolism": "极速代谢",
-  "item.moonstone.cell_necrosis":"液化性坏死",
+   "item.moonstone.cell_necrosis":"液化性坏死",
   "item.moonstone.cell_digestion":"表皮消化",
+  "item.moonstone.cell_disorder.tool": "每隔（数量）清除所有BUFF",
+  "item.moonstone.cell_god.tool": "杀死生物回复（数量）生命值",
+  "item.moonstone.cell_inheritance.tool": "加（数量）伤害抗性",
+  "item.moonstone.cell_big_boom.tool": "加（数量）吃东西的速度",
+  "item.moonstone.cell_darwin.tool": "杀死生物回复或者扣除（数量）生命值",
+  "item.moonstone.speed_metabolism.tool": "饱食度小于（数量）时消耗1点饥饿值",
+  "item.moonstone.cell_acid.tool": "腐蚀（数量）的被攻击生物装备",
+  "item.moonstone.cell_eyes.tool": "使半径（数量）的生物发光",
+  "item.moonstone.cell_digestion.tool": "加（数量）食物饱食度和饥饿值",
+  "item.moonstone.cell_cranial.tool": "加（数量）对头部伤害的抗性",
+  "item.moonstone.cell_compress.tool": "加（数量）的伤害反弹",
+  "item.moonstone.cell_flu.tool": "使半径（数量）的生物虚弱",
+  "item.moonstone.cell_constant.tool": "加（数量）的无敌帧",
   "item.moonstone.cell_acid":"酸性液体逆流",
-  "item.moonstone.cell_eyes":"眼镜蛇式锁定",
+ "item.moonstone.cell_eyes":"眼镜蛇式锁定",
   "item.moonstone.cell_bone_add":"骨骼结构异化",
   "item.moonstone.cell_sense":"感官系统强化",
   "item.moonstone.cell_cranial":"脑组织转移",
@@ -1184,20 +1216,7 @@
   "item.nine_sword_book.tool.string.6": "飞剑",
 
   "item.book.tool.string.modi_blood": "走火入魔",
-  "skill.the_blood_book.1": "爆炸伤害:",
-  "skill.the_blood_book.2": "爆炸前需要恢复的生命值:",
-  "skill.the_blood_book.3": "治疗:",
-  "skill.the_blood_book.4": "攻击失去生命值:",
-  "item.the_blood_book_lvl.tool.string.1": "魔尊",
-  "item.the_blood_book_lvl.tool.string.2": "魔皇",
-  "item.the_blood_book_lvl.tool.string.3": "魔帝",
   "item.book.tool.string.blood_book.not": "这个物品只能在走火入魔后可以参悟和使用",
-  "item.the_blood_book.tool.string.1": "击中生物失去生命值",
-  "item.the_blood_book.tool.string.3": "恢复生命值时加增加治疗直到满血",
-  "item.the_blood_book.tool.string.4": "若在满血之前恢复的生命值超过某个值",
-  "item.the_blood_book.tool.string.5": "则会发生爆炸造成高额伤害",
-  "item.the_blood_book.tool.string.6": "手持物品时无法造成伤害",
-  "item.nine_sword_book.tool.string.7": "下一次斩击会造成（快捷栏内所有剑类武器伤害的总和）的生命值",
   "item.nine_sword_book.tool.string.8": "冷却5秒",
 
   "item.nine_sword_book.tool.string.9": "造成伤害时有5%（x飞剑数量）的概率释放所有飞剑",
@@ -1234,9 +1253,6 @@
 
   "moonstone.jei.necora.bnabush.all": "需要佩戴Necora病毒才能发现于宝藏战利品之中",
 
-  "moonstone.jei.giant": "需要佩戴Necora病毒才能发现于宝藏战利品之中",
-  "moonstone.jei.giant_nightmare": "需要佩戴巨人僵尸基因片段和梦魇之眼再杀死坚守者有概率掉落",
-  "moonstone.jei.cell": "需要佩戴Necora病毒才能发现于宝藏战利品之中，佩戴后将无法再次获得",
   "moonstone.jei.cell.all": "需要佩戴细胞重生基因佩戴才能发现于宝藏战利品之中",
   "moonstone.jei.maulice.all": "杀死僵尸有可能掉落",
   "moonstone.jei.blood": "需要佩戴血之魔盒杀死生物获取",
@@ -1312,7 +1328,7 @@
 
 
   "item.moonstone.nightmare_base_stone_virus": "§4Nightecora病毒",
-  "item.nightmare_base_stone_virus.tool.string": "伤害增加100%",
+    "item.nightmare_base_stone_virus.tool.string": "伤害增加100%",
   "item.nightmare_base_stone_virus.tool.string.1": "治疗增加100%",
   "item.nightmare_base_stone_virus.tool.string.2": "暴击增加100%",
   "item.nightmare_base_stone_virus.tool.string.3": "受到任意伤害都会额外附加25%最大生命值的惩罚,不受任何加成影响",
@@ -1474,8 +1490,8 @@
 
 
   "item.moonstone.nightmare_base_insight":"§4噩梦洞悉者",
-  "item.nightmare_base_insight.tool.string": "附魔物品的附魔等级减少1级",
-  "item.nightmare_base_insight.tool.string.1": "附魔物品的附魔等级减少50%",
+  "item.nightmare_base_insight.tool.string": "附魔台附魔等级减少1级",
+  "item.nightmare_base_insight.tool.string.1": "附魔台附魔等级减少50%",
 
   "advancements.tooltip.nightmare_base_insight.text": "获得这个物品",
   "advancements.tooltip.nightmare_base_insight.hand": "蹉跎之苦",
@@ -1549,8 +1565,13 @@
   "moonstone.jei.item.moonstone.nightmare_base_start_pod": "开地牢的箱子，概率25%，只能获取一个",
   "item.dnas.tool.string": "提示：使用药物粉碎盒粉碎基因物品",
 
-  "moonstone.jei.necora": "这是僵尸病毒，它需要以下材料在工作台上合成：\n48份ATP高能量\n32份达尔文主义\n64份催化剂开关\n24份极速代谢\n20份代谢紊乱\n12份肽合成增强\n24份神经递质抑制\n8份液化性坏死\n1个灵质棱镜\n当你集齐了所有材料，那你就可以进行下一步计划.......",
+  "moonstone.jei.necora": "这是僵尸病毒，它需要使用基因重组盒重组，右键放入：\n48份ATP高能量\n32份达尔文主义\n64份催化剂开关\n24份极速代谢\n20份代谢紊乱\n12份肽合成增强\n24份神经递质抑制\n8份液化性坏死\n1个灵质棱镜\n当你集齐了所有材料，那你就可以进行下一步计划.......。\n最后右键使用基因重组盒这个物品\n记得背包腾出来空间！",
+  "moonstone.jei.cell": "这是僵尸病毒的重要的附属物品，用于召唤细胞僵尸协助作战，它们可以受到部分分段基因组的加成，它需要使用基因重组盒重组，右键放入：\n20份ATP高能量\n16份神创论\n40份极速代谢\n64份代谢紊乱\n24份液化性坏死\n1个灵质棱镜\n8个灵质球。\n最后右键使用基因重组盒这个物品\n记得背包腾出来空间！",
+  "moonstone.jei.giant": "这是僵尸病毒的一个附属物品，用于召唤巨型细胞僵尸协助作战，它们可以受到部分分段基因组的加成，它需要使用基因重组盒重组，右键放入：\n30份ATP高能量\n24份神创论\n60份极速代谢\n64份代谢紊乱\n12份液化性坏死\n1个细胞重生\n1个灵质棱镜。\n最后右键使用基因重组盒这个物品\n记得背包腾出来空间！",
+  "moonstone.jei.giant_nightmare": "这是僵尸病毒和巨人僵尸的一个变种物品，用于召唤梦魇巨人协助作战，它们可以受到部分分段基因组的加成，它需要使用基因重组盒重组，右键放入：\n64份ATP高能量\n16份极速代谢\n64份神经递质抑制\n64份肽合成增强\n64份达尔文主义\n64份催化剂开关\n1个巨人僵尸基因片段\n1个灵质棱镜。\n最后右键使用基因重组盒这个物品\n记得背包腾出来空间！",
+  "moonstone.jei.crafting_box": "使用大量DNA来构成模组内的重要物品",
 
+  "item.moonstone.crafting_box":"基因重组盒",
 
   "advancements.tooltip.nightmare_base.text": "获得这个物品",
   "advancements.tooltip.nightmare_base.hand": "起始",

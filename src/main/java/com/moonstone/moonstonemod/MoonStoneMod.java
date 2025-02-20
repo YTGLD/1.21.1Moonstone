@@ -85,6 +85,7 @@ public class MoonStoneMod {
         eventBus.register(Config.class);
         Tab.TABS.register(eventBus);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.fc);
+        modContainer.registerConfig(ModConfig.Type.CLIENT, ConfigClient.fc);
     }
     public void gatherData(GatherDataEvent event){
         DataGenerator gen = event.getGenerator();

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "moonstone:medicinebox"
+    },
+    {
+      "item": "moonstone:ectoplasmprism"
+    },
+    {
+      "item": "moonstone:blood"
+    }
+  ],
+  "result": {
+    "id": "moonstone:crafting_box",
+    "count": 1
+  }
+}

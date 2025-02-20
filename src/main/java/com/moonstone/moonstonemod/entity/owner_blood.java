@@ -93,7 +93,7 @@ public class owner_blood extends TamableAnimal {
         trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
 
         if (trailPositions.size() > 66) {
-            trailPositions.removeFirst();
+            trailPositions.remove(0);
         }
 
 
@@ -102,37 +102,14 @@ public class owner_blood extends TamableAnimal {
         List<Mob> entities = this.level().getEntitiesOfClass(Mob.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
         for (Mob mob : entities) {
             if (this.getTarget() == null) {
-                if (this.getOwner()!=null) {
-                    if (!(this.getTarget() instanceof OwnableEntity tamableAnimal
-                            && tamableAnimal.getOwner() != null
-                            && tamableAnimal.getOwner().equals(this.getOwner()))) {
-                        ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType());
-                        if (!entity.getNamespace().equals(MoonStoneMod.MODID)) {
-                            this.setTarget(mob);
-                        }
-                    }
+                ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType());
+                if (!entity.getNamespace().equals(MoonStoneMod.MODID)) {
+                    this.setTarget(mob);
                 }
-            }
-        }
-
-        if (this.getTarget() != null&&this.getOwner()!=null){
-            if (this.getTarget().is(this.getOwner())){
-                this.setTarget(null);
-
             }
         }
         if (this.getTarget() != null&&this.getOwner()!=null){
-            if (this.getTarget() instanceof OwnableEntity entity){
-                if (entity.getOwner()!=null&&this.getOwner()!=null) {
-                    if (entity.getOwner().is(this.getOwner())) {
-                        this.setTarget(null);
-                    }
-                }
-
-            }
-        }
-        if (this.getTarget() != null) {
-            if (this.getTarget() instanceof Player) {
+            if (this.getTarget().is(this.getOwner())){
                 this.setTarget(null);
             }
         }
@@ -174,6 +151,9 @@ public class owner_blood extends TamableAnimal {
             if (Handler.hascurio(player,Items.owner_blood_boom_eye.get())){
                 s*= 3;
             }
+            if (Handler.hascurio(player,Items.the_blood_book.get())){
+                s *= 0.5f;
+            }
         }
         if (this.getOwner()!= null &&this.getOwner() instanceof Player player&&this.getTarget()!=null){
             if (this.tickCount % (int) s == 0) {
@@ -185,6 +165,12 @@ public class owner_blood extends TamableAnimal {
                     if (Handler.hascurio(player, Items.owner_blood_speed_eye.get())) {
                         attackBlood.setCannotFollow(false);
                         attackBlood.setSpeed(attackBlood.getSpeeds() * 4);
+                    }
+                    if (Handler.hascurio(player, Items.the_blood_book.get())) {
+                        attackBlood.setSpeed(attackBlood.getSpeeds()*2f);
+                        attackBlood.setMaxTime(attackBlood.getMaxTime()*0.4f);
+                        attackBlood.setDamage(attackBlood.getDamages()*3f);
+                        attackBlood.isPlayer = true;
                     }
                     if (Handler.hascurio(player, Items.owner_blood_attack_eye.get())) {
                         attackBlood.setDamage(attackBlood.getDamages() * 1.2f);
@@ -200,6 +186,7 @@ public class owner_blood extends TamableAnimal {
                         attackBlood.setSpeed(attackBlood.getSpeeds() * 0.8f);
                         attackBlood.setBoom(true);
                     }
+
                     attackBlood.setPos(this.position());
                     attackBlood.setOwner(this.getOwner());
 

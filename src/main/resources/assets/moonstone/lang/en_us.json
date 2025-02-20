@@ -110,6 +110,17 @@
   "item.moonstone.thedoomstone": "Ancient core stone",
   "item.moonstone.thefruit": "Paleo-fruit",
 
+  "item.moonstone.immortal": "§4The seal of immortal reincarnation",
+  "item.immortal.tool.string": "When attacked, there is an 80% chance to evade and reflect 50% of the damage to the attacker",
+  "item.immortal.tool.string.1": "If the attacker's health is greater than 70%, 150% of the damage is reflected and the invincibility frame is broken",
+  "item.immortal.tool.string.2": "Applies a Withered Buff to nearby mobs every 5 seconds, up to a maximum of level 5",
+  "item.immortal.tool.string.3": "Applied creatures have 20% less resistance, armor, healing, and 5% damage per level, movement speed, and attack speed",
+  "item.immortal.tool.string.4": "If you are killed, deal 20% of current health as piercing damage to the attacker and attach 10 levels of Decay (10 seconds).",
+  "item.immortal.tool.string.5": "Abyss and Nightmare items are neutralized",
+  "item.immortal.tool.string.6": "A person who is rumored to have the power of life and death...",
+  "item.immortal.tool.string.7": "You can control the power of the Supreme Dao...",
+  "item.immortal.tool.string.8": "But ...., at what cost？",
+
   "item.nightmareanchor.tool.string": "Died while wearing it.",
   "item.nightmareanchor.tool.string.1": "Record the location of this death.",
   "item.nightmareanchor.tool.string.2": "Right click to teleport to the previous record point",
@@ -119,6 +130,7 @@
   "item.nightmareanchor.tool.string.6": "Only those who bear the fear of the Nightmare",
   "item.nightmareanchor.tool.string.7": "To be eligible to use this prop",
 
+  "effect.moonstone.dead": "枯朽",
 
   "item.nightmarecharm.tool.string": "Reduces curses from Nightmare-eye by 15%",
   "item.nightmarecharm.tool.string.1": "*overlay calculation",
@@ -890,7 +902,6 @@
   "item.blood_candle.tool.string.1": "如果丢失/失踪，请重新佩戴此物品 Or right click on this item",
 
   "item.moonstone.the_blood_book": "Sealing Record",
-  "item.the_blood_book.tool.string": "It can be ignited twice ",
   "item.blood.tool.string.evil": "evil",
   "item.blood.tool.string.evil.1": "There is a 33% chance that killing a creature will regenerate into a blood cell",
   "item.blood.tool.string.evil.2": "Harvest blood cells to restore 4 health points",
@@ -942,7 +953,6 @@
   "item.malice_die.tool.string.6": "+6% Armor",
   "item.malice_die.tool.string.7": "+5% cit value",
   "item.malice_die.tool.string.8": "Attacking will cause creatures within an 8-grid radius of the target to actively attack you",
-  "item.malice_die.tool.string.9": "-30% all damage",
   "item.malice_die.tool.string.10": "If the number of targets is less than 3, the damage you cause will be reduced by 35%",
 
   "item.moonstone.deceased_contract": "deceased contract",
@@ -969,6 +979,20 @@
   "item.moonstone.cell_necrosis": "Liquefactive Necrosis",
   "item.moonstone.cell_digestion": "Epidermal Digestion",
   "item.moonstone.cell_acid": "Acidic Fluid Reflux",
+  "item.moonstone.cell_disorder.tool": "Clear all BUFFs every (number) turns",
+  "item.moonstone.cell_god.tool": "Restore (number) health points when killing a creature",
+  "item.moonstone.cell_inheritance.tool": "Increase (number) damage resistance",
+  "item.moonstone.cell_big_boom.tool": "Increase (number) eating speed",
+  "item.moonstone.cell_darwin.tool": "Restore or deduct (number) health points when killing a creature",
+  "item.moonstone.speed_metabolism.tool": "Consume 1 hunger point when satiety is less than (number)",
+  "item.moonstone.cell_acid.tool": "Corrode the equipment of (number) attacked creatures",
+  "item.moonstone.cell_eyes.tool": "Make creatures within a radius of (number) glow",
+  "item.moonstone.cell_digestion.tool": "Increase (number) food satiety and hunger points",
+  "item.moonstone.cell_cranial.tool": "Increase (number) head damage resistance",
+  "item.moonstone.cell_compress.tool": "Increase (number) damage reflection",
+  "item.moonstone.cell_flu.tool": "Weaken creatures within a radius of (number)",
+  "item.moonstone.cell_constant.tool": "Increase (number) invincibility frames",
+
   "item.moonstone.cell_eyes": "Cobra Lock",
   "item.moonstone.cell_bone_add": "Bone Structure Aberration",
   "item.moonstone.cell_sense": "Enhanced Sensory System",
@@ -1118,6 +1142,8 @@
   "item.million.tool.string.7": "Gain boost:",
   "item.million.tool.string.8": "Stored flying sword count:",
   "item.moonstone.nine_sword_book": "Nine Sword Unity Technique",
+  "item.nine_sword_book.tool.string.all": "修炼到[剑帝][剑祖]级别后，属性增长降低22.5%”",
+
   "item.nine_sword_book.tool.string.1": "For each sword-type weapon in the quick slot:",
   "item.nine_sword_book.tool.string.2": "Damage",
   "item.nine_sword_book.tool.string.3": "Attack Speed",
@@ -1137,13 +1163,15 @@
   "sword.moonstone.lvl": "lvl",
   "item.nine_sword_book_lvl.tool.string.1": "Sword Man :",
   "item.book.tool.string.modi_blood": "Demonic Possession",
-  "skill.the_blood_book.1": "Explosion Damage:",
-  "skill.the_blood_book.2": "Health needed to recover before explosion:",
-  "skill.the_blood_book.3": "Healing:",
-  "skill.the_blood_book.4": "Attack loses health:",
-  "item.the_blood_book_lvl.tool.string.1": "Demon Lord",
-  "item.the_blood_book_lvl.tool.string.2": "Demon Emperor",
-  "item.the_blood_book_lvl.tool.string.3": "Demon Sovereign",
+  "item.the_blood_book.tool.string": "Blood Spirit Growth's damage is increased by 50%",
+  "item.the_blood_book.tool.string.1": "Blood Grower's blood bead speed is reduced by 50%",
+  "item.the_blood_book.tool.string.2": "The blood beads of the Blood Spirit Grower will explode",
+  "item.the_blood_book.tool.string.3": "Blood Grower's fire speed is increased by 30%",
+  "item.the_blood_book.tool.string.4": "Blood Spirit Grower's Lifespan is reduced by 60%",
+  "item.the_blood_book.tool.string.5": "Comes with all the features of the Graver and the Blasphemer",
+  "item.the_blood_book.tool.string.6": "Each hit of the Blood Soul Grower is equivalent to an attack from you",
+
+
   "item.nine_sword_book.tool.string.14": "You cannot use non-sword-type weapons",
   "item.nine_sword_book_skill.tool.string.1": "剑仙",
   "item.nine_sword_book_skill.tool.string.2": "剑神",
@@ -1152,11 +1180,6 @@
   "item.book.tool.string.nine_sword": "Sword Bone Power",
   "item.book.tool.string.nine_sword.not": "This technique can only be comprehended and used after shaping the Sword Bone",
   "item.book.tool.string.blood_book.not": "This item can only be understood and used after demonic possession.",
-  "item.the_blood_book.tool.string.1": "Deals 1%++ of maximum health damage to hit targets.",
-  "item.the_blood_book.tool.string.3": "When restoring health, healing increases by 0.25%++ until fully healed.",
-  "item.the_blood_book.tool.string.4": "If the amount of health restored exceeds before fully healed,",
-  "item.the_blood_book.tool.string.5": "an explosion will occur, causing",
-  "item.the_blood_book.tool.string.6": "Cannot deal damage while holding the item.",
   "item.moonstone.blood_stasis": "Blood Stasis",
   "item.blood_stasis.tool.string": "Restores 10% of the summoner's maximum health after the zombie's death",
   "item.moonstone.bone_structure": "Abnormal Bone Structure",
@@ -1182,9 +1205,7 @@
 
   "moonstone.jei.necora.bnabush.all": "Requires wearing Necora virus to be found in treasure loot",
 
-  "moonstone.jei.giant": "Requires wearing Necora virus to be found in treasure loot",
-  "moonstone.jei.giant_nightmare": "Requires wearing Giant Zombie genetic fragment and Nightmare Eye, then kill the Guardian for a chance to drop",
-  "moonstone.jei.cell": "Requires wearing Necora virus to be found in treasure loot, once worn it cannot be obtained again",
+  "moonstone.jei.crafting_box": "使用大量DNA来构成模组内的重要物品",
   "moonstone.jei.cell.all": "Requires wearing Cell Rebirth gene to be found in treasure loot",
   "moonstone.jei.maulice.all": "Killing zombies may drop",
   "moonstone.jei.blood": "Requires wearing Blood Magic Box to acquire by killing creatures",
@@ -1528,7 +1549,11 @@
   "moonstone.jei.item.moonstone.nightmare_base_start_power": "Kill the Guardian",
   "moonstone.jei.item.moonstone.nightmare_base_start_egg": "Kill the Sniffer",
   "moonstone.jei.item.moonstone.nightmare_base_start_pod": "Open dungeon chests, 25% chance, can only get one",
-  "moonstone.jei.necora": "这是僵尸病毒，它需要以下材料在工作台上合成：\n48份ATP高能量\n32份达尔文主义\n64份催化剂开关\n24份极速代谢\n20份代谢紊乱\n12份肽合成增强\n24份神经递质抑制\n8份液化性坏死\n1个灵质棱镜\n当你集齐了所有材料，那你就可以进行下一步计划.......",
+
+  "moonstone.jei.necora": "这是僵尸病毒，它需要使用基因重组盒重组，右键放入：\n48份ATP高能量\n32份达尔文主义\n64份催化剂开关\n24份极速代谢\n20份代谢紊乱\n12份肽合成增强\n24份神经递质抑制\n8份液化性坏死\n1个灵质棱镜\n当你集齐了所有材料，那你就可以进行下一步计划.......。\n最后右键使用基因重组盒这个物品\n记得背包腾出来空间！",
+  "moonstone.jei.cell": "这是僵尸病毒的重要的附属物品，用于召唤细胞僵尸协助作战，它们可以受到部分分段基因组的加成，它需要使用基因重组盒重组，右键放入：\n20份ATP高能量\n16份神创论\n40份极速代谢\n64份代谢紊乱\n24份液化性坏死\n1个灵质棱镜\n8个灵质球。\n最后右键使用基因重组盒这个物品\n记得背包腾出来空间！",
+  "moonstone.jei.giant": "这是僵尸病毒的一个附属物品，用于召唤巨型细胞僵尸协助作战，它们可以受到部分分段基因组的加成，它需要使用基因重组盒重组，右键放入：\n30份ATP高能量\n24份神创论\n60份极速代谢\n64份代谢紊乱\n12份液化性坏死\n1个细胞重生\n1个灵质棱镜。\n最后右键使用基因重组盒这个物品\n记得背包腾出来空间！",
+  "moonstone.jei.giant_nightmare": "这是僵尸病毒和巨人僵尸的一个变种物品，用于召唤梦魇巨人协助作战，它们可以受到部分分段基因组的加成，它需要使用基因重组盒重组，右键放入：\n64份ATP高能量\n16份极速代谢\n64份神经递质抑制\n64份肽合成增强\n64份达尔文主义\n64份催化剂开关\n1个巨人僵尸基因片段\n1个灵质棱镜。\n最后右键使用基因重组盒这个物品\n记得背包腾出来空间！",
 
   "item.dnas.tool.string": "提示：使用药物粉碎盒粉碎基因物品",
 
@@ -1537,8 +1562,9 @@
   "advancements.tooltip.nightmare_base.text": "Obtain this item",
   "advancements.tooltip.nightmare_base.hand": "Beginning",
 
-
   "item.moonstone.owner_blood_earth":"Qiankun",
+
+  "item.moonstone.crafting_box":"crafting box",
   "moonstone.jei.item.moonstone.owner_blood_earth": "It is found in ancient cities, but requires wearing the Sealing Candelabra to be discovered.\n\nBlood Orbs' damage equals the owner's damage.\nBlood Orbs' speed equals the owner's speed.\nThe attack speed of Blood Spirit proliferators will be multiplied by the owner's attack speed."
 
 }

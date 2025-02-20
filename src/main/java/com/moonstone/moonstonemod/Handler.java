@@ -150,7 +150,12 @@ public class Handler {
                         return false;
                     }
                 }
-
+                if (CuriosApi.getCuriosInventory(entity).isPresent()
+                        && CuriosApi.getCuriosInventory(entity).get().isEquipped(Items.the_blood_book.get())) {
+                    if (curio == Items.owner_blood_speed_eye.get() || curio == Items.owner_blood_eye.get()) {
+                        return true;
+                    }
+                }
                 if (CuriosApi.getCuriosInventory(player).isPresent()
                         && CuriosApi.getCuriosInventory(player).get().isEquipped(Items.evil_mob.get())) {
                     if (curio == Items.necora.get() || curio == Items.nightmareeye.get() || curio == Items.bloodvirus.get()) {

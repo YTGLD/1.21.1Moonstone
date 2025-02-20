@@ -46,11 +46,6 @@ public abstract class EntityMixin {
             if (Handler.hascurio(player, Items.mhead.get())) {
                 cir.setReturnValue(true);
             }
-            if (Handler.hascurio(player, Items.the_blood_book.get())) {
-                if (!(player.getMainHandItem().isEmpty())) {
-                    cir.setReturnValue(true);
-                }
-            }
         }
     }
 }

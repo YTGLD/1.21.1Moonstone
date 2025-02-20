@@ -66,8 +66,9 @@ public class RecipeDNA extends CustomRecipe {
     }
 
     @Override
-    public boolean canCraftInDimensions(int i, int i1) {
-        return true;
+    
+    public boolean canCraftInDimensions(int width, int height) {
+        return width * height >= 2;
     }
 
 

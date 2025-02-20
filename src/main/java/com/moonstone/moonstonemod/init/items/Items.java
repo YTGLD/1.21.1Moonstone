@@ -15,6 +15,7 @@ import com.moonstone.moonstonemod.item.ectoplasm.soul.soulcube;
 import com.moonstone.moonstonemod.item.maxitem.amout.ectoplasmstone;
 import com.moonstone.moonstonemod.item.maxitem.amout.twistedstone;
 import com.moonstone.moonstonemod.item.maxitem.fortunecrystal;
+import com.moonstone.moonstonemod.item.maxitem.immortal;
 import com.moonstone.moonstonemod.item.maxitem.maulice.*;
 import com.moonstone.moonstonemod.item.maxitem.maxamout;
 import com.moonstone.moonstonemod.item.maxitem.mayhemcrystal;
@@ -29,6 +30,7 @@ import com.moonstone.moonstonemod.item.plague.BloodVirus.batgene;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.bloodgene;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.dna.*;
 import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.*;
+import com.moonstone.moonstonemod.item.plague.crafting_box;
 import com.moonstone.moonstonemod.item.plague.medicine.med.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -284,6 +286,8 @@ public class Items {
     public static final DeferredHolder<Item,?> nightmare_base_start_power =REGISTRY.register("nightmare_base_start_power", nightmare_base_start_power::new);
     public static final DeferredHolder<Item,?> god_head =REGISTRY.register("god_head", god_head::new);
     public static final DeferredHolder<Item,?> nightmare_axe =REGISTRY.register("nightmare_axe", nightmare_axe::new);
+    public static final DeferredHolder<Item,?> crafting_box =REGISTRY.register("crafting_box", crafting_box::new);
+    public static final DeferredHolder<Item,?> immortal =REGISTRY.register("immortal", immortal::new);
 
 
     public static final DeferredHolder<Item,?> the_heart_image =REGISTRY.register("the_heart_image", ()-> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));

@@ -4,35 +4,31 @@ import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.book;
 import com.moonstone.moonstonemod.entity.zombie.sword_soul;
-import com.moonstone.moonstonemod.event.itemset.*;
 import com.moonstone.moonstonemod.event.loot.DungeonLoot;
+import com.moonstone.moonstonemod.init.items.DNAItems;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.Effects;
 import com.moonstone.moonstonemod.init.moonstoneitem.Enchants;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.IBattery;
-import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
-import com.moonstone.moonstonemod.item.maxitem.book.the_blood_book;
-import com.moonstone.moonstonemod.item.nightmare.nightmare_axe;
-import com.moonstone.moonstonemod.item.nightmare.super_nightmare.*;
-import com.moonstone.moonstonemod.item.plague.BloodVirus.dna.bat_cell;
-import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
 import com.moonstone.moonstonemod.item.blood.magic.blood_sun;
 import com.moonstone.moonstonemod.item.blood.magic.rage_blood_head;
 import com.moonstone.moonstonemod.item.decorated.deceased_contract;
-import com.moonstone.moonstonemod.item.maxitem.god_lead;
-import com.moonstone.moonstonemod.item.maxitem.malice_die;
-import com.moonstone.moonstonemod.item.maxitem.moon_stone;
-import com.moonstone.moonstonemod.item.maxitem.probability;
+import com.moonstone.moonstonemod.item.maxitem.*;
+import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
 import com.moonstone.moonstonemod.item.nanodoom.as_amout;
 import com.moonstone.moonstonemod.item.nanodoom.million;
+import com.moonstone.moonstonemod.item.nightmare.nightmare_axe;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_head;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_heart;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_orb;
+import com.moonstone.moonstonemod.item.nightmare.super_nightmare.*;
 import com.moonstone.moonstonemod.item.plague.ALL.dna;
+import com.moonstone.moonstonemod.item.plague.BloodVirus.dna.bat_cell;
+import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.giant_boom_cell;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -52,8 +48,14 @@ import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.RenderTooltipEvent;
 import net.neoforged.neoforge.common.util.TriState;
-import net.neoforged.neoforge.event.entity.living.*;
-import net.neoforged.neoforge.event.entity.player.*;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
+import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
@@ -62,9 +64,6 @@ import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import java.text.DecimalFormat;
 import java.util.Map;
-
-import static com.moonstone.moonstonemod.item.maxitem.book.the_blood_book.getLvl;
-import static com.moonstone.moonstonemod.item.maxitem.book.the_blood_book.heals;
 
 public class NewEvent {
     public static final String lootTable = "god_loot";
@@ -94,20 +93,11 @@ public class NewEvent {
     }
     @SubscribeEvent
     public void LivingHealEvent(LivingHealEvent event) {
-        the_blood_book.heal(event);
         nightmare_base_reversal_orb.LivingHealEvent(event);
-        EctoplasmLuckStar.healEvent(event);
-        BatteryMan.healEvent(event);
-        BatteryManSuper.healEvent(event);
-        MlsSet.healEvent(event);
-        SuperMls.healEvent(event);
         nightmare_orb.nightmare_orb_heal(event);
-        AnaerobicRecovery.healEvent(event);
-        ManOfLife.healEvent(event);
-        nightmare_head.LivingHealEvent(event);
+         nightmare_head.LivingHealEvent(event);
         Enchants.threatHeal(event);
         DungeonLoot.heal(event);
-        LifeManSuper.healEvent(event);
         nightmare_base_black_eye_heart.heal(event);
         nightmare_axe.heals(event);
         if (event.getEntity() instanceof LivingEntity living){
@@ -118,10 +108,31 @@ public class NewEvent {
         }
     }
 
+    public void addV(ItemStack stack,Item Dhis,ItemTooltipEvent event,String string){
+        if (stack.is(Dhis)) {
+            event.getToolTip().add(1,Component.translatable(string).withStyle(ChatFormatting.RED));
+        }
+    }
     @SubscribeEvent
     public void BatteryName(ItemTooltipEvent event){
         ItemStack stack = event.getItemStack();
         Player player = event.getEntity();
+        addV(stack,DNAItems.cell_disorder.get(),event,"item.moonstone.cell_disorder.tool");
+        addV(stack,DNAItems.cell_god.get(),event,"item.moonstone.cell_god.tool");
+        addV(stack, DNAItems.cell_inheritance.get(),event,"item.moonstone.cell_inheritance.tool");
+        addV(stack,DNAItems.cell_big_boom.get(),event,"item.moonstone.cell_big_boom.tool");
+        addV(stack,DNAItems.cell_darwin.get(),event,"item.moonstone.cell_darwin.tool");
+        addV(stack,DNAItems.speed_metabolism.get(),event,"item.moonstone.speed_metabolism.tool");
+        addV(stack,DNAItems.cell_acid.get(),event,"item.moonstone.cell_acid.tool");
+        addV(stack,DNAItems.cell_eyes.get(),event,"item.moonstone.cell_eyes.tool");
+        addV(stack,DNAItems.cell_digestion.get(),event,"item.moonstone.cell_digestion.tool");
+        addV(stack,DNAItems.cell_cranial.get(),event,"item.moonstone.cell_cranial.tool");
+        addV(stack,DNAItems.cell_compress.get(),event,"item.moonstone.cell_compress.tool");
+        addV(stack,DNAItems.cell_flu.get(),event,"item.moonstone.cell_flu.tool");
+        addV(stack,DNAItems.cell_constant.get(),event,"item.moonstone.cell_constant.tool");
+
+
+
 
         if (stack.get(DataReg.tag) !=null){
             if (stack.get(DataReg.tag).getBoolean("ALLBattery")){
@@ -131,7 +142,6 @@ public class NewEvent {
 
         if (stack.getItem() instanceof IBattery){
             event.getToolTip().add(Component.translatable("item.moonstone.tooltip.battery").withStyle(ChatFormatting.GOLD));
-
         }
         if (stack.get(DataReg.tag) !=null) {
             if (stack.get(DataReg.tag).getBoolean(Difficulty.PEACEFUL.getKey())) {
@@ -264,23 +274,7 @@ public class NewEvent {
         Enchants.maliceAttack(event);
         moon_stone.LivingIncomingDamageEvent(event);
         million.hurt(event);
-        LuckStar.hurtEvent(event);
-        EctoplasmLuckStar.attackEvent(event);
-        EctoplasmLuckStar.hurtEvent(event);
-        BatteryMan.attackEvent(event);
-        BatteryMan.hurtEvent(event);
-        BatteryManSuper.attackEvent(event);
-        BatteryManSuper.hurtEvent(event);
-        MlsSet.hurtEvent(event);
-        SuperMls.attackEvent(event);
-        SuperMls.hurtEvent(event);
-        AnaerobicRecovery.attackEvent(event);
-        AnaerobicRecovery.hurtEvent(event);
-        ManOfLife.attackEvent(event);
-        CellularPathologyPromotion.attackEvent(event);
-        LifeManSuper.attackEvent(event);
         nine_sword_book.att(event);
-        the_blood_book.att(event);
         book.hurt(event);
         nightmare_base_stone_virus.h(event);
         nightmare_base_black_eye_eye.attLook(event);
@@ -294,7 +288,13 @@ public class NewEvent {
         nightmare_base_start_pod.damage(event);
         nightmare_base_black_eye.damage(event);
         nightmare_axe.att(event);
+        immortal.hEvt(event);
+        if (event.getEntity().hasEffect(Effects.dead) && event.getEntity().getEffect(Effects.dead)!=null){
+            float lvl = event.getEntity().getEffect(Effects.dead).getAmplifier();
+            lvl *= 0.2f;
+            event.setAmount(event.getAmount()*(1+lvl));
 
+        }
 
         CuriosApi.getCuriosInventory(event.getEntity()).ifPresent(handler -> {
             Map<String, ICurioStacksHandler> curios = handler.getCurios();
@@ -463,13 +463,7 @@ public class NewEvent {
     @SubscribeEvent
     public void soulbattery(CriticalHitEvent event) {
         DungeonLoot.cit(event);
-        BatteryManSuper.criticalHitEvent(event);
-        BatteryMan.criticalHitEvent(event);
-        AnaerobicRecovery.criticalHitEvent(event);
-        CellularPathologyPromotion.criticalHitEvent(event);
-        ManOfLife.criticalHitEvent(event);
-        LifeManSuper.criticalHitEvent(event);
-        if (event.getEntity() instanceof Player living){
+       if (event.getEntity() instanceof Player living){
             if (living.getAttribute(AttReg.cit)!=null){
                 float attack = (float) living.getAttribute(AttReg.cit).getValue();
                 event.setDamageMultiplier(event.getDamageMultiplier()*(attack));
@@ -516,18 +510,13 @@ public class NewEvent {
         nightmare_base_black_eye_red.kill(event);
         nightmare_base_insight_insane.LivingDeathEvents(event);
         nightmare_axe.Nig(event);
+        immortal.livDead(event);
 
-        MethaneEmission.LivingHealEvent(event);
     }
     @SubscribeEvent
     public void heal(PlayerEvent.BreakSpeed event){
         DungeonLoot.heal(event);
     }
-    @SubscribeEvent
-    public void LivingExperienceDropEvent(LivingExperienceDropEvent event){
-        LuckStar.experienceDropEvent(event);
-    }
-
     @SubscribeEvent
     public void EffectTick(EntityTickEvent.Post event) {
         if (event.getEntity() instanceof LivingEntity living){
@@ -560,11 +549,6 @@ public class NewEvent {
                     event.getToolTip().add(1, Component.translatable("item.book.tool.string.nine_sword.not").withStyle(ChatFormatting.GOLD));
                 }
             }
-            if (stack.is(Items.the_blood_book)) {
-                if (!Handler.hascurio(player, Items.book.get())) {
-                    event.getToolTip().add(1, Component.translatable("item.book.tool.string.blood_book.not").withStyle(ChatFormatting.DARK_RED));
-                }
-            }
             CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
                 Map<String, ICurioStacksHandler> curios = handler.getCurios();
                 for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
@@ -595,43 +579,6 @@ public class NewEvent {
                                     event.getToolTip().add(1, Component.literal("+").append(String.format("%.2f", 5f * (1f + stack.get(DataReg.tag).getInt(nine_sword_book.lvl) / 10f))).append("%").append(Component.translatable("item.nine_sword_book.tool.string.3")).withStyle(ChatFormatting.GOLD));
                                     event.getToolTip().add(1, Component.literal("+").append(String.format("%.2f", 10f * (1f + stack.get(DataReg.tag).getInt(nine_sword_book.lvl) / 10f))).append("%").append(Component.translatable("item.nine_sword_book.tool.string.2")).withStyle(ChatFormatting.GOLD));
                                     event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.1").withStyle(ChatFormatting.GOLD));
-                                }
-                            }
-                        }
-
-                        if (stack.is(Items.the_blood_book)) {
-                            if (soulbook.get(DataReg.tag) != null && stack.get(DataReg.tag) != null) {
-                                if (soulbook.get(DataReg.tag).getInt(book.MoDiBlood) <= 100) {
-                                    event.getToolTip().add(1, Component.translatable("item.book.tool.string.blood_book.not").withStyle(ChatFormatting.DARK_RED));
-                                } else {
-                                    {
-                                        int lvl = stack.get(DataReg.tag).getInt(heals);
-                                        float l = 50f;
-                                        float level = getLvl(stack);//1~4
-                                        level *= 3f;
-                                        l -= level;
-
-                                        l /= 100f;
-                                        event.getToolTip().add(1, Component.translatable("skill.the_blood_book.1").append(String.format("%.2f", lvl * (level / 6))).withStyle(ChatFormatting.RED));
-                                        event.getToolTip().add(1, Component.translatable("skill.the_blood_book.2").append(String.format("%.2f", player.getMaxHealth() * l)).withStyle(ChatFormatting.RED));
-                                    }
-                                    {
-                                        float level= getLvl(stack);
-                                        float doH = stack.get(DataReg.tag).getInt(heals) / 4f/ 100f;//0.25%
-
-                                        event.getToolTip().add(1, Component.translatable("skill.the_blood_book.3").append(String.format("%.2f",  ((doH)*level*100F))).append("%").withStyle(ChatFormatting.RED));
-                                    }
-                                    event.getToolTip().add(1, Component.translatable("attribute.name.generic.max_health").append(String.format("%.2f", getLvl(stack)*100)).append("%").withStyle(ChatFormatting.RED));
-                                    event.getToolTip().add(1, Component.literal(""));
-                                    event.getToolTip().add(1, Component.translatable("skill.the_blood_book.4").append(String.format("%.2f",  0.01f*getLvl(stack)*100F)).append("%").withStyle(ChatFormatting.RED));
-                                    event.getToolTip().add(1, Component.literal(""));
-
-                                    event.getToolTip().add(1, Component.translatable("item.the_blood_book.tool.string.5").withStyle(ChatFormatting.RED));
-                                    event.getToolTip().add(1, Component.translatable("item.the_blood_book.tool.string.4").withStyle(ChatFormatting.RED));
-                                    event.getToolTip().add(1, Component.translatable("item.the_blood_book.tool.string.3").withStyle(ChatFormatting.RED));
-                                    event.getToolTip().add(1, Component.literal(""));
-                                    event.getToolTip().add(1, Component.translatable("item.the_blood_book.tool.string.1").withStyle(ChatFormatting.RED));
-
                                 }
                             }
                         }

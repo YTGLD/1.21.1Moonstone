@@ -203,14 +203,6 @@ public class DungeonLoot extends LootModifier {
         if (idSting.contains("chests/")) {
             if (entity instanceof Player player) {
                 if (idSting.contains("treasure")) {
-                    boolean ab = !Handler.hascurio(player, Items.cell.get())
-                            && !Handler.hascurio(player, Items.giant.get())
-                            && Handler.hascurio(player, Items.necora.get());
-
-                    addLootHasB(generatedLoot, random, ab, List.of(
-                            Items.cell.get()
-                    ), 100);
-
 
                     boolean cellBat = !Handler.hascurio(player,Items.bat_cell.get())
                             && Handler.hascurio(player, Items.bloodvirus.get());
@@ -259,13 +251,6 @@ public class DungeonLoot extends LootModifier {
                     if (Handler.hascurio(player, Items.bloodvirus.get())){
                         if (!Handler.hascurio(player,Items.bat_cell.get())) {
                             generatedLoot.add(new ItemStack(Items.bat_cell.get()));
-                        }
-                    }
-                    if (Handler.hascurio(player, Items.necora.get())){
-                        if (!Handler.hascurio(player,Items.giant.get())) {
-                            if (Mth.nextInt(RandomSource.create(),1,10) == 1) {
-                                generatedLoot.add(new ItemStack(Items.giant.get()));
-                            }
                         }
                     }
                 }

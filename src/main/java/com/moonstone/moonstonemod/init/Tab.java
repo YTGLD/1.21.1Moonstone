@@ -21,6 +21,7 @@ public class Tab {
             .title(Component.translatable("itemGroup.tabmoonstone.dna"))
             .displayItems((a,b)->{
                 b.accept(new ItemStack(Items.dna_box.get()));
+                b.accept(new ItemStack(Items.crafting_box.get()));
 
 
                 b.accept(new ItemStack(Items.deceased_contract.get()));
@@ -160,8 +161,8 @@ public class Tab {
             .title(Component.translatable("itemGroup.tabmoonstone"))
             .displayItems((a,b)->{
                 b.accept(new ItemStack(Items.book.get()));
+                b.accept(new ItemStack(Items.immortal.get()));
                 b.accept(new ItemStack(Items.nine_sword_book.get()));
-                b.accept(new ItemStack(Items.the_blood_book.get()));
                 b.accept(new ItemStack(Items.moon_stone.get()));
                 b.accept(new ItemStack(Items.body_stone.get()));
                 b.accept(new ItemStack(Items.probability.get()));
@@ -273,6 +274,7 @@ public class Tab {
                 b.accept(new ItemStack(Items.wind_and_rain.get()));
 
                 b.accept(new ItemStack(Items.blood_candle.get()));
+                b.accept(new ItemStack(Items.the_blood_book.get()));
                 b.accept(new ItemStack(Items.blood_magic_box.get()));
                 b.accept(new ItemStack(Items.blood.get()));
                 b.accept(new ItemStack(Items.max_sword.get()));

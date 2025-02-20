@@ -1,21 +1,17 @@
 package com.moonstone.moonstonemod.event;
 
 import com.moonstone.moonstonemod.MoonStoneMod;
-import com.moonstone.moonstonemod.crafting.AllCrafting;
-import com.moonstone.moonstonemod.crafting.RecipeDNA;
 import com.moonstone.moonstonemod.init.items.BookItems;
 import com.moonstone.moonstonemod.init.items.Items;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
 
 @JeiPlugin
 public class JeiText implements IModPlugin {
@@ -254,6 +250,10 @@ public class JeiText implements IModPlugin {
 
 
             registration.addIngredientInfo(new ItemStack(Items.necora.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.necora"));
+            registration.addIngredientInfo(new ItemStack(Items.crafting_box.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.crafting_box"));
+            registration.addIngredientInfo(new ItemStack(Items.giant.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.giant"));
+            registration.addIngredientInfo(new ItemStack(Items.cell.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.cell"));
+            registration.addIngredientInfo(new ItemStack(Items.giant_nightmare.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.giant_nightmare"));
 
         }
     }

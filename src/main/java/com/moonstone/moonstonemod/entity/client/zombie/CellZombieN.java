@@ -1,6 +1,7 @@
 package com.moonstone.moonstonemod.entity.client.zombie;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.moonstone.moonstonemod.ConfigClient;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
@@ -45,8 +46,9 @@ public class CellZombieN extends MobRenderer<nightmare_giant, NModel<nightmare_g
     @Override
     public void render(nightmare_giant nightmareGiant, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         super.render(nightmareGiant, entityYaw, partialTicks, poseStack, buffer, packedLight);
-        MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
-
+        if (ConfigClient.Client.Shader.get()) {
+            MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
+        }
         Vec3 playerPos = nightmareGiant.position();
         float range =16;
         List<cell_zombie> entities =

@@ -3,6 +3,7 @@ package com.moonstone.moonstonemod.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import com.moonstone.moonstonemod.ConfigClient;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
@@ -58,7 +59,9 @@ public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>
             new CircleCubeBoom(matrices, vertexConsumers, light, entity);
         }
         if (entity instanceof nightmare_giant) {
-            MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
+            if (ConfigClient.Client.Shader.get()) {
+                MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
+            }
             matrices.pushPose();
             matrices.translate(0, 0.175, -0.15);
             renderSphere1(matrices, vertexConsumers, 240, 0.4f);

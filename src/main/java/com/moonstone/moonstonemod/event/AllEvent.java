@@ -141,6 +141,32 @@ public class AllEvent {
         }
     }
     @SubscribeEvent
+    public  void parasite(LivingIncomingDamageEvent event) {
+        if (event.getSource().getEntity() instanceof Player player){
+            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                    ICurioStacksHandler stacksHandler = entry.getValue();
+                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                        ItemStack stack = stackHandler.getStackInSlot(i);
+                        if (stack.is(Items.parasite.get())) {
+                            if (Handler.hascurio(player, Items.parasite.get())) {
+                                if (stack.get(DataReg.tag)!=null) {
+                                    if (stack.get(DataReg.tag).getInt(sizeLevel) > 900) {
+                                        if (player.getFoodData().getFoodLevel() > 12) {
+                                            event.setAmount(event.getAmount() * 1.4f);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+    @SubscribeEvent
     public void the_heart(LivingDropsEvent event){
         if ((event.getSource().getEntity() instanceof Player player)) {
             if (Handler.hascurio(player,Items.the_heart.get())){
@@ -1803,7 +1829,7 @@ public class AllEvent {
                                     }
                                 }
                                 livingentity.level().playSound(null, livingentity.getX(), livingentity.getY(), livingentity.getZ(), SoundEvents.ELDER_GUARDIAN_CURSE, SoundSource.NEUTRAL, 0.22f, 0.22f);
-                                livingentity.hurt(livingentity.damageSources().magic(), 4 + livingentity.getMaxHealth() / 25);
+                                livingentity.hurt(livingentity.damageSources().magic(), 10);
                                 livingentity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 100, 1));
                                 livingentity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
                                 livingentity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1));

@@ -3,7 +3,6 @@ package com.moonstone.moonstonemod.mixin;
 import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.event.NewEvent;
-import com.moonstone.moonstonemod.event.itemset.*;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.items.Items;
 import net.minecraft.world.Difficulty;
@@ -55,22 +54,9 @@ public abstract class LivingEntityMixin {
             });
         }
     }
-    @Inject(at = @At("RETURN"), method = "getSpeed", cancellable = true)
-    public void getSpeed(CallbackInfoReturnable<Float> cir){
-        if ((LivingEntity) (Object) this instanceof Player player) {
-            CellularPathologyPromotion.speed(player,cir);
-            LifeManSuper.speed(player,cir);
-            ManOfLife.speed(player,cir);
-        }
-    }
     @Inject(at = @At("RETURN"), method = "getMaxHealth", cancellable = true)
     public void getMaxHealth(CallbackInfoReturnable<Float> cir) {
         if ((LivingEntity) (Object) this instanceof Player player){
-            AnaerobicRecovery.health(player,cir);
-            CellularPathologyPromotion.health(player,cir);
-            MethaneEmission.health(player,cir);
-            ManOfLife.health(player,cir);
-            LifeManSuper.health(player,cir);
 
             if (Handler.hascurio(player, Items.nightmare_head.get())){
                 cir.setReturnValue(10f);
