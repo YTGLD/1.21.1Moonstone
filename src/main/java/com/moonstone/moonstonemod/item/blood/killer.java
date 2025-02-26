@@ -3,6 +3,7 @@ package com.moonstone.moonstonemod.item.blood;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.event.TextEvt;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Blood;
@@ -25,7 +26,7 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class killer  extends Item implements ICurioItem, Blood {
+public class killer  extends Item implements ICurioItem, Blood , TextEvt.Twelve{
     public killer() {
         super(new Properties().stacksTo(1).durability(1000000000).rarity(Rarity.UNCOMMON));
 

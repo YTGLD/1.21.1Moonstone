@@ -101,6 +101,25 @@ public class MRender extends RenderType {
                                     false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/ging.png"),
                                     false, false).build()).createCompositeState(false));
 
+    public static final RenderType Bluer = create(
+            "blue",
+            DefaultVertexFormat.POSITION,
+            VertexFormat.Mode.QUADS,
+            256,
+            false,
+            false,
+            RenderType.CompositeState.builder()
+                    .setShaderState(RENDER_STATE_SHARD_MLS)
+                    .setWriteMaskState(COLOR_DEPTH_WRITE)
+                    .setTransparencyState(LIGHTNING_TRANSPARENCY)
+                    .setOutputState(setOutputState)
+                    .setTextureState(RenderStateShard.
+                            MultiTextureStateShard.builder().
+                            add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/mls.png"),
+                                    false,
+                                    false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/mls.png"),
+                                    false, false).build()).createCompositeState(false));
+
 
 
     public static final RenderType Snake_render = create(

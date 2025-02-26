@@ -1,5 +1,6 @@
 package com.moonstone.moonstonemod.item.maxitem.uncommon.common;
 
+import com.moonstone.moonstonemod.event.TextEvt;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.CommonItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -8,7 +9,7 @@ import net.minecraft.world.item.TooltipFlag;
 
 import java.util.List;
 
-public class redamout extends CommonItem {
+public class redamout extends CommonItem implements TextEvt.Twelve{
 
 
 

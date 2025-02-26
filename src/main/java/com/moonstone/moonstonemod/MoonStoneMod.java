@@ -27,7 +27,6 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.crafting.Recipe;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -36,11 +35,9 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.RecipesUpdatedEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.event.RegisterShadersEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.common.data.internal.NeoForgeRecipeProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.slf4j.Logger;
 
@@ -69,6 +66,10 @@ public class MoonStoneMod {
         NeoForge.EVENT_BUS.register(new LootTableEvent());
         NeoForge.EVENT_BUS.register(new NewEvent());
         NeoForge.EVENT_BUS.register(new AdvancementEvt());
+        NeoForge.EVENT_BUS.register(new BookEvt());
+        NeoForge.EVENT_BUS.register(new TextEvt());
+
+
         BookItems.REGISTRY.register(eventBus);
         AttReg.REGISTRY.register(eventBus);
         DNAItems.REGISTRY.register(eventBus);
@@ -78,6 +79,8 @@ public class MoonStoneMod {
         Effects.REGISTRY.register(eventBus);
         Particles.PARTICLE_TYPES.register(eventBus);
         Items.REGISTRY.register(eventBus);
+
+
 
         AllCrafting.RECIPE_SERIALIZER_REGISTRY.register(eventBus);
         eventBus.addListener(this::gatherData);
@@ -133,6 +136,8 @@ public class MoonStoneMod {
             event.registerEntityRenderer(EntityTs.as_sword.get(), com.moonstone.moonstonemod.entity.client.AsSwordRender::new);
             event.registerEntityRenderer(EntityTs.axe.get(), com.moonstone.moonstonemod.entity.client.AxeRenderer::new);
             event.registerEntityRenderer(EntityTs.bolt.get(), com.moonstone.moonstonemod.entity.client.BoltRenderer::new);
+            event.registerEntityRenderer(EntityTs.sword.get(), com.moonstone.moonstonemod.entity.client.SwordOfTwelveRenderer::new);
+            event.registerEntityRenderer(EntityTs.at_sword_entity.get(), com.moonstone.moonstonemod.entity.client.AtSwordRender::new);
 
         }
         @SubscribeEvent

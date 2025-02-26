@@ -16,10 +16,23 @@ public class Config {
     }
     public Config(ModConfigSpec.Builder BUILDER){
 
-        BUILDER.push("SetOffOrOn");
-        offSet  = BUILDER
-                .comment("Enable accessory set effect")
-                .define("offOrOn",false);
+        BUILDER.push("CommonConfig");
+        canUnequipMoonstoneItem = BUILDER
+                .comment("Can unequip some moonstone item")
+                .define("Can", false);
+        giveBook = BUILDER
+                .comment("Starting with a book or not")
+                .define("give",true);
+        immortalZombie = BUILDER
+                .comment("For the owner, moonstone entity are immortal")
+                .define("immortalZombieOfOwner",false);
+
+
+        BUILDER.pop();
+        BUILDER.push("nightmare");
+        nightmareBaseMaxItem = BUILDER
+                .comment("The value is equip NightmareBase give your item size")
+                .defineInRange("Common_probability", 3, 0, 7);
         BUILDER.pop();
 
 
@@ -38,10 +51,6 @@ public class Config {
         nightmare_moai = BUILDER
                 .comment("Nightmare Moai's enchantment level bonus")
                 .defineInRange("EnchantmentBonus", 2, 0, 100);
-        canUnequipMoonstoneItem = BUILDER
-                .comment("Can unequip some moonstone item")
-                .define("Can", false);
-
 
         m_brain_many = BUILDER
                 .comment("How many critical hits will brain make")
@@ -66,9 +75,7 @@ public class Config {
                 .comment("The speed of the motor")
                 .defineInRange("motor", 0.15, 0, 999);
 
-        giveBook = BUILDER
-                .comment("Starting with a book or not")
-                .define("give",true);
+
         bat = BUILDER
                 .comment("The probability of discovering Shadow Plague items from the chests")
                 .defineInRange("Plague_probability", 10, 1, 100);
@@ -111,6 +118,8 @@ public class Config {
     public  ModConfigSpec.DoubleValue common ;
     public ModConfigSpec.BooleanValue offSet;
     public ModConfigSpec.BooleanValue canUnequipMoonstoneItem ;
+    public ModConfigSpec.BooleanValue immortalZombie ;
+    public   ModConfigSpec.IntValue nightmareBaseMaxItem ;
     @SubscribeEvent
     public static void onLoad(final ModConfigEvent.Loading configEvent) {
     }

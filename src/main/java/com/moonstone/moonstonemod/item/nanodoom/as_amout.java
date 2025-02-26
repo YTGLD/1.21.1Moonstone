@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.item.nanodoom;
 
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.as_sword;
+import com.moonstone.moonstonemod.event.TextEvt;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.Doom;
@@ -20,9 +21,12 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 
 import java.util.List;
 
-public class as_amout  extends Doom {
+public class as_amout  extends Doom implements TextEvt.Twelve{
     public static void hurt(LivingIncomingDamageEvent event){
         if (event.getSource().getDirectEntity() instanceof Player player ){
+            if (Handler.hascurio(player,Items.million.get())&&Handler.hascurio(player,Items.as_amout.get())){
+                return;
+            }
             if (Handler.hascurio(player,Items.as_amout.get())){
                 if (!player.getCooldowns().isOnCooldown(Items.as_amout.get())) {
                     player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.AMBIENT, 2, 2);

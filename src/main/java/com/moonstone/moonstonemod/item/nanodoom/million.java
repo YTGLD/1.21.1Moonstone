@@ -4,6 +4,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.as_sword;
+import com.moonstone.moonstonemod.event.TextEvt;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
@@ -35,7 +36,7 @@ import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 import java.util.List;
 import java.util.Map;
 
-public class million extends Doom {
+public class million extends Doom implements TextEvt.Twelve{
     public static final String sizeLvl = "swordSize";
     public static final String attackLvl = "attackLvlSize";
     public static final String allAttackTime = "allAttackTime";
@@ -65,6 +66,11 @@ public class million extends Doom {
 
     public static void hurt(LivingIncomingDamageEvent event) {
         if (event.getSource().getDirectEntity() instanceof Player player) {
+            if (Handler.hascurio(player,Items.million.get())&&Handler.hascurio(player,Items.as_amout.get())){
+                return;
+            }
+
+
             if (Handler.hascurio(player, Items.million.get())) {
                 CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
                     Map<String, ICurioStacksHandler> curios = handler.getCurios();

@@ -5,6 +5,7 @@ import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
+import com.moonstone.moonstonemod.item.plague.BloodVirus.ex.catalyzer;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -19,10 +20,13 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ClickAction;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -45,7 +49,25 @@ public class book extends Item implements ICurioItem {
     public book() {
         super(new Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
     }
+    public boolean overrideOtherStackedOnMe(ItemStack me, ItemStack Other, Slot p_150744_, ClickAction p_150745_, Player p_150746_, SlotAccess p_150747_) {
+        if (me.getCount() != 1) return false;
+        if (p_150745_ == ClickAction.SECONDARY && p_150744_.allowModification(p_150746_)) {
+            if (Other.isEmpty()){
+                if (ModList.get().isLoaded("patchouli")){
 
+                    if (p_150746_ instanceof ServerPlayer player){
+                        PatchouliAPI.get().openBookGUI(player,ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"soul_book"));
+                    }
+                }else {
+                    p_150746_.displayClientMessage(Component.translatable("moonstone.book.error").withStyle(ChatFormatting.RED), true);
+                }
+                return true;
+
+            }
+
+        }
+        return false;
+    }
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = HashMultimap.create();

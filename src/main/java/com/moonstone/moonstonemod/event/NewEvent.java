@@ -59,6 +59,8 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
+import top.theillusivec4.curios.api.event.CurioDropsEvent;
+import top.theillusivec4.curios.api.event.DropRulesEvent;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
@@ -289,6 +291,7 @@ public class NewEvent {
         nightmare_base_black_eye.damage(event);
         nightmare_axe.att(event);
         immortal.hEvt(event);
+        twelve_sword.att(event);
         if (event.getEntity().hasEffect(Effects.dead) && event.getEntity().getEffect(Effects.dead)!=null){
             float lvl = event.getEntity().getEffect(Effects.dead).getAmplifier();
             lvl *= 0.2f;
@@ -511,7 +514,6 @@ public class NewEvent {
         nightmare_base_insight_insane.LivingDeathEvents(event);
         nightmare_axe.Nig(event);
         immortal.livDead(event);
-
     }
     @SubscribeEvent
     public void heal(PlayerEvent.BreakSpeed event){

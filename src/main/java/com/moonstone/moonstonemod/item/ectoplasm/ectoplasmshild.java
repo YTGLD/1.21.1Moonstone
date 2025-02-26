@@ -1,5 +1,6 @@
 package com.moonstone.moonstonemod.item.ectoplasm;
 
+import com.moonstone.moonstonemod.event.TextEvt;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.ectoplasm;
 import net.minecraft.ChatFormatting;
@@ -13,7 +14,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class ectoplasmshild extends ectoplasm {
+public class ectoplasmshild extends ectoplasm implements TextEvt.Twelve{
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {

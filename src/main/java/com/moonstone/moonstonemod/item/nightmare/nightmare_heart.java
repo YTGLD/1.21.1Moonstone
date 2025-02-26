@@ -29,7 +29,7 @@ public class nightmare_heart extends nightmare {
         }
     }
     public static void Nig(LivingDeathEvent event) {
-        if (event.getSource().getEntity() instanceof Player player) {
+        if (event.getSource().getDirectEntity() instanceof Player player) {
             if (Handler.hascurio(player, Items.nightmare_heart.get())) {
                 if (!player.getCooldowns().isOnCooldown(Items.nightmare_heart.get())) {
                     nightmare_entity e = new nightmare_entity(EntityTs.nightmare_entity.get(), event.getEntity().level());

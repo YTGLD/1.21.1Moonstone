@@ -3,6 +3,7 @@ package com.moonstone.moonstonemod.item.maxitem;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Handler;
+import com.moonstone.moonstonemod.event.TextEvt;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.UnCommonItem;
@@ -24,7 +25,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class maxamout extends UnCommonItem {
+public class maxamout extends UnCommonItem implements TextEvt.Twelve{
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player){

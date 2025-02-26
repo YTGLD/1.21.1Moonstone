@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.item.maxitem.maulice;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.moonstone.moonstonemod.event.TextEvt;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.MLS;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
@@ -19,7 +20,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class mblock extends MLS {
+public class mblock extends MLS implements TextEvt.Twelve {
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = HashMultimap.create();

@@ -8,6 +8,7 @@ import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.CommonItem;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Die;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_head;
+import com.moonstone.moonstonemod.item.nightmare.nightmareeye;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
@@ -41,7 +42,7 @@ public class evil_mob extends CommonItem implements Die {
         }
         if (stack.get(DataReg.tag) != null){
             if (slotContext.entity() instanceof Player player) {
-                player.getAttributes().addTransientAttributeModifiers(un_un_pla(player, stack));
+                player.getAttributes().addTransientAttributeModifiers(nightmareeye.un_un_pla(player, stack));
             }
         }
     }
@@ -49,60 +50,15 @@ public class evil_mob extends CommonItem implements Die {
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
         if (slotContext.entity() instanceof Player player) {
-            player.getAttributes().removeAttributeModifiers(un_un_pla(player, stack));
+            player.getAttributes().removeAttributeModifiers(nightmareeye.un_un_pla(player, stack));
         }
     }
 
-    public Multimap<Holder<Attribute>, AttributeModifier> un_un_pla(Player player, ItemStack stack) {
-        Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
-
-
-        float s = 0.25f;
-        if (Handler.hascurio(player, Items.nightmarecharm.get())){
-            s -= 0.15f;
-        }
-        if (Handler.hascurio(player, Items.nightmareanchor.get())){
-            s -= 0.05f;
-        }
-        if (Handler.hascurio(player, Items.nightmarerotten.get())){
-            float a = BuiltInRegistries.ATTRIBUTE.size();
-            a /= 100;
-            a *= 1.1F;
-            s += a;
-        }
-
-        if (Handler.hascurio(player, Items.nightmare_orb.get())){
-            if (player.getHealth()<= player.getMaxHealth() / 3) {
-                s = -s;
-            }
-        }
-        if (Handler.hascurio(player,Items.nightmare_head.get())) {
-            CompoundTag tag = stack.get(DataReg.tag);
-            if (tag != null){
-                if (tag != null) {
-                    float d = tag.getInt(nightmare_head.die);
-                    d /= 100;
-                    float ds = d;
-                    ds = 1 - ds;
-                    s = s * (1 - ds);
-                }
-            }else {
-                stack.set(DataReg.tag,new CompoundTag());
-            }
-        }
-
-        modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        modifierMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        modifierMultimap.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        modifierMultimap.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));return modifierMultimap;
-    }
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier>  multimap = HashMultimap.create();
         CuriosApi
-                .addSlotModifier(multimap, "ncrdna", ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 2, AttributeModifier.Operation.ADD_VALUE);
+                .addSlotModifier(multimap, "ncrdna", ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 3, AttributeModifier.Operation.ADD_VALUE);
 
         return multimap;
     }

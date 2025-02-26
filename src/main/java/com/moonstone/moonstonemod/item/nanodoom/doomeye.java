@@ -1,5 +1,6 @@
 package com.moonstone.moonstonemod.item.nanodoom;
 
+import com.moonstone.moonstonemod.event.TextEvt;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.Doom;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -8,7 +9,7 @@ import net.minecraft.world.item.TooltipFlag;
 
 import java.util.List;
 
-public class doomeye extends Doom {
+public class doomeye extends Doom implements TextEvt.Twelve{
 
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {

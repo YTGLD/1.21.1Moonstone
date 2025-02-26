@@ -52,6 +52,9 @@ public class BookItem extends Item implements ICurioItem, Iplague {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> pTooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, pTooltipComponents, tooltipFlag);
+
+        pTooltipComponents.add(Component.translatable("moonstone.use.dna").withStyle(ChatFormatting.RED));
+
         for (String string : stringName) {
             pTooltipComponents.add(Component.translatable(string).withStyle(ChatFormatting.RED));
         }

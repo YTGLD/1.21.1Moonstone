@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.init.moonstoneitem.extend;
 
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.INightmare;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.Item;
@@ -23,8 +24,6 @@ public class nightmare extends Item implements ICurioItem , INightmare {
             stack.set(DataReg.tag,new CompoundTag());
         }
     }
-
-
 
     @NotNull
     @Override

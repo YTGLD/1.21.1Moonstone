@@ -7,6 +7,7 @@ import com.moonstone.moonstonemod.init.moonstoneitem.extend.apple;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.medicinebox;
 import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
+import com.moonstone.moonstonemod.item.maxitem.*;
 import com.moonstone.moonstonemod.item.maxitem.book.the_blood_book;
 import com.moonstone.moonstonemod.item.bloodvirus;
 import com.moonstone.moonstonemod.item.ectoplasm.*;
@@ -14,11 +15,7 @@ import com.moonstone.moonstonemod.item.ectoplasm.soul.soulbattery;
 import com.moonstone.moonstonemod.item.ectoplasm.soul.soulcube;
 import com.moonstone.moonstonemod.item.maxitem.amout.ectoplasmstone;
 import com.moonstone.moonstonemod.item.maxitem.amout.twistedstone;
-import com.moonstone.moonstonemod.item.maxitem.fortunecrystal;
-import com.moonstone.moonstonemod.item.maxitem.immortal;
 import com.moonstone.moonstonemod.item.maxitem.maulice.*;
-import com.moonstone.moonstonemod.item.maxitem.maxamout;
-import com.moonstone.moonstonemod.item.maxitem.mayhemcrystal;
 import com.moonstone.moonstonemod.item.maxitem.uncommon.common.*;
 import com.moonstone.moonstonemod.item.nanodoom.*;
 import com.moonstone.moonstonemod.item.necora;
@@ -288,6 +285,9 @@ public class Items {
     public static final DeferredHolder<Item,?> nightmare_axe =REGISTRY.register("nightmare_axe", nightmare_axe::new);
     public static final DeferredHolder<Item,?> crafting_box =REGISTRY.register("crafting_box", crafting_box::new);
     public static final DeferredHolder<Item,?> immortal =REGISTRY.register("immortal", immortal::new);
+    public static final DeferredHolder<Item,?> sword =REGISTRY.register("sword",twelve_sword.sword::new );
+    public static final DeferredHolder<Item,?> at_sword_ =REGISTRY.register("at_sword",twelve_sword.at_sword::new );
+    public static final DeferredHolder<Item,?> twelve_sword_ =REGISTRY.register("twelve_sword", twelve_sword::new);
 
 
     public static final DeferredHolder<Item,?> the_heart_image =REGISTRY.register("the_heart_image", ()-> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));

@@ -1,6 +1,8 @@
 package com.moonstone.moonstonemod.init.moonstoneitem.extend;
 
+import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Iplague;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -27,6 +29,17 @@ public class TheNecoraIC extends Item  implements Iplague, ICurioItem {
      }
 
       */
+    @Override
+    public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
+        ICurioItem.super.onEquip(slotContext, prevStack, stack);
+        CompoundTag tag = stack.get(DataReg.tag);
+        if (tag != null){
+            tag.putString("ytgld", "ytgld");
+        }else {
+            stack.set(DataReg.tag,new CompoundTag());
+        }
+    }
+
     @NotNull
     @Override
     public ICurio.DropRule getDropRule(SlotContext slotContext, DamageSource source, boolean recentlyHit,

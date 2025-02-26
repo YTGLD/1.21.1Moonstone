@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.item.maxitem.uncommon.common;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.moonstone.moonstonemod.event.TextEvt;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.CommonItem;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Iwar;
 import net.minecraft.core.Holder;
@@ -12,7 +13,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
 
-public class bigwarcrystal extends CommonItem implements Iwar {
+public class bigwarcrystal extends CommonItem implements Iwar , TextEvt.Twelve{
 
 
     @Override

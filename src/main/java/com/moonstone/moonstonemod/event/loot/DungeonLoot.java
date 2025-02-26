@@ -6,6 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.event.AdvancementEvt;
+import com.moonstone.moonstonemod.event.BookEvt;
 import com.moonstone.moonstonemod.event.NewEvent;
 import com.moonstone.moonstonemod.init.items.BookItems;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
@@ -113,7 +114,7 @@ public class DungeonLoot extends LootModifier {
                         Items.owner_blood_boom_eye.get(),
                         Items.owner_blood_vex.get(),
                         Items.owner_blood_earth.get()
-                ), 5);
+                ), 15);
             }
         }
 
@@ -203,6 +204,14 @@ public class DungeonLoot extends LootModifier {
         if (idSting.contains("chests/")) {
             if (entity instanceof Player player) {
                 if (idSting.contains("treasure")) {
+                    boolean ab = !Handler.hascurio(player, Items.cell.get())
+                            && !Handler.hascurio(player, Items.giant.get())
+                            && Handler.hascurio(player, Items.necora.get());
+
+                    addLootHasB(generatedLoot, random, ab, List.of(
+                            Items.cell.get()
+                    ), 100);
+
 
                     boolean cellBat = !Handler.hascurio(player,Items.bat_cell.get())
                             && Handler.hascurio(player, Items.bloodvirus.get());
@@ -251,6 +260,13 @@ public class DungeonLoot extends LootModifier {
                     if (Handler.hascurio(player, Items.bloodvirus.get())){
                         if (!Handler.hascurio(player,Items.bat_cell.get())) {
                             generatedLoot.add(new ItemStack(Items.bat_cell.get()));
+                        }
+                    }
+                    if (Handler.hascurio(player, Items.necora.get())){
+                        if (!Handler.hascurio(player,Items.giant.get())) {
+                            if (Mth.nextInt(RandomSource.create(),1,10) == 1) {
+                                generatedLoot.add(new ItemStack(Items.giant.get()));
+                            }
                         }
                     }
                 }
@@ -331,7 +347,9 @@ public class DungeonLoot extends LootModifier {
                 }
             }
         }
-
+        for (ItemStack itemStack : generatedLoot) {
+            BookEvt.addLvl(itemStack,Mth.nextInt(RandomSource.create(),1,3000),Mth.nextInt(RandomSource.create(),0,3000));
+        }
         return generatedLoot;
     }
 

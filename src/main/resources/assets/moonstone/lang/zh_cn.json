@@ -1,4 +1,6 @@
 {
+  "key.moonstone.r": "技能",
+  "key.categories.moonstone": "月之石",
   "curios.modifiers.dna": "植入DNA时",
   "itemGroup.tabmoonstone.blood": "月之石：血魔 ",
   "allevent.moonstone.cannot": "你必须取出富饶之心内重复的物品",
@@ -35,6 +37,20 @@
   "item.moonstone.ectoplasmcharmstone": "灵质石头护符",
   "item.moonstone.ectoplasmshild": "灵质盾牌",
   "item.moonstone.ectoplasmbattery": "灵质电池",
+
+  "item.at_a_book.tool.string.lvl.1": "金仙",
+  "item.at_a_book.tool.string.lvl.2": "金仙",
+  "item.at_a_book.tool.string.lvl.3": "仙尊",
+  "item.at_a_book.tool.string.lvl.4": "仙帝",
+  "item.at_a_book.tool.string.lvl.5": "炼神",
+  "item.at_a_book.tool.string.lvl.6": "天神",
+  "item.at_a_book.tool.string.lvl.7": "主神",
+  "item.at_a_book.tool.string.lvl.8": "天劫",
+  "item.at_a_book.tool.string.lvl.9": "合道",
+  "item.at_a_book.tool.string.lvl.10": "圣玄",
+  "item.at_a_book.tool.string.lvl.11": "圣君",
+  "item.at_a_book.tool.string.lvl.12": "圣尊",
+  "item.moonstone.at_a_book": "很普通的书",
 
 
   "item.moonstone.badgeofthedead": "亡灵徽章",
@@ -1564,7 +1580,7 @@
   "moonstone.jei.item.moonstone.nightmare_base_start_egg": "杀死嗅探兽",
   "moonstone.jei.item.moonstone.nightmare_base_start_pod": "开地牢的箱子，概率25%，只能获取一个",
   "item.dnas.tool.string": "提示：使用药物粉碎盒粉碎基因物品",
-
+  "moonstone.use.dna": "提示：使用药物回收盒分解",
   "moonstone.jei.necora": "这是僵尸病毒，它需要使用基因重组盒重组，右键放入：\n48份ATP高能量\n32份达尔文主义\n64份催化剂开关\n24份极速代谢\n20份代谢紊乱\n12份肽合成增强\n24份神经递质抑制\n8份液化性坏死\n1个灵质棱镜\n当你集齐了所有材料，那你就可以进行下一步计划.......。\n最后右键使用基因重组盒这个物品\n记得背包腾出来空间！",
   "moonstone.jei.cell": "这是僵尸病毒的重要的附属物品，用于召唤细胞僵尸协助作战，它们可以受到部分分段基因组的加成，它需要使用基因重组盒重组，右键放入：\n20份ATP高能量\n16份神创论\n40份极速代谢\n64份代谢紊乱\n24份液化性坏死\n1个灵质棱镜\n8个灵质球。\n最后右键使用基因重组盒这个物品\n记得背包腾出来空间！",
   "moonstone.jei.giant": "这是僵尸病毒的一个附属物品，用于召唤巨型细胞僵尸协助作战，它们可以受到部分分段基因组的加成，它需要使用基因重组盒重组，右键放入：\n30份ATP高能量\n24份神创论\n60份极速代谢\n64份代谢紊乱\n12份液化性坏死\n1个细胞重生\n1个灵质棱镜。\n最后右键使用基因重组盒这个物品\n记得背包腾出来空间！",
@@ -1572,9 +1588,28 @@
   "moonstone.jei.crafting_box": "使用大量DNA来构成模组内的重要物品",
 
   "item.moonstone.crafting_box":"基因重组盒",
-
   "advancements.tooltip.nightmare_base.text": "获得这个物品",
   "advancements.tooltip.nightmare_base.hand": "起始",
+
+  "item.moonstone.twelve_sword":"御神术-葬",
+  "item.twelve_sword.tool.string.1": "杀死生物召唤剑阵",
+  "item.twelve_sword.tool.string.4": "数量取决于你生肖物品的数量",
+  "item.twelve_sword.tool.string.2": "在剑阵附近获得10%~120%的伤害加成",
+  "item.twelve_sword.tool.string.3": "剑阵内的生物会被死界碑坠落攻击",
+
+  "moonstone.twelve.1": "子",
+  "moonstone.twelve.2": "丑",
+  "moonstone.twelve.3": "寅",
+  "moonstone.twelve.4": "卯",
+  "moonstone.twelve.5": "辰",
+  "moonstone.twelve.6": "巳",
+  "moonstone.twelve.7": "午",
+  "moonstone.twelve.8": "未",
+  "moonstone.twelve.9": "申",
+  "moonstone.twelve.10": "酉",
+  "moonstone.twelve.11": "戌",
+  "moonstone.twelve.12": "亥",
+
 
   "item.moonstone.nightmare_axe":"混沌战斧",
 

@@ -50,7 +50,7 @@ public class nightmareeye extends nightmare {
         return com.moonstone.moonstonemod.Config.SERVER.canUnequipMoonstoneItem.get();
     }
 
-    public Multimap<Holder<Attribute>, AttributeModifier> un_un_pla(Player player, ItemStack stack) {
+    public static Multimap<Holder<Attribute>, AttributeModifier> un_un_pla(Player player, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
 
 
@@ -88,12 +88,12 @@ public class nightmareeye extends nightmare {
             }
         }
 
-        modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        modifierMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        modifierMultimap.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        modifierMultimap.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));return modifierMultimap;
+        modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+Items.nightmareeye.get().getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+Items.nightmareeye.get().getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        modifierMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+Items.nightmareeye.get().getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        modifierMultimap.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+Items.nightmareeye.get().getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        modifierMultimap.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+Items.nightmareeye.get().getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+Items.nightmareeye.get().getDescriptionId()), -s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));return modifierMultimap;
     }
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {

@@ -1,4 +1,6 @@
 {
+  "key.moonstone.r": "技能",
+  "key.categories.moonstone": "月之石",
   "curios.modifiers.necora": "when necora",
   "key.moonstone.category": "Moonstone",
   "key.moonstone.desc": "Skill",
@@ -30,6 +32,20 @@
   "item.moonstone.ectoplasmcharmstone": "ectoplasm charm stone",
   "item.moonstone.ectoplasmshild": "ectoplasm shild",
   "item.moonstone.ectoplasmbattery": "ectoplasm battery",
+
+  "item.at_a_book.tool.string.lvl.1": "金仙",
+  "item.at_a_book.tool.string.lvl.2": "金仙",
+  "item.at_a_book.tool.string.lvl.3": "仙尊",
+  "item.at_a_book.tool.string.lvl.4": "仙帝",
+  "item.at_a_book.tool.string.lvl.5": "炼神",
+  "item.at_a_book.tool.string.lvl.6": "天神",
+  "item.at_a_book.tool.string.lvl.7": "主神",
+  "item.at_a_book.tool.string.lvl.8": "天劫",
+  "item.at_a_book.tool.string.lvl.9": "合道",
+  "item.at_a_book.tool.string.lvl.10": "圣玄",
+  "item.at_a_book.tool.string.lvl.11": "圣君",
+  "item.at_a_book.tool.string.lvl.12": "圣尊",
+  "item.moonstone.at_a_book": "很普通的书",
 
   "item.moonstone.badgeofthedead": "badge of the dead",
   "item.moonstone.battery": "battery",
@@ -1557,8 +1573,27 @@
 
   "item.dnas.tool.string": "提示：使用药物粉碎盒粉碎基因物品",
 
+  "moonstone.use.dna": "提示：使用药物粉碎盒分解",
 
+  "item.moonstone.twelve_sword":"诸神剑阵",
 
+  "item.twelve_sword.tool.string.1": "杀死生物召唤剑阵",
+  "item.twelve_sword.tool.string.2": "在剑阵附近获得1%0~120%的伤害加成",
+  "item.twelve_sword.tool.string.3": "剑阵内的生物会被死界碑坠落攻击",
+  "item.twelve_sword.tool.string.4": "数量取决于你生肖物品的数量",
+
+  "moonstone.twelve.1": "子",
+  "moonstone.twelve.2": "丑",
+  "moonstone.twelve.3": "寅",
+  "moonstone.twelve.4": "卯",
+  "moonstone.twelve.5": "辰",
+  "moonstone.twelve.6": "巳",
+  "moonstone.twelve.7": "午",
+  "moonstone.twelve.8": "未",
+  "moonstone.twelve.9": "申",
+  "moonstone.twelve.10": "酉",
+  "moonstone.twelve.11": "戌",
+  "moonstone.twelve.12": "亥",
   "advancements.tooltip.nightmare_base.text": "Obtain this item",
   "advancements.tooltip.nightmare_base.hand": "Beginning",
 

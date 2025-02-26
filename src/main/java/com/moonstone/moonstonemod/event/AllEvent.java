@@ -233,7 +233,8 @@ public class AllEvent {
                 player.level().explode(null,player.getX(),player.getY(),player.getZ(),5.5f,true , Level.ExplosionInteraction.NONE);
             }
         }
-        if (event.getSource().getEntity() instanceof Player player){
+
+        if (event.getSource().getDirectEntity() instanceof Player player){
             if (Handler.hascurio(player, Items.giant.get())){
 
                 if (!Handler.hascurio(player,Items.giant_nightmare.get())) {
@@ -241,12 +242,12 @@ public class AllEvent {
                         if (player.level() instanceof ServerLevel p_222881_) {
                             if (Mth.nextInt(RandomSource.create(), 1, 5) == 1) {
 
-                                Handler.trySpawnMob(player, EntityTs.cell_giant.get(), MobSpawnType.TRIGGERED, p_222881_, new BlockPos((int) event.getEntity().getX(), (int) event.getEntity().getY(), (int) event.getEntity().getZ()), 10, 2, 3, SpawnUtil.Strategy.ON_TOP_OF_COLLIDER);
+                                Handler.trySpawnMob(player, EntityTs.cell_giant.get(), MobSpawnType.TRIGGERED, p_222881_, new BlockPos((int) event.getEntity().getX(), (int) event.getEntity().getY(), (int) event.getEntity().getZ()), 10, 2, 3, SpawnUtil.Strategy.ON_TOP_OF_COLLIDER,Items.giant.get(), 600);
                                 player.level().playSound(null, player.blockPosition(), SoundEvents.WARDEN_EMERGE, SoundSource.NEUTRAL, 1.0F, 1.0F);
 
                                 if (Handler.hascurio(player, Items.mother_cell.get())) {
                                     if (Mth.nextInt(RandomSource.create(), 1, 2) == 1) {
-                                        Handler.trySpawnMob(player, EntityTs.cell_giant.get(), MobSpawnType.TRIGGERED, p_222881_, new BlockPos((int) event.getEntity().getX(), (int) event.getEntity().getY(), (int) event.getEntity().getZ()), 10, 2, 3, SpawnUtil.Strategy.ON_TOP_OF_COLLIDER);
+                                        Handler.trySpawnMob(player, EntityTs.cell_giant.get(), MobSpawnType.TRIGGERED, p_222881_, new BlockPos((int) event.getEntity().getX(), (int) event.getEntity().getY(), (int) event.getEntity().getZ()), 10, 2, 3, SpawnUtil.Strategy.ON_TOP_OF_COLLIDER,Items.giant.get(), 600);
                                     }
                                     for (int i = 0; i < 2; i++) {
                                         cell_zombie cell_zombie = new cell_zombie(EntityTs.cell_zombie.get(), player.level());
@@ -256,7 +257,6 @@ public class AllEvent {
                                     }
                                 }
                                 player.getCooldowns().addCooldown(Items.giant.get(), 600);
-
                             }
                         }
                     }
@@ -264,14 +264,14 @@ public class AllEvent {
                     if (!player.getCooldowns().isOnCooldown(Items.giant.get())) {
                         if (player.level() instanceof ServerLevel p_222881_) {
                             if (Mth.nextInt(RandomSource.create(), 1, 2) == 1) {
-                                Handler.trySpawnMob(player, EntityTs.nightmare_giant.get(), MobSpawnType.TRIGGERED, p_222881_, new BlockPos((int) event.getEntity().getX(), (int) event.getEntity().getY(), (int) event.getEntity().getZ()), 10, 2, 3, SpawnUtil.Strategy.ON_TOP_OF_COLLIDER);
+                                Handler.trySpawnMob(player, EntityTs.nightmare_giant.get(), MobSpawnType.TRIGGERED, p_222881_, new BlockPos((int) event.getEntity().getX(), (int) event.getEntity().getY(), (int) event.getEntity().getZ()), 10, 2, 3, SpawnUtil.Strategy.ON_TOP_OF_COLLIDER,Items.giant.get(), 600);
 
                                 player.hurt(player.damageSources().dryOut(), player.getHealth() /2);
                                 player.level().playSound(null, player.blockPosition(), SoundEvents.WARDEN_EMERGE, SoundSource.NEUTRAL, 1.0F, 1.0F);
 
                                 if (Handler.hascurio(player, Items.subspace_cell.get())) {
                                     for (int i = 0; i < 3; i++) {
-                                        Handler.trySpawnMob(player, EntityTs.cell_giant.get(), MobSpawnType.TRIGGERED, p_222881_, new BlockPos((int) event.getEntity().getX(), (int) event.getEntity().getY(), (int) event.getEntity().getZ()), 10, 2, 3, SpawnUtil.Strategy.ON_TOP_OF_COLLIDER);
+                                        Handler.trySpawnMob(player, EntityTs.cell_giant.get(), MobSpawnType.TRIGGERED, p_222881_, new BlockPos((int) event.getEntity().getX(), (int) event.getEntity().getY(), (int) event.getEntity().getZ()), 10, 2, 3, SpawnUtil.Strategy.ON_TOP_OF_COLLIDER,Items.giant.get(), 600);
                                     }
                                 }
 
@@ -908,11 +908,9 @@ public class AllEvent {
                             CompoundTag tag = stack.get(DataReg.tag);
                             if (tag != null) {
                                 if (!tag.getBoolean(spawn)) {
-                                    if (Handler.hascurio(player, Items.medicinebox.get())) {
-                                        player.addItem(new ItemStack(Items.reanimation.get()));
-                                        tag.putBoolean(spawn, true);
-                                        tag.putBoolean(blood_spawn, true);
-                                    }
+                                    player.addItem(new ItemStack(Items.reanimation.get()));
+                                    tag.putBoolean(spawn, true);
+                                    tag.putBoolean(blood_spawn, true);
                                 }
                             }else {
                                 stack.set(DataReg.tag,new CompoundTag());

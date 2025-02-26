@@ -4,6 +4,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.contents.BundleContents;
+import com.moonstone.moonstonemod.event.TextEvt;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.items.DNAItems;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
@@ -57,7 +58,7 @@ import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 import java.util.List;
 import java.util.Map;
 
-public class dna extends Item implements Iplague, ICurioItem {
+public class dna extends Item implements Iplague, ICurioItem , TextEvt.Twelve{
     public dna() {
         super(new Item.Properties().stacksTo(1).component(DataReg.BUNDLE_CONTENTS, BundleContents.EMPTY).rarity(Rarity.UNCOMMON));
     }

@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.moonstone.moonstonemod.entity.nightmare.nightmare_giant;
 import com.moonstone.moonstonemod.entity.zombie.cell_giant;
 import com.moonstone.moonstonemod.init.items.Items;
+import net.minecraft.client.renderer.ItemModelShaper;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -61,10 +62,17 @@ public class Handler {
             int pAttempts,
             int p_216409_,
             int pYOffset,
-            SpawnUtil.Strategy pStrategy
+            SpawnUtil.Strategy pStrategy,
+            Item I,
+            int time
     ) {
         BlockPos.MutableBlockPos blockpos$mutableblockpos = pPos.mutable();
 
+        if (player instanceof Player eee){
+            if (eee.getCooldowns().isOnCooldown(I)){
+                return;
+            }
+        }
         for (int i = 0; i < pAttempts; i++) {
             int j = Mth.randomBetweenInclusive(pLevel.random, -p_216409_, p_216409_);
             int k = Mth.randomBetweenInclusive(pLevel.random, -p_216409_, p_216409_);
@@ -104,6 +112,11 @@ public class Handler {
                     }
 
                     t.setOwnerUUID(player.getUUID());
+
+                    if (player instanceof Player eee){
+                       eee.getCooldowns().addCooldown(I,time);
+                    }
+
                     if (net.neoforged.neoforge.event.EventHooks.checkSpawnPosition(t, pLevel, pSpawnType)) {
                         pLevel.addFreshEntityWithPassengers(t);
                         return;
