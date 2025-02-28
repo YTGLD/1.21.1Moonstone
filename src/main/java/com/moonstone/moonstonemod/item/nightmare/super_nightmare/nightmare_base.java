@@ -24,17 +24,18 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import org.jetbrains.annotations.NotNull;
+import top.theillusivec4.curios.api.CurioAttributeModifiers;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
+import top.theillusivec4.curios.common.CuriosRegistry;
 
 import java.util.*;
 
 public class nightmare_base  extends nightmare {
 
     public int tick = 0;
-
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
@@ -78,7 +79,12 @@ public class nightmare_base  extends nightmare {
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = HashMultimap.create();
-        CuriosApi.addSlotModifier(linkedHashMultimap, "nightmare", ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 3, AttributeModifier.Operation.ADD_VALUE);
+
+        CuriosApi.getCuriosInventory(slotContext.entity()).ifPresent(o->{
+            o.addTransientSlotModifier("nightmare",ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),3, AttributeModifier.Operation.ADD_VALUE);
+        });
+
+
         return linkedHashMultimap;
     }
 
