@@ -26,7 +26,9 @@ public class Config {
         immortalZombie = BUILDER
                 .comment("For the owner, moonstone entity are immortal")
                 .define("immortalZombieOfOwner",false);
-
+        itemQuality = BUILDER
+                .comment("If enabled, the item's cultivation value system (Golden Immortal - Merge - Saint Monarch) is enabled.")
+                .define("Quality", true);
 
         BUILDER.pop();
         BUILDER.push("nightmare");
@@ -120,6 +122,8 @@ public class Config {
     public ModConfigSpec.BooleanValue canUnequipMoonstoneItem ;
     public ModConfigSpec.BooleanValue immortalZombie ;
     public   ModConfigSpec.IntValue nightmareBaseMaxItem ;
+    public   ModConfigSpec.BooleanValue itemQuality;
+
     @SubscribeEvent
     public static void onLoad(final ModConfigEvent.Loading configEvent) {
     }

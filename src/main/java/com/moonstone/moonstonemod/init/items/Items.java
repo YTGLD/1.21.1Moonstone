@@ -7,6 +7,7 @@ import com.moonstone.moonstonemod.init.moonstoneitem.extend.apple;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.medicinebox;
 import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
+import com.moonstone.moonstonemod.item.coffin;
 import com.moonstone.moonstonemod.item.maxitem.*;
 import com.moonstone.moonstonemod.item.maxitem.book.the_blood_book;
 import com.moonstone.moonstonemod.item.bloodvirus;
@@ -15,6 +16,7 @@ import com.moonstone.moonstonemod.item.ectoplasm.soul.soulbattery;
 import com.moonstone.moonstonemod.item.ectoplasm.soul.soulcube;
 import com.moonstone.moonstonemod.item.maxitem.amout.ectoplasmstone;
 import com.moonstone.moonstonemod.item.maxitem.amout.twistedstone;
+import com.moonstone.moonstonemod.item.maxitem.food.SmithingFood;
 import com.moonstone.moonstonemod.item.maxitem.maulice.*;
 import com.moonstone.moonstonemod.item.maxitem.uncommon.common.*;
 import com.moonstone.moonstonemod.item.nanodoom.*;
@@ -288,7 +290,11 @@ public class Items {
     public static final DeferredHolder<Item,?> sword =REGISTRY.register("sword",twelve_sword.sword::new );
     public static final DeferredHolder<Item,?> at_sword_ =REGISTRY.register("at_sword",twelve_sword.at_sword::new );
     public static final DeferredHolder<Item,?> twelve_sword_ =REGISTRY.register("twelve_sword", twelve_sword::new);
+    public static final DeferredHolder<Item,?> coffin_item =REGISTRY.register("coffin_item", coffin.coffin_item::new);
+    public static final DeferredHolder<Item,?> coffin_ =REGISTRY.register("coffin", coffin::new);
 
+    public static final DeferredHolder<Item,?> god_sword_ =REGISTRY.register("god_sword",twelve_sword.god_sword::new );
+    public static final DeferredHolder<Item,?> smithing_food =REGISTRY.register("smithing_food", SmithingFood::new);
 
     public static final DeferredHolder<Item,?> the_heart_image =REGISTRY.register("the_heart_image", ()-> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
     public static final DeferredHolder<Item,?> medicinebox_ui =REGISTRY.register("medicinebox_ui", ()-> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));

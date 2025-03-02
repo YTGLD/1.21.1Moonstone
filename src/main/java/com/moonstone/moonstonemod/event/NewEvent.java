@@ -3,6 +3,7 @@ package com.moonstone.moonstonemod.event;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.book;
+import com.moonstone.moonstonemod.entity.ytgld;
 import com.moonstone.moonstonemod.entity.zombie.sword_soul;
 import com.moonstone.moonstonemod.event.loot.DungeonLoot;
 import com.moonstone.moonstonemod.init.items.DNAItems;
@@ -16,9 +17,10 @@ import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
 import com.moonstone.moonstonemod.item.blood.magic.blood_sun;
 import com.moonstone.moonstonemod.item.blood.magic.rage_blood_head;
+import com.moonstone.moonstonemod.item.coffin;
 import com.moonstone.moonstonemod.item.decorated.deceased_contract;
-import com.moonstone.moonstonemod.item.maxitem.*;
 import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
+import com.moonstone.moonstonemod.item.maxitem.*;
 import com.moonstone.moonstonemod.item.nanodoom.as_amout;
 import com.moonstone.moonstonemod.item.nanodoom.million;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_axe;
@@ -32,17 +34,23 @@ import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.giant_boom_cell;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -59,13 +67,14 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
-import top.theillusivec4.curios.api.event.CurioDropsEvent;
-import top.theillusivec4.curios.api.event.DropRulesEvent;
+import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import java.text.DecimalFormat;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class NewEvent {
     public static final String lootTable = "god_loot";
@@ -298,7 +307,9 @@ public class NewEvent {
             event.setAmount(event.getAmount()*(1+lvl));
 
         }
-
+        if (event.getAmount()>Integer.MAX_VALUE){
+            event.setAmount(Integer.MAX_VALUE);
+        }
         CuriosApi.getCuriosInventory(event.getEntity()).ifPresent(handler -> {
             Map<String, ICurioStacksHandler> curios = handler.getCurios();
             for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
@@ -514,6 +525,7 @@ public class NewEvent {
         nightmare_base_insight_insane.LivingDeathEvents(event);
         nightmare_axe.Nig(event);
         immortal.livDead(event);
+        coffin.coffins(event);
     }
     @SubscribeEvent
     public void heal(PlayerEvent.BreakSpeed event){
@@ -540,14 +552,66 @@ public class NewEvent {
             }
         }
     }
+    @SubscribeEvent
+    public void Book(EntityTickEvent.Post event){
+        if (event.getEntity() instanceof LivingEntity living){
+            if (!Handler.hascurio(living,Items.immortal.get())) {
+                if (getPlayerLookTarget(living.level(), living) != null && getPlayerLookTarget(living.level(), living) instanceof ytgld ytgld) {
 
+                    if (ytgld.tickCount % 20 == 0) {
+                        ytgld.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 2, false, false));
+                        ytgld.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 100, 2, false, false));
+                        ytgld.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 100, 2, false, false));
+                        ytgld.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 2, false, false));
+                        living.addEffect(new MobEffectInstance(MobEffects.CONFUSION,100,1,true,true));
+                        living.addEffect(new MobEffectInstance(Effects.dead, 100, 9, true, true));
+                    }
+                }
+            }
+        }
+    }
+
+    public static Entity getPlayerLookTarget(Level level, LivingEntity living) {
+        Entity pointedEntity = null;
+        double range = 20.0D;
+        Vec3 srcVec = living.getEyePosition();
+        Vec3 lookVec = living.getViewVector(1.0F);
+        Vec3 destVec = srcVec.add(lookVec.x() * range, lookVec.y() * range, lookVec.z() * range);
+        float var9 = 1.0F;
+        List<Entity> possibleList = level.getEntities(living, living.getBoundingBox().expandTowards(lookVec.x() * range, lookVec.y() * range, lookVec.z() * range).inflate(var9, var9, var9));
+        double hitDist = 0;
+
+        for (Entity possibleEntity : possibleList) {
+
+            if (possibleEntity.isPickable()) {
+                float borderSize = possibleEntity.getPickRadius();
+                AABB collisionBB = possibleEntity.getBoundingBox().inflate(borderSize, borderSize, borderSize);
+                Optional<Vec3> interceptPos = collisionBB.clip(srcVec, destVec);
+
+                if (collisionBB.contains(srcVec)) {
+                    if (0.0D < hitDist || hitDist == 0.0D) {
+                        pointedEntity = possibleEntity;
+                        hitDist = 0.0D;
+                    }
+                } else if (interceptPos.isPresent()) {
+                    double possibleDist = srcVec.distanceTo(interceptPos.get());
+
+                    if (possibleDist < hitDist || hitDist == 0.0D) {
+                        pointedEntity = possibleEntity;
+                        hitDist = possibleDist;
+                    }
+                }
+            }
+        }
+        return pointedEntity;
+    }
     @SubscribeEvent
     public void Book(ItemTooltipEvent event){
         ItemStack stack = event.getItemStack();
         Player player = event.getEntity();
         if (player!=null) {
             if (stack.is(Items.nine_sword_book)) {
-                if (!Handler.hascurio(player, Items.book.get())) {
+                if (!Handler.hascurio(player, Items.nine_sword_book.get())) {
                     event.getToolTip().add(1, Component.translatable("item.book.tool.string.nine_sword.not").withStyle(ChatFormatting.GOLD));
                 }
             }
@@ -561,7 +625,6 @@ public class NewEvent {
                         if (stack.is(Items.nine_sword_book)) {
                             if (soulbook.get(DataReg.tag) != null && stack.get(DataReg.tag) != null) {
                                 if (soulbook.get(DataReg.tag).getInt(book.nineSword) <= 300) {
-                                    event.getToolTip().add(1, Component.translatable("item.book.tool.string.nine_sword.not").withStyle(ChatFormatting.GOLD));
                                 } else {
                                     event.getToolTip().add(1, Component.translatable("item.nine_sword_book.tool.string.14").withStyle(ChatFormatting.GOLD));
                                     event.getToolTip().add(1, Component.literal(""));

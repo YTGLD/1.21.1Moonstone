@@ -9,9 +9,7 @@ import com.moonstone.moonstonemod.client.particle.red;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.crafting.AllCrafting;
 import com.moonstone.moonstonemod.crafting.MoonRecipeProvider;
-import com.moonstone.moonstonemod.entity.client.BloodSwordRenderer;
-import com.moonstone.moonstonemod.entity.client.NigBoomRender;
-import com.moonstone.moonstonemod.entity.client.SwordRenderer;
+import com.moonstone.moonstonemod.entity.client.*;
 import com.moonstone.moonstonemod.entity.client.blood.BloodBatRenderer;
 import com.moonstone.moonstonemod.entity.client.zombie.CellZombieG;
 import com.moonstone.moonstonemod.entity.client.zombie.CellZombieN;
@@ -24,9 +22,15 @@ import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.*;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -38,8 +42,13 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.event.RegisterShadersEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.CuriosDataProvider;
 
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
@@ -97,6 +106,8 @@ public class MoonStoneMod {
         gen.addProvider(event.includeServer(), new MoonRecipeProvider(packOutput, lookupProvider));
 
     }
+
+
     @EventBusSubscriber(modid = MoonStoneMod.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
     public static class Client {
         @SubscribeEvent
@@ -139,6 +150,8 @@ public class MoonStoneMod {
             event.registerEntityRenderer(EntityTs.sword.get(), com.moonstone.moonstonemod.entity.client.SwordOfTwelveRenderer::new);
             event.registerEntityRenderer(EntityTs.at_sword_entity.get(), com.moonstone.moonstonemod.entity.client.AtSwordRender::new);
 
+            event.registerEntityRenderer(EntityTs.ytgld.get(), YtgldRender::new);
+            event.registerEntityRenderer(EntityTs.coffin_entity.get(), CoffinRender::new);
         }
         @SubscribeEvent
         public static void EntityRenderersEvent(RegisterShadersEvent event) {

@@ -677,6 +677,7 @@
   "entity.moonstone.nightmare_giant": "nightmare giant",
   "entity.moonstone.cell_slime": "cell slime",
   "entity.moonstone.sun": "sun",
+  "entity.moonstone.ytgld": "ytgld",
   "entity.moonstone.blood_bat": "blood bat",
   "entity.moonstone.sword_soul": "sword soul",
   "item.doomeye.tool.string.1": "+33% damage when hit",
@@ -1523,6 +1524,8 @@
 
 
 
+  "item.moonstone.coffin_item":"亚特格拉德的宝贝小匣子",
+  "item.moonstone.coffin.tool.string":"亚特格拉德的宝贝小匣子",
 
   "item.moonstone.nightmare_axe":"nightmare axe",
   "item.nightmare_axe.tool.string": "Kill creatures to summon the Chaos Battle Axe",
@@ -1530,7 +1533,9 @@
   "item.nightmare_axe.tool.string.2": "+25% damage",
   "item.nightmare_axe.tool.string.3": "+25% heal",
 
-
+  "item.moonstone.coffin.tool.string.1": "唯有那掌握生死轮回之力的人",
+  "item.moonstone.coffin.tool.string.2": "才能规避大道因果的反噬...",
+  "item.moonstone.coffin.tool.string.3": "释放棺椁内的终极黑暗吧",
 
 
 
@@ -1581,6 +1586,12 @@
   "item.twelve_sword.tool.string.2": "在剑阵附近获得1%0~120%的伤害加成",
   "item.twelve_sword.tool.string.3": "剑阵内的生物会被死界碑坠落攻击",
   "item.twelve_sword.tool.string.4": "数量取决于你生肖物品的数量",
+  "item.moonstone.smithing_food":"The earth is clumped",
+
+  "item.string.tool.string": "Permanently adds an accessory slot after consumption！",
+  "item.string.tool.string.1": "This stone is very hard...",
+  "item.moonstone.smithing_food.string": "But it still bleeds the tooth",
+  "item.string.tool.string.2": "Be careful not to get your teeth out...",
 
   "moonstone.twelve.1": "子",
   "moonstone.twelve.2": "丑",
@@ -1596,6 +1607,7 @@
   "moonstone.twelve.12": "亥",
   "advancements.tooltip.nightmare_base.text": "Obtain this item",
   "advancements.tooltip.nightmare_base.hand": "Beginning",
+  "item.moonstone.coffin":"葬神棺",
 
   "item.moonstone.owner_blood_earth":"Qiankun",
 

@@ -16,7 +16,14 @@ public class god_head extends Doom {
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier>  multimap = HashMultimap.create();
-        CuriosApi.addSlotModifier(multimap, "dna", ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 2, AttributeModifier.Operation.ADD_VALUE);
+
+
+        CuriosApi.addSlotModifier(stack,this.getDescriptionId(),
+                ResourceLocation.withDefaultNamespace(
+                        "base_attack_damage"+this.getDescriptionId()),
+                2, AttributeModifier.Operation.ADD_VALUE,
+                "dna");
+
         return multimap;
     }
 

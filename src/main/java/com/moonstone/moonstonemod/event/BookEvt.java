@@ -1,6 +1,7 @@
 package com.moonstone.moonstonemod.event;
 
 
+import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.CommonItem;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.Doom;
@@ -133,49 +134,51 @@ public class BookEvt {
      * @param lvls 值在 0 ~ maxLvl 之间
      */
     public static void addLvl(ItemStack stack,int expLv,int lvls){
-        if (stack.getItem() instanceof UnCommonItem
-                || stack.getItem() instanceof nightmare
-                || stack.getItem() instanceof Die
-                || stack.getItem() instanceof Doom
-                || stack.getItem() instanceof CommonItem) {
+        if (Config.SERVER.itemQuality.get()) {
+            if (stack.getItem() instanceof UnCommonItem
+                    || stack.getItem() instanceof nightmare
+                    || stack.getItem() instanceof Die
+                    || stack.getItem() instanceof Doom
+                    || stack.getItem() instanceof CommonItem) {
 
-            if (stack.get(DataReg.tag)==null){
-                stack.set(DataReg.tag,new CompoundTag());
-            }
-            stack.get(DataReg.tag).putInt(exp,expLv);
-            if (stack.get(DataReg.tag) != null) {
-                String ss = lvl;
-                int l = lvls;
-                if (l > 300) {
-                    for (int i = 0; i < maxLvl; i += 300) {
-                        int to = i / 10;
-                        if (to != 0) {
-                            l = (l / to);
-                            break;
+                if (stack.get(DataReg.tag) == null) {
+                    stack.set(DataReg.tag, new CompoundTag());
+                }
+                stack.get(DataReg.tag).putInt(exp, expLv);
+                if (stack.get(DataReg.tag) != null) {
+                    String ss = lvl;
+                    int l = lvls;
+                    if (l > 300) {
+                        for (int i = 0; i < maxLvl; i += 300) {
+                            int to = i / 10;
+                            if (to != 0) {
+                                l = (l / to);
+                                break;
+                            }
                         }
+                        if (l > 10 && l <= 20) {
+                            l -= 10;
+                        } else if (l > 20 && l <= 30) {
+                            l -= 20;
+                        } else if (l > 30 && l <= 40) {
+                            l -= 30;
+                        } else if (l > 40 && l <= 50) {
+                            l -= 40;
+                        } else if (l > 50 && l <= 60) {
+                            l -= 50;
+                        } else if (l > 60 && l <= 70) {
+                            l -= 60;
+                        } else if (l > 70 && l <= 80) {
+                            l -= 70;
+                        } else if (l > 80 && l <= 90) {
+                            l -= 80;
+                        } else if (l > 90 && l <= 100) {
+                            l -= 90;
+                        }
+                        stack.get(DataReg.tag).putInt(ss, l);
+                    } else {
+                        stack.get(DataReg.tag).putInt(ss, l / 30);
                     }
-                    if (l > 10 && l <= 20) {
-                        l -= 10;
-                    } else if (l > 20 && l <= 30) {
-                        l -= 20;
-                    } else if (l > 30 && l <= 40) {
-                        l -= 30;
-                    } else if (l > 40 && l <= 50) {
-                        l -= 40;
-                    } else if (l > 50 && l <= 60) {
-                        l -= 50;
-                    } else if (l > 60 && l <= 70) {
-                        l -= 60;
-                    } else if (l > 70 && l <= 80) {
-                        l -= 70;
-                    } else if (l > 80 && l <= 90) {
-                        l -= 80;
-                    } else if (l > 90 && l <= 100) {
-                        l -= 90;
-                    }
-                    stack.get(DataReg.tag).putInt(ss, l);
-                } else {
-                    stack.get(DataReg.tag).putInt(ss, l / 30);
                 }
             }
         }

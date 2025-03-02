@@ -338,7 +338,7 @@ public class ytgld extends nightmare_giant {
                         mob.addEffect(new MobEffectInstance(MobEffects.BLINDNESS,200,2));
 
                         if (sZombieTime<=0) {
-                            this.level().playSound(null, this.getOnPos(), SoundEvents.TRIAL_SPAWNER_OMINOUS_ACTIVATE, SoundSource.AMBIENT, 10, 10);
+                            this.level().playSound(null, this.getOnPos(), SoundEvents.RAVAGER_ROAR, SoundSource.AMBIENT, 10, 10);
                             sZombieTime=100;
                         }
                         this.setAttackTarget(mob);

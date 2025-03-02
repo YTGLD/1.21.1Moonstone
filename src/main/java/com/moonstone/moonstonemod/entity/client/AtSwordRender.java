@@ -34,25 +34,34 @@ public class AtSwordRender <T extends AtSword> extends EntityRenderer<T> {
     public void render(T entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
         setT(poseStack, entity, bufferSource);
         if (ConfigClient.Client.Shader.get()) {
-            MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
+            MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
         }
-
-        poseStack.pushPose();
-        poseStack.scale(2,4,2);
         if (entity.isNoGravity()){
+            poseStack.pushPose();
             poseStack.mulPose(Axis.YP.rotationDegrees(entity.tickCount*6));
+            poseStack.scale(2,2,2);
+            ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+            Item nightmareAxe = Items.twelve_sword_.get();
+            ItemStack axeStack = nightmareAxe.getDefaultInstance();
+            BakedModel model = itemRenderer.getModel(axeStack, Minecraft.getInstance().level, null, 0);
+            itemRenderer.render(axeStack, ItemDisplayContext.NONE, false, poseStack, bufferSource, Minecraft.getInstance().getEntityRenderDispatcher().getPackedLightCoords(entity, 0.0F), OverlayTexture.NO_OVERLAY, model);
+            renderSphere1(poseStack, bufferSource, 111, 0.135f);
+            poseStack.popPose();
         }else {
-            poseStack.translate(0,0.33-entity.tickCount/150F,0);
-        }
-        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-        Item nightmareAxe = Items.at_sword_.get();
-        ItemStack axeStack = nightmareAxe.getDefaultInstance();
-        BakedModel model = itemRenderer.getModel(axeStack, Minecraft.getInstance().level, null, 0);
-        itemRenderer.render(axeStack, ItemDisplayContext.NONE, false, poseStack, bufferSource, Minecraft.getInstance().getEntityRenderDispatcher().getPackedLightCoords(entity, 0.0F), OverlayTexture.NO_OVERLAY, model);
+            poseStack.pushPose();
+            poseStack.scale(3,3,3);
+            poseStack.translate(0, 0.45 - entity.tickCount / 150F, 0);
 
-        renderSphere1(poseStack,bufferSource,111,0.35f);
-        poseStack.popPose();
+            poseStack.mulPose(Axis.ZP.rotationDegrees(225));
+            ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+            Item nightmareAxe = Items.god_sword_.get();
+            ItemStack axeStack = nightmareAxe.getDefaultInstance();
+            BakedModel model = itemRenderer.getModel(axeStack, Minecraft.getInstance().level, null, 0);
+            itemRenderer.render(axeStack, ItemDisplayContext.NONE, false, poseStack, bufferSource, Minecraft.getInstance().getEntityRenderDispatcher().getPackedLightCoords(entity, 0.0F), OverlayTexture.NO_OVERLAY, model);
+            renderSphere1(poseStack, bufferSource, 111, 0.135f);
+            poseStack.popPose();
+        }
 
 
 

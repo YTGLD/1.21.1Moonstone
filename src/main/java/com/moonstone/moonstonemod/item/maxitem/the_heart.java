@@ -31,10 +31,9 @@ public class the_heart extends BundleItem implements ICurioItem {
         super(new Properties().stacksTo(1).component(DataComponents.BUNDLE_CONTENTS,BundleContents.EMPTY).rarity(Rarity.UNCOMMON));
     }
 
-    @NotNull
+     @NotNull
     @Override
-    public ICurio.DropRule getDropRule(SlotContext slotContext, DamageSource source, boolean recentlyHit,
-                               ItemStack stack) {
+    public ICurio.DropRule getDropRule(SlotContext slotContext, DamageSource source, int lootingLevel, boolean recentlyHit, ItemStack stack) {
         return ICurio.DropRule.ALWAYS_KEEP;
     }
     @Override

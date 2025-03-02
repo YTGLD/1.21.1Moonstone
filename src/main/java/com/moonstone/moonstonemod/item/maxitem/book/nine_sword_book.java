@@ -101,7 +101,7 @@ public class nine_sword_book extends BookSkill implements IDoom {
                                     damage+=all;
                                 }
                                 if (!player.getCooldowns().isOnCooldown(Items.nine_sword_book.get())) {
-                                    event.setAmount(damage);
+                                    event.setAmount(damage+event.getAmount());
                                     player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.MACE_SMASH_GROUND_HEAVY, SoundSource.NEUTRAL, 2, 2);
                                     player.getCooldowns().addCooldown(Items.nine_sword_book.get(),100);
                                 }

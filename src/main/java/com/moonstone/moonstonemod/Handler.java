@@ -38,21 +38,6 @@ public class Handler {
     public static final String Disgusting__cell_Giant = "Disgusting__cell_Giant";
 
 
-    public static boolean hasItemInList(LivingEntity player, List<String> listItemSting) {
-        if (!Config.SERVER.offSet.get()) {
-            return false;
-        }
-        for (String itemName : listItemSting) {
-            Item item = BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID, itemName));
-            if (!hascurio(player, item)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-
     public static <T extends TamableAnimal> void trySpawnMob(
             LivingEntity player,
             EntityType<T> pEntityType,

@@ -7,6 +7,8 @@ import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.CommonItem;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Blood;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -37,12 +39,24 @@ public class coffin extends CommonItem implements ICurioItem, Blood {
             }
         }
     }
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+        if (Screen.hasShiftDown()) {
+            tooltipComponents.add(Component.translatable("item.moonstone.coffin.tool.string.3").withStyle(ChatFormatting.DARK_RED));
+            tooltipComponents.add(Component.literal(""));
+        }else {
+            tooltipComponents.add(Component.translatable("item.moonstone.coffin.tool.string.1").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
+            tooltipComponents.add(Component.translatable("item.moonstone.coffin.tool.string.2").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
+
+        }
+    }
     public static class coffin_item extends coffin{
 
         @Override
         public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
             super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-            tooltipComponents.add(Component.translatable("item.moonstone.tool。string"));
+            tooltipComponents.add(Component.translatable("item.moonstone.coffin.tool.string"));
         }
     }
 }

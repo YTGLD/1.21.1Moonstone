@@ -33,10 +33,9 @@ public class BloodItem  extends Item implements ICurioItem, Blood {
         super.appendHoverText(stack, context, pTooltipComponents, tooltipFlag);
         pTooltipComponents.add(Component.translatable("moonstone.jei."+this.getDescriptionId()).withStyle(ChatFormatting.RED));
     }
-    @NotNull
+     @NotNull
     @Override
-    public ICurio.DropRule getDropRule(SlotContext slotContext, DamageSource source, boolean recentlyHit,
-                               ItemStack stack) {
+    public ICurio.DropRule getDropRule(SlotContext slotContext, DamageSource source, int lootingLevel, boolean recentlyHit, ItemStack stack) {
         return ICurio.DropRule.ALWAYS_KEEP;
     }
 }

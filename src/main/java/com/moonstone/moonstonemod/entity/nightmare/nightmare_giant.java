@@ -297,14 +297,16 @@ public class nightmare_giant extends TamableAnimal implements OwnableEntity,Vibr
                         if (sZombieTime<=0){
                             if (this.getOwner()!=null) {
                                 for (int i = 0; i < 2; i++) {
-                                    cell_zombie cellZombie = new cell_zombie(EntityTs.cell_zombie.get(), this.level());
-                                    cellZombie.teleportTo(this.getX(), this.getY(), this.getZ());
-                                    cellZombie.setOwnerUUID(this.getOwnerUUID());
-                                    cellZombie.addTag(AllEvent.DamageCell);
-                                    cellZombie.addTag("hasNig");
-                                    this.level().playSound(null,this.getOnPos(),SoundEvents.TRIAL_SPAWNER_OMINOUS_ACTIVATE, SoundSource.AMBIENT,10,10);
-                                    this.level().addFreshEntity(cellZombie);
-                                    sZombieTime = 300;
+                                    if (this.getType() == EntityTs.nightmare_giant.get()) {
+                                        cell_zombie cellZombie = new cell_zombie(EntityTs.cell_zombie.get(), this.level());
+                                        cellZombie.teleportTo(this.getX(), this.getY(), this.getZ());
+                                        cellZombie.setOwnerUUID(this.getOwnerUUID());
+                                        cellZombie.addTag(AllEvent.DamageCell);
+                                        cellZombie.addTag("hasNig");
+                                        this.level().playSound(null, this.getOnPos(), SoundEvents.TRIAL_SPAWNER_OMINOUS_ACTIVATE, SoundSource.AMBIENT, 10, 10);
+                                        this.level().addFreshEntity(cellZombie);
+                                        sZombieTime = 300;
+                                    }
                                 }
                             }
                         }

@@ -1,6 +1,7 @@
 package com.moonstone.moonstonemod.item.nightmare.super_nightmare;
 
 import com.google.common.collect.HashMultimap;
+import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
@@ -9,7 +10,6 @@ import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -23,13 +23,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import org.jetbrains.annotations.NotNull;
-import top.theillusivec4.curios.api.CurioAttributeModifiers;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
-import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
-import top.theillusivec4.curios.common.CuriosRegistry;
 
 import java.util.*;
 
@@ -39,12 +34,11 @@ public class nightmare_base  extends nightmare {
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
-        slotContext.entity().getAttributes().addTransientAttributeModifiers(gets(slotContext,stack));
+        slotContext.entity().getAttributes().addTransientAttributeModifiers(gets(slotContext));
         tick = 100;
     }
     @Override
     public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
-
         if (stack.get(DataReg.tag)==null){
             slotContext.entity().level().playSound(null, slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ(), SoundEvents.ELDER_GUARDIAN_CURSE, SoundSource.NEUTRAL, 1, 1);
             stack.set(DataReg.tag,new CompoundTag());
@@ -78,17 +72,14 @@ public class nightmare_base  extends nightmare {
 
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
-        Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = HashMultimap.create();
-
-        CuriosApi.getCuriosInventory(slotContext.entity()).ifPresent(o->{
-            o.addTransientSlotModifier("nightmare",ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),3, AttributeModifier.Operation.ADD_VALUE);
-        });
-
-
+        Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = com.google.common.collect.LinkedHashMultimap.create();
+        CuriosApi.addSlotModifier(linkedHashMultimap,
+                        "nightmare", ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
+                        3, AttributeModifier.Operation.ADD_VALUE);
         return linkedHashMultimap;
     }
 
-    public Multimap<Holder<Attribute>, AttributeModifier> gets(SlotContext slotContext, ItemStack stack) {
+    public Multimap<Holder<Attribute>, AttributeModifier> gets(SlotContext slotContext) {
         Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = HashMultimap.create();
         float s= -0.3f;
         if (Handler.hascurio(slotContext.entity(),Items.nightmare_base_reversal_mysterious.get())){
@@ -106,7 +97,7 @@ public class nightmare_base  extends nightmare {
         return linkedHashMultimap;
     }
 
-      @Override
+    @Override
     public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player){
             if (player.isCreative()){

@@ -1358,7 +1358,7 @@
 
 
   "item.moonstone.nightmare_base_black_eye": "§4邪念之窥眸",
-  "item.nightmare_base_black_eye.tool.string": "受伤视力模糊，随时间恢复",
+  "item.nightmare_base_black_eye.tool.string": "看向生物视力模糊，随时间恢复",
   "item.nightmare_base_black_eye.tool.string.1": "但是你可以解锁下列物品",
 
 
@@ -1592,26 +1592,41 @@
   "advancements.tooltip.nightmare_base.hand": "起始",
 
   "item.moonstone.twelve_sword":"御神术-葬",
-  "item.twelve_sword.tool.string.1": "杀死生物召唤剑阵",
+  "item.twelve_sword.tool.string.1": "杀死生物召唤诸神剑阵",
   "item.twelve_sword.tool.string.4": "数量取决于你生肖物品的数量",
   "item.twelve_sword.tool.string.2": "在剑阵附近获得10%~120%的伤害加成",
-  "item.twelve_sword.tool.string.3": "剑阵内的生物会被死界碑坠落攻击",
+  "item.twelve_sword.tool.string.3": "剑阵内的生物会被死界剑坠落攻击",
 
-  "moonstone.twelve.1": "子",
-  "moonstone.twelve.2": "丑",
-  "moonstone.twelve.3": "寅",
-  "moonstone.twelve.4": "卯",
-  "moonstone.twelve.5": "辰",
-  "moonstone.twelve.6": "巳",
-  "moonstone.twelve.7": "午",
-  "moonstone.twelve.8": "未",
-  "moonstone.twelve.9": "申",
-  "moonstone.twelve.10": "酉",
-  "moonstone.twelve.11": "戌",
-  "moonstone.twelve.12": "亥",
+  "moonstone.twelve.1": "生肖：子",
+  "moonstone.twelve.2": "生肖：丑",
+  "moonstone.twelve.3": "生肖：寅",
+  "moonstone.twelve.4": "生肖：卯",
+  "moonstone.twelve.5": "生肖：辰",
+  "moonstone.twelve.6": "生肖：巳",
+  "moonstone.twelve.7": "生肖：午",
+  "moonstone.twelve.8": "生肖：未",
+  "moonstone.twelve.9": "生肖：申",
+  "moonstone.twelve.10": "生肖：酉",
+  "moonstone.twelve.11": "生肖：戌",
+  "moonstone.twelve.12": "生肖：亥",
 
 
+  "entity.moonstone.ytgld": "亚特格拉德",
+  "item.moonstone.smithing_food":"大地结块",
+
+  "item.string.tool.string": "食用后永久加一饰品栏位！",
+  "item.string.tool.string.1": "这石头很硬...",
+  "item.string.tool.string.2": "小心不要硌了牙...",
+  "item.moonstone.smithing_food.string": "但还是把牙硌出血了",
   "item.moonstone.nightmare_axe":"混沌战斧",
+  "item.moonstone.coffin_item":"亚特格拉德的宝贝小匣子",
+  "item.moonstone.coffin":"葬神棺",
+  "item.moonstone.coffin.tool.string":"这个物品是个彩蛋物品，没有什么实际作用",
+
+  "item.moonstone.coffin.tool.string.1": "唯有那掌握生死轮回之力的人",
+  "item.moonstone.coffin.tool.string.2": "才能规避大道因果的反噬...",
+  "item.moonstone.coffin.tool.string.3": "释放棺椁内的终极黑暗吧",
+
 
   "item.nightmare_axe.tool.string": "杀死生物召唤混沌战斧，落下造成300%你的攻击伤害",
   "item.nightmare_axe.tool.string.1": "附近每有一把混沌战斧：",

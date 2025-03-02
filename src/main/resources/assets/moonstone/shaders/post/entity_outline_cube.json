@@ -10,51 +10,26 @@
       "outtarget": "swap"
     },
     {
-      "name": "moonstone:entity_outline_box_blur",
+      "name": "moonstone:bits",
       "intarget": "swap",
       "outtarget": "final",
       "use_linear_filter": true,
       "uniforms": [
         {
-          "name": "BlurDir",
-          "values": [ 1.1, 0.0 ]
+          "name": "MosaicSize",
+          "values": [ 1 ]
         }
       ]
     },
     {
-      "name": "moonstone:entity_outline_box_blur",
+      "name": "moonstone:bits",
       "intarget": "final",
       "outtarget": "swap",
       "use_linear_filter": true,
       "uniforms": [
         {
-          "name": "BlurDir",
-          "values": [ 0.0, 1.1 ]
-        }
-      ]
-    },
-
-    {
-      "name": "moonstone:box_blur",
-      "intarget": "swap",
-      "outtarget": "final",
-      "use_linear_filter": true,
-      "uniforms": [
-        {
-          "name": "BlurDir",
-          "values": [ 1.1, 0.0 ]
-        }
-      ]
-    },
-    {
-      "name": "moonstone:box_blur",
-      "intarget": "final",
-      "outtarget": "swap",
-      "use_linear_filter": true,
-      "uniforms": [
-        {
-          "name": "BlurDir",
-          "values": [ 0.0, 1.1 ]
+          "name": "MosaicSize",
+          "values": [ 1 ]
         }
       ]
     },

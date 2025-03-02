@@ -59,7 +59,7 @@ public class TextEvt {
                 event.getToolTip().add(1,Component.translatable("moonstone.twelve.8").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFB0E2FF))));
             }
             if (stack.is(Items.dna)){
-                event.getToolTip().add(1,Component.translatable("moonstone.twelve.8").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFB0E2FF))));
+                event.getToolTip().add(1,Component.translatable("moonstone.twelve.9").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFB0E2FF))));
             }
             if (stack.is(Items.bigwarcrystal)){
                 event.getToolTip().add(1,Component.translatable("moonstone.twelve.10").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFB0E2FF))));
@@ -121,6 +121,8 @@ public class TextEvt {
 
                         swordOfTwelve.setOwner(player);
                         swordOfTwelve.setPos(x, y, z);
+
+                        swordOfTwelve.getTags().add("SwordOfTwelveOFDamage");
 
                         player.level().addFreshEntity(swordOfTwelve);
                     }

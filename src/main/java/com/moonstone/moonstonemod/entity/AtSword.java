@@ -67,7 +67,7 @@ public class AtSword extends SwordOfTwelve{
     @Override
     protected void onHit(HitResult result) {
         super.  onHit(result);
-        float is = 5;
+        float is = 1.8f;
         Vec3 position = this.position();
         List<LivingEntity> ess = this.level().getEntitiesOfClass(LivingEntity.class, new AABB(position.x - is, position.y - is, position.z - is, position.x + is, position.y + is, position.z + is));
         for (LivingEntity es : ess) {
@@ -111,7 +111,7 @@ public class AtSword extends SwordOfTwelve{
             if (trailPositions.size() > 50) {
                 trailPositions.removeFirst();
             }
-            if (tickCount >= 150) {
+            if (tickCount >= 190) {
                 this.discard();
             }
             float is = 5;
@@ -122,7 +122,6 @@ public class AtSword extends SwordOfTwelve{
             this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK,blockstate ), d0, d1, d2, 0.0D, 0.0D, 0.0D);
 
         }else {
-
             addParticles();
             if (tickCount >= 600) {
                 this.discard();

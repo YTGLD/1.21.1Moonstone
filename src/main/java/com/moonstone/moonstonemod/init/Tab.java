@@ -161,6 +161,8 @@ public class Tab {
             .title(Component.translatable("itemGroup.tabmoonstone"))
             .displayItems((a,b)->{
                 b.accept(new ItemStack(Items.book.get()));
+                b.accept(new ItemStack(Items.smithing_food.get()));
+                b.accept(new ItemStack(Items.coffin_.get()));
                 b.accept(new ItemStack(Items.twelve_sword_.get()));
                 b.accept(new ItemStack(Items.immortal.get()));
                 b.accept(new ItemStack(Items.nine_sword_book.get()));

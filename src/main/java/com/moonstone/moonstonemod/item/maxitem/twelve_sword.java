@@ -15,6 +15,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class twelve_sword extends CommonItem implements Die {
@@ -34,9 +35,19 @@ public class twelve_sword extends CommonItem implements Die {
                                         playerPos.x + range,
                                         playerPos.y + range,
                                         playerPos.z + range));
-                float a8 = entities.size();
-                a8/=10;
-                event.setAmount(event.getAmount()*(1+a8));
+                List<Integer> a8 = new ArrayList<>();
+                for (SwordOfTwelve swordOfTwelve : entities){
+                    if (swordOfTwelve.getTags().contains("SwordOfTwelveOFDamage")){
+                        a8.add(1);
+                    }
+                }
+
+                float s  = 0;
+                for (int ignored : a8){
+                    s++;
+                }
+                s/=10f;
+                event.setAmount(event.getAmount()*(1+s));
             }
         }
     }
@@ -50,6 +61,9 @@ public class twelve_sword extends CommonItem implements Die {
     }
 
     public static class at_sword extends CommonItem{
+
+    }
+    public static class god_sword extends CommonItem{
 
     }
     public static class sword extends CommonItem{

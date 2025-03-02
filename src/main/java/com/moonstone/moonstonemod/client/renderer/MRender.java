@@ -219,23 +219,20 @@ public class MRender extends RenderType {
                                             false,
                                             false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/mls.png"),
                                             false, false).build()).createCompositeState(false));
-    public static final RenderType MLS_OUT =
-            create("mls_out",
-                    DefaultVertexFormat.POSITION,
-                    VertexFormat.Mode.QUADS,
-                    256,
-                    false,
-                    false,
-                    RenderType.CompositeState.builder()
-                            .setShaderState(RENDER_STATE_SHARD_MLS)
-                            .setOutputState(setOutputState_CUBE)
-                            .setTextureState(RenderStateShard.
-                                    MultiTextureStateShard.builder().
-                                    add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/cube.png"),
-                                            false,
-                                            false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/cube.png"),
-                                            false, false).build()).createCompositeState(false));
 
+    public static final BiFunction<ResourceLocation, Boolean, RenderType> ENTITY_TRANSLUCENT_EMISSIVE = Util.memoize(
+            (p_286163_, p_286164_) -> {
+                RenderType.CompositeState rendertype$compositestate = RenderType.CompositeState.builder()
+                        .setShaderState(RENDERTYPE_ENTITY_TRANSLUCENT_EMISSIVE_SHADER)
+                        .setTextureState(new RenderStateShard.TextureStateShard(p_286163_, false, false))
+                        .setTransparencyState(TRANSLUCENT_TRANSPARENCY)
+                        .setCullState(NO_CULL)
+                        .setWriteMaskState(COLOR_WRITE)
+                        .setOverlayState(OVERLAY)
+                        .createCompositeState(p_286164_);
+                return create("entity_translucent_emissive", DefaultVertexFormat.NEW_ENTITY, VertexFormat.Mode.QUADS, 1536, true, true, rendertype$compositestate);
+            }
+    );
     public static RenderType gateways() {
         return GATEWAY;
     }
