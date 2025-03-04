@@ -48,7 +48,21 @@ public class MRender extends RenderType {
     }, () -> {
         Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
     });
-
+    public static final RenderType LIGHTNING = create(
+            "lightning",
+            DefaultVertexFormat.POSITION_COLOR,
+            VertexFormat.Mode.QUADS,
+            1536,
+            false,
+            true,
+            RenderType.CompositeState.builder()
+                    .setShaderState(RENDERTYPE_LIGHTNING_SHADER)
+                    .setWriteMaskState(COLOR_DEPTH_WRITE)
+                    .setCullState(RenderStateShard.NO_CULL)
+                    .setTransparencyState(LIGHTNING_TRANSPARENCY)
+                    .setOutputState(WEATHER_TARGET)
+                    .createCompositeState(false)
+    );
     protected static final OutputStateShard BEACON = new OutputStateShard("set_beacon", () -> {
         RenderTarget target = MoonPost.getRenderTargetFor(MoonStoneMod.POST);
         if (target != null) {

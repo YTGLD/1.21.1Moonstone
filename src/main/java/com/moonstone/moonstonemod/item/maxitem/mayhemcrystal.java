@@ -4,9 +4,9 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.init.items.Items;
-import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.UnCommonItem;
+import com.moonstone.moonstonemod.init.moonstoneitem.i.Die;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Iwar;
 import com.moonstone.moonstonemod.item.nightmare.super_nightmare.nightmare_base_stone_meet;
 import net.minecraft.core.Holder;
@@ -19,7 +19,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
 
-public class mayhemcrystal extends UnCommonItem  implements Iwar {
+public class mayhemcrystal extends UnCommonItem  implements Iwar , Die {
 
 
     @Override

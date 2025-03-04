@@ -40,9 +40,12 @@ public class nightmareeye extends nightmare {
             player.getAttributes().removeAttributeModifiers(un_un_pla(player, stack));
         }
     }
-      @Override
+       @Override
     public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player){
+            if (Handler.hascurio(player,Items.immortal.get())){
+                return true;
+            }
             if (player.isCreative()){
                 return true;
             }

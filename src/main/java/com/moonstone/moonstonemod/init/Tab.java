@@ -174,8 +174,6 @@ public class Tab {
                 b.accept(new ItemStack(Items.the_heart.get()));
                 b.accept(new ItemStack(Items.plague.get()));
                 b.accept(new ItemStack(Items.maxamout.get()));
-                b.accept(new ItemStack(Items.fortunecrystal.get()));
-                b.accept(new ItemStack(Items.mayhemcrystal.get()));
                 b.accept(new ItemStack(Items.soulbattery.get()));
                 b.accept(new ItemStack(Items.soulcube.get()));
                 b.accept(new ItemStack(Items.evilcandle.get()));
@@ -187,13 +185,19 @@ public class Tab {
                 b.accept(new ItemStack(Items.twistedstone.get()));
                 b.accept(new ItemStack(Items.badgeofthedead.get()));
                 b.accept(new ItemStack(Items.battery.get()));
+
+                b.accept(new ItemStack(Items.belt.get()));
+                b.accept(new ItemStack(Items.fortunecrystal.get()));
+                b.accept(new ItemStack(Items.mayhemcrystal.get()));
                 b.accept(new ItemStack(Items.biggreedcrystal.get()));
                 b.accept(new ItemStack(Items.bigwarcrystal.get()));
-                b.accept(new ItemStack(Items.blackeorb.get()));
-                b.accept(new ItemStack(Items.blueamout.get()));
-                b.accept(new ItemStack(Items.greedamout.get()));
-                b.accept(new ItemStack(Items.redamout.get()));
                 b.accept(new ItemStack(Items.greedcrystal.get()));
+                b.accept(new ItemStack(Items.warcrystal.get()));
+
+                b.accept(new ItemStack(Items.rage_crystal.get()));
+                b.accept(new ItemStack(Items.rage_crystal_big.get()));
+                b.accept(new ItemStack(Items.rage_crystal_max.get()));
+
                 b.accept(new ItemStack(Items.warcrystal.get()));
                 b.accept(new ItemStack(Items.whiteorb.get()));
 

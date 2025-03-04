@@ -1,7 +1,6 @@
 package com.moonstone.moonstonemod.item;
 
 import com.moonstone.moonstonemod.Handler;
-import com.moonstone.moonstonemod.entity.axe;
 import com.moonstone.moonstonemod.entity.coffin_entity;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
@@ -48,6 +47,8 @@ public class coffin extends CommonItem implements ICurioItem, Blood {
         }else {
             tooltipComponents.add(Component.translatable("item.moonstone.coffin.tool.string.1").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
             tooltipComponents.add(Component.translatable("item.moonstone.coffin.tool.string.2").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
+            tooltipComponents.add(Component.literal(""));
+            tooltipComponents.add(Component.translatable("key.keyboard.left.shift").withStyle(ChatFormatting.DARK_RED));
 
         }
     }

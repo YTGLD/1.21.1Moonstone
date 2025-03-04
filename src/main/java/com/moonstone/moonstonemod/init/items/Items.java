@@ -293,6 +293,15 @@ public class Items {
     public static final DeferredHolder<Item,?> coffin_item =REGISTRY.register("coffin_item", coffin.coffin_item::new);
     public static final DeferredHolder<Item,?> coffin_ =REGISTRY.register("coffin", coffin::new);
 
+
+
+    public static final DeferredHolder<Item,?> belt =REGISTRY.register("belt",belt::new );
+    public static final DeferredHolder<Item,?> rage_crystal =REGISTRY.register("rage_crystal",rage_crystal::new );
+    public static final DeferredHolder<Item,?> rage_crystal_big =REGISTRY.register("rage_crystal_big",rage_crystal_big::new );
+    public static final DeferredHolder<Item,?> rage_crystal_max =REGISTRY.register("rage_crystal_max",rage_crystal_max::new );
+
+
+
     public static final DeferredHolder<Item,?> god_sword_ =REGISTRY.register("god_sword",twelve_sword.god_sword::new );
     public static final DeferredHolder<Item,?> smithing_food =REGISTRY.register("smithing_food", SmithingFood::new);
 

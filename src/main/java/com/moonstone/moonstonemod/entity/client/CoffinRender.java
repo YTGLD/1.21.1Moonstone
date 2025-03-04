@@ -49,10 +49,9 @@ public class CoffinRender <T extends coffin_entity> extends EntityRenderer<T> {
         float s = entity.tickCount / 10f / 11f;
         if (s > 2) {
             s=2;
-        }else {
-            poseStack.translate(Mth.nextFloat(RandomSource.create(),-0.005f*s,0.005f*s),Mth.nextFloat(RandomSource.create(),-0.005f*s,0.005f*s), Mth.nextFloat(RandomSource.create(),-0.005f*s,0.005f*s));
         }
         poseStack.translate(0, -0.5f + s / 2, 0);
+        poseStack.translate(Mth.nextFloat(RandomSource.create(),-0.0125f*s,0.0125f*s),Mth.nextFloat(RandomSource.create(),-0.0005f*s,0.0005f*s), Mth.nextFloat(RandomSource.create(),-0.0125f*s,0.0125f*s));
 
 
         poseStack.mulPose(Axis.ZP.rotationDegrees(180));

@@ -31,9 +31,12 @@ public class nightmare_base_stone extends nightmare {
             }
         }
     }
-      @Override
+       @Override
     public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player){
+            if (Handler.hascurio(player,Items.immortal.get())){
+                return true;
+            }
             if (player.isCreative()){
                 return true;
             }

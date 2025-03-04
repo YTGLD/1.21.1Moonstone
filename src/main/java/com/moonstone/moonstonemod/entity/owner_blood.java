@@ -10,7 +10,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
@@ -28,7 +27,6 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,18 +34,48 @@ public class owner_blood extends TamableAnimal {
     public owner_blood(EntityType<? extends owner_blood> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
         this.setNoGravity(true);
+        for (int i = 0; i < trailPositions.length; i++) {
+            trailPositions[i][0] = Vec3.ZERO;
+            trailPositions[i][1] = Vec3.ZERO;
+        }
     }
     @Override
     public void die(@NotNull DamageSource p_21809_) {
 
     }
+    public static final int max = 128;
+    private int trailPointer = -1;
 
+    private final Vec3[][] trailPositions = new Vec3[max][2];
 
+    public Vec3 getTrailPosition(int pointer, float partialTick) {
+        if (this.isRemoved()) {
+            partialTick = 1.0F;
+        }
 
-    private final List<Vec3> trailPositions = new ArrayList<>();
-    public List<Vec3> getTrailPositions() {
-        return trailPositions;
+        int i = (this.trailPointer - pointer) & max-1;
+        int j = (this.trailPointer - pointer - 1) & max-1;
+
+        Vec3 d0 = this.trailPositions[j][0];
+        Vec3 d1 = this.trailPositions[i][0].subtract(d0);
+        return d0.add(d1.scale(partialTick));
     }
+
+    public Vec3 getHelmetPosition() {
+        return this.position();
+    }
+
+    public void tickVisual() {
+        Vec3 blue = getHelmetPosition();
+        this.trailPointer = (this.trailPointer + 1) % this.trailPositions.length;
+        this.trailPositions[this.trailPointer][0] = blue;
+    }
+
+    public boolean hasTrail() {
+        return trailPointer != -1;
+    }
+
+
     @Override
     public void tick() {
         super.tick();
@@ -90,12 +118,9 @@ public class owner_blood extends TamableAnimal {
                 }
             }
         }
-        trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
-
-        if (trailPositions.size() > 66) {
-            trailPositions.remove(0);
+        if (level().isClientSide) {
+            tickVisual();
         }
-
 
         Vec3 playerPos = this.position().add(0, 0.75, 0);
         int range = 20;

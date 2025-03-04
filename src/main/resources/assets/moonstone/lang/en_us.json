@@ -1537,6 +1537,16 @@
   "item.moonstone.coffin.tool.string.2": "才能规避大道因果的反噬...",
   "item.moonstone.coffin.tool.string.3": "释放棺椁内的终极黑暗吧",
 
+  "curios.modifiers.crystal": "佩戴水晶时",
+  "curios.modifiers.stone": "佩戴符石后",
+  "curios.identifier.crystal": "crystal",
+  "curios.identifier.stone": "stone",
+  "item.moonstone.belt":"珠宝腰带",
+
+
+  "item.moonstone.rage_crystal":"血怒水晶",
+  "item.moonstone.rage_crystal_big":"大血怒水晶",
+  "item.moonstone.rage_crystal_max":"战神晶体",
 
 
 

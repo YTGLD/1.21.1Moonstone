@@ -2,20 +2,24 @@ package com.moonstone.moonstonemod.entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
 import com.moonstone.moonstonemod.ConfigClient;
-import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.client.renderer.MoonPost;
 import com.moonstone.moonstonemod.entity.owner_blood;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
+import org.checkerframework.checker.units.qual.A;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Matrix4f;
+
+import static net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY;
 
 public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
     public OwnerBloodRenderer(EntityRendererProvider.Context p_173917_) {
@@ -27,31 +31,56 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
         if (ConfigClient.Client.Shader.get()) {
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
         }
-        setT(poseStack, entity, bufferSource);
+        double x = Mth.lerp(p_114487_, entity.xOld, entity.getX());
+        double y = Mth.lerp(p_114487_, entity.yOld, entity.getY());
+        double z = Mth.lerp(p_114487_, entity.zOld, entity.getZ());
+        if (entity.hasTrail()) {
+            poseStack.pushPose();
+            poseStack.translate(-x, -y, -z);
+            renderTrail(entity, p_114487_, poseStack, bufferSource, 220/255f, 20/255f, 60/255f, 240);
+            poseStack.popPose();
+        }
         renderSphere1(poseStack,bufferSource,240,0.5f);
 
         super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
     }
 
+    private void renderTrail(owner_blood entityIn, float partialTicks, PoseStack poseStack, MultiBufferSource bufferIn, float trailR, float trailG, float trailB, int packedLightIn) {
+        int samples = 0;
+        int sampleSize = owner_blood.max;
+        float as = 0.3f; // 调整高度
+        float trailZRot = 0;
+        Vec3 topAngleVec = new Vec3(as, as, as).zRot(trailZRot);
+        Vec3 bottomAngleVec = new Vec3(-as, -as, as).zRot(trailZRot);
+        Vec3 drawFrom = entityIn.getTrailPosition(0, partialTicks);
+        VertexConsumer vertexconsumer = bufferIn.getBuffer(MRender.LIGHTNING);
 
-    private void setT(PoseStack matrices,
-                      owner_blood entity,
-                      MultiBufferSource vertexConsumers)
-    {
-        matrices.pushPose();
+        while (samples < sampleSize - 1) { // 减少一个采样点以避免访问越界
+            Vec3 sample = entityIn.getTrailPosition(samples + 1, partialTicks); // 修改这里的指针偏移量
+            float u1 = samples / (float) sampleSize;
+            float u2 = u1 + 1 / (float) sampleSize;
 
-        for (int i = 1; i < entity.getTrailPositions().size(); i++){
-            Vec3 prevPos = entity.getTrailPositions().get(i - 1);
-            Vec3 currPos = entity.getTrailPositions().get(i);
-            Vec3 adjustedPrevPos = new Vec3(prevPos.x - entity.getX(), prevPos.y - entity.getY(), prevPos.z - entity.getZ());
-            Vec3 adjustedCurrPos = new Vec3(currPos.x - entity.getX(), currPos.y - entity.getY(), currPos.z - entity.getZ());
+            // 计算动态透明度
+            float alpha1 = 1 - u1; // 从1到0
+            float alpha2 = 1 - u2; // 从1到0
 
-            float alpha = (float)(i) / (float)(entity.getTrailPositions().size());
+            Vec3 draw1 = drawFrom;
 
-            Handler.renderBlood(matrices, vertexConsumers, adjustedPrevPos, adjustedCurrPos, alpha, RenderType.lightning(),0.3f);
+            PoseStack.Pose posestack$pose = poseStack.last();
+            Matrix4f matrix4f = posestack$pose.pose();
+
+            // 添加四边形的四个顶点
+            vertexconsumer.addVertex(matrix4f, (float) draw1.x + (float) bottomAngleVec.x, (float) draw1.y + (float) bottomAngleVec.y, (float) draw1.z + (float) bottomAngleVec.z).setColor(trailR, trailG, trailB, alpha1).setUv(0, 0).setOverlay(NO_OVERLAY).setUv2(packedLightIn,240).setNormal(0.0F, 0.0F, 0.0F);
+            vertexconsumer.addVertex(matrix4f, (float) sample.x + (float) bottomAngleVec.x, (float) sample.y + (float) bottomAngleVec.y, (float) sample.z + (float) bottomAngleVec.z).setColor(trailR, trailG, trailB, alpha2).setUv(0, 0).setOverlay(NO_OVERLAY).setUv2(packedLightIn,240).setNormal(0.0F, 0.0F, 0.0F);
+            vertexconsumer.addVertex(matrix4f, (float) sample.x + (float) topAngleVec.x, (float) sample.y + (float) topAngleVec.y, (float) sample.z + (float) topAngleVec.z).setColor(trailR, trailG, trailB, alpha2).setUv(0, 0).setOverlay(NO_OVERLAY).setUv2(packedLightIn,240).setNormal(0.0F, 0.0F, 0.0F);
+            vertexconsumer.addVertex(matrix4f, (float) draw1.x + (float) topAngleVec.x, (float) draw1.y + (float) topAngleVec.y, (float) draw1.z + (float) topAngleVec.z).setColor(trailR, trailG, trailB, alpha1).setUv(0, 0).setOverlay(NO_OVERLAY).setUv2(packedLightIn,240).setNormal(0.0F, 0.0F, 0.0F);
+
+            samples++;
+            drawFrom = sample;
         }
-        matrices.popPose();
     }
+
+
 
     public void renderSphere1(@NotNull PoseStack matrices, @NotNull MultiBufferSource vertexConsumers, int light, float s) {
         {

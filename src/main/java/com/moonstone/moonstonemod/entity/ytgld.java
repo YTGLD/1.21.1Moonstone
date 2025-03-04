@@ -13,6 +13,7 @@ import com.moonstone.moonstonemod.entity.nightmare.nightmare_giant;
 import com.moonstone.moonstonemod.entity.zombie.cell_giant;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
+import com.moonstone.moonstonemod.init.moonstoneitem.Effects;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -293,35 +294,15 @@ public class ytgld extends nightmare_giant {
         if (sZombieTime>0){
             sZombieTime--;
         }
+        this.removeEffect(Effects.dead);
         this.getAttributes().addTransientAttributeModifiers(this.AttributeModifier(this));
-        if (time > 3600){
+        if (time > 7200){
             this.discard();
         }
         if (this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).isPresent()) {
             ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get().getType());
             if (entity.getNamespace().equals(MoonStoneMod.MODID)) {
                 this.setAttackTarget(null);
-            }
-        }
-
-        {
-            Vec3 playerPos = this.position().add(0, 1.25, 0);
-            float range = 16;
-            List<cell_giant> entities =
-                    this.level().getEntitiesOfClass(cell_giant.class,
-                            new AABB(playerPos.x - range,
-                                    playerPos.y - range,
-                                    playerPos.z - range,
-                                    playerPos.x + range,
-                                    playerPos.y + range,
-                                    playerPos.z + range));
-
-            for (Entity c : entities) {
-                if (c instanceof cell_giant) {
-                    if (this.tickCount % 10 == 1) {
-                        this.heal(entities.size());
-                    }
-                }
             }
         }
         Vec3 playerPos = this.position().add(0, 0.75, 0);
@@ -355,17 +336,20 @@ public class ytgld extends nightmare_giant {
             if (this.getOwner().getLastHurtByMob()!= null) {
                 if (!this.getOwner().getLastHurtByMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtByMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setAttackTarget(this.getOwner().getLastHurtByMob());
+                    this.level().playSound(null, this.getOnPos(), SoundEvents.RAVAGER_ROAR, SoundSource.AMBIENT, 10, 10);
                 }
             }
             if (this.getOwner().getLastAttacker()!= null) {
                 if (!this.getOwner().getLastAttacker().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastAttacker().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setAttackTarget(this.getOwner().getLastAttacker());
+                    this.level().playSound(null, this.getOnPos(), SoundEvents.RAVAGER_ROAR, SoundSource.AMBIENT, 10, 10);
                 }
 
             }
             if (this.getOwner().getLastHurtMob()!= null) {
                 if (!this.getOwner().getLastHurtMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setAttackTarget(this.getOwner().getLastHurtMob());
+                    this.level().playSound(null, this.getOnPos(), SoundEvents.RAVAGER_ROAR, SoundSource.AMBIENT, 10, 10);
                 }
 
             }
