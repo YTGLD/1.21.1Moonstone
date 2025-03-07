@@ -146,6 +146,7 @@ public class dna extends Item implements Iplague, ICurioItem , TextEvt.Twelve{
 
     }
 
+
     private void playRemoveOneSound(Entity entity) {
         entity.playSound(SoundEvents.BUNDLE_REMOVE_ONE, 0.8F, 0.8F + entity.level().getRandom().nextFloat() * 0.4F);
     }

@@ -461,12 +461,10 @@
   "item.soulbattery.tool.string": "+25％ 暴击伤害",
   "item.moonstone.maxamout": "原始纹章",
 
-  "item.maxamout.tool.string": "攻击会削弱敌人",
+  "item.maxamout.tool.string": "获得三色符石的所有能力！",
   "item.maxamout.tool.string.1": "减少15%受到伤害",
   "item.maxamout.tool.string.2": "受伤时有概率获得伤害吸收效果",
   "item.maxamout.tool.string.3": "增加5%吸血",
-  "item.maxamout.tool.string.4": "攻击时有概率击飞敌人并让其减速",
-  "item.maxamout.tool.string.5": "并获得力量效果",
   "item.maxamout.tool.string.6": "受到伤害后将返还20%给进攻者",
   "item.maxamout.tool.string.7": "免疫挖掘疲劳效果",
   "item.maxamout.tool.string.8": "增加75%游泳速度",
@@ -1256,6 +1254,7 @@
   "item.deceased_contract.tool.string": "你可以在箱子里找到被诅咒的饰品",
   "enchantment.moonstone.malice": "恶意",
   "moonstone.difficulty.name.god": "类神",
+  "moonstone.difficulty.name.true_god": "神化",
   "item.blood.tool.string.winds.1": "  50%的速度加成转换成攻击伤害",
   "item.blood.tool.string.winds.2": "  如果你佩戴了 梦魇之眼 物品，则伤害加倍",
 
@@ -1637,6 +1636,36 @@
   "item.moonstone.rage_crystal_big":"大血怒水晶",
   "item.moonstone.rage_crystal_max":"战神水晶",
 
+
+
+
+  "item.moonstone.god_ambush": "漂流发酵",
+  "item.god_ambush.tool.string": "增加10%抗性",
+  "item.moonstone.god_atpoverdose": "ATP过量",
+
+  "item.moonstone.god_putrefactive": "腐败抗性",
+  "item.god_putrefactive.tool.string": "食用食物获得大量增益BUFF",
+  "item.god_putrefactive.tool.string.1": "食用食物恢复10%最大生命值",
+  "item.moonstone.god_fermentation": "埋伏性狩猎",
+  "item.moonstone.god_autolytic": "自溶性抑制",
+  "item.moonstone.god_regenerative": "再生活性化",
+  "item.god_regenerative.tool.string": "每隔0.75秒恢复1点生命值",
+
+
+
+
+
+
+
+
+
+
+  "item.moonstone.undead_blood_charm":"决裁者徽章",
+  "item.undead_blood_charm.tool.string.1": "标记攻击者，每次你恢复生命值都会对他造成150%恢复量的伤害",
+  "item.undead_blood_charm.tool.string.2": "标记对你有仇恨的生物，每次恢复生命都会对他造成50%恢复量的伤害",
+  "item.undead_blood_charm.tool.string.3": "对亡灵造成额外50%的伤害",
+  "item.undead_blood_charm.tool.string.4": "治疗增加25%",
+  "item.undead_blood_charm.tool.string.5": "受到伤害增加40%",
 
   "item.nightmare_axe.tool.string": "杀死生物召唤混沌战斧，落下造成300%你的攻击伤害",
   "item.nightmare_axe.tool.string.1": "附近每有一把混沌战斧：",

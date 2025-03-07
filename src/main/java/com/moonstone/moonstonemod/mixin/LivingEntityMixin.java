@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.mixin;
 
 import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
+import com.moonstone.moonstonemod.event.EquippedEvt;
 import com.moonstone.moonstonemod.event.NewEvent;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.items.Items;
@@ -88,6 +89,9 @@ public abstract class LivingEntityMixin {
                             }
                             if (stack.get(DataReg.tag).getBoolean(NewEvent.lootTable)){
                                 cir.setReturnValue(cir.getReturnValue()+0.66f);
+                            }
+                            if (stack.get(DataReg.tag).getBoolean(EquippedEvt.isGod)){
+                                cir.setReturnValue(cir.getReturnValue()+1.0f);
                             }
                         }
                     }

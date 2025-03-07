@@ -76,6 +76,7 @@ public class MoonStoneMod {
         NeoForge.EVENT_BUS.register(new NewEvent());
         NeoForge.EVENT_BUS.register(new AdvancementEvt());
         NeoForge.EVENT_BUS.register(new BookEvt());
+        NeoForge.EVENT_BUS.register(new EquippedEvt());
         NeoForge.EVENT_BUS.register(new TextEvt());
 
 

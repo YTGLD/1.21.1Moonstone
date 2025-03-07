@@ -2,6 +2,14 @@
   "replace": false,
   "values": [
 
+    "moonstone:god_ambush",
+    "moonstone:god_atpoverdose",
+    "moonstone:god_putrefactive",
+
+    "moonstone:god_fermentation",
+    "moonstone:god_autolytic",
+    "moonstone:god_regenerative",
+
     "moonstone:batgene",
     "moonstone:bloodgene",
     "moonstone:flygene",

@@ -154,6 +154,50 @@ public class Handler {
                         return true;
                     }
                 }
+
+
+
+
+                if (CuriosApi.getCuriosInventory(entity).isPresent()
+                        && CuriosApi.getCuriosInventory(entity).get().isEquipped(Items.god_ambush.get())) {
+                    if (curio == Items.ambush.get()) {
+                        return true;
+                    }
+                }
+                if (CuriosApi.getCuriosInventory(entity).isPresent()
+                        && CuriosApi.getCuriosInventory(entity).get().isEquipped(Items.god_putrefactive.get())) {
+                    if (curio == Items.putrefactive.get()) {
+                        return true;
+                    }
+                }
+                if (CuriosApi.getCuriosInventory(entity).isPresent()
+                        && CuriosApi.getCuriosInventory(entity).get().isEquipped(Items.god_fermentation.get())) {
+                    if (curio == Items.fermentation.get()) {
+                        return true;
+                    }
+                }
+                if (CuriosApi.getCuriosInventory(entity).isPresent()
+                        && CuriosApi.getCuriosInventory(entity).get().isEquipped(Items.god_autolytic.get())) {
+                    if (curio == Items.autolytic.get()) {
+                        return true;
+                    }
+                }
+                if (CuriosApi.getCuriosInventory(entity).isPresent()
+                        && CuriosApi.getCuriosInventory(entity).get().isEquipped(Items.god_regenerative.get())) {
+                    if (curio == Items.regenerative.get()) {
+                        return true;
+                    }
+                }
+
+
+
+
+                if (CuriosApi.getCuriosInventory(entity).isPresent()
+                        && CuriosApi.getCuriosInventory(entity).get().isEquipped(Items.maxamout.get())) {
+                    if (curio == Items.blueamout.get() || curio == Items.redamout.get() || curio == Items.greedamout.get()) {
+                        return true;
+                    }
+                }
                 if (CuriosApi.getCuriosInventory(player).isPresent()
                         && CuriosApi.getCuriosInventory(player).get().isEquipped(Items.evil_mob.get())) {
                     if (curio == Items.necora.get() || curio == Items.nightmareeye.get() || curio == Items.bloodvirus.get()) {

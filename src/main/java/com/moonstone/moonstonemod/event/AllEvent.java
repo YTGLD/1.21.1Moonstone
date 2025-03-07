@@ -141,6 +141,19 @@ public class AllEvent {
         }
     }
     @SubscribeEvent
+    public void fermentation(LivingIncomingDamageEvent event) {
+        if (event.getSource().getEntity() instanceof Player player){
+            if (Handler.hascurio(player, Items.fermentation.get())){
+                if (player.getCooldowns().isOnCooldown(Items.fermentation.get())){
+                    event.setAmount(event.getAmount() * 0.3f);
+                }else {
+                    event.setAmount(event.getAmount() * 4);
+                    player.getCooldowns().addCooldown(Items.fermentation.get(), 200);
+                }
+            }
+        }
+    }
+    @SubscribeEvent
     public  void parasite(LivingIncomingDamageEvent event) {
         if (event.getSource().getEntity() instanceof Player player){
             CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
@@ -799,16 +812,6 @@ public class AllEvent {
         }
     }
 
-    @SubscribeEvent
-    public void fermentation(LivingIncomingDamageEvent event) {
-        if (event.getSource().getEntity() instanceof Player player){
-            if (Handler.hascurio(player, Items.fermentation.get())){
-                if (!player.getCooldowns().isOnCooldown(Items.fermentation.get())){
-                    player.getCooldowns().addCooldown(Items.fermentation.get(), 200);
-                }
-            }
-        }
-    }
     @SubscribeEvent
     public  void reanimation(LivingIncomingDamageEvent event) {
         if (event.getEntity() instanceof Player player){

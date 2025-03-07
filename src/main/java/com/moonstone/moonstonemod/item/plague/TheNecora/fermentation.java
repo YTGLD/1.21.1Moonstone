@@ -34,37 +34,7 @@ public class fermentation extends TheNecoraIC {
             pTooltipComponents.add(Component.translatable("item.fermentation.tool.string.3").withStyle(ChatFormatting.RED));
         }
     }
-    @Override
-    public void curioTick(SlotContext slotContext, ItemStack stack) {
-        if (slotContext.entity() instanceof Player player){
-            player.getAttributes().addTransientAttributeModifiers(this.Head(player));
 
-        }
-    }
-
-    @Override
-    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
-        if (slotContext.entity() instanceof Player player)
-            slotContext.entity().getAttributes().removeAttributeModifiers(this.Head(player));
-    }
-
-    private Multimap<Holder<Attribute>, AttributeModifier> Head( Player player){
-        Multimap<Holder<Attribute>, AttributeModifier> multimap = HashMultimap.create();
-
-        float s = 0;
-        if (player.getCooldowns().isOnCooldown(Items.fermentation.get())){
-            s= -0.7f;
-        }else {
-            s=3.0f;
-        }
-
-        multimap.put(AttReg.alL_attack, new AttributeModifier(
-                ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()),
-                s,
-                AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-
-        return multimap;
-    }
 }
 
 

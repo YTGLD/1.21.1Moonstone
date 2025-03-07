@@ -20,11 +20,12 @@ public class Tab {
             .icon(()->new ItemStack(Items.necora.get()))
             .title(Component.translatable("itemGroup.tabmoonstone.dna"))
             .displayItems((a,b)->{
+                b.accept(new ItemStack(Items.bloodvirus.get()));
+                b.accept(new ItemStack(Items.necora.get()));
                 b.accept(new ItemStack(Items.dna_box.get()));
                 b.accept(new ItemStack(Items.crafting_box.get()));
-
-
                 b.accept(new ItemStack(Items.deceased_contract.get()));
+
 
                 b.accept(new ItemStack(BookItems.weak.get()));
                 b.accept(new ItemStack(BookItems.spore_outbreak.get()));
@@ -127,6 +128,12 @@ public class Tab {
                 b.accept(new ItemStack(Items.polyphagia.get()));
                 b.accept(new ItemStack(Items.quadriceps.get()));
                 b.accept(new ItemStack(Items.reanimation.get()));
+                b.accept(new ItemStack(Items.god_ambush.get()));
+                b.accept(new ItemStack(Items.god_atpoverdose.get()));
+                b.accept(new ItemStack(Items.god_putrefactive.get()));
+                b.accept(new ItemStack(Items.god_fermentation.get()));
+                b.accept(new ItemStack(Items.god_autolytic.get()));
+                b.accept(new ItemStack(Items.god_regenerative.get()));
 
 
                 b.accept(new ItemStack(Items.ambush.get()));
@@ -148,9 +155,6 @@ public class Tab {
                 b.accept(new ItemStack(Items.evil_blood.get()));
 
 
-                b.accept(new ItemStack(Items.bloodvirus.get()));
-                b.accept(new ItemStack(Items.necora.get()));
-                b.accept(new ItemStack(Items.necora_baby.get()));
 
 
             })
@@ -291,6 +295,7 @@ public class Tab {
                 b.accept(new ItemStack(Items.blood_amout.get()));
                 b.accept(new ItemStack(Items.blood_snake.get()));
                 b.accept(new ItemStack(Items.the_prison_of_sin.get()));
+                b.accept(new ItemStack(Items.undead_blood_charm.get()));
 
                 b.accept(new ItemStack(Items.evil_mob.get()));
                 b.accept(new ItemStack(Items.god_lead.get()));

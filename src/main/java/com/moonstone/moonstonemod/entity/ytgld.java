@@ -291,6 +291,9 @@ public class ytgld extends nightmare_giant {
     public void tick() {
         time++;
 
+        if (this.tickCount < 10) {
+            this.heal(1000);
+        }
         if (sZombieTime>0){
             sZombieTime--;
         }
@@ -336,20 +339,17 @@ public class ytgld extends nightmare_giant {
             if (this.getOwner().getLastHurtByMob()!= null) {
                 if (!this.getOwner().getLastHurtByMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtByMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setAttackTarget(this.getOwner().getLastHurtByMob());
-                    this.level().playSound(null, this.getOnPos(), SoundEvents.RAVAGER_ROAR, SoundSource.AMBIENT, 10, 10);
                 }
             }
             if (this.getOwner().getLastAttacker()!= null) {
                 if (!this.getOwner().getLastAttacker().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastAttacker().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setAttackTarget(this.getOwner().getLastAttacker());
-                    this.level().playSound(null, this.getOnPos(), SoundEvents.RAVAGER_ROAR, SoundSource.AMBIENT, 10, 10);
                 }
 
             }
             if (this.getOwner().getLastHurtMob()!= null) {
                 if (!this.getOwner().getLastHurtMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setAttackTarget(this.getOwner().getLastHurtMob());
-                    this.level().playSound(null, this.getOnPos(), SoundEvents.RAVAGER_ROAR, SoundSource.AMBIENT, 10, 10);
                 }
 
             }

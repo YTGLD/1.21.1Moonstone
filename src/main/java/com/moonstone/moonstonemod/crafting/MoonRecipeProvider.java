@@ -16,9 +16,13 @@ public class MoonRecipeProvider extends VanillaRecipeProvider {
 
     @Override
     protected void buildRecipes(@NotNull RecipeOutput recipeOutput) {
-        SpecialRecipeBuilder.special(RecipeDNA::new).save(recipeOutput, "necora");
-        SpecialRecipeBuilder.special(RecipeCell::new).save(recipeOutput, "cell");
-        SpecialRecipeBuilder.special(RecipeGiant::new).save(recipeOutput, "giant");
-        SpecialRecipeBuilder.special(RecipeNightmare::new).save(recipeOutput, "giant_nightmare");
+        SpecialRecipeBuilder.special(RecipeGodAmbush::new).save(recipeOutput, "god_ambush");
+        SpecialRecipeBuilder.special(RecipeGodAtpoverdose::new).save(recipeOutput, "god_atpoverdose");
+        SpecialRecipeBuilder.special(RecipeGodPutrefactive::new).save(recipeOutput, "god_putrefactive");
+
+        SpecialRecipeBuilder.special(RecipeGodFermentation::new).save(recipeOutput, "god_fermentation");
+        SpecialRecipeBuilder.special(RecipeGodAutolytic::new).save(recipeOutput, "god_autolytic");
+        SpecialRecipeBuilder.special(RecipeGodRegenerative::new).save(recipeOutput, "god_regenerative");
+
     }
 }

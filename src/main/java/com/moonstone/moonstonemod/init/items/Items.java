@@ -7,6 +7,7 @@ import com.moonstone.moonstonemod.init.moonstoneitem.extend.apple;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.medicinebox;
 import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
+import com.moonstone.moonstonemod.item.blood.magic.undead_blood_charm;
 import com.moonstone.moonstonemod.item.coffin;
 import com.moonstone.moonstonemod.item.maxitem.*;
 import com.moonstone.moonstonemod.item.maxitem.book.the_blood_book;
@@ -29,6 +30,7 @@ import com.moonstone.moonstonemod.item.plague.BloodVirus.batgene;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.bloodgene;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.dna.*;
 import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.*;
+import com.moonstone.moonstonemod.item.plague.TheNecora.god.*;
 import com.moonstone.moonstonemod.item.plague.crafting_box;
 import com.moonstone.moonstonemod.item.plague.medicine.med.*;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -299,7 +301,13 @@ public class Items {
     public static final DeferredHolder<Item,?> rage_crystal =REGISTRY.register("rage_crystal",rage_crystal::new );
     public static final DeferredHolder<Item,?> rage_crystal_big =REGISTRY.register("rage_crystal_big",rage_crystal_big::new );
     public static final DeferredHolder<Item,?> rage_crystal_max =REGISTRY.register("rage_crystal_max",rage_crystal_max::new );
-
+    public static final DeferredHolder<Item,?> undead_blood_charm =REGISTRY.register("undead_blood_charm", undead_blood_charm::new );
+    public static final DeferredHolder<Item,?> god_ambush =REGISTRY.register("god_ambush", GodAmbush::new );
+    public static final DeferredHolder<Item,?> god_atpoverdose =REGISTRY.register("god_atpoverdose", GodAtpoverdose::new );
+    public static final DeferredHolder<Item,?> god_putrefactive =REGISTRY.register("god_putrefactive", GodPutrefactive::new );
+    public static final DeferredHolder<Item,?> god_fermentation =REGISTRY.register("god_fermentation", GodFermentation::new );
+    public static final DeferredHolder<Item,?> god_autolytic =REGISTRY.register("god_autolytic", GodAutolytic::new );
+    public static final DeferredHolder<Item,?> god_regenerative =REGISTRY.register("god_regenerative", GodRegenerative::new );
 
 
     public static final DeferredHolder<Item,?> god_sword_ =REGISTRY.register("god_sword",twelve_sword.god_sword::new );

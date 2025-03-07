@@ -26,15 +26,4 @@ public class atpoverdose extends TheNecoraIC {
         return linkedHashMultimap;
     }
 
-    @Override
-    public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-        super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
-        if (Screen.hasShiftDown()) {
-            pTooltipComponents.add(Component.translatable(""));
-            pTooltipComponents.add(Component.translatable("· +1 curio slot").withStyle(ChatFormatting.RED));
-        }else {
-            pTooltipComponents.add(Component.translatable(""));
-            pTooltipComponents.add(Component.translatable("-[SHIFT]").withStyle(ChatFormatting.DARK_RED));
-        }
-    }
 }

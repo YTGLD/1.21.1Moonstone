@@ -17,6 +17,7 @@ import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
 import com.moonstone.moonstonemod.item.blood.magic.blood_sun;
 import com.moonstone.moonstonemod.item.blood.magic.rage_blood_head;
+import com.moonstone.moonstonemod.item.blood.magic.undead_blood_charm;
 import com.moonstone.moonstonemod.item.coffin;
 import com.moonstone.moonstonemod.item.decorated.deceased_contract;
 import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
@@ -31,6 +32,8 @@ import com.moonstone.moonstonemod.item.nightmare.super_nightmare.*;
 import com.moonstone.moonstonemod.item.plague.ALL.dna;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.dna.bat_cell;
 import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.giant_boom_cell;
+import com.moonstone.moonstonemod.item.plague.TheNecora.god.GodAmbush;
+import com.moonstone.moonstonemod.item.plague.TheNecora.god.GodPutrefactive;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -85,14 +88,34 @@ public class NewEvent {
     public static final String chromosome = "the_chromosome";
     public static final String bone = "the_bone";
     public static final String die_body = "the_die_body";
+
     @SubscribeEvent
-    public  void doBreak(CurioCanEquipEvent event) {
-        Item item = event.getStack().getItem();
-        if (BuiltInRegistries.ITEM.getKey(item).getNamespace().equals(MoonStoneMod.MODID)) {
-            if (Handler.hascurio(event.getEntity(), item)) {
-                event.setEquipResult(TriState.FALSE);
-            }
+    public void LivingIncomingDamageEvent(LivingIncomingDamageEvent event){
+        GodAmbush.LivingIncomingDamageEvent(event);
+    }
+    @SubscribeEvent
+    public void th_dna(LivingIncomingDamageEvent event){
+        if ((event.getSource().getEntity() instanceof Player player)){
+            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                    ICurioStacksHandler stacksHandler = entry.getValue();
+                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                        ItemStack stack = stackHandler.getStackInSlot(i);
+                        if (stack.get(DataReg.tag)!=null){
+                            if (stack.get(DataReg.tag).getBoolean(EquippedEvt.isGod)){
+                                event.setAmount(event.getAmount()+0.33f);
+                            }
+                        }
+                    }
+                }
+            });
         }
+    }
+    @SubscribeEvent
+    public  void FinishLivingEntityUseItemEvent(LivingEntityUseItemEvent.Finish event){
+        GodPutrefactive.eat(event);
     }
     @SubscribeEvent
     public  void doBreak(LivingEntityUseItemEvent.Start event){
@@ -111,6 +134,7 @@ public class NewEvent {
         DungeonLoot.heal(event);
         nightmare_base_black_eye_heart.heal(event);
         nightmare_axe.heals(event);
+        undead_blood_charm.LivingHealEvent(event);
         if (event.getEntity() instanceof LivingEntity living){
             if (living.getAttribute(AttReg.heal)!=null){
                 float attack = (float) living.getAttribute(AttReg.heal).getValue();
@@ -300,7 +324,8 @@ public class NewEvent {
         nightmare_base_black_eye.damage(event);
         nightmare_axe.att(event);
         immortal.hEvt(event);
-        twelve_sword.att(event);
+
+        undead_blood_charm.LivingIncomingDamageEvent(event);
         if (event.getEntity().hasEffect(Effects.dead) && event.getEntity().getEffect(Effects.dead)!=null){
             float lvl = event.getEntity().getEffect(Effects.dead).getAmplifier();
             lvl *= 0.2f;

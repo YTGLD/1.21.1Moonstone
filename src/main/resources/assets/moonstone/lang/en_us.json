@@ -460,8 +460,6 @@
   "item.maxamout.tool.string.1": "Reduce damage taken by 15%",
   "item.maxamout.tool.string.2": "There is a probability of obtaining damage absorption when injured",
   "item.maxamout.tool.string.3": "Increase Vampire by 5%",
-  "item.maxamout.tool.string.4": "There is a probability that during an attack, the enemy will be knocked away and slowed down.",
-  "item.maxamout.tool.string.5": "And obtain the power effect",
   "item.maxamout.tool.string.6": "After taking damage, 20% will be returned to the attacker.",
   "item.maxamout.tool.string.7": "Immune mining fatigue effect",
   "item.maxamout.tool.string.8": "Increase swimming speed by 75%",
@@ -1588,9 +1586,36 @@
 
   "item.dnas.tool.string": "提示：使用药物粉碎盒粉碎基因物品",
 
+
+  "moonstone.jei.god_dna": "使用两个“类神的基因序列”的相同DNA物品合成",
+  "item.moonstone.god_ambush": "漂流发酵",
+  "item.god_ambush.tool.string": "增加10%抗性",
+  "moonstone.difficulty.name.true_god": "神化",
+  "item.moonstone.god_atpoverdose": "ATP过量",
+  "item.moonstone.god_putrefactive": "腐败抗性",
+  "item.god_putrefactive.tool.string": "食用食物获得大量增益BUFF",
+  "item.god_putrefactive.tool.string.1": "食用食物恢复10%最大生命值",
+  "item.moonstone.god_fermentation": "埋伏性狩猎",
+  "item.moonstone.god_autolytic": "自溶性抑制",
+
+  "item.moonstone.god_regenerative": "再生活性化",
+  "item.god_regenerative.tool.string": "每隔0.75秒恢复1点生命值",
+
+
+
+
+
+
   "moonstone.use.dna": "提示：使用药物粉碎盒分解",
 
   "item.moonstone.twelve_sword":"诸神剑阵",
+  "item.moonstone.undead_blood_charm":"决裁者徽章",
+  "item.undead_blood_charm.tool.string.1": "标记攻击者，每次你恢复生命值都会对他造成150%恢复量的伤害",
+  "item.undead_blood_charm.tool.string.2": "标记对你有仇恨的生物，每次恢复生命都会对他造成50%恢复量的伤害",
+  "item.undead_blood_charm.tool.string.3": "对亡灵造成额外50%的伤害",
+  "item.undead_blood_charm.tool.string.4": "治疗增加50%",
+  "item.undead_blood_charm.tool.string.5": "受到伤害增加40%",
+
 
   "item.twelve_sword.tool.string.1": "杀死生物召唤剑阵",
   "item.twelve_sword.tool.string.2": "在剑阵附近获得1%0~120%的伤害加成",
