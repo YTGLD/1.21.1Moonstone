@@ -11,9 +11,4 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 public abstract class GodDNA  extends TheNecoraIC {
   public  abstract   Item getNotEquippedItem();
-
-  @Override
-  public  ICurio.DropRule getDropRule(SlotContext slotContext, DamageSource source, int lootingLevel, boolean recentlyHit, ItemStack stack) {
-    return ICurio.DropRule.DEFAULT;
-  }
 }

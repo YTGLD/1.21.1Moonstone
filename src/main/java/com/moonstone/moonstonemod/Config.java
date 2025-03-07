@@ -77,7 +77,11 @@ public class Config {
                 .comment("The speed of the motor")
                 .defineInRange("motor", 0.15, 0, 999);
 
+        rage_eye = BUILDER
+                .comment("The maximum attribute that Rage Eye can steal is 0.5, which is 50% of their maximum value")
+                .defineInRange("rage_eye", 0.25, 0, 1000);
 
+        BUILDER.push("loot");
         bat = BUILDER
                 .comment("The probability of discovering Shadow Plague items from the chests")
                 .defineInRange("Plague_probability", 10, 1, 100);
@@ -92,6 +96,7 @@ public class Config {
         common = BUILDER
                 .comment("The larger this value, the lower the probability of discovering the item")
                 .defineInRange("Common_probability", 1, 0.1, 100);
+        BUILDER.pop();
 
         BUILDER.build();
     }
@@ -123,6 +128,9 @@ public class Config {
     public ModConfigSpec.BooleanValue immortalZombie ;
     public   ModConfigSpec.IntValue nightmareBaseMaxItem ;
     public   ModConfigSpec.BooleanValue itemQuality;
+
+    public ModConfigSpec.DoubleValue rage_eye;
+
 
     @SubscribeEvent
     public static void onLoad(final ModConfigEvent.Loading configEvent) {

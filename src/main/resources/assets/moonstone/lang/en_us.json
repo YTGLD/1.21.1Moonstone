@@ -1602,7 +1602,15 @@
   "item.god_regenerative.tool.string": "每隔0.75秒恢复1点生命值",
 
 
+  "item.moonstone.rage_charm": "狂暴统治者徽章",
+  "item.rage_charm.tool.string": "杀死生物获得属性加成",
+  "item.rage_charm.tool.string.1": "随时间减少",
 
+  "item.moonstone.rage_eye": "偷盗者的狂暴之眼",
+  "item.rage_eye.tool.string": "手持眼睛左键生物偷取属性",
+  "item.rage_eye.tool.string.4": "盗取的属性最大值不超过你的50%",
+  "item.rage_eye.tool.string.1": "只能使用1次",
+  "item.rage_eye.tool.string.2": "无论有没有盗取属性，物品都会锁定",
 
 
 

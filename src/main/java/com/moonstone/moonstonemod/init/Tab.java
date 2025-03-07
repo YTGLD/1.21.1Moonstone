@@ -315,6 +315,9 @@ public class Tab {
                 b.accept(new ItemStack(Items.owner_blood_vex.get()));
                 b.accept(new ItemStack(Items.owner_blood_earth.get()));
 
+                b.accept(new ItemStack(Items.rage_charm.get()));
+                b.accept(new ItemStack(Items.rage_eye.get()));
+
             })
             .build());
 }

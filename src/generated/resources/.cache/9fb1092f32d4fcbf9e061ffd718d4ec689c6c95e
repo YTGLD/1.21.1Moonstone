@@ -1,5 +1,6 @@
-// 1.21.1	2025-03-07T09:51:16.3941359	Recipes
+// 1.21.1	2025-03-07T15:06:21.6354505	Recipes
 d248c5232893b08a0d5830d0f2f575fd11fe9f3a data/minecraft/advancement/recipes/root.json
+3835e5c85fe9672bf97b0303b68ee51f150e91ea data/minecraft/recipe/dna.json
 6569452e74993b10e5866780e8ef7e613cbcefc0 data/minecraft/recipe/god_ambush.json
 78463feb49bf451f209a3b5f1165a80662448ef2 data/minecraft/recipe/god_atpoverdose.json
 63ead58aee87c63b89e4b37bcdb7d601e7360693 data/minecraft/recipe/god_autolytic.json

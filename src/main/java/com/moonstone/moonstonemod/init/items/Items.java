@@ -19,6 +19,8 @@ import com.moonstone.moonstonemod.item.maxitem.amout.ectoplasmstone;
 import com.moonstone.moonstonemod.item.maxitem.amout.twistedstone;
 import com.moonstone.moonstonemod.item.maxitem.food.SmithingFood;
 import com.moonstone.moonstonemod.item.maxitem.maulice.*;
+import com.moonstone.moonstonemod.item.maxitem.rage.rage_charm;
+import com.moonstone.moonstonemod.item.maxitem.rage.rage_eye;
 import com.moonstone.moonstonemod.item.maxitem.uncommon.common.*;
 import com.moonstone.moonstonemod.item.nanodoom.*;
 import com.moonstone.moonstonemod.item.necora;
@@ -308,6 +310,8 @@ public class Items {
     public static final DeferredHolder<Item,?> god_fermentation =REGISTRY.register("god_fermentation", GodFermentation::new );
     public static final DeferredHolder<Item,?> god_autolytic =REGISTRY.register("god_autolytic", GodAutolytic::new );
     public static final DeferredHolder<Item,?> god_regenerative =REGISTRY.register("god_regenerative", GodRegenerative::new );
+    public static final DeferredHolder<Item,?> rage_charm =REGISTRY.register("rage_charm", rage_charm::new );
+    public static final DeferredHolder<Item,?> rage_eye =REGISTRY.register("rage_eye", rage_eye::new );
 
 
     public static final DeferredHolder<Item,?> god_sword_ =REGISTRY.register("god_sword",twelve_sword.god_sword::new );

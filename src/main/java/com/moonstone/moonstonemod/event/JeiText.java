@@ -25,13 +25,6 @@ public class JeiText implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        registration.addIngredientInfo(new ItemStack(Items.god_ambush.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.god_dna"));
-        registration.addIngredientInfo(new ItemStack(Items.god_atpoverdose.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.god_dna"));
-        registration.addIngredientInfo(new ItemStack(Items.god_putrefactive.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.god_dna"));
-        registration.addIngredientInfo(new ItemStack(Items.god_regenerative.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.god_dna"));
-        registration.addIngredientInfo(new ItemStack(Items.god_autolytic.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.god_dna"));
-        registration.addIngredientInfo(new ItemStack(Items.god_fermentation.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.god_dna"));
-
         {
             registration.addIngredientInfo(new ItemStack(Items.ectoplasmstone.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.ectoplasmstone"));
             registration.addIngredientInfo(new ItemStack(Items.twistedstone.get()), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.twistedstone"));

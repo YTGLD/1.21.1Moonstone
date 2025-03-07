@@ -1638,26 +1638,28 @@
 
 
 
-
+  "moonstone.jei.god_dna": "使用两个“类神的基因序列”的相同DNA物品合成",
   "item.moonstone.god_ambush": "漂流发酵",
   "item.god_ambush.tool.string": "增加10%抗性",
   "item.moonstone.god_atpoverdose": "ATP过量",
-
   "item.moonstone.god_putrefactive": "腐败抗性",
   "item.god_putrefactive.tool.string": "食用食物获得大量增益BUFF",
   "item.god_putrefactive.tool.string.1": "食用食物恢复10%最大生命值",
   "item.moonstone.god_fermentation": "埋伏性狩猎",
   "item.moonstone.god_autolytic": "自溶性抑制",
+
   "item.moonstone.god_regenerative": "再生活性化",
   "item.god_regenerative.tool.string": "每隔0.75秒恢复1点生命值",
 
+  "item.moonstone.rage_charm": "狂暴统治者徽章",
+  "item.rage_charm.tool.string": "杀死生物获得属性加成",
+  "item.rage_charm.tool.string.1": "随时间减少",
 
-
-
-
-
-
-
+  "item.moonstone.rage_eye": "偷盗者的狂暴之眼",
+  "item.rage_eye.tool.string": "手持眼睛左键生物偷取属性",
+  "item.rage_eye.tool.string.4": "盗取的属性最大值不超过你的50%",
+  "item.rage_eye.tool.string.1": "只能使用1次",
+  "item.rage_eye.tool.string.2": "无论有没有盗取属性，物品都会锁定",
 
 
   "item.moonstone.undead_blood_charm":"决裁者徽章",

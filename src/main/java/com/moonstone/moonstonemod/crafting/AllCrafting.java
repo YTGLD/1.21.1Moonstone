@@ -30,5 +30,9 @@ public class AllCrafting {
     public static final DeferredHolder<RecipeSerializer<?>, SimpleCraftingRecipeSerializer<?>> RecipeGodRegenerative =
             RECIPE_SERIALIZER_REGISTRY.register("god_regenerative",
                     ()-> new SimpleCraftingRecipeSerializer<>(RecipeGodRegenerative::new));
+    public static final DeferredHolder<RecipeSerializer<?>, SimpleCraftingRecipeSerializer<?>> DNA =
+            RECIPE_SERIALIZER_REGISTRY.register("dna",
+                    ()-> new SimpleCraftingRecipeSerializer<>(RecipeGodDNA::new));
+
 
 }

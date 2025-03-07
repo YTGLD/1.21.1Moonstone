@@ -65,6 +65,9 @@ public class LootTableEvent {
                         .add(LootItem.lootTableItem(Items.killer.get()).setWeight(1))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
+                        .add(LootItem.lootTableItem(Items.rage_eye.get()).setWeight(1))
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+
                         .build());
             }
 

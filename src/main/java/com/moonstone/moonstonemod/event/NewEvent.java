@@ -22,6 +22,7 @@ import com.moonstone.moonstonemod.item.coffin;
 import com.moonstone.moonstonemod.item.decorated.deceased_contract;
 import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
 import com.moonstone.moonstonemod.item.maxitem.*;
+import com.moonstone.moonstonemod.item.maxitem.rage.rage_charm;
 import com.moonstone.moonstonemod.item.nanodoom.as_amout;
 import com.moonstone.moonstonemod.item.nanodoom.million;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_axe;
@@ -324,7 +325,6 @@ public class NewEvent {
         nightmare_base_black_eye.damage(event);
         nightmare_axe.att(event);
         immortal.hEvt(event);
-
         undead_blood_charm.LivingIncomingDamageEvent(event);
         if (event.getEntity().hasEffect(Effects.dead) && event.getEntity().getEffect(Effects.dead)!=null){
             float lvl = event.getEntity().getEffect(Effects.dead).getAmplifier();
@@ -551,6 +551,8 @@ public class NewEvent {
         nightmare_axe.Nig(event);
         immortal.livDead(event);
         coffin.coffins(event);
+        rage_charm.die(event);
+
     }
     @SubscribeEvent
     public void heal(PlayerEvent.BreakSpeed event){
