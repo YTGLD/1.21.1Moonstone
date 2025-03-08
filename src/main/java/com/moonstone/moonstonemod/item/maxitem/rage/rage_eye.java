@@ -26,7 +26,7 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.List;
 
-public class rage_eye extends Item implements ICurioItem, Blood {
+public class rage_eye extends Item implements ICurioItem,RAGE{
     public rage_eye() {
         super(new Properties().stacksTo(1).rarity(Rarity.EPIC));
     }
@@ -38,36 +38,36 @@ public class rage_eye extends Item implements ICurioItem, Blood {
     public boolean onLeftClickEntity(ItemStack stack, Player player, Entity entity) {
         double b  = Config.SERVER.rage_eye.get();
         float a  = (float) b;
+        double c  =  Config.SERVER.rage_eye_copy.get();
+        float copy  = (float) c;
+
         if (stack.get(DataReg.tag)==null){
             stack.set(DataReg.tag,new CompoundTag());
         }
         if (!(entity instanceof Player )){
             if (stack.get(DataReg.tag)!=null) {
-                if (!stack.get(DataReg.tag).getBoolean("canUse")) {
-                    if (entity instanceof LivingEntity living) {
-                        if (living.getAttribute(Attributes.MAX_HEALTH) != null) {
-                            if (living.getAttribute(Attributes.MAX_HEALTH).getBaseValue() < player.getAttributeValue(Attributes.MAX_HEALTH) * a) {
-                                stack.get(DataReg.tag).putFloat(health, (float) living.getAttribute(Attributes.MAX_HEALTH).getBaseValue());
-                            } else {
-                                stack.get(DataReg.tag).putFloat(health, (float) player.getAttributeValue(Attributes.MAX_HEALTH) * a);
-                            }
+                if (entity instanceof LivingEntity living) {
+                    if (living.getAttribute(Attributes.MAX_HEALTH) != null) {
+                        if (living.getAttribute(Attributes.MAX_HEALTH).getBaseValue()*copy < player.getAttributeValue(Attributes.MAX_HEALTH) * a) {
+                            stack.get(DataReg.tag).putFloat(health, (float) living.getAttribute(Attributes.MAX_HEALTH).getBaseValue()*copy);
+                        } else {
+                            stack.get(DataReg.tag).putFloat(health, (float) player.getAttributeValue(Attributes.MAX_HEALTH) * a);
                         }
-                        if (living.getAttribute(Attributes.ATTACK_DAMAGE) != null) {
-                            if (living.getAttribute(Attributes.ATTACK_DAMAGE).getBaseValue() < player.getAttributeValue(Attributes.ATTACK_DAMAGE) * a) {
-                                stack.get(DataReg.tag).putFloat(damage, (float) living.getAttribute(Attributes.ATTACK_DAMAGE).getBaseValue());
-                            } else {
-                                stack.get(DataReg.tag).putFloat(damage, (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE) * a);
+                    }
+                    if (living.getAttribute(Attributes.ATTACK_DAMAGE) != null) {
+                        if (living.getAttribute(Attributes.ATTACK_DAMAGE).getBaseValue()*copy < player.getAttributeValue(Attributes.ATTACK_DAMAGE) * a) {
+                            stack.get(DataReg.tag).putFloat(damage, (float) living.getAttribute(Attributes.ATTACK_DAMAGE).getBaseValue()*copy);
+                        } else {
+                            stack.get(DataReg.tag).putFloat(damage, (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE) * a);
 
-                            }
                         }
-                        if (living.getAttribute(Attributes.ARMOR) != null) {
-                            if (living.getAttribute(Attributes.ARMOR).getBaseValue() < player.getAttributeValue(Attributes.ARMOR) * a) {
-                                stack.get(DataReg.tag).putFloat(armor, (float) living.getAttribute(Attributes.ARMOR).getBaseValue());
-                            } else {
-                                stack.get(DataReg.tag).putFloat(armor, (float) player.getAttributeValue(Attributes.ARMOR) * a);
-                            }
+                    }
+                    if (living.getAttribute(Attributes.ARMOR) != null) {
+                        if (living.getAttribute(Attributes.ARMOR).getBaseValue()*copy < player.getAttributeValue(Attributes.ARMOR) * a) {
+                            stack.get(DataReg.tag).putFloat(armor, (float) living.getAttribute(Attributes.ARMOR).getBaseValue()*copy);
+                        } else {
+                            stack.get(DataReg.tag).putFloat(armor, (float) player.getAttributeValue(Attributes.ARMOR) * a);
                         }
-                        stack.get(DataReg.tag).putBoolean("canUse",true);
                     }
                 }
             }
@@ -78,12 +78,9 @@ public class rage_eye extends Item implements ICurioItem, Blood {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable("item.rage_eye.tool.string").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
+        tooltipComponents.add(Component.translatable("item.rage_eye.tool.string").withStyle(ChatFormatting.GOLD).withStyle(ChatFormatting.ITALIC));
         tooltipComponents.add(Component.literal(""));
-        tooltipComponents.add(Component.translatable("item.rage_eye.tool.string.4").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
-        tooltipComponents.add(Component.literal(""));
-        tooltipComponents.add(Component.translatable("item.rage_eye.tool.string.1").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
-        tooltipComponents.add(Component.translatable("item.rage_eye.tool.string.2").withStyle(ChatFormatting.DARK_RED).withStyle(ChatFormatting.ITALIC));
+        tooltipComponents.add(Component.translatable("item.rage_eye.tool.string.4").withStyle(ChatFormatting.GOLD).withStyle(ChatFormatting.ITALIC));
 
 
     }

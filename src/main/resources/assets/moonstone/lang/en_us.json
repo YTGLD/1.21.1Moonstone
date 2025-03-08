@@ -1607,12 +1607,26 @@
   "item.rage_charm.tool.string.1": "随时间减少",
 
   "item.moonstone.rage_eye": "偷盗者的狂暴之眼",
-  "item.rage_eye.tool.string": "手持眼睛左键生物偷取属性",
-  "item.rage_eye.tool.string.4": "盗取的属性最大值不超过你的50%",
-  "item.rage_eye.tool.string.1": "只能使用1次",
+  "item.rage_eye.tool.string": "手持眼睛左键生物偷取10%基础属性",
+  "item.rage_eye.tool.string.4": "盗取的属性最大值不超过你的25%",
   "item.rage_eye.tool.string.2": "无论有没有盗取属性，物品都会锁定",
 
 
+  "item.moonstone.magnet": "磁铁",
+  "item.magnet.tool.string": "吸引半径8格内的掉落物",
+
+  "item.moonstone.rage_magnet": "狂暴磁铁",
+  "item.rage_magnet.tool.string": "吸引掉落物时恢复生命值",
+
+  "item.moonstone.rage_stone": "下界岩石",
+  "item.rage_stone.tool.string": "将附近掉落物形式的下界岩转换成经验球",
+
+  "item.moonstone.rage_lock": "狂暴锁",
+  "item.rage_lock.tool.string": "-75%治疗",
+  "item.rage_lock.tool.string.1": "+25%满血抗性",
+  "item.rage_lock.tool.string.2": "+10%所有伤害",
+  "item.rage_lock.tool.string.3": "+15%吸血",
+  "item.rage_lock.tool.string.4": "+40%杀戮吸血",
 
   "moonstone.use.dna": "提示：使用药物粉碎盒分解",
 

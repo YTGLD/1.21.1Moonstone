@@ -31,7 +31,7 @@ import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 import java.util.List;
 import java.util.Map;
 
-public class rage_charm  extends Item  implements ICurioItem,Blood {
+public class rage_charm  extends Item  implements ICurioItem,RAGE {
     public static final String atr = "RageAtt";
 
 
@@ -124,17 +124,17 @@ public class rage_charm  extends Item  implements ICurioItem,Blood {
 
 
         if (Screen.hasShiftDown()) {
-            pTooltipComponents.add(Component.translatable("item.rage_charm.tool.string").withStyle(ChatFormatting.RED));
-            pTooltipComponents.add(Component.translatable("item.rage_charm.tool.string.1").withStyle(ChatFormatting.RED));
+            pTooltipComponents.add(Component.translatable("item.rage_charm.tool.string").withStyle(ChatFormatting.GOLD));
+            pTooltipComponents.add(Component.translatable("item.rage_charm.tool.string.1").withStyle(ChatFormatting.GOLD));
         } else {
-            pTooltipComponents.add(Component.translatable("key.keyboard.left.shift").withStyle(ChatFormatting.DARK_RED));
+            pTooltipComponents.add(Component.translatable("key.keyboard.left.shift").withStyle(ChatFormatting.GOLD));
             if (pStack.get(DataReg.tag) != null) {
                 float r = pStack.get(DataReg.tag).getFloat(atr);//r=1~100
-                pTooltipComponents.add(Component.translatable("attribute.name.generic.attack_damage").append("：").append(String.valueOf(r/2)).append("%").withStyle(ChatFormatting.DARK_RED));
-                pTooltipComponents.add(Component.translatable("attribute.name.generic.attack_speed").append("：").append(String.valueOf(r/4)).append("%").withStyle(ChatFormatting.DARK_RED));
-                pTooltipComponents.add(Component.translatable("attribute.name.generic.armor").append("：").append(String.valueOf(r/3.5)).append("%").withStyle(ChatFormatting.DARK_RED));
-                pTooltipComponents.add(Component.translatable("attribute.name.moonstone.heal").append("：").append(String.valueOf(r/2.5)).append("%").withStyle(ChatFormatting.DARK_RED));
-                pTooltipComponents.add(Component.translatable("attribute.name.generic.knockback_resistance").append("：").append(String.valueOf(r)).append("%").withStyle(ChatFormatting.DARK_RED));
+                pTooltipComponents.add(Component.translatable("attribute.name.generic.attack_damage").append("：").append(String.valueOf(r/2)).append("%").withStyle(ChatFormatting.YELLOW));
+                pTooltipComponents.add(Component.translatable("attribute.name.generic.attack_speed").append("：").append(String.valueOf(r/4)).append("%").withStyle(ChatFormatting.YELLOW));
+                pTooltipComponents.add(Component.translatable("attribute.name.generic.armor").append("：").append(String.valueOf(r/3.5)).append("%").withStyle(ChatFormatting.YELLOW));
+                pTooltipComponents.add(Component.translatable("attribute.name.moonstone.heal").append("：").append(String.valueOf(r/2.5)).append("%").withStyle(ChatFormatting.YELLOW));
+                pTooltipComponents.add(Component.translatable("attribute.name.generic.knockback_resistance").append("：").append(String.valueOf(r)).append("%").withStyle(ChatFormatting.YELLOW));
             }
         }
     }

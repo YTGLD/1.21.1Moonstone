@@ -23,6 +23,8 @@ import com.moonstone.moonstonemod.item.decorated.deceased_contract;
 import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
 import com.moonstone.moonstonemod.item.maxitem.*;
 import com.moonstone.moonstonemod.item.maxitem.rage.rage_charm;
+import com.moonstone.moonstonemod.item.maxitem.rage.rage_lock;
+import com.moonstone.moonstonemod.item.maxitem.rage.rage_magnet;
 import com.moonstone.moonstonemod.item.nanodoom.as_amout;
 import com.moonstone.moonstonemod.item.nanodoom.million;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_axe;
@@ -64,10 +66,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
-import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
-import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.entity.player.*;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
@@ -136,6 +135,8 @@ public class NewEvent {
         nightmare_base_black_eye_heart.heal(event);
         nightmare_axe.heals(event);
         undead_blood_charm.LivingHealEvent(event);
+        rage_lock.LivingHealEvent(event);
+
         if (event.getEntity() instanceof LivingEntity living){
             if (living.getAttribute(AttReg.heal)!=null){
                 float attack = (float) living.getAttribute(AttReg.heal).getValue();
@@ -143,7 +144,34 @@ public class NewEvent {
             }
         }
     }
+    @SubscribeEvent
+    public void pick(ItemEntityPickupEvent.Post event){
+        rage_magnet.pick(event);
+    }
+    @SubscribeEvent
+    public void LivingHealEvent(LivingDeathEvent event) {
+        nightmare_heart.Nig(event);
+        nightmare_base_reversal.LivingDeathEvent(event);
+        nightmare_head.LivingDeathEvent(event);
+        max_eye.Die(event);
+        blood_snake.Die(event);
+        max_sword.die(event);
+        the_prison_of_sin.LivingDeathEvent(event);
+        blood_magic_box.Did(event);
+        deceased_contract.Did(event);
+        blood_sun.Did(event);
+        dna.dieD(event);
+        rage_blood_head.Did(event);
+        sword_soul.evil(event);
+        nightmare_base_black_eye_red.kill(event);
+        nightmare_base_insight_insane.LivingDeathEvents(event);
+        nightmare_axe.Nig(event);
+        immortal.livDead(event);
+        coffin.coffins(event);
+        rage_charm.die(event);
+        rage_lock.LivingDeathEvent(event);
 
+    }
     public void addV(ItemStack stack,Item Dhis,ItemTooltipEvent event,String string){
         if (stack.is(Dhis)) {
             event.getToolTip().add(1,Component.translatable(string).withStyle(ChatFormatting.RED));
@@ -326,6 +354,7 @@ public class NewEvent {
         nightmare_axe.att(event);
         immortal.hEvt(event);
         undead_blood_charm.LivingIncomingDamageEvent(event);
+        rage_lock.LivingIncomingDamageEvent(event);
         if (event.getEntity().hasEffect(Effects.dead) && event.getEntity().getEffect(Effects.dead)!=null){
             float lvl = event.getEntity().getEffect(Effects.dead).getAmplifier();
             lvl *= 0.2f;
@@ -529,29 +558,6 @@ public class NewEvent {
     @SubscribeEvent
     public  void SwordEventLivingEntityUseItemEvent(LivingEntityUseItemEvent.Stop event){
 
-
-    }
-    @SubscribeEvent
-    public void LivingHealEvent(LivingDeathEvent event) {
-        nightmare_heart.Nig(event);
-        nightmare_base_reversal.LivingDeathEvent(event);
-        nightmare_head.LivingDeathEvent(event);
-        max_eye.Die(event);
-        blood_snake.Die(event);
-        max_sword.die(event);
-        the_prison_of_sin.LivingDeathEvent(event);
-        blood_magic_box.Did(event);
-        deceased_contract.Did(event);
-        blood_sun.Did(event);
-        dna.dieD(event);
-        rage_blood_head.Did(event);
-        sword_soul.evil(event);
-        nightmare_base_black_eye_red.kill(event);
-        nightmare_base_insight_insane.LivingDeathEvents(event);
-        nightmare_axe.Nig(event);
-        immortal.livDead(event);
-        coffin.coffins(event);
-        rage_charm.die(event);
 
     }
     @SubscribeEvent

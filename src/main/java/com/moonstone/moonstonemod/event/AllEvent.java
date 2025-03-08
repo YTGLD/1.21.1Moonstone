@@ -12,6 +12,7 @@ import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.MLS;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.Perhaps;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.*;
+import com.moonstone.moonstonemod.item.maxitem.rage.RAGE;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.Skill.batskill;
 import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.cell_blood;
 import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.cell_boom;
@@ -2095,6 +2096,12 @@ public class AllEvent {
             tooltipEvent.setBackgroundEnd(0xFF000000);
         }
 
+        if (stack.getItem() instanceof RAGE) {
+            tooltipEvent.setBorderStart(0xFFFFDEAD);
+            tooltipEvent.setBorderEnd(0xFFB22222);
+            tooltipEvent.setBackgroundStart(0xFF000000);
+            tooltipEvent.setBackgroundEnd(0xFF000000);
+        }
         if (stack.getItem() instanceof the_heart) {
             tooltipEvent.setBorderStart(0xFFFF8C00);
             tooltipEvent.setBorderEnd(0xFFFFD700);

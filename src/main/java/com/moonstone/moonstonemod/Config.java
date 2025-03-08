@@ -80,6 +80,9 @@ public class Config {
         rage_eye = BUILDER
                 .comment("The maximum attribute that Rage Eye can steal is 0.5, which is 50% of their maximum value")
                 .defineInRange("rage_eye", 0.25, 0, 1000);
+        rage_eye_copy = BUILDER
+                .comment("How many attributes can be stolen at most")
+                .defineInRange("rage_eye_copy", 0.1, 0, 1000);
 
         BUILDER.push("loot");
         bat = BUILDER
@@ -130,6 +133,7 @@ public class Config {
     public   ModConfigSpec.BooleanValue itemQuality;
 
     public ModConfigSpec.DoubleValue rage_eye;
+    public ModConfigSpec.DoubleValue rage_eye_copy;
 
 
     @SubscribeEvent

@@ -20,7 +20,7 @@ import com.moonstone.moonstonemod.item.maxitem.amout.twistedstone;
 import com.moonstone.moonstonemod.item.maxitem.food.SmithingFood;
 import com.moonstone.moonstonemod.item.maxitem.maulice.*;
 import com.moonstone.moonstonemod.item.maxitem.rage.rage_charm;
-import com.moonstone.moonstonemod.item.maxitem.rage.rage_eye;
+import com.moonstone.moonstonemod.item.maxitem.rage.*;
 import com.moonstone.moonstonemod.item.maxitem.uncommon.common.*;
 import com.moonstone.moonstonemod.item.nanodoom.*;
 import com.moonstone.moonstonemod.item.necora;
@@ -34,6 +34,7 @@ import com.moonstone.moonstonemod.item.plague.BloodVirus.dna.*;
 import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.*;
 import com.moonstone.moonstonemod.item.plague.TheNecora.god.*;
 import com.moonstone.moonstonemod.item.plague.crafting_box;
+import com.moonstone.moonstonemod.item.maxitem.uncommon.*;
 import com.moonstone.moonstonemod.item.plague.medicine.med.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -312,7 +313,10 @@ public class Items {
     public static final DeferredHolder<Item,?> god_regenerative =REGISTRY.register("god_regenerative", GodRegenerative::new );
     public static final DeferredHolder<Item,?> rage_charm =REGISTRY.register("rage_charm", rage_charm::new );
     public static final DeferredHolder<Item,?> rage_eye =REGISTRY.register("rage_eye", rage_eye::new );
-
+    public static final DeferredHolder<Item,?> magnet =REGISTRY.register("magnet", magnet::new );
+    public static final DeferredHolder<Item,?> rage_magnet =REGISTRY.register("rage_magnet", rage_magnet::new );
+    public static final DeferredHolder<Item,?> rage_stone =REGISTRY.register("rage_stone", rage_stone::new );
+    public static final DeferredHolder<Item,?> rage_lock =REGISTRY.register("rage_lock", rage_lock::new );
 
     public static final DeferredHolder<Item,?> god_sword_ =REGISTRY.register("god_sword",twelve_sword.god_sword::new );
     public static final DeferredHolder<Item,?> smithing_food =REGISTRY.register("smithing_food", SmithingFood::new);

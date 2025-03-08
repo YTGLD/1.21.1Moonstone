@@ -165,7 +165,12 @@ public class Tab {
             .title(Component.translatable("itemGroup.tabmoonstone"))
             .displayItems((a,b)->{
                 b.accept(new ItemStack(Items.book.get()));
-                b.accept(new ItemStack(Items.smithing_food.get()));
+                b.accept(new ItemStack(Items.magnet.get()));
+                b.accept(new ItemStack(Items.rage_magnet.get()));
+                b.accept(new ItemStack(Items.rage_stone.get()));
+                b.accept(new ItemStack(Items.rage_lock.get()));
+
+
                 b.accept(new ItemStack(Items.coffin_.get()));
                 b.accept(new ItemStack(Items.twelve_sword_.get()));
                 b.accept(new ItemStack(Items.immortal.get()));
@@ -315,9 +320,8 @@ public class Tab {
                 b.accept(new ItemStack(Items.owner_blood_vex.get()));
                 b.accept(new ItemStack(Items.owner_blood_earth.get()));
 
-                b.accept(new ItemStack(Items.rage_charm.get()));
                 b.accept(new ItemStack(Items.rage_eye.get()));
-
+                b.accept(new ItemStack(Items.rage_charm.get()));
             })
             .build());
 }

@@ -3,6 +3,10 @@
   "values": [
     "moonstone:greedamout",
     "moonstone:blueamout",
+    "moonstone:magnet",
+    "moonstone:rage_magnet",
+    "moonstone:rage_stone",
+    "moonstone:rage_lock",
     "moonstone:nightmare_axe"
   ]
 }
