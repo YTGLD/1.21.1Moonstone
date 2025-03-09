@@ -317,6 +317,8 @@ public class Items {
     public static final DeferredHolder<Item,?> rage_magnet =REGISTRY.register("rage_magnet", rage_magnet::new );
     public static final DeferredHolder<Item,?> rage_stone =REGISTRY.register("rage_stone", rage_stone::new );
     public static final DeferredHolder<Item,?> rage_lock =REGISTRY.register("rage_lock", rage_lock::new );
+    public static final DeferredHolder<Item,?> rage_head =REGISTRY.register("rage_head", rage_head::new );
+    public static final DeferredHolder<Item,?> rage_orb =REGISTRY.register("rage_orb", rage_orb::new );
 
     public static final DeferredHolder<Item,?> god_sword_ =REGISTRY.register("god_sword",twelve_sword.god_sword::new );
     public static final DeferredHolder<Item,?> smithing_food =REGISTRY.register("smithing_food", SmithingFood::new);

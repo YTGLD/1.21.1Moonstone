@@ -32,7 +32,7 @@ public class rage_stone  extends Item implements ICurioItem ,RAGE{
                                 playerPos.z + range));
         for (ItemEntity item : itemEntities){
             if (item.getItem().is(Blocks.NETHERRACK.asItem())){
-                item.level().addFreshEntity(new ExperienceOrb(item.level(),item.getX(),item.getY(),item.getZ(),2));
+                item.level().addFreshEntity(new ExperienceOrb(item.level(),item.getX(),item.getY(),item.getZ(),item.getItem().getCount()));
                 item.discard();
             }
 

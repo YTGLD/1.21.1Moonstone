@@ -31,10 +31,12 @@ public class magnet extends Item implements ICurioItem {
                                 playerPos.x + range,
                                 playerPos.y + range,
                                 playerPos.z + range));
-        for (ItemEntity item : itemEntities){
-            Vec3 direction = playerPos.subtract(item.position());
-            direction = direction.normalize().scale(0.1);
-            item.setDeltaMovement(item.getDeltaMovement().add(direction));
+        for (ItemEntity item : itemEntities) {
+            if (item.tickCount > 35) {
+                Vec3 direction = playerPos.subtract(item.position());
+                direction = direction.normalize().scale(0.1);
+                item.setDeltaMovement(item.getDeltaMovement().add(direction));
+            }
         }
     }
 

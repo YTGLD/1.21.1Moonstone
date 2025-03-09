@@ -1621,6 +1621,17 @@
   "item.moonstone.rage_stone": "下界岩石",
   "item.rage_stone.tool.string": "将附近掉落物形式的下界岩转换成经验球",
 
+  "item.moonstone.rage_head": "狂暴徽章",
+  "item.rage_head.tool.string": "+2 弹射物数量",
+  "item.rage_head.tool.string.1": "+25% 拉弓速度",
+
+  "item.moonstone.rage_orb": "附魔师的狂暴珍珠",
+  "item.rage_orb.tool.string": "+40% 伤害魔咒效果",
+  "item.rage_orb.tool.string.2": "-80% 击退魔咒效果",
+  "item.rage_orb.tool.string.3": "+1 时运",
+  "item.rage_orb.tool.string.4": "+1 抢夺",
+
+
   "item.moonstone.rage_lock": "狂暴锁",
   "item.rage_lock.tool.string": "-75%治疗",
   "item.rage_lock.tool.string.1": "+25%满血抗性",

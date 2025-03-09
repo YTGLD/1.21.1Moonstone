@@ -1639,16 +1639,16 @@
 
 
   "moonstone.jei.god_dna": "使用两个“类神的基因序列”的相同DNA物品合成",
-  "item.moonstone.god_ambush": "漂流发酵",
+  "item.moonstone.god_ambush": "激活的漂流发酵",
   "item.god_ambush.tool.string": "增加10%抗性",
-  "item.moonstone.god_atpoverdose": "ATP过量",
-  "item.moonstone.god_putrefactive": "腐败抗性",
+  "item.moonstone.god_atpoverdose": "激活的ATP过量",
+  "item.moonstone.god_putrefactive": "激活的腐败抗性",
   "item.god_putrefactive.tool.string": "食用食物获得大量增益BUFF",
   "item.god_putrefactive.tool.string.1": "食用食物恢复10%最大生命值",
-  "item.moonstone.god_fermentation": "埋伏性狩猎",
-  "item.moonstone.god_autolytic": "自溶性抑制",
+  "item.moonstone.god_fermentation": "激活的埋伏性狩猎",
+  "item.moonstone.god_autolytic": "激活的自溶性抑制",
 
-  "item.moonstone.god_regenerative": "再生活性化",
+  "item.moonstone.god_regenerative": "激活的再生活性化",
   "item.god_regenerative.tool.string": "每隔0.75秒恢复1点生命值",
 
   "item.moonstone.rage_charm": "狂暴统治者徽章",
@@ -1659,6 +1659,12 @@
   "item.rage_eye.tool.string": "手持眼睛左键生物偷取10%基础属性",
   "item.rage_eye.tool.string.4": "盗取的属性最大值不超过你的25%",
   "item.rage_eye.tool.string.2": "无论有没有盗取属性，物品都会锁定",
+
+  "item.moonstone.rage_orb": "附魔师的狂暴珍珠",
+  "item.rage_orb.tool.string": "+40% 伤害魔咒效果",
+  "item.rage_orb.tool.string.2": "-80% 击退魔咒效果",
+  "item.rage_orb.tool.string.3": "+1 时运",
+  "item.rage_orb.tool.string.4": "+1 抢夺",
 
   "item.moonstone.rage_lock": "狂暴锁",
   "item.rage_lock.tool.string": "-75%治疗",

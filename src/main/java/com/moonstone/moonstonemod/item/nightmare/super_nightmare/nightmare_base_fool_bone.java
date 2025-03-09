@@ -1,5 +1,6 @@
 package com.moonstone.moonstonemod.item.nightmare.super_nightmare;
 
+import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
@@ -25,7 +26,7 @@ public class nightmare_base_fool_bone extends nightmare {
                         if (Mth.nextInt(RandomSource.create(),1,100)<=30){
                             mob.invulnerableTime = 0;
                         }
-                        event.setAmount(event.getAmount()*2);
+                        event.setAmount(event.getAmount()* (Config.SERVER.nightmare_base_fool_bone.get()));
                     }
                 }
             }

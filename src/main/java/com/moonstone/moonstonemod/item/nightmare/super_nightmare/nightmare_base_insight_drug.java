@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.item.nightmare.super_nightmare;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
 import net.minecraft.ChatFormatting;
@@ -50,15 +51,14 @@ public class nightmare_base_insight_drug extends nightmare {
                 }
             }
         });
-        float health = 100;
+        float health = Config.SERVER.nightmare_base_insight_drug.get();
         for (int ignored : integersHealth) {
-            health-=8;
+            health-=Config.SERVER.nightmare_base_insight_drug_2.get();
         }
         if (health<10){
             health = 10;
         }
         health/=100;
-
 
 
         linkedHashMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage" + this.getDescriptionId()), health, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));

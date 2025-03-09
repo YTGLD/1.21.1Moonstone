@@ -23,6 +23,7 @@ import com.moonstone.moonstonemod.item.decorated.deceased_contract;
 import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
 import com.moonstone.moonstonemod.item.maxitem.*;
 import com.moonstone.moonstonemod.item.maxitem.rage.rage_charm;
+import com.moonstone.moonstonemod.item.maxitem.rage.rage_head;
 import com.moonstone.moonstonemod.item.maxitem.rage.rage_lock;
 import com.moonstone.moonstonemod.item.maxitem.rage.rage_magnet;
 import com.moonstone.moonstonemod.item.nanodoom.as_amout;
@@ -177,144 +178,10 @@ public class NewEvent {
             event.getToolTip().add(1,Component.translatable(string).withStyle(ChatFormatting.RED));
         }
     }
+
     @SubscribeEvent
-    public void BatteryName(ItemTooltipEvent event){
-        ItemStack stack = event.getItemStack();
-        Player player = event.getEntity();
-        addV(stack,DNAItems.cell_disorder.get(),event,"item.moonstone.cell_disorder.tool");
-        addV(stack,DNAItems.cell_god.get(),event,"item.moonstone.cell_god.tool");
-        addV(stack, DNAItems.cell_inheritance.get(),event,"item.moonstone.cell_inheritance.tool");
-        addV(stack,DNAItems.cell_big_boom.get(),event,"item.moonstone.cell_big_boom.tool");
-        addV(stack,DNAItems.cell_darwin.get(),event,"item.moonstone.cell_darwin.tool");
-        addV(stack,DNAItems.speed_metabolism.get(),event,"item.moonstone.speed_metabolism.tool");
-        addV(stack,DNAItems.cell_acid.get(),event,"item.moonstone.cell_acid.tool");
-        addV(stack,DNAItems.cell_eyes.get(),event,"item.moonstone.cell_eyes.tool");
-        addV(stack,DNAItems.cell_digestion.get(),event,"item.moonstone.cell_digestion.tool");
-        addV(stack,DNAItems.cell_cranial.get(),event,"item.moonstone.cell_cranial.tool");
-        addV(stack,DNAItems.cell_compress.get(),event,"item.moonstone.cell_compress.tool");
-        addV(stack,DNAItems.cell_flu.get(),event,"item.moonstone.cell_flu.tool");
-        addV(stack,DNAItems.cell_constant.get(),event,"item.moonstone.cell_constant.tool");
-
-
-
-
-        if (stack.get(DataReg.tag) !=null){
-            if (stack.get(DataReg.tag).getBoolean("ALLBattery")){
-                event.getToolTip().add(Component.translatable("item.moonstone.battery").withStyle(ChatFormatting.GOLD));
-            }
-        }
-
-        if (stack.getItem() instanceof IBattery){
-            event.getToolTip().add(Component.translatable("item.moonstone.tooltip.battery").withStyle(ChatFormatting.GOLD));
-        }
-        if (stack.get(DataReg.tag) !=null) {
-            if (stack.get(DataReg.tag).getBoolean(Difficulty.PEACEFUL.getKey())) {
-
-                event.getToolTip().add(1,Component.translatable("moonstone.difficulty.name.peaceful").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F)))
-                        .append(Component.translatable("moonstone.difficulty.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFDEB887)))));
-
-            }
-            if (stack.get(DataReg.tag).getBoolean(Difficulty.EASY.getKey())) {
-
-                event.getToolTip().add(1,Component.translatable("moonstone.difficulty.name.easy").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F)))
-                        .append(Component.translatable("moonstone.difficulty.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFDEB887)))));
-
-            }
-            if (stack.get(DataReg.tag).getBoolean(Difficulty.NORMAL.getKey())) {
-                event.getToolTip().add(1,Component.translatable("moonstone.difficulty.name.normal").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F)))
-                        .append(Component.translatable("moonstone.difficulty.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFDEB887)))));
-
-            }
-            if (stack.get(DataReg.tag).getBoolean(Difficulty.HARD.getKey())) {
-                event.getToolTip().add(1,Component.translatable("moonstone.difficulty.name.hard").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F)))
-                        .append(Component.translatable("moonstone.difficulty.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFDEB887)))));
-            }
-            if (stack.get(DataReg.tag).getBoolean(lootTable)) {
-                event.getToolTip().add(1,Component.translatable("moonstone.difficulty.name.god").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F)))
-                        .append(Component.translatable("moonstone.difficulty.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFDEB887)))));
-            }
-
-
-
-            DecimalFormat df = new DecimalFormat("#.###");
-
-
-            if (stack.get(DataReg.tag).getFloat(meet)!=0) {
-                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                        .append(Component.translatable("moonstone.curse.name.meet").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
-                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
-                if (Screen.hasControlDown()){
-                    event.getToolTip().add(1,Component.translatable("effect.minecraft.health_boost").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(meet)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
-                }
-            }
-
-
-            if (stack.get(DataReg.tag).getFloat(die)!=0) {
-                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                        .append(Component.translatable("moonstone.curse.name.die").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
-                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
-
-                if (Screen.hasControlDown()){
-                    event.getToolTip().add(1,Component.translatable("effect.minecraft.strength").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(die)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
-                }
-            }
-
-
-            if (stack.get(DataReg.tag).getFloat(doctor)!=0) {
-                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                        .append(Component.translatable("moonstone.curse.name.doctor").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
-                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
-                if (Screen.hasControlDown()){
-                    event.getToolTip().add(1,Component.translatable("attribute.name.moonstone.heal").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(doctor)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
-                }
-            }
-
-
-
-
-
-            if (stack.get(DataReg.tag).getFloat(cell_cell)!=0) {
-                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                        .append(Component.translatable("moonstone.curse.name.cell_cell").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
-                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
-                if (Screen.hasControlDown()){
-                    event.getToolTip().add(1,Component.translatable("attribute.name.moonstone.cit").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(cell_cell)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
-                }
-            }
-
-            if (stack.get(DataReg.tag).getFloat(chromosome)!=0) {
-                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                        .append(Component.translatable("moonstone.curse.name.chromosome").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
-                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
-                if (Screen.hasControlDown()){
-                    event.getToolTip().add(1,Component.translatable("attribute.name.player.block_break_speed").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(chromosome)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
-                }
-            }
-            if (stack.get(DataReg.tag).getFloat(bone)!=0) {
-                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                        .append(Component.translatable("moonstone.curse.name.bone").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
-                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
-                if (Screen.hasControlDown()){
-                    event.getToolTip().add(1,Component.translatable("attribute.name.generic.movement_speed").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(bone)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
-                }
-            }
-            if (stack.get(DataReg.tag).getFloat(die_body)!=0) {
-                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                        .append(Component.translatable("moonstone.curse.name.die_body").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
-                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
-                if (Screen.hasControlDown()){
-                    event.getToolTip().add(1,Component.translatable("attribute.name.generic.armor").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(die_body)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
-                }
-            }
-        }
-
+    public void useBow(LivingEntityUseItemEvent.Start event){
+        rage_head.useBow(event);
     }
     @SubscribeEvent
     public void LivingHurtEvent(LivingIncomingDamageEvent event){
@@ -685,5 +552,143 @@ public class NewEvent {
             });
         }
     }
+    @SubscribeEvent
+    public void BatteryName(ItemTooltipEvent event){
+        ItemStack stack = event.getItemStack();
+        Player player = event.getEntity();
+        addV(stack,DNAItems.cell_disorder.get(),event,"item.moonstone.cell_disorder.tool");
+        addV(stack,DNAItems.cell_god.get(),event,"item.moonstone.cell_god.tool");
+        addV(stack, DNAItems.cell_inheritance.get(),event,"item.moonstone.cell_inheritance.tool");
+        addV(stack,DNAItems.cell_big_boom.get(),event,"item.moonstone.cell_big_boom.tool");
+        addV(stack,DNAItems.cell_darwin.get(),event,"item.moonstone.cell_darwin.tool");
+        addV(stack,DNAItems.speed_metabolism.get(),event,"item.moonstone.speed_metabolism.tool");
+        addV(stack,DNAItems.cell_acid.get(),event,"item.moonstone.cell_acid.tool");
+        addV(stack,DNAItems.cell_eyes.get(),event,"item.moonstone.cell_eyes.tool");
+        addV(stack,DNAItems.cell_digestion.get(),event,"item.moonstone.cell_digestion.tool");
+        addV(stack,DNAItems.cell_cranial.get(),event,"item.moonstone.cell_cranial.tool");
+        addV(stack,DNAItems.cell_compress.get(),event,"item.moonstone.cell_compress.tool");
+        addV(stack,DNAItems.cell_flu.get(),event,"item.moonstone.cell_flu.tool");
+        addV(stack,DNAItems.cell_constant.get(),event,"item.moonstone.cell_constant.tool");
 
+
+
+
+        if (stack.get(DataReg.tag) !=null){
+            if (stack.get(DataReg.tag).getBoolean("ALLBattery")){
+                event.getToolTip().add(Component.translatable("item.moonstone.battery").withStyle(ChatFormatting.GOLD));
+            }
+        }
+
+        if (stack.getItem() instanceof IBattery){
+            event.getToolTip().add(Component.translatable("item.moonstone.tooltip.battery").withStyle(ChatFormatting.GOLD));
+        }
+        if (stack.get(DataReg.tag) !=null) {
+            if (stack.get(DataReg.tag).getBoolean(Difficulty.PEACEFUL.getKey())) {
+
+                event.getToolTip().add(1,Component.translatable("moonstone.difficulty.name.peaceful").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F)))
+                        .append(Component.translatable("moonstone.difficulty.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFDEB887)))));
+
+            }
+            if (stack.get(DataReg.tag).getBoolean(Difficulty.EASY.getKey())) {
+
+                event.getToolTip().add(1,Component.translatable("moonstone.difficulty.name.easy").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F)))
+                        .append(Component.translatable("moonstone.difficulty.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFDEB887)))));
+
+            }
+            if (stack.get(DataReg.tag).getBoolean(Difficulty.NORMAL.getKey())) {
+                event.getToolTip().add(1,Component.translatable("moonstone.difficulty.name.normal").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F)))
+                        .append(Component.translatable("moonstone.difficulty.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFDEB887)))));
+
+            }
+            if (stack.get(DataReg.tag).getBoolean(Difficulty.HARD.getKey())) {
+                event.getToolTip().add(1,Component.translatable("moonstone.difficulty.name.hard").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F)))
+                        .append(Component.translatable("moonstone.difficulty.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFDEB887)))));
+            }
+            if (stack.get(DataReg.tag).getBoolean(lootTable)) {
+                event.getToolTip().add(1,Component.translatable("moonstone.difficulty.name.god").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F)))
+                        .append(Component.translatable("moonstone.difficulty.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFDEB887)))));
+            }
+
+
+
+            DecimalFormat df = new DecimalFormat("#.###");
+
+
+            if (stack.get(DataReg.tag).getFloat(meet)!=0) {
+                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
+                        .append(Component.translatable("moonstone.curse.name.meet").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
+                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
+                if (Screen.hasControlDown()){
+                    event.getToolTip().add(1,Component.translatable("effect.minecraft.health_boost").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
+                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(meet)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
+                }
+            }
+
+
+            if (stack.get(DataReg.tag).getFloat(die)!=0) {
+                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
+                        .append(Component.translatable("moonstone.curse.name.die").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
+                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
+
+                if (Screen.hasControlDown()){
+                    event.getToolTip().add(1,Component.translatable("effect.minecraft.strength").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
+                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(die)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
+                }
+            }
+
+
+            if (stack.get(DataReg.tag).getFloat(doctor)!=0) {
+                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
+                        .append(Component.translatable("moonstone.curse.name.doctor").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
+                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
+                if (Screen.hasControlDown()){
+                    event.getToolTip().add(1,Component.translatable("attribute.name.moonstone.heal").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
+                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(doctor)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
+                }
+            }
+
+
+
+
+
+            if (stack.get(DataReg.tag).getFloat(cell_cell)!=0) {
+                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
+                        .append(Component.translatable("moonstone.curse.name.cell_cell").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
+                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
+                if (Screen.hasControlDown()){
+                    event.getToolTip().add(1,Component.translatable("attribute.name.moonstone.cit").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
+                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(cell_cell)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
+                }
+            }
+
+            if (stack.get(DataReg.tag).getFloat(chromosome)!=0) {
+                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
+                        .append(Component.translatable("moonstone.curse.name.chromosome").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
+                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
+                if (Screen.hasControlDown()){
+                    event.getToolTip().add(1,Component.translatable("attribute.name.player.block_break_speed").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
+                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(chromosome)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
+                }
+            }
+            if (stack.get(DataReg.tag).getFloat(bone)!=0) {
+                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
+                        .append(Component.translatable("moonstone.curse.name.bone").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
+                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
+                if (Screen.hasControlDown()){
+                    event.getToolTip().add(1,Component.translatable("attribute.name.generic.movement_speed").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
+                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(bone)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
+                }
+            }
+            if (stack.get(DataReg.tag).getFloat(die_body)!=0) {
+                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
+                        .append(Component.translatable("moonstone.curse.name.die_body").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
+                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
+                if (Screen.hasControlDown()){
+                    event.getToolTip().add(1,Component.translatable("attribute.name.generic.armor").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
+                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(die_body)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
+                }
+            }
+        }
+
+    }
 }

@@ -169,6 +169,8 @@ public class Tab {
                 b.accept(new ItemStack(Items.rage_magnet.get()));
                 b.accept(new ItemStack(Items.rage_stone.get()));
                 b.accept(new ItemStack(Items.rage_lock.get()));
+                b.accept(new ItemStack(Items.rage_head.get()));
+                b.accept(new ItemStack(Items.rage_orb.get()));
 
 
                 b.accept(new ItemStack(Items.coffin_.get()));

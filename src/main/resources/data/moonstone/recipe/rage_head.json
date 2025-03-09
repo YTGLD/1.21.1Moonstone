@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "moonstone:twistedstone"
+    },
+    {
+      "item": "moonstone:undead_blood_charm"
+    }
+  ],
+  "result": {
+    "id": "moonstone:rage_head",
+    "count": 1
+  }
+}

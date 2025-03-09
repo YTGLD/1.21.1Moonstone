@@ -15,7 +15,7 @@ import java.util.List;
 public class rage_magnet extends magnet implements RAGE{
     public static void pick(ItemEntityPickupEvent.Post event){
         if (Handler.hascurio(event.getPlayer(), Items.rage_magnet.get())) {
-            event.getPlayer().heal(0.5f);
+            event.getPlayer().heal(1);
         }
     }
 

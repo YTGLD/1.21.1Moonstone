@@ -37,6 +37,41 @@ public class Config {
                 .defineInRange("Common_probability", 3, 0, 7);
         BUILDER.pop();
 
+        BUILDER.push("zh_cn");
+        rage_eye = BUILDER
+                .comment("狂暴之眼最多可以偷盗的属性（相对于玩家）")
+                .defineInRange("rage_eye", 0.25, 0, 1000);
+        rage_eye_copy = BUILDER
+                .comment("狂暴之眼最多可以偷盗的属性（相对于怪物）")
+                .defineInRange("rage_eye_copy", 0.1, 0, 1000);
+        Nightecora = BUILDER
+                .comment("Nightecora病毒的额外生命值惩罚，单位百分比")
+                .defineInRange("Nightecora", 25, 0, 100);
+        nightmare_base_redemption_deception = BUILDER
+                .comment("“欺骗”恢复的生命值，单位百分比")
+                .defineInRange("nightmare_base_redemption_deception", 100, 0, 100);
+
+        nightmare_base_fool_bone = BUILDER
+                .comment("危险的头骨造成的额外伤害，“2”是两倍")
+                .defineInRange("nightmare_base_fool_bone", 2, 0, 9999);
+
+        nightmare_base_insight_drug = BUILDER
+                .comment("疯狂灵药的最大属性加成，单位百分比")
+                .defineInRange("nightmare_base_insight_drug", 100, 0, 99999);
+
+        nightmare_base_insight_drug_2 = BUILDER
+                .comment("疯狂灵药的单物品计算的属性衰败，单位百分比")
+                .defineInRange("nightmare_base_insight_drug_2", 8, 0, 99999);
+
+        nightmare_base_insight_insane = BUILDER
+                .comment("癫狂之石的杀死生物后获得的伤害加成，单位百分比")
+                .defineInRange("nightmare_base_insight_insane", 150, 0, 99999);
+        pain_ring = BUILDER
+                .comment("邪祟之戒获得最大伤害加成和增加速度，单位百分比")
+                .defineInRange("pain_ring", 1, 0, 99999);
+        BUILDER.pop();
+
+
 
         plague_speed = BUILDER
                 .comment("The growth rate of plague research sites")
@@ -77,12 +112,6 @@ public class Config {
                 .comment("The speed of the motor")
                 .defineInRange("motor", 0.15, 0, 999);
 
-        rage_eye = BUILDER
-                .comment("The maximum attribute that Rage Eye can steal is 0.5, which is 50% of their maximum value")
-                .defineInRange("rage_eye", 0.25, 0, 1000);
-        rage_eye_copy = BUILDER
-                .comment("How many attributes can be stolen at most")
-                .defineInRange("rage_eye_copy", 0.1, 0, 1000);
 
         BUILDER.push("loot");
         bat = BUILDER
@@ -103,6 +132,36 @@ public class Config {
 
         BUILDER.build();
     }
+
+
+
+    public   ModConfigSpec.IntValue Nightecora ;
+
+
+    public   ModConfigSpec.IntValue nightmare_base_redemption_deception ;
+
+    public   ModConfigSpec.IntValue nightmare_base_fool_bone ;
+    public   ModConfigSpec.IntValue nightmare_base_insight_drug ;
+    public   ModConfigSpec.IntValue nightmare_base_insight_drug_2 ;
+
+    public   ModConfigSpec.IntValue nightmare_base_insight_insane ;
+    public   ModConfigSpec.IntValue pain_ring ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public ModConfigSpec.DoubleValue plague_speed;
     public ModConfigSpec.DoubleValue plague_pain;
@@ -134,6 +193,17 @@ public class Config {
 
     public ModConfigSpec.DoubleValue rage_eye;
     public ModConfigSpec.DoubleValue rage_eye_copy;
+
+
+
+
+
+
+
+
+
+
+
 
 
     @SubscribeEvent

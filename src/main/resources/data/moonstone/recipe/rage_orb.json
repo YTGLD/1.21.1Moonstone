@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "moonstone:whiteorb"
+    },
+    {
+      "item": "moonstone:blackeorb"
+    },
+    {
+      "item": "moonstone:twistedstone"
+    },
+    {
+      "item": "moonstone:ectoplasmprism"
+    }
+  ],
+  "result": {
+    "id": "moonstone:rage_orb",
+    "count": 1
+  }
+}
