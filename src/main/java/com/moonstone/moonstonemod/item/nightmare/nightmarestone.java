@@ -24,7 +24,7 @@ import top.theillusivec4.curios.api.SlotContext;
 import java.util.Collection;
 import java.util.List;
 
-public class nightmarestone extends nightmare {
+public class nightmarestone extends nightmare implements Nightmare{
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {

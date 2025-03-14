@@ -44,7 +44,8 @@ public class nightmare_base_start extends nightmare implements SuperNightmare {
     }
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
-        slotContext.entity().getAttributes().addTransientAttributeModifiers(gets(slotContext));
+        if (Handler.hascurio(slotContext.entity(),this))
+            slotContext.entity().getAttributes().addTransientAttributeModifiers(gets(slotContext));
     }
 
     @Override

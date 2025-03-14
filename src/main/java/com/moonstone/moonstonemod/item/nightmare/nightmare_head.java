@@ -23,7 +23,7 @@ import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 import java.util.List;
 import java.util.Map;
 
-public class nightmare_head extends nightmare {
+public class nightmare_head extends nightmare implements Nightmare{
     public static final String die = "NigDie";
     public int size = 0;
     public static void LivingDeathEvent(LivingDeathEvent event){

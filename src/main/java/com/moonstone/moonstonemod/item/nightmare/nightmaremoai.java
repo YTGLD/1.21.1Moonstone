@@ -9,7 +9,7 @@ import net.minecraft.world.item.TooltipFlag;
 
 import java.util.List;
 
-public class nightmaremoai extends nightmare {
+public class nightmaremoai extends nightmare implements Nightmare{
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);

@@ -1,6 +1,8 @@
 package com.moonstone.moonstonemod.item.nightmare.super_nightmare;
 
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
 import net.minecraft.ChatFormatting;
@@ -17,14 +19,26 @@ import top.theillusivec4.curios.api.SlotContext;
 import java.util.List;
 
 public class nightmare_base_start_egg extends nightmare implements SuperNightmare {
-    @Override
-    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
-        Multimap<Holder<Attribute>, AttributeModifier> attributeModifiers = super.getAttributeModifiers(slotContext, id, stack);
-        attributeModifiers.put(Attributes.LUCK, new AttributeModifier(id, 10, AttributeModifier.Operation.ADD_VALUE));
-        attributeModifiers.put(AttReg.alL_attack, new AttributeModifier(id, 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        attributeModifiers.put(AttReg.heal, new AttributeModifier(id, 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers() {
+        Multimap<Holder<Attribute>, AttributeModifier> attributeModifiers = HashMultimap.create();
+        attributeModifiers.put(Attributes.LUCK, new AttributeModifier(ResourceLocation.parse(this.getDescriptionId()), 10, AttributeModifier.Operation.ADD_VALUE));
+        attributeModifiers.put(AttReg.alL_attack, new AttributeModifier(ResourceLocation.parse(this.getDescriptionId()), 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        attributeModifiers.put(AttReg.heal, new AttributeModifier(ResourceLocation.parse(this.getDescriptionId()), 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
         return attributeModifiers;
+
+    }
+
+    @Override
+    public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
+        if (Handler.hascurio(slotContext.entity(), this)) {
+            slotContext.entity().getAttributes().addTransientAttributeModifiers(getAttributeModifiers());
+        }
+    }
+
+    @Override
+    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
+        slotContext.entity().getAttributes().removeAttributeModifiers(getAttributeModifiers());
 
     }
 

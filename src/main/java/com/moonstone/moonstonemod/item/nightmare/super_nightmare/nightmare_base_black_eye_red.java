@@ -60,7 +60,9 @@ public class nightmare_base_black_eye_red  extends nightmare implements SuperNig
 
     @Override
     public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
-        slotContext.entity().getAttributes().addTransientAttributeModifiers(getAttributeModifiers(stack));
+        if (Handler.hascurio(slotContext.entity(),this)) {
+            slotContext.entity().getAttributes().addTransientAttributeModifiers(getAttributeModifiers(stack));
+        }
     }
 
     @Override

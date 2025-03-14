@@ -15,7 +15,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public class nightmarewater extends Item implements INightmare {
+public class nightmarewater extends Item implements INightmare, Nightmare{
 
     public nightmarewater() {
         super(new Properties().stacksTo(1).rarity(Rarity.RARE).food(

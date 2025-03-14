@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.item.nightmare;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
 import net.minecraft.ChatFormatting;
@@ -19,7 +20,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class nightmarerotten extends nightmare {
+public class nightmarerotten extends nightmare implements Nightmare{
 
     public static final String nightmarerotten = "NightmareRotten";
 
@@ -37,13 +38,15 @@ public class nightmarerotten extends nightmare {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player) {
-            int s = BuiltInRegistries.ATTRIBUTE.size();
-           CompoundTag tag = stack.get(DataReg.tag);
-            if (tag != null){
-                tag.putInt(nightmarerotten, s);
-                player.getAttributes().addTransientAttributeModifiers(this.getAttributeModifiers());
-            }else {
-                stack.set(DataReg.tag,new CompoundTag());
+            if (Handler.hascurio(player,this)) {
+                int s = BuiltInRegistries.ATTRIBUTE.size();
+                CompoundTag tag = stack.get(DataReg.tag);
+                if (tag != null) {
+                    tag.putInt(nightmarerotten, s);
+                    player.getAttributes().addTransientAttributeModifiers(this.getAttributeModifiers());
+                } else {
+                    stack.set(DataReg.tag, new CompoundTag());
+                }
             }
         }
     }

@@ -13,7 +13,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class nightmare_orb extends nightmare {
+public class nightmare_orb extends nightmare implements Nightmare{
     public static void nightmare_orb_heal(LivingHealEvent event){
         if ((event.getEntity() instanceof Player player)) {
             if (Handler.hascurio(player, Items.nightmare_orb.get())){

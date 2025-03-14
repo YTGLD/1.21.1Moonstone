@@ -21,7 +21,7 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 
 import java.util.List;
 
-public class nightmare_axe extends nightmare {
+public class nightmare_axe extends nightmare implements Nightmare{
     public static void Nig(LivingDeathEvent event) {
         if (event.getSource().getEntity() instanceof Player player) {
             if (Handler.hascurio(player, Items.nightmare_axe.get())) {

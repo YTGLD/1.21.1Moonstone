@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.item.nightmare.super_nightmare;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
 import net.minecraft.ChatFormatting;
@@ -35,7 +36,9 @@ public class nightmare_base_reversal_mysterious extends nightmare implements Sup
         if (slotContext.entity() instanceof Player player) {
             CompoundTag tag = stack.get(DataReg.tag);
             if (tag != null){
-                player.getAttributes().addTransientAttributeModifiers(this.getAttributeModifiers());
+                if (Handler.hascurio(slotContext.entity(),this)) {
+                    player.getAttributes().addTransientAttributeModifiers(this.getAttributeModifiers());
+                }
             }else {
                 stack.set(DataReg.tag,new CompoundTag());
             }
@@ -44,6 +47,7 @@ public class nightmare_base_reversal_mysterious extends nightmare implements Sup
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
         if (slotContext.entity() instanceof Player player){
+
             player.getAttributes().removeAttributeModifiers(this.getAttributeModifiers());
         }
     }

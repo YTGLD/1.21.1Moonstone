@@ -22,7 +22,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class nightmare_cube extends nightmare {
+public class nightmare_cube extends nightmare implements Nightmare{
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity().isShiftKeyDown()) {

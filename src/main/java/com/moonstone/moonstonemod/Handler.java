@@ -5,6 +5,8 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.moonstone.moonstonemod.entity.nightmare_giant_to;
 import com.moonstone.moonstonemod.entity.zombie.cell_giant;
 import com.moonstone.moonstonemod.init.items.Items;
+import com.moonstone.moonstonemod.item.nightmare.Nightmare;
+import com.moonstone.moonstonemod.item.nightmare.super_nightmare.SuperNightmare;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
@@ -136,7 +138,18 @@ public class Handler {
     public static boolean hascurio(LivingEntity entity, Item curio) {
         if (entity instanceof LivingEntity player) {
             if (player.getCapability(CuriosCapability.INVENTORY) != null) {
-
+                if (CuriosApi.getCuriosInventory(player).isPresent()
+                        && !CuriosApi.getCuriosInventory(player).get().isEquipped(Items.nightmare_base.get())) {
+                    if (curio instanceof SuperNightmare) {
+                        return false;
+                    }
+                }
+                if (CuriosApi.getCuriosInventory(player).isPresent()
+                        && !CuriosApi.getCuriosInventory(player).get().isEquipped(Items.nightmareeye.get())) {
+                    if (curio instanceof Nightmare) {
+                        return false;
+                    }
+                }
                 if (CuriosApi.getCuriosInventory(player).isPresent()
                         && CuriosApi.getCuriosInventory(player).get().isEquipped(Items.nightmare_base.get())) {
                     if (curio == Items.evil_mob.get() || curio == Items.god_lead.get() || curio == Items.malice_die.get()) {

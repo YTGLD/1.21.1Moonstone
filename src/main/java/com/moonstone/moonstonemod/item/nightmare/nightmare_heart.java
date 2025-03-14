@@ -18,7 +18,7 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 
 import java.util.List;
 
-public class nightmare_heart extends nightmare {
+public class nightmare_heart extends nightmare implements Nightmare{
     public static void NigH(LivingIncomingDamageEvent event){
         if (event.getEntity() instanceof Player player){
             if (Handler.hascurio(player,Items.nightmare_heart.get())){

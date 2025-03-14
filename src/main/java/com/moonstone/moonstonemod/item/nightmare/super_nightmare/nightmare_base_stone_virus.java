@@ -32,15 +32,29 @@ public class nightmare_base_stone_virus extends nightmare implements SuperNightm
             }
         }
     }
-    @Override
-    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
-        Multimap<Holder<Attribute>, AttributeModifier>modifierMultimap = HashMultimap.create();
-        modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(id, 1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        modifierMultimap.put(AttReg.heal, new AttributeModifier(id, 1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        modifierMultimap.put(AttReg.cit, new AttributeModifier(id, 1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        return modifierMultimap;
+
+    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers() {
+        Multimap<Holder<Attribute>, AttributeModifier> attributeModifiers = HashMultimap.create();
+        attributeModifiers.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.parse(this.getDescriptionId()), 1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        attributeModifiers.put(AttReg.heal, new AttributeModifier(ResourceLocation.parse(this.getDescriptionId()), 1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        attributeModifiers.put(AttReg.cit, new AttributeModifier(ResourceLocation.parse(this.getDescriptionId()), 1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+
+        return attributeModifiers;
+
     }
 
+    @Override
+    public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
+        if (Handler.hascurio(slotContext.entity(), this)) {
+            slotContext.entity().getAttributes().addTransientAttributeModifiers(getAttributeModifiers());
+        }
+    }
+
+    @Override
+    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
+        slotContext.entity().getAttributes().removeAttributeModifiers(getAttributeModifiers());
+
+    }
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> pTooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, pTooltipComponents, tooltipFlag);
