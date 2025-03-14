@@ -16,7 +16,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class nightmare_base_start_egg extends nightmare {
+public class nightmare_base_start_egg extends nightmare implements SuperNightmare {
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> attributeModifiers = super.getAttributeModifiers(slotContext, id, stack);

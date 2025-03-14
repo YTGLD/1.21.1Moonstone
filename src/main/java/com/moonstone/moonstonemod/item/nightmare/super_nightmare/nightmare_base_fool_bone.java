@@ -16,7 +16,7 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 
 import java.util.List;
 
-public class nightmare_base_fool_bone extends nightmare {
+public class nightmare_base_fool_bone extends nightmare implements SuperNightmare {
 
     public static void attLook(LivingIncomingDamageEvent event){
         if (event.getSource().getEntity() instanceof Player player ){

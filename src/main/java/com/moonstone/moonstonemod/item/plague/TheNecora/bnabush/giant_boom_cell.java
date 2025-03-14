@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.item.plague.TheNecora.bnabush;
 
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.nightmare.nightmare_giant;
+import com.moonstone.moonstonemod.entity.nightmare_giant_to;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.TheNecoraIC;
 import net.minecraft.ChatFormatting;
@@ -17,7 +18,7 @@ public class giant_boom_cell extends TheNecoraIC {
     public static void Boom(LivingIncomingDamageEvent event){
         if (event.getEntity() instanceof Player player){
             if (Handler.hascurio(player, Items.giant_boom_cell.get())){
-                if (event.getSource().getEntity() instanceof nightmare_giant){
+                if (event.getSource().getEntity() instanceof nightmare_giant_to){
                     event.setAmount(0);
                 }
             }

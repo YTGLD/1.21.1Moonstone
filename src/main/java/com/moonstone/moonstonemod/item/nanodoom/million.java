@@ -138,6 +138,7 @@ public class million extends Doom implements TextEvt.Twelve{
 
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+        pTooltipComponents.add(Component.translatable("item.moonstone.sword").withStyle(ChatFormatting.YELLOW));
         if (Screen.hasShiftDown()) {
             pTooltipComponents.add(Component.translatable("item.million.tool.string.1").withStyle(ChatFormatting.GOLD));
             pTooltipComponents.add(Component.translatable("item.million.tool.string.2").withStyle(ChatFormatting.GOLD));

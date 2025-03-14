@@ -20,7 +20,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class nightmare_base_stone extends nightmare {
+public class nightmare_base_stone extends nightmare implements SuperNightmare {
 
     public static void LivingHurtEvent(LivingIncomingDamageEvent event){
         if (event.getEntity() instanceof Player player ){

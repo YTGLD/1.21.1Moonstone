@@ -18,7 +18,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class nightmare_base_fool_betray extends nightmare {
+public class nightmare_base_fool_betray extends nightmare implements SuperNightmare {
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {

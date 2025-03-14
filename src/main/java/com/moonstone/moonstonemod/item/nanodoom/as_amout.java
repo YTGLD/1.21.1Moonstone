@@ -57,6 +57,7 @@ public class as_amout  extends Doom implements TextEvt.Twelve{
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> tooltip, TooltipFlag pTooltipFlag) {
         super.appendHoverText(pStack, pContext, tooltip, pTooltipFlag);
+        tooltip.add(Component.translatable("item.moonstone.sword").withStyle(ChatFormatting.YELLOW));
         tooltip.add(Component.literal(""));
         tooltip.add(Component.translatable("item.as_amout.tool.string.1").withStyle(ChatFormatting.GOLD));
         tooltip.add(Component.translatable("item.as_amout.tool.string.2").withStyle(ChatFormatting.GOLD));

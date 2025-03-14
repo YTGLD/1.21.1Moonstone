@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class nightmare_base_fool extends nightmare {
+public class nightmare_base_fool extends nightmare implements SuperNightmare {
        @Override
     public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player){

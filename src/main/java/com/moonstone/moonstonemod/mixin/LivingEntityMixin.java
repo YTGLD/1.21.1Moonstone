@@ -6,11 +6,15 @@ import com.moonstone.moonstonemod.event.EquippedEvt;
 import com.moonstone.moonstonemod.event.NewEvent;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.items.Items;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.Vec3;
@@ -119,6 +123,21 @@ public abstract class LivingEntityMixin {
                 if (p_204042_.is(Fluids.LAVA)) {
                     cir.setReturnValue(true);
                 }
+            }
+        }
+    }
+    @Inject(at = @At("RETURN"), method = "isInvulnerableTo", cancellable = true)
+    public void isInvulnerableTo(DamageSource source, CallbackInfoReturnable<Boolean> cir) {
+        Entity living = source.getEntity();
+
+        if (living instanceof Player player) {
+            if (Handler.hascurio(player, Items.nine_sword_book.get())) {
+                if (!(player.getMainHandItem().getItem() instanceof SwordItem)) {
+                    cir.setReturnValue(true);
+                }
+            }
+            if (Handler.hascurio(player, Items.mhead.get())) {
+                cir.setReturnValue(true);
             }
         }
     }

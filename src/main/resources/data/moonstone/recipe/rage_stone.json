@@ -8,6 +8,9 @@
       "item": "minecraft:netherrack"
     },
     {
+      "item": "moonstone:luck_stone"
+    },
+    {
       "item": "moonstone:ectoplasmcube"
     }
   ],

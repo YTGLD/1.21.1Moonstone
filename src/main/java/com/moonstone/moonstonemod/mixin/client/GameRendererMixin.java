@@ -4,6 +4,7 @@ import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.ytgld;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
+import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import com.moonstone.moonstonemod.item.nightmare.super_nightmare.nightmare_base_black_eye;
 import net.minecraft.client.Camera;
 import net.minecraft.client.DeltaTracker;
@@ -49,7 +50,7 @@ public abstract class GameRendererMixin  {
        if (mainCamera.getEntity() instanceof Player player) {
           if (!Handler.hascurio(player,Items.immortal.get())){
                float fs = player.getPersistentData().getFloat("blurEffect");
-               if (moonstone1_21_1$getPlayerLookTarget(player.level(), player) != null && moonstone1_21_1$getPlayerLookTarget(player.level(), player) instanceof ytgld ytgld) {
+               if (moonstone1_21_1$getPlayerLookTarget(player.level(), player) != null && moonstone1_21_1$getPlayerLookTarget(player.level(), player).getType() ==EntityTs.ytgld.get()) {
 
                    if (fs<20){
                        player.getPersistentData().putFloat("blurEffect", fs + 0.1f);

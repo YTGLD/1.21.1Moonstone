@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class nightmare_base_insight_insane extends nightmare {
+public class nightmare_base_insight_insane extends nightmare implements SuperNightmare {
     public static void LivingDeathEvents(LivingDeathEvent event){
         if (event.getSource().getEntity() instanceof Player player) {
             if (Handler.hascurio(player, Items.nightmare_base_insight_insane.get())) {

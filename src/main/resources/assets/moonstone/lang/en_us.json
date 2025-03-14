@@ -33,18 +33,6 @@
   "item.moonstone.ectoplasmshild": "ectoplasm shild",
   "item.moonstone.ectoplasmbattery": "ectoplasm battery",
 
-  "item.at_a_book.tool.string.lvl.1": "金仙",
-  "item.at_a_book.tool.string.lvl.2": "金仙",
-  "item.at_a_book.tool.string.lvl.3": "仙尊",
-  "item.at_a_book.tool.string.lvl.4": "仙帝",
-  "item.at_a_book.tool.string.lvl.5": "炼神",
-  "item.at_a_book.tool.string.lvl.6": "天神",
-  "item.at_a_book.tool.string.lvl.7": "主神",
-  "item.at_a_book.tool.string.lvl.8": "天劫",
-  "item.at_a_book.tool.string.lvl.9": "合道",
-  "item.at_a_book.tool.string.lvl.10": "圣玄",
-  "item.at_a_book.tool.string.lvl.11": "圣君",
-  "item.at_a_book.tool.string.lvl.12": "圣尊",
   "item.moonstone.at_a_book": "很普通的书",
 
   "item.moonstone.badgeofthedead": "badge of the dead",
@@ -1251,6 +1239,17 @@
   "moonstone.jei.deceased_contract": "“I think this is a curse, but its allure is truly hard to resist... Once the contract is signed, it will cling to you forever, but that's not the worst part; it will plunge you into suffering and slaughter, becoming a minion of hell.\nKilling creatures has a 10% chance to obtain their blood.\nCollecting blood restores 5% of maximum health.\n-20% damage\n-25% resistance\n-15% critical hit\n-30% healing\n\nHowever:\nKilling creatures has a 40% chance to summon a zombie.\nKilling creatures has a 20% chance to summon a giant zombie.\nAdditionally:\nSummoned zombies receive 50% of the summoner's damage, speed, defense, and maximum health bonuses.\nSummoned zombies gain all positive potion effects currently existing on the summoner.\n\nNecora virus and its associated items are nullified.\nShadow plague and its associated items are nullified.",
   "moonstone.jei.deceased_contract.all": "It is an item that can only be discovered in dungeons while wearing the Necromancer Contract.",
 
+  "item.deceased_contract.tool.string.0": "杀死生物有15%的概率获得它们的血液",
+  "item.deceased_contract.tool.string.1": "拾取血液恢复15%最大生命值",
+  "item.deceased_contract.tool.string.2": "-20%伤害\n-25%抗性\n-15%暴击\n-30%治疗",
+  "item.deceased_contract.tool.string.3": "杀死生物有30%的概率召唤一只僵尸\n杀死生物有15%的概率召唤一只巨人僵尸\n召唤的僵尸最大生命值为20%",
+  "item.deceased_contract.tool.string.4": "召唤的僵尸获得50%召唤者的伤害，速度，防御，最大生命值的加成",
+  "item.deceased_contract.tool.string.5": "召唤的僵尸获得获得召唤者目前存在的所有正面药水状态",
+  "item.deceased_contract.tool.string.6": "Necora病毒及其附属物品无效化\n暗影瘟疫及其附属物品无效化",
+
+
+
+
   "item.moonstone.owner_blood_eye": "Desecrator",
   "moonstone.jei.item.moonstone.owner_blood_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nReduces the attack interval of Blood Spawn by 20%.",
 
@@ -1625,12 +1624,22 @@
   "item.rage_head.tool.string": "+2 弹射物数量",
   "item.rage_head.tool.string.1": "+25% 拉弓速度",
 
+
+  "item.moonstone.rage_bottle": "黄金瓶",
+  "item.rage_bottle.tool.string": "获得的50%经验值转为能量",
+  "item.rage_bottle.tool.string.1": "每点能量减少0.01%治疗和0.03%抗性",
+
+  "item.rage_bottle.tool.string.2": "快速消耗能量恢复饥饿和饱食度",
+  "item.rage_bottle.tool.string.3": "每点能量增加0.04%生命值和0.02%通用伤害",
+  "item.rage_bottle.tool.string.4": "能量上限5000",
+  "hurt.moonstone.string": "额外受伤",
   "item.moonstone.rage_orb": "附魔师的狂暴珍珠",
   "item.rage_orb.tool.string": "+40% 伤害魔咒效果",
   "item.rage_orb.tool.string.2": "-80% 击退魔咒效果",
   "item.rage_orb.tool.string.3": "+1 时运",
   "item.rage_orb.tool.string.4": "+1 抢夺",
 
+  "item.moonstone.sword":"同时佩戴了七剑修炼的剑阵之章和万法后无法发射飞剑，但是伤害提高20%",
 
   "item.moonstone.rage_lock": "狂暴锁",
   "item.rage_lock.tool.string": "-75%治疗",
@@ -1649,6 +1658,30 @@
   "item.undead_blood_charm.tool.string.4": "治疗增加50%",
   "item.undead_blood_charm.tool.string.5": "受到伤害增加40%",
 
+
+  "item.at_a_book.tool.string.lvl.1": "金仙",
+  "item.at_a_book.tool.string.lvl.2": "金仙",
+  "item.at_a_book.tool.string.lvl.3": "仙尊",
+  "item.at_a_book.tool.string.lvl.4": "仙帝",
+  "item.at_a_book.tool.string.lvl.5": "炼神",
+  "item.at_a_book.tool.string.lvl.6": "天神",
+  "item.at_a_book.tool.string.lvl.7": "主神",
+  "item.at_a_book.tool.string.lvl.8": "天劫",
+  "item.at_a_book.tool.string.lvl.9": "合道",
+  "item.at_a_book.tool.string.lvl.10": "圣玄",
+  "item.at_a_book.tool.string.lvl.11": "圣君",
+
+  "item.at_a_book.tool.string.lvl.12": "圣尊",
+  "item.at_a_book.tool.string.lvl.13": "圣帝",
+  "item.at_a_book.tool.string.lvl.14": "主圣",
+  "item.at_a_book.tool.string.lvl.15": "天圣",
+  "item.at_a_book.tool.string.lvl.16": "阴阳",
+  "item.at_a_book.tool.string.lvl.17": "无极",
+  "item.at_a_book.tool.string.lvl.18": "灵尊",
+  "item.at_a_book.tool.string.lvl.19": "混元",
+  "item.at_a_book.tool.string.lvl.20": "半极",
+  "item.at_a_book.tool.string.lvl.21": "极境",
+  "attribute.name.moonstone.res": "抗性",
 
   "item.twelve_sword.tool.string.1": "杀死生物召唤剑阵",
   "item.twelve_sword.tool.string.2": "在剑阵附近获得1%0~120%的伤害加成",

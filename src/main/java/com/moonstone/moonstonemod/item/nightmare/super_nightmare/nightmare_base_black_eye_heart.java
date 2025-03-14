@@ -18,7 +18,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class nightmare_base_black_eye_heart  extends nightmare {
+public class nightmare_base_black_eye_heart  extends nightmare implements SuperNightmare {
       public static void heal(LivingHealEvent event){
         if (event.getEntity() instanceof LivingEntity living) {
             Vec3 playerPos = living.position().add(0, 0.75, 0);

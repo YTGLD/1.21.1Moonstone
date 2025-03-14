@@ -15,7 +15,7 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import java.util.List;
 
-public class nightmare_base_redemption_degenerate extends nightmare {
+public class nightmare_base_redemption_degenerate extends nightmare implements SuperNightmare {
       @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> pTooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, pTooltipComponents, tooltipFlag);

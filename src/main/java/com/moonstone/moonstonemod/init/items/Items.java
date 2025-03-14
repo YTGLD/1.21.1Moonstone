@@ -319,6 +319,9 @@ public class Items {
     public static final DeferredHolder<Item,?> rage_lock =REGISTRY.register("rage_lock", rage_lock::new );
     public static final DeferredHolder<Item,?> rage_head =REGISTRY.register("rage_head", rage_head::new );
     public static final DeferredHolder<Item,?> rage_orb =REGISTRY.register("rage_orb", rage_orb::new );
+    public static final DeferredHolder<Item,?> pain_candle =REGISTRY.register("pain_candle", (ResourceLocation properties) -> new pain_candle());
+    public static final DeferredHolder<Item,?> pain_ring =REGISTRY.register("pain_ring", (ResourceLocation properties) -> new pain_ring());
+    public static final DeferredHolder<Item,?> rage_bottle =REGISTRY.register("rage_bottle", (ResourceLocation properties) -> new rage_bottle());
 
     public static final DeferredHolder<Item,?> god_sword_ =REGISTRY.register("god_sword",twelve_sword.god_sword::new );
     public static final DeferredHolder<Item,?> smithing_food =REGISTRY.register("smithing_food", SmithingFood::new);

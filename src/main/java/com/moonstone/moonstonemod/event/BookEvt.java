@@ -3,10 +3,7 @@ package com.moonstone.moonstonemod.event;
 
 import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
-import com.moonstone.moonstonemod.init.moonstoneitem.extend.CommonItem;
-import com.moonstone.moonstonemod.init.moonstoneitem.extend.Doom;
-import com.moonstone.moonstonemod.init.moonstoneitem.extend.UnCommonItem;
-import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.*;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Die;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -29,7 +26,7 @@ import java.util.Map;
 public class BookEvt {
     public static final String lvl = "LVLBookEvt";
     public static final String exp = "expBookEvt";
-    public static final int maxLvl = 3000;
+    public static final int maxLvl = 6000;
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void BatteryName(ItemTooltipEvent event){
         ItemStack stack = event.getItemStack();
@@ -46,13 +43,21 @@ public class BookEvt {
                         l++;
                     }
                 }
+                Style style = Style.EMPTY.withColor(TextColor.fromRgb(0XFFB0E2FF));
+                if (l>11){
+                    style = Style.EMPTY.withColor(TextColor.fromRgb(0XFFEECFA1));
+                    if (l>=21){
+                        style = Style.EMPTY.withColor(TextColor.fromRgb(0XFFff5774));
+                    }
+                }
+
                 // 添加到tooltip中
                 pTooltipComponents.add(1,Component.literal(""));
                 pTooltipComponents.add(1,Component.literal("")
                         .append(Component.translatable(baseKey + l)
                                 .append(String.valueOf(lvlValue))
                                 .append(Component.translatable("sword.moonstone.lvl"))
-                                .withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFB0E2FF)))));
+                                .withStyle(style)));
 
             }
         }
@@ -119,7 +124,7 @@ public class BookEvt {
                                 if (l>1){
                                     l=1;
                                 }
-                                event.setAmount(event.getAmount()*(l+1));
+                                 event.setAmount(event.getAmount()*(l+1));
                             }
                         }
                     }
@@ -139,6 +144,7 @@ public class BookEvt {
                     || stack.getItem() instanceof nightmare
                     || stack.getItem() instanceof Die
                     || stack.getItem() instanceof Doom
+                    || stack.getItem() instanceof TheNecoraIC
                     || stack.getItem() instanceof CommonItem) {
 
                 if (stack.get(DataReg.tag) == null) {
@@ -156,24 +162,9 @@ public class BookEvt {
                                 break;
                             }
                         }
-                        if (l > 10 && l <= 20) {
-                            l -= 10;
-                        } else if (l > 20 && l <= 30) {
-                            l -= 20;
-                        } else if (l > 30 && l <= 40) {
-                            l -= 30;
-                        } else if (l > 40 && l <= 50) {
-                            l -= 40;
-                        } else if (l > 50 && l <= 60) {
-                            l -= 50;
-                        } else if (l > 60 && l <= 70) {
-                            l -= 60;
-                        } else if (l > 70 && l <= 80) {
-                            l -= 70;
-                        } else if (l > 80 && l <= 90) {
-                            l -= 80;
-                        } else if (l > 90 && l <= 100) {
-                            l -= 90;
+
+                        if (l > 10) {
+                            l -= (l / 10) * 10;
                         }
                         stack.get(DataReg.tag).putInt(ss, l);
                     } else {

@@ -23,7 +23,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class nightmare_base_stone_virus extends nightmare {
+public class nightmare_base_stone_virus extends nightmare implements SuperNightmare {
    
     public static void h(LivingIncomingDamageEvent event){
         if (event.getEntity() instanceof Player player){

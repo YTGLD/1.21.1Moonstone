@@ -16,7 +16,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class nightmare_base_insight_collapse extends nightmare {
+public class nightmare_base_insight_collapse extends nightmare implements SuperNightmare {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> pTooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, pTooltipComponents, tooltipFlag);

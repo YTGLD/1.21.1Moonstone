@@ -11,7 +11,6 @@ import com.moonstone.moonstonemod.entity.ai.AIgiant;
 import com.moonstone.moonstonemod.entity.extend.MoonTamableAnimal;
 import com.moonstone.moonstonemod.entity.nightmare.AInightmare;
 import com.moonstone.moonstonemod.entity.nightmare.SonicBoom;
-import com.moonstone.moonstonemod.entity.nightmare.nightmare_giant;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -32,7 +31,6 @@ import net.minecraft.server.level.ServerEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Unit;
@@ -556,7 +554,7 @@ public class cell_giant extends MoonTamableAnimal implements OwnableEntity {
     @org.jetbrains.annotations.Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
-        nightmare_giant wolf = EntityTs.nightmare_giant.get().create(p_146743_);
+        cell_giant wolf = EntityTs.cell_giant.get().create(p_146743_);
         if (wolf != null) {
             UUID uuid = this.getOwnerUUID();
             if (uuid != null) {

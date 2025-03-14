@@ -14,6 +14,7 @@ import com.moonstone.moonstonemod.init.moonstoneitem.Enchants;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.LootReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Iplague;
+import com.moonstone.moonstonemod.item.maxitem.book.the_blood_book;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
@@ -355,7 +356,10 @@ public class DungeonLoot extends LootModifier {
             }
         }
         for (ItemStack itemStack : generatedLoot) {
-            BookEvt.addLvl(itemStack,Mth.nextInt(RandomSource.create(),1,3000),Mth.nextInt(RandomSource.create(),0,3000));
+            BookEvt.addLvl(itemStack,Mth.nextInt(RandomSource.create(),1,6000),Mth.nextInt(RandomSource.create(),1,6000));
+        }
+        if (entity instanceof Player player) {
+            the_blood_book.tryDoLoot(generatedLoot, player);
         }
         return generatedLoot;
     }

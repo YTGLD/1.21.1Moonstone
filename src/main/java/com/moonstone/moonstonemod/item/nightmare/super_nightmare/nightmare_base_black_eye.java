@@ -26,7 +26,7 @@ import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 import java.util.List;
 import java.util.Map;
 
-public class nightmare_base_black_eye extends nightmare {
+public class nightmare_base_black_eye extends nightmare implements SuperNightmare {
     public static final String NightmareBaseBlackEye = "NightmareBaseBlackEye";
     
        @Override

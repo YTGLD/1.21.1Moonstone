@@ -2,7 +2,7 @@ package com.moonstone.moonstonemod.item.blood;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.moonstone.moonstonemod.entity.zombie.blood_zombie_fly;
+import com.moonstone.moonstonemod.entity.attack_blood;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import com.moonstone.moonstonemod.init.items.Items;
@@ -88,9 +88,9 @@ public class max_blood_cube extends Item implements ICurioItem, Blood {
                         }
                         if (stack.get(DataReg.tag).getInt(max_blood_cube.slowing) >= (max_blood_cube.slowingMax - 20)) {
                             if (player.tickCount%3==0) {
-                                blood_zombie_fly blood_zombie_fly = new blood_zombie_fly(EntityTs.blood_zombie_fly.get(), player.level());
-                                blood_zombie_fly.setPos(new Vec3(living.getX()+Mth.nextFloat(RandomSource.create(),-2,2),living.getY()+Mth.nextFloat(RandomSource.create(),-2.2F,2.2F),living.getZ()+Mth.nextFloat(RandomSource.create(),-2.1F,2.1F)));
-                                living.level().addFreshEntity(blood_zombie_fly);
+                                attack_blood attack_blood = new attack_blood(EntityTs.attack_blood.get(), player.level());
+                                attack_blood.setPos(new Vec3(living.getX()+Mth.nextFloat(RandomSource.create(),-2,2),living.getY()+Mth.nextFloat(RandomSource.create(),-2.2F,2.2F),living.getZ()+Mth.nextFloat(RandomSource.create(),-2.1F,2.1F)));
+                                living.level().addFreshEntity(attack_blood);
                             }
                         }
                     }

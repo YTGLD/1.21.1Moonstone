@@ -3,15 +3,11 @@ package com.moonstone.moonstonemod.event;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.book;
-import com.moonstone.moonstonemod.entity.ytgld;
 import com.moonstone.moonstonemod.entity.zombie.sword_soul;
 import com.moonstone.moonstonemod.event.loot.DungeonLoot;
 import com.moonstone.moonstonemod.init.items.DNAItems;
 import com.moonstone.moonstonemod.init.items.Items;
-import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
-import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
-import com.moonstone.moonstonemod.init.moonstoneitem.Effects;
-import com.moonstone.moonstonemod.init.moonstoneitem.Enchants;
+import com.moonstone.moonstonemod.init.moonstoneitem.*;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.IBattery;
 import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
@@ -22,10 +18,7 @@ import com.moonstone.moonstonemod.item.coffin;
 import com.moonstone.moonstonemod.item.decorated.deceased_contract;
 import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
 import com.moonstone.moonstonemod.item.maxitem.*;
-import com.moonstone.moonstonemod.item.maxitem.rage.rage_charm;
-import com.moonstone.moonstonemod.item.maxitem.rage.rage_head;
-import com.moonstone.moonstonemod.item.maxitem.rage.rage_lock;
-import com.moonstone.moonstonemod.item.maxitem.rage.rage_magnet;
+import com.moonstone.moonstonemod.item.maxitem.rage.*;
 import com.moonstone.moonstonemod.item.nanodoom.as_amout;
 import com.moonstone.moonstonemod.item.nanodoom.million;
 import com.moonstone.moonstonemod.item.nightmare.nightmare_axe;
@@ -41,7 +34,6 @@ import com.moonstone.moonstonemod.item.plague.TheNecora.god.GodPutrefactive;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
@@ -62,16 +54,10 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.RenderTooltipEvent;
-import net.neoforged.neoforge.common.util.TriState;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
-import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
-import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.entity.player.*;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.event.CurioCanEquipEvent;
-import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
@@ -137,7 +123,8 @@ public class NewEvent {
         nightmare_axe.heals(event);
         undead_blood_charm.LivingHealEvent(event);
         rage_lock.LivingHealEvent(event);
-
+        pain_ring.Heal(event);
+        pain_candle.Heal(event);
         if (event.getEntity() instanceof LivingEntity living){
             if (living.getAttribute(AttReg.heal)!=null){
                 float attack = (float) living.getAttribute(AttReg.heal).getValue();
@@ -222,6 +209,8 @@ public class NewEvent {
         immortal.hEvt(event);
         undead_blood_charm.LivingIncomingDamageEvent(event);
         rage_lock.LivingIncomingDamageEvent(event);
+        pain_candle.Hurt(event);
+        pain_ring.Hurt(event);
         if (event.getEntity().hasEffect(Effects.dead) && event.getEntity().getEffect(Effects.dead)!=null){
             float lvl = event.getEntity().getEffect(Effects.dead).getAmplifier();
             lvl *= 0.2f;
@@ -416,6 +405,19 @@ public class NewEvent {
                 event.setNewSpeed(event.getNewSpeed()*(dig));
             }
         }
+    }
+    @SubscribeEvent
+    public void LivingExperienceDropEvent(LivingExperienceDropEvent event) {
+        rage_bottle.expPickup(event);
+    }
+    @SubscribeEvent
+    public void hurt(LivingIncomingDamageEvent event) {
+        if (event.getEntity() instanceof Player living){
+            if (living.getAttribute(AttReg.hurt)!=null){
+                float hurt = (float) living.getAttribute(AttReg.hurt).getValue();
+                event.setAmount(event.getAmount()*(hurt));
+            }
+        }
 
     }
     @SubscribeEvent
@@ -456,13 +458,14 @@ public class NewEvent {
     public void Book(EntityTickEvent.Post event){
         if (event.getEntity() instanceof LivingEntity living){
             if (!Handler.hascurio(living,Items.immortal.get())) {
-                if (getPlayerLookTarget(living.level(), living) != null && getPlayerLookTarget(living.level(), living) instanceof ytgld ytgld) {
+                if (getPlayerLookTarget(living.level(), living) != null && getPlayerLookTarget(living.level(), living).getType() == EntityTs.ytgld.get()) {
+                    if (living.tickCount % 20 == 0) {
 
-                    if (ytgld.tickCount % 20 == 0) {
-                        ytgld.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 2, false, false));
-                        ytgld.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 100, 2, false, false));
-                        ytgld.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 100, 2, false, false));
-                        ytgld.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 2, false, false));
+                        living.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 2, false, false));
+                        living.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 100, 2, false, false));
+                        living.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 100, 2, false, false));
+                        living.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 2, false, false));
+
                         living.addEffect(new MobEffectInstance(MobEffects.CONFUSION,100,1,true,true));
                         living.addEffect(new MobEffectInstance(Effects.dead, 100, 9, true, true));
                     }

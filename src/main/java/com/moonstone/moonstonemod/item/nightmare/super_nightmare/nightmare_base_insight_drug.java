@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class nightmare_base_insight_drug extends nightmare {
+public class nightmare_base_insight_drug extends nightmare implements SuperNightmare {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         slotContext.entity().getAttributes().addTransientAttributeModifiers(gets(slotContext));

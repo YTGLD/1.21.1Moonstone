@@ -2,7 +2,6 @@ package com.moonstone.moonstonemod.item.maxitem.rage;
 
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.init.items.Items;
-import com.moonstone.moonstonemod.init.moonstoneitem.Effects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;

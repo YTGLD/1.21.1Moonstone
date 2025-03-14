@@ -31,7 +31,7 @@ import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import java.util.*;
 
-public class nightmare_base_black_eye_red  extends nightmare {
+public class nightmare_base_black_eye_red  extends nightmare implements SuperNightmare {
     public static final String aty  = "NightmareRed";
 
       public static void kill(LivingDeathEvent event){

@@ -21,7 +21,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class nightmare_base_start extends nightmare {
+public class nightmare_base_start extends nightmare implements SuperNightmare {
        @Override
     public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player){

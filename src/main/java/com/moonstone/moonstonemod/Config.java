@@ -28,7 +28,7 @@ public class Config {
                 .define("immortalZombieOfOwner",false);
         itemQuality = BUILDER
                 .comment("If enabled, the item's cultivation value system (Golden Immortal - Merge - Saint Monarch) is enabled.")
-                .define("Quality", true);
+                .define("Quality_", false);
 
         BUILDER.pop();
         BUILDER.push("nightmare");
@@ -50,6 +50,9 @@ public class Config {
         nightmare_base_redemption_deception = BUILDER
                 .comment("“欺骗”恢复的生命值，单位百分比")
                 .defineInRange("nightmare_base_redemption_deception", 100, 0, 100);
+        nightmare_base_redemption_deception_time = BUILDER
+                .comment("“欺骗”恢复的生命值，单位秒")
+                .defineInRange("nightmare_base_redemption_deception_time", 7, 0, 100);
 
         nightmare_base_fool_bone = BUILDER
                 .comment("危险的头骨造成的额外伤害，“2”是两倍")
@@ -68,7 +71,7 @@ public class Config {
                 .defineInRange("nightmare_base_insight_insane", 150, 0, 99999);
         pain_ring = BUILDER
                 .comment("邪祟之戒获得最大伤害加成和增加速度，单位百分比")
-                .defineInRange("pain_ring", 1, 0, 99999);
+                .defineInRange("pain_ring_", 100f, 0, 999999);
         BUILDER.pop();
 
 
@@ -145,7 +148,8 @@ public class Config {
     public   ModConfigSpec.IntValue nightmare_base_insight_drug_2 ;
 
     public   ModConfigSpec.IntValue nightmare_base_insight_insane ;
-    public   ModConfigSpec.IntValue pain_ring ;
+    public   ModConfigSpec.IntValue nightmare_base_redemption_deception_time ;
+    public   ModConfigSpec.DoubleValue pain_ring ;
 
 
 
@@ -185,7 +189,6 @@ public class Config {
     public  ModConfigSpec.IntValue necora ;
     public  ModConfigSpec.IntValue night ;
     public  ModConfigSpec.DoubleValue common ;
-    public ModConfigSpec.BooleanValue offSet;
     public ModConfigSpec.BooleanValue canUnequipMoonstoneItem ;
     public ModConfigSpec.BooleanValue immortalZombie ;
     public   ModConfigSpec.IntValue nightmareBaseMaxItem ;

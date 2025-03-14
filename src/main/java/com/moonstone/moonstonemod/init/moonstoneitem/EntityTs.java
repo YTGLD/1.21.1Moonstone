@@ -94,6 +94,8 @@ public class EntityTs {
             ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.ytgld::new, MobCategory.MISC).sized(3, 5).clientTrackingRange(50).build("ytgld"));
     public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.coffin_entity>> coffin_entity = REGISTRY.register("coffin_entity",
             ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.coffin_entity::new, MobCategory.MISC).sized(2, 3).clientTrackingRange(50).build("coffin_entity"));
+    public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.nightmare_giant_to>> nightmare_giant_to = REGISTRY.register("nightmare_giant_to",
+            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.nightmare_giant_to::new, MobCategory.MISC).sized(2, 3).clientTrackingRange(50).build("nightmare_giant_to"));
     @SubscribeEvent
     public static void EntityAttributeCreationEvent(EntityAttributeCreationEvent event){
         event.put(EntityTs.cell_zombie.get(), Zombie.createAttributes().build());
@@ -102,6 +104,7 @@ public class EntityTs {
         event.put(EntityTs.red_entity.get(), Zombie.createAttributes().build());
 
         event.put(EntityTs.nightmare_giant.get(), com.moonstone.moonstonemod.entity.nightmare.nightmare_giant.createAttributes().build());
+        event.put(EntityTs.nightmare_giant_to.get(), com.moonstone.moonstonemod.entity.nightmare.nightmare_giant.createAttributes().build());
 
         event.put(EntityTs.test_blood.get(), Zombie.createAttributes().build());
         event.put(EntityTs.blood_bat.get(), Zombie.createAttributes().build());

@@ -38,6 +38,7 @@ import java.util.UUID;
 public class bloodvirus extends BloodViru {
     public bloodvirus (){
     }
+
     @Override
     public boolean overrideOtherStackedOnMe(ItemStack me, ItemStack Other, Slot p_150744_, ClickAction p_150745_, Player p_150746_, SlotAccess p_150747_) {
         if (me.getCount() != 1) return false;

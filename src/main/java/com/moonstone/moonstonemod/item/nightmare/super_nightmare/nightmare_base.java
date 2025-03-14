@@ -33,6 +33,11 @@ public class nightmare_base  extends nightmare {
     public int tick = 0;
 
     @Override
+    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
+        slotContext.entity().getAttributes().removeAttributeModifiers(gets(slotContext));
+    }
+
+    @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         slotContext.entity().getAttributes().addTransientAttributeModifiers(gets(slotContext));
         tick = 100;

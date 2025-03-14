@@ -24,6 +24,7 @@ public class PlayerMixin {
                 .add(AttReg.alL_attack,1)
                 .add(AttReg.cit,1)
                 .add(AttReg.heal,1)
+                .add(AttReg.hurt,1)
                 .add(AttReg.dig,1)
         );
     }

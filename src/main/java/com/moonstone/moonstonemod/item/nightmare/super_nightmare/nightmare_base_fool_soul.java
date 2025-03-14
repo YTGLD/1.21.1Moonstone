@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class nightmare_base_fool_soul extends nightmare {
+public class nightmare_base_fool_soul extends nightmare implements SuperNightmare {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         slotContext.entity().getAttributes().addTransientAttributeModifiers(gets(slotContext));

@@ -12,7 +12,9 @@ import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.TheNecoraIC;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -26,10 +28,13 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
+
+import java.util.List;
 
 public class deceased_contract extends TheNecoraIC {
     public static void attack(LivingIncomingDamageEvent event) {
@@ -175,5 +180,20 @@ public class deceased_contract extends TheNecoraIC {
         if (Handler.hascurio(owner, BookItems.bone_structure.get())){
             tamableAnimal.addTag(BookItems.bone_structureTAG);
         }
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+        tooltipComponents.add(Component.translatable("item.deceased_contract.tool.string.0").withStyle(ChatFormatting.DARK_RED));
+        tooltipComponents.add(Component.translatable("item.deceased_contract.tool.string.1").withStyle(ChatFormatting.DARK_RED));
+        tooltipComponents.add(Component.literal(""));
+        tooltipComponents.add(Component.translatable("item.deceased_contract.tool.string.2").withStyle(ChatFormatting.DARK_RED));
+        tooltipComponents.add(Component.literal(""));
+        tooltipComponents.add(Component.translatable("item.deceased_contract.tool.string.3").withStyle(ChatFormatting.DARK_RED));
+        tooltipComponents.add(Component.translatable("item.deceased_contract.tool.string.4").withStyle(ChatFormatting.DARK_RED));
+        tooltipComponents.add(Component.translatable("item.deceased_contract.tool.string.5").withStyle(ChatFormatting.DARK_RED));
+        tooltipComponents.add(Component.literal(""));
+        tooltipComponents.add(Component.translatable("item.deceased_contract.tool.string.6").withStyle(ChatFormatting.DARK_RED));
     }
 }

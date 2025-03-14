@@ -75,11 +75,6 @@ public class AInightmare {
     }
 
 
-
-    private static void initRoarActivity(Brain<nightmare_giant> p_219546_) {
-        p_219546_.addActivityAndRemoveMemoryWhenStopped(Activity.ROAR, 10, ImmutableList.of(new Roar()), MemoryModuleType.ROAR_TARGET);
-    }
-
     private static void initFightActivity(nightmare_giant p_219518_, Brain<nightmare_giant> p_219519_) {
         p_219519_.addActivityAndRemoveMemoryWhenStopped(Activity.FIGHT, 10, ImmutableList.of(new SonicBoom()), MemoryModuleType.ATTACK_TARGET);
     }

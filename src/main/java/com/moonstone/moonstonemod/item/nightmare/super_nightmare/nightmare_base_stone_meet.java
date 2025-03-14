@@ -11,7 +11,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class nightmare_base_stone_meet   extends nightmare {
+public class nightmare_base_stone_meet   extends nightmare implements SuperNightmare {
     public static final String curse = "IS_CURSE";
 
     @Override

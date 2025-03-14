@@ -2,17 +2,13 @@ package com.moonstone.moonstonemod;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.moonstone.moonstonemod.entity.nightmare.nightmare_giant;
+import com.moonstone.moonstonemod.entity.nightmare_giant_to;
 import com.moonstone.moonstonemod.entity.zombie.cell_giant;
 import com.moonstone.moonstonemod.init.items.Items;
-import net.minecraft.client.renderer.ItemModelShaper;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.util.SpawnUtil;
@@ -21,7 +17,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import org.joml.Matrix4f;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.CuriosCapability;
 import top.theillusivec4.curios.api.SlotResult;
@@ -88,7 +83,7 @@ public class Handler {
                     }
 
 
-                    if (t instanceof nightmare_giant nightmareGiant) {
+                    if (t instanceof nightmare_giant_to nightmareGiant) {
                         nightmareGiant.setPose(Pose.EMERGING);
                     }
 

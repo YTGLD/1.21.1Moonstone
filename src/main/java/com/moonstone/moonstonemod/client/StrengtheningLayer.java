@@ -9,7 +9,6 @@ import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.client.renderer.MoonPost;
 import com.moonstone.moonstonemod.entity.bloodvruis.test_blood;
-import com.moonstone.moonstonemod.entity.nightmare.nightmare_giant;
 import com.moonstone.moonstonemod.entity.zombie.blood_zombie;
 import com.moonstone.moonstonemod.entity.zombie.blood_zombie_boom;
 import com.moonstone.moonstonemod.entity.zombie.red_entity;
@@ -59,7 +58,7 @@ public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>
             matrices.scale(0.33f,0.33f,0.33f);
             new CircleCubeBoom(matrices, vertexConsumers, light, entity);
         }
-        if (entity.getType() == (EntityTs.nightmare_giant.get()) ) {
+        if (entity.getType() == (EntityTs.nightmare_giant_to.get()) ) {
             if (ConfigClient.Client.Shader.get()) {
                 MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
             }

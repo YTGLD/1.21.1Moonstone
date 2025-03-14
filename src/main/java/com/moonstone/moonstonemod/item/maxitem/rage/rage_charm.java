@@ -6,7 +6,6 @@ import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
-import com.moonstone.moonstonemod.init.moonstoneitem.i.Blood;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;

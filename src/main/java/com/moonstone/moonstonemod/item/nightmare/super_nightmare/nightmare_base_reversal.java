@@ -35,7 +35,7 @@ import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 import java.util.List;
 import java.util.Map;
 
-public class nightmare_base_reversal extends nightmare {
+public class nightmare_base_reversal extends nightmare implements SuperNightmare {
 
 
     public static final String att= "Attrib";

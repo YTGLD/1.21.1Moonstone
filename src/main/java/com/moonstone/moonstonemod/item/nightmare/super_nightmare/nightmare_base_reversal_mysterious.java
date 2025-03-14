@@ -19,7 +19,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class nightmare_base_reversal_mysterious extends nightmare {
+public class nightmare_base_reversal_mysterious extends nightmare implements SuperNightmare {
 
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers() {
         Multimap<Holder<Attribute>, AttributeModifier> get = HashMultimap.create();

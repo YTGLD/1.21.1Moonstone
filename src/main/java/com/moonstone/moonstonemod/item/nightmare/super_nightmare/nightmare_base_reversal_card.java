@@ -8,7 +8,7 @@ import net.minecraft.world.item.TooltipFlag;
 
 import java.util.List;
 
-public class nightmare_base_reversal_card extends nightmare {
+public class nightmare_base_reversal_card extends nightmare implements SuperNightmare {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> pTooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, pTooltipComponents, tooltipFlag);
