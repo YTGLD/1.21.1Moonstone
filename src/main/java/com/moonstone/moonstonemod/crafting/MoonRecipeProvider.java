@@ -24,6 +24,7 @@ public class MoonRecipeProvider extends VanillaRecipeProvider {
         SpecialRecipeBuilder.special(RecipeGodAutolytic::new).save(recipeOutput, "god_autolytic");
         SpecialRecipeBuilder.special(RecipeGodRegenerative::new).save(recipeOutput, "god_regenerative");
         SpecialRecipeBuilder.special(RecipeGodDNA::new).save(recipeOutput, "dna");
+        SpecialRecipeBuilder.special(UniverseCrafting::new).save(recipeOutput, "universe");
 
     }
 }

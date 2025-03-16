@@ -1,6 +1,5 @@
 package com.moonstone.moonstonemod.item.plague.TheNecora.god;
 
-import com.google.common.collect.HashMultimap;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.init.items.Items;

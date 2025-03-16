@@ -1,13 +1,10 @@
 package com.moonstone.moonstonemod.item.nightmare.super_nightmare;
 
-import com.moonstone.moonstonemod.Handler;
-import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 

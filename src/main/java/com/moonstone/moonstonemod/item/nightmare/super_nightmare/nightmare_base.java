@@ -1,7 +1,6 @@
 package com.moonstone.moonstonemod.item.nightmare.super_nightmare;
 
 import com.google.common.collect.HashMultimap;
-import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
@@ -16,6 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -23,15 +23,19 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import top.theillusivec4.curios.api.CurioAttributeModifiers;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.common.CuriosRegistry;
+import top.theillusivec4.curios.mixin.CuriosImplMixinHooks;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class nightmare_base  extends nightmare {
 
     public int tick = 0;
-
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
         slotContext.entity().getAttributes().removeAttributeModifiers(gets(slotContext));
@@ -44,7 +48,7 @@ public class nightmare_base  extends nightmare {
     }
     @Override
     public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
-        if (stack.get(DataReg.tag)==null){
+       if (stack.get(DataReg.tag)==null){
             slotContext.entity().level().playSound(null, slotContext.entity().getX(), slotContext.entity().getY(), slotContext.entity().getZ(), SoundEvents.ELDER_GUARDIAN_CURSE, SoundSource.NEUTRAL, 1, 1);
             stack.set(DataReg.tag,new CompoundTag());
         }
@@ -73,15 +77,6 @@ public class nightmare_base  extends nightmare {
             }
             stack.get(DataReg.tag).putBoolean("canDo",true);
         }
-    }
-
-    @Override
-    public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
-        Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = com.google.common.collect.LinkedHashMultimap.create();
-        CuriosApi.addSlotModifier(linkedHashMultimap,
-                        "nightmare", id,
-                        3, AttributeModifier.Operation.ADD_VALUE);
-        return linkedHashMultimap;
     }
 
     public Multimap<Holder<Attribute>, AttributeModifier> gets(SlotContext slotContext) {

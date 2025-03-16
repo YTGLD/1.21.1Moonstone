@@ -1,6 +1,5 @@
 package com.moonstone.moonstonemod.item.nightmare.super_nightmare;
 
-import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.init.items.Items;
@@ -44,7 +43,7 @@ public class nightmare_base_stone extends nightmare implements SuperNightmare {
         return com.moonstone.moonstonemod.Config.SERVER.canUnequipMoonstoneItem.get();
     }
 
-    
+
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = com.google.common.collect.LinkedHashMultimap.create();

@@ -2,7 +2,6 @@ package com.moonstone.moonstonemod.item.plague.TheNecora.god;
 
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.init.items.Items;
-import com.moonstone.moonstonemod.init.moonstoneitem.extend.TheNecoraIC;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.GodDNA;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -11,7 +10,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 
 import java.util.List;

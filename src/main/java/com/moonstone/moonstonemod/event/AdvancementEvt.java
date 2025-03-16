@@ -8,8 +8,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.sniffer.Sniffer;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
@@ -453,8 +451,7 @@ public class AdvancementEvt {
                 if (player.hasEffect(MobEffects.POISON)
                         && player.hasEffect(MobEffects.WITHER)
                         && player.hasEffect(MobEffects.MOVEMENT_SLOWDOWN)
-                        && player.hasEffect(MobEffects.BLINDNESS)
-                        && player.hasEffect(MobEffects.DARKNESS)){
+                        && player.hasEffect(MobEffects.BLINDNESS)){
                     if (player.getRemainingFireTicks() > 0){
                         CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
                             Map<String, ICurioStacksHandler> curios = handler.getCurios();

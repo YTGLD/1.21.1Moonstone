@@ -21,10 +21,7 @@ import com.moonstone.moonstonemod.item.maxitem.*;
 import com.moonstone.moonstonemod.item.maxitem.rage.*;
 import com.moonstone.moonstonemod.item.nanodoom.as_amout;
 import com.moonstone.moonstonemod.item.nanodoom.million;
-import com.moonstone.moonstonemod.item.nightmare.nightmare_axe;
-import com.moonstone.moonstonemod.item.nightmare.nightmare_head;
-import com.moonstone.moonstonemod.item.nightmare.nightmare_heart;
-import com.moonstone.moonstonemod.item.nightmare.nightmare_orb;
+import com.moonstone.moonstonemod.item.nightmare.*;
 import com.moonstone.moonstonemod.item.nightmare.super_nightmare.*;
 import com.moonstone.moonstonemod.item.plague.ALL.dna;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.dna.bat_cell;
@@ -37,6 +34,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Difficulty;
@@ -44,6 +42,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -58,6 +57,7 @@ import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.entity.player.*;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.event.CurioAttributeModifierEvent;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
@@ -288,6 +288,25 @@ public class NewEvent {
     public void Night(ItemTooltipEvent event) {
         ItemStack stack = event.getItemStack();
         Player player = event.getEntity();
+        if (stack.getItem() instanceof SuperNightmare){
+            if (!Handler.hascurio(player,Items.nightmare_base.get())) {
+                event.getToolTip().add(1, Component.literal(""));
+                event.getToolTip().add(1, Component.translatable("moonstone.super_nightmare.name").withStyle(ChatFormatting.DARK_RED));
+            }else {
+                event.getToolTip().add(1, Component.literal(""));
+                event.getToolTip().add(1, Component.translatable("moonstone.super_nightmare.name").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F))));
+            }
+        }
+        if (stack.getItem() instanceof Nightmare){
+            if (!Handler.hascurio(player,Items.nightmareeye.get())) {
+                event.getToolTip().add(1, Component.literal(""));
+                event.getToolTip().add(1, Component.translatable("moonstone.nightmare.name").withStyle(ChatFormatting.DARK_RED));
+            }else {
+                event.getToolTip().add(1, Component.literal(""));
+                event.getToolTip().add(1, Component.translatable("moonstone.nightmare.name").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F))));
+            }
+        }
+
         if (Handler.hascurio(player,Items.nightmare_base_stone_meet.get())){
             if (stack.is(Items.ectoplasmstar)){
                 event.getToolTip().add(Component.translatable("item.moonstone.ectoplasmstar.nightmare_base_stone_meet").withStyle(ChatFormatting.DARK_RED));

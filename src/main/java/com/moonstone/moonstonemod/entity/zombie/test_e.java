@@ -1,6 +1,5 @@
 package com.moonstone.moonstonemod.entity.zombie;
 
-import com.moonstone.moonstonemod.entity.flysword;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;

@@ -4,26 +4,34 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.moonstone.moonstonemod.entity.nightmare_giant_to;
 import com.moonstone.moonstonemod.entity.zombie.cell_giant;
+import com.moonstone.moonstonemod.event.NewEvent;
 import com.moonstone.moonstonemod.init.items.Items;
+import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.item.nightmare.Nightmare;
 import com.moonstone.moonstonemod.item.nightmare.super_nightmare.SuperNightmare;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.util.SpawnUtil;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.CuriosCapability;
 import top.theillusivec4.curios.api.SlotResult;
+import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
+import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import java.util.List;
+import java.util.Map;
 
 public class Handler {
     public static final String Giant_Time = "Giant_Time";
@@ -138,6 +146,28 @@ public class Handler {
     public static boolean hascurio(LivingEntity entity, Item curio) {
         if (entity instanceof LivingEntity player) {
             if (player.getCapability(CuriosCapability.INVENTORY) != null) {
+
+                if (CuriosApi.getCuriosInventory(player).isPresent()
+                        && CuriosApi.getCuriosInventory(player).get().isEquipped(Items.universe.get())) {
+                    Map<String, ICurioStacksHandler> curios = CuriosApi.getCuriosInventory(player).get().getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack universeStack =  stackHandler.getStackInSlot(i);
+                            if (universeStack.get(DataReg.tag)!=null) {
+                                if (universeStack.is(Items.universe.get())) {
+                                    for (String string : universeStack.get(DataReg.tag).getAllKeys()) {
+                                        String modifiedString = string.replace("item.", "").replace(".", ":");
+                                        if (BuiltInRegistries.ITEM.getKey(curio).toString().equals(modifiedString)) {
+                                            return true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 if (CuriosApi.getCuriosInventory(player).isPresent()
                         && !CuriosApi.getCuriosInventory(player).get().isEquipped(Items.nightmare_base.get())) {
                     if (curio instanceof SuperNightmare) {
@@ -145,7 +175,7 @@ public class Handler {
                     }
                 }
                 if (CuriosApi.getCuriosInventory(player).isPresent()
-                        && !CuriosApi.getCuriosInventory(player).get().isEquipped(Items.nightmareeye.get())) {
+                        && (!CuriosApi.getCuriosInventory(player).get().isEquipped(Items.nightmareeye.get())||!CuriosApi.getCuriosInventory(player).get().isEquipped(Items.evil_mob.get()))) {
                     if (curio instanceof Nightmare) {
                         return false;
                     }

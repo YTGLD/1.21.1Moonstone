@@ -1,9 +1,7 @@
 package com.moonstone.moonstonemod.item.nightmare.super_nightmare;
 
-import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Handler;
-import com.moonstone.moonstonemod.event.NewEvent;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
@@ -11,7 +9,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
@@ -46,7 +43,6 @@ public class nightmare_base_black_eye extends nightmare implements SuperNightmar
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity().tickCount%2==1&&!slotContext.entity().level().isClientSide) {
-            stack.setDamageValue(stack.getDamageValue()+1);
             if (stack.get(DataReg.tag) != null) {
                 if (stack.get(DataReg.tag).getInt(NightmareBaseBlackEye) > 0) {
                     stack.get(DataReg.tag).putInt(NightmareBaseBlackEye, stack.get(DataReg.tag).getInt(NightmareBaseBlackEye) - 1);
@@ -80,10 +76,9 @@ public class nightmare_base_black_eye extends nightmare implements SuperNightmar
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = com.google.common.collect.LinkedHashMultimap.create();
         CuriosApi
-                .addSlotModifier(linkedHashMultimap, "nightmare",id, 3, AttributeModifier.Operation.ADD_VALUE);
+                .addSlotModifier(linkedHashMultimap, "nightmare", ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 3, AttributeModifier.Operation.ADD_VALUE);
         return linkedHashMultimap;
-    }
-    @Override
+    }    @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> pTooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, pTooltipComponents, tooltipFlag);
         pTooltipComponents.add(Component.translatable("item.nightmare_base_black_eye.tool.string").withStyle(ChatFormatting.DARK_RED));

@@ -22,7 +22,6 @@ import net.minecraft.world.item.TooltipFlag;
 import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
-import java.util.UUID;
 
 public class ectoplasmstar extends ectoplasm {
     @Override

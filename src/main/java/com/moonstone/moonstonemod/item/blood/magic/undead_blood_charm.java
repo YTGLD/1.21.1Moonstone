@@ -1,14 +1,12 @@
 package com.moonstone.moonstonemod.item.blood.magic;
 
 import com.moonstone.moonstonemod.Handler;
-import com.moonstone.moonstonemod.entity.rage_blood;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Blood;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.Targeting;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;

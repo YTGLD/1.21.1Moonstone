@@ -34,5 +34,8 @@ public class AllCrafting {
             RECIPE_SERIALIZER_REGISTRY.register("dna",
                     ()-> new SimpleCraftingRecipeSerializer<>(RecipeGodDNA::new));
 
+    public static final DeferredHolder<RecipeSerializer<?>, SimpleCraftingRecipeSerializer<?>> UniverseCrafting =
+            RECIPE_SERIALIZER_REGISTRY.register("universe",
+                    ()-> new SimpleCraftingRecipeSerializer<>(UniverseCrafting::new));
 
 }

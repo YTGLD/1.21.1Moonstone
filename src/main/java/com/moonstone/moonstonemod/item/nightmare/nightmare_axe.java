@@ -2,14 +2,11 @@ package com.moonstone.moonstonemod.item.nightmare;
 
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.axe;
-import com.moonstone.moonstonemod.entity.nightmare.nightmare_entity;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;

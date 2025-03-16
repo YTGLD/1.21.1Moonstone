@@ -1,8 +1,8 @@
 package com.moonstone.moonstonemod.init.moonstoneitem.extend;
 
 import com.moonstone.moonstonemod.Handler;
-import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.items.Items;
+import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;

@@ -1,6 +1,6 @@
 package com.moonstone.moonstonemod.item.plague.BloodVirus;
 
-import  com.moonstone.moonstonemod.init.moonstoneitem.extend.BloodViru;
+import com.moonstone.moonstonemod.init.moonstoneitem.extend.BloodViru;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;

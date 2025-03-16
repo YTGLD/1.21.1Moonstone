@@ -5,6 +5,8 @@
   "key.moonstone.category": "Moonstone",
   "key.moonstone.desc": "Skill",
   "key.moonstone.y": "skill",
+  "moonstone.super_nightmare.name": "这个物品只能在佩戴噩梦基座的情况下使用",
+  "moonstone.nightmare.name": "这个物品只能在佩戴深渊之眼的情况下使用",
   "allevent.moonstone.cannot": "你必须取出富饶之心内重复的物品",
   "itemGroup.tabmoonstone.blood": "Moonstone : Blood",
   "key.categories.moonstone.moonstone_category": "Moonstone",
@@ -1373,7 +1375,7 @@
 
   "moonstone.jei.item.moonstone.nightmare_base.all": ", requires wearing:",
 
-  "moonstone.jei.item.moonstone.nightmare_base_black_eye_heart": "Trigger the Undying Totem acquisition when the following conditions are met: Poisoned, Withering, Slowness, Darkness, Blindness, and on Fire",
+  "moonstone.jei.item.moonstone.nightmare_base_black_eye_heart": "Trigger the Undying Totem acquisition when the following conditions are met: Poisoned, Withering, Slowness, Blindness, and on Fire",
   "moonstone.jei.item.moonstone.nightmare_base_black_eye_eye": "Kill the Guardian",
   "moonstone.jei.item.moonstone.nightmare_base_black_eye_red": "Found in Ancient Cities, about 5% chance",
 
@@ -1624,6 +1626,12 @@
   "item.rage_head.tool.string": "+2 弹射物数量",
   "item.rage_head.tool.string.1": "+25% 拉弓速度",
 
+  "item.moonstone.universe": "万象模板",
+  "item.universe.tool.string": "在物品栏内合成后",
+  "item.universe.tool.string.1": "自动获得该物品的一些特殊能力",
+  "item.universe.tool.string.2": "可以使用3次",
+  "item.universe.tool.string.3": "你与下列物品进行了合成：",
+  "item.universe.tool.null": "空的",
 
   "item.moonstone.rage_bottle": "黄金瓶",
   "item.rage_bottle.tool.string": "获得的50%经验值转为能量",

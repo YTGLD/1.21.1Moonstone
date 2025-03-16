@@ -6,7 +6,6 @@ import com.mojang.math.Axis;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.entity.flysword;
-import com.moonstone.moonstonemod.entity.owner_blood;
 import com.moonstone.moonstonemod.entity.suddenrain;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;

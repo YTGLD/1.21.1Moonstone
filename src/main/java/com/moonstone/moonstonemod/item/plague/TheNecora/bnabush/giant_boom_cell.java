@@ -1,7 +1,6 @@
 package com.moonstone.moonstonemod.item.plague.TheNecora.bnabush;
 
 import com.moonstone.moonstonemod.Handler;
-import com.moonstone.moonstonemod.entity.nightmare.nightmare_giant;
 import com.moonstone.moonstonemod.entity.nightmare_giant_to;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.TheNecoraIC;
