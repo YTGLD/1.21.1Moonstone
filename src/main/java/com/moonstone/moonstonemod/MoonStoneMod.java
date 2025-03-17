@@ -19,18 +19,13 @@ import com.moonstone.moonstonemod.init.Tab;
 import com.moonstone.moonstonemod.init.items.BookItems;
 import com.moonstone.moonstonemod.init.items.DNAItems;
 import com.moonstone.moonstonemod.init.items.Items;
+import com.moonstone.moonstonemod.init.items.Drugs;
 import com.moonstone.moonstonemod.init.moonstoneitem.*;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -42,13 +37,8 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.event.RegisterShadersEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.common.data.BlockTagsProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.CuriosDataProvider;
 
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
@@ -79,6 +69,7 @@ public class MoonStoneMod {
         NeoForge.EVENT_BUS.register(new EquippedEvt());
         NeoForge.EVENT_BUS.register(new TextEvt());
 
+        Drugs.REGISTRY.register(eventBus);
 
         BookItems.REGISTRY.register(eventBus);
         AttReg.REGISTRY.register(eventBus);

@@ -13,6 +13,7 @@ import com.moonstone.moonstonemod.item.coffin;
 import com.moonstone.moonstonemod.item.ectoplasm.*;
 import com.moonstone.moonstonemod.item.ectoplasm.soul.soulbattery;
 import com.moonstone.moonstonemod.item.ectoplasm.soul.soulcube;
+import com.moonstone.moonstonemod.item.man.*;
 import com.moonstone.moonstonemod.item.maxitem.amout.ectoplasmstone;
 import com.moonstone.moonstonemod.item.maxitem.amout.twistedstone;
 import com.moonstone.moonstonemod.item.maxitem.*;
@@ -324,6 +325,8 @@ public class Items {
     public static final DeferredHolder<Item,?> pain_ring =REGISTRY.register("pain_ring", (ResourceLocation properties) -> new pain_ring());
     public static final DeferredHolder<Item,?> rage_bottle =REGISTRY.register("rage_bottle", (ResourceLocation properties) -> new rage_bottle());
     public static final DeferredHolder<Item,?> universe =REGISTRY.register("universe", universe::new );
+    public static final DeferredHolder<Item,?> run_dna =REGISTRY.register("run_dna", run_dna::new );
+    public static final DeferredHolder<Item,?> health_dna =REGISTRY.register("health_dna", health_dna::new );
 
     public static final DeferredHolder<Item,?> god_sword_ =REGISTRY.register("god_sword",twelve_sword.god_sword::new );
     public static final DeferredHolder<Item,?> smithing_food =REGISTRY.register("smithing_food", SmithingFood::new);

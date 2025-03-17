@@ -14,6 +14,7 @@ import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.Enchants;
 import com.moonstone.moonstonemod.init.moonstoneitem.LootReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Iplague;
+import com.moonstone.moonstonemod.item.man.ManDNA;
 import com.moonstone.moonstonemod.item.maxitem.book.the_blood_book;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.Holder;
@@ -136,6 +137,7 @@ public class DungeonLoot extends LootModifier {
             }
             if (idSting.contains("dungeon")) {
                 AdvancementEvt.nightmare_base_start_pod(generatedLoot, entity);
+                ManDNA.addLoot(generatedLoot,entity,ManDNA.lv);
             }
             if (idSting.contains("dungeon") || idSting.contains("mineshaft") || idSting.contains("city")||idSting.contains("treasure")) {
                 addLoot(generatedLoot, random, Items.nightmareeye.get(), entity, List.of(

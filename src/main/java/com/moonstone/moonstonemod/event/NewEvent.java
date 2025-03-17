@@ -16,6 +16,8 @@ import com.moonstone.moonstonemod.item.blood.magic.rage_blood_head;
 import com.moonstone.moonstonemod.item.blood.magic.undead_blood_charm;
 import com.moonstone.moonstonemod.item.coffin;
 import com.moonstone.moonstonemod.item.decorated.deceased_contract;
+import com.moonstone.moonstonemod.item.man.health_dna;
+import com.moonstone.moonstonemod.item.man.run_dna;
 import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
 import com.moonstone.moonstonemod.item.maxitem.*;
 import com.moonstone.moonstonemod.item.maxitem.rage.*;
@@ -125,6 +127,8 @@ public class NewEvent {
         rage_lock.LivingHealEvent(event);
         pain_ring.Heal(event);
         pain_candle.Heal(event);
+        health_dna.lymphatic(event);
+        health_dna.stem_cell_proliferation(event);
         if (event.getEntity() instanceof LivingEntity living){
             if (living.getAttribute(AttReg.heal)!=null){
                 float attack = (float) living.getAttribute(AttReg.heal).getValue();
@@ -211,6 +215,14 @@ public class NewEvent {
         rage_lock.LivingIncomingDamageEvent(event);
         pain_candle.Hurt(event);
         pain_ring.Hurt(event);
+        run_dna.phosphorylationDamage(event);
+        run_dna.cp_energy(event);
+        run_dna.hydrolysisDamage(event);
+        run_dna.run(event);
+
+
+
+
         if (event.getEntity().hasEffect(Effects.dead) && event.getEntity().getEffect(Effects.dead)!=null){
             float lvl = event.getEntity().getEffect(Effects.dead).getAmplifier();
             lvl *= 0.2f;

@@ -3,6 +3,7 @@ package com.moonstone.moonstonemod.init.moonstoneitem;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.contents.BundleContents;
 import com.moonstone.moonstonemod.contents.BundleContentsDNA;
+import com.moonstone.moonstonemod.contents.ManBundleContents;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
@@ -19,6 +20,9 @@ public class DataReg {
 
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<BundleContentsDNA>> SUPER_BAG =
             REGISTRY.register("dna",()-> DataComponentType.<BundleContentsDNA>builder().persistent(BundleContentsDNA.CODEC).build());
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<ManBundleContents>> man =
+            REGISTRY.register("man",()-> DataComponentType.<ManBundleContents>builder().persistent(ManBundleContents.CODEC).build());
+
 
 
 }

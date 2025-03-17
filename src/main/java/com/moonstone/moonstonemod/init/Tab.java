@@ -4,6 +4,7 @@ package com.moonstone.moonstonemod.init;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.init.items.BookItems;
 import com.moonstone.moonstonemod.init.items.DNAItems;
+import com.moonstone.moonstonemod.init.items.Drugs;
 import com.moonstone.moonstonemod.init.items.Items;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -174,6 +175,9 @@ public class Tab {
                 b.accept(new ItemStack(Items.rage_orb.get()));
                 b.accept(new ItemStack(Items.pain_candle.get()));
                 b.accept(new ItemStack(Items.pain_ring.get()));
+
+                b.accept(new ItemStack(Items.run_dna.get()));
+                b.accept(new ItemStack(Items.health_dna.get()));
 
 
                 b.accept(new ItemStack(Items.coffin_.get()));

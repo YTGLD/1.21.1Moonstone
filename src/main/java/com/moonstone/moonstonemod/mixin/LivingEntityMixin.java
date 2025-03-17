@@ -6,6 +6,7 @@ import com.moonstone.moonstonemod.event.EquippedEvt;
 import com.moonstone.moonstonemod.event.NewEvent;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
+import com.moonstone.moonstonemod.item.man.run_dna;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
@@ -164,8 +165,13 @@ public abstract class LivingEntityMixin {
     }
     @Inject(at = @At("RETURN"), method = "getJumpPower", cancellable = true)
     public void getJumpPower(CallbackInfoReturnable<Float> cir) {
+
+
+
         LivingEntity living = (LivingEntity) (Object) this;
         if (living instanceof Player player) {
+
+            run_dna.hydrolysis(cir,player);
             if (Handler.hascurio(player, Items.quadriceps.get())) {
                 cir.setReturnValue(cir.getReturnValue() * 1.5f);
             }

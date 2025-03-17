@@ -1,0 +1,25 @@
+package com.moonstone.moonstonemod.init.items;
+
+import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.item.man.ManDNA;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.item.Item;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.List;
+
+public class Drugs {
+    public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(BuiltInRegistries.ITEM, MoonStoneMod.MODID);
+    public static final DeferredHolder<Item, ?> protein = REGISTRY.register("protein", ()->new ManDNA.Drug(List.of("item.protein.tool.string")));
+    public static final DeferredHolder<Item, ?> hydrolysis = REGISTRY.register("hydrolysis", ()->new ManDNA.Drug(List.of("item.hydrolysis.tool.string")));
+    public static final DeferredHolder<Item, ?> cp_energy = REGISTRY.register("cp_energy", ()->new ManDNA.Drug(List.of("item.cp_energy.tool.string")));
+    public static final DeferredHolder<Item, ?> phosphorylation = REGISTRY.register("phosphorylation", ()->new ManDNA.Drug(List.of("item.phosphorylation.tool.string")));
+
+    public static final DeferredHolder<Item, ?> stem_cell_proliferation = REGISTRY.register("stem_cell_proliferation", ()->new ManDNA.Drug(List.of("item.stem_cell_proliferation.tool.string")));
+    public static final DeferredHolder<Item, ?> lymphatic = REGISTRY.register("lymphatic", ()->new ManDNA.Drug(List.of("item.lymphatic.tool.string")));
+    public static final DeferredHolder<Item, ?> abnormal = REGISTRY.register("abnormal", ()->new ManDNA.Drug(List.of("item.abnormal.tool.string")));
+    public static final DeferredHolder<Item, ?> catalyst_for_life = REGISTRY.register("catalyst_for_life", ()->new ManDNA.Drug(List.of("item.catalyst_for_life.tool.string")));
+
+
+}
