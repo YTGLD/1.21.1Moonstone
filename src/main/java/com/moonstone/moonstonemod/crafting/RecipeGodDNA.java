@@ -4,6 +4,7 @@ import com.moonstone.moonstonemod.event.EquippedEvt;
 import com.moonstone.moonstonemod.event.NewEvent;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.GodDNA;
+import com.moonstone.moonstonemod.item.plague.TheNecora.CanNot;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
@@ -33,11 +34,12 @@ public class RecipeGodDNA  extends CustomRecipe {
         int count = 0;
         for (int i = 0; i < craftingInput.size(); ++i) {
             ItemStack currentStack = craftingInput.getItem(i);
-
-            if (currentStack.get(DataReg.tag) != null && currentStack.get(DataReg.tag).getBoolean(NewEvent.lootTable)) {
-                count++;
-                if (count > 2) {
-                    return false;
+            if (!(currentStack.getItem() instanceof CanNot)) {
+                if (currentStack.get(DataReg.tag) != null && currentStack.get(DataReg.tag).getBoolean(NewEvent.lootTable)) {
+                    count++;
+                    if (count > 2) {
+                        return false;
+                    }
                 }
             }
         }
@@ -53,15 +55,13 @@ public class RecipeGodDNA  extends CustomRecipe {
         for (int i = 0; i < craftingInput.size(); ++i) {
             ItemStack currentStack = craftingInput.getItem(i);
             if (currentStack.get(DataReg.tag) != null && currentStack.get(DataReg.tag).getBoolean(NewEvent.lootTable)) {
-                if (!(currentStack.getItem() instanceof GodDNA)) {
-                    count++;
-                    if (count == 2) {
-                        ItemStack stack = currentStack.copy();
-                        CompoundTag compoundTag = new CompoundTag();
-                        compoundTag.putBoolean(EquippedEvt.isGod, true);
-                        stack.set(DataReg.tag, compoundTag);
-                        return stack;
-                    }
+                count++;
+                if (count == 2) {
+                    ItemStack stack = currentStack.copy();
+                    CompoundTag compoundTag = new CompoundTag();
+                    compoundTag.putBoolean(EquippedEvt.isGod, true);
+                    stack.set(DataReg.tag, compoundTag);
+                    return stack;
                 }
             }
         }

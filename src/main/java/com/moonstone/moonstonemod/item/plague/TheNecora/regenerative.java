@@ -11,7 +11,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class regenerative extends TheNecoraIC {
+public class regenerative extends TheNecoraIC  implements CanNot{
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player) {
