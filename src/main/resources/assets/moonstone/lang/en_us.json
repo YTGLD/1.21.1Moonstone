@@ -1685,6 +1685,18 @@
 
 
 
+  "item.moonstone.attack_dna": "异常肌肉强化基因",
+  "item.attack_dna.tool.string": "增加4点伤害，减少20%攻速",
+
+  "item.moonstone.reverse_correction": "逆修正强化",
+  "item.moonstone.self_correction": "自修正强化",
+  "item.moonstone.abnormal_muscles": "反常肌肉强化",
+  "item.moonstone.abnormal_endurance": "反常耐力",
+
+  "item.reverse_correction.tool.string": "普通攻击有15%的概率造成额外伤害",
+  "item.self_correction.tool.string": "暴击有概率造成额外25%的伤害",
+  "item.abnormal_muscles.tool.string": "疾跑时伤害增加30%",
+  "item.abnormal_endurance.tool.string": "增加20%攻击伤害，减少20%最大生命值",
 
 
 

@@ -156,7 +156,6 @@ public abstract class ManDNA extends Item  implements ICurioItem {
         @Override
         public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> pTooltipComponents, TooltipFlag tooltipFlag) {
             super.appendHoverText(stack, context, pTooltipComponents, tooltipFlag);
-            pTooltipComponents.add(Component.translatable("moonstone.drug.string").withStyle(ChatFormatting.GOLD));
             for (String string : stringName) {
                 pTooltipComponents.add(Component.translatable(string).withStyle(ChatFormatting.GOLD));
             }

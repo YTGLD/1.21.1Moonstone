@@ -29,7 +29,7 @@ public class cell_rage extends BloodViru {
         Multimap<Holder<Attribute>, AttributeModifier> linkedHashMultimap = HashMultimap.create();
         linkedHashMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
-        return super.getAttributeModifiers(slotContext, id, stack);
+        return linkedHashMultimap;
     }
 }
 

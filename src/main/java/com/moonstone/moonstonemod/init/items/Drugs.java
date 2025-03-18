@@ -28,4 +28,12 @@ public class Drugs {
     public static final DeferredHolder<Item, ?> paralysis = REGISTRY.register("paralysis", ()->new ManDNA.Drug(List.of("item.paralysis.tool.string")));
     public static final DeferredHolder<Item, ?> formative_cell = REGISTRY.register("formative_cell", ()->new ManDNA.Drug(List.of("item.formative_cell.tool.string")));
 
+
+
+
+    public static final DeferredHolder<Item, ?> reverse_correction = REGISTRY.register("reverse_correction", ()->new ManDNA.Drug(List.of("item.reverse_correction.tool.string")));
+    public static final DeferredHolder<Item, ?> self_correction = REGISTRY.register("self_correction", ()->new ManDNA.Drug(List.of("item.self_correction.tool.string")));
+    public static final DeferredHolder<Item, ?> abnormal_muscles = REGISTRY.register("abnormal_muscles", ()->new ManDNA.Drug(List.of("item.abnormal_muscles.tool.string")));
+    public static final DeferredHolder<Item, ?> abnormal_endurance = REGISTRY.register("abnormal_endurance", ()->new ManDNA.Drug(List.of("item.abnormal_endurance.tool.string")));
+
 }

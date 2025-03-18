@@ -167,6 +167,10 @@ public class Tab {
                 b.accept(new ItemStack(Drugs.connective_tissue.get()));
                 b.accept(new ItemStack(Drugs.paralysis.get()));
                 b.accept(new ItemStack(Drugs.formative_cell.get()));
+                b.accept(new ItemStack(Drugs.reverse_correction.get()));
+                b.accept(new ItemStack(Drugs.self_correction.get()));
+                b.accept(new ItemStack(Drugs.abnormal_muscles.get()));
+                b.accept(new ItemStack(Drugs.abnormal_endurance.get()));
 
 
 
@@ -191,6 +195,7 @@ public class Tab {
                 b.accept(new ItemStack(Items.run_dna.get()));
                 b.accept(new ItemStack(Items.health_dna.get()));
                 b.accept(new ItemStack(Items.copy_dna.get()));
+                b.accept(new ItemStack(Items.attack_dna.get()));
 
 
                 b.accept(new ItemStack(Items.coffin_.get()));

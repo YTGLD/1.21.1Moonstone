@@ -137,9 +137,10 @@ public class DungeonLoot extends LootModifier {
             }
             if (idSting.contains("dungeon")) {
                 AdvancementEvt.nightmare_base_start_pod(generatedLoot, entity);
-                ManDNA.addLoot(generatedLoot,entity,Config.SERVER.lootMan.get());
             }
             if (idSting.contains("dungeon") || idSting.contains("mineshaft") || idSting.contains("city")||idSting.contains("treasure")) {
+                ManDNA.addLoot(generatedLoot,entity,Config.SERVER.lootMan.get());
+
                 addLoot(generatedLoot, random, Items.nightmareeye.get(), entity, List.of(
                         Items.nightmare_heart.get(),
                         Items.nightmare_orb.get(),

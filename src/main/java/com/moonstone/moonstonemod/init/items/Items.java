@@ -328,6 +328,7 @@ public class Items {
     public static final DeferredHolder<Item,?> run_dna =REGISTRY.register("run_dna", run_dna::new );
     public static final DeferredHolder<Item,?> health_dna =REGISTRY.register("health_dna", health_dna::new );
     public static final DeferredHolder<Item,?> copy_dna =REGISTRY.register("copy_dna", copy_dna::new );
+    public static final DeferredHolder<Item,?> attack_dna =REGISTRY.register("attack_dna", attack_dna::new );
 
     public static final DeferredHolder<Item,?> god_sword_ =REGISTRY.register("god_sword",twelve_sword.god_sword::new );
     public static final DeferredHolder<Item,?> smithing_food =REGISTRY.register("smithing_food", SmithingFood::new);

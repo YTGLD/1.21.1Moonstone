@@ -1586,11 +1586,13 @@ public class AllEvent {
         if (!player.getTags().contains("welcome_to_moonstone")) {
             int a = Mth.nextInt(RandomSource.create(), 1, 2);
             if (a == 1) {
-                player.addItem(Items.ectoplasmstone.get().getDefaultInstance());
+                player.addItem(Items.run_dna.get().getDefaultInstance());
             }
             if (a == 2) {
-                player.addItem(Items.twistedstone.get().getDefaultInstance());
+                player.addItem(Items.health_dna.get().getDefaultInstance());
             }
+
+
             player.addItem(Items.deceased_contract.get().getDefaultInstance());
             player.addTag("welcome_to_moonstone");
         }

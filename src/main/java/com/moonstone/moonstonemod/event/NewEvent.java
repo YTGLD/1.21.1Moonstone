@@ -16,6 +16,7 @@ import com.moonstone.moonstonemod.item.blood.magic.rage_blood_head;
 import com.moonstone.moonstonemod.item.blood.magic.undead_blood_charm;
 import com.moonstone.moonstonemod.item.coffin;
 import com.moonstone.moonstonemod.item.decorated.deceased_contract;
+import com.moonstone.moonstonemod.item.man.attack_dna;
 import com.moonstone.moonstonemod.item.man.copy_dna;
 import com.moonstone.moonstonemod.item.man.health_dna;
 import com.moonstone.moonstonemod.item.man.run_dna;
@@ -222,8 +223,8 @@ public class NewEvent {
         run_dna.hydrolysisDamage(event);
         run_dna.run(event);
         copy_dna.connective_tissue(event);
-
-
+        attack_dna.abnormal_muscles(event);
+        attack_dna.reverse_correction(event);
 
 
         if (event.getEntity().hasEffect(Effects.dead) && event.getEntity().getEffect(Effects.dead)!=null){
@@ -421,6 +422,8 @@ public class NewEvent {
     @SubscribeEvent
     public void soulbattery(CriticalHitEvent event) {
         DungeonLoot.cit(event);
+        attack_dna.self_correction(event);
+
        if (event.getEntity() instanceof Player living){
             if (living.getAttribute(AttReg.cit)!=null){
                 float attack = (float) living.getAttribute(AttReg.cit).getValue();

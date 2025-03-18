@@ -3,7 +3,8 @@
   "values": [
     "moonstone:run_dna",
     "moonstone:health_dna",
-    "moonstone:copy_dna"
+    "moonstone:copy_dna",
+    "moonstone:attack_dna"
 
   ]
 }

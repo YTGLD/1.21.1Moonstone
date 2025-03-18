@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "moonstone:run_dna"
+    },
+    {
+      "item": "moonstone:redamout"
+    },
+    {
+      "item": "moonstone:ectoplasmcube"
+    },
+    {
+      "tag": "curios:crystal"
+    },
+    {
+      "tag": "curios:crystal"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "moonstone:attack_dna"
+  }
+}

@@ -36,7 +36,7 @@ import java.util.Map;
 public class copy_dna extends ManDNA {
 
     public copy_dna() {
-        super(new Properties().stacksTo(1).rarity(Rarity.RARE).component(DataReg.man, ManBundleContents.EMPTY));
+        super(new Properties().stacksTo(1).rarity(Rarity.EPIC).component(DataReg.man, ManBundleContents.EMPTY));
     }
 
     @Override
