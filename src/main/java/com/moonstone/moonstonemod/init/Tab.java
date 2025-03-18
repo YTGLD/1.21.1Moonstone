@@ -155,6 +155,18 @@ public class Tab {
                 b.accept(new ItemStack(Items.cell_scientist.get()));
                 b.accept(new ItemStack(Items.evil_blood.get()));
 
+                b.accept(new ItemStack(Drugs.protein.get()));
+                b.accept(new ItemStack(Drugs.hydrolysis.get()));
+                b.accept(new ItemStack(Drugs.cp_energy.get()));
+                b.accept(new ItemStack(Drugs.phosphorylation.get()));
+                b.accept(new ItemStack(Drugs.stem_cell_proliferation.get()));
+                b.accept(new ItemStack(Drugs.lymphatic.get()));
+                b.accept(new ItemStack(Drugs.abnormal.get()));
+                b.accept(new ItemStack(Drugs.catalyst_for_life.get()));
+                b.accept(new ItemStack(Drugs.lymphadenopathy.get()));
+                b.accept(new ItemStack(Drugs.connective_tissue.get()));
+                b.accept(new ItemStack(Drugs.paralysis.get()));
+                b.accept(new ItemStack(Drugs.formative_cell.get()));
 
 
 
@@ -178,6 +190,7 @@ public class Tab {
 
                 b.accept(new ItemStack(Items.run_dna.get()));
                 b.accept(new ItemStack(Items.health_dna.get()));
+                b.accept(new ItemStack(Items.copy_dna.get()));
 
 
                 b.accept(new ItemStack(Items.coffin_.get()));

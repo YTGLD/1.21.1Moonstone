@@ -12,6 +12,7 @@ import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.MLS;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.Perhaps;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.*;
+import com.moonstone.moonstonemod.item.man.ManDNA;
 import com.moonstone.moonstonemod.item.maxitem.rage.RAGE;
 import com.moonstone.moonstonemod.item.maxitem.the_heart;
 import com.moonstone.moonstonemod.item.maxitem.uncommon.evilmug;
@@ -2103,6 +2104,14 @@ public class AllEvent {
         if (stack.getItem() instanceof the_heart) {
             tooltipEvent.setBorderStart(0xFFFF8C00);
             tooltipEvent.setBorderEnd(0xFFFFD700);
+        }
+
+        if (stack.getItem() instanceof ManDNA) {
+            tooltipEvent.setBorderStart(0xFFafeeee);
+            tooltipEvent.setBorderEnd(0xFFafeeee);
+
+            tooltipEvent.setBackgroundStart(0x59000000);
+            tooltipEvent.setBackgroundEnd(0x59000000);
         }
     }
     public static boolean fungus_boolean(LivingEntity living,Player player){

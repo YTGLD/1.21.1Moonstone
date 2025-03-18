@@ -1638,10 +1638,10 @@
 
 
 
-  "moonstone.drug.string": "可以右键放入常规基因块中",
+  "moonstone.drug.string": "可以右键放入人类基因块中",
   "item.man.tool.string": "支持植入下列药物：",
-  "curios.modifiers.man": "植入常规基因时",
-  "curios.identifier.man": "常规基因槽",
+  "curios.modifiers.man": "植入人类基因时",
+  "curios.identifier.man": "人类基因槽",
 
   "item.moonstone.run_dna": "耐力强化基因",
   "item.run_dna.tool.string": "增加10%疾跑时的抗性",
@@ -1669,8 +1669,19 @@
   "item.abnormal.tool.string": "正面药水状态时长减少50%，任何效果状态结束时恢复6点生命值",
   "item.catalyst_for_life.tool.string": "异变催化剂：增加10点生命值",
 
+  "item.moonstone.copy_dna": "复制强化基因",
+  "item.copy_dna.tool.string": "增加10点最大生命值，减少10%治疗",
+
+  "item.moonstone.lymphadenopathy": "淋巴结肿大",
+  "item.moonstone.connective_tissue": "结缔组织增生",
+  "item.moonstone.paralysis": "免疫瘫痪",
+  "item.moonstone.formative_cell": "形成细胞激增",
 
 
+  "item.lymphadenopathy.tool.string": "减少66%所有药水效果持续时间，任何效果结束时恢复5%最大生命值",
+  "item.connective_tissue.tool.string": "减少20%弹射物伤害，受到弹射物伤害时恢复2点生命值",
+  "item.paralysis.tool.string": "增加10点生命值，减少10%治疗",
+  "item.formative_cell.tool.string": "异变催化剂：生命值低于50%时，增加40%治疗",
 
 
 

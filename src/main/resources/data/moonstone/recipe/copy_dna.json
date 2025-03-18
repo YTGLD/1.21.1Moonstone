@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "moonstone:health_dna"
+    },
+    {
+      "item": "moonstone:greedamout"
+    },
+    {
+      "item": "moonstone:ectoplasmprism"
+    },
+    {
+      "tag": "c:foods/raw_meat"
+    },
+    {
+      "tag": "c:foods/raw_meat"
+    },
+    {
+      "tag": "c:foods/raw_meat"
+    },
+    {
+      "tag": "c:foods/raw_meat"
+    },
+    {
+      "tag": "c:foods/raw_meat"
+    },
+    {
+      "tag": "c:foods/raw_meat"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "moonstone:copy_dna"
+  }
+}

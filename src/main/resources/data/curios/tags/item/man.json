@@ -2,7 +2,8 @@
   "replace": false,
   "values": [
     "moonstone:run_dna",
-    "moonstone:health_dna"
+    "moonstone:health_dna",
+    "moonstone:copy_dna"
 
   ]
 }

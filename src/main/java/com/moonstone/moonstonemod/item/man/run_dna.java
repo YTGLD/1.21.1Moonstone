@@ -209,20 +209,7 @@ public class run_dna extends ManDNA{
 
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-
-
-
         pTooltipComponents.add(Component.translatable("item.run_dna.tool.string").withStyle(ChatFormatting.GOLD));
-        ManBundleContents manBundleContents = pStack.get(DataReg.man);
-        if (manBundleContents != null) {
-            manBundleContents.items().forEach((itemStack -> {
-                if (!itemStack.isEmpty()) {
-                    ResourceLocation resourceLocation= BuiltInRegistries.ITEM.getKey(itemStack.getItem());
-                    String s = resourceLocation.toString().replace(":",".");
-                    pTooltipComponents.add(Component.translatable("item."+s).withStyle(ChatFormatting.GOLD));
-                }
-            }));
-        }
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
     }
 }

@@ -11,6 +11,7 @@ import com.moonstone.moonstonemod.init.moonstoneitem.i.Blood;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.IDoom;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.INightmare;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Iplague;
+import com.moonstone.moonstonemod.item.man.ManDNA;
 import com.moonstone.moonstonemod.item.necora;
 import com.moonstone.moonstonemod.item.nightmare.super_nightmare.nightmare_base;
 import net.minecraft.client.Minecraft;
@@ -175,6 +176,11 @@ public abstract class GuiGraphicsMixin {
             if (tooltipStack.getItem()instanceof Blood){
                 this.pose.pushPose();
                 moonstone$renderTooltipBackground_TheNecora((GuiGraphics)(Object)this, l, i1, i2, j2, 400, 0x00ffffff,0x00ffffff,0x4dFF8C00,0x4dFF8C00);
+                this.pose.popPose();
+            }
+            if (tooltipStack.getItem()instanceof ManDNA){
+                this.pose.pushPose();
+                moonstone$renderTooltipBackground_man((GuiGraphics)(Object)this, l, i1, i2, j2, 400, 0x00ffffff,0x00ffffff,0x4dFF8C00,0x4dFF8C00);
                 this.pose.popPose();
             }
         });
@@ -694,5 +700,101 @@ public abstract class GuiGraphicsMixin {
         p_286862_.addVertex(matrix4f, (float)p_283587_, (float)p_281397_, (float)p_283505_).setColor(f1, f2, f3, f);
     }
 
+    //////////////////////////////////////////////
+    @Unique
+    private void moonstone$renderTooltipBackground_man(GuiGraphics p_282666_, int p_281901_, int p_281846_, int p_281559_, int p_283336_, int p_283422_, int backgroundTop, int backgroundBottom, int borderTop, int borderBottom)
+    {
+        int i = p_281901_ - 3;
+        int j = p_281846_ - 3;
+        int k = p_281559_ + 3 + 3;
+        int l = p_283336_ + 3 + 3;
+        moonstone$renderHorizontalLine_man(p_282666_, i, j - 1, k, p_283422_, backgroundTop);
+        moonstone$renderHorizontalLine_man(p_282666_, i, j + l, k, p_283422_, backgroundBottom);
+        moonstone$renderRectangle_man(p_282666_, i, j, k, l, p_283422_, backgroundTop, backgroundBottom);
+        moonstone$renderVerticalLineGradient_man(p_282666_, i - 1, j, l, p_283422_, backgroundTop, backgroundBottom);
+        moonstone$renderVerticalLineGradient_man(p_282666_, i + k, j, l, p_283422_, backgroundTop, backgroundBottom);
+    }
+    @Unique
+    private void moonstone$renderFrameGradient_man(GuiGraphics p_282000_, int p_282055_, int p_281580_, int p_283284_, int p_282599_, int p_283432_, int p_282907_, int p_283153_) {
+        moonstone$renderVerticalLineGradient_man(p_282000_, p_282055_, p_281580_, p_282599_ - 2, p_283432_, p_282907_, p_283153_);
+        moonstone$renderVerticalLineGradient_man(p_282000_, p_282055_ + p_283284_ - 1, p_281580_, p_282599_ - 2, p_283432_, p_282907_, p_283153_);
+        moonstone$renderHorizontalLine_man(p_282000_, p_282055_, p_281580_ - 1, p_283284_, p_283432_, p_282907_);
+        moonstone$renderHorizontalLine_man(p_282000_, p_282055_, p_281580_ - 1 + p_282599_ - 1, p_283284_, p_283432_, p_283153_);
+    }
+    @Unique
+    private void moonstone$renderHorizontalLine_man(GuiGraphics p_282981_, int p_282028_, int p_282141_, int p_281771_, int p_282734_, int p_281979_) {
+        moonstone$fill_man(p_282028_, p_282141_, p_282028_ + p_281771_, p_282141_ + 1, p_282734_, p_281979_);
+    }
+    @Unique
+    private void moonstone$renderVerticalLine_man(GuiGraphics p_281270_, int p_281928_, int p_281561_, int p_283155_, int p_282552_, int p_282221_) {
+        moonstone$fill_man(p_281928_, p_281561_, p_281928_ + 1, p_281561_ + p_283155_, p_282552_, p_282221_);
+    }
+
+    @Unique
+    private void moonstone$renderVerticalLineGradient_man(GuiGraphics p_282478_, int p_282583_, int p_283262_, int p_283161_, int p_283322_, int p_282624_, int p_282756_) {
+        moonstone$fillGradient_man(p_282583_, p_283262_, p_282583_ + 1, p_283262_ + p_283161_, p_283322_, p_282624_, p_282756_);
+    }@Unique
+    private void moonstone$renderRectangle_man(GuiGraphics p_281392_, int p_282294_, int p_283353_, int p_282640_, int p_281964_, int p_283211_, int p_282349_, int colorTo) {
+        moonstone$fillGradient_man(p_282294_, p_283353_, p_282294_ + p_282640_, p_283353_ + p_281964_, p_283211_, p_282349_, colorTo);
+    }
+
+    @Unique
+    public void moonstone$fill_man(int p_281437_, int p_283660_, int p_282606_, int p_283413_, int p_283428_, int p_283253_) {
+        this.moonstone$fill_man(MRender.man, p_281437_, p_283660_, p_282606_, p_283413_, p_283428_, p_283253_);
+    }
+    @Unique
+    public void moonstone$fill_man(RenderType p_286711_, int p_286234_, int p_286444_, int p_286244_, int p_286411_, int p_286671_, int p_286599_) {
+        Matrix4f matrix4f = this.pose.last().pose();
+        if (p_286234_ < p_286244_) {
+            int i = p_286234_;
+            p_286234_ = p_286244_;
+            p_286244_ = i;
+        }
+
+        if (p_286444_ < p_286411_) {
+            int j = p_286444_;
+            p_286444_ = p_286411_;
+            p_286411_ = j;
+        }
+
+        float f3 = (float) FastColor.ARGB32.alpha(p_286599_) / 255.0F;
+        float f = (float)FastColor.ARGB32.red(p_286599_) / 255.0F;
+        float f1 = (float)FastColor.ARGB32.green(p_286599_) / 255.0F;
+        float f2 = (float)FastColor.ARGB32.blue(p_286599_) / 255.0F;
+        VertexConsumer vertexconsumer = this.bufferSource.getBuffer(p_286711_);
+        vertexconsumer.addVertex(matrix4f, (float)p_286234_, (float)p_286444_, (float)p_286671_).setColor(f, f1, f2, f3);
+        vertexconsumer.addVertex(matrix4f, (float)p_286234_, (float)p_286411_, (float)p_286671_).setColor(f, f1, f2, f3);
+        vertexconsumer.addVertex(matrix4f, (float)p_286244_, (float)p_286411_, (float)p_286671_).setColor(f, f1, f2, f3);
+        vertexconsumer.addVertex(matrix4f, (float)p_286244_, (float)p_286444_, (float)p_286671_).setColor(f, f1, f2, f3);
+        this.flushIfUnmanaged();
+    }
+    @Unique
+    public void moonstone$fillGradient_man(int p_282702_, int p_282331_, int p_281415_, int p_283118_, int p_282419_, int p_281954_, int p_282607_) {
+        this.moonstone$fillGradient_man(MRender.man, p_282702_, p_282331_, p_281415_, p_283118_, p_281954_, p_282607_, p_282419_);
+    }
+
+    @Unique
+    public void moonstone$fillGradient_man(RenderType p_286522_, int p_286535_, int p_286839_, int p_286242_, int p_286856_, int p_286809_, int p_286833_, int p_286706_) {
+        VertexConsumer vertexconsumer = this.bufferSource.getBuffer(p_286522_);
+        this.moonstone$fillGradient_man(vertexconsumer, p_286535_, p_286839_, p_286242_, p_286856_, p_286706_, p_286809_, p_286833_);
+        this.flushIfUnmanaged();
+    }
+
+    @Unique
+    private void moonstone$fillGradient_man(VertexConsumer p_286862_, int p_283414_, int p_281397_, int p_283587_, int p_281521_, int p_283505_, int p_283131_, int p_282949_) {
+        float f = (float)FastColor.ARGB32.alpha(p_283131_) / 255.0F;
+        float f1 = (float)FastColor.ARGB32.red(p_283131_) / 255.0F;
+        float f2 = (float)FastColor.ARGB32.green(p_283131_) / 255.0F;
+        float f3 = (float)FastColor.ARGB32.blue(p_283131_) / 255.0F;
+        float f4 = (float)FastColor.ARGB32.alpha(p_282949_) / 255.0F;
+        float f5 = (float)FastColor.ARGB32.red(p_282949_) / 255.0F;
+        float f6 = (float)FastColor.ARGB32.green(p_282949_) / 255.0F;
+        float f7 = (float)FastColor.ARGB32.blue(p_282949_) / 255.0F;
+        Matrix4f matrix4f = this.pose.last().pose();
+        p_286862_.addVertex(matrix4f, (float)p_283414_, (float)p_281397_, (float)p_283505_).setColor(f1, f2, f3, f);
+        p_286862_.addVertex(matrix4f, (float)p_283414_, (float)p_281521_, (float)p_283505_).setColor(f5, f6, f7, f4);
+        p_286862_.addVertex(matrix4f, (float)p_283587_, (float)p_281521_, (float)p_283505_).setColor(f5, f6, f7, f4);
+        p_286862_.addVertex(matrix4f, (float)p_283587_, (float)p_281397_, (float)p_283505_).setColor(f1, f2, f3, f);
+    }
 
 }

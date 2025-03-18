@@ -33,11 +33,61 @@ public class MobEffectInstanceMixin {
     @Inject(at = @At("RETURN"), method = "tick")
     public void tick(LivingEntity entity, Runnable onExpirationRunnable, CallbackInfoReturnable<Boolean> cir){
         if (entity instanceof Player player) {
-            if (duration==1){
-                duration--;
-                health_dna.abnormal(player);
+
+            if (Handler.hascurio(player, Items.health_dna.get())) {
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.health_dna.get())) {
+                                ManBundleContents manBundleContents = stack.get(DataReg.man);
+                                if (manBundleContents != null) {
+                                    manBundleContents.items().forEach((itemStack -> {
+                                        if (itemStack.is(Drugs.abnormal)) {
+                                            if (duration==1){
+                                                duration--;
+                                                player.heal(6);
+                                            }
+                                        }
+                                    }));
+                                }
+                            }
+                        }
+                    }
+                });
             }
 
+            if (Handler.hascurio(player, Items.copy_dna.get())){
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.copy_dna.get())) {
+                                ManBundleContents manBundleContents = stack.get(DataReg.man);
+                                if (manBundleContents != null) {
+                                    manBundleContents.items().forEach((itemStack -> {
+                                        if (itemStack.is(Drugs.lymphadenopathy)) {
+                                            duration -= 2;
+                                            if (duration==2){
+                                                duration -= 2;
+                                                player.heal(player.getMaxHealth()*0.05f);
+                                            }
+
+
+                                        }
+                                    }));
+                                }
+                            }
+                        }
+                    }
+                });
+            }
 
 
             if (Handler.hascurio(player, Items.health_dna.get())){

@@ -185,6 +185,21 @@ public class MRender extends RenderType {
                                             false,
                                             false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/eye.png"),
                                             false, false).build()).createCompositeState(false));
+    public static final RenderType man =
+            create("man",
+                    DefaultVertexFormat.POSITION,
+                    VertexFormat.Mode.QUADS,
+                    256,
+                    false,
+                    false,
+                    RenderType.CompositeState.builder()
+                            .setShaderState(RENDER_STATE_SHARD_Shader_EYE)
+                            .setTextureState(RenderStateShard.
+                                    MultiTextureStateShard.builder().
+                                    add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/man.png"),
+                                            false,
+                                            false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/man.png"),
+                                            false, false).build()).createCompositeState(false));
 
     private static final RenderType GATEWAY =
             create("gateway",

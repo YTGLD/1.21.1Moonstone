@@ -114,6 +114,9 @@ public class Config {
         }
         {
             BUILDER.push("战利品");
+            lootMan = BUILDER
+                    .comment("人类基因的药物再战利品箱子里出现的几率，值越大，概率越高")
+                    .defineInRange("lootMan", 13, 1, 100);
             bat = BUILDER
                     .comment("”暗影瘟疫“的战利品出现几率，值越大，概率越高")
                     .defineInRange("Plague_probability", 10, 1, 100);
@@ -133,6 +136,7 @@ public class Config {
         BUILDER.build();
     }
 
+    public   ModConfigSpec.IntValue lootMan ;
 
 
     public   ModConfigSpec.IntValue Nightecora ;

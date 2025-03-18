@@ -1,5 +1,6 @@
 package com.moonstone.moonstonemod.item.man;
 
+import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.contents.ManBundleContents;
 import com.moonstone.moonstonemod.init.items.Drugs;
@@ -37,7 +38,6 @@ import java.util.Map;
 import java.util.Random;
 
 public abstract class ManDNA extends Item  implements ICurioItem {
-    public static final int lv = 10;
     public ManDNA(Properties properties) {
         super(properties);
     }
@@ -87,20 +87,28 @@ public abstract class ManDNA extends Item  implements ICurioItem {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+
         if (Screen.hasShiftDown()){
-            tooltipComponents.add(Component.literal(""));
-            tooltipComponents.add(Component.translatable("item.man.tool.string").withStyle(ChatFormatting.GOLD));
-            tooltipComponents.add(Component.literal(""));
-            if (getDrug()!=null) {
-                for (Item item : getDrug()) {
-                    ResourceLocation resourceLocation= BuiltInRegistries.ITEM.getKey(item);
-                    String s = resourceLocation.toString().replace(":",".");
-                    tooltipComponents.add(Component.translatable("item."+s).withStyle(ChatFormatting.GOLD));
-                }
+            ManBundleContents manBundleContents = stack.get(DataReg.man);
+            if (manBundleContents != null) {
+                manBundleContents.items().forEach((itemStack -> {
+                    if (!itemStack.isEmpty()) {
+                        tooltipComponents.addAll(itemStack.getTooltipLines(context, null, tooltipFlag));
+                    }
+                }));
             }
         }else {
             tooltipComponents.add(Component.translatable("key.keyboard.left.shift").withStyle(ChatFormatting.GOLD));
-
+        }
+        tooltipComponents.add(Component.literal(""));
+        tooltipComponents.add(Component.translatable("item.man.tool.string").withStyle(ChatFormatting.GOLD));
+        tooltipComponents.add(Component.literal(""));
+        if (getDrug()!=null) {
+            for (Item item : getDrug()) {
+                ResourceLocation resourceLocation= BuiltInRegistries.ITEM.getKey(item);
+                String s = resourceLocation.toString().replace(":",".");
+                tooltipComponents.add(Component.translatable("item."+s).withStyle(ChatFormatting.GOLD));
+            }
         }
     }
 

@@ -22,4 +22,10 @@ public class Drugs {
     public static final DeferredHolder<Item, ?> catalyst_for_life = REGISTRY.register("catalyst_for_life", ()->new ManDNA.Drug(List.of("item.catalyst_for_life.tool.string")));
 
 
+
+    public static final DeferredHolder<Item, ?> lymphadenopathy = REGISTRY.register("lymphadenopathy", ()->new ManDNA.Drug(List.of("item.lymphadenopathy.tool.string")));
+    public static final DeferredHolder<Item, ?> connective_tissue = REGISTRY.register("connective_tissue", ()->new ManDNA.Drug(List.of("item.connective_tissue.tool.string")));
+    public static final DeferredHolder<Item, ?> paralysis = REGISTRY.register("paralysis", ()->new ManDNA.Drug(List.of("item.paralysis.tool.string")));
+    public static final DeferredHolder<Item, ?> formative_cell = REGISTRY.register("formative_cell", ()->new ManDNA.Drug(List.of("item.formative_cell.tool.string")));
+
 }

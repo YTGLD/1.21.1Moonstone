@@ -16,6 +16,7 @@ import com.moonstone.moonstonemod.item.blood.magic.rage_blood_head;
 import com.moonstone.moonstonemod.item.blood.magic.undead_blood_charm;
 import com.moonstone.moonstonemod.item.coffin;
 import com.moonstone.moonstonemod.item.decorated.deceased_contract;
+import com.moonstone.moonstonemod.item.man.copy_dna;
 import com.moonstone.moonstonemod.item.man.health_dna;
 import com.moonstone.moonstonemod.item.man.run_dna;
 import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
@@ -128,6 +129,7 @@ public class NewEvent {
         pain_ring.Heal(event);
         pain_candle.Heal(event);
         health_dna.lymphatic(event);
+        copy_dna.formative_cell(event);
         health_dna.stem_cell_proliferation(event);
         if (event.getEntity() instanceof LivingEntity living){
             if (living.getAttribute(AttReg.heal)!=null){
@@ -219,6 +221,7 @@ public class NewEvent {
         run_dna.cp_energy(event);
         run_dna.hydrolysisDamage(event);
         run_dna.run(event);
+        copy_dna.connective_tissue(event);
 
 
 
