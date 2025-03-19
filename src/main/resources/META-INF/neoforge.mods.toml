@@ -3,7 +3,7 @@ loaderVersion = "[4,)"
 license = "All Rights Reserved"
 [[mods]] #mandatory
 modId = "moonstone" #mandatory
-version = "1.2.5.1-neoforge" #mandatory
+version = "1.2.5.5-neoforge" #mandatory
 displayName = "Moonstone" #mandatory
 authors = "Ytgld}" #optional
 description = '''${mod_description}'''

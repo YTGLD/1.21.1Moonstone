@@ -15,6 +15,7 @@ import com.moonstone.moonstonemod.init.moonstoneitem.Enchants;
 import com.moonstone.moonstonemod.init.moonstoneitem.LootReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Iplague;
 import com.moonstone.moonstonemod.item.man.ManDNA;
+import com.moonstone.moonstonemod.item.man.greed_dna;
 import com.moonstone.moonstonemod.item.maxitem.book.the_blood_book;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.Holder;
@@ -122,6 +123,7 @@ public class DungeonLoot extends LootModifier {
 
 
         if (idSting.contains("chests/")) {
+            greed_dna.iris_brain_off_brain_enhance(generatedLoot,entity);
             if (idSting.contains("treasure")){
                 addLoot(generatedLoot, random, Items.bat_cell.get(), entity, List.of(
                         Items.cell_blood_attack.get(),

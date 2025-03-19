@@ -36,4 +36,27 @@ public class Drugs {
     public static final DeferredHolder<Item, ?> abnormal_muscles = REGISTRY.register("abnormal_muscles", ()->new ManDNA.Drug(List.of("item.abnormal_muscles.tool.string")));
     public static final DeferredHolder<Item, ?> abnormal_endurance = REGISTRY.register("abnormal_endurance", ()->new ManDNA.Drug(List.of("item.abnormal_endurance.tool.string")));
 
+
+    public static final DeferredHolder<Item, ?> iris = REGISTRY.register("iris", ()->new ManDNA.Drug(List.of("item.iris.tool.string","item.iris.tool.string.1")));
+    public static final DeferredHolder<Item, ?> brain_off = REGISTRY.register("brain_off", ()->new ManDNA.Drug(List.of("item.brain_off.tool.string","item.brain_off.tool.string.1")));
+    public static final DeferredHolder<Item, ?> brain_enhance = REGISTRY.register("brain_enhance", ()->new ManDNA.Drug(List.of("item.brain_enhance.tool.string")));
+
+
+
+
+    public static final DeferredHolder<Item, ?> system_paralysis = REGISTRY.register("system_paralysis", ()->new ManDNA.Drug(List.of("item.system_paralysis.tool.string","item.system_paralysis.tool.string.1")));
+    public static final DeferredHolder<Item, ?> memory = REGISTRY.register("memory", ()->new ManDNA.Drug(List.of("item.memory.tool.string","item.memory.tool.string.1")));
+    public static final DeferredHolder<Item, ?> tissue_atrophy = REGISTRY.register("tissue_atrophy", ()->new ManDNA.Drug(List.of("item.tissue_atrophy.tool.string","item.tissue_atrophy.tool.string.1")));
+
+
+
+
+
+
+
+
+
+
+
+
 }

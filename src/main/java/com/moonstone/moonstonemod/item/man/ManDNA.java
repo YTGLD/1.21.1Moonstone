@@ -33,9 +33,7 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public abstract class ManDNA extends Item  implements ICurioItem {
     public ManDNA(Properties properties) {
@@ -151,7 +149,8 @@ public abstract class ManDNA extends Item  implements ICurioItem {
 
         public Drug(List<String> stringName) {
             super(new Properties().stacksTo(1).rarity(Rarity.RARE));
-            this.stringName = stringName;
+            this.stringName = stringName;new ArrayList<>(new LinkedHashSet<>(stringName));
+
         }
         @Override
         public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> pTooltipComponents, TooltipFlag tooltipFlag) {

@@ -171,6 +171,13 @@ public class Tab {
                 b.accept(new ItemStack(Drugs.self_correction.get()));
                 b.accept(new ItemStack(Drugs.abnormal_muscles.get()));
                 b.accept(new ItemStack(Drugs.abnormal_endurance.get()));
+                b.accept(new ItemStack(Drugs.iris.get()));
+                b.accept(new ItemStack(Drugs.brain_off.get()));
+                b.accept(new ItemStack(Drugs.brain_enhance.get()));
+
+                b.accept(new ItemStack(Drugs.system_paralysis.get()));
+                b.accept(new ItemStack(Drugs.memory.get()));
+                b.accept(new ItemStack(Drugs.tissue_atrophy.get()));
 
 
 
@@ -182,6 +189,16 @@ public class Tab {
             .title(Component.translatable("itemGroup.tabmoonstone"))
             .displayItems((a,b)->{
                 b.accept(new ItemStack(Items.book.get()));
+
+                b.accept(new ItemStack(Items.run_dna.get()));
+                b.accept(new ItemStack(Items.health_dna.get()));
+                b.accept(new ItemStack(Items.neuron_dna.get()));
+
+                b.accept(new ItemStack(Items.copy_dna.get()));
+                b.accept(new ItemStack(Items.attack_dna.get()));
+                b.accept(new ItemStack(Items.greed_dna.get()));
+
+
                 b.accept(new ItemStack(Items.universe.get()));
                 b.accept(new ItemStack(Items.magnet.get()));
                 b.accept(new ItemStack(Items.rage_magnet.get()));
@@ -191,11 +208,6 @@ public class Tab {
                 b.accept(new ItemStack(Items.rage_orb.get()));
                 b.accept(new ItemStack(Items.pain_candle.get()));
                 b.accept(new ItemStack(Items.pain_ring.get()));
-
-                b.accept(new ItemStack(Items.run_dna.get()));
-                b.accept(new ItemStack(Items.health_dna.get()));
-                b.accept(new ItemStack(Items.copy_dna.get()));
-                b.accept(new ItemStack(Items.attack_dna.get()));
 
 
                 b.accept(new ItemStack(Items.coffin_.get()));

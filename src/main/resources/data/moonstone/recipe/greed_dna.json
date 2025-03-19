@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "moonstone:mblock"
+    },
+    {
+      "item": "moonstone:biggreedcrystal"
+    },
+    {
+      "item": "moonstone:neuron_dna"
+    },
+    {
+      "item": "moonstone:ectoplasmcube"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "moonstone:greed_dna"
+  }
+}

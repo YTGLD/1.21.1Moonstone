@@ -1638,10 +1638,10 @@
 
 
 
-  "moonstone.drug.string": "可以右键放入人类基因块中",
+  "moonstone.drug.string": "可以右键放入玩家基因组中",
   "item.man.tool.string": "支持植入下列药物：",
-  "curios.modifiers.man": "植入人类基因时",
-  "curios.identifier.man": "人类基因槽",
+  "curios.modifiers.man": "植入玩家基因组时",
+  "curios.identifier.man": "玩家基因槽",
 
   "item.moonstone.run_dna": "耐力强化基因",
   "item.run_dna.tool.string": "增加10%疾跑时的抗性",
@@ -1699,10 +1699,47 @@
   "item.abnormal_endurance.tool.string": "增加20%攻击伤害，减少20%最大生命值",
 
 
+  "moonstone.greed_dna.event": "战利品暴击已触发！",
+
+  "item.moonstone.greed_dna": "腐衰贪欲基因",
+  "item.greed_dna.tool.string": "每开取一个新的战利品箱",
+  "item.greed_dna.tool.string.1": "都会增加战利品暴击的概率（3%）",
+  "item.greed_dna.tool.string.2": "战利品暴击概率不超过30%",
+  "item.greed_dna.tool.string.3": "每次触发战利品暴击，都会使箱子里的部分战利品数量翻倍",
+  "item.greed_dna.tool.string.4": "触发战利品暴击后，概率清零",
+
+  "item.moonstone.iris": "虹膜异变",
+  "item.moonstone.brain_off": "脑组织萎缩",
+  "item.moonstone.brain_enhance": "脑功能增强",
+  "item.iris.tool.string": "单个战利品箱给予概率增加4%,最大战利品暴击率体提高33%,减少3级时运和抢夺等级",
+  "item.iris.tool.string.1": "减少3级时运和抢夺等级",
+
+
+  "item.brain_off.tool.string": "单个战利品箱给予概率减少1%，增加4级时运和抢夺等级",
+  "item.brain_off.tool.string.1": "增加4级时运和抢夺等级",
+
+  "item.brain_enhance.tool.string": "战利品暴击率始终为10%",
 
 
 
+  "item.moonstone.neuron_dna": "神经元强化基因",
+  "item.neuron_dna.tool.string": "减少1级时运和抢夺",
+  "item.neuron_dna.tool.string.1": "增加5%掠夺暴击率 ",
+  "item.neuron_dna.tool.string.2": "杀死生物根据此暴击率触发掠夺暴击并使掉落战利品数量翻倍",
+  "item.neuron_dna.tool.string.4": "抢夺暴击率：",
+  "item.moonstone.system_paralysis": "神经系统瘫痪",
+  "item.moonstone.memory": "记忆重构",
+  "item.moonstone.tissue_atrophy": "组织萎缩",
 
+  "item.system_paralysis.tool.string": "抢夺等级减少1级",
+  "item.system_paralysis.tool.string.1": "每级抢夺提供2%的掠夺暴击率",
+
+  "item.memory.tool.string": "杀死生物提供1%的掠夺暴击率",
+  "item.memory.tool.string.1": "触发发掠夺暴击后概率清零",
+
+
+  "item.tissue_atrophy.tool.string": "增加3级时运和抢夺",
+  "item.tissue_atrophy.tool.string.1": "战利品暴击率始终为0%",
 
 
   "item.moonstone.rage_bottle": "黄金瓶",

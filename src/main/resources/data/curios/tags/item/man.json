@@ -4,7 +4,9 @@
     "moonstone:run_dna",
     "moonstone:health_dna",
     "moonstone:copy_dna",
-    "moonstone:attack_dna"
+    "moonstone:attack_dna",
+    "moonstone:greed_dna",
+    "moonstone:neuron_dna"
 
   ]
 }

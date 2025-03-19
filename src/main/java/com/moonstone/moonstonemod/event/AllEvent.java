@@ -1584,14 +1584,16 @@ public class AllEvent {
     public  void PlayerLoggedInEvent(PlayerEvent.PlayerLoggedInEvent event) {
         Player player = event.getEntity();
         if (!player.getTags().contains("welcome_to_moonstone")) {
-            int a = Mth.nextInt(RandomSource.create(), 1, 2);
+            int a = Mth.nextInt(RandomSource.create(), 1, 3);
             if (a == 1) {
                 player.addItem(Items.run_dna.get().getDefaultInstance());
             }
             if (a == 2) {
                 player.addItem(Items.health_dna.get().getDefaultInstance());
             }
-
+            if (a == 2) {
+                player.addItem(Items.neuron_dna.get().getDefaultInstance());
+            }
 
             player.addItem(Items.deceased_contract.get().getDefaultInstance());
             player.addTag("welcome_to_moonstone");

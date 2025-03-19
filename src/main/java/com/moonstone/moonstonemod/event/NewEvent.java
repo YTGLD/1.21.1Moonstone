@@ -16,10 +16,7 @@ import com.moonstone.moonstonemod.item.blood.magic.rage_blood_head;
 import com.moonstone.moonstonemod.item.blood.magic.undead_blood_charm;
 import com.moonstone.moonstonemod.item.coffin;
 import com.moonstone.moonstonemod.item.decorated.deceased_contract;
-import com.moonstone.moonstonemod.item.man.attack_dna;
-import com.moonstone.moonstonemod.item.man.copy_dna;
-import com.moonstone.moonstonemod.item.man.health_dna;
-import com.moonstone.moonstonemod.item.man.run_dna;
+import com.moonstone.moonstonemod.item.man.*;
 import com.moonstone.moonstonemod.item.maxitem.book.nine_sword_book;
 import com.moonstone.moonstonemod.item.maxitem.*;
 import com.moonstone.moonstonemod.item.maxitem.rage.*;
@@ -165,14 +162,17 @@ public class NewEvent {
         coffin.coffins(event);
         rage_charm.die(event);
         rage_lock.LivingDeathEvent(event);
-
+        neuron_dna.memory(event);
     }
     public void addV(ItemStack stack,Item Dhis,ItemTooltipEvent event,String string){
         if (stack.is(Dhis)) {
             event.getToolTip().add(1,Component.translatable(string).withStyle(ChatFormatting.RED));
         }
     }
-
+    @SubscribeEvent
+    public   void neuron_dna_main(LivingDropsEvent event){
+        neuron_dna.neuron_dna_main(event);
+    }
     @SubscribeEvent
     public void useBow(LivingEntityUseItemEvent.Start event){
         rage_head.useBow(event);
