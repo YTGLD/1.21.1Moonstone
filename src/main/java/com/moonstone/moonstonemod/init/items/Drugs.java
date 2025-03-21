@@ -54,6 +54,7 @@ public class Drugs {
 
 
 
+    public static final DeferredHolder<Item, ?> eye_system = REGISTRY.register("eye_system", ()->new ManDNA.Drug(List.of("item.eye_system.tool.string")));
 
 
 

@@ -50,6 +50,9 @@ public abstract class MoonTamableAnimal extends TamableAnimal {
     @Override
     public void tick() {
         super.tick();
+        if (this.tickCount<=10){
+            this.heal(1000);
+        }
         if (this.getOwner()!=null&&this.getTarget()!=null){
             if (this.getTarget().is(this.getOwner())){
                 this.setTarget(null);

@@ -52,81 +52,77 @@ public class health_dna extends ManDNA {
 
     public  static void lymphatic(LivingHealEvent event){
         if (event.getEntity() instanceof Player player) {
-            if (Handler.hascurio(player, Items.health_dna.get())) {
-                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                        ICurioStacksHandler stacksHandler = entry.getValue();
-                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                            ItemStack stack = stackHandler.getStackInSlot(i);
-                            if (stack.is(Items.health_dna.get())) {
-                                ManBundleContents manBundleContents = stack.get(DataReg.man);
-                                if (manBundleContents != null) {
-                                    manBundleContents.items().forEach((itemStack -> {
-                                        if (itemStack.is(Drugs.lymphatic)) {
-                                            List<Integer> integersHealth = new ArrayList<>();
-                                            for (MobEffectInstance effect : player.getActiveEffects()) {
-                                                if (effect != null
-                                                        && !effect.getEffect().value().isBeneficial()) {
-                                                    integersHealth.add(1);
-                                                }
+            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                    ICurioStacksHandler stacksHandler = entry.getValue();
+                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                        ItemStack stack = stackHandler.getStackInSlot(i);
+                        if (stack.getItem() instanceof health_dna) {
+                            ManBundleContents manBundleContents = stack.get(DataReg.man);
+                            if (manBundleContents != null) {
+                                manBundleContents.items().forEach((itemStack -> {
+                                    if (itemStack.is(Drugs.lymphatic)) {
+                                        List<Integer> integersHealth = new ArrayList<>();
+                                        for (MobEffectInstance effect : player.getActiveEffects()) {
+                                            if (effect != null
+                                                    && !effect.getEffect().value().isBeneficial()) {
+                                                integersHealth.add(1);
                                             }
-                                            float heal = 0;
-                                            for (int ignored : integersHealth){
-                                                heal+=5;
-                                            }
-                                            heal/=100;
-
-                                            event.setAmount(event.getAmount()*(1+heal));
                                         }
-                                    }));
-                                }
+                                        float heal = 0;
+                                        for (int ignored : integersHealth) {
+                                            heal += 5;
+                                        }
+                                        heal /= 100;
+
+                                        event.setAmount(event.getAmount() * (1 + heal));
+                                    }
+                                }));
                             }
                         }
                     }
-                });
-            }
+                }
+            });
         }
     }
     public  static void stem_cell_proliferation(LivingHealEvent event){
         if (event.getEntity() instanceof Player player) {
-            if (Handler.hascurio(player, Items.health_dna.get())) {
-                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                        ICurioStacksHandler stacksHandler = entry.getValue();
-                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                            ItemStack stack = stackHandler.getStackInSlot(i);
-                            if (stack.is(Items.health_dna.get())) {
-                                ManBundleContents manBundleContents = stack.get(DataReg.man);
-                                if (manBundleContents != null) {
-                                    manBundleContents.items().forEach((itemStack -> {
-                                        if (itemStack.is(Drugs.stem_cell_proliferation)) {
+            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                    ICurioStacksHandler stacksHandler = entry.getValue();
+                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                        ItemStack stack = stackHandler.getStackInSlot(i);
+                        if (stack.getItem() instanceof health_dna) {
+                            ManBundleContents manBundleContents = stack.get(DataReg.man);
+                            if (manBundleContents != null) {
+                                manBundleContents.items().forEach((itemStack -> {
+                                    if (itemStack.is(Drugs.stem_cell_proliferation)) {
 
-                                            float lv = player.getHealth() / player.getMaxHealth();
+                                        float lv = player.getHealth() / player.getMaxHealth();
 
-                                            lv *= 100;
-                                            float now = (100 -(lv));
-                                            now/=100f;
-                                            now*=0.5f;
-                                            event.setAmount(event.getAmount()*(1+now));
+                                        lv *= 100;
+                                        float now = (100 - (lv));
+                                        now /= 100f;
+                                        now *= 0.5f;
+                                        event.setAmount(event.getAmount() * (1 + now));
 
-                                        }
-                                    }));
-                                }
+                                    }
+                                }));
                             }
                         }
                     }
-                });
-            }
+                }
+            });
         }
     }
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier>modifierMultimap = HashMultimap.create();
-        modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 8, AttributeModifier.Operation.ADD_VALUE));
+        modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("health"+this.getDescriptionId()), 6, AttributeModifier.Operation.ADD_VALUE));
         CuriosApi.getCuriosInventory(slotContext.entity()).ifPresent(handler -> {
             Map<String, ICurioStacksHandler> curios = handler.getCurios();
             for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
@@ -139,7 +135,7 @@ public class health_dna extends ManDNA {
                         if (manBundleContents != null) {
                             manBundleContents.items().forEach((itemStack -> {
                                 if (itemStack.is(Drugs.catalyst_for_life)) {
-                                    modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("heathgene"+this.getDescriptionId()), 10, AttributeModifier.Operation.ADD_VALUE));
+                                    modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("heathgene"+this.getDescriptionId()), 4, AttributeModifier.Operation.ADD_VALUE));
                                 }
                             }));
                         }

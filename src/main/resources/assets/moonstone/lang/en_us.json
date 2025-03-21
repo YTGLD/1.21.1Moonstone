@@ -1667,7 +1667,7 @@
   "item.stem_cell_proliferation.tool.string": "每损失10%生命值，加5%治疗",
   "item.lymphatic.tool.string": "每存在1个负面状态，治疗加5%",
   "item.abnormal.tool.string": "正面药水状态时长减少50%，任何效果状态结束时恢复6点生命值",
-  "item.catalyst_for_life.tool.string": "异变催化剂：增加10点生命值",
+  "item.catalyst_for_life.tool.string": "异变催化剂：增加4点生命值",
 
   "item.moonstone.copy_dna": "复制强化基因",
   "item.copy_dna.tool.string": "增加10点最大生命值，减少10%治疗",
@@ -1711,11 +1711,11 @@
   "item.moonstone.iris": "虹膜异变",
   "item.moonstone.brain_off": "脑组织萎缩",
   "item.moonstone.brain_enhance": "脑功能增强",
-  "item.iris.tool.string": "单个战利品箱给予概率增加4%,最大战利品暴击率体提高33%,减少3级时运和抢夺等级",
+  "item.iris.tool.string": "单个战利品箱给予概率增加4%,最大战利品暴击率体提高33%",
   "item.iris.tool.string.1": "减少3级时运和抢夺等级",
 
 
-  "item.brain_off.tool.string": "单个战利品箱给予概率减少1%，增加4级时运和抢夺等级",
+  "item.brain_off.tool.string": "单个战利品箱给予概率减少1%",
   "item.brain_off.tool.string.1": "增加4级时运和抢夺等级",
 
   "item.brain_enhance.tool.string": "战利品暴击率始终为10%",
@@ -1740,6 +1740,25 @@
 
   "item.tissue_atrophy.tool.string": "增加3级时运和抢夺",
   "item.tissue_atrophy.tool.string.1": "战利品暴击率始终为0%",
+
+
+  "item.moonstone.eye_dna": "感官系统强化基因",
+  "item.eye_dna.tool.string": "提高水下视力能力，允许在水中看清物体",
+
+  "item.moonstone.eye_lava_dna": "脑皮质异变基因",
+  "item.eye_lava_dna.tool.string": "提供极高的视能力，允许在任何流体中看清物体",
+
+
+  "item.moonstone.eye_system": "视觉系统异常",
+  "item.eye_system.tool.string": "提供夜视效果",
+
+
+
+
+
+
+
+
 
 
   "item.moonstone.rage_bottle": "黄金瓶",

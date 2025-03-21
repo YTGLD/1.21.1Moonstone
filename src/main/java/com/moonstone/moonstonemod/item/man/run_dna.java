@@ -42,32 +42,6 @@ public class run_dna extends ManDNA{
     }
     public  static void phosphorylationDamage(LivingIncomingDamageEvent event){
         if (event.getSource().getEntity() instanceof Player player) {
-            if (Handler.hascurio(player, Items.run_dna.get())) {
-                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                        ICurioStacksHandler stacksHandler = entry.getValue();
-                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                            ItemStack stack = stackHandler.getStackInSlot(i);
-                            if (stack.is(Items.run_dna.get())) {
-                                ManBundleContents manBundleContents = stack.get(DataReg.man);
-                                if (manBundleContents != null) {
-                                    manBundleContents.items().forEach((itemStack -> {
-                                        if (itemStack.is(Drugs.phosphorylation)) {
-                                            event.setAmount(event.getAmount()*1.2f);
-                                        }
-                                    }));
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-    }
-    public  static void phosphorylation(CallbackInfoReturnable<Float> cir,Player player){
-        if (Handler.hascurio(player, Items.run_dna.get())) {
             CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
                 Map<String, ICurioStacksHandler> curios = handler.getCurios();
                 for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
@@ -75,12 +49,12 @@ public class run_dna extends ManDNA{
                     IDynamicStackHandler stackHandler = stacksHandler.getStacks();
                     for (int i = 0; i < stacksHandler.getSlots(); i++) {
                         ItemStack stack = stackHandler.getStackInSlot(i);
-                        if (stack.is(Items.run_dna.get())) {
+                        if (stack.getItem() instanceof run_dna) {
                             ManBundleContents manBundleContents = stack.get(DataReg.man);
                             if (manBundleContents != null) {
                                 manBundleContents.items().forEach((itemStack -> {
-                                    if (itemStack.is( Drugs.phosphorylation)){
-                                        cir.setReturnValue(cir.getReturnValue()/2);
+                                    if (itemStack.is(Drugs.phosphorylation)) {
+                                        event.setAmount(event.getAmount() * 1.2f);
                                     }
                                 }));
                             }
@@ -90,34 +64,54 @@ public class run_dna extends ManDNA{
             });
         }
     }
+    public  static void phosphorylation(CallbackInfoReturnable<Float> cir,Player player){
+        CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+            Map<String, ICurioStacksHandler> curios = handler.getCurios();
+            for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                ICurioStacksHandler stacksHandler = entry.getValue();
+                IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                    ItemStack stack = stackHandler.getStackInSlot(i);
+                    if (stack.getItem() instanceof run_dna) {
+                        ManBundleContents manBundleContents = stack.get(DataReg.man);
+                        if (manBundleContents != null) {
+                            manBundleContents.items().forEach((itemStack -> {
+                                if (itemStack.is( Drugs.phosphorylation)){
+                                    cir.setReturnValue(cir.getReturnValue()/2);
+                                }
+                            }));
+                        }
+                    }
+                }
+            }
+        });
+    }
 
 
     public  static void cp_energy(LivingIncomingDamageEvent event){
         if (event.getSource().getEntity() instanceof Player player) {
-            if (Handler.hascurio(player, Items.run_dna.get())) {
-                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                        ICurioStacksHandler stacksHandler = entry.getValue();
-                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                            ItemStack stack = stackHandler.getStackInSlot(i);
-                            if (stack.is(Items.run_dna.get())) {
-                                ManBundleContents manBundleContents = stack.get(DataReg.man);
-                                if (manBundleContents != null) {
-                                    manBundleContents.items().forEach((itemStack -> {
-                                        if (itemStack.is( Drugs.cp_energy)){
-                                            if (player.isSprinting()){
-                                                event.setAmount(event.getAmount()*1.1f);
-                                            }
+            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                    ICurioStacksHandler stacksHandler = entry.getValue();
+                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                        ItemStack stack = stackHandler.getStackInSlot(i);
+                        if (stack.getItem() instanceof run_dna) {
+                            ManBundleContents manBundleContents = stack.get(DataReg.man);
+                            if (manBundleContents != null) {
+                                manBundleContents.items().forEach((itemStack -> {
+                                    if (itemStack.is(Drugs.cp_energy)) {
+                                        if (player.isSprinting()) {
+                                            event.setAmount(event.getAmount() * 1.1f);
                                         }
-                                    }));
-                                }
+                                    }
+                                }));
                             }
                         }
                     }
-                });
-            }
+                }
+            });
         }
     }
     public  static void run(LivingIncomingDamageEvent event){
@@ -130,34 +124,54 @@ public class run_dna extends ManDNA{
         }
     }
     public  static void protein(CallbackInfoReturnable<Float> cir,Player player){
-        if (Handler.hascurio(player, Items.run_dna.get())) {
-            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-                Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                    ICurioStacksHandler stacksHandler = entry.getValue();
-                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                        ItemStack stack = stackHandler.getStackInSlot(i);
-                        if (stack.is(Items.run_dna.get())) {
-                            ManBundleContents manBundleContents = stack.get(DataReg.man);
-                            if (manBundleContents != null) {
-                                manBundleContents.items().forEach((itemStack -> {
-                                    if (itemStack.is( Drugs.protein)){
-                                        if (player.isSprinting()){
-                                            cir.setReturnValue(cir.getReturnValue()*1.2f);
-                                        }
+        CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+            Map<String, ICurioStacksHandler> curios = handler.getCurios();
+            for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                ICurioStacksHandler stacksHandler = entry.getValue();
+                IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                    ItemStack stack = stackHandler.getStackInSlot(i);
+                    if (stack.getItem() instanceof run_dna) {
+                        ManBundleContents manBundleContents = stack.get(DataReg.man);
+                        if (manBundleContents != null) {
+                            manBundleContents.items().forEach((itemStack -> {
+                                if (itemStack.is( Drugs.protein)){
+                                    if (player.isSprinting()){
+                                        cir.setReturnValue(cir.getReturnValue()*1.2f);
                                     }
-                                }));
-                            }
+                                }
+                            }));
                         }
                     }
                 }
-            });
-        }
+            }
+        });
     }
 
     public  static void hydrolysis(CallbackInfoReturnable<Float> cir,Player player){
-        if (Handler.hascurio(player, Items.run_dna.get())) {
+        CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+            Map<String, ICurioStacksHandler> curios = handler.getCurios();
+            for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                ICurioStacksHandler stacksHandler = entry.getValue();
+                IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                    ItemStack stack = stackHandler.getStackInSlot(i);
+                    if (stack.getItem() instanceof run_dna) {
+                        ManBundleContents manBundleContents = stack.get(DataReg.man);
+                        if (manBundleContents != null) {
+                            manBundleContents.items().forEach((itemStack -> {
+                                if (itemStack.is(Drugs.hydrolysis)) {
+                                    cir.setReturnValue(cir.getReturnValue() * 1.5f);
+                                }
+                            }));
+                        }
+                    }
+                }
+            }
+        });
+    }
+    public  static void hydrolysisDamage(LivingIncomingDamageEvent event){
+        if (event.getSource().getEntity() instanceof Player player) {
             CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
                 Map<String, ICurioStacksHandler> curios = handler.getCurios();
                 for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
@@ -165,12 +179,12 @@ public class run_dna extends ManDNA{
                     IDynamicStackHandler stackHandler = stacksHandler.getStacks();
                     for (int i = 0; i < stacksHandler.getSlots(); i++) {
                         ItemStack stack = stackHandler.getStackInSlot(i);
-                        if (stack.is(Items.run_dna.get())) {
+                        if (stack.getItem() instanceof run_dna) {
                             ManBundleContents manBundleContents = stack.get(DataReg.man);
                             if (manBundleContents != null) {
                                 manBundleContents.items().forEach((itemStack -> {
                                     if (itemStack.is(Drugs.hydrolysis)) {
-                                        cir.setReturnValue(cir.getReturnValue() * 1.5f);
+                                        event.setAmount(event.getAmount() * 0.9f);
                                     }
                                 }));
                             }
@@ -178,32 +192,6 @@ public class run_dna extends ManDNA{
                     }
                 }
             });
-        }
-    }
-    public  static void hydrolysisDamage(LivingIncomingDamageEvent event){
-        if (event.getSource().getEntity() instanceof Player player) {
-            if (Handler.hascurio(player, Items.run_dna.get())) {
-                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                        ICurioStacksHandler stacksHandler = entry.getValue();
-                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                            ItemStack stack = stackHandler.getStackInSlot(i);
-                            if (stack.is(Items.run_dna.get())) {
-                                ManBundleContents manBundleContents = stack.get(DataReg.man);
-                                if (manBundleContents != null) {
-                                    manBundleContents.items().forEach((itemStack -> {
-                                        if (itemStack.is( Drugs.hydrolysis)) {
-                                            event.setAmount(event.getAmount() * 0.9f);
-                                        }
-                                    }));
-                                }
-                            }
-                        }
-                    }
-                });
-            }
         }
     }
 

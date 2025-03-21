@@ -149,7 +149,7 @@ public abstract class ManDNA extends Item  implements ICurioItem {
 
         public Drug(List<String> stringName) {
             super(new Properties().stacksTo(1).rarity(Rarity.RARE));
-            this.stringName = stringName;new ArrayList<>(new LinkedHashSet<>(stringName));
+            this.stringName = new ArrayList<>(new LinkedHashSet<>(stringName));
 
         }
         @Override

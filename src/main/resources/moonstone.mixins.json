@@ -17,6 +17,7 @@
     "WardenMixin"
   ],
   "client": [
+    "client.CameraMixin",
     "client.GameRendererMixin",
     "client.GuiGraphicsMixin",
     "client.ItemRendererMixin",

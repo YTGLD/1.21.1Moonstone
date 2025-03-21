@@ -29,10 +29,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class attack_dna extends ManDNA {
+public class attack_dna extends run_dna {
 
     public attack_dna() {
-        super(new Properties().stacksTo(1).rarity(Rarity.EPIC).component(DataReg.man, ManBundleContents.EMPTY));
     }
 
     @Override
@@ -41,7 +40,11 @@ public class attack_dna extends ManDNA {
                 Drugs.reverse_correction.get(),//逆修正强化：普通攻击有15%的概率造成暴击
                 Drugs.self_correction.get(),//自修正强化：暴击有概率造成额外25%的伤害
                 Drugs.abnormal_muscles.get(),//反常肌肉强化：疾跑时伤害增加30%
-                Drugs.abnormal_endurance.get()//反常耐力：增加20%攻击伤害，减少20%最大生命值
+                Drugs.abnormal_endurance.get(),//反常耐力：增加20%攻击伤害，减少20%最大生命值
+                Drugs.protein.get(),//蛋白质
+                Drugs.hydrolysis.get(),//水解
+                Drugs.cp_energy.get(),//cp能力
+                Drugs.phosphorylation.get()//异常磷酸化
         );
     }
     public static void abnormal_muscles(LivingIncomingDamageEvent event) {

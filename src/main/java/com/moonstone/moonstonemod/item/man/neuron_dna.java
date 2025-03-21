@@ -57,84 +57,80 @@ public class neuron_dna  extends ManDNA {
     }
     public  static void memory(LivingDeathEvent event){
         if (event.getSource().getEntity() instanceof Player player) {
-            if (Handler.hascurio(player, Items.neuron_dna.get())) {
-                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                        ICurioStacksHandler stacksHandler = entry.getValue();
-                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                            ItemStack stack = stackHandler.getStackInSlot(i);
-                            if (stack.is(Items.neuron_dna.get())) {
-                                ManBundleContents manBundleContents = stack.get(DataReg.man);
-                                if (manBundleContents != null) {
-                                    manBundleContents.items().forEach((itemStack -> {
-                                        if (itemStack.is(Drugs.memory)){
-                                            if (stack.get(DataReg.tag) != null&&stack.get(DataReg.tag).getInt(name)<100) {
-                                                stack.get(DataReg.tag).putInt(name,stack.get(DataReg.tag).getInt(name)+1);
-                                            }else {
-                                                stack.set(DataReg.tag,new CompoundTag());
-                                            }
+            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                    ICurioStacksHandler stacksHandler = entry.getValue();
+                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                        ItemStack stack = stackHandler.getStackInSlot(i);
+                        if (stack.getItem() instanceof neuron_dna) {
+                            ManBundleContents manBundleContents = stack.get(DataReg.man);
+                            if (manBundleContents != null) {
+                                manBundleContents.items().forEach((itemStack -> {
+                                    if (itemStack.is(Drugs.memory)) {
+                                        if (stack.get(DataReg.tag) != null && stack.get(DataReg.tag).getInt(name) < 100) {
+                                            stack.get(DataReg.tag).putInt(name, stack.get(DataReg.tag).getInt(name) + 1);
+                                        } else {
+                                            stack.set(DataReg.tag, new CompoundTag());
                                         }
-                                    }));
-                                }
+                                    }
+                                }));
                             }
                         }
                     }
-                });
-            }
+                }
+            });
         }
     }
 
     public  static void neuron_dna_main(LivingDropsEvent event){
         if (event.getSource().getEntity() instanceof Player player) {
-            if (Handler.hascurio(player, Items.neuron_dna.get())) {
-                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
-                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                        ICurioStacksHandler stacksHandler = entry.getValue();
-                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                            ItemStack stack = stackHandler.getStackInSlot(i);
-                            if (stack.is(Items.neuron_dna.get())) {
-                                if (stack.get(DataReg.tag)!=null) {
-                                    ManBundleContents manBundleContents = stack.get(DataReg.man);
-                                    if (manBundleContents != null) {
-                                        Holder.Reference<Enchantment> lootHolder = player.level().registryAccess()
-                                                .registryOrThrow(Registries.ENCHANTMENT)
-                                                .getHolderOrThrow(Enchantments.LOOTING);
+            CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                    ICurioStacksHandler stacksHandler = entry.getValue();
+                    IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                    for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                        ItemStack stack = stackHandler.getStackInSlot(i);
+                        if (stack.getItem() instanceof neuron_dna) {
+                            if (stack.get(DataReg.tag) != null) {
+                                ManBundleContents manBundleContents = stack.get(DataReg.man);
+                                if (manBundleContents != null) {
+                                    Holder.Reference<Enchantment> lootHolder = player.level().registryAccess()
+                                            .registryOrThrow(Registries.ENCHANTMENT)
+                                            .getHolderOrThrow(Enchantments.LOOTING);
 
-                                        int loot = 0;
-                                        loot += handler.getLootingLevel(null);
-                                        int lv = 5;
-                                        if (stack.get(DataReg.tag).getBoolean("system_paralysis")) {
-                                            lv += ((player.getMainHandItem().getEnchantmentLevel(lootHolder) + loot) * 2);
+                                    int loot = 0;
+                                    loot += handler.getLootingLevel(null);
+                                    int lv = 5;
+                                    if (stack.get(DataReg.tag).getBoolean("system_paralysis")) {
+                                        lv += ((player.getMainHandItem().getEnchantmentLevel(lootHolder) + loot) * 2);
+                                    }
+                                    if (stack.get(DataReg.tag).getBoolean("memory")) {
+                                        lv += stack.get(DataReg.tag).getInt(name);
+                                    }
+                                    if (stack.get(DataReg.tag).getBoolean("tissue_atrophy")) {
+                                        lv = 0;
+                                    }
+                                    System.out.println(lv);
+                                    if (new Random().nextInt(100) < lv) {
+                                        List<ItemEntity> list = new ArrayList<>();
+                                        for (ItemEntity entity : event.getDrops()) {
+                                            ItemEntity item = entity.copy();
+                                            list.add(item);
                                         }
-                                        if (stack.get(DataReg.tag).getBoolean("memory")) {
-                                            lv += stack.get(DataReg.tag).getInt(name);
-                                        }
-                                        if (stack.get(DataReg.tag).getBoolean("tissue_atrophy")) {
-                                            lv = 0;
-                                        }
-                                        System.out.println(lv);
-                                        if (new Random().nextInt(100) < lv) {
-                                            List<ItemEntity> list = new ArrayList<>();
-                                            for (ItemEntity entity : event.getDrops()) {
-                                                ItemEntity item = entity.copy();
-                                                list.add(item);
-                                            }
-                                            event.getDrops().addAll(list);
-                                            if (stack.get(DataReg.tag) != null) {
-                                                stack.get(DataReg.tag).remove(name);
-                                            }
+                                        event.getDrops().addAll(list);
+                                        if (stack.get(DataReg.tag) != null) {
+                                            stack.get(DataReg.tag).remove(name);
                                         }
                                     }
                                 }
                             }
                         }
                     }
-                });
-            }
+                }
+            });
         }
     }
     @Override

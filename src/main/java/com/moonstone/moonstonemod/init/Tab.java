@@ -193,10 +193,12 @@ public class Tab {
                 b.accept(new ItemStack(Items.run_dna.get()));
                 b.accept(new ItemStack(Items.health_dna.get()));
                 b.accept(new ItemStack(Items.neuron_dna.get()));
+                b.accept(new ItemStack(Items.eye_dna.get()));
 
                 b.accept(new ItemStack(Items.copy_dna.get()));
                 b.accept(new ItemStack(Items.attack_dna.get()));
                 b.accept(new ItemStack(Items.greed_dna.get()));
+                b.accept(new ItemStack(Items.eye_lava_dna.get()));
 
 
                 b.accept(new ItemStack(Items.universe.get()));

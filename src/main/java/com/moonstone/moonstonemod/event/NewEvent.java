@@ -211,7 +211,6 @@ public class NewEvent {
         nightmare_base_insight_insane.damage(event);
         nightmare_base_start.damage(event);
         nightmare_base_start_pod.damage(event);
-        nightmare_base_black_eye.damage(event);
         nightmare_axe.att(event);
         immortal.hEvt(event);
         undead_blood_charm.LivingIncomingDamageEvent(event);

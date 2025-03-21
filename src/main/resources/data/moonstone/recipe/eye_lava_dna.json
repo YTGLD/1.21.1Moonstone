@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "moonstone:eye_dna"
+    },
+    {
+      "item": "minecraft:ender_eye"
+    },
+    {
+      "item": "moonstone:ectoplasmcube"
+    }
+  ],
+  "result": {
+    "id": "moonstone:eye_lava_dna",
+    "count": 1
+  }
+}

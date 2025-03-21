@@ -33,10 +33,9 @@ import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 import java.util.List;
 import java.util.Map;
 
-public class copy_dna extends ManDNA {
+public class copy_dna extends health_dna {
 
     public copy_dna() {
-        super(new Properties().stacksTo(1).rarity(Rarity.EPIC).component(DataReg.man, ManBundleContents.EMPTY));
     }
 
     @Override
@@ -45,7 +44,11 @@ public class copy_dna extends ManDNA {
                 Drugs.lymphadenopathy.get(),//淋巴结肿大：减少66%所有药水效果持续时间，任何效果结束时恢复5%最大生命值
                 Drugs.connective_tissue.get(),//结缔组织增生：减少20%弹射物伤害，受到弹射物伤害时恢复2点生命值
                 Drugs.paralysis.get(),//免疫瘫痪：增加10点生命值，减少10%治疗
-                Drugs.formative_cell.get()//形成细胞激增：生命值低于50%时，增加40%治疗
+                Drugs.formative_cell.get(),//形成细胞激增：生命值低于50%时，增加40%治疗
+                Drugs.stem_cell_proliferation.get(),//干细胞激增：每损失10%生命值，加5%治疗
+                Drugs.lymphatic.get(),//淋巴因子释放：每存在1个负面状态，治疗加5%
+                Drugs.abnormal.get(),//反常态病变：正面药水状态时长减少50%，任何效果状态结束时恢复6点生命值
+                Drugs.catalyst_for_life.get()//异变催化剂：增加10点生命值
         );
     }
 
@@ -111,8 +114,8 @@ public class copy_dna extends ManDNA {
 
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
-        Multimap<Holder<Attribute>, AttributeModifier>modifierMultimap = HashMultimap.create();
-        modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 10, AttributeModifier.Operation.ADD_VALUE));
+        Multimap<Holder<Attribute>, AttributeModifier>modifierMultimap = super.getAttributeModifiers(slotContext, id, stack);
+        modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), 8, AttributeModifier.Operation.ADD_VALUE));
         modifierMultimap.put(AttReg.heal, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+this.getDescriptionId()), -0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
 

@@ -6,7 +6,8 @@
     "moonstone:copy_dna",
     "moonstone:attack_dna",
     "moonstone:greed_dna",
-    "moonstone:neuron_dna"
-
+    "moonstone:neuron_dna",
+    "moonstone:eye_dna",
+    "moonstone:eye_lava_dna"
   ]
 }
