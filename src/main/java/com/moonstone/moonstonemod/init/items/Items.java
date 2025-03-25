@@ -2,14 +2,15 @@ package com.moonstone.moonstonemod.init.items;
 
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.book;
+import com.moonstone.moonstonemod.client.Blood;
+import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.BloodItem;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.apple;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.medicinebox;
+import com.moonstone.moonstonemod.item.*;
 import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
 import com.moonstone.moonstonemod.item.blood.magic.undead_blood_charm;
-import com.moonstone.moonstonemod.item.bloodvirus;
-import com.moonstone.moonstonemod.item.coffin;
 import com.moonstone.moonstonemod.item.ectoplasm.*;
 import com.moonstone.moonstonemod.item.ectoplasm.soul.soulbattery;
 import com.moonstone.moonstonemod.item.ectoplasm.soul.soulcube;
@@ -24,7 +25,6 @@ import com.moonstone.moonstonemod.item.maxitem.rage.*;
 import com.moonstone.moonstonemod.item.maxitem.uncommon.common.*;
 import com.moonstone.moonstonemod.item.maxitem.uncommon.magnet;
 import com.moonstone.moonstonemod.item.nanodoom.*;
-import com.moonstone.moonstonemod.item.necora;
 import com.moonstone.moonstonemod.item.nightmare.*;
 import com.moonstone.moonstonemod.item.nightmare.super_nightmare.*;
 import com.moonstone.moonstonemod.item.plague.ALL.*;
@@ -41,13 +41,15 @@ import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.me.watergen;
 import com.moonstone.moonstonemod.item.plague.TheNecora.god.*;
 import com.moonstone.moonstonemod.item.plague.crafting_box;
 import com.moonstone.moonstonemod.item.plague.medicine.med.*;
-import com.moonstone.moonstonemod.item.universe;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.List;
 
 public class Items {
     public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(BuiltInRegistries.ITEM, MoonStoneMod.MODID);
@@ -333,6 +335,7 @@ public class Items {
     public static final DeferredHolder<Item,?> neuron_dna =REGISTRY.register("neuron_dna", neuron_dna::new );
     public static final DeferredHolder<Item,?> eye_dna =REGISTRY.register("eye_dna", eye_dna::new );
     public static final DeferredHolder<Item,?> eye_lava_dna =REGISTRY.register("eye_lava_dna", eye_lava_dna::new );
+    public static final DeferredHolder<Item,?> skin_dna =REGISTRY.register("skin_dna", skin_dna::new );
 
     public static final DeferredHolder<Item,?> god_sword_ =REGISTRY.register("god_sword",twelve_sword.god_sword::new );
     public static final DeferredHolder<Item,?> smithing_food =REGISTRY.register("smithing_food", SmithingFood::new);

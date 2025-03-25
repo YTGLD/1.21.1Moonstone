@@ -4,7 +4,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.contents.BundleContents;
-import com.moonstone.moonstonemod.event.TextEvt;
+import com.moonstone.moonstonemod.event.old.TextEvt;
 import com.moonstone.moonstonemod.init.items.DNAItems;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;

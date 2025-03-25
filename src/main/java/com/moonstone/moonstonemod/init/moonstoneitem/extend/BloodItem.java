@@ -10,12 +10,16 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class BloodItem  extends Item implements ICurioItem, Blood {
     public BloodItem() {
@@ -26,12 +30,11 @@ public class BloodItem  extends Item implements ICurioItem, Blood {
         if (stack.get(DataReg.tag)==null){
             stack.set(DataReg.tag,new CompoundTag());
         }
-
     }
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> pTooltipComponents, TooltipFlag tooltipFlag) {
         super.appendHoverText(stack, context, pTooltipComponents, tooltipFlag);
-        pTooltipComponents.add(Component.translatable("moonstone.jei."+this.getDescriptionId()).withStyle(ChatFormatting.RED));
+        pTooltipComponents.add(Component.translatable("moonstone.jei."+this.getDescriptionId()).withStyle(ChatFormatting.GRAY));
     }
      @NotNull
     @Override

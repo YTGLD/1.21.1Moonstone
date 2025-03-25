@@ -6,7 +6,7 @@ import com.mojang.serialization.Dynamic;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.entity.zombie.cell_zombie;
-import com.moonstone.moonstonemod.event.AllEvent;
+import com.moonstone.moonstonemod.event.old.AllEvent;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;

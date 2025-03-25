@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.moonstone.moonstonemod.entity.nightmare_giant_to;
 import com.moonstone.moonstonemod.entity.zombie.cell_giant;
-import com.moonstone.moonstonemod.event.NewEvent;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.item.nightmare.Nightmare;
@@ -17,7 +16,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.util.SpawnUtil;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -175,7 +173,9 @@ public class Handler {
                     }
                 }
                 if (CuriosApi.getCuriosInventory(player).isPresent()
-                        && (!CuriosApi.getCuriosInventory(player).get().isEquipped(Items.nightmareeye.get())||!CuriosApi.getCuriosInventory(player).get().isEquipped(Items.evil_mob.get()))) {
+                        && (!CuriosApi.getCuriosInventory(player).get().isEquipped(Items.nightmareeye.get())
+                        && !CuriosApi.getCuriosInventory(player).get().isEquipped(Items.evil_mob.get()))
+                ) {
                     if (curio instanceof Nightmare) {
                         return false;
                     }

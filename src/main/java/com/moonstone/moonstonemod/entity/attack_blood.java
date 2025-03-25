@@ -1,6 +1,8 @@
 package com.moonstone.moonstonemod.entity;
 
+import com.moonstone.moonstonemod.EventHandler;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.event.mevent.AttackBloodEvent;
 import com.moonstone.moonstonemod.init.items.Items;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -45,6 +47,7 @@ public class attack_blood extends ThrowableItemProjectile {
     }
 
     public void setTarget(LivingEntity target) {
+
         this.target = target;
     }
 
@@ -76,6 +79,15 @@ public class attack_blood extends ThrowableItemProjectile {
         super.tick();
         Vec3 playerPos = this.position().add(0, 0.75, 0);
         int range = 1;
+        if (this.getOwner() instanceof Player player) {
+            if (!this.getTags().contains("live")) {
+                AttackBloodEvent attackBloodEvent = EventHandler.attackBloodEvent(this, player);
+                this.maxTime *= attackBloodEvent.getMaxTime();
+                this.damages *= attackBloodEvent.getDamage();
+                this.speeds *= attackBloodEvent.getSpeed();
+                this.addTag("live");
+            }
+        }
         List<LivingEntity> entities = this.level().getEntitiesOfClass(LivingEntity.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
         for (LivingEntity entity : entities) {
             if (this.getOwner() != null) {

@@ -1044,6 +1044,7 @@
   "moonstone.curse.name.bone": "bone",
   "moonstone.curse.name.die_body": "die body",
   "moonstone.difficulty.name.god": "god",
+  "moonstone.difficulty.name.true_god": "神化",
 
   "item.blood.tool.string.winds.1": "5% speed bonus converted to attack damage",
   "item.blood.tool.string.winds.2": "If you wear a nightmare item, the damage doubles",
@@ -1251,6 +1252,7 @@
 
 
 
+  "item.moonstone.blood_all":"它发现于古城，但是需要佩戴封魔烛台才能发现",
 
   "item.moonstone.owner_blood_eye": "Desecrator",
   "moonstone.jei.item.moonstone.owner_blood_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nReduces the attack interval of Blood Spawn by 20%.",
@@ -1580,249 +1582,270 @@
   "moonstone.jei.item.moonstone.nightmare_base_start_egg": "Kill the Sniffer",
   "moonstone.jei.item.moonstone.nightmare_base_start_pod": "Open dungeon chests, 25% chance, can only get one",
 
-  "moonstone.jei.necora": "这是僵尸病毒，它需要使用基因重组盒重组，右键放入：\n48份ATP高能量\n32份达尔文主义\n64份催化剂开关\n24份极速代谢\n20份代谢紊乱\n12份肽合成增强\n24份神经递质抑制\n8份液化性坏死\n1个灵质棱镜\n当你集齐了所有材料，那你就可以进行下一步计划.......。\n最后右键使用基因重组盒这个物品\n记得背包腾出来空间！",
-  "moonstone.jei.cell": "这是僵尸病毒的重要的附属物品，用于召唤细胞僵尸协助作战，它们可以受到部分分段基因组的加成，它需要使用基因重组盒重组，右键放入：\n20份ATP高能量\n16份神创论\n40份极速代谢\n64份代谢紊乱\n24份液化性坏死\n1个灵质棱镜\n8个灵质球。\n最后右键使用基因重组盒这个物品\n记得背包腾出来空间！",
-  "moonstone.jei.giant": "这是僵尸病毒的一个附属物品，用于召唤巨型细胞僵尸协助作战，它们可以受到部分分段基因组的加成，它需要使用基因重组盒重组，右键放入：\n30份ATP高能量\n24份神创论\n60份极速代谢\n64份代谢紊乱\n12份液化性坏死\n1个细胞重生\n1个灵质棱镜。\n最后右键使用基因重组盒这个物品\n记得背包腾出来空间！",
-  "moonstone.jei.giant_nightmare": "这是僵尸病毒和巨人僵尸的一个变种物品，用于召唤梦魇巨人协助作战，它们可以受到部分分段基因组的加成，它需要使用基因重组盒重组，右键放入：\n64份ATP高能量\n16份极速代谢\n64份神经递质抑制\n64份肽合成增强\n64份达尔文主义\n64份催化剂开关\n1个巨人僵尸基因片段\n1个灵质棱镜。\n最后右键使用基因重组盒这个物品\n记得背包腾出来空间！",
-
-  "item.dnas.tool.string": "提示：使用药物粉碎盒粉碎基因物品",
-
-
-  "moonstone.jei.god_dna": "使用两个“类神的基因序列”的相同DNA物品合成",
-  "item.moonstone.god_ambush": "漂流发酵",
-  "item.god_ambush.tool.string": "增加10%抗性",
-  "moonstone.difficulty.name.true_god": "神化",
-  "item.moonstone.god_atpoverdose": "ATP过量",
-  "item.moonstone.god_putrefactive": "腐败抗性",
-  "item.god_putrefactive.tool.string": "食用食物获得大量增益BUFF",
-  "item.god_putrefactive.tool.string.1": "食用食物恢复10%最大生命值",
-  "item.moonstone.god_fermentation": "埋伏性狩猎",
-  "item.moonstone.god_autolytic": "自溶性抑制",
-
-  "item.moonstone.god_regenerative": "再生活性化",
-  "item.god_regenerative.tool.string": "每隔0.75秒恢复1点生命值",
-
-
-  "item.moonstone.rage_charm": "狂暴统治者徽章",
-  "item.rage_charm.tool.string": "杀死生物获得属性加成",
-  "item.rage_charm.tool.string.1": "随时间减少",
-
-  "item.moonstone.rage_eye": "偷盗者的狂暴之眼",
-  "item.rage_eye.tool.string": "手持眼睛左键生物偷取10%基础属性",
-  "item.rage_eye.tool.string.4": "盗取的属性最大值不超过你的25%",
-  "item.rage_eye.tool.string.2": "无论有没有盗取属性，物品都会锁定",
-
-
-  "item.moonstone.magnet": "磁铁",
-  "item.magnet.tool.string": "吸引半径8格内的掉落物",
-
-  "item.moonstone.rage_magnet": "狂暴磁铁",
-  "item.rage_magnet.tool.string": "吸引掉落物时恢复生命值",
-
-  "item.moonstone.rage_stone": "下界岩石",
-  "item.rage_stone.tool.string": "将附近掉落物形式的下界岩转换成经验球",
-
-  "item.moonstone.rage_head": "狂暴徽章",
-  "item.rage_head.tool.string": "+2 弹射物数量",
-  "item.rage_head.tool.string.1": "+25% 拉弓速度",
-
-  "item.moonstone.universe": "万象模板",
-  "item.universe.tool.string": "在物品栏内合成后",
-  "item.universe.tool.string.1": "自动获得该物品的一些特殊能力",
-  "item.universe.tool.string.2": "可以使用3次",
-  "item.universe.tool.string.3": "你与下列物品进行了合成：",
-  "item.universe.tool.null": "空的",
 
 
 
-
-
-
-  "moonstone.drug.string": "可以右键放入玩家基因组中",
-  "item.man.tool.string": "支持植入下列药物：",
-  "curios.modifiers.man": "植入玩家基因组时",
-  "curios.identifier.man": "玩家基因槽",
-
-  "item.moonstone.run_dna": "耐力强化基因",
-  "item.run_dna.tool.string": "增加10%疾跑时的抗性",
-
-  "item.moonstone.protein": "蛋白质激活",
-  "item.moonstone.hydrolysis": "异常磷酸化",
-  "item.moonstone.cp_energy": "CP能量释放",
-  "item.moonstone.phosphorylation": "ATP水解异变",
-
-  "item.protein.tool.string": "疾跑时速度增加20%",
-  "item.hydrolysis.tool.string": "疾跑时跳跃能力增加50%，伤害减少10%",
-  "item.cp_energy.tool.string": "疾跑时伤害增加10%",
-  "item.phosphorylation.tool.string": "疾跑速度减半，但是默认伤害增加20%",
-
-  "item.moonstone.health_dna": "生命强化基因",
-  "item.health_dna.tool.string": "增加8点生命值",
-
-  "item.moonstone.stem_cell_proliferation": "干细胞激增",
-  "item.moonstone.lymphatic": "淋巴因子释放",
-  "item.moonstone.abnormal": "反常态病变",
-  "item.moonstone.catalyst_for_life": "异变催化剂",
-
-  "item.stem_cell_proliferation.tool.string": "每损失10%生命值，加5%治疗",
-  "item.lymphatic.tool.string": "每存在1个负面状态，治疗加5%",
-  "item.abnormal.tool.string": "正面药水状态时长减少50%，任何效果状态结束时恢复6点生命值",
-  "item.catalyst_for_life.tool.string": "异变催化剂：增加4点生命值",
-
-  "item.moonstone.copy_dna": "复制强化基因",
-  "item.copy_dna.tool.string": "增加10点最大生命值，减少10%治疗",
-
-  "item.moonstone.lymphadenopathy": "淋巴结肿大",
-  "item.moonstone.connective_tissue": "结缔组织增生",
-  "item.moonstone.paralysis": "免疫瘫痪",
-  "item.moonstone.formative_cell": "形成细胞激增",
-
-
-  "item.lymphadenopathy.tool.string": "减少66%所有药水效果持续时间，任何效果结束时恢复5%最大生命值",
-  "item.connective_tissue.tool.string": "减少20%弹射物伤害，受到弹射物伤害时恢复2点生命值",
-  "item.paralysis.tool.string": "增加10点生命值，减少10%治疗",
-  "item.formative_cell.tool.string": "异变催化剂：生命值低于50%时，增加40%治疗",
-
-
-
-  "item.moonstone.attack_dna": "异常肌肉强化基因",
-  "item.attack_dna.tool.string": "增加4点伤害，减少20%攻速",
-
-  "item.moonstone.reverse_correction": "逆修正强化",
-  "item.moonstone.self_correction": "自修正强化",
-  "item.moonstone.abnormal_muscles": "反常肌肉强化",
-  "item.moonstone.abnormal_endurance": "反常耐力",
-
-  "item.reverse_correction.tool.string": "普通攻击有15%的概率造成额外伤害",
-  "item.self_correction.tool.string": "暴击有概率造成额外25%的伤害",
-  "item.abnormal_muscles.tool.string": "疾跑时伤害增加30%",
-  "item.abnormal_endurance.tool.string": "增加20%攻击伤害，减少20%最大生命值",
 
 
   "moonstone.greed_dna.event": "战利品暴击已触发！",
 
-  "item.moonstone.greed_dna": "腐衰贪欲基因",
-  "item.greed_dna.tool.string": "每开取一个新的战利品箱",
-  "item.greed_dna.tool.string.1": "都会增加战利品暴击的概率（3%）",
-  "item.greed_dna.tool.string.2": "战利品暴击概率不超过30%",
-  "item.greed_dna.tool.string.3": "每次触发战利品暴击，都会使箱子里的部分战利品数量翻倍",
-  "item.greed_dna.tool.string.4": "触发战利品暴击后，概率清零",
-
-  "item.moonstone.iris": "虹膜异变",
-  "item.moonstone.brain_off": "脑组织萎缩",
-  "item.moonstone.brain_enhance": "脑功能增强",
-  "item.iris.tool.string": "单个战利品箱给予概率增加4%,最大战利品暴击率体提高33%",
-  "item.iris.tool.string.1": "减少3级时运和抢夺等级",
-
-
-  "item.brain_off.tool.string": "单个战利品箱给予概率减少1%",
-  "item.brain_off.tool.string.1": "增加4级时运和抢夺等级",
-
-  "item.brain_enhance.tool.string": "战利品暴击率始终为10%",
-
-
-
-  "item.moonstone.neuron_dna": "神经元强化基因",
-  "item.neuron_dna.tool.string": "减少1级时运和抢夺",
-  "item.neuron_dna.tool.string.1": "增加5%掠夺暴击率 ",
-  "item.neuron_dna.tool.string.2": "杀死生物根据此暴击率触发掠夺暴击并使掉落战利品数量翻倍",
-  "item.neuron_dna.tool.string.4": "抢夺暴击率：",
-  "item.moonstone.system_paralysis": "神经系统瘫痪",
-  "item.moonstone.memory": "记忆重构",
-  "item.moonstone.tissue_atrophy": "组织萎缩",
-
-  "item.system_paralysis.tool.string": "抢夺等级减少1级",
-  "item.system_paralysis.tool.string.1": "每级抢夺提供2%的掠夺暴击率",
-
-  "item.memory.tool.string": "杀死生物提供1%的掠夺暴击率",
-  "item.memory.tool.string.1": "触发发掠夺暴击后概率清零",
-
-
-  "item.tissue_atrophy.tool.string": "增加3级时运和抢夺",
-  "item.tissue_atrophy.tool.string.1": "战利品暴击率始终为0%",
-
-
-  "item.moonstone.eye_dna": "感官系统强化基因",
-  "item.eye_dna.tool.string": "提高水下视力能力，允许在水中看清物体",
-
-  "item.moonstone.eye_lava_dna": "脑皮质异变基因",
-  "item.eye_lava_dna.tool.string": "提供极高的视能力，允许在任何流体中看清物体",
-
-
-  "item.moonstone.eye_system": "视觉系统异常",
-  "item.eye_system.tool.string": "提供夜视效果",
-
-
-
-
-
-
-
-
-
-
-  "item.moonstone.rage_bottle": "黄金瓶",
-  "item.rage_bottle.tool.string": "获得的50%经验值转为能量",
-  "item.rage_bottle.tool.string.1": "每点能量减少0.01%治疗和0.03%抗性",
-
-  "item.rage_bottle.tool.string.2": "快速消耗能量恢复饥饿和饱食度",
-  "item.rage_bottle.tool.string.3": "每点能量增加0.04%生命值和0.02%通用伤害",
-  "item.rage_bottle.tool.string.4": "能量上限5000",
-  "hurt.moonstone.string": "额外受伤",
-  "item.moonstone.rage_orb": "附魔师的狂暴珍珠",
-  "item.rage_orb.tool.string": "+40% 伤害魔咒效果",
-  "item.rage_orb.tool.string.2": "-80% 击退魔咒效果",
-  "item.rage_orb.tool.string.3": "+1 时运",
-  "item.rage_orb.tool.string.4": "+1 抢夺",
-
-  "item.moonstone.sword":"同时佩戴了七剑修炼的剑阵之章和万法后无法发射飞剑，但是伤害提高20%",
-
-  "item.moonstone.rage_lock": "狂暴锁",
-  "item.rage_lock.tool.string": "-75%治疗",
-  "item.rage_lock.tool.string.1": "+25%满血抗性",
-  "item.rage_lock.tool.string.2": "+10%所有伤害",
-  "item.rage_lock.tool.string.3": "+15%吸血",
-  "item.rage_lock.tool.string.4": "+40%杀戮吸血",
-
-  "moonstone.use.dna": "提示：使用药物粉碎盒分解",
-
-  "item.moonstone.twelve_sword":"诸神剑阵",
-  "item.moonstone.undead_blood_charm":"决裁者徽章",
-  "item.undead_blood_charm.tool.string.1": "标记攻击者，每次你恢复生命值都会对他造成150%恢复量的伤害",
-  "item.undead_blood_charm.tool.string.2": "标记对你有仇恨的生物，每次恢复生命都会对他造成50%恢复量的伤害",
-  "item.undead_blood_charm.tool.string.3": "对亡灵造成额外50%的伤害",
-  "item.undead_blood_charm.tool.string.4": "治疗增加50%",
-  "item.undead_blood_charm.tool.string.5": "受到伤害增加40%",
-
-
-  "item.at_a_book.tool.string.lvl.1": "金仙",
-  "item.at_a_book.tool.string.lvl.2": "金仙",
-  "item.at_a_book.tool.string.lvl.3": "仙尊",
-  "item.at_a_book.tool.string.lvl.4": "仙帝",
-  "item.at_a_book.tool.string.lvl.5": "炼神",
-  "item.at_a_book.tool.string.lvl.6": "天神",
-  "item.at_a_book.tool.string.lvl.7": "主神",
-  "item.at_a_book.tool.string.lvl.8": "天劫",
-  "item.at_a_book.tool.string.lvl.9": "合道",
-  "item.at_a_book.tool.string.lvl.10": "圣玄",
-  "item.at_a_book.tool.string.lvl.11": "圣君",
-
-  "item.at_a_book.tool.string.lvl.12": "圣尊",
-  "item.at_a_book.tool.string.lvl.13": "圣帝",
-  "item.at_a_book.tool.string.lvl.14": "主圣",
-  "item.at_a_book.tool.string.lvl.15": "天圣",
-  "item.at_a_book.tool.string.lvl.16": "阴阳",
-  "item.at_a_book.tool.string.lvl.17": "无极",
-  "item.at_a_book.tool.string.lvl.18": "灵尊",
-  "item.at_a_book.tool.string.lvl.19": "混元",
-  "item.at_a_book.tool.string.lvl.20": "半极",
-  "item.at_a_book.tool.string.lvl.21": "极境",
-  "attribute.name.moonstone.res": "抗性",
 
   "item.twelve_sword.tool.string.1": "杀死生物召唤剑阵",
   "item.twelve_sword.tool.string.2": "在剑阵附近获得1%0~120%的伤害加成",
   "item.twelve_sword.tool.string.3": "剑阵内的生物会被死界碑坠落攻击",
   "item.twelve_sword.tool.string.4": "数量取决于你生肖物品的数量",
+
+
+  "moonstone.jei.necora": "This is a zombie virus that requires gene recombination box to recombine. Right-click to insert:\n48 ATP high energy\n32 Darwinism\n64 Catalyst Switch\n24 Rapid Metabolism\n20 Metabolic Disorder\n12 Peptide Synthesis Enhancement\n24 Neurotransmitter Inhibition\n8 liquefactive necrosis\n1 Spirit Prism\nWhen you have collected all materials, you can proceed to the next step of your plan......\nFinally, right-click to use the gene recombination box item\nMake sure to free up space in your backpack!",
+  "moonstone.jei.cell": "This is an important accessory item for the zombie virus, used to summon cell zombies to assist in combat. They can be enhanced by partial segmental gene groups. It requires gene recombination box to recombine. Right-click to insert:\n20 ATP high energy\n16 Creationism\n40 Rapid Metabolism\n64 Metabolic Disorder\n24 liquefactive necrosis\n1 Spirit Prism\n8 Spirit Orbs.\nFinally, right-click to use the gene recombination box item\nMake sure to free up space in your backpack!",
+  "moonstone.jei.giant": "This is an accessory item for the zombie virus, used to summon giant cell zombies to assist in combat. They can be enhanced by partial segmental gene groups. It requires gene recombination box to recombine. Right-click to insert:\n30 ATP high energy\n24 Creationism\n60 Rapid Metabolism\n64 Metabolic Disorder\n12 liquefactive necrosis\n1 Cell Regeneration\n1 Spirit Prism.\nFinally, right-click to use the gene recombination box item\nMake sure to free up space in your backpack!",
+  "moonstone.jei.giant_nightmare": "This is a variant item of the zombie virus and giant zombie, used to summon nightmare giants to assist in combat. They can be enhanced by partial segmental gene groups. It requires gene recombination box to recombine. Right-click to insert:\n64 ATP high energy\n16 Rapid Metabolism\n64 Neurotransmitter Inhibition\n64 Peptide Synthesis Enhancement\n64 Darwinism\n64 Catalyst Switch\n1 Giant Zombie Gene Fragment\n1 Spirit Prism.\nFinally, right-click to use the gene recombination box item\nMake sure to free up space in your backpack!",
+
+  "item.dnas.tool.string": "Hint: Use medicine crusher box to break down gene items",
+
+  "moonstone.jei.god_dna": "Synthesize by using two identical 'God-like gene sequences' DNA items",
+  "item.moonstone.god_ambush": "Drift Fermentation",
+  "item.god_ambush.tool.string": "Increases 10% resistance",
+  "item.moonstone.god_atpoverdose": "ATP Overdose",
+  "item.moonstone.god_putrefactive": "Putrefactive Resistance",
+  "item.god_putrefactive.tool.string": "Eating food gains significant benefit buffs",
+  "item.god_putrefactive.tool.string.1": "Eating food restores 10% of max health",
+  "item.moonstone.god_fermentation": "Ambush Hunting",
+  "item.moonstone.god_autolytic": "Autolysis Inhibition",
+
+  "item.moonstone.god_regenerative": "Regenerative Vitalization",
+  "item.god_regenerative.tool.string": "Restores 1 health point every 0.75 seconds",
+
+  "item.moonstone.rage_charm": "Rage Ruler Charm",
+  "item.rage_charm.tool.string": "Killing creatures grants attribute bonuses",
+  "item.rage_charm.tool.string.1": "Bonuses decrease over time",
+
+  "item.moonstone.rage_eye": "Rage Eye of the Thief",
+  "item.rage_eye.tool.string": "Left-click on creatures to steal 10% of their base attributes",
+  "item.rage_eye.tool.string.4": "Stolen attributes cannot exceed 25% of yours",
+  "item.rage_eye.tool.string.2": "Item will lock regardless of whether attributes are stolen",
+
+  "item.moonstone.magnet": "Magnet",
+  "item.magnet.tool.string": "Attracts dropped items within an 8-block radius",
+
+  "item.moonstone.rage_magnet": "Rage Magnet",
+  "item.rage_magnet.tool.string": "Restores health when attracting dropped items",
+
+  "item.moonstone.rage_stone": "Nether Stone",
+  "item.rage_stone.tool.string": "Converts nearby dropped Nether Stones into experience orbs",
+
+  "item.moonstone.rage_head": "Rage Charm",
+  "item.rage_head.tool.string": "+2 projectile count",
+  "item.rage_head.tool.string.1": "+25% bow pull speed",
+
+  "item.moonstone.universe": "Universe Template",
+  "item.universe.tool.string": "Gains special abilities of the item after synthesis in inventory",
+  "item.universe.tool.string.1": "Automatically obtains some special abilities of the item",
+  "item.universe.tool.string.2": "Usable 3 times",
+  "item.universe.tool.string.3": "You have synthesized the following items:",
+  "item.universe.tool.null": "Empty",
+
+
+
+
+  "moonstone.drug.string": "Can be right-clicked to insert into player genome",
+  "item.man.tool.string": "Supports implantation of the following drugs:",
+  "curios.modifiers.man": "When implanted into player genome",
+  "curios.identifier.man": "Player genome slot",
+
+  "item.moonstone.run_dna": "Endurance Enhancement Gene",
+  "item.run_dna.tool.string": "Increases 10% resistance while sprinting",
+
+  "item.moonstone.protein": "Protein Activation",
+  "item.moonstone.hydrolysis": "Abnormal Phosphorylation",
+  "item.moonstone.cp_energy": "CP Energy Release",
+  "item.moonstone.phosphorylation": "ATP Hydrolysis Anomaly",
+
+  "item.protein.tool.string": "Increases sprint speed by 20%",
+  "item.hydrolysis.tool.string": "Increases jump height by 50% and reduces damage by 10% while sprinting",
+  "item.cp_energy.tool.string": "Increases damage by 10% while sprinting",
+  "item.phosphorylation.tool.string": "Sprint speed is halved, but default damage increases by 20%",
+
+  "item.moonstone.health_dna": "Health Enhancement Gene",
+  "item.health_dna.tool.string": "Increases health by 8 points",
+
+  "item.moonstone.stem_cell_proliferation": "Stem Cell Hyperplasia",
+  "item.moonstone.lymphatic": "Lymphokine Release",
+  "item.moonstone.abnormal": "Abnormal Transmutation",
+  "item.moonstone.catalyst_for_life": "Anomaly Catalyst",
+
+  "item.stem_cell_proliferation.tool.string": "Increases treatment by 5% for every 10% health loss",
+  "item.lymphatic.tool.string": "Increases treatment by 5% for every negative status",
+  "item.abnormal.tool.string": "Reduces duration of positive potion effects by 50% and restores 6 health points when any effect ends",
+  "item.catalyst_for_life.tool.string": " Increases health by 4 points",
+
+  "item.moonstone.copy_dna": "Replication Enhancement Gene",
+  "item.copy_dna.tool.string": "Increases max health by 10 points, reduces treatment by 10%",
+
+  "item.moonstone.lymphadenopathy": "Lymphadenopathy",
+  "item.moonstone.connective_tissue": "Connective Tissue Hyperplasia",
+  "item.moonstone.paralysis": "Immune Paralysis",
+  "item.moonstone.formative_cell": "Formative Cell Hyperplasia",
+
+  "item.lymphadenopathy.tool.string": "Reduces duration of all potion effects by 66% and restores 5% of max health when any effect ends",
+  "item.connective_tissue.tool.string": "Reduces projectile damage by 20% and restores 2 health points when taking projectile damage",
+  "item.paralysis.tool.string": "Increases health by 10 points, reduces treatment by 10%",
+  "item.formative_cell.tool.string": "Increases treatment by 40% when health is below 50%",
+
+
+
+  "item.moonstone.attack_dna": "Abnormal Muscle Enhancement Gene",
+  "item.attack_dna.tool.string": "Increases damage by 4 points, reduces attack speed by 20%",
+
+  "item.moonstone.reverse_correction": "Reverse Correction Enhancement",
+  "item.moonstone.self_correction": "Self Correction Enhancement",
+  "item.moonstone.abnormal_muscles": "Abnormal Muscle Enhancement",
+  "item.moonstone.abnormal_endurance": "Abnormal Endurance",
+
+  "item.reverse_correction.tool.string": "Has a 15% chance to cause extra damage with normal attacks",
+  "item.self_correction.tool.string": "Has a chance to cause an additional 25% damage on critical hits",
+  "item.abnormal_muscles.tool.string": "Increases damage by 30% while sprinting",
+  "item.abnormal_endurance.tool.string": "Increases attack damage by 20%, reduces max health by 20%",
+
+  "item.moonstone.greed_dna.event": "Loot Critical Hit Triggered!",
+
+  "item.moonstone.greed_dna": "Decay Greed Gene",
+  "item.greed_dna.tool.string": "Increases loot critical hit probability by 3% each time a new loot chest is opened",
+  "item.greed_dna.tool.string.1": "Loot critical hit probability does not exceed 30%",
+  "item.greed_dna.tool.string.2": "Doubles the quantity of some loot items when a loot critical hit is triggered",
+  "item.greed_dna.tool.string.3": "Loot critical hit probability resets after triggering",
+  "item.greed_dna.tool.string.4": "触发战利品暴击后，概率清零",
+
+  "item.moonstone.iris": "Iris Anomaly",
+  "item.moonstone.brain_off": "Brain Tissue Atrophy",
+  "item.moonstone.brain_enhance": "Brain Function Enhancement",
+  "item.iris.tool.string": "Increases loot critical hit probability by 4% for a single loot chest, and increases max loot critical hit probability by 33%",
+  "item.iris.tool.string.1": "Reduces Looting and Fortune by 3 levels",
+
+  "item.brain_off.tool.string": "Reduces loot critical hit probability by 1% for a single loot chest",
+  "item.brain_off.tool.string.1": "Increases Looting and Fortune by 4 levels",
+
+  "item.brain_enhance.tool.string": "Loot critical hit probability is always 10%",
+
+
+
+  "item.moonstone.neuron_dna": "Neuron Enhancement Gene",
+  "item.neuron_dna.tool.string": "Reduces Looting and Fortune by 1 level",
+  "item.neuron_dna.tool.string.1": "Increases loot critical hit probability by 5%",
+  "item.neuron_dna.tool.string.2": "Triggers loot critical hit based on this probability and doubles the dropped loot quantity",
+  "item.neuron_dna.tool.string.4": "Loot critical hit probability:",
+
+  "item.moonstone.system_paralysis": "Nervous System Paralysis",
+  "item.moonstone.memory": "Memory Reconstruction",
+  "item.moonstone.tissue_atrophy": "Tissue Atrophy",
+
+  "item.system_paralysis.tool.string": "Reduces Looting by 1 level",
+  "item.system_paralysis.tool.string.1": "Provides 2% loot critical hit probability per level of Looting",
+
+  "item.memory.tool.string": "Provides 1% loot critical hit probability for killing creatures",
+  "item.memory.tool.string.1": "Loot critical hit probability resets after triggering",
+
+  "item.tissue_atrophy.tool.string": "Increases Looting and Fortune by 3 levels",
+  "item.tissue_atrophy.tool.string.1": "Loot critical hit probability is always 0%",
+
+  "item.moonstone.eye_dna": "Sensory System Enhancement Gene",
+  "item.eye_dna.tool.string": "Improves underwater vision, allowing clear vision in water",
+
+  "item.moonstone.eye_lava_dna": "Cortical Anomaly Gene",
+  "item.eye_lava_dna.tool.string": "Provides extremely high vision capabilities, allowing clear vision in any fluid",
+
+  "item.moonstone.eye_system": "Abnormal Visual System",
+  "item.eye_system.tool.string": "Provides night vision",
+
+  "item.moonstone.hell_eye": "Infernal Eye",
+  "item.hell_eye.tool.string": "Right-click the item to toggle switch",
+  "item.hell_eye.tool.string.1": "When activated:",
+
+  "item.hell_eye.tool.string.2": "When you stare at a creature, it will target you instead",
+  "item.hell_eye.tool.string.3": "And applies a 'Fate' effect every 5 seconds",
+  "item.hell_eye.tool.string.4": "Each level of Fate effect provides 10% damage and resistance",
+
+  "item.hell_eye.tool.string.5": "When Fate stacks to 6 layers, the target's effects are cleared",
+  "item.hell_eye.tool.string.6": "Causes the target to take 45% of max health true damage",
+  "item.hell_eye.tool.string.7": "And adds all positive effects to you",
+
+  "attribute.name.moonstone.owner_blood_damage": "Damage of Blood Spirit",
+  "attribute.name.moonstone.owner_blood_speed": "Speed of Blood Beads of Blood Spirit",
+  "attribute.name.moonstone.owner_blood_time": "Duration of Blood Beads of Blood Spirit",
+  "attribute.name.moonstone.owner_blood_attack_speed": "Attack Interval of Blood Spirit",
+
+
+
+  "item.moonstone.skin_dna": "Epidermis Enhancement Gene",
+
+  "item.moonstone.scale": "Skin Scleroderma",
+  "item.moonstone.stone_skin": "Keratinization of Corneal Layer",
+  "item.moonstone.molt": "Dermal Layer Metamorphosis",
+
+  "item.scale.tool.string": "Increases armor by 2 points, gains 25% armor-based resilience",
+  "item.stone_skin.tool.string": "Increases armor value by 20% but reduces mining speed by 15%",
+  "item.molt.tool.string": "Temporarily reduces armor by 20% and increases treatment by 40% within 5 seconds after taking damage (non-stacking)",
+
+
+
+  "item.moonstone.rage_bottle": "Golden Bottle",
+  "item.rage_bottle.tool.string": "Converts 50% of obtained experience to energy",
+  "item.rage_bottle.tool.string.1": "Each point of energy reduces treatment by 0.01% and resistance by 0.03%",
+
+  "item.rage_bottle.tool.string.2": "Quickly consumes energy to restore hunger and saturation",
+  "item.rage_bottle.tool.string.3": "Each point of energy increases health by 0.04% and general damage by 0.02%",
+  "item.rage_bottle.tool.string.4": "Maximum energy: 5000",
+  "hurt.moonstone.string": "Extra damage",
+  "item.moonstone.rage_orb": "Sorcerer's Rage Orb",
+  "item.rage_orb.tool.string": "+40% Damage enchantment effect",
+  "item.rage_orb.tool.string.2": "-80% Knockback enchantment effect",
+  "item.rage_orb.tool.string.3": "+1 Fortune",
+  "item.rage_orb.tool.string.4": "+1 Looting",
+
+  "item.moonstone.sword": "Cannot shoot flying swords when wearing both the Seven Swords Cultivation Sword Array Scroll and Ten Thousand Methods, but damage is increased by 20%",
+
+  "item.moonstone.rage_lock": "Rage Lock",
+  "item.rage_lock.tool.string": "-75% treatment",
+  "item.rage_lock.tool.string.1": "+25% full health resistance",
+  "item.rage_lock.tool.string.2": "+10% all damage",
+  "item.rage_lock.tool.string.3": "+10% life steal",
+  "item.rage_lock.tool.string.4": "+40% massacre life steal",
+
+  "moonstone.use.dna": "Hint: Use medicine crusher box to decompose",
+
+  "item.moonstone.twelve_sword": "Twelve Gods Sword Array",
+  "item.moonstone.undead_blood_charm": "Death Sentence Charm",
+  "item.undead_blood_charm.tool.string.1": "Marks attackers, dealing 150% of your restoration amount as damage to them each time you restore health",
+  "item.undead_blood_charm.tool.string.2": "Marks creatures with hostility towards you, dealing 50% of your restoration amount as damage to them each time you restore health",
+  "item.undead_blood_charm.tool.string.3": "Deals additional 50% damage to undead",
+  "item.undead_blood_charm.tool.string.4": "Increases treatment by 50%",
+  "item.undead_blood_charm.tool.string.5": "Increases damage taken by 40%",
+
+  "item.at_a_book.tool.string.lvl.1": "Golden Immortal",
+  "item.at_a_book.tool.string.lvl.2": "Golden Immortal",
+  "item.at_a_book.tool.string.lvl.3": "Immortal Lord",
+  "item.at_a_book.tool.string.lvl.4": "Immortal Emperor",
+  "item.at_a_book.tool.string.lvl.5": "Spirit Refinement",
+  "item.at_a_book.tool.string.lvl.6": "Heavenly Deity",
+  "item.at_a_book.tool.string.lvl.7": "Main Deity",
+  "item.at_a_book.tool.string.lvl.8": "Heavenly Tribulation",
+  "item.at_a_book.tool.string.lvl.9": "Integration with Dao",
+  "item.at_a_book.tool.string.lvl.10": "Sacred Profound",
+  "item.at_a_book.tool.string.lvl.11": "Sacred Monarch",
+
+  "item.at_a_book.tool.string.lvl.12": "Sacred Lord",
+  "item.at_a_book.tool.string.lvl.13": "Sacred Emperor",
+  "item.at_a_book.tool.string.lvl.14": "Main Sacred",
+  "item.at_a_book.tool.string.lvl.15": "Heavenly Sacred",
+  "item.at_a_book.tool.string.lvl.16": "Yin-Yang",
+  "item.at_a_book.tool.string.lvl.17": "Supreme",
+  "item.at_a_book.tool.string.lvl.18": "Spirit Sovereign",
+  "item.at_a_book.tool.string.lvl.19": "Hybrid Primordial",
+  "item.at_a_book.tool.string.lvl.20": "Half Supreme",
+  "item.at_a_book.tool.string.lvl.21": "Extreme Region",
+  "attribute.name.moonstone.res": "Resistance",
+
+
   "item.moonstone.smithing_food":"The earth is clumped",
 
   "item.string.tool.string": "Permanently adds an accessory slot after consumption！",

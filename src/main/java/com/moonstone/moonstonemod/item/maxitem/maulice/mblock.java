@@ -2,7 +2,7 @@ package com.moonstone.moonstonemod.item.maxitem.maulice;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.moonstone.moonstonemod.event.TextEvt;
+import com.moonstone.moonstonemod.event.old.TextEvt;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.MLS;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;

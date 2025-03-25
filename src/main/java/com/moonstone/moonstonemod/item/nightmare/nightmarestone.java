@@ -3,7 +3,7 @@ package com.moonstone.moonstonemod.item.nightmare;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Handler;
-import com.moonstone.moonstonemod.event.AllEvent;
+import com.moonstone.moonstonemod.event.old.AllEvent;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
 import net.minecraft.ChatFormatting;

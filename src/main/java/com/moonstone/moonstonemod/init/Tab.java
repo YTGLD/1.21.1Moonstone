@@ -180,6 +180,11 @@ public class Tab {
                 b.accept(new ItemStack(Drugs.tissue_atrophy.get()));
 
 
+                b.accept(new ItemStack(Drugs.scale.get()));
+                b.accept(new ItemStack(Drugs.stone_skin.get()));
+                b.accept(new ItemStack(Drugs.molt.get()));
+
+
 
             })
             .build()
@@ -194,6 +199,7 @@ public class Tab {
                 b.accept(new ItemStack(Items.health_dna.get()));
                 b.accept(new ItemStack(Items.neuron_dna.get()));
                 b.accept(new ItemStack(Items.eye_dna.get()));
+                b.accept(new ItemStack(Items.skin_dna.get()));
 
                 b.accept(new ItemStack(Items.copy_dna.get()));
                 b.accept(new ItemStack(Items.attack_dna.get()));

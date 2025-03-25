@@ -3,7 +3,7 @@ package com.moonstone.moonstonemod.item.blood;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.MoonStoneMod;
-import com.moonstone.moonstonemod.event.TextEvt;
+import com.moonstone.moonstonemod.event.old.TextEvt;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Blood;

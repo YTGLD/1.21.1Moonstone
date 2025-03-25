@@ -15,6 +15,7 @@ import com.moonstone.moonstonemod.entity.client.zombie.CellZombieG;
 import com.moonstone.moonstonemod.entity.client.zombie.CellZombieN;
 import com.moonstone.moonstonemod.entity.client.zombie.ZombieRenderer;
 import com.moonstone.moonstonemod.event.*;
+import com.moonstone.moonstonemod.event.old.*;
 import com.moonstone.moonstonemod.init.Tab;
 import com.moonstone.moonstonemod.init.items.BookItems;
 import com.moonstone.moonstonemod.init.items.DNAItems;
@@ -68,6 +69,7 @@ public class MoonStoneMod {
         NeoForge.EVENT_BUS.register(new BookEvt());
         NeoForge.EVENT_BUS.register(new EquippedEvt());
         NeoForge.EVENT_BUS.register(new TextEvt());
+        NeoForge.EVENT_BUS.register(new MEvent());
 
         Drugs.REGISTRY.register(eventBus);
 

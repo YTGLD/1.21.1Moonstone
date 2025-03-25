@@ -1,6 +1,7 @@
-package com.moonstone.moonstonemod.event;
+package com.moonstone.moonstonemod.event.old;
 
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.items.BookItems;
 import com.moonstone.moonstonemod.init.items.Items;
 import mezz.jei.api.IModPlugin;
@@ -179,13 +180,13 @@ public class JeiText implements IModPlugin {
             registration.addIngredientInfo(new ItemStack(Items.luck_ring.get()), VanillaTypes.ITEM_STACK, Component.translatable("item.moonstone.luck_ring").append(Component.literal(" : ")).append(Component.translatable("moonstone.jei.loot.all")));
 
 
-            registration.addIngredientInfo(Items.owner_blood_attack_eye.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.owner_blood_attack_eye"));
-            registration.addIngredientInfo(Items.owner_blood_speed_eye.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.owner_blood_speed_eye"));
-            registration.addIngredientInfo(Items.owner_blood_eye.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.owner_blood_eye"));
-            registration.addIngredientInfo(Items.owner_blood_effect_eye.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.owner_blood_effect_eye"));
-            registration.addIngredientInfo(Items.owner_blood_boom_eye.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.owner_blood_boom_eye"));
-            registration.addIngredientInfo(Items.owner_blood_vex.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.owner_blood_vex"));
-            registration.addIngredientInfo(Items.owner_blood_earth.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.item.moonstone.owner_blood_earth"));
+            registration.addIngredientInfo(Items.owner_blood_attack_eye.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.blood.all"));
+            registration.addIngredientInfo(Items.owner_blood_speed_eye.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.blood.all"));
+            registration.addIngredientInfo(Items.owner_blood_eye.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.blood.all"));
+            registration.addIngredientInfo(Items.owner_blood_effect_eye.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.blood.all"));
+            registration.addIngredientInfo(Items.owner_blood_boom_eye.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.blood.all"));
+            registration.addIngredientInfo(Items.owner_blood_vex.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.blood.all"));
+            registration.addIngredientInfo(Items.owner_blood_earth.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.blood.all"));
 
 
             registration.addIngredientInfo(Items.fortunecrystal.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, Component.translatable("moonstone.jei.fortunecrystal"));

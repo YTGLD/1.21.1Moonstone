@@ -1,4 +1,4 @@
-package com.moonstone.moonstonemod.event;
+package com.moonstone.moonstonemod.event.old;
 
 import com.moonstone.moonstonemod.init.items.Items;
 import net.minecraft.world.entity.npc.VillagerProfession;

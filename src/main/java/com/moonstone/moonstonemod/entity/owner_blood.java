@@ -1,7 +1,9 @@
 package com.moonstone.moonstonemod.entity;
 
+import com.moonstone.moonstonemod.EventHandler;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import com.moonstone.moonstonemod.init.items.Items;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -164,14 +166,17 @@ public class owner_blood extends TamableAnimal {
         }
         float s = 20;
         if (this.getOwner()!= null &&this.getOwner() instanceof Player player){
-            if (Handler.hascurio(player,Items.owner_blood_eye.get())){
-                s*=0.8f;
+            s *= EventHandler.ownerBloodEvent(this,player).getAttackSpeed();
+
+
+            if (Handler.hascurio(player, Items.owner_blood_eye.get())){
+//                s*=0.8f;
             }
             if (Handler.hascurio(player,Items.owner_blood_attack_eye.get())){
-                s*=1.1f;
+//                s*=1.1f;
             }
             if (Handler.hascurio(player,Items.owner_blood_speed_eye.get())){
-                s*=0.5f;
+//                s*=0.5f;
             }
             if (Handler.hascurio(player,Items.owner_blood_boom_eye.get())){
                 s*= 3;
@@ -189,26 +194,26 @@ public class owner_blood extends TamableAnimal {
 
                     if (Handler.hascurio(player, Items.owner_blood_speed_eye.get())) {
                         attackBlood.setCannotFollow(false);
-                        attackBlood.setSpeed(attackBlood.getSpeeds() * 4);
+//                        attackBlood.setSpeed(attackBlood.getSpeeds() * 4);
                     }
                     if (Handler.hascurio(player, Items.the_blood_book.get())) {
-                        attackBlood.setSpeed(attackBlood.getSpeeds()*2f);
-                        attackBlood.setMaxTime(attackBlood.getMaxTime()*0.4f);
-                        attackBlood.setDamage(attackBlood.getDamages()*3f);
+//                        attackBlood.setSpeed(attackBlood.getSpeeds()*2f);
+//                        attackBlood.setMaxTime(attackBlood.getMaxTime()*0.4f);
+//                        attackBlood.setDamage(attackBlood.getDamages()*3f);
                         attackBlood.isPlayer = true;
                     }
                     if (Handler.hascurio(player, Items.owner_blood_attack_eye.get())) {
-                        attackBlood.setDamage(attackBlood.getDamages() * 1.2f);
+//                        attackBlood.setDamage(attackBlood.getDamages() * 1.2f);
                     }
                     if (Handler.hascurio(player, Items.owner_blood_effect_eye.get())) {
                         attackBlood.setEffect(true);
                     }
                     if (Handler.hascurio(player, Items.owner_blood_vex.get())) {
                         attackBlood.setHeal(true);
-                        attackBlood.setDamage(attackBlood.getDamages() - 3);
+//                        attackBlood.setDamage(attackBlood.getDamages() - 3);
                     }
                     if (Handler.hascurio(player, Items.owner_blood_boom_eye.get())) {
-                        attackBlood.setSpeed(attackBlood.getSpeeds() * 0.8f);
+//                        attackBlood.setSpeed(attackBlood.getSpeeds() * 0.8f);
                         attackBlood.setBoom(true);
                     }
 

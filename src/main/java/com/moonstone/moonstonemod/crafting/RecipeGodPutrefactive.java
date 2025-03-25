@@ -1,7 +1,7 @@
 package com.moonstone.moonstonemod.crafting;
 
-import com.moonstone.moonstonemod.event.EquippedEvt;
-import com.moonstone.moonstonemod.event.NewEvent;
+import com.moonstone.moonstonemod.event.old.EquippedEvt;
+import com.moonstone.moonstonemod.event.old.NewEvent;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import net.minecraft.core.HolderLookup;

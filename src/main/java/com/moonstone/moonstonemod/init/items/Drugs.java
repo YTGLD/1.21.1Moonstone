@@ -59,5 +59,8 @@ public class Drugs {
 
 
 
+    public static final DeferredHolder<Item, ?> scale = REGISTRY.register("scale", ()->new ManDNA.Drug(List.of("item.scale.tool.string")));
+    public static final DeferredHolder<Item, ?> stone_skin = REGISTRY.register("stone_skin", ()->new ManDNA.Drug(List.of("item.stone_skin.tool.string")));
+    public static final DeferredHolder<Item, ?> molt = REGISTRY.register("molt", ()->new ManDNA.Drug(List.of("item.molt.tool.string")));
 
 }

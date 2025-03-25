@@ -1,4 +1,4 @@
-package com.moonstone.moonstonemod.event;
+package com.moonstone.moonstonemod.event.old;
 
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;

@@ -1,12 +1,12 @@
-modLoader = "javafml" #mandatory
+modLoader = "javafml"
 loaderVersion = "[4,)"
 license = "All Rights Reserved"
-[[mods]] #mandatory
-modId = "moonstone" #mandatory
-version = "1.2.6.1-neoforge" #mandatory
-displayName = "Moonstone" #mandatory
-authors = "Ytgld}" #optional
-description = '''${mod_description}'''
+[[mods]]
+modId = "moonstone"
+version = "1.2.6.6-neoforge"
+displayName = "Moonstone"
+authors = "Ytgld"
+description = '''.'''
 
 [[mixins]]
 config = "moonstone.mixins.json"
@@ -15,6 +15,13 @@ config = "moonstone.mixins.json"
 modId="neoforge"
 type="required"
 versionRange="[21.0.28-beta,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.moonstone]]
+modId="curios"
+type="required"
+versionRange="[9.4.0+1.21.1,)"
 ordering="NONE"
 side="BOTH"
 [[dependencies.moonstone]]

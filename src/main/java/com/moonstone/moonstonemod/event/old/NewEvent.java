@@ -1,4 +1,4 @@
-package com.moonstone.moonstonemod.event;
+package com.moonstone.moonstonemod.event.old;
 
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
@@ -30,12 +30,10 @@ import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.plague.TheNecora.god.GodAmbush;
 import com.moonstone.moonstonemod.item.plague.TheNecora.god.GodPutrefactive;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Difficulty;
@@ -43,7 +41,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -58,11 +55,9 @@ import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.entity.player.*;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.event.CurioAttributeModifierEvent;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
-import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -224,7 +219,7 @@ public class NewEvent {
         copy_dna.connective_tissue(event);
         attack_dna.abnormal_muscles(event);
         attack_dna.reverse_correction(event);
-
+        skin_dna.hurt_of_skin_dna(event);
 
         if (event.getEntity().hasEffect(Effects.dead) && event.getEntity().getEffect(Effects.dead)!=null){
             float lvl = event.getEntity().getEffect(Effects.dead).getAmplifier();
@@ -648,85 +643,6 @@ public class NewEvent {
                         .append(Component.translatable("moonstone.difficulty.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFDEB887)))));
             }
 
-
-
-            DecimalFormat df = new DecimalFormat("#.###");
-
-
-            if (stack.get(DataReg.tag).getFloat(meet)!=0) {
-                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                        .append(Component.translatable("moonstone.curse.name.meet").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
-                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
-                if (Screen.hasControlDown()){
-                    event.getToolTip().add(1,Component.translatable("effect.minecraft.health_boost").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(meet)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
-                }
-            }
-
-
-            if (stack.get(DataReg.tag).getFloat(die)!=0) {
-                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                        .append(Component.translatable("moonstone.curse.name.die").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
-                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
-
-                if (Screen.hasControlDown()){
-                    event.getToolTip().add(1,Component.translatable("effect.minecraft.strength").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(die)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
-                }
-            }
-
-
-            if (stack.get(DataReg.tag).getFloat(doctor)!=0) {
-                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                        .append(Component.translatable("moonstone.curse.name.doctor").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
-                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
-                if (Screen.hasControlDown()){
-                    event.getToolTip().add(1,Component.translatable("attribute.name.moonstone.heal").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(doctor)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
-                }
-            }
-
-
-
-
-
-            if (stack.get(DataReg.tag).getFloat(cell_cell)!=0) {
-                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                        .append(Component.translatable("moonstone.curse.name.cell_cell").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
-                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
-                if (Screen.hasControlDown()){
-                    event.getToolTip().add(1,Component.translatable("attribute.name.moonstone.cit").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(cell_cell)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
-                }
-            }
-
-            if (stack.get(DataReg.tag).getFloat(chromosome)!=0) {
-                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                        .append(Component.translatable("moonstone.curse.name.chromosome").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
-                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
-                if (Screen.hasControlDown()){
-                    event.getToolTip().add(1,Component.translatable("attribute.name.player.block_break_speed").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(chromosome)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
-                }
-            }
-            if (stack.get(DataReg.tag).getFloat(bone)!=0) {
-                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                        .append(Component.translatable("moonstone.curse.name.bone").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
-                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
-                if (Screen.hasControlDown()){
-                    event.getToolTip().add(1,Component.translatable("attribute.name.generic.movement_speed").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(bone)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
-                }
-            }
-            if (stack.get(DataReg.tag).getFloat(die_body)!=0) {
-                event.getToolTip().add(1,Component.translatable("moonstone.curse.name.all.this").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                        .append(Component.translatable("moonstone.curse.name.die_body").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4))))
-                        .append(Component.translatable("moonstone.curse.name.all").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFF7256)))));
-                if (Screen.hasControlDown()){
-                    event.getToolTip().add(1,Component.translatable("attribute.name.generic.armor").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFEEE9BF)))
-                            .append(Component.literal(String.valueOf(df.format(stack.get(DataReg.tag).getFloat(die_body)))).withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFFFE4C4)))));
-                }
-            }
         }
 
     }

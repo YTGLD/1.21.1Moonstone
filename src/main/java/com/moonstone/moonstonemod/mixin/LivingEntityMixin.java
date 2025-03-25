@@ -2,8 +2,8 @@ package com.moonstone.moonstonemod.mixin;
 
 import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
-import com.moonstone.moonstonemod.event.EquippedEvt;
-import com.moonstone.moonstonemod.event.NewEvent;
+import com.moonstone.moonstonemod.event.old.EquippedEvt;
+import com.moonstone.moonstonemod.event.old.NewEvent;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.item.man.run_dna;

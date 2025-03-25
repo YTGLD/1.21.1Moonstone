@@ -2,7 +2,7 @@ package com.moonstone.moonstonemod.init.moonstoneitem.extend;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.moonstone.moonstonemod.event.AllEvent;
+import com.moonstone.moonstonemod.event.old.AllEvent;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.ex.catalyzer;

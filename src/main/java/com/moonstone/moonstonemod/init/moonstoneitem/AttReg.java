@@ -24,4 +24,17 @@ public class AttReg {
     public static final DeferredHolder<Attribute,?> hurt = REGISTRY.register("hurt",()->{
         return new RangedAttribute("attribute.name.moonstone.res", 1, -1024, 1024).setSyncable(true);
     });
+
+    public static final DeferredHolder<Attribute,?> owner_blood_damage = REGISTRY.register("owner_blood_damage",()->{
+        return new RangedAttribute("attribute.name.moonstone.owner_blood_damage", 1, -1024, 1024).setSyncable(true);
+    });
+    public static final DeferredHolder<Attribute,?> owner_blood_speed = REGISTRY.register("owner_blood_speed",()->{
+        return new RangedAttribute("attribute.name.moonstone.owner_blood_speed", 1, -1024, 1024).setSyncable(true);
+    });
+    public static final DeferredHolder<Attribute,?> owner_blood_time = REGISTRY.register("owner_blood_time",()->{
+        return new RangedAttribute("attribute.name.moonstone.owner_blood_time", 1, -1024, 1024).setSyncable(true);
+    });
+    public static final DeferredHolder<Attribute,?> owner_blood_attack_speed = REGISTRY.register("owner_blood_attack_speed",()->{
+        return new RangedAttribute("attribute.name.moonstone.owner_blood_attack_speed", 1, -1024, 1024).setSyncable(true);
+    });
 }

@@ -1,6 +1,6 @@
 package com.moonstone.moonstonemod.item.maxitem;
 
-import com.moonstone.moonstonemod.event.TextEvt;
+import com.moonstone.moonstonemod.event.old.TextEvt;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.UnCommonItem;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Die;
 import net.minecraft.ChatFormatting;
