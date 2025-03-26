@@ -107,6 +107,13 @@ public class LootTableEvent {
                         .add(LootItem.lootTableItem(Items.body_stone.get()).setWeight(1))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 
+
+                        .add(LootItem.lootTableItem(Items.run_dna.get()).setWeight(1)).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                        .add(LootItem.lootTableItem(Items.health_dna.get()).setWeight(1)).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                        .add(LootItem.lootTableItem(Items.neuron_dna.get()).setWeight(1)).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                        .add(LootItem.lootTableItem(Items.eye_dna.get()).setWeight(1)).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                        .add(LootItem.lootTableItem(Items.skin_dna.get()).setWeight(1)).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+
                         .build());
 
                 table.addPool(LootPool.lootPool().name("treasures_moons")

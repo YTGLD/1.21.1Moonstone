@@ -64,7 +64,7 @@ public class MRender extends RenderType {
                     .createCompositeState(false)
     );
     protected static final OutputStateShard BEACON = new OutputStateShard("set_beacon", () -> {
-        RenderTarget target = MoonPost.getRenderTargetFor(MoonStoneMod.POST);
+        RenderTarget target = MoonPost.getRenderTargetFor(MoonStoneMod.LIGHT);
         if (target != null) {
             target.copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
             target.bindWrite(false);

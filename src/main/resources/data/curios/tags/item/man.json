@@ -9,6 +9,10 @@
     "moonstone:neuron_dna",
     "moonstone:eye_dna",
     "moonstone:eye_lava_dna",
-    "moonstone:skin_dna"
+    "moonstone:skin_dna",
+    "moonstone:bone_dna",
+    "moonstone:muscle_conversion",
+    "moonstone:phosphate_bond",
+    "moonstone:chemical_compound"
   ]
 }

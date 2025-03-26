@@ -63,4 +63,11 @@ public class Drugs {
     public static final DeferredHolder<Item, ?> stone_skin = REGISTRY.register("stone_skin", ()->new ManDNA.Drug(List.of("item.stone_skin.tool.string")));
     public static final DeferredHolder<Item, ?> molt = REGISTRY.register("molt", ()->new ManDNA.Drug(List.of("item.molt.tool.string")));
 
+
+
+
+    public static final DeferredHolder<Item, ?> bone_spur = REGISTRY.register("bone_spur", ()->new ManDNA.Drug(List.of("item.bone_spur.tool.string")));
+    public static final DeferredHolder<Item, ?> hollow = REGISTRY.register("hollow", ()->new ManDNA.Drug(List.of("item.hollow.tool.string")));
+    public static final DeferredHolder<Item, ?> proliferative_bone = REGISTRY.register("proliferative_bone", ()->new ManDNA.Drug(List.of("item.proliferative_bone.tool.string")));
+
 }

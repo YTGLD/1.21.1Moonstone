@@ -1584,7 +1584,7 @@ public class AllEvent {
     public  void PlayerLoggedInEvent(PlayerEvent.PlayerLoggedInEvent event) {
         Player player = event.getEntity();
         if (!player.getTags().contains("welcome_to_moonstone")) {
-            int a = Mth.nextInt(RandomSource.create(), 1, 4);
+            int a = Mth.nextInt(RandomSource.create(), 1, 5);
             if (a == 1) {
                 player.addItem(Items.run_dna.get().getDefaultInstance());
             }
@@ -1596,6 +1596,9 @@ public class AllEvent {
             }
             if (a == 4) {
                 player.addItem(Items.eye_dna.get().getDefaultInstance());
+            }
+            if (a == 5) {
+                player.addItem(Items.skin_dna.get().getDefaultInstance());
             }
             player.addItem(Items.deceased_contract.get().getDefaultInstance());
             player.addTag("welcome_to_moonstone");
@@ -2088,12 +2091,6 @@ public class AllEvent {
 
         }
 
-        if (stack.getItem() instanceof Iplague ||stack.getItem() instanceof Blood) {
-            tooltipEvent.setBorderStart(0xFF800000);
-            tooltipEvent.setBorderEnd(0x0ff800000);
-            tooltipEvent.setBackgroundStart(0x00000000);
-            tooltipEvent.setBackgroundEnd(0x00000000);
-        }
         if (stack.getItem() instanceof Die) {
             tooltipEvent.setBorderStart(0x0ff9C9C9C);
             tooltipEvent.setBorderEnd(0x0ff9C9C9C);
@@ -2118,6 +2115,13 @@ public class AllEvent {
 
             tooltipEvent.setBackgroundStart(0x59000000);
             tooltipEvent.setBackgroundEnd(0x59000000);
+        }
+
+        if (stack.getItem() instanceof Iplague ||stack.getItem() instanceof Blood) {
+            tooltipEvent.setBorderStart(0xFF800000);
+            tooltipEvent.setBorderEnd(0x0ff800000);
+            tooltipEvent.setBackgroundStart(0x00000000);
+            tooltipEvent.setBackgroundEnd(0x00000000);
         }
     }
     public static boolean fungus_boolean(LivingEntity living,Player player){

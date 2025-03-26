@@ -220,7 +220,8 @@ public class NewEvent {
         attack_dna.abnormal_muscles(event);
         attack_dna.reverse_correction(event);
         skin_dna.hurt_of_skin_dna(event);
-
+        bone_dna.hollow(event);
+        bone_dna.bone_spur(event);
         if (event.getEntity().hasEffect(Effects.dead) && event.getEntity().getEffect(Effects.dead)!=null){
             float lvl = event.getEntity().getEffect(Effects.dead).getAmplifier();
             lvl *= 0.2f;

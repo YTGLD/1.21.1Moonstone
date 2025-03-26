@@ -336,6 +336,10 @@ public class Items {
     public static final DeferredHolder<Item,?> eye_dna =REGISTRY.register("eye_dna", eye_dna::new );
     public static final DeferredHolder<Item,?> eye_lava_dna =REGISTRY.register("eye_lava_dna", eye_lava_dna::new );
     public static final DeferredHolder<Item,?> skin_dna =REGISTRY.register("skin_dna", skin_dna::new );
+    public static final DeferredHolder<Item,?> bone_dna =REGISTRY.register("bone_dna", bone_dna::new );
+    public static final DeferredHolder<Item,?> muscle_conversion =REGISTRY.register("muscle_conversion", muscle_conversion::new );
+    public static final DeferredHolder<Item,?> phosphate_bond =REGISTRY.register("phosphate_bond", phosphate_bond::new );
+    public static final DeferredHolder<Item,?> chemical_compound =REGISTRY.register("chemical_compound", chemical_compound::new );
 
     public static final DeferredHolder<Item,?> god_sword_ =REGISTRY.register("god_sword",twelve_sword.god_sword::new );
     public static final DeferredHolder<Item,?> smithing_food =REGISTRY.register("smithing_food", SmithingFood::new);

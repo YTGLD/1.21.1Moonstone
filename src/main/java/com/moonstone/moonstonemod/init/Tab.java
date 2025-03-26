@@ -185,6 +185,10 @@ public class Tab {
                 b.accept(new ItemStack(Drugs.molt.get()));
 
 
+                b.accept(new ItemStack(Drugs.bone_spur.get()));
+                b.accept(new ItemStack(Drugs.hollow.get()));
+                b.accept(new ItemStack(Drugs.proliferative_bone.get()));
+
 
             })
             .build()
@@ -200,11 +204,15 @@ public class Tab {
                 b.accept(new ItemStack(Items.neuron_dna.get()));
                 b.accept(new ItemStack(Items.eye_dna.get()));
                 b.accept(new ItemStack(Items.skin_dna.get()));
+                b.accept(new ItemStack(Items.muscle_conversion.get()));
+                b.accept(new ItemStack(Items.phosphate_bond.get()));
+                b.accept(new ItemStack(Items.chemical_compound.get()));
 
                 b.accept(new ItemStack(Items.copy_dna.get()));
                 b.accept(new ItemStack(Items.attack_dna.get()));
                 b.accept(new ItemStack(Items.greed_dna.get()));
                 b.accept(new ItemStack(Items.eye_lava_dna.get()));
+                b.accept(new ItemStack(Items.bone_dna.get()));
 
 
                 b.accept(new ItemStack(Items.universe.get()));

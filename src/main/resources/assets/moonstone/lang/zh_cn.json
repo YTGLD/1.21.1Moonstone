@@ -779,6 +779,7 @@
   "item.moonstone.speed_seed": "限流种子",
   "item.speed_seed.tool.string": "速度固定到正常值的120%",
   "entity.moonstone.nightmare_giant": "梦魇巨人",
+  "entity.moonstone.nightmare_giant_to": "梦魇巨人",
 
   "item.light_amout.tool.string": "如果单次坠落距离大于2",
   "item.light_amout.tool.string.1": "那么接下来的全力一击将附带大范围的闪电攻击",
@@ -1868,7 +1869,6 @@
   "attribute.name.moonstone.owner_blood_attack_speed": "血灵增生体的攻击间隔",
 
 
-
   "item.moonstone.skin_dna": "表皮强化基因",
 
   "item.moonstone.scale": "皮肤鳞质化",
@@ -1878,6 +1878,18 @@
   "item.scale.tool.string": "加2护甲，获得25%基于护甲的韧性值",
   "item.stone_skin.tool.string": "增加20%护甲值但减少15%挖掘速度",
   "item.molt.tool.string": "受到伤害后5秒内，临时减少20%护甲值和增加40%治疗（不可叠加）",
+
+
+  "item.moonstone.bone_dna": "骨骼异化基因",
+
+  "item.moonstone.bone_spur": "刺状物突出",
+  "item.moonstone.hollow": "骨质疏松",
+  "item.moonstone.proliferative_bone": "骨异常增生",
+
+  "item.bone_spur.tool.string": "反伤20%，反伤有50%概率受到额外25%伤害",
+  "item.hollow.tool.string": "增加100%摔落伤害和25%攻速",
+  "item.proliferative_bone.tool.string": "增加25%护甲和韧性，减少15%速度",
+
 
 
 

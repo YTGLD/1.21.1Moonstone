@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "moonstone:skin_dna"
+    },
+    {
+      "item": "moonstone:ectoplasmcube"
+    },
+    {
+      "item": "minecraft:bone"
+    },
+    {
+      "item": "minecraft:bone"
+    },
+    {
+      "item": "minecraft:bone"
+    },
+    {
+      "item": "minecraft:bone"
+    },
+    {
+      "item": "minecraft:bone"
+    },
+    {
+      "item": "minecraft:bone"
+    },
+    {
+      "item": "minecraft:bone"
+    }
+  ],
+  "result": {
+    "id": "moonstone:bone_dna",
+    "count": 1
+  }
+}

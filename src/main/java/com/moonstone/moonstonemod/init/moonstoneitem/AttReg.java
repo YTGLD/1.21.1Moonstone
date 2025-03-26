@@ -37,4 +37,9 @@ public class AttReg {
     public static final DeferredHolder<Attribute,?> owner_blood_attack_speed = REGISTRY.register("owner_blood_attack_speed",()->{
         return new RangedAttribute("attribute.name.moonstone.owner_blood_attack_speed", 1, -1024, 1024).setSyncable(true);
     });
+
+
+    public static final DeferredHolder<Attribute,?> zombie_attack_damage = REGISTRY.register("zombie_attack_damage",()->{
+        return new RangedAttribute("attribute.name.moonstone.zombie_attack_damage", 1, -1024, 1024).setSyncable(true);
+    });
 }

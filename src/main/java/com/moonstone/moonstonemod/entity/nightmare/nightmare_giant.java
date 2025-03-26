@@ -5,6 +5,7 @@ import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.entity.extend.MoonTamableAnimal;
 import com.moonstone.moonstonemod.entity.zombie.cell_zombie;
 import com.moonstone.moonstonemod.event.old.AllEvent;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
@@ -80,7 +81,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
-public class nightmare_giant extends TamableAnimal implements OwnableEntity,VibrationSystem {
+public class nightmare_giant extends MoonTamableAnimal implements OwnableEntity,VibrationSystem {
 
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final EntityDataAccessor<Integer> CLIENT_ANGER_LEVEL = SynchedEntityData.defineId(nightmare_giant.class, EntityDataSerializers.INT);

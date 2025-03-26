@@ -663,6 +663,7 @@
   "entity.moonstone.cell_zombie": "cell zombie",
   "entity.moonstone.nightmare_entity": "nightmare entity",
   "entity.moonstone.nightmare_giant": "nightmare giant",
+  "entity.moonstone.nightmare_giant_to": "nightmare giant",
   "entity.moonstone.cell_slime": "cell slime",
   "entity.moonstone.sun": "sun",
   "entity.moonstone.ytgld": "ytgld",
@@ -1249,7 +1250,9 @@
   "item.deceased_contract.tool.string.4": "召唤的僵尸获得50%召唤者的伤害，速度，防御，最大生命值的加成",
   "item.deceased_contract.tool.string.5": "召唤的僵尸获得获得召唤者目前存在的所有正面药水状态",
   "item.deceased_contract.tool.string.6": "Necora病毒及其附属物品无效化\n暗影瘟疫及其附属物品无效化",
-
+  "item.deceased_contract.tool.string.7": "你必须佩戴",
+  "item.deceased_contract.tool.string.8": "秒后才能取下",
+  "item.deceased_contract.tool.string.9": "目前，它是可以被取下的",
 
 
   "item.moonstone.blood_all":"它发现于古城，但是需要佩戴封魔烛台才能发现",
@@ -1786,6 +1789,36 @@
   "item.stone_skin.tool.string": "Increases armor value by 20% but reduces mining speed by 15%",
   "item.molt.tool.string": "Temporarily reduces armor by 20% and increases treatment by 40% within 5 seconds after taking damage (non-stacking)",
 
+
+  "item.moonstone.bone_dna": "Bone Differentiation Gene",
+
+  "item.moonstone.bone_spur": "Bone Spur",
+  "item.moonstone.hollow": "Hollow Bone",
+  "item.moonstone.proliferative_bone": "Proliferative Bone",
+
+  "item.bone_spur.tool.string": "Reflect 20% damage, 50% chance to receive an additional 25% damage when reflecting",
+  "item.hollow.tool.string": "Increase fall damage by 100% and attack speed by 25%",
+  "item.proliferative_bone.tool.string": "Increase armor and resilience by 25%, reduce speed by 15%",
+
+
+  "attribute.name.moonstone.zombie_attack_damage": "僵尸的伤害",
+
+  "item.moonstone.muscle_conversion": "肌肉转化",
+  "item.muscle_conversion.tool.string": "玩家本体伤害降低20%",
+  "item.muscle_conversion.tool.string.1": "召唤的僵尸继承玩家50%的攻击力",
+  "item.muscle_conversion.tool.string.2": "召唤的僵尸伤害提高30%",
+
+
+
+  "item.moonstone.phosphate_bond": "高能磷酸键断裂",
+  "item.phosphate_bond.tool.string": "召唤的僵尸死亡后回复玩家10%最大生命值",
+  "item.phosphate_bond.tool.string.1": "召唤的僵尸最少能承受5次伤害",
+
+
+  "item.moonstone.chemical_compound": "化合物合成",
+  "item.chemical_compound.tool.string": "每存在一只细胞僵尸，治疗增加15%",
+  "item.chemical_compound.tool.string.1": "每存在一只巨型细胞僵尸，伤害提高10%",
+  "item.chemical_compound.tool.string.2": "僵尸死亡玩家将受到5%最大生命值的伤害",
 
 
   "item.moonstone.rage_bottle": "Golden Bottle",

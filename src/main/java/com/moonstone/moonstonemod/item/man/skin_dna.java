@@ -4,7 +4,6 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.contents.ManBundleContents;
 import com.moonstone.moonstonemod.init.items.Drugs;
-import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import net.minecraft.core.Holder;
@@ -31,7 +30,8 @@ public class skin_dna extends ManDNA {
     public static final String molt = "moltSize";
 
     public skin_dna() {
-        super(new Properties().stacksTo(1).rarity(Rarity.RARE).component(DataReg.man, ManBundleContents.EMPTY));
+        super(new Properties().stacksTo(1).rarity(Rarity.RARE).component(DataReg.man,
+                ManBundleContents.EMPTY));
     }
     //加4护甲
     @Override
@@ -52,7 +52,7 @@ public class skin_dna extends ManDNA {
                     IDynamicStackHandler stackHandler = stacksHandler.getStacks();
                     for (int i = 0; i < stacksHandler.getSlots(); i++) {
                         ItemStack stack = stackHandler.getStackInSlot(i);
-                        if (stack.getItem() instanceof health_dna) {
+                        if (stack.getItem() instanceof skin_dna) {
                             ManBundleContents manBundleContents = stack.get(DataReg.man);
                             if (manBundleContents != null) {
                                 manBundleContents.items().forEach((itemStack -> {
@@ -74,79 +74,104 @@ public class skin_dna extends ManDNA {
     public Multimap<Holder<Attribute>, AttributeModifier> getA(SlotContext slotContext, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier>modifierMultimap = HashMultimap.create();
 
-        if (stack.is(Items.skin_dna.get())) {
-            ManBundleContents manBundleContents = stack.get(DataReg.man);
-            if (manBundleContents != null) {
-                manBundleContents.items().forEach((itemStack -> {
-                    if (itemStack.is(Drugs.scale)) {
-                        modifierMultimap.put(Attributes.ARMOR,
-                                new AttributeModifier(ResourceLocation.withDefaultNamespace("scale"+this.getDescriptionId()),
-                                        2, AttributeModifier.Operation.ADD_VALUE));
-                        float t  = slotContext.entity().getArmorValue() / 4f;
-                        modifierMultimap.put(Attributes.ARMOR_TOUGHNESS,
-                                new AttributeModifier(ResourceLocation.withDefaultNamespace("scale"+this.getDescriptionId()),
-                                        t, AttributeModifier.Operation.ADD_VALUE));
+        ManBundleContents manBundleContents = stack.get(DataReg.man);
+        if (manBundleContents != null) {
+            manBundleContents.items().forEach((itemStack -> {
+                if (itemStack.is(Drugs.scale)) {
+                    modifierMultimap.put(Attributes.ARMOR,
+                            new AttributeModifier(ResourceLocation.withDefaultNamespace("scale"+this.getDescriptionId()),
+                                    2, AttributeModifier.Operation.ADD_VALUE));
+                    float t  = slotContext.entity().getArmorValue() / 4f;
+                    modifierMultimap.put(Attributes.ARMOR_TOUGHNESS,
+                            new AttributeModifier(ResourceLocation.withDefaultNamespace("scale"+this.getDescriptionId()),
+                                    t, AttributeModifier.Operation.ADD_VALUE));
 
-                    }
-                }));
-            }
+                }
+            }));
         }
-        if (stack.is(Items.skin_dna.get())) {
-            ManBundleContents manBundleContents = stack.get(DataReg.man);
-            if (manBundleContents != null) {
-                manBundleContents.items().forEach((itemStack -> {
-                    if (itemStack.is(Drugs.stone_skin)) {
-                        modifierMultimap.put(Attributes.ARMOR,
-                                new AttributeModifier(ResourceLocation.withDefaultNamespace("stone_skin"+this.getDescriptionId()),
-                                        0.2f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-                        modifierMultimap.put(AttReg.cit,
-                                new AttributeModifier(ResourceLocation.withDefaultNamespace("stone_skin"+this.getDescriptionId()),
-                                        -0.15f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
-                    }
-                }));
-            }
-        }
-        if (stack.is(Items.skin_dna.get())) {
-            ManBundleContents manBundleContents = stack.get(DataReg.man);
-            if (manBundleContents != null) {
-                manBundleContents.items().forEach((itemStack -> {
-                    if (itemStack.is(Drugs.molt)) {
-                        modifierMultimap.put(Attributes.ARMOR,
-                                new AttributeModifier(ResourceLocation.withDefaultNamespace("molt"+this.getDescriptionId()),
-                                        -0.2f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-                        modifierMultimap.put(AttReg.heal,
-                                new AttributeModifier(ResourceLocation.withDefaultNamespace("molt"+this.getDescriptionId()),
-                                        0.4f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-
-                    }
-                }));
-            }
-        }
         return modifierMultimap;
     }
-    @Override
-    public void curioTick(SlotContext slotContext, ItemStack stack) {
-        slotContext.entity().getAttributes().addTransientAttributeModifiers(getA(slotContext,stack));
+    public Multimap<Holder<Attribute>, AttributeModifier> getB(SlotContext slotContext, ItemStack stack) {
+        Multimap<Holder<Attribute>, AttributeModifier>modifierMultimap = HashMultimap.create();
+
+        ManBundleContents manBundleContents = stack.get(DataReg.man);
+        if (manBundleContents != null) {
+            manBundleContents.items().forEach((itemStack -> {
+                if (itemStack.is(Drugs.stone_skin)) {
+                    modifierMultimap.put(Attributes.ARMOR,
+                            new AttributeModifier(ResourceLocation.withDefaultNamespace("stone_skin"+this.getDescriptionId()),
+                                    0.2f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                    modifierMultimap.put(AttReg.cit,
+                            new AttributeModifier(ResourceLocation.withDefaultNamespace("stone_skin"+this.getDescriptionId()),
+                                    -0.15f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+
+                }
+            }));
+        }
+
+        return modifierMultimap;
+    }
+    public Multimap<Holder<Attribute>, AttributeModifier> getC(SlotContext slotContext, ItemStack stack) {
+        Multimap<Holder<Attribute>, AttributeModifier>modifierMultimap = HashMultimap.create();
 
         ManBundleContents manBundleContents = stack.get(DataReg.man);
         if (manBundleContents != null) {
             manBundleContents.items().forEach((itemStack -> {
                 if (itemStack.is(Drugs.molt)) {
                     @Nullable CompoundTag tah = itemStack.get(DataReg.tag);
-                    if (tah != null) {
-                        if (tah.getInt(molt) > 0) {
-                            tah.putInt(molt,tah.getInt(molt)-1);
+
+                    float armor = 0;
+                    float heal = 0;
+                    if (tah != null){
+                        if (tah.getInt(molt)>0){
+                            armor = -0.2f;
+                            heal = 0.4f;
                         }
                     }
+                    modifierMultimap.put(Attributes.ARMOR,
+                            new AttributeModifier(ResourceLocation.withDefaultNamespace("molt"+this.getDescriptionId()),
+                                    armor, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                    modifierMultimap.put(AttReg.heal,
+                            new AttributeModifier(ResourceLocation.withDefaultNamespace("molt"+this.getDescriptionId()),
+                                    heal, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+
                 }
             }));
         }
+        return modifierMultimap;
+    }
+
+    @Override
+    public void curioTick(SlotContext slotContext, ItemStack stack) {
+        if (!slotContext.entity().level().isClientSide){
+            ManBundleContents manBundleContents = stack.get(DataReg.man);
+            if (manBundleContents != null) {
+                manBundleContents.items().forEach((itemStack -> {
+                    if (itemStack.is(Drugs.molt)) {
+                        @Nullable CompoundTag tah = itemStack.get(DataReg.tag);
+                        if (tah != null) {
+                            if (tah.getInt(molt) > 0) {
+                                tah.putInt(molt,tah.getInt(molt)-1);
+                            }
+                        }else {
+                            itemStack.set(DataReg.tag,new CompoundTag());
+                        }
+                    }
+                }));
+            }
+            slotContext.entity().getAttributes().addTransientAttributeModifiers(getA(slotContext,stack));
+            slotContext.entity().getAttributes().addTransientAttributeModifiers(getB(slotContext,stack));
+            slotContext.entity().getAttributes().addTransientAttributeModifiers(getC(slotContext,stack));
+        }
+
     }
 
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
         slotContext.entity().getAttributes().removeAttributeModifiers(getA(slotContext,stack));
+        slotContext.entity().getAttributes().removeAttributeModifiers(getB(slotContext,stack));
+        slotContext.entity().getAttributes().removeAttributeModifiers(getC(slotContext,stack));
     }
 
     @Override

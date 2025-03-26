@@ -1,0 +1,18 @@
+{
+  "targets": [
+    "swap",
+    "final"
+  ],
+  "passes": [
+    {
+      "name": "moonstone:light",
+      "intarget": "final",
+      "outtarget": "swap"
+    },
+    {
+      "name": "moonstone:light",
+      "intarget": "swap",
+      "outtarget": "final"
+    }
+  ]
+}

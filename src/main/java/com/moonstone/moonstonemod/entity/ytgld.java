@@ -298,7 +298,9 @@ public class ytgld extends nightmare_giant {
             sZombieTime--;
         }
         this.removeEffect(Effects.dead);
-        this.getAttributes().addTransientAttributeModifiers(this.AttributeModifier(this));
+        if (this.getType() == EntityTs.ytgld.get()) {
+            this.getAttributes().addTransientAttributeModifiers(this.AttributeModifier(this));
+        }
         if (time > 7200){
             this.discard();
         }
