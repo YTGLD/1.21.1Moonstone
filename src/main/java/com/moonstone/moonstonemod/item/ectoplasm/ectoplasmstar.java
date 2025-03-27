@@ -25,6 +25,16 @@ import java.util.List;
 
 public class ectoplasmstar extends ectoplasm {
     @Override
+    public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
+        if (slotContext.entity() instanceof Player player) {
+            if (!player.level().isClientSide) {
+                slotContext.entity().getAttributes().addTransientAttributeModifiers(att(player));
+                slotContext.entity().getAttributes().addTransientAttributeModifiers(att2(player));
+            }
+        }
+    }
+
+    @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player) {
             if (Handler.hascurio(player, Items.nightmare_base_stone_meet.get())){
@@ -34,8 +44,7 @@ public class ectoplasmstar extends ectoplasm {
                     stack.set(DataReg.tag,new CompoundTag());
                 }
             }
-            slotContext.entity().getAttributes().addTransientAttributeModifiers(att(player));
-            slotContext.entity().getAttributes().addTransientAttributeModifiers(att2(player));
+
         }
     }
 

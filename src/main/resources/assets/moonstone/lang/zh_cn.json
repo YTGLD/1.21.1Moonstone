@@ -1311,7 +1311,7 @@
   "moonstone.jei.polyphagia": "： 吃个附魔金苹果，需要佩戴医药箱",
   "moonstone.jei.quadriceps": "： 跳500次，需要佩戴医药箱",
   "moonstone.jei.reanimation": "： 吃8个金苹果，需要佩戴医药箱",
-  "moonstone.jei.blood.all": "： 发现在宝藏战利品箱",
+  "moonstone.jei.blood.all": "： 发现在古城类型战利品箱",
   "moonstone.jei.nightmare": ": 需要佩戴使深渊之眼才能发现于地牢，矿井之中",
   "item.moonstone.organizational_regeneration": "活性化",
 
@@ -1488,8 +1488,9 @@
 
 
   "item.moonstone.nightmare_base_fool":"§4愚者之危",
-  "item.nightmare_base_fool.tool.string": "从2件开始，每多佩戴一件饰品都会使生命值减少3%",
-  "item.nightmare_base_fool.tool.string.1": "从5件开始，每多佩戴一件饰品都会使伤害减少5%",
+  "item.nightmare_base_fool.tool.string": "从2件开始，每多佩戴一件饰品都会使生命值减少1%",
+  "item.nightmare_base_fool.tool.string.1": "从5件开始，每多佩戴一件饰品都会使伤害减少2%",
+  "item.nightmare_base_fool.tool.string.2": "伤害和生命值惩罚不高于50%",
 
   "advancements.tooltip.nightmare_base_fool.text": "获得这个物品",
   "advancements.tooltip.nightmare_base_fool.hand": "抉择",

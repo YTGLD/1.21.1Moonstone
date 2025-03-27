@@ -1441,8 +1441,9 @@
 
 
   "item.moonstone.nightmare_base_fool":"§4Fool's Danger",
-  "item.nightmare_base_fool.tool.string": "Starting from 2 pieces, each additional accessory will reduce health by 3%",
-  "item.nightmare_base_fool.tool.string.1": "Starting from 5 pieces, each additional accessory will reduce damage by 5%",
+  "item.nightmare_base_fool.tool.string": "Starting from 2 pieces, each additional accessory will reduce health by 1%",
+  "item.nightmare_base_fool.tool.string.1": "Starting from 5 pieces, each additional accessory will reduce damage by 2%",
+  "item.nightmare_base_fool.tool.string.2": "Damage and health penalty of 50% or less.",
 
   "advancements.tooltip.nightmare_base_fool.text": "Obtain this item",
   "advancements.tooltip.nightmare_base_fool.hand": "Choice",

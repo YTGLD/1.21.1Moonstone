@@ -125,8 +125,10 @@ public abstract class ManDNA extends Item  implements ICurioItem {
                             if (Handler.hascurio(player,manDNA)) {
                                 if (manDNA.getDrug() != null) {
                                     List<Item> list = manDNA.getDrug();
-                                    if (Mth.nextInt(net.minecraft.util.RandomSource.create(), 1, 100) <= gLvl) {
-                                        generatedLoot.add(new ItemStack(list.get(new Random().nextInt(list.size()))));
+                                    if (!list.isEmpty()) {
+                                        if (Mth.nextInt(net.minecraft.util.RandomSource.create(), 1, 100) <= gLvl) {
+                                            generatedLoot.add(new ItemStack(list.get(new Random().nextInt(list.size()))));
+                                        }
                                     }
                                 }
                             }

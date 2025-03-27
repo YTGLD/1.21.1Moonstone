@@ -58,9 +58,6 @@ public class MoonStoneMod {
     public static final ResourceLocation POST_Blood = ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,
             "shaders/post/entity_outline_blood.json");
 
-    public static final ResourceLocation LIGHT = ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,
-            "shaders/post/light.json");
-
     public MoonStoneMod(IEventBus eventBus, ModContainer modContainer){
         NeoForge.EVENT_BUS.register(new AllEvent());
         NeoForge.EVENT_BUS.register(new LootEvent());
