@@ -1,21 +1,34 @@
 package com.moonstone.moonstonemod.entity.client;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
 import com.moonstone.moonstonemod.ConfigClient;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.client.renderer.MoonPost;
 import com.moonstone.moonstonemod.entity.owner_blood;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
+
+import java.util.List;
 
 import static net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY;
 
@@ -26,6 +39,7 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
 
     @Override
     public void render(owner_blood entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
+        super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
         if (ConfigClient.Client.Shader.get()) {
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
         }
@@ -35,12 +49,57 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
         if (entity.hasTrail()) {
             poseStack.pushPose();
             poseStack.translate(-x, -y, -z);
+            setMatrices(poseStack,bufferSource,entity);
             renderTrail(entity, p_114487_, poseStack, bufferSource, 220/255f, 20/255f, 60/255f, 240);
             poseStack.popPose();
         }
         renderSphere1(poseStack,bufferSource,240,0.5f);
 
-        super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
+    }
+    public void setMatrices(@NotNull PoseStack matrices,
+                            @NotNull MultiBufferSource vertexConsumers,
+                            @NotNull Entity entity) {
+        int rage = 10;
+        float posAdd = 1.0001f;
+        if (entity instanceof owner_blood ownerBlood) {
+
+            BlockPos playerPos = ownerBlood.blockPosition();
+            Vec3 playerVec = new Vec3(playerPos.getX(), playerPos.getY(), playerPos.getZ());
+
+            for (int x = -8; x <= rage; x++) {
+                for (int y = -8; y <= rage; y++) {
+                    for (int z = -8; z <= rage; z++) {
+                        BlockPos currentPos = playerPos.offset(x, y, z);
+                        Vec3 currentVec = new Vec3(currentPos.getX(), currentPos.getY(), currentPos.getZ());
+                        BlockState blockState = ownerBlood.level().getBlockState(currentPos);
+                        if (!blockState.isEmpty() && !blockState.is(Blocks.AIR)) {
+                            PoseStack poseStack = matrices;
+                            poseStack.pushPose();
+                            poseStack.scale(posAdd,posAdd,posAdd);
+                            poseStack.translate(currentPos.getX(), currentPos.getY()+0.01f, currentPos.getZ());
+
+                            double distance = playerVec.distanceTo(currentVec);
+
+                            float alp = Math.max(0, 1 - (float) distance / rage);
+
+                            BakedModel bakedModel = Minecraft.getInstance().getBlockRenderer().getBlockModel(blockState);
+                            for (Direction direction : Direction.values()) {
+                                List<BakedQuad> quads = bakedModel.getQuads(blockState, direction, RandomSource.create());
+                                for (BakedQuad quad : quads) {
+
+                                    vertexConsumers.getBuffer(MRender.lightning()).putBulkData(poseStack.last(), quad, new float[]{
+                                            1.2f, 1.2f, 1.2f, 1.2f
+                                    }, 1, 0, 0, alp, new int[]{1, 1, 1, 1}, OverlayTexture.NO_OVERLAY, true);
+
+
+                                }
+                            }
+                            poseStack.popPose();
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private void renderTrail(owner_blood entityIn, float partialTicks, PoseStack poseStack, MultiBufferSource bufferIn, float trailR, float trailG, float trailB, int packedLightIn) {

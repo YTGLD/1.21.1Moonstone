@@ -39,15 +39,6 @@ public class MRender extends RenderType {
     }, () -> {
         Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
     });
-    protected static final OutputStateShard setOutputState_CUBE = new OutputStateShard("cube", () -> {
-        RenderTarget target = MoonPost.getRenderTargetFor(MoonStoneMod.POST_cube);
-        if (target != null) {
-            target.copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
-            target.bindWrite(false);
-        }
-    }, () -> {
-        Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
-    });
     public static final RenderType LIGHTNING = create(
             "lightning",
             DefaultVertexFormat.POSITION_COLOR,
@@ -58,6 +49,22 @@ public class MRender extends RenderType {
             RenderType.CompositeState.builder()
                     .setShaderState(RENDERTYPE_LIGHTNING_SHADER)
                     .setWriteMaskState(COLOR_DEPTH_WRITE)
+                    .setCullState(RenderStateShard.NO_CULL)
+                    .setTransparencyState(LIGHTNING_TRANSPARENCY)
+                    .setOutputState(WEATHER_TARGET)
+                    .createCompositeState(false)
+    );
+    public static final RenderType setDepthTestStateLIGHTNING = create(
+            "lightning",
+            DefaultVertexFormat.POSITION_COLOR,
+            VertexFormat.Mode.QUADS,
+            1536,
+            false,
+            true,
+            RenderType.CompositeState.builder()
+                    .setShaderState(RENDERTYPE_LIGHTNING_SHADER)
+                    .setWriteMaskState(COLOR_DEPTH_WRITE)
+                    .setDepthTestState(RenderStateShard.GREATER_DEPTH_TEST)
                     .setCullState(RenderStateShard.NO_CULL)
                     .setTransparencyState(LIGHTNING_TRANSPARENCY)
                     .setOutputState(WEATHER_TARGET)

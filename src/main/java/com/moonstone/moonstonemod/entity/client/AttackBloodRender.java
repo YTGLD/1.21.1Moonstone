@@ -8,14 +8,27 @@ import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.client.renderer.MoonPost;
 import com.moonstone.moonstonemod.entity.attack_blood;
+import com.moonstone.moonstonemod.entity.owner_blood;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class AttackBloodRender extends EntityRenderer<attack_blood> {
     public AttackBloodRender(EntityRendererProvider.Context p_173917_) {
@@ -28,13 +41,65 @@ public class AttackBloodRender extends EntityRenderer<attack_blood> {
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
         }
 
+
+        double x = Mth.lerp(p_114487_, entity.xOld, entity.getX());
+        double y = Mth.lerp(p_114487_, entity.yOld, entity.getY());
+        double z = Mth.lerp(p_114487_, entity.zOld, entity.getZ());
+        poseStack.pushPose();
+        poseStack.translate(-x, -y, -z);
+        setMatrices(poseStack,bufferSource,entity);
+        poseStack.popPose();
         setT(poseStack, entity, bufferSource);
+
+
         renderSphere1(poseStack,bufferSource,240,0.15f);
 
         super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
     }
 
+    public void setMatrices(@NotNull PoseStack matrices,
+                            @NotNull MultiBufferSource vertexConsumers,
+                            @NotNull Entity ownerBlood) {
+        int rage = 4;
+        float posAdd = 1.0001f;
 
+        BlockPos playerPos = ownerBlood.blockPosition();
+        Vec3 playerVec = new Vec3(playerPos.getX(), playerPos.getY(), playerPos.getZ());
+
+        for (int x = -8; x <= rage; x++) {
+            for (int y = -8; y <= rage; y++) {
+                for (int z = -8; z <= rage; z++) {
+                    BlockPos currentPos = playerPos.offset(x, y, z);
+                    Vec3 currentVec = new Vec3(currentPos.getX(), currentPos.getY(), currentPos.getZ());
+                    BlockState blockState = ownerBlood.level().getBlockState(currentPos);
+                    if (!blockState.isEmpty() && !blockState.is(Blocks.AIR)) {
+                        PoseStack poseStack = matrices;
+                        poseStack.pushPose();
+                        poseStack.scale(posAdd,posAdd,posAdd);
+                        poseStack.translate(currentPos.getX(), currentPos.getY()+0.01f, currentPos.getZ());
+
+                        double distance = playerVec.distanceTo(currentVec);
+
+                        float alp = Math.max(0, 1 - (float) distance / rage);
+
+                        BakedModel bakedModel = Minecraft.getInstance().getBlockRenderer().getBlockModel(blockState);
+                        for (Direction direction : Direction.values()) {
+                            List<BakedQuad> quads = bakedModel.getQuads(blockState, direction, RandomSource.create());
+                            for (BakedQuad quad : quads) {
+
+                                vertexConsumers.getBuffer(MRender.lightning()).putBulkData(poseStack.last(), quad, new float[]{
+                                        1.2f, 1.2f, 1.2f, 1.2f
+                                }, 1, 0, 0, alp/2, new int[]{1, 1, 1, 1}, OverlayTexture.NO_OVERLAY, true);
+
+
+                            }
+                        }
+                        poseStack.popPose();
+                    }
+                }
+            }
+        }
+    }
     private void setT(PoseStack matrices,
                       attack_blood entity,
                       MultiBufferSource vertexConsumers)

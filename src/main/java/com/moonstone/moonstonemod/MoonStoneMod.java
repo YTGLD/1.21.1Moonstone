@@ -14,13 +14,14 @@ import com.moonstone.moonstonemod.entity.client.blood.BloodBatRenderer;
 import com.moonstone.moonstonemod.entity.client.zombie.CellZombieG;
 import com.moonstone.moonstonemod.entity.client.zombie.CellZombieN;
 import com.moonstone.moonstonemod.entity.client.zombie.ZombieRenderer;
-import com.moonstone.moonstonemod.event.*;
+import com.moonstone.moonstonemod.event.MEvent;
+import com.moonstone.moonstonemod.event.ZombieEvent;
 import com.moonstone.moonstonemod.event.old.*;
 import com.moonstone.moonstonemod.init.Tab;
 import com.moonstone.moonstonemod.init.items.BookItems;
 import com.moonstone.moonstonemod.init.items.DNAItems;
-import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.items.Drugs;
+import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.*;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.core.HolderLookup;
@@ -47,12 +48,11 @@ import java.util.concurrent.CompletableFuture;
 @Mod(MoonStoneMod.MODID)
 public class MoonStoneMod {
 
+
     public static final String MODID = "moonstone";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final ResourceLocation POST = ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,
-            "shaders/post/entity_outline.json");
-    public static final ResourceLocation POST_cube = ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,
             "shaders/post/entity_outline.json");
 
     public static final ResourceLocation POST_Blood = ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,
@@ -101,9 +101,12 @@ public class MoonStoneMod {
 
     }
 
-
     @EventBusSubscriber(modid = MoonStoneMod.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
     public static class Client {
+
+
+
+
         @SubscribeEvent
         public static void registerFactories(RegisterParticleProvidersEvent event) {
             event.registerSpriteSet(Particles.gold.get(), red.Provider::new);
