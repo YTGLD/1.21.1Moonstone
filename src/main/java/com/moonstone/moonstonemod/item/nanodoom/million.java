@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.item.nanodoom;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.as_sword;
 import com.moonstone.moonstonemod.event.old.TextEvt;
@@ -21,9 +22,12 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ClickAction;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.phys.Vec3;
@@ -63,14 +67,28 @@ public class million extends Doom implements TextEvt.Twelve{
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
         slotContext.entity().getAttributes().removeAttributeModifiers(Head(stack));
     }
-
+    public static String canFlySword = "canFlySword";
+    public boolean overrideOtherStackedOnMe(ItemStack me, ItemStack Other, Slot p_150744_, ClickAction p_150745_, Player p_150746_, SlotAccess p_150747_) {
+        if (p_150745_ == ClickAction.SECONDARY && p_150744_.allowModification(p_150746_)) {
+            if (Other.isEmpty()) {
+                if (me.get(DataReg.tag) == null) {
+                    me.set(DataReg.tag, new CompoundTag());
+                }
+                CompoundTag tag = me.get(DataReg.tag);
+                boolean c = tag.getBoolean(canFlySword);
+                tag.putBoolean(canFlySword, !c);
+                return true;
+            }
+        }
+        return false;
+    }
     public static void hurt(LivingIncomingDamageEvent event) {
         if (event.getSource().getDirectEntity() instanceof Player player) {
-            if (Handler.hascurio(player,Items.million.get())&&Handler.hascurio(player,Items.as_amout.get())){
-                return;
+            if (Config.SERVER.canFlySword.get() == false) {
+                if (Handler.hascurio(player, Items.million.get()) && Handler.hascurio(player, Items.as_amout.get())) {
+                    return;
+                }
             }
-
-
             if (Handler.hascurio(player, Items.million.get())) {
                 CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
                     Map<String, ICurioStacksHandler> curios = handler.getCurios();
@@ -82,35 +100,36 @@ public class million extends Doom implements TextEvt.Twelve{
                             if (stack .is(Items.million.get())&&!player.getCooldowns().isOnCooldown(Items.million.get())) {
                                 if (player.getAttackStrengthScale(1) >= 1) {
                                     if (stack.get(DataReg.tag) != null) {
+                                        if (!stack.get(DataReg.tag).getBoolean(canFlySword)) {
+                                            if (stack.get(DataReg.tag).getInt(sizeLvl) >= 3) {
 
-                                        if (stack.get(DataReg.tag).getInt(sizeLvl) >= 3) {
+                                                player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.AMBIENT, 2, 2);
 
-                                            player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.AMBIENT, 2, 2);
-
-                                            LivingEntity target = event.getEntity();
+                                                LivingEntity target = event.getEntity();
 
 
-                                            for (int j = 0; j < 3; j++) {
+                                                for (int j = 0; j < 3; j++) {
 
-                                                float lvl = Mth.nextFloat(RandomSource.create(), -0.6f, 0.6f);
+                                                    float lvl = Mth.nextFloat(RandomSource.create(), -0.6f, 0.6f);
 
-                                                as_sword as_sword = new as_sword(EntityTs.as_sword.get(), player.level());
-                                                as_sword.setPos(target.position().x, target.position().y + 1, target.position().z);
-                                                Vec3 forward = player.getLookAngle();
-                                                double speed = 0.25;
+                                                    as_sword as_sword = new as_sword(EntityTs.as_sword.get(), player.level());
+                                                    as_sword.setPos(target.position().x, target.position().y + 1, target.position().z);
+                                                    Vec3 forward = player.getLookAngle();
+                                                    double speed = 0.25;
 
-                                                as_sword.setDeltaMovement(forward.add(lvl, lvl, lvl).x * speed, forward.add(lvl, lvl, lvl).y * speed, forward.add(lvl, lvl, lvl).z * speed);
+                                                    as_sword.setDeltaMovement(forward.add(lvl, lvl, lvl).x * speed, forward.add(lvl, lvl, lvl).y * speed, forward.add(lvl, lvl, lvl).z * speed);
 
-                                                as_sword.setOwner(player);
+                                                    as_sword.setOwner(player);
 
-                                                player.level().addFreshEntity(as_sword);
-                                                as_sword.setTarget(target);
+                                                    player.level().addFreshEntity(as_sword);
+                                                    as_sword.setTarget(target);
 
-                                                if (stack.get(DataReg.tag).getInt(sizeLvl) > 0) {
-                                                    stack.get(DataReg.tag).putInt(sizeLvl, stack.get(DataReg.tag).getInt(sizeLvl) - 1);
+                                                    if (stack.get(DataReg.tag).getInt(sizeLvl) > 0) {
+                                                        stack.get(DataReg.tag).putInt(sizeLvl, stack.get(DataReg.tag).getInt(sizeLvl) - 1);
+                                                    }
+                                                    player.getCooldowns().addCooldown(Items.million.get(), 10);
+
                                                 }
-                                                player.getCooldowns().addCooldown(Items.million.get(),10);
-
                                             }
                                         }
                                     }
@@ -154,6 +173,16 @@ public class million extends Doom implements TextEvt.Twelve{
                 pTooltipComponents.add(Component.translatable("item.million.tool.string.7").append(pStack.get(DataReg.tag).getInt(attackLvl) + "%").withStyle(ChatFormatting.YELLOW));
                 pTooltipComponents.add(Component.translatable("item.million.tool.string.8").append(pStack.get(DataReg.tag).getInt(sizeLvl) + "").withStyle(ChatFormatting.YELLOW));
             }
+        }
+        pTooltipComponents.add(Component.translatable("item.moonstone.tool.string.sword").withStyle(ChatFormatting.GOLD));
+        if (pStack.get(DataReg.tag)!=null){
+            if (!pStack.get(DataReg.tag).getBoolean(canFlySword)){
+                pTooltipComponents.add(Component.translatable("item.moonstone.tooltips.off").withStyle(ChatFormatting.GOLD));
+            }else {
+                pTooltipComponents.add(Component.translatable("item.moonstone.tooltips.on").withStyle(ChatFormatting.GOLD));
+            }
+        }else {
+            pTooltipComponents.add(Component.translatable("item.moonstone.tooltips.off").withStyle(ChatFormatting.GOLD));
         }
     }
 }

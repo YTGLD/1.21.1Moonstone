@@ -83,6 +83,10 @@ public class Config {
 
         {
             BUILDER.push("一般物品");
+            canFlySword = BUILDER
+                    .comment("”七剑修罗·万法“和”七剑修罗·剑阵之章“同时佩戴后仍然可以发射飞剑")
+                    .define("canFlySword", true);
+
             nightmare_moai = BUILDER
                     .comment("深渊石球的附魔等级加成")
                     .defineInRange("EnchantmentBonus", 2, 0, 100);
@@ -181,6 +185,8 @@ public class Config {
     public ModConfigSpec.DoubleValue rage_eye;
     public ModConfigSpec.DoubleValue rage_eye_copy;
 
+
+    public   ModConfigSpec.BooleanValue canFlySword;
 
 
 

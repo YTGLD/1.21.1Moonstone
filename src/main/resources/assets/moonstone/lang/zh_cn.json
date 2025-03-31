@@ -1900,7 +1900,7 @@
   "item.rage_orb.tool.string.3": "+1 时运",
   "item.rage_orb.tool.string.4": "+1 抢夺",
 
-  "item.moonstone.sword":"同时佩戴了七剑修炼的剑阵之章和万法后无法发射飞剑，但是伤害提高20%",
+  "item.moonstone.sword":"同时佩戴了七剑修炼的剑阵之章和万法后伤害提高20%",
 
   "item.moonstone.rage_lock": "狂暴锁",
   "item.rage_lock.tool.string": "-75%治疗",

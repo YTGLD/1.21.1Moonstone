@@ -1,6 +1,8 @@
 package com.moonstone.moonstonemod.init.moonstoneitem.extend;
 
+import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.IDoom;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -27,9 +29,14 @@ public class Doom extends Item implements ICurioItem , IDoom {
 
       */
 
+    @Override
+    public void curioTick(SlotContext slotContext, ItemStack stack) {
+        if (stack.get(DataReg.tag) == null) {
+            stack.set(DataReg.tag, new CompoundTag());
+        }
+    }
 
-
-     @NotNull
+    @NotNull
     @Override
     public ICurio.DropRule getDropRule(SlotContext slotContext, DamageSource source, int lootingLevel, boolean recentlyHit, ItemStack stack) {
         return ICurio.DropRule.ALWAYS_KEEP;

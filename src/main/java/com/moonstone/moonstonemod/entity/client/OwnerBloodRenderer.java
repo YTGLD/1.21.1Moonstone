@@ -49,7 +49,9 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
         if (entity.hasTrail()) {
             poseStack.pushPose();
             poseStack.translate(-x, -y, -z);
-            setMatrices(poseStack,bufferSource,entity);
+            if (ConfigClient.Client.light.get()) {
+                setMatrices(poseStack, bufferSource, entity);
+            }
             renderTrail(entity, p_114487_, poseStack, bufferSource, 220/255f, 20/255f, 60/255f, 240);
             poseStack.popPose();
         }
@@ -58,49 +60,56 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
     }
     public void setMatrices(@NotNull PoseStack matrices,
                             @NotNull MultiBufferSource vertexConsumers,
-                            @NotNull Entity entity) {
-        int rage = 10;
-        float posAdd = 1.0001f;
-        if (entity instanceof owner_blood ownerBlood) {
+                            @NotNull Entity ownerBlood) {
+        int rage = 20;
+        float posAdd = 1.001F;
 
-            BlockPos playerPos = ownerBlood.blockPosition();
-            Vec3 playerVec = new Vec3(playerPos.getX(), playerPos.getY(), playerPos.getZ());
+        BlockPos playerPos = ownerBlood.blockPosition();
+        Vec3 playerVec = new Vec3(playerPos.getX(), playerPos.getY(), playerPos.getZ());
 
-            for (int x = -8; x <= rage; x++) {
-                for (int y = -8; y <= rage; y++) {
-                    for (int z = -8; z <= rage; z++) {
-                        BlockPos currentPos = playerPos.offset(x, y, z);
-                        Vec3 currentVec = new Vec3(currentPos.getX(), currentPos.getY(), currentPos.getZ());
-                        BlockState blockState = ownerBlood.level().getBlockState(currentPos);
-                        if (!blockState.isEmpty() && !blockState.is(Blocks.AIR)) {
-                            PoseStack poseStack = matrices;
-                            poseStack.pushPose();
-                            poseStack.scale(posAdd,posAdd,posAdd);
-                            poseStack.translate(currentPos.getX(), currentPos.getY()+0.01f, currentPos.getZ());
+        for (int x = -rage; x <= rage; x++) {
+            for (int y = -rage; y <= rage; y++) {
+                for (int z = -rage; z <= rage; z++) {
+                    BlockPos currentPos = playerPos.offset(x, y, z);
+                    Vec3 currentVec = new Vec3(currentPos.getX(), currentPos.getY(), currentPos.getZ());
+                    BlockState blockState = ownerBlood.level().getBlockState(currentPos);
+                    if (!blockState.isEmpty() && !blockState.is(Blocks.AIR)) {
+                        matrices.pushPose();
 
-                            double distance = playerVec.distanceTo(currentVec);
+                        matrices.translate(currentPos.getX() + 0.5, currentPos.getY() + 0.5, currentPos.getZ() + 0.5);
 
-                            float alp = Math.max(0, 1 - (float) distance / rage);
+                        matrices.scale(posAdd, posAdd, posAdd);
 
-                            BakedModel bakedModel = Minecraft.getInstance().getBlockRenderer().getBlockModel(blockState);
-                            for (Direction direction : Direction.values()) {
+                        matrices.translate(-(currentPos.getX() + 0.5), -(currentPos.getY() + 0.5), -(currentPos.getZ() + 0.5));
+
+                        matrices.translate(currentPos.getX(), currentPos.getY(), currentPos.getZ());
+
+                        double distance = playerVec.distanceTo(currentVec);
+
+                        float alp = Math.max(0, 1 - (float) distance / rage);
+
+                        BakedModel bakedModel = Minecraft.getInstance().getBlockRenderer().getBlockModel(blockState);
+                        for (Direction direction : Direction.values()) {
+                            BlockPos offsetPos = currentPos.relative(direction);
+                            if (!ownerBlood.level().getBlockState(offsetPos).isSolid()) {
                                 List<BakedQuad> quads = bakedModel.getQuads(blockState, direction, RandomSource.create());
                                 for (BakedQuad quad : quads) {
-
-                                    vertexConsumers.getBuffer(MRender.lightning()).putBulkData(poseStack.last(), quad, new float[]{
-                                            1.2f, 1.2f, 1.2f, 1.2f
-                                    }, 1, 0, 0, alp, new int[]{1, 1, 1, 1}, OverlayTexture.NO_OVERLAY, true);
-
-
+                                    if (alp*alp>0) {
+                                        vertexConsumers.getBuffer(MRender.lightning()).putBulkData(matrices.last(), quad, new float[]{
+                                                1.32f, 1.32f, 1.32f, 1.32f
+                                        }, 1, 0, 0, alp * alp, new int[]{240, 240, 240, 240}, OverlayTexture.NO_OVERLAY, true);
+                                    }
                                 }
                             }
-                            poseStack.popPose();
                         }
+
+                        matrices.popPose();
                     }
                 }
             }
         }
     }
+
 
     private void renderTrail(owner_blood entityIn, float partialTicks, PoseStack poseStack, MultiBufferSource bufferIn, float trailR, float trailG, float trailB, int packedLightIn) {
         int samples = 0;

@@ -45,12 +45,13 @@ public class AttackBloodRender extends EntityRenderer<attack_blood> {
         double x = Mth.lerp(p_114487_, entity.xOld, entity.getX());
         double y = Mth.lerp(p_114487_, entity.yOld, entity.getY());
         double z = Mth.lerp(p_114487_, entity.zOld, entity.getZ());
-        poseStack.pushPose();
-        poseStack.translate(-x, -y, -z);
-        setMatrices(poseStack,bufferSource,entity);
-        poseStack.popPose();
-        setT(poseStack, entity, bufferSource);
-
+        if (ConfigClient.Client.light.get()) {
+            poseStack.pushPose();
+            poseStack.translate(-x, -y, -z);
+            setMatrices(poseStack, bufferSource, entity);
+            poseStack.popPose();
+            setT(poseStack, entity, bufferSource);
+        }
 
         renderSphere1(poseStack,bufferSource,240,0.15f);
 
@@ -60,23 +61,31 @@ public class AttackBloodRender extends EntityRenderer<attack_blood> {
     public void setMatrices(@NotNull PoseStack matrices,
                             @NotNull MultiBufferSource vertexConsumers,
                             @NotNull Entity ownerBlood) {
-        int rage = 4;
-        float posAdd = 1.0001f;
+        int rage = 5;
+        float posAdd = 1.00001f;
 
         BlockPos playerPos = ownerBlood.blockPosition();
         Vec3 playerVec = new Vec3(playerPos.getX(), playerPos.getY(), playerPos.getZ());
 
-        for (int x = -8; x <= rage; x++) {
-            for (int y = -8; y <= rage; y++) {
-                for (int z = -8; z <= rage; z++) {
+        for (int x = -rage; x <= rage; x++) {
+            for (int y = -rage; y <= rage; y++) {
+                for (int z = -rage; z <= rage; z++) {
                     BlockPos currentPos = playerPos.offset(x, y, z);
                     Vec3 currentVec = new Vec3(currentPos.getX(), currentPos.getY(), currentPos.getZ());
                     BlockState blockState = ownerBlood.level().getBlockState(currentPos);
                     if (!blockState.isEmpty() && !blockState.is(Blocks.AIR)) {
                         PoseStack poseStack = matrices;
                         poseStack.pushPose();
-                        poseStack.scale(posAdd,posAdd,posAdd);
-                        poseStack.translate(currentPos.getX(), currentPos.getY()+0.01f, currentPos.getZ());
+
+                        poseStack.translate(currentPos.getX() + 0.5, currentPos.getY() + 0.5, currentPos.getZ() + 0.5);
+
+                        poseStack.scale(posAdd, posAdd, posAdd);
+
+                        poseStack.translate(-(currentPos.getX() + 0.5), -(currentPos.getY() + 0.5), -(currentPos.getZ() + 0.5));
+
+
+
+                        poseStack.translate(currentPos.getX(), currentPos.getY(), currentPos.getZ());
 
                         double distance = playerVec.distanceTo(currentVec);
 
@@ -84,16 +93,17 @@ public class AttackBloodRender extends EntityRenderer<attack_blood> {
 
                         BakedModel bakedModel = Minecraft.getInstance().getBlockRenderer().getBlockModel(blockState);
                         for (Direction direction : Direction.values()) {
-                            List<BakedQuad> quads = bakedModel.getQuads(blockState, direction, RandomSource.create());
-                            for (BakedQuad quad : quads) {
-
-                                vertexConsumers.getBuffer(MRender.lightning()).putBulkData(poseStack.last(), quad, new float[]{
-                                        1.2f, 1.2f, 1.2f, 1.2f
-                                }, 1, 0, 0, alp/2, new int[]{1, 1, 1, 1}, OverlayTexture.NO_OVERLAY, true);
-
-
+                            BlockPos offsetPos = currentPos.relative(direction);
+                            if (!ownerBlood.level().getBlockState(offsetPos).isSolid()) {
+                                List<BakedQuad> quads = bakedModel.getQuads(blockState, direction, RandomSource.create());
+                                for (BakedQuad quad : quads) {
+                                    vertexConsumers.getBuffer(MRender.lightning()).putBulkData(poseStack.last(), quad, new float[]{
+                                            1.2f, 1.2f, 1.2f, 1.2f
+                                    }, 1, 0, 0, alp, new int[]{240,240,240,240}, OverlayTexture.NO_OVERLAY, true);
+                                }
                             }
                         }
+
                         poseStack.popPose();
                     }
                 }

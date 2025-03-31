@@ -17,6 +17,8 @@ import com.moonstone.moonstonemod.item.maxitem.rage.RAGE;
 import com.moonstone.moonstonemod.item.maxitem.the_heart;
 import com.moonstone.moonstonemod.item.maxitem.uncommon.evilmug;
 import com.moonstone.moonstonemod.item.nanodoom.buyme.wind_and_rain;
+import com.moonstone.moonstonemod.item.nanodoom.doomeye;
+import com.moonstone.moonstonemod.item.nanodoom.doomswoud;
 import com.moonstone.moonstonemod.item.nanodoom.thefruit;
 import com.moonstone.moonstonemod.item.plague.ALL.dna;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.Skill.batskill;
@@ -381,24 +383,41 @@ public class AllEvent {
     public void suddenrainLLivingIncomingDamageEvent(LivingIncomingDamageEvent event){
         if (event.getSource().getEntity() instanceof Player player){
             if (Handler.hascurio(player,Items.doomswoud.get())){
-                if (!player.getCooldowns().isOnCooldown(Items.doomswoud.get())){
-                    float speed = player.getSpeed();
-                    speed/=0.1f;
-                    int a = (int) (speed - 1) * 5;
-                    a += 2;
-                    for (int i = 0;i<a;i++) {
-                        float s  = (float) Math.sin(i);
-                        if (s <= 0){
-                            s = 0.12f;
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.doomswoud) ){
+                                if (stack.get(DataReg.tag) != null) {
+                                    if (!stack.get(DataReg.tag).getBoolean(doomswoud.canFlySword)){
+                                        if (!player.getCooldowns().isOnCooldown(Items.doomswoud.get())){
+                                            float speed = player.getSpeed();
+                                            speed/=0.1f;
+                                            int a = (int) (speed - 1) * 5;
+                                            a += 2;
+                                            for (int p = 0;p<a;p++) {
+                                                float s  = (float) Math.sin(p);
+                                                if (s <= 0){
+                                                    s = 0.12f;
+                                                }
+                                                suddenrain item = new suddenrain(EntityTs.suddenrain.get(),player.level());
+                                                item.teleportTo(player.getX()+Mth.nextFloat(RandomSource.create(), -s,s),player.getY()+2+s,player.getZ()+Mth.nextFloat(RandomSource.create(), -s,s));
+                                                item.setOwner(player);
+                                                item.setDeltaMovement(Mth.nextFloat(RandomSource.create(), -s/1.5f,s/1.5f),s/1.5f,Mth.nextFloat(RandomSource.create(), -s/1.5f,s/1.5f));
+                                                player.level().addFreshEntity(item);
+                                                player.getCooldowns().addCooldown(Items.doomswoud.get(), 20);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
-                        suddenrain item = new suddenrain(EntityTs.suddenrain.get(),player.level());
-                        item.teleportTo(player.getX()+Mth.nextFloat(RandomSource.create(), -s,s),player.getY()+2+s,player.getZ()+Mth.nextFloat(RandomSource.create(), -s,s));
-                        item.setOwner(player);
-                        item.setDeltaMovement(Mth.nextFloat(RandomSource.create(), -s/1.5f,s/1.5f),s/1.5f,Mth.nextFloat(RandomSource.create(), -s/1.5f,s/1.5f));
-                        player.level().addFreshEntity(item);
-                        player.getCooldowns().addCooldown(Items.doomswoud.get(), 20);
                     }
-                }
+                });
+
             }
         }
     }
@@ -407,18 +426,35 @@ public class AllEvent {
     public void suddenrainLivingDeathEvent(LivingDeathEvent event){
         if (event.getSource().getDirectEntity() instanceof Player player){
             if (Handler.hascurio(player,Items.doomswoud.get())) {
-                for (int i = 0; i < 4; i++) {
-                    float s = (float) Math.sin(i);
-                    if (s <= 0) {
-                        s = 0.12f;
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.doomswoud) ){
+                                if (stack.get(DataReg.tag) != null) {
+                                    if (!stack.get(DataReg.tag).getBoolean(doomswoud.canFlySword)){
+
+                                        for (int p = 0; p < 4; p++) {
+                                            float s = (float) Math.sin(p);
+                                            if (s <= 0) {
+                                                s = 0.12f;
+                                            }
+                                            suddenrain item = new suddenrain(EntityTs.suddenrain.get(), player.level());
+                                            item.teleportTo(player.getX() + Mth.nextFloat(RandomSource.create(), -s, s), player.getY() + 2 + s, player.getZ() + Mth.nextFloat(RandomSource.create(), -s, s));
+                                            item.setDeltaMovement(Mth.nextFloat(RandomSource.create(), -s / 1.5f, s / 1.5f), s / 1.5f, Mth.nextFloat(RandomSource.create(), -s / 1.5f, s / 1.5f));
+                                            item.setOwner(player);
+                                            player.level().addFreshEntity(item);
+                                            player.getCooldowns().addCooldown(Items.doomswoud.get(), 50);
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
-                    suddenrain item = new suddenrain(EntityTs.suddenrain.get(), player.level());
-                    item.teleportTo(player.getX() + Mth.nextFloat(RandomSource.create(), -s, s), player.getY() + 2 + s, player.getZ() + Mth.nextFloat(RandomSource.create(), -s, s));
-                    item.setDeltaMovement(Mth.nextFloat(RandomSource.create(), -s / 1.5f, s / 1.5f), s / 1.5f, Mth.nextFloat(RandomSource.create(), -s / 1.5f, s / 1.5f));
-                    item.setOwner(player);
-                    player.level().addFreshEntity(item);
-                    player.getCooldowns().addCooldown(Items.doomswoud.get(), 50);
-                }
+                });
             }
         }
     }
@@ -427,22 +463,41 @@ public class AllEvent {
     public void doomeyeLivingKnockBackEvent(LivingKnockBackEvent event){
         if (event.getEntity() instanceof Player player){
             if (Handler.hascurio(player,Items.doomeye.get())){
-                if (!player.getCooldowns().isOnCooldown(Items.doomeye.get())){
-                    for (int i = 0 ;i < 7 ;i++){
-                        float s  = (float) Math.sin(i);
-                        if (s <= 0){
-                            s = 0.12f;
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(Items.doomeye) ){
+                                if (stack.get(DataReg.tag) != null) {
+                                    if (!stack.get(DataReg.tag).getBoolean(doomeye.canFlySword)){
+                                        if (!player.getCooldowns().isOnCooldown(Items.doomeye.get())){
+                                            for (int p = 0 ;p < 7 ;p++){
+                                                float s  = (float) Math.sin(p);
+                                                if (s <= 0){
+                                                    s = 0.12f;
+                                                }
+                                                flysword item = new flysword(EntityTs.flysword.get(),player.level());
+                                                item.teleportTo(player.getX()+Mth.nextFloat(RandomSource.create(), -s,s),player.getY()+2+s,player.getZ()+Mth.nextFloat(RandomSource.create(), -s,s));
+                                                item.setDeltaMovement(Mth.nextFloat(RandomSource.create(), -s/1.5f,s/1.5f),s/1.5f,Mth.nextFloat(RandomSource.create(), -s/1.5f,s/1.5f));
+                                                item.setNoGravity(true);
+                                                item.setOwner(player);
+                                                item.addTag(FlySword);
+                                                player.level().addFreshEntity(item);
+                                                player.getCooldowns().addCooldown(Items.doomeye.get(), 40);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
-                        flysword item = new flysword(EntityTs.flysword.get(),player.level());
-                        item.teleportTo(player.getX()+Mth.nextFloat(RandomSource.create(), -s,s),player.getY()+2+s,player.getZ()+Mth.nextFloat(RandomSource.create(), -s,s));
-                        item.setDeltaMovement(Mth.nextFloat(RandomSource.create(), -s/1.5f,s/1.5f),s/1.5f,Mth.nextFloat(RandomSource.create(), -s/1.5f,s/1.5f));
-                        item.setNoGravity(true);
-                        item.setOwner(player);
-                        item.addTag(FlySword);
-                        player.level().addFreshEntity(item);
-                        player.getCooldowns().addCooldown(Items.doomeye.get(), 40);
                     }
-                }
+                });
+
+
+
             }
         }
     }

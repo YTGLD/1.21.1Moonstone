@@ -15,8 +15,13 @@ public class ConfigClient {
         BUILDER.push("client");
 
         Shader = BUILDER
-                .comment("Do you want to enable the post rendering system")
+                .comment("关闭后，将关闭模组内的后处理渲染器")
                 .define("RenderBackEnds", true);
+
+
+        light = BUILDER
+                .comment("关闭后，将关闭模组内的动态光照")
+                .define("light", true);
 
 
 
@@ -25,7 +30,7 @@ public class ConfigClient {
 
         BUILDER.build();
     }
-
+    public   ModConfigSpec.BooleanValue light;
 
     public   ModConfigSpec.BooleanValue Shader ;
 
