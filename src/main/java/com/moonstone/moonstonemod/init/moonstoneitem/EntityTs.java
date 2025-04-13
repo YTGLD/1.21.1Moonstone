@@ -95,6 +95,8 @@ public class EntityTs {
             ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.coffin_entity::new, MobCategory.MISC).sized(2, 3).clientTrackingRange(50).build("coffin_entity"));
     public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.nightmare_giant_to>> nightmare_giant_to = REGISTRY.register("nightmare_giant_to",
             ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.nightmare_giant_to::new, MobCategory.MISC).sized(2, 3).clientTrackingRange(50).build("nightmare_giant_to"));
+    public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.the_sword>> the_sword = REGISTRY.register("the_sword",
+            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.the_sword::new, MobCategory.MISC).sized(1, 1).clientTrackingRange(50).build("the_sword"));
     @SubscribeEvent
     public static void EntityAttributeCreationEvent(EntityAttributeCreationEvent event){
         event.put(EntityTs.cell_zombie.get(), Zombie.createAttributes().build());
@@ -116,6 +118,8 @@ public class EntityTs {
         event.put(EntityTs.sword_soul.get(), IronGolem.createAttributes().build());
         event.put(EntityTs.rage_blood.get(), IronGolem.createAttributes().build());
         event.put(EntityTs.ytgld.get(),  com.moonstone.moonstonemod.entity.ytgld.createAttributes().build());
+
+        event.put(EntityTs.the_sword.get(),  com.moonstone.moonstonemod.entity.the_sword.createAttributes().build());
 
     }
 }

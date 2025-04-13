@@ -12,6 +12,7 @@ import com.moonstone.moonstonemod.entity.owner_blood;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -38,6 +39,11 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
     }
 
     @Override
+    public boolean shouldRender(owner_blood livingEntity, Frustum camera, double camX, double camY, double camZ) {
+        return true;
+    }
+
+    @Override
     public void render(owner_blood entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
         super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
         if (ConfigClient.Client.Shader.get()) {
@@ -61,7 +67,7 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
     public void setMatrices(@NotNull PoseStack matrices,
                             @NotNull MultiBufferSource vertexConsumers,
                             @NotNull Entity ownerBlood) {
-        int rage = 20;
+        int rage = 12;
         float posAdd = 1.001F;
 
         BlockPos playerPos = ownerBlood.blockPosition();
@@ -73,7 +79,7 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
                     BlockPos currentPos = playerPos.offset(x, y, z);
                     Vec3 currentVec = new Vec3(currentPos.getX(), currentPos.getY(), currentPos.getZ());
                     BlockState blockState = ownerBlood.level().getBlockState(currentPos);
-                    if (!blockState.isEmpty() && !blockState.is(Blocks.AIR)) {
+                    if (!blockState.isEmpty() && blockState.canOcclude()) {
                         matrices.pushPose();
 
                         matrices.translate(currentPos.getX() + 0.5, currentPos.getY() + 0.5, currentPos.getZ() + 0.5);
@@ -94,11 +100,9 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
                             if (!ownerBlood.level().getBlockState(offsetPos).isSolid()) {
                                 List<BakedQuad> quads = bakedModel.getQuads(blockState, direction, RandomSource.create());
                                 for (BakedQuad quad : quads) {
-                                    if (alp*alp>0) {
-                                        vertexConsumers.getBuffer(MRender.lightning()).putBulkData(matrices.last(), quad, new float[]{
-                                                1.32f, 1.32f, 1.32f, 1.32f
-                                        }, 1, 0, 0, alp * alp, new int[]{240, 240, 240, 240}, OverlayTexture.NO_OVERLAY, true);
-                                    }
+                                    vertexConsumers.getBuffer(MRender.LIGHTNING).putBulkData(matrices.last(), quad, new float[]{
+                                            1.32f, 1.32f, 1.32f, 1.32f
+                                    }, 1, 0, 0, alp, new int[]{240, 240, 240, 240}, OverlayTexture.NO_OVERLAY, true);
                                 }
                             }
                         }

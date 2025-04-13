@@ -11,18 +11,12 @@ import org.jetbrains.annotations.NotNull;
 
 public class blood extends TextureSheetParticle {
     public blood(ClientLevel level, double x, double y, double z, float movementX, float movementY, float movementZ) {
-
-
         super(level, x, y, z, movementX, movementY, movementZ);
-        this.setParticleSpeed( movementX, movementY, movementZ);
         this.lifetime = 200;
-        this.quadSize *= 0.4f;
-        this.roll += Mth.nextFloat(RandomSource.create(), 0.2f, 1);
-        this.oRoll += Mth.nextFloat(RandomSource.create(), 0.2f, 1);;
+        this.bCol*=Mth.nextFloat(RandomSource.create(),-0.8f,0.8f);
+        this.gCol*=Mth.nextFloat(RandomSource.create(),-0.8f,0.8f);
+
     }
-
-
-
     @Override
     protected int getLightColor(float p_107249_) {
         return 240;
@@ -33,14 +27,13 @@ public class blood extends TextureSheetParticle {
         return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
     }
     public void tick() {
-        this.alpha -= 0.025f;
-        this.roll += 0.025f;
-        this.oRoll += 0.025f;
+
+        this.alpha -= 0.01f;
+        this.quadSize*=1.05f;
         if (alpha<=0){
             this.remove();
         }
         super.tick();
-
     }
     @OnlyIn(Dist.CLIENT)
     public record Provider(SpriteSet sprite) implements ParticleProvider<SimpleParticleType> {
@@ -50,7 +43,7 @@ public class blood extends TextureSheetParticle {
 
 
         public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            blood particle = new blood(level, x, y, z, 0, 0, 0);
+            blood particle = new blood(level, x, y, z, (float) xSpeed, (float) ySpeed, (float) zSpeed);
             particle.pickSprite(this.sprite);
             return particle;
         }

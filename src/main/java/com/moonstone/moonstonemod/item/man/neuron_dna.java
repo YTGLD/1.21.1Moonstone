@@ -113,7 +113,6 @@ public class neuron_dna  extends ManDNA {
                                     if (stack.get(DataReg.tag).getBoolean("tissue_atrophy")) {
                                         lv = 0;
                                     }
-                                    System.out.println(lv);
                                     if (new Random().nextInt(100) < lv) {
                                         List<ItemEntity> list = new ArrayList<>();
                                         for (ItemEntity entity : event.getDrops()) {

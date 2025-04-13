@@ -17,7 +17,7 @@
             "uniforms": [
                 {
                     "name": "BlurDir",
-                    "values": [ 9.99, 0.0 ]
+                    "values": [ 10, 0.0 ]
                 }
             ]
         },
@@ -29,7 +29,7 @@
             "uniforms": [
                 {
                     "name": "BlurDir",
-                    "values": [ 0.0, 9.99 ]
+                    "values": [ 0.0, 10 ]
                 }
             ]
         },
@@ -42,7 +42,7 @@
             "uniforms": [
                 {
                     "name": "BlurDir",
-                    "values": [ 9.99, 0.0 ]
+                    "values": [ 10, 0.0 ]
                 }
             ]
         },
@@ -54,7 +54,41 @@
             "uniforms": [
                 {
                     "name": "BlurDir",
-                    "values": [ 0.0, 9.99 ]
+                    "values": [ 0.0, 10 ]
+                }
+            ]
+        },
+
+
+
+
+
+
+
+
+
+
+        {
+            "name": "moonstone:color_convolve",
+            "intarget": "swap",
+            "outtarget": "final",
+            "use_linear_filter": true,
+            "uniforms": [
+                {
+                    "name": "Saturation",
+                    "values": [ 1.2 ]
+                }
+            ]
+        },
+        {
+            "name": "moonstone:color_convolve",
+            "intarget": "final",
+            "outtarget": "swap",
+            "use_linear_filter": true,
+            "uniforms": [
+                {
+                    "name": "Saturation",
+                    "values": [1.2 ]
                 }
             ]
         },

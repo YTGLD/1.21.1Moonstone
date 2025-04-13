@@ -17,38 +17,7 @@ public class red extends TextureSheetParticle {
     protected int getLightColor(float p_107249_) {
         return 240;
     }
-//
-//    @Override
-//    public void render(VertexConsumer buffer, Camera camera, float partialTicks) {
-//        super.render(buffer, camera, partialTicks);
-//
-//        Vec3 vec3 = camera.getPosition();
-//
-//        for (int i = 1; i < trailPositions.size(); i++){
-//            Vec3 prevPos = trailPositions.get(i - 1);
-//            Vec3 currPos = trailPositions.get(i);
-//            Vec3 adjustedPrevPos = new Vec3(prevPos.x - vec3.x, prevPos.y -vec3.y, prevPos.z - vec3.z);
-//            Vec3 adjustedCurrPos = new Vec3(currPos.x - vec3.x, currPos.y -vec3.y, currPos.z - vec3.z);
-//            renderLine(buffer, adjustedPrevPos, adjustedCurrPos, 1);
-//        }
-//    }
-//    private final List<Vec3> trailPositions = new ArrayList<>();
-//
-//    public static void renderLine(VertexConsumer vertexConsumer, Vec3 start, Vec3 end, float a) {
-//        // 设置线条的起点
-//        vertexConsumer.addVertex((float) start.x, (float) start.y, (float) start.z)
-//                .setColor(1,1,1,a)
-//                .setUv(0,0)
-//                .setUv2(240,240)
-//                .setNormal(1,0,0);
-//
-//        // 设置线条的终点
-//        vertexConsumer.addVertex((float) end.x, (float) end.y, (float) end.z)
-//                .setColor(1,1,1,a)
-//                .setUv(0,0)
-//                .setUv2(240,240)
-//                .setNormal(1,0,0);
-//    }
+
     @Override
     public @NotNull ParticleRenderType getRenderType() {
         return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
@@ -61,12 +30,6 @@ public class red extends TextureSheetParticle {
             this.remove();
         }
         super.tick();
-//
-//        trailPositions.add(new Vec3(this.getPos().x, this.getPos().y, this.getPos().z));
-//
-//        if (trailPositions.size()>50){
-//            trailPositions.removeFirst();
-//        }
     }
     @OnlyIn(Dist.CLIENT)
     public record Provider(SpriteSet sprite) implements ParticleProvider<SimpleParticleType> {

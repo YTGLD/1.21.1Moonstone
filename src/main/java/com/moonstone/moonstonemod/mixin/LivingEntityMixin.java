@@ -2,24 +2,31 @@ package com.moonstone.moonstonemod.mixin;
 
 import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
+import com.moonstone.moonstonemod.client.layer.IBloodSize;
 import com.moonstone.moonstonemod.event.old.EquippedEvt;
 import com.moonstone.moonstonemod.event.old.NewEvent;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.item.man.run_dna;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -31,7 +38,41 @@ import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 import java.util.Map;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin {
+public abstract class LivingEntityMixin extends Entity implements IBloodSize {
+
+    @Unique
+    private static final EntityDataAccessor<Integer> INTEGER_ENTITY_DATA_ACCESSOR =
+            SynchedEntityData.defineId(LivingEntity.class, EntityDataSerializers.INT);
+
+    public LivingEntityMixin(EntityType<?> entityType, Level level) {
+        super(entityType, level);
+    }
+
+    @Override
+    public int getSize() {
+        return entityData.get(INTEGER_ENTITY_DATA_ACCESSOR);
+    }
+
+
+    @Inject(at = @At("RETURN"), method = "hurt")
+    public void hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
+        if (entityData.get(INTEGER_ENTITY_DATA_ACCESSOR) < 10) {
+            entityData.set(INTEGER_ENTITY_DATA_ACCESSOR,entityData.get(INTEGER_ENTITY_DATA_ACCESSOR)+1);
+        }
+    }
+    @Inject(at = @At("RETURN"), method = "defineSynchedData")
+    public void defineSynchedData(SynchedEntityData.Builder builder, CallbackInfo ci){
+        builder.define(INTEGER_ENTITY_DATA_ACCESSOR, 0);
+
+    }
+    @Inject(at = @At("RETURN"), method = "tick")
+    public void tick(CallbackInfo ci){
+        if (entityData.get(INTEGER_ENTITY_DATA_ACCESSOR) > 0) {
+            if (tickCount%200==1) {
+                entityData.set(INTEGER_ENTITY_DATA_ACCESSOR, entityData.get(INTEGER_ENTITY_DATA_ACCESSOR) - 1);
+            }
+        }
+    }
     @Shadow public abstract ItemStack getItemInHand(InteractionHand p_21121_);
 
     @Shadow protected abstract void setLivingEntityFlag(int p_21156_, boolean p_21157_);
@@ -109,20 +150,6 @@ public abstract class LivingEntityMixin {
         if (living instanceof Player player) {
             if (Handler.hascurio(player, Items.mhead.get())) {
                 cir.setReturnValue(false);
-            }
-        }
-    }
-    @Inject(at = @At("RETURN"), method = "canStandOnFluid", cancellable = true)
-    public void moonstone$canStandOnFluid(FluidState p_204042_, CallbackInfoReturnable<Boolean> cir) {
-        LivingEntity living = (LivingEntity) (Object) this;
-        if (living instanceof Player player) {
-            if (Handler.hascurio(player, Items.ambush.get())){
-                cir.setReturnValue(true);
-            }
-            if (Handler.hascurio(player, Items.evilcandle.get())) {
-                if (p_204042_.is(Fluids.LAVA)) {
-                    cir.setReturnValue(true);
-                }
             }
         }
     }

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"item": "moonstone:ectoplasmcube"},
+    {"item": "moonstone:ectoplasmprism"},
+
+    {"item": "moonstone:blood_jelly"},
+    {"item": "moonstone:blood_jelly"},
+    {"item": "minecraft:stone"},
+    {"item": "moonstone:blood_jelly"},
+    {"item": "moonstone:blood_jelly"},
+
+    {"item": "moonstone:ectoplasmprism"},
+    {"item": "moonstone:ectoplasmcube"}
+  ],
+  "result": {
+    "id": "moonstone:the_owner_blood_stone",
+    "count": 1
+  }
+}

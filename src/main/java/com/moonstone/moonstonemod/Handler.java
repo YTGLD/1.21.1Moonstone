@@ -25,11 +25,13 @@ import net.minecraft.world.phys.Vec3;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.CuriosCapability;
 import top.theillusivec4.curios.api.SlotResult;
+import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class Handler {
     public static final String Giant_Time = "Giant_Time";
@@ -144,22 +146,16 @@ public class Handler {
     public static boolean hascurio(LivingEntity entity, Item curio) {
         if (entity instanceof LivingEntity player) {
             if (player.getCapability(CuriosCapability.INVENTORY) != null) {
-
                 if (CuriosApi.getCuriosInventory(player).isPresent()
                         && CuriosApi.getCuriosInventory(player).get().isEquipped(Items.universe.get())) {
-                    Map<String, ICurioStacksHandler> curios = CuriosApi.getCuriosInventory(player).get().getCurios();
-                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
-                        ICurioStacksHandler stacksHandler = entry.getValue();
-                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
-                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
-                            ItemStack universeStack =  stackHandler.getStackInSlot(i);
-                            if (universeStack.get(DataReg.tag)!=null) {
-                                if (universeStack.is(Items.universe.get())) {
-                                    for (String string : universeStack.get(DataReg.tag).getAllKeys()) {
-                                        String modifiedString = string.replace("item.", "").replace(".", ":");
-                                        if (BuiltInRegistries.ITEM.getKey(curio).toString().equals(modifiedString)) {
-                                            return true;
-                                        }
+                    if (CuriosApi.getCuriosInventory(player).get().findFirstCurio(Items.universe.get()).isPresent()) {
+                        ItemStack universeStack = CuriosApi.getCuriosInventory(player).get().findFirstCurio(Items.universe.get()).get().stack();
+                        if (universeStack.get(DataReg.tag) != null) {
+                            if (universeStack.is(Items.universe.get())) {
+                                for (String string : universeStack.get(DataReg.tag).getAllKeys()) {
+                                    String modifiedString = string.replace("item.", "").replace(".", ":");
+                                    if (BuiltInRegistries.ITEM.getKey(curio).toString().equals(modifiedString)) {
+                                        return true;
                                     }
                                 }
                             }

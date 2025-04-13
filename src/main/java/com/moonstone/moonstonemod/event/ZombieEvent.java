@@ -5,9 +5,7 @@ import com.moonstone.moonstonemod.entity.extend.MoonTamableAnimal;
 import com.moonstone.moonstonemod.event.mevent.AttackBloodEvent;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
-import com.moonstone.moonstonemod.item.man.chemical_compound;
-import com.moonstone.moonstonemod.item.man.muscle_conversion;
-import com.moonstone.moonstonemod.item.man.phosphate_bond;
+import com.moonstone.moonstonemod.item.man.*;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
@@ -18,16 +16,19 @@ public class ZombieEvent {
     @SubscribeEvent
     public  void LivingIncomingDamageEvent(LivingIncomingDamageEvent event){
         muscle_conversion.zombieAttack(event);
-        phosphate_bond.damage5(event,20);
-        chemical_compound.healDamage(event,10,12);
+        chemical_compound.zombieDie(event,5);
+        phosphate_bond.damage5(event,6);
+        chemical_compound.healDamage(event,20,12);
     }
     @SubscribeEvent
     public  void LivingHealEvent(LivingHealEvent event){
-        chemical_compound.healZombie(event,15,12);
+        phosphate_bond.healZombie(event);
+        chemical_compound.healZombie(event,25,12);
+        white_blood_cells_are_abruptly_reduced.dieZombie(event,15);
     }
     @SubscribeEvent
     public  void LivingDeathEvent(LivingDeathEvent event){
         phosphate_bond.dieZombie(event,10);
-        chemical_compound.zombieDie(event,5);
+        skin_glucose_fermentation.dieZombie(event,50);
     }
 }

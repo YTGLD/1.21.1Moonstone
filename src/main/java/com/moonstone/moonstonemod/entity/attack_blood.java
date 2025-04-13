@@ -29,6 +29,7 @@ public class attack_blood extends ThrowableItemProjectile {
     private final List<Vec3> trailPositions = new ArrayList<>();
 
     public float damages = 4;
+    public float addDamgae = 0;
     public boolean follow = true;
     public boolean slime = false;
     public boolean boom = false;
@@ -94,26 +95,28 @@ public class attack_blood extends ThrowableItemProjectile {
                 if (!entity.is(this.getOwner()) && this.getOwner() instanceof Player player) {
                     ResourceLocation entitys = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
                     if (!entitys.getNamespace().equals(MoonStoneMod.MODID)) {
-                        entity.invulnerableTime = 0;
-                        if (boom) {
-                            this.level().explode(this.getOwner(), this.getX(), this.getY(), this.getZ(), 3, false, Level.ExplosionInteraction.NONE);
-                        }
+                        if (entity.isAlive()) {
+                            entity.invulnerableTime = 0;
+                            if (boom) {
+                                this.level().explode(this.getOwner(), this.getX(), this.getY(), this.getZ(), 3, false, Level.ExplosionInteraction.NONE);
+                            }
 
 
-                        if (effect) {
-                            entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1));
-                            entity.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 1));
-                            entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
+                            if (effect) {
+                                entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1));
+                                entity.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 1));
+                                entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
+                            }
+                            if (slime) {
+                                player.heal(damages + addDamgae);
+                            }
+                            if (isPlayer) {
+                                entity.hurt(this.getOwner().damageSources().playerAttack(player), (float) (damages + addDamgae + player.getMaxHealth() / 10 + player.getAttributeValue(Attributes.ATTACK_DAMAGE) / 10));
+                            } else {
+                                entity.hurt(this.getOwner().damageSources().dryOut(), (float) (damages + addDamgae + player.getMaxHealth() / 10 + player.getAttributeValue(Attributes.ATTACK_DAMAGE) / 10));
+                            }
+                            this.discard();
                         }
-                        if (slime){
-                            player.heal(damages);
-                        }
-                        if (isPlayer){
-                            entity.hurt(this.getOwner().damageSources().playerAttack(player), (float) (damages + player.getMaxHealth() / 10 + player.getAttributeValue(Attributes.ATTACK_DAMAGE) / 10));
-                        }else {
-                            entity.hurt(this.getOwner().damageSources().dryOut(), (float) (damages + player.getMaxHealth() / 10 + player.getAttributeValue(Attributes.ATTACK_DAMAGE) / 10));
-                        }
-                        this.discard();
                     }
                 }
             }
@@ -217,7 +220,9 @@ public class attack_blood extends ThrowableItemProjectile {
     public void setDamage(float damage) {
         damages = damage;
     }
-
+    public void setAddDamgae(float addDamgae) {
+        this.addDamgae = addDamgae;
+    }
     public void setEffect(boolean effect) {
         this.effect = effect;
     }

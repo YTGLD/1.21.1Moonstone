@@ -150,6 +150,7 @@ public class MoonStoneMod {
 
             event.registerEntityRenderer(EntityTs.ytgld.get(), YtgldRender::new);
             event.registerEntityRenderer(EntityTs.coffin_entity.get(), CoffinRender::new);
+            event.registerEntityRenderer(EntityTs.the_sword.get(), TheSwordRender::new);
         }
         @SubscribeEvent
         public static void EntityRenderersEvent(RegisterShadersEvent event) {

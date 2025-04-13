@@ -198,6 +198,7 @@ public class Tab {
             .title(Component.translatable("itemGroup.tabmoonstone"))
             .displayItems((a,b)->{
                 b.accept(new ItemStack(Items.book.get()));
+                b.accept(new ItemStack(Items.the_god_sword.get()));
 
                 b.accept(new ItemStack(Items.run_dna.get()));
                 b.accept(new ItemStack(Items.health_dna.get()));
@@ -207,6 +208,8 @@ public class Tab {
                 b.accept(new ItemStack(Items.muscle_conversion.get()));
                 b.accept(new ItemStack(Items.phosphate_bond.get()));
                 b.accept(new ItemStack(Items.chemical_compound.get()));
+                b.accept(new ItemStack(Items.skin_glucose_fermentation.get()));
+                b.accept(new ItemStack(Items.white_blood_cells_are_abruptly_reduced.get()));
 
                 b.accept(new ItemStack(Items.copy_dna.get()));
                 b.accept(new ItemStack(Items.attack_dna.get()));
@@ -345,6 +348,7 @@ public class Tab {
                 b.accept(new ItemStack(Items.wind_and_rain.get()));
 
                 b.accept(new ItemStack(Items.blood_candle.get()));
+                b.accept(new ItemStack(Items.the_owner_blood_stone.get()));
                 b.accept(new ItemStack(Items.the_blood_book.get()));
                 b.accept(new ItemStack(Items.blood_magic_box.get()));
                 b.accept(new ItemStack(Items.blood.get()));

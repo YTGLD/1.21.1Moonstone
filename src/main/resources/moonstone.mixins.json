@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "moonstone.refmap.json",
   "mixins": [
+    "BlockStateBaseMixin",
     "EnchantmentHelperMixin",
     "EnchantmentMenuMixin",
     "EnchantmentMixin",
@@ -22,7 +23,8 @@
     "client.GuiGraphicsMixin",
     "client.ItemRendererMixin",
     "client.LevelRendererMixin",
-    "client.LivingEntityRendererMixin"
+    "client.LivingEntityRendererMixin",
+    "client.PlayerRendererMixin"
   ],
   "server": [],
   "injectors": {

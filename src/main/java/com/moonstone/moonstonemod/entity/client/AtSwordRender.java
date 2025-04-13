@@ -1,5 +1,7 @@
 package com.moonstone.moonstonemod.entity.client;
 
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
@@ -13,21 +15,37 @@ import com.moonstone.moonstonemod.init.items.Items;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
+import org.lwjgl.opengl.GL11;
+
+import java.util.List;
 
 public class AtSwordRender <T extends AtSword> extends EntityRenderer<T> {
     public AtSwordRender(EntityRendererProvider.Context p_173917_) {
         super(p_173917_);
+    }
+
+    @Override
+    public boolean shouldRender(T livingEntity, Frustum camera, double camX, double camY, double camZ) {
+        return true;
     }
 
     @Override
@@ -37,7 +55,19 @@ public class AtSwordRender <T extends AtSword> extends EntityRenderer<T> {
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
         }
+
         if (entity.isNoGravity()){
+            double x = Mth.lerp(p_114487_, entity.xOld, entity.getX());
+            double y = Mth.lerp(p_114487_, entity.yOld, entity.getY());
+            double z = Mth.lerp(p_114487_, entity.zOld, entity.getZ());
+
+            poseStack.pushPose();
+            poseStack.translate(-x, -y, -z);
+            if (ConfigClient.Client.light.get()) {
+                setMatrices(poseStack, bufferSource, entity);
+            }
+            poseStack.popPose();
+
             poseStack.pushPose();
             poseStack.mulPose(Axis.YP.rotationDegrees(entity.tickCount*6));
             poseStack.scale(2,2,2);
@@ -67,6 +97,56 @@ public class AtSwordRender <T extends AtSword> extends EntityRenderer<T> {
 
         super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
     }
+    public void setMatrices(@NotNull PoseStack matrices,
+                            @NotNull MultiBufferSource vertexConsumers,
+                            @NotNull Entity ownerBlood) {
+        int rage = 25;
+        float posAdd = 1.001F;
+
+        BlockPos playerPos = ownerBlood.blockPosition();
+        Vec3 playerVec = new Vec3(playerPos.getX(), playerPos.getY(), playerPos.getZ());
+
+        for (int x = -rage; x <= rage; x++) {
+            for (int y = -rage; y <= rage; y++) {
+                for (int z = -rage; z <= rage; z++) {
+                    BlockPos currentPos = playerPos.offset(x, y, z);
+                    Vec3 currentVec = new Vec3(currentPos.getX(), currentPos.getY(), currentPos.getZ());
+                    BlockState blockState = ownerBlood.level().getBlockState(currentPos);
+                    if (!blockState.isEmpty() && blockState.canOcclude()) {
+                        matrices.pushPose();
+
+                        matrices.translate(currentPos.getX() + 0.5, currentPos.getY() + 0.5, currentPos.getZ() + 0.5);
+
+                        matrices.scale(posAdd, posAdd, posAdd);
+
+                        matrices.translate(-(currentPos.getX() + 0.5), -(currentPos.getY() + 0.5), -(currentPos.getZ() + 0.5));
+
+                        matrices.translate(currentPos.getX(), currentPos.getY(), currentPos.getZ());
+
+                        double distance = playerVec.distanceTo(currentVec);
+
+                        float alp = Math.max(0, 1 - (float) distance / rage);
+
+                        BakedModel bakedModel = Minecraft.getInstance().getBlockRenderer().getBlockModel(blockState);
+                        for (Direction direction : Direction.values()) {
+                            BlockPos offsetPos = currentPos.relative(direction);
+                            if (!ownerBlood.level().getBlockState(offsetPos).isSolid()) {
+                                List<BakedQuad> quads = bakedModel.getQuads(blockState, direction, RandomSource.create());
+                                for (BakedQuad quad : quads) {
+                                    vertexConsumers.getBuffer(MRender.LIGHTNING).putBulkData(matrices.last(), quad, new float[]{
+                                            1.32f, 1.32f, 1.32f, 1.32f
+                                    }, 0, 0, 1, alp, new int[]{240, 240, 240, 240}, OverlayTexture.NO_OVERLAY, true);
+                                }
+                            }
+                        }
+
+                        matrices.popPose();
+                    }
+                }
+            }
+        }
+    }
+
     public void renderSphere1(@NotNull PoseStack matrices, @NotNull MultiBufferSource vertexConsumers, int light, float s) {
         int stacks = 8; // 垂直方向的分割数
         int slices = 8; // 水平方向的分割数

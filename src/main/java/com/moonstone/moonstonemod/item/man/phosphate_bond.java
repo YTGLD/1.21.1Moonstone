@@ -14,6 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import org.jetbrains.annotations.Nullable;
 
@@ -44,16 +45,24 @@ public class phosphate_bond extends ManDNA implements Iplague {
             }
         }
     }
+    public static void healZombie(LivingHealEvent event){
+        if (event.getEntity() instanceof MoonTamableAnimal moonTamableAnimal){
+            if (moonTamableAnimal.getOwner() instanceof Player player){
+                if (Handler.hascurio(player, Items.phosphate_bond.get())){
+                    event.setAmount(0);
 
-    public static void damage5(LivingIncomingDamageEvent event, int size){
+                }
+            }
+        }
+    }
+
+    public static void damage5(LivingIncomingDamageEvent event,int size){
         if (event.getEntity() instanceof MoonTamableAnimal moonTamableAnimal){
             if (moonTamableAnimal.getOwner() instanceof Player player){
                 if (Handler.hascurio(player, Items.phosphate_bond.get())){
 
-                    float a = size / 100f;
-
-                    if (event.getAmount()>moonTamableAnimal.getMaxHealth()*a){
-                        event.setAmount(moonTamableAnimal.getMaxHealth()*a);
+                    if (event.getAmount()>moonTamableAnimal.getMaxHealth()/size){
+                        event.setAmount(moonTamableAnimal.getMaxHealth()/size);
                     }
                 }
             }
@@ -64,6 +73,7 @@ public class phosphate_bond extends ManDNA implements Iplague {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         tooltipComponents.add(Component.translatable("item.phosphate_bond.tool.string").withStyle(ChatFormatting.GOLD));
         tooltipComponents.add(Component.translatable("item.phosphate_bond.tool.string.1").withStyle(ChatFormatting.GOLD));
+        tooltipComponents.add(Component.translatable("item.phosphate_bond.tool.string.2").withStyle(ChatFormatting.GOLD));
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }

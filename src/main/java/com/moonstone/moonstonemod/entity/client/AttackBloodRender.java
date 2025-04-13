@@ -41,75 +41,13 @@ public class AttackBloodRender extends EntityRenderer<attack_blood> {
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
         }
 
+        setT(poseStack, entity, bufferSource);
 
-        double x = Mth.lerp(p_114487_, entity.xOld, entity.getX());
-        double y = Mth.lerp(p_114487_, entity.yOld, entity.getY());
-        double z = Mth.lerp(p_114487_, entity.zOld, entity.getZ());
-        if (ConfigClient.Client.light.get()) {
-            poseStack.pushPose();
-            poseStack.translate(-x, -y, -z);
-            setMatrices(poseStack, bufferSource, entity);
-            poseStack.popPose();
-            setT(poseStack, entity, bufferSource);
-        }
-
-        renderSphere1(poseStack,bufferSource,240,0.15f);
+        renderSphere1(poseStack,bufferSource,240,0.1f);
 
         super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
     }
 
-    public void setMatrices(@NotNull PoseStack matrices,
-                            @NotNull MultiBufferSource vertexConsumers,
-                            @NotNull Entity ownerBlood) {
-        int rage = 5;
-        float posAdd = 1.00001f;
-
-        BlockPos playerPos = ownerBlood.blockPosition();
-        Vec3 playerVec = new Vec3(playerPos.getX(), playerPos.getY(), playerPos.getZ());
-
-        for (int x = -rage; x <= rage; x++) {
-            for (int y = -rage; y <= rage; y++) {
-                for (int z = -rage; z <= rage; z++) {
-                    BlockPos currentPos = playerPos.offset(x, y, z);
-                    Vec3 currentVec = new Vec3(currentPos.getX(), currentPos.getY(), currentPos.getZ());
-                    BlockState blockState = ownerBlood.level().getBlockState(currentPos);
-                    if (!blockState.isEmpty() && !blockState.is(Blocks.AIR)) {
-                        PoseStack poseStack = matrices;
-                        poseStack.pushPose();
-
-                        poseStack.translate(currentPos.getX() + 0.5, currentPos.getY() + 0.5, currentPos.getZ() + 0.5);
-
-                        poseStack.scale(posAdd, posAdd, posAdd);
-
-                        poseStack.translate(-(currentPos.getX() + 0.5), -(currentPos.getY() + 0.5), -(currentPos.getZ() + 0.5));
-
-
-
-                        poseStack.translate(currentPos.getX(), currentPos.getY(), currentPos.getZ());
-
-                        double distance = playerVec.distanceTo(currentVec);
-
-                        float alp = Math.max(0, 1 - (float) distance / rage);
-
-                        BakedModel bakedModel = Minecraft.getInstance().getBlockRenderer().getBlockModel(blockState);
-                        for (Direction direction : Direction.values()) {
-                            BlockPos offsetPos = currentPos.relative(direction);
-                            if (!ownerBlood.level().getBlockState(offsetPos).isSolid()) {
-                                List<BakedQuad> quads = bakedModel.getQuads(blockState, direction, RandomSource.create());
-                                for (BakedQuad quad : quads) {
-                                    vertexConsumers.getBuffer(MRender.lightning()).putBulkData(poseStack.last(), quad, new float[]{
-                                            1.2f, 1.2f, 1.2f, 1.2f
-                                    }, 1, 0, 0, alp, new int[]{240,240,240,240}, OverlayTexture.NO_OVERLAY, true);
-                                }
-                            }
-                        }
-
-                        poseStack.popPose();
-                    }
-                }
-            }
-        }
-    }
     private void setT(PoseStack matrices,
                       attack_blood entity,
                       MultiBufferSource vertexConsumers)

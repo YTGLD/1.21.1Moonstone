@@ -57,11 +57,10 @@ public class deceased_contract extends TheNecoraIC {
         }
     }
     public static void Did(LivingDeathEvent event) {
-        int ss = Mth.nextInt(RandomSource.create(), 1, 100);
         if (event.getSource().getEntity() instanceof Player player) {
             if (Handler.hascurio(player, Items.deceased_contract.get())) {
 
-                if (ss <= 30) {
+                if (Mth.nextInt(RandomSource.create(), 1, 100) <= 30) {
                     cell_zombie z = new cell_zombie(EntityTs.cell_zombie.get(), player.level());
                     z.teleportTo(event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ());
                     z.setOwnerUUID(player.getUUID());
@@ -80,7 +79,7 @@ public class deceased_contract extends TheNecoraIC {
                     z.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,60, 6,false,false));
                     player.level().addFreshEntity(z);
                 }
-                if (ss <= 15) {
+                if (Mth.nextInt(RandomSource.create(), 1, 100) <= 15) {
                     cell_giant g = new cell_giant(EntityTs.cell_giant.get(), player.level());
                     g.teleportTo(event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ());
                     g.setOwnerUUID(player.getUUID());
@@ -100,7 +99,7 @@ public class deceased_contract extends TheNecoraIC {
                     player.level().addFreshEntity(g);
                 }
 
-                if (ss <=  15) {
+                if (Mth.nextInt(RandomSource.create(), 1, 100) <=  15) {
                     blood blood = new blood(EntityTs.blood.get(), player.level());
                     blood.setDeltaMovement(Mth.nextDouble(RandomSource.create(), 0.1, 0.11), Mth.nextDouble(RandomSource.create(), 0.095, 0.1), Mth.nextDouble(RandomSource.create(), 0.099, 0.1));
                     blood.setOwner(player);
@@ -143,7 +142,9 @@ public class deceased_contract extends TheNecoraIC {
             ArrayList<Item> items= new ArrayList<>(List.of(
                     Items.muscle_conversion.get(),
                     Items.phosphate_bond.get(),
-                    Items.chemical_compound.get()
+                    Items.chemical_compound.get(),
+                    Items.skin_glucose_fermentation.get(),
+                    Items.white_blood_cells_are_abruptly_reduced.get()
             ));
             if (!items.isEmpty()) {
                 int index = random.nextInt(items.size());

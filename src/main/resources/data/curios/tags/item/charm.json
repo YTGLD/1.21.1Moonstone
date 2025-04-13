@@ -29,6 +29,7 @@
     "moonstone:rage_eye",
     "moonstone:rage_head",
 
+    "moonstone:the_owner_blood_stone",
     "moonstone:owner_blood_eye",
     "moonstone:owner_blood_attack_eye",
     "moonstone:owner_blood_speed_eye",
@@ -37,6 +38,7 @@
     "moonstone:owner_blood_vex",
     "moonstone:owner_blood_earth",
 
-    "moonstone:undead_blood_charm"
+    "moonstone:undead_blood_charm",
+    "moonstone:the_god_sword"
   ]
 }

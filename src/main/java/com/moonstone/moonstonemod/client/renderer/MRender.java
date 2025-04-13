@@ -1,6 +1,8 @@
 package com.moonstone.moonstonemod.client.renderer;
 
 import com.mojang.blaze3d.pipeline.RenderTarget;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.moonstone.moonstonemod.MoonStoneMod;
@@ -38,7 +40,21 @@ public class MRender extends RenderType {
         }
     }, () -> {
         Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
+    });public static final TransparencyStateShard TransparencyStateShard = new TransparencyStateShard("lightning_transparency", () -> {
+        RenderSystem.enableDepthTest();
+        RenderSystem.enableBlend();
+        RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+        RenderSystem.depthFunc(519);
+        RenderSystem.depthMask(false);
+
+    }, () -> {
+        RenderSystem.disableBlend();
+        RenderSystem.defaultBlendFunc();
+        RenderSystem.depthMask(true);
+        RenderSystem.depthFunc(515);
+        RenderSystem.disableDepthTest();
     });
+
     public static final RenderType LIGHTNING = create(
             "lightning",
             DefaultVertexFormat.POSITION_COLOR,
@@ -49,25 +65,9 @@ public class MRender extends RenderType {
             RenderType.CompositeState.builder()
                     .setShaderState(RENDERTYPE_LIGHTNING_SHADER)
                     .setWriteMaskState(COLOR_DEPTH_WRITE)
+                    .setDepthTestState(RenderStateShard.LEQUAL_DEPTH_TEST)
                     .setCullState(RenderStateShard.NO_CULL)
-                    .setTransparencyState(LIGHTNING_TRANSPARENCY)
-                    .setOutputState(WEATHER_TARGET)
-                    .createCompositeState(false)
-    );
-    public static final RenderType setDepthTestStateLIGHTNING = create(
-            "lightning",
-            DefaultVertexFormat.POSITION_COLOR,
-            VertexFormat.Mode.QUADS,
-            1536,
-            false,
-            true,
-            RenderType.CompositeState.builder()
-                    .setShaderState(RENDERTYPE_LIGHTNING_SHADER)
-                    .setWriteMaskState(COLOR_DEPTH_WRITE)
-                    .setDepthTestState(RenderStateShard.GREATER_DEPTH_TEST)
-                    .setCullState(RenderStateShard.NO_CULL)
-                    .setTransparencyState(LIGHTNING_TRANSPARENCY)
-                    .setOutputState(WEATHER_TARGET)
+                    .setTransparencyState(TransparencyStateShard)
                     .createCompositeState(false)
     );
     protected static final OutputStateShard BEACON = new OutputStateShard("set_beacon", () -> {
@@ -117,9 +117,9 @@ public class MRender extends RenderType {
                     .setOutputState(setOutputState)
                     .setTextureState(RenderStateShard.
                             MultiTextureStateShard.builder().
-                            add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/ging.png"),
+                            add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/p_blood.png"),
                                     false,
-                                    false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/ging.png"),
+                                    false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/p_blood.png"),
                                     false, false).build()).createCompositeState(false));
 
     public static final RenderType Bluer = create(
@@ -130,15 +130,15 @@ public class MRender extends RenderType {
             false,
             false,
             RenderType.CompositeState.builder()
-                    .setShaderState(RENDER_STATE_SHARD_MLS)
+                    .setShaderState(RENDER_STATE_SHARD_p_blood)
                     .setWriteMaskState(COLOR_DEPTH_WRITE)
                     .setTransparencyState(LIGHTNING_TRANSPARENCY)
                     .setOutputState(setOutputState)
                     .setTextureState(RenderStateShard.
                             MultiTextureStateShard.builder().
-                            add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/mls.png"),
+                            add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/blue.png"),
                                     false,
-                                    false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/mls.png"),
+                                    false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/blue.png"),
                                     false, false).build()).createCompositeState(false));
 
 
@@ -157,9 +157,9 @@ public class MRender extends RenderType {
                     .setOutputState(setOutputState)
                     .setTextureState(RenderStateShard.
                             MultiTextureStateShard.builder().
-                            add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/necr_image_1.png"),
+                            add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/p_blood.png"),
                                     false,
-                                    false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/necr_image_1.png"),
+                                    false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/p_blood.png"),
                                     false, false).build()).createCompositeState(false));
 
 

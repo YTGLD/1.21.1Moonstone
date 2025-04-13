@@ -158,6 +158,7 @@ public class NewEvent {
         rage_charm.die(event);
         rage_lock.LivingDeathEvent(event);
         neuron_dna.memory(event);
+        the_owner_blood_stone.did(event);
     }
     public void addV(ItemStack stack,Item Dhis,ItemTooltipEvent event,String string){
         if (stack.is(Dhis)) {

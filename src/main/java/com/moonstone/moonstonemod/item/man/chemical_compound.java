@@ -10,6 +10,8 @@ import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Iplague;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -32,19 +34,28 @@ import java.util.List;
  * 		<p>
  * 		每存在一只巨型细胞僵尸，伤害提高10%
  * 		<p>
- * 		僵尸死亡玩家将受到5%最大生命值的伤害
+ * 		僵尸受伤有5%的概率使主人受到50%的当量伤害
+ * <p>
+ *      主人的攻击不会触发
  */
 public class chemical_compound extends ManDNA implements Iplague {
     public chemical_compound() {
         super(new Properties().stacksTo(1).rarity(Rarity.RARE).component(DataReg.man,
                 ManBundleContents.EMPTY));
     }
-    public static void zombieDie(LivingDeathEvent event , int dieDamage){
-        float s = dieDamage / 100f;
-        if (event.getEntity() instanceof MoonTamableAnimal moonTamableAnimal) {
-            if (moonTamableAnimal.getOwner() instanceof Player player) {
-                if (Handler.hascurio(player, Items.chemical_compound.get())) {
-                    player.hurt(player.damageSources().dryOut(), player.getMaxHealth() * s);
+    public static void zombieDie(LivingIncomingDamageEvent event , int lv){
+        if (Mth.nextInt(RandomSource.create(),0,100) < lv) {
+            if (event.getEntity() instanceof MoonTamableAnimal moonTamableAnimal) {
+                if (moonTamableAnimal.getOwner() instanceof Player player) {
+                    if (event.getSource().getEntity() instanceof Player player1){
+                        if (player1 == player){
+                            return;
+                        }
+                    }
+
+                    if (Handler.hascurio(player, Items.chemical_compound.get())) {
+                        player.hurt(player.damageSources().dryOut(),event.getAmount()/5f);
+                    }
                 }
             }
         }
@@ -118,6 +129,7 @@ public class chemical_compound extends ManDNA implements Iplague {
         tooltipComponents.add(Component.translatable("item.chemical_compound.tool.string").withStyle(ChatFormatting.GOLD));
         tooltipComponents.add(Component.translatable("item.chemical_compound.tool.string.1").withStyle(ChatFormatting.GOLD));
         tooltipComponents.add(Component.translatable("item.chemical_compound.tool.string.2").withStyle(ChatFormatting.GOLD));
+        tooltipComponents.add(Component.translatable("item.chemical_compound.tool.string.3").withStyle(ChatFormatting.GOLD));
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
 
     }

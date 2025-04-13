@@ -1813,16 +1813,39 @@
   "item.muscle_conversion.tool.string.2": "召唤的僵尸伤害提高30%",
 
 
+  "item.moonstone.skin_glucose_fermentation": "肌糖原酵解",
+  "item.skin_glucose_fermentation.tool.string": "召唤的僵尸被杀死时",
+  "item.skin_glucose_fermentation.tool.string.1": "攻击者会受到基于僵尸50%最大生命值和护甲总和的伤害",
+
+  "item.moonstone.white_blood_cells_are_abruptly_reduced": "白细胞骤减",
+  "item.white_blood_cells_are_abruptly_reduced.tool.string": "召唤的僵尸会将15%恢复的生命值附加的玩家身上",
+  "item.white_blood_cells_are_abruptly_reduced.tool.string.1": "召唤的僵尸不再会恢复生命值",
+  "item.moonstone.the_god_sword": "恶意立方体",
+  "item.god_sword.tool.string": "在你的后面将漂浮神者剑魂",
+  "item.god_sword.tool.string.1": "他会缓慢恢复能量护盾，最大存储12面护盾",
+  "item.god_sword.tool.string.2": "护盾遭受攻击时，消耗能量并对攻击者造成250%的当量伤害并造成大量负面效果",
+  "item.god_sword.tool.string.3": "玩家将获得大量增益效果",
+  "item.god_sword.tool.string.4": "每有一面护盾都将每秒恢复玩家1%的最大生命值",
+  "item.god_sword.tool.string.5": "剑魂会附近目标并每次造成10%玩家攻击属性的伤害",
+  "item.god_sword.tool.string.6": "伤害会逐渐增加，剑魂的激光造成伤害相当于玩家发起了攻击",
+
+  "item.moonstone.the_owner_blood_stone": "连锁血石",
+  "item.the_owner_blood_stone.tool.string": "杀死生物产生血球",
+  "item.the_owner_blood_stone.tool.string.1": "血球将造成125%被杀生物生命值的伤害",
+  "item.the_owner_blood_stone.tool.string.2": "并冲向附近的生物",
+  "item.the_owner_blood_stone.tool.string.3": "血球相当于你发起了一次攻击",
 
   "item.moonstone.phosphate_bond": "高能磷酸键断裂",
   "item.phosphate_bond.tool.string": "召唤的僵尸死亡后回复玩家10%最大生命值",
-  "item.phosphate_bond.tool.string.1": "召唤的僵尸最少能承受5次伤害",
+  "item.phosphate_bond.tool.string.1": "召唤的僵尸最少能承受6次伤害",
+  "item.phosphate_bond.tool.string.2": "召唤的僵尸不会恢复生命值",
 
 
   "item.moonstone.chemical_compound": "化合物合成",
-  "item.chemical_compound.tool.string": "每存在一只细胞僵尸，治疗增加15%",
-  "item.chemical_compound.tool.string.1": "每存在一只巨型细胞僵尸，伤害提高10%",
-  "item.chemical_compound.tool.string.2": "僵尸死亡玩家将受到5%最大生命值的伤害",
+  "item.chemical_compound.tool.string": "每存在一只细胞僵尸，治疗增加25%",
+  "item.chemical_compound.tool.string.1": "每存在一只巨型细胞僵尸，伤害提高20%",
+  "item.chemical_compound.tool.string.2": "僵尸受伤有5%的概率使主人受到50%的当量伤害",
+  "item.chemical_compound.tool.string.3": "主人的攻击不会触发",
 
 
   "item.moonstone.rage_bottle": "Golden Bottle",

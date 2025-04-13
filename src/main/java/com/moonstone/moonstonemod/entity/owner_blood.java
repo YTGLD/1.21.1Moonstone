@@ -186,6 +186,9 @@ public class owner_blood extends TamableAnimal {
             }
         }
         if (this.getOwner()!= null &&this.getOwner() instanceof Player player&&this.getTarget()!=null){
+            if (s<2){
+                s=2;
+            }
             if (this.tickCount % (int) s == 0) {
                 if (!Handler.hascurio(player, Items.owner_blood_earth.get())) {
                     attack_blood attackBlood = new attack_blood(EntityTs.attack_blood.get(), this.level());

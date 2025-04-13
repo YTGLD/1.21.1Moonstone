@@ -67,6 +67,15 @@ public class blood_candle extends Item implements ICurioItem, Blood {
         }
         return false;
     }
+    @Override
+    public boolean canEquip(SlotContext slotContext, ItemStack stack) {
+        if (Handler.hascurio(slotContext.entity(), Items.the_god_sword.get())) {
+            return false;
+        }
+
+        return true;
+
+    }
 
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
