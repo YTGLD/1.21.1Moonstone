@@ -1,6 +1,7 @@
 package com.moonstone.moonstonemod.client.layer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 import com.moonstone.moonstonemod.entity.attack_blood;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import net.minecraft.client.model.PlayerModel;
@@ -33,20 +34,15 @@ public class BloodLayer <T extends LivingEntity, M extends PlayerModel<T>> exten
     protected void renderStuckItem(
             PoseStack poseStack, MultiBufferSource buffer, int packedLight, Entity entity, float x, float y, float z, float partialTick
     ) {
-        if (false) {
-            if (entity instanceof IBloodSize size && size.getSize() > 0) {
-                float f = Mth.sqrt(x * x + z * z);
+        if (entity instanceof IBloodSize size && size.getSize() > 0) {
+            attack_blood arrow = new attack_blood(EntityTs.attack_blood.get(), entity.level());
 
-                attack_blood arrow = new attack_blood(EntityTs.attack_blood.get(), entity.level());
-                arrow.setYRot((float) (Math.atan2(x, z) * 180.0F / (float) Math.PI));
-                arrow.setXRot((float) ((Math.atan2(y, f) * 180.0F) / (float) Math.PI));
-                arrow.yRotO = arrow.getYRot();
-                arrow.xRotO = arrow.getXRot();
+            poseStack.pushPose();
+            this.dispatcher.render(arrow, 0.0, 0.0, 0.0,
+                    0.0F, partialTick, poseStack, buffer,
+                    packedLight);
+            poseStack.popPose();
 
-                this.dispatcher.render(arrow, 0.0, 0.0, 0.0,
-                        0.0F, partialTick, poseStack, buffer,
-                        packedLight);
-            }
         }
     }
 }

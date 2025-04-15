@@ -1,6 +1,7 @@
 package com.moonstone.moonstonemod.entity.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
@@ -19,19 +20,29 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.client.model.IQuadTransformer;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Matrix3f;
 import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.lwjgl.system.MemoryStack;
 
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
 import java.util.List;
 
 import static net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY;
+import static org.lwjgl.opengl.GL11C.GL_ONE_MINUS_SRC_ALPHA;
+import static org.lwjgl.opengl.GL11C.GL_SRC_ALPHA;
 
 public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
     public OwnerBloodRenderer(EntityRendererProvider.Context p_173917_) {
@@ -100,8 +111,8 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
                             if (!ownerBlood.level().getBlockState(offsetPos).isSolid()) {
                                 List<BakedQuad> quads = bakedModel.getQuads(blockState, direction, RandomSource.create());
                                 for (BakedQuad quad : quads) {
-                                    vertexConsumers.getBuffer(MRender.LIGHTNING).putBulkData(matrices.last(), quad, new float[]{
-                                            1.32f, 1.32f, 1.32f, 1.32f
+                                    putBulkData(vertexConsumers,matrices.last(), quad, new float[]{
+                                            1, 1, 1, 1
                                     }, 1, 0, 0, alp, new int[]{240, 240, 240, 240}, OverlayTexture.NO_OVERLAY, true);
                                 }
                             }
@@ -114,6 +125,83 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
         }
     }
 
+    private void putBulkData(MultiBufferSource vertexConsumers,PoseStack.Pose pose, BakedQuad quad, float[] brightness, float red, float green, float blue, float alpha, int[] lightmap, int packedOverlay, boolean readAlpha) {
+        int[] aint = quad.getVertices();
+        Vec3i vec3i = quad.getDirection().getNormal();
+        Matrix4f matrix4f = pose.pose();
+        Vector3f vector3f = pose.transformNormal((float)vec3i.getX(), (float)vec3i.getY(), (float)vec3i.getZ(), new Vector3f());
+        int j = aint.length / 8;
+        int k = (int)(alpha * 255.0F);
+        MemoryStack memorystack = MemoryStack.stackPush();
+
+        try {
+            ByteBuffer bytebuffer = memorystack.malloc(DefaultVertexFormat.BLOCK.getVertexSize());
+            IntBuffer intbuffer = bytebuffer.asIntBuffer();
+
+            for(int l = 0; l < j; ++l) {
+                intbuffer.clear();
+                intbuffer.put(aint, l * 8, 8);
+                float f = bytebuffer.getFloat(0);
+                float f1 = bytebuffer.getFloat(4);
+                float f2 = bytebuffer.getFloat(8);
+                float f3;
+                float f4;
+                float f5;
+                if (readAlpha) {
+                    float f6 = (float)(bytebuffer.get(12) & 255);
+                    float f7 = (float)(bytebuffer.get(13) & 255);
+                    float f8 = (float)(bytebuffer.get(14) & 255);
+                    f3 = f6 * brightness[l] * red;
+                    f4 = f7 * brightness[l] * green;
+                    f5 = f8 * brightness[l] * blue;
+                } else {
+                    f3 = brightness[l] * red * 255.0F;
+                    f4 = brightness[l] * green * 255.0F;
+                    f5 = brightness[l] * blue * 255.0F;
+                }
+
+                int vertexAlpha = readAlpha ? (int)(alpha * (float)(bytebuffer.get(15) & 255) / 255.0F * 255.0F) : k;
+                int i1 = FastColor.ARGB32.color(vertexAlpha, (int)f3, (int)f4, (int)f5);
+                int j1 = this.applyBakedLighting(lightmap[l], bytebuffer);
+                float f10 = bytebuffer.getFloat(16);
+                float f9 = bytebuffer.getFloat(20);
+                Vector3f vector3f1 = matrix4f.transformPosition(f, f1, f2, new Vector3f());
+                this.applyBakedNormals(vector3f, bytebuffer, pose.normal());
+                vertexConsumers.getBuffer(MRender.LIGHTNING).addVertex(vector3f1.x(), vector3f1.y(), vector3f1.z(), i1, f10, f9, packedOverlay, j1, vector3f.x(), vector3f.y(), vector3f.z());
+            }
+        } catch (Throwable var35) {
+            try {
+                memorystack.close();
+            } catch (Throwable var34) {
+                var35.addSuppressed(var34);
+            }
+
+            throw var35;
+        }
+
+        memorystack.close();
+
+    }
+    private void applyBakedNormals(Vector3f generated, ByteBuffer data, Matrix3f normalTransform) {
+        byte nx = data.get(28);
+        byte ny = data.get(29);
+        byte nz = data.get(30);
+        if (nx != 0 || ny != 0 || nz != 0) {
+            generated.set((float)nx / 127.0F, (float)ny / 127.0F, (float)nz / 127.0F);
+            generated.mul(normalTransform);
+        }
+
+    }
+    private int applyBakedLighting(int packedLight, ByteBuffer data) {
+        int bl = packedLight & '\uffff';
+        int sl = packedLight >> 16 & '\uffff';
+        int offset = IQuadTransformer.UV2 * 4;
+        int blBaked = Short.toUnsignedInt(data.getShort(offset));
+        int slBaked = Short.toUnsignedInt(data.getShort(offset + 2));
+        bl = Math.max(bl, blBaked);
+        sl = Math.max(sl, slBaked);
+        return bl | sl << 16;
+    }
 
     private void renderTrail(owner_blood entityIn, float partialTicks, PoseStack poseStack, MultiBufferSource bufferIn, float trailR, float trailG, float trailB, int packedLightIn) {
         int samples = 0;

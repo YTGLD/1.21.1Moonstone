@@ -19,7 +19,7 @@ public abstract class PlayerRendererMixin  extends LivingEntityRenderer<Abstract
 
     @Inject(at = @At("RETURN"), method = "<init>")
     public void init(EntityRendererProvider.Context context, boolean useSlimModel, CallbackInfo ci) {
-        this.addLayer(new BloodLayer<>(context, (PlayerRenderer) (Object)this));
+//        this.addLayer(new BloodLayer<>(context, (PlayerRenderer) (Object)this));
 
     }
 

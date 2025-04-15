@@ -39,40 +39,40 @@ import java.util.Map;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity implements IBloodSize {
-
-    @Unique
-    private static final EntityDataAccessor<Integer> INTEGER_ENTITY_DATA_ACCESSOR =
-            SynchedEntityData.defineId(LivingEntity.class, EntityDataSerializers.INT);
-
     public LivingEntityMixin(EntityType<?> entityType, Level level) {
         super(entityType, level);
     }
-
-    @Override
-    public int getSize() {
-        return entityData.get(INTEGER_ENTITY_DATA_ACCESSOR);
-    }
-
-
-    @Inject(at = @At("RETURN"), method = "hurt")
-    public void hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
-        if (entityData.get(INTEGER_ENTITY_DATA_ACCESSOR) < 10) {
-            entityData.set(INTEGER_ENTITY_DATA_ACCESSOR,entityData.get(INTEGER_ENTITY_DATA_ACCESSOR)+1);
-        }
-    }
-    @Inject(at = @At("RETURN"), method = "defineSynchedData")
-    public void defineSynchedData(SynchedEntityData.Builder builder, CallbackInfo ci){
-        builder.define(INTEGER_ENTITY_DATA_ACCESSOR, 0);
-
-    }
-    @Inject(at = @At("RETURN"), method = "tick")
-    public void tick(CallbackInfo ci){
-        if (entityData.get(INTEGER_ENTITY_DATA_ACCESSOR) > 0) {
-            if (tickCount%200==1) {
-                entityData.set(INTEGER_ENTITY_DATA_ACCESSOR, entityData.get(INTEGER_ENTITY_DATA_ACCESSOR) - 1);
-            }
-        }
-    }
+//
+//    @Unique
+//    private static final EntityDataAccessor<Integer> INTEGER_ENTITY_DATA_ACCESSOR =
+//            SynchedEntityData.defineId(LivingEntity.class, EntityDataSerializers.INT);
+//
+//
+//    @Override
+//    public int getSize() {
+//        return entityData.get(INTEGER_ENTITY_DATA_ACCESSOR);
+//    }
+//
+//
+//    @Inject(at = @At("RETURN"), method = "hurt")
+//    public void hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir){
+//        if (entityData.get(INTEGER_ENTITY_DATA_ACCESSOR) < 10) {
+//            entityData.set(INTEGER_ENTITY_DATA_ACCESSOR,entityData.get(INTEGER_ENTITY_DATA_ACCESSOR)+1);
+//        }
+//    }
+//    @Inject(at = @At("RETURN"), method = "defineSynchedData")
+//    public void defineSynchedData(SynchedEntityData.Builder builder, CallbackInfo ci){
+//        builder.define(INTEGER_ENTITY_DATA_ACCESSOR, 0);
+//
+//    }
+//    @Inject(at = @At("RETURN"), method = "tick")
+//    public void tick(CallbackInfo ci){
+//        if (entityData.get(INTEGER_ENTITY_DATA_ACCESSOR) > 0) {
+//            if (tickCount%200==1) {
+//                entityData.set(INTEGER_ENTITY_DATA_ACCESSOR, entityData.get(INTEGER_ENTITY_DATA_ACCESSOR) - 1);
+//            }
+//        }
+//    }
     @Shadow public abstract ItemStack getItemInHand(InteractionHand p_21121_);
 
     @Shadow protected abstract void setLivingEntityFlag(int p_21156_, boolean p_21157_);
