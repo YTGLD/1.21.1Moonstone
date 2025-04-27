@@ -40,10 +40,11 @@ public class MRender extends RenderType {
         }
     }, () -> {
         Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
-    });public static final TransparencyStateShard TransparencyStateShard = new TransparencyStateShard("lightning_transparency", () -> {
+    });
+    public static final TransparencyStateShard TransparencyStateShard = new TransparencyStateShard("lightning_transparency", () -> {
         RenderSystem.enableDepthTest();
         RenderSystem.enableBlend();
-        RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+        RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
         RenderSystem.depthFunc(519);
         RenderSystem.depthMask(false);
 
@@ -54,6 +55,7 @@ public class MRender extends RenderType {
         RenderSystem.depthFunc(515);
         RenderSystem.disableDepthTest();
     });
+
 
     public static final RenderType LIGHTNING = create(
             "lightning",

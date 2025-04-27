@@ -1,5 +1,6 @@
 package com.moonstone.moonstonemod.item.blood.magic;
 
+import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Blood;
@@ -73,7 +74,8 @@ public class undead_blood_charm extends Item implements ICurioItem, Blood {
                         if (targeting.getTarget()!=null&&targeting.getTarget().is(player)){
                             living.invulnerableTime = 0;
                             living.hurt(living.damageSources().dryOut(),event.getAmount()*0.5f);
-                            living.level().levelEvent(2001, new BlockPos((int) living.getX(), (int) (living.getY() + 1), (int) living.getZ()), Block.getId(Blocks.RED_WOOL.defaultBlockState()));
+                            if (Config.SERVER.blockParticle.get())
+                                living.level().levelEvent(2001, new BlockPos((int) living.getX(), (int) (living.getY() + 1), (int) living.getZ()), Block.getId(Blocks.RED_WOOL.defaultBlockState()));
                             break;
                         }
                     }

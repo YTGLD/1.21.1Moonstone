@@ -21,7 +21,7 @@ public class ConfigClient {
 
         light = BUILDER
                 .comment("关闭后，将关闭模组内的动态光照")
-                .define("light", true);
+                .define("light_", false);
 
 
 

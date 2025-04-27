@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "moonstone:immortal"
+    },
+    {
+      "item": "moonstone:bloodvirus"
+    },
+    {
+      "item": "moonstone:necora"
+    },
+    {
+      "item": "moonstone:maxamout"
+    },
+    {
+      "item": "moonstone:thefruit"
+    },
+    {
+      "item": "moonstone:deceased_contract"
+    },
+    {
+      "item": "moonstone:ectoplasmprism"
+    },
+    {
+      "item": "moonstone:ectoplasmcube"
+    },
+    {
+      "item": "moonstone:ectoplasmprism"
+    }
+  ],
+  "result": {
+    "id": "moonstone:ytgld_virus",
+    "count": 1
+  }
+}

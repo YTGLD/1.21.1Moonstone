@@ -3,6 +3,8 @@ package com.moonstone.moonstonemod.entity.bloodvruis;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.entity.zombie.cell_zombie;
+import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import com.moonstone.moonstonemod.init.moonstoneitem.Particles;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.dna.bat_cell;
 import net.minecraft.core.Holder;
@@ -32,6 +34,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.UUID;
 
 public class blood_bat extends TamableAnimal {
     public blood_bat(EntityType<? extends blood_bat> p_21803_, Level p_21804_) {
@@ -259,7 +262,15 @@ public class blood_bat extends TamableAnimal {
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
-        return null;
+        blood_bat wolf = EntityTs.blood_bat.get().create(p_146743_);
+        if (wolf != null) {
+            UUID uuid = this.getOwnerUUID();
+            if (uuid != null) {
+                wolf.setOwnerUUID(uuid);
+                wolf.setTame(true,true);
+            }
+        }
+        return wolf;
     }
     public static double calculateDistance(LivingEntity entity1, LivingEntity entity2) {
         Vec3 pos1 = entity1.position();

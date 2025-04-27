@@ -29,6 +29,7 @@ import com.moonstone.moonstonemod.item.plague.BloodVirus.dna.bat_cell;
 import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.plague.TheNecora.god.GodAmbush;
 import com.moonstone.moonstonemod.item.plague.TheNecora.god.GodPutrefactive;
+import com.moonstone.moonstonemod.item.ytgld_virus;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -156,6 +157,7 @@ public class NewEvent {
         immortal.livDead(event);
         coffin.coffins(event);
         rage_charm.die(event);
+        ytgld_virus.ytgld_virusLivingDeathEvent(event);
         rage_lock.LivingDeathEvent(event);
         neuron_dna.memory(event);
         the_owner_blood_stone.did(event);
@@ -172,6 +174,10 @@ public class NewEvent {
     @SubscribeEvent
     public void useBow(LivingEntityUseItemEvent.Start event){
         rage_head.useBow(event);
+    }
+    @SubscribeEvent
+    public void Fin(LivingEntityUseItemEvent.Finish event){
+        ytgld_virus.Finish(event);
     }
     @SubscribeEvent
     public void LivingHurtEvent(LivingIncomingDamageEvent event){
@@ -223,6 +229,7 @@ public class NewEvent {
         skin_dna.hurt_of_skin_dna(event);
         bone_dna.hollow(event);
         bone_dna.bone_spur(event);
+        ytgld_virus.LivingHurt(event);
         if (event.getEntity().hasEffect(Effects.dead) && event.getEntity().getEffect(Effects.dead)!=null){
             float lvl = event.getEntity().getEffect(Effects.dead).getAmplifier();
             lvl *= 0.2f;

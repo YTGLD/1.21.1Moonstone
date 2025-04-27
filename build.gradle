@@ -115,9 +115,9 @@ repositories {
     maven {
         url 'https://maven.blamejared.com'
     }
-    maven {
-        url = "https://maven.theillusivec4.top/"
-    }
+        maven {
+            url = "https://maven.theillusivec4.top/"
+        }
     maven {
         name = "JEI and AlmostUnified"
         url = 'https://maven.blamejared.com/'

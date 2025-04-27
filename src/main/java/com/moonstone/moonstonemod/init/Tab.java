@@ -22,6 +22,7 @@ public class Tab {
             .title(Component.translatable("itemGroup.tabmoonstone.dna"))
             .displayItems((a,b)->{
                 b.accept(new ItemStack(Items.bloodvirus.get()));
+                b.accept(new ItemStack(Items.ytgld_virus.get()));
                 b.accept(new ItemStack(Items.necora.get()));
                 b.accept(new ItemStack(Items.dna_box.get()));
                 b.accept(new ItemStack(Items.crafting_box.get()));
@@ -198,6 +199,7 @@ public class Tab {
             .title(Component.translatable("itemGroup.tabmoonstone"))
             .displayItems((a,b)->{
                 b.accept(new ItemStack(Items.book.get()));
+                b.accept(new ItemStack(Items.ytgld_virus.get()));
                 b.accept(new ItemStack(Items.the_god_sword.get()));
 
                 b.accept(new ItemStack(Items.run_dna.get()));
@@ -239,7 +241,6 @@ public class Tab {
                 b.accept(new ItemStack(Items.luck_ring.get()));
                 b.accept(new ItemStack(Items.luck_stone.get()));
                 b.accept(new ItemStack(Items.the_heart.get()));
-                b.accept(new ItemStack(Items.plague.get()));
                 b.accept(new ItemStack(Items.maxamout.get()));
                 b.accept(new ItemStack(Items.soulbattery.get()));
                 b.accept(new ItemStack(Items.soulcube.get()));

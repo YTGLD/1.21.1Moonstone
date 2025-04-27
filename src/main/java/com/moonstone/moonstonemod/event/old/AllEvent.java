@@ -762,7 +762,8 @@ public class AllEvent {
             if (Handler.hascurio(player, Items.blueamout.get())) {
                 if (Mth.nextInt(RandomSource.create(), 1, 8) == 1) {
                     player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 1));
-                    event.getEntity().level().levelEvent(2001, new BlockPos((int) event.getEntity().getX(), (int) (event.getEntity().getY() + 1), (int) event.getEntity().getZ()), Block.getId(Blocks.BLUE_WOOL.defaultBlockState()));
+                    if (Config.SERVER.blockParticle.get())
+                        event.getEntity().level().levelEvent(2001, new BlockPos((int) event.getEntity().getX(), (int) (event.getEntity().getY() + 1), (int) event.getEntity().getZ()), Block.getId(Blocks.BLUE_WOOL.defaultBlockState()));
                 }
             }
         }
@@ -770,7 +771,9 @@ public class AllEvent {
             if (Handler.hascurio(player, Items.blueamout.get())) {
                 if (Mth.nextInt(RandomSource.create(), 1, 8) == 1) {
                     event.getEntity().addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
-                    event.getEntity().level().levelEvent(2001, new BlockPos((int) event.getEntity().getX(), (int) (event.getEntity().getY() + 1), (int) event.getEntity().getZ()), Block.getId(Blocks.BLUE_WOOL.defaultBlockState()));
+
+                    if (Config.SERVER.blockParticle.get())
+                        event.getEntity().level().levelEvent(2001, new BlockPos((int) event.getEntity().getX(), (int) (event.getEntity().getY() + 1), (int) event.getEntity().getZ()), Block.getId(Blocks.BLUE_WOOL.defaultBlockState()));
                 }
             }
         }
@@ -783,7 +786,8 @@ public class AllEvent {
                 if (Mth.nextInt(RandomSource.create(), 1, 8) == 1) {
                     player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 100, 1));
                     event.getEntity().knockback(0.2, Mth.sin(player.getYRot() * ((float) Math.PI / 180F)), -Mth.cos(player.getYRot() * ((float) Math.PI / 180F)));
-                    event.getEntity().level().levelEvent(2001, new BlockPos((int) event.getEntity().getX(), (int) (event.getEntity().getY() + 1), (int) event.getEntity().getZ()), Block.getId(Blocks.RED_WOOL.defaultBlockState()));
+                    if (Config.SERVER.blockParticle.get())
+                        event.getEntity().level().levelEvent(2001, new BlockPos((int) event.getEntity().getX(), (int) (event.getEntity().getY() + 1), (int) event.getEntity().getZ()), Block.getId(Blocks.RED_WOOL.defaultBlockState()));
 
                 }
             }
@@ -795,7 +799,8 @@ public class AllEvent {
             if (Handler.hascurio(player, Items.greedamout.get())) {
                 if (Mth.nextInt(RandomSource.create(), 1, 8) == 1) {
                     player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 0));
-                    event.getEntity().level().levelEvent(2001, new BlockPos((int) event.getEntity().getX(), (int) (event.getEntity().getY() + 1), (int) event.getEntity().getZ()), Block.getId(Blocks.GREEN_WOOL.defaultBlockState()));
+                    if (Config.SERVER.blockParticle.get())
+                        event.getEntity().level().levelEvent(2001, new BlockPos((int) event.getEntity().getX(), (int) (event.getEntity().getY() + 1), (int) event.getEntity().getZ()), Block.getId(Blocks.GREEN_WOOL.defaultBlockState()));
 
                 }
             }
@@ -803,7 +808,8 @@ public class AllEvent {
         if (event.getSource().getDirectEntity() instanceof Player player){
             if (Handler.hascurio(player,Items.greedamout.get())) {
                 if (Mth.nextInt(RandomSource.create(), 1, 8) == 1) {
-                    event.getEntity().level().levelEvent(2001, new BlockPos((int) event.getEntity().getX(), (int) (event.getEntity().getY() + 1), (int) event.getEntity().getZ()), Block.getId(Blocks.GREEN_WOOL.defaultBlockState()));
+                    if (Config.SERVER.blockParticle.get())
+                        event.getEntity().level().levelEvent(2001, new BlockPos((int) event.getEntity().getX(), (int) (event.getEntity().getY() + 1), (int) event.getEntity().getZ()), Block.getId(Blocks.GREEN_WOOL.defaultBlockState()));
 
                     player.heal(4);
                 }
@@ -861,7 +867,8 @@ public class AllEvent {
                 if (Mth.nextInt(RandomSource.create(), 1, (int) (12/ss)) == 1) {
                     player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 60, (int) (0+ss)));
                     event.getEntity().knockback(0.2, Mth.sin(player.getYRot() * ((float) Math.PI / 180F)), -Mth.cos(player.getYRot() * ((float) Math.PI / 180F)));
-                    event.getEntity().level().levelEvent(2001, new BlockPos((int) event.getEntity().getX(), (int) (event.getEntity().getY() + 1), (int) event.getEntity().getZ()), Block.getId(Blocks.YELLOW_WOOL.defaultBlockState()));
+                    if (Config.SERVER.blockParticle.get())
+                        event.getEntity().level().levelEvent(2001, new BlockPos((int) event.getEntity().getX(), (int) (event.getEntity().getY() + 1), (int) event.getEntity().getZ()), Block.getId(Blocks.YELLOW_WOOL.defaultBlockState()));
                 }
             }
         }
