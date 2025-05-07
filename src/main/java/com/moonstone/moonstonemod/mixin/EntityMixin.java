@@ -3,6 +3,7 @@ package com.moonstone.moonstonemod.mixin;
 import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.entity.extend.MoonTamableAnimal;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import com.moonstone.moonstonemod.item.man.run_dna;
@@ -27,6 +28,13 @@ public abstract class EntityMixin {
 
     @Inject(at = @At("RETURN"), method = "isInvulnerableTo", cancellable = true)
     public void mhead(DamageSource p_20122_, CallbackInfoReturnable<Boolean> cir) {
+        if ((Entity) (Object) this instanceof Player player){
+            if (p_20122_.getEntity() instanceof MoonTamableAnimal moonTamableAnimal){
+                if (moonTamableAnimal.getOwner()!=null&&moonTamableAnimal.getOwner().is(player)) {
+                    cir.setReturnValue(true);
+                }
+            }
+        }
 
 
         if (p_20122_.getEntity() instanceof Player player){

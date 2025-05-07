@@ -1,5 +1,5 @@
 {
-  "parent": "moonstone:moonstone/ectoplasmcube",
+  "parent": "moonstone:moonstone/root_necora",
   "criteria": {
     "medicinebox": {
       "conditions": {

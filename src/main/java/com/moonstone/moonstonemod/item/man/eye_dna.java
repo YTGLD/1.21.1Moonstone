@@ -36,7 +36,7 @@ public class eye_dna extends ManDNA {
         if (manBundleContents != null) {
             manBundleContents.items().forEach((itemStack -> {
                 if (itemStack.is(Drugs.eye_system)) {
-                    slotContext.entity().addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,1200,0));
+                    slotContext.entity().addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,1200,0,false,false));
                 }
             }));
         }

@@ -23,6 +23,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.*;
+import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.monster.*;
@@ -72,6 +73,13 @@ public class cell_zombie extends MoonTamableAnimal {
             if (!this.getTarget().isAlive()) {
                 this.setTarget(null);
             }else {
+                if (this.getTarget() instanceof Player entity) {
+                    if (this.getOwner()!=null) {
+                        if (this.getOwner().is(entity)) {
+                            this.setTarget(null);
+                        }
+                    }
+                }
                 if (this.getTarget() instanceof OwnableEntity entity) {
                     if (this.getOwner()!=null) {
                         if (entity.getOwner() != null && entity.getOwner().is(this.getOwner())) {
@@ -81,25 +89,7 @@ public class cell_zombie extends MoonTamableAnimal {
                 }
             }
         }
-        if (this.getOwner()!= null) {
-            if (this.getOwner().getLastHurtByMob()!= null) {
-                if (!this.getOwner().getLastHurtByMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtByMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
-                    this.setTarget(this.getOwner().getLastHurtByMob());
-                }
-            }
-            if (this.getOwner().getLastAttacker()!= null) {
-                if (!this.getOwner().getLastAttacker().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastAttacker().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
-                    this.setTarget(this.getOwner().getLastAttacker());
-                }
 
-            }
-            if (this.getOwner().getLastHurtMob()!= null) {
-                if (!this.getOwner().getLastHurtMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
-                    this.setTarget(this.getOwner().getLastHurtMob());
-                }
-
-            }
-        }
         if (!this.getTags().contains(AllEvent.muMMY)) {
             this.time+=2;
         }else {
@@ -124,22 +114,32 @@ public class cell_zombie extends MoonTamableAnimal {
         }
     }
     private void setAttackT(){
-        Vec3 playerPos = this.position().add(0, 0.75, 0);
-        int range = 10;
-        List<Mob> entities = this.level().getEntitiesOfClass(Mob.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
-        for (Mob mob : entities) {
-            if (this.getTarget()!=null) {
-                ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType());
-                if (mob instanceof OwnableEntity entity1){
-                    if (this.getOwner()!=null) {
-                        if (entity1.getOwner() != null && entity1.getOwner().is(this.getOwner())) {
-                            return;
-                        }
-                    }
+
+        if (this.getOwner()!= null) {
+            if (this.getTarget() instanceof OwnableEntity ownableEntity){
+                if (ownableEntity.getOwner()!=null&&ownableEntity.getOwner().is(this.getOwner())){
+                    return;
                 }
-                if (!entity.getNamespace().equals(MoonStoneMod.MODID)) {
-                    this.setTarget(mob);
+            }
+
+
+
+            if (this.getOwner().getLastHurtByMob()!= null) {
+                if (!this.getOwner().getLastHurtByMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtByMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
+                    this.setTarget(this.getOwner().getLastHurtByMob());
                 }
+            }
+            if (this.getOwner().getLastAttacker()!= null) {
+                if (!this.getOwner().getLastAttacker().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastAttacker().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
+                    this.setTarget(this.getOwner().getLastAttacker());
+                }
+
+            }
+            if (this.getOwner().getLastHurtMob()!= null) {
+                if (!this.getOwner().getLastHurtMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
+                    this.setTarget(this.getOwner().getLastHurtMob());
+                }
+
             }
         }
     }

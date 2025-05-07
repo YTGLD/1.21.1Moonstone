@@ -1,5 +1,5 @@
 {
-  "parent": "moonstone:moonstone/nightmare_base_stone",
+  "parent": "moonstone:moonstone/nightmare_base_stone_meet",
   "criteria": {
     "nightmare_base_stone_virus": {
       "conditions": {

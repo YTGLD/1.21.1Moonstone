@@ -1,5 +1,5 @@
 {
-  "parent": "moonstone:moonstone/nightmare_base_black_eye",
+  "parent": "moonstone:moonstone/nightmare_base_black_eye_eye",
   "criteria": {
     "nightmare_base_black_eye_heart": {
       "conditions": {

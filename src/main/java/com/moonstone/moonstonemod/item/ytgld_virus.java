@@ -115,8 +115,12 @@ public class ytgld_virus extends TheNecoraIC {
                                         if (event.getEntity().isInvertedHealAndHarm()){
                                             if (compoundTag.getInt(research)<(researchMaxSize/3)*2) {
                                                 compoundTag.putInt(research, compoundTag.getInt(research) + Config.SERVER.ytgld_research.get());
-                                            }else if (event.getEntity() instanceof EnderDragon enderDragon){
-                                                addLvl(stack,"enderDragon");
+                                            }
+
+                                        }
+                                        if (!(compoundTag.getInt(research) <(researchMaxSize/3)*2)) {
+                                            if (event.getEntity() instanceof EnderDragon enderDragon) {
+                                                addLvl(stack, "enderDragon");
                                             }
                                         }
                                     }else if (getLvl(stack)==3) {
@@ -132,6 +136,13 @@ public class ytgld_virus extends TheNecoraIC {
             }
         }
         if (event.getEntity() instanceof Player player){
+            if (!player.getTags().contains("YtgldV")){
+                player.addItem(new ItemStack(Items.ytgld_virus));
+                player.addTag("YtgldV");
+            }
+
+
+
             if (Handler.hascurio(player, Items.ytgld_virus.get())) {
                 CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
                     Map<String, ICurioStacksHandler> curios = handler.getCurios();
@@ -259,10 +270,10 @@ public class ytgld_virus extends TheNecoraIC {
             if (compoundTag != null && compoundTag.getInt(curse) < curseMaxSize && compoundTag.getInt(research) < researchMaxSize) {
                 float l = Config.SERVER.ytgld_curse.get();
                 if (getLvl(stack)==2){
-                    l *= 1.5f;
+                    l *= 0.75f;
                 }
                 if (getLvl(stack)==3){
-                    l *= 2;
+                    l *= 0.5f;
                 }
                 if (slotContext.entity().tickCount % (int)l == 1) {
                     compoundTag.putInt(curse, compoundTag.getInt(curse) + 1);

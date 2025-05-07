@@ -1,5 +1,5 @@
 {
-  "parent": "moonstone:moonstone/nightmare_base_fool",
+  "parent": "moonstone:moonstone/nightmare_base_fool_betray",
   "criteria": {
     "nightmare_base_fool_bone": {
       "conditions": {

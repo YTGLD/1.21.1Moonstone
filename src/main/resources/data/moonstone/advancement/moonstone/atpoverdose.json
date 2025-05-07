@@ -1,5 +1,5 @@
 {
-  "parent": "moonstone:moonstone/necora",
+  "parent": "moonstone:moonstone/ambush",
   "criteria": {
     "atpoverdose": {
       "conditions": {

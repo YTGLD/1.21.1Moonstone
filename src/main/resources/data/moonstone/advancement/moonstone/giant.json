@@ -1,5 +1,5 @@
 {
-  "parent": "moonstone:moonstone/necora",
+  "parent": "moonstone:moonstone/cell",
   "criteria": {
     "giant": {
       "conditions": {

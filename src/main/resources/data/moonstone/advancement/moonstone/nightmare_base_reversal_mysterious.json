@@ -1,5 +1,5 @@
 {
-  "parent": "moonstone:moonstone/nightmare_base_reversal",
+  "parent": "moonstone:moonstone/nightmare_base_reversal_card",
   "criteria": {
     "nightmare_base_reversal_mysterious": {
       "conditions": {

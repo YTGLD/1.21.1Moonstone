@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "root_necora": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "moonstone:necora"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "minecraft:textures/block/polished_deepslate.png",
+    "description": {
+      "text": "Moonstone"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "moonstone:necora"
+    },
+    "show_toast": true,
+    "title": {
+      "text": "Moonstone"
+    }
+  },
+  "requirements": [
+    [
+      "root_necora"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,5 +1,5 @@
 {
-  "parent": "moonstone:moonstone/nightmare_base_redemption",
+  "parent": "moonstone:moonstone/nightmare_base_redemption_deception",
   "criteria": {
     "nightmare_base_redemption_degenerate": {
       "conditions": {

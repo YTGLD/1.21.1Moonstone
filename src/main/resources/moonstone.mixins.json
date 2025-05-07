@@ -18,6 +18,8 @@
     "WardenMixin"
   ],
   "client": [
+    "client.AdvancementWidgetMixin",
+    "client.ATabMixin",
     "client.CameraMixin",
     "client.GameRendererMixin",
     "client.GuiGraphicsMixin",

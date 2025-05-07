@@ -1,5 +1,5 @@
 {
-  "parent": "moonstone:moonstone/nightmare_base_insight",
+  "parent": "moonstone:moonstone/nightmare_base_insight_collapse",
   "criteria": {
     "nightmare_base_insight_drug": {
       "conditions": {

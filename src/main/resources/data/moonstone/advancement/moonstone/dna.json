@@ -1,5 +1,5 @@
 {
-  "parent": "moonstone:moonstone/ectoplasmprism",
+  "parent": "moonstone:moonstone/root_necora",
   "criteria": {
     "dna": {
       "conditions": {

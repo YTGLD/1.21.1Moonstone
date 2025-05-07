@@ -19,13 +19,13 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.List;
 
-public class nightmare_base_stone extends nightmare implements SuperNightmare {
+public class    nightmare_base_stone extends nightmare implements SuperNightmare {
 
     public static void LivingHurtEvent(LivingIncomingDamageEvent event){
         if (event.getEntity() instanceof Player player ){
             if (Handler.hascurio(player, Items.nightmare_base_stone.get())){
                 if (player.getHealth() >= player.getMaxHealth()){
-                    event.setAmount(event.getAmount()*6);
+                    event.setAmount(event.getAmount()*4);
                 }
             }
         }

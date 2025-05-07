@@ -1,5 +1,5 @@
 {
-  "parent": "moonstone:moonstone/nightmare_base_start",
+  "parent": "moonstone:moonstone/nightmare_base_start_pod",
   "criteria": {
     "nightmare_base_start_power": {
       "conditions": {

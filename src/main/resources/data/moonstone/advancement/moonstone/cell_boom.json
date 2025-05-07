@@ -1,5 +1,5 @@
 {
-  "parent": "moonstone:moonstone/cell",
+  "parent": "moonstone:moonstone/cell_blood",
   "criteria": {
     "cell_boom": {
       "conditions": {

@@ -276,7 +276,7 @@ public class ytgld extends nightmare_giant {
 
     public int time = 0;
     @Override
-    public void die(DamageSource p_21809_) {
+    public void die(@NotNull DamageSource p_21809_) {
 
         if (p_21809_.getEntity() instanceof  Player player) {
             if (!player.getTags().contains("LoveYtgld")) {

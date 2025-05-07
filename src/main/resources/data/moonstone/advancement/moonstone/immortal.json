@@ -1,0 +1,41 @@
+{
+  "parent": "moonstone:moonstone/root_nightmare",
+  "criteria": {
+    "immortal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "moonstone:immortal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tooltip.immortal.text"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "moonstone:immortal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tooltip.immortal.hand"
+    }
+  },
+  "requirements": [
+    [
+      "immortal"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

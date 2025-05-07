@@ -260,17 +260,21 @@ public class cell_giant extends MoonTamableAnimal implements OwnableEntity {
             if (this.getOwner().getLastHurtByMob()!= null) {
                 if (!this.getOwner().getLastHurtByMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtByMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setAttackTarget(this.getOwner().getLastHurtByMob());
+                    this.setTarget(this.getOwner().getLastHurtByMob());
+
                 }
             }
             if (this.getOwner().getLastAttacker()!= null) {
                 if (!this.getOwner().getLastAttacker().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastAttacker().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setAttackTarget(this.getOwner().getLastAttacker());
+                    this.setTarget(this.getOwner().getLastAttacker());
                 }
 
             }
             if (this.getOwner().getLastHurtMob()!= null) {
                 if (!this.getOwner().getLastHurtMob().is(this)&&!BuiltInRegistries.ENTITY_TYPE.getKey(this.getOwner().getLastHurtMob().getType()).getNamespace().equals(MoonStoneMod.MODID)) {
                     this.setAttackTarget(this.getOwner().getLastHurtMob());
+                    this.setTarget(this.getOwner().getLastHurtMob());
                 }
 
             }
@@ -301,6 +305,7 @@ public class cell_giant extends MoonTamableAnimal implements OwnableEntity {
                     if (this.getOwner()!=null) {
                         if (entity.getOwner() != null && entity.getOwner().is(this.getOwner())) {
                             this.setAttackTarget(null);
+                            this.setTarget(null);
                         }
                     }
                 }
@@ -337,24 +342,7 @@ public class cell_giant extends MoonTamableAnimal implements OwnableEntity {
         }
     }
     private void setAttackT(){
-        Vec3 playerPos = this.position().add(0, 0.75, 0);
-        int range = 10;
-        List<Mob> entities = this.level().getEntitiesOfClass(Mob.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
-        for (Mob mob : entities) {
-            if (!this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).isPresent()) {
-                ResourceLocation entity = BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType());
-                if (mob instanceof OwnableEntity entity1){
-                    if (this.getOwner()!=null) {
-                        if (entity1.getOwner() != null && entity1.getOwner().is(this.getOwner())) {
-                            return;
-                        }
-                    }
-                }
-                if (!entity.getNamespace().equals(MoonStoneMod.MODID)) {
-                    this.setAttackTarget(mob);
-                }
-            }
-        }
+
     }
     protected void customServerAiStep() {
         ServerLevel serverlevel = (ServerLevel)this.level();
@@ -432,10 +420,6 @@ public class cell_giant extends MoonTamableAnimal implements OwnableEntity {
         }
 
         super.onSyncedDataUpdated(p_219422_);
-    }
-
-    public boolean ignoreExplosion() {
-        return this.isDiggingOrEmerging();
     }
 
     protected Brain<?> makeBrain(Dynamic<?> p_219406_) {
@@ -539,7 +523,7 @@ public class cell_giant extends MoonTamableAnimal implements OwnableEntity {
 
     @javax.annotation.Nullable
     public LivingEntity getTarget() {
-        return this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse((LivingEntity)null);
+        return this.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
     }
 
     public boolean removeWhenFarAway(double p_219457_) {
@@ -585,11 +569,21 @@ public class cell_giant extends MoonTamableAnimal implements OwnableEntity {
     }
 
     public void setAttackTarget(LivingEntity p_219460_) {
-        this.getBrain().eraseMemory(MemoryModuleType.ROAR_TARGET);
-        this.getBrain().setMemory(MemoryModuleType.ATTACK_TARGET, p_219460_);
-        this.getBrain().eraseMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
+        if (p_219460_ instanceof OwnableEntity entity) {
+            if (this.getOwner()!=null) {
+                if (entity.getOwner() != null && entity.getOwner().is(this.getOwner())) {
+                    return;
+                }
+            }
+        }
+        if (this.getOwner()!=null&&p_219460_!=null&&!p_219460_.is(this.getOwner())){
+            this.getBrain().eraseMemory(MemoryModuleType.ROAR_TARGET);
+            this.getBrain().setMemory(MemoryModuleType.ATTACK_TARGET, p_219460_);
+            this.getBrain().eraseMemory(MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE);
 
-        SonicBoom.setCooldown(this, 20);
+            SonicBoom.setCooldown(this, 20);
+        }
+
     }
 
 

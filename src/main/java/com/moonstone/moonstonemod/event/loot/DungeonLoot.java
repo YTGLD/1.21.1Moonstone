@@ -218,7 +218,6 @@ public class DungeonLoot extends LootModifier {
 
 
                     boolean ab = !Handler.hascurio(player, Items.cell.get())
-                            && !Handler.hascurio(player, Items.giant.get())
                             && Handler.hascurio(player, Items.necora.get());
 
                     addLootHasB(generatedLoot, random, ab, List.of(
@@ -252,8 +251,7 @@ public class DungeonLoot extends LootModifier {
                                 Items.subspace_cell.get()
                         ), Config.SERVER.necora.get());
 
-                        boolean cell = Handler.hascurio(player, Items.cell.get())
-                                && !Handler.hascurio(player,Items.giant.get());
+                        boolean cell = Handler.hascurio(player, Items.cell.get());
 
                         addLootHasB(generatedLoot, random, cell, List.of(
                                 Items.adrenaline.get(),

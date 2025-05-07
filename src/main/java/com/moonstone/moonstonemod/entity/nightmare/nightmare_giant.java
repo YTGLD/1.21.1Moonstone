@@ -72,6 +72,7 @@ import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import javax.annotation.Nullable;
@@ -239,7 +240,7 @@ public class nightmare_giant extends MoonTamableAnimal implements OwnableEntity,
 
     public int time = 0;
     @Override
-    public void die(DamageSource p_21809_) {
+    public void die(@NotNull DamageSource p_21809_) {
         if (this.getTags().contains(Handler.Giant_Boom)){
             this.level().explode(this, this.getX(), this.getY(), this.getZ(), 12.5f, true, Level.ExplosionInteraction.NONE);
         }

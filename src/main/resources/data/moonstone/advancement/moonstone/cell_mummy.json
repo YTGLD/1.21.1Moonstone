@@ -1,5 +1,5 @@
 {
-  "parent": "moonstone:moonstone/cell",
+  "parent": "moonstone:moonstone/cell_calcification",
   "criteria": {
     "cell_mummy": {
       "conditions": {

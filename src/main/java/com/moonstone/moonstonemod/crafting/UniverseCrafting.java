@@ -34,6 +34,7 @@ public class UniverseCrafting  extends CustomRecipe {
     public boolean matches(CraftingInput craftingInput, @NotNull Level level) {
         boolean hasFirstItem = false;
         boolean hasSecondItem = false;
+        int must = 0;
 
         ItemStack me = ItemStack.EMPTY;
         ItemStack other = ItemStack.EMPTY;
@@ -51,6 +52,8 @@ public class UniverseCrafting  extends CustomRecipe {
                             && itemStack.get(DataReg.tag).getInt(universe.doAsUniverse) < universe.universeSize) {
                         me =itemStack;
                         hasFirstItem = true;
+                        must++;
+
                     }
                 }
             }
@@ -62,6 +65,7 @@ public class UniverseCrafting  extends CustomRecipe {
                     if (itemStack.getItem() instanceof ICurioItem) {
                         other = itemStack;
                         hasSecondItem = true;
+                        must++;
                     }
                 }
             }
@@ -70,7 +74,7 @@ public class UniverseCrafting  extends CustomRecipe {
         if (other == me){
             return false;
         }
-        return hasFirstItem && hasSecondItem;
+        return hasFirstItem && hasSecondItem&&must==2;
     }
 
 
