@@ -36,7 +36,6 @@ public class SwordOfTwelveRenderer <T extends SwordOfTwelve> extends EntityRende
 
         if (ConfigClient.Client.Shader.get()) {
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
-            MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
         }
         poseStack.pushPose();
         poseStack.scale(3,3,3);

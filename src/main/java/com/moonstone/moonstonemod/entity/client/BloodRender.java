@@ -25,7 +25,7 @@ public class BloodRender extends EntityRenderer<blood> {
     @Override
     public void render(blood entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
         if (ConfigClient.Client.Shader.get()) {
-            MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
+            MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
         }
         setT(poseStack, entity, bufferSource);
         renderSphere1(poseStack,bufferSource,240,0.15f);

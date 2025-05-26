@@ -38,7 +38,7 @@ public class AxeRenderer <T extends axe> extends EntityRenderer<T> {
         setT(poseStack, entity, bufferSource);
         if (ConfigClient.Client.Shader.get()) {
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
-            MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
+
         }
 
         {

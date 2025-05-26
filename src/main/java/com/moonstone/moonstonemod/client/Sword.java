@@ -29,7 +29,7 @@ public class Sword {
                  int light,
                  @NotNull Entity entity) {
         if (ConfigClient.Client.Shader.get()) {
-            MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
+            MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
         }
         if (entity instanceof LivingEntity living) {
             if (Handler.hascurio(living,Items.max_sword.get())) {

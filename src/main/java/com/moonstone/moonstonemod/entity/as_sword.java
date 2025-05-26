@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.entity;
 
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.init.moonstoneitem.DamageTps;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.item.nanodoom.million;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -129,7 +130,7 @@ public class as_sword extends ThrowableItemProjectile {
                                 if (player.getAttribute(Attributes.ATTACK_DAMAGE) != null) {
                                     entity.invulnerableTime = 0;
                                     entity.knockback(0.1f, Mth.nextFloat(RandomSource.create(), -0.1f, 0.1f), Mth.nextFloat(RandomSource.create(), -0.1f, 0.1f));
-                                    entity.hurt(this.damageSources().dryOut(),
+                                    entity.hurt(DamageTps.swordDamage(entity),
                                             (float) (0.3f + player.getAttribute(Attributes.ATTACK_DAMAGE).getValue() * 0.07f));
                                     coll = 20;
                                 }

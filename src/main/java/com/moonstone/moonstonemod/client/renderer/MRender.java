@@ -33,7 +33,7 @@ public class MRender extends RenderType {
 
 
     protected static final OutputStateShard setOutputState = new OutputStateShard("set", () -> {
-        RenderTarget target = MoonPost.getRenderTargetFor(MoonStoneMod.POST);
+        RenderTarget target = MoonPost.getRenderTargetFor(MoonStoneMod.POST_Blood);
         if (target != null) {
             target.copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
             target.bindWrite(false);
@@ -73,7 +73,7 @@ public class MRender extends RenderType {
                     .createCompositeState(false)
     );
     protected static final OutputStateShard BEACON = new OutputStateShard("set_beacon", () -> {
-        RenderTarget target = MoonPost.getRenderTargetFor(MoonStoneMod.POST);
+        RenderTarget target = MoonPost.getRenderTargetFor(MoonStoneMod.POST_Blood);
         if (target != null) {
             target.copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
             target.bindWrite(false);
@@ -336,4 +336,6 @@ public class MRender extends RenderType {
     public static void setShaderInstance_gateway(ShaderInstance instance) {
         ShaderInstance_gateway = instance;
     }
+
+
 }

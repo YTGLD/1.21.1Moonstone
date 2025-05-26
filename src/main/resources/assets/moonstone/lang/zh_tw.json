@@ -5,6 +5,10 @@
   "moonstone.book.error": "你需要安裝 Patchouli 手冊模組",
   "curios.modifiers.necora": "佩戴時",
   "itemGroup.tabmoonstone": "月之石",
+
+  "moonstone.super_nightmare.name": "这个物品只能在佩戴噩梦基座的情况下使用",
+  "moonstone.nightmare.name": "这个物品只能在佩戴深渊之眼的情况下使用",
+  "allevent.moonstone.cannot": "你必须取出富饶之心内重复的物品",
   "moonstone.attribute.name.ectoplasm": "靈質",
   "moonstone.attribute.name.mysterious": "神秘",
   "moonstone.attribute.name.reality": "現實",

@@ -4,6 +4,7 @@ import com.moonstone.moonstonemod.EventHandler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.event.mevent.AttackBloodEvent;
 import com.moonstone.moonstonemod.init.items.Items;
+import com.moonstone.moonstonemod.init.moonstoneitem.DamageTps;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -113,7 +114,7 @@ public class attack_blood extends ThrowableItemProjectile {
                             if (isPlayer) {
                                 entity.hurt(this.getOwner().damageSources().playerAttack(player), (float) (damages + addDamgae + player.getMaxHealth() / 10 + player.getAttributeValue(Attributes.ATTACK_DAMAGE) / 10));
                             } else {
-                                entity.hurt(this.getOwner().damageSources().dryOut(), (float) (damages + addDamgae + player.getMaxHealth() / 10 + player.getAttributeValue(Attributes.ATTACK_DAMAGE) / 10));
+                                entity.hurt(DamageTps.abyssDamage(entity), (float) (damages + addDamgae + player.getMaxHealth() / 10 + player.getAttributeValue(Attributes.ATTACK_DAMAGE) / 10));
                             }
                             this.discard();
                         }

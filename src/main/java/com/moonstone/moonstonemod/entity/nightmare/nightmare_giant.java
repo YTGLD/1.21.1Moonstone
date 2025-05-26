@@ -299,16 +299,14 @@ public class nightmare_giant extends MoonTamableAnimal implements OwnableEntity,
                         if (sZombieTime<=0){
                             if (this.getOwner()!=null) {
                                 for (int i = 0; i < 2; i++) {
-                                    if (this.getType() == EntityTs.nightmare_giant.get()) {
-                                        cell_zombie cellZombie = new cell_zombie(EntityTs.cell_zombie.get(), this.level());
-                                        cellZombie.teleportTo(this.getX(), this.getY(), this.getZ());
-                                        cellZombie.setOwnerUUID(this.getOwnerUUID());
-                                        cellZombie.addTag(AllEvent.DamageCell);
-                                        cellZombie.addTag("hasNig");
-                                        this.level().playSound(null, this.getOnPos(), SoundEvents.TRIAL_SPAWNER_OMINOUS_ACTIVATE, SoundSource.AMBIENT, 10, 10);
-                                        this.level().addFreshEntity(cellZombie);
-                                        sZombieTime = 300;
-                                    }
+                                    cell_zombie cellZombie = new cell_zombie(EntityTs.cell_zombie.get(), this.level());
+                                    cellZombie.teleportTo(this.getX(), this.getY(), this.getZ());
+                                    cellZombie.setOwnerUUID(this.getOwnerUUID());
+                                    cellZombie.addTag(AllEvent.DamageCell);
+                                    cellZombie.addTag("hasNig");
+                                    this.level().playSound(null, this.getOnPos(), SoundEvents.TRIAL_SPAWNER_OMINOUS_ACTIVATE, SoundSource.AMBIENT, 10, 10);
+                                    this.level().addFreshEntity(cellZombie);
+                                    sZombieTime = 300;
                                 }
                             }
                         }
@@ -490,7 +488,7 @@ public class nightmare_giant extends MoonTamableAnimal implements OwnableEntity,
         if (p_219386_ instanceof LivingEntity livingentity) {
             if (this.getOwner()!= null) {
                 if (!livingentity.is(this.getOwner())) {
-                    if (this.level() == p_219386_.level() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(p_219386_) && !this.isAlliedTo(p_219386_) && livingentity.getType() != EntityType.ARMOR_STAND && livingentity.getType() != EntityTs.nightmare_giant.get() && !livingentity.isInvulnerable() && !livingentity.isDeadOrDying() && this.level().getWorldBorder().isWithinBounds(livingentity.getBoundingBox())) {
+                    if (this.level() == p_219386_.level() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(p_219386_) && !this.isAlliedTo(p_219386_) && livingentity.getType() != EntityType.ARMOR_STAND && livingentity.getType() != this.getType() && !livingentity.isInvulnerable() && !livingentity.isDeadOrDying() && this.level().getWorldBorder().isWithinBounds(livingentity.getBoundingBox())) {
                         return true;
                     }
                 }
@@ -587,15 +585,7 @@ public class nightmare_giant extends MoonTamableAnimal implements OwnableEntity,
     @org.jetbrains.annotations.Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
-        nightmare_giant wolf = EntityTs.nightmare_giant.get().create(p_146743_);
-        if (wolf != null) {
-            UUID uuid = this.getOwnerUUID();
-            if (uuid != null) {
-                wolf.setOwnerUUID(uuid);
-
-            }
-        }
-        return wolf;
+      return null;
     }
 
     public boolean hurt(DamageSource p_219381_, float p_219382_) {

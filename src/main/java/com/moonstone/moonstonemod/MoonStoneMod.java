@@ -122,7 +122,6 @@ public class MoonStoneMod {
             event.registerEntityRenderer(EntityTs.cell_giant.get(), CellZombieG::new);
             event.registerEntityRenderer(EntityTs.nightmare_entity.get(), ZombieRenderer::new);
             event.registerEntityRenderer(EntityTs.red_entity.get(), com.moonstone.moonstonemod.entity.client.red.ZombieRenderer::new);
-            event.registerEntityRenderer(EntityTs.nightmare_giant.get(), CellZombieN::new);
             event.registerEntityRenderer(EntityTs.nightmare_giant_to.get(), CellZombieN::new);
             event.registerEntityRenderer(EntityTs.test_e.get(), NigBoomRender::new);
             event.registerEntityRenderer(EntityTs.blood_bat.get(), BloodBatRenderer::new);

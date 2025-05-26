@@ -100,7 +100,7 @@ public class TheSwordRender extends EntityRenderer<the_sword> {
     public void render(the_sword entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
         super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
         if (ConfigClient.Client.Shader.get()) {
-            MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
+            MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
         }
         if (entity.getTarget()!=null) {
             float sTime = entity.getEntityData().get(the_sword.ATTACK_TIME)/ 300f;

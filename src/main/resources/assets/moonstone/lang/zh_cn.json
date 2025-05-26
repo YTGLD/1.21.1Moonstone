@@ -1281,47 +1281,6 @@
   "item.blood.tool.string.winds.1": "  50%的速度加成转换成攻击伤害",
   "item.blood.tool.string.winds.2": "  如果你佩戴了 梦魇之眼 物品，则伤害加倍",
 
-
-  "moonstone.jei.ectoplasmstone": "开局的随机护身符之一",
-  "moonstone.jei.twistedstone": "开局的随机护身符之一",
-
-  "moonstone.jei.necora.all": "需要佩戴Necora病毒才能发现于地牢，矿井之中",
-  "moonstone.jei.necora.treasure.all": "需要佩戴Necora病毒才能发现于宝藏战利品之中",
-  "moonstone.jei.necora.giant_nightmare.all": "需要佩戴梦魇巨人基因片段后才能发现于宝藏战利品之中",
-
-  "moonstone.jei.necora.bnabush.all": "需要佩戴Necora病毒才能发现于宝藏战利品之中",
-
-  "moonstone.jei.cell.all": "需要佩戴细胞重生基因佩戴才能发现于宝藏战利品之中",
-  "moonstone.jei.maulice.all": "杀死僵尸有可能掉落",
-  "moonstone.jei.blood": "需要佩戴血之魔盒杀死生物获取",
-
-  "moonstone.jei.bloodvirus.all": "需要佩戴暗影瘟疫才能发现于地牢，矿井之中",
-  "moonstone.jei.bloodvirus": "需要佩戴一个解锁所有药物的医药箱杀死末影龙来获取暗影基因，之后使用暗影基因右键Necora病毒获得暗影瘟疫",
-  "moonstone.jei.bloodvirus.treasure.all": "需要佩戴暗影瘟疫才能发现于宝藏之中",
-  "moonstone.jei.ectoplasm.all": "大部分灵质物品都可以吃，恢复大量饥饿值",
-  "moonstone.jei.ectoplasm.ectoplasmcloub": "可通过杀死生物获取，也可合成",
-  "moonstone.jei.ectoplasm.ectoplasmball": "可通过杀死生物获取，有极高的概率发现于战利品箱子里",
-  "moonstone.jei.loot.all": "有概率发现于战利品箱子里",
-  "moonstone.jei.maxamout": "佩戴三种颜色的符石，然后杀死远古守卫者",
-  "moonstone.jei.pain.all": "发现于下界",
-  "moonstone.jei.nanodoom.all": "发现在古城",
-  "moonstone.jei.wind_and_rain": "同时带上七剑修罗和骤雨然后摸地牢/矿井/宝藏/城市类型箱子",
-  "moonstone.jei.calcification": "： 受到350次伤害，需要佩戴医药箱",
-  "moonstone.jei.masticatory": "： 死掉一次，需要佩戴医药箱",
-  "moonstone.jei.polyphagia": "： 吃个附魔金苹果，需要佩戴医药箱",
-  "moonstone.jei.quadriceps": "： 跳500次，需要佩戴医药箱",
-  "moonstone.jei.reanimation": "： 吃8个金苹果，需要佩戴医药箱",
-  "moonstone.jei.blood.all": "： 发现在古城类型战利品箱",
-  "moonstone.jei.nightmare": ": 需要佩戴使深渊之眼才能发现于地牢，矿井之中",
-  "item.moonstone.organizational_regeneration": "活性化",
-
-  "moonstone.jei.fortunecrystal": "它不仅可以合成，也可以与工具匠职业的村民兑换",
-  "moonstone.jei.mayhemcrystal": "它不仅可以合成，也可以与武器匠职业的村民兑换",
-  "moonstone.jei.treasure": "是一个在宝藏战利品箱里发现物品",
-  "moonstone.jei.city": "是一个它不仅可以合成，也可以发现在古城的物品",
-  "moonstone.jei.deceased_contract": "“我想这是诅咒，但是它的诱惑力实在难以抵御...一旦签订契约，他将永远缠绕着你，但这不是最糟糕的，而是它会让你陷入痛苦与杀戮，成为地狱的使魔“\n杀死生物有15%的概率获得它们的血液\n拾取血液恢复15%最大生命值\n-20%伤害\n-25%抗性\n-15%暴击\n-30%治疗\n\n但是：\n杀死生物有30%的概率召唤一只僵尸\n杀死生物有15%的概率召唤一只巨人僵尸\n并且：\n召唤的僵尸获得50%召唤者的伤害，速度，防御，最大生命值的加成\n召唤的僵尸获得获得召唤者目前存在的所有正面药水状态\n\nNecora病毒及其附属物品无效化\n暗影瘟疫及其附属物品无效化",
-  "moonstone.jei.deceased_contract.all": "是一个只能在佩戴死灵契约才能发现于地牢的物品",
-
   "item.deceased_contract.tool.string.0": "杀死生物有15%的概率获得它们的血液",
   "item.deceased_contract.tool.string.1": "拾取血液恢复15%最大生命值",
   "item.deceased_contract.tool.string.2": "-20%伤害\n-25%抗性\n-15%暴击\n-30%治疗",
@@ -1333,28 +1292,6 @@
 
 
   "item.moonstone.blood_all":"它发现于古城，但是需要佩戴封魔烛台才能发现",
-
-
-  "item.moonstone.owner_blood_eye":"渎圣者",
-  "moonstone.jei.item.moonstone.owner_blood_eye": "",
-
-  "item.moonstone.owner_blood_attack_eye":"血灵咒",
-  "moonstone.jei.item.moonstone.owner_blood_attack_eye": "",
-
-  "item.moonstone.owner_blood_speed_eye":"刻画者",
-  "moonstone.jei.item.moonstone.owner_blood_speed_eye": "发射的血珠不再会追踪生物",
-
-  "item.moonstone.owner_blood_boom_eye":"苦力",
-  "moonstone.jei.item.moonstone.owner_blood_boom_eye": "血球会在击中时爆炸",
-
-  "item.moonstone.owner_blood_effect_eye":"判官",
-  "moonstone.jei.item.moonstone.owner_blood_effect_eye": "血球会在击中时附加大量的负面效果",
-
-  "item.moonstone.owner_blood_earth":"乾坤",
-  "moonstone.jei.item.moonstone.owner_blood_earth": "血灵增生体不会再攻击\n但会变成一个超级磁铁，它不仅可以吸引生物和掉落物并且还可以吸引然后吞噬弹射物\n吞噬弹射物恢复主人生命值\n\n你可以用来运送村民或者干什么别的",
-
-  "item.moonstone.owner_blood_vex": "鬼者",
-  "moonstone.jei.item.moonstone.owner_blood_vex": "血珠击中后会恢复主人的生命值\n其数值取决于血灵增生体的伤害",
 
 
 
@@ -1423,6 +1360,69 @@
 
   "item.moonstone.nightmare_base_reversal_mysterious": "§4神秘之物",
   "item.nightmare_base_reversal_mysterious.tool.string": "以减少10%全属性的代价抑制噩梦基座的负面效果",
+
+
+  "moonstone.jei.ectoplasmstone": "开局的随机护身符之一",
+  "moonstone.jei.twistedstone": "开局的随机护身符之一",
+
+  "moonstone.jei.necora.all": "需要佩戴Necora病毒才能发现于地牢，矿井之中",
+  "moonstone.jei.necora.treasure.all": "需要佩戴Necora病毒才能发现于宝藏战利品之中",
+  "moonstone.jei.necora.giant_nightmare.all": "需要佩戴梦魇巨人基因片段后才能发现于宝藏战利品之中",
+
+  "moonstone.jei.necora.bnabush.all": "需要佩戴Necora病毒才能发现于宝藏战利品之中",
+
+  "moonstone.jei.cell.all": "需要佩戴细胞重生基因佩戴才能发现于宝藏战利品之中",
+  "moonstone.jei.maulice.all": "杀死僵尸有可能掉落",
+  "moonstone.jei.blood": "需要佩戴血之魔盒杀死生物获取",
+
+  "moonstone.jei.bloodvirus.all": "需要佩戴暗影瘟疫才能发现于地牢，矿井之中",
+  "moonstone.jei.bloodvirus": "需要佩戴一个解锁所有药物的医药箱杀死末影龙来获取暗影基因，之后使用暗影基因右键Necora病毒获得暗影瘟疫",
+  "moonstone.jei.bloodvirus.treasure.all": "需要佩戴暗影瘟疫才能发现于宝藏之中",
+  "moonstone.jei.ectoplasm.all": "大部分灵质物品都可以吃，恢复大量饥饿值",
+  "moonstone.jei.ectoplasm.ectoplasmcloub": "可通过杀死生物获取，也可合成",
+  "moonstone.jei.ectoplasm.ectoplasmball": "可通过杀死生物获取，有极高的概率发现于战利品箱子里",
+  "moonstone.jei.loot.all": "有概率发现于战利品箱子里",
+  "moonstone.jei.maxamout": "佩戴三种颜色的符石，然后杀死远古守卫者",
+  "moonstone.jei.pain.all": "发现于下界",
+  "moonstone.jei.nanodoom.all": "发现在古城",
+  "moonstone.jei.wind_and_rain": "同时带上七剑修罗和骤雨然后摸地牢/矿井/宝藏/城市类型箱子",
+  "moonstone.jei.calcification": "： 受到350次伤害，需要佩戴医药箱",
+  "moonstone.jei.masticatory": "： 死掉一次，需要佩戴医药箱",
+  "moonstone.jei.polyphagia": "： 吃个附魔金苹果，需要佩戴医药箱",
+  "moonstone.jei.quadriceps": "： 跳500次，需要佩戴医药箱",
+  "moonstone.jei.reanimation": "： 吃8个金苹果，需要佩戴医药箱",
+  "moonstone.jei.blood.all": "： 发现在古城类型战利品箱",
+  "moonstone.jei.nightmare": ": 需要佩戴使深渊之眼才能发现于地牢，矿井之中",
+  "item.moonstone.organizational_regeneration": "活性化",
+
+  "moonstone.jei.fortunecrystal": "它不仅可以合成，也可以与工具匠职业的村民兑换",
+  "moonstone.jei.mayhemcrystal": "它不仅可以合成，也可以与武器匠职业的村民兑换",
+  "moonstone.jei.treasure": "是一个在宝藏战利品箱里发现物品",
+  "moonstone.jei.city": "是一个它不仅可以合成，也可以发现在古城的物品",
+  "moonstone.jei.deceased_contract": "“我想这是诅咒，但是它的诱惑力实在难以抵御...一旦签订契约，他将永远缠绕着你，但这不是最糟糕的，而是它会让你陷入痛苦与杀戮，成为地狱的使魔“\n杀死生物有15%的概率获得它们的血液\n拾取血液恢复15%最大生命值\n-20%伤害\n-25%抗性\n-15%暴击\n-30%治疗\n\n但是：\n杀死生物有30%的概率召唤一只僵尸\n杀死生物有15%的概率召唤一只巨人僵尸\n并且：\n召唤的僵尸获得50%召唤者的伤害，速度，防御，最大生命值的加成\n召唤的僵尸获得获得召唤者目前存在的所有正面药水状态\n\nNecora病毒及其附属物品无效化\n暗影瘟疫及其附属物品无效化",
+  "moonstone.jei.deceased_contract.all": "是一个只能在佩戴死灵契约才能发现于地牢的物品",
+
+  "item.moonstone.owner_blood_eye":"渎圣者",
+  "moonstone.jei.item.moonstone.owner_blood_eye": "",
+
+  "item.moonstone.owner_blood_attack_eye":"血灵咒",
+  "moonstone.jei.item.moonstone.owner_blood_attack_eye": "",
+
+  "item.moonstone.owner_blood_speed_eye":"刻画者",
+  "moonstone.jei.item.moonstone.owner_blood_speed_eye": "发射的血珠不再会追踪生物",
+
+  "item.moonstone.owner_blood_boom_eye":"苦力",
+  "moonstone.jei.item.moonstone.owner_blood_boom_eye": "血球会在击中时爆炸",
+
+  "item.moonstone.owner_blood_effect_eye":"判官",
+  "moonstone.jei.item.moonstone.owner_blood_effect_eye": "血球会在击中时附加大量的负面效果",
+
+  "item.moonstone.owner_blood_earth":"乾坤",
+  "moonstone.jei.item.moonstone.owner_blood_earth": "血灵增生体不会再攻击\n但会变成一个超级磁铁，它不仅可以吸引生物和掉落物并且还可以吸引然后吞噬弹射物\n吞噬弹射物恢复主人生命值\n\n你可以用来运送村民或者干什么别的",
+
+  "item.moonstone.owner_blood_vex": "鬼者",
+  "moonstone.jei.item.moonstone.owner_blood_vex": "血珠击中后会恢复主人的生命值\n其数值取决于血灵增生体的伤害",
+
 
 
   "moonstone.jei.item.moonstone.nightmare_base.all": "，需要佩戴:",
@@ -1895,13 +1895,143 @@
 
 
 
+  "death.attack.abyss.message": "你受到了深渊的侵蚀",
+  "death.attack.sword_damage.message": "你被飞剑刺穿了",
+
+
+  "attribute.name.moonstone.zombie_attack_damage": "僵尸的伤害",
+
+  "item.moonstone.muscle_conversion": "肌肉转化",
+  "item.muscle_conversion.tool.string": "玩家本体伤害降低20%",
+  "item.muscle_conversion.tool.string.1": "召唤的僵尸继承玩家50%的攻击力",
+  "item.muscle_conversion.tool.string.2": "召唤的僵尸伤害提高30%",
+
+
+  "item.moonstone.skin_glucose_fermentation": "肌糖原酵解",
+  "item.skin_glucose_fermentation.tool.string": "召唤的僵尸被杀死时",
+  "item.skin_glucose_fermentation.tool.string.1": "攻击者会受到基于僵尸50%最大生命值和护甲总和的伤害",
+
+  "item.moonstone.white_blood_cells_are_abruptly_reduced": "白细胞骤减",
+  "item.white_blood_cells_are_abruptly_reduced.tool.string": "召唤的僵尸会将15%恢复的生命值附加的玩家身上",
+  "item.white_blood_cells_are_abruptly_reduced.tool.string.1": "召唤的僵尸不再会恢复生命值",
+  "item.moonstone.the_god_sword": "恶意立方体",
+  "item.god_sword.tool.string": "在你的后面将漂浮神者剑魂",
+  "item.god_sword.tool.string.1": "他会缓慢恢复能量护盾，最大存储12面护盾",
+  "item.god_sword.tool.string.2": "护盾遭受攻击时，消耗能量并对攻击者造成250%的当量伤害并造成大量负面效果",
+  "item.god_sword.tool.string.3": "玩家将获得大量增益效果",
+  "item.god_sword.tool.string.4": "每有一面护盾都将每秒恢复玩家1%的最大生命值",
+  "item.god_sword.tool.string.5": "剑魂会附近目标并每次造成10%玩家攻击属性的伤害",
+  "item.god_sword.tool.string.6": "伤害会逐渐增加，剑魂的激光造成伤害相当于玩家发起了攻击",
+
+  "item.moonstone.the_owner_blood_stone": "连锁血石",
+  "item.the_owner_blood_stone.tool.string": "杀死生物产生血球",
+  "item.the_owner_blood_stone.tool.string.1": "血球将造成125%被杀生物生命值的伤害",
+  "item.the_owner_blood_stone.tool.string.2": "并冲向附近的生物",
+  "item.the_owner_blood_stone.tool.string.3": "血球相当于你发起了一次攻击",
+
+  "item.moonstone.phosphate_bond": "高能磷酸键断裂",
+  "item.phosphate_bond.tool.string": "召唤的僵尸死亡后回复玩家10%最大生命值",
+  "item.phosphate_bond.tool.string.1": "召唤的僵尸最少能承受6次伤害",
+  "item.phosphate_bond.tool.string.2": "召唤的僵尸不会恢复生命值",
+
+  "moonstone.super_nightmare.name": "这个物品只能在佩戴噩梦基座的情况下使用",
+  "moonstone.nightmare.name": "这个物品只能在佩戴深渊之眼的情况下使用",
+  "allevent.moonstone.cannot": "你必须取出富饶之心内重复的物品",
+
+  "item.deceased_contract.tool.string.7": "你必须佩戴",
+  "item.deceased_contract.tool.string.8": "秒后才能取下",
+  "item.deceased_contract.tool.string.9": "目前，它是可以被取下的",
+
+  "advancements.tooltip.nightmare_base_stone.text": "获得死兆方尖碑",
+  "advancements.tooltip.nightmare_base_stone.hand": "噩梦的方尖碑",
+
+  "advancements.tooltip.nightmare_base_black_eye_heart.text": "获得死心之胚",
+  "advancements.tooltip.nightmare_base_black_eye_heart.hand": "无休止的痛苦",
+
+  "advancements.tooltip.nightmare_base_black_eye_eye.text": "获得肉瘤",
+  "advancements.tooltip.nightmare_base_black_eye_eye.hand": "不详因子",
+
+  "advancements.tooltip.nightmare_base_black_eye_red.text": "获得这个口红",
+  "advancements.tooltip.nightmare_base_black_eye_red.hand": "真刺激啊！",
+
+  "advancements.tooltip.nightmare_base_stone_meet.text": "获得绝望共鸣",
+  "advancements.tooltip.nightmare_base_stone_meet.hand": "噩梦降至",
+
+  "advancements.tooltip.nightmare_base_stone_brain.text": "获得末世之脑",
+  "advancements.tooltip.nightmare_base_stone_brain.hand": "疯狂大脑",
+
+  "advancements.tooltip.nightmare_base_black_eye.text": "获得邪念之窥眸",
+  "advancements.tooltip.nightmare_base_black_eye.hand": "永远凝视",
+
+  "advancements.tooltip.nightmare_base_stone_virus.text": "获得Nightecora病毒",
+  "advancements.tooltip.nightmare_base_stone_virus.hand": "融合体",
+
+  "item.moonstone.chemical_compound": "化合物合成",
+  "item.chemical_compound.tool.string": "每存在一只细胞僵尸，治疗增加25%",
+  "item.chemical_compound.tool.string.1": "每存在一只巨型细胞僵尸，伤害提高20%",
+  "item.chemical_compound.tool.string.2": "僵尸受伤有5%的概率使主人受到50%的当量伤害",
+  "item.chemical_compound.tool.string.3": "主人的攻击不会触发",
+  "item.ytgld_virus.tool.string.1": "你真的能主宰世界吗？",
+  "item.ytgld_virus.tool.string.2": "研究点数：",
+  "item.ytgld_virus.tool.string.3":"病毒点数：" ,
+  "item.ytgld_virus.tool.string.4":"这是一个极为危险的病毒" ,
+  "item.ytgld_virus.tool.string.5":"你必须在规定时间内将研究点数达到100%" ,
+  "item.ytgld_virus.tool.string.6": "来解锁终极湮灭基因",
+  "item.ytgld_virus.tool.string.7":"研究点数会影响你的正常生理状态",
+  "item.ytgld_virus.tool.string.8":"病毒也会在你的体内复制影响正常生命体征",
+  "item.ytgld_virus.tool.string.9":"所以你必须与时间赛跑",
+  "item.ytgld_virus.tool.string.10": "已获得研究点数的负面效果：",
+  "item.ytgld_virus.tool.string.11": "生命值:",
+  "item.ytgld_virus.tool.string.12": "护甲值:",
+  "item.ytgld_virus.tool.string.13": "近战伤害:",
+  "item.ytgld_virus.tool.string.14": "病毒带来的负面效果：",
+  "item.ytgld_virus.tool.string.15": "速度:",
+  "item.ytgld_virus.tool.string.16": "治疗:",
+  "item.ytgld_virus.tool.string.17": "抗性:",
+  "item.ytgld_virus.tool.string.18": "攻击速度:",
+  "item.ytgld_virus.tool.string.19":"主宰者啊，为世界带来永恒的终极黑暗吧！" ,
+  "item.ytgld_virus.tool.string.20":"你获得了：" ,
+  "item.ytgld_virus.tool.string.21":  "+300% 对高生命值生物的伤害" ,
+  "item.ytgld_virus.tool.string.22":  "+250% 对怪物的伤害" ,
+  "item.ytgld_virus.tool.string.23":  "+225% 对友好生物的伤害" ,
+  "item.ytgld_virus.tool.string.24":  "+200% 对玩家的伤害" ,
+  "item.ytgld_virus.tool.string.25":  "+150% 护甲" ,
+  "item.ytgld_virus.tool.string.26":  "+100% 击退抗性" ,
+  "item.ytgld_virus.tool.string.27":  "+100% 水下速度" ,
+  "item.ytgld_virus.tool.string.28":  "+80% 生命值" ,
+  "item.ytgld_virus.tool.string.29":  "+70% 攻速" ,
+  "item.ytgld_virus.tool.string.30":  "+65% 治疗" ,
+  "item.ytgld_virus.tool.string.31":  "+20% 速度" ,
+  "item.ytgld_virus.tool.string.32":  "+50% 触及距离" ,
+  "item.ytgld_virus.tool.string.33":  "+25% 攻击距离" ,
+  "item.ytgld_virus.tool.string.34":  "+20% 抗性" ,
+  "item.ytgld_virus.tool.string.35": "每次死亡都会减少1%研究进度",
+  "item.ytgld_virus.tool.string.36": "吃下灵质立方来抑制病毒的复制速度",
+  "item.ytgld_virus.tool.string.eat": "吃下灵质立方来激活病毒！",
+
+
+  "item.ytgld_virus.tool.string.37": "在第一个阶段玩家需要杀死生物来增加点数",
+  "item.ytgld_virus.tool.string.38":"可以食用金苹果来降低病毒的增值速度",
+  "item.ytgld_virus.tool.string.39": "病毒增值速度为100%",
+  "item.ytgld_virus.tool.string.40": "研究点数达到阈值，需要杀死凋零来进化！",
+
+  "item.ytgld_virus.tool.string.41": "在第二个阶段玩家只能杀死亡灵来获取点数",
+  "item.ytgld_virus.tool.string.42":"只可以食用灵质立方来降低病毒的增值速度",
+  "item.ytgld_virus.tool.string.43": "每次死亡都会减少1%的研究点数",
+  "item.ytgld_virus.tool.string.44": "病毒增值速度为150%",
+  "item.ytgld_virus.tool.string.45": "研究点数达到阈值，需要杀死末影龙来进化！",
+
+
+  "item.ytgld_virus.tool.string.46": "这个阶段玩家可以杀死任何生物来获得点数",
+  "item.ytgld_virus.tool.string.47":"玩家不再可以减少病毒增值速度",
+  "item.ytgld_virus.tool.string.48": "来自病毒的所有属性衰败增加50%",
+  "item.ytgld_virus.tool.string.49": "病毒增值速度为200%",
 
   "item.moonstone.rage_orb": "附魔师的狂暴珍珠",
   "item.rage_orb.tool.string": "+40% 伤害魔咒效果",
   "item.rage_orb.tool.string.2": "-80% 击退魔咒效果",
   "item.rage_orb.tool.string.3": "+1 时运",
   "item.rage_orb.tool.string.4": "+1 抢夺",
-  "item.moonstone.the_owner_blood_stone": "连锁血石",
 
   "item.moonstone.sword":"同时佩戴了七剑修炼的剑阵之章和万法后伤害提高20%",
 

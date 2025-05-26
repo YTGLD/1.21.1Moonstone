@@ -8,9 +8,9 @@
   "item.moonstone.tooltips.off": "功能已开启",
   "item.moonstone.tooltips.on": "功能已关闭",
   "key.moonstone.y": "skill",
-  "moonstone.super_nightmare.name": "这个物品只能在佩戴噩梦基座的情况下使用",
-  "moonstone.nightmare.name": "这个物品只能在佩戴深渊之眼的情况下使用",
-  "allevent.moonstone.cannot": "你必须取出富饶之心内重复的物品",
+  "moonstone.super_nightmare.name": "This item can only be used while wearing the Nightmare Pedestal",
+  "moonstone.nightmare.name": "This item can only be used with the Eye of the Abyss",
+  "allevent.moonstone.cannot": "You must take out the duplicate items in the Heart of Plenty",
   "itemGroup.tabmoonstone.blood": "Moonstone : Blood",
   "key.categories.moonstone.moonstone_category": "Moonstone",
   "moonstone.book.error": "you need patchouli mod",
@@ -1206,6 +1206,21 @@
   "enchantment.moonstone.threat": "threat",
   "item.moonstone.probability":"probability stone",
 
+"item.deceased_contract.tool.string.0": "There is a 15% chance to obtain blood from killing mobs",
+"item.deceased_contract.tool.string.1": "Picking up blood restores 15% of maximum health",
+"item.deceased_contract.tool.string.2": "-20% damage\n-25% resistance\n-15% critical hit\n-30% healing",
+"item.deceased_contract.tool.string.3": "There is a 30% chance to summon a zombie when killing mobs\nThere is a 15% chance to summon a giant zombie when killing mobs\nThe summoned zombies have 20% of the summoner's maximum health",
+"item.deceased_contract.tool.string.4": "The summoned zombies gain 50% of the summoner's damage, speed, defense, and maximum health",
+"item.deceased_contract.tool.string.5": "The summoned zombies gain all the beneficial potion effects currently active on the summoner",
+"item.deceased_contract.tool.string.6": "Invalidates Necora virus and its related items\nInvalidates Shadow Plague and its related items",
+"item.deceased_contract.tool.string.7": "You must wear",
+"item.deceased_contract.tool.string.8": "seconds before you can remove it",
+"item.deceased_contract.tool.string.9": "Currently, it can be removed",
+
+
+
+  "item.moonstone.blood_all":"它发现于古城，但是需要佩戴封魔烛台才能发现",
+
   "moonstone.jei.ectoplasmstone": "One of the random amulets at the start of the game",
   "moonstone.jei.twistedstone": "One of the random amulets at the start of the game",
 
@@ -1245,21 +1260,6 @@
   "moonstone.jei.city": "It is an item that can not only be crafted but also found in ancient cities.",
   "moonstone.jei.deceased_contract": "“I think this is a curse, but its allure is truly hard to resist... Once the contract is signed, it will cling to you forever, but that's not the worst part; it will plunge you into suffering and slaughter, becoming a minion of hell.\nKilling creatures has a 10% chance to obtain their blood.\nCollecting blood restores 5% of maximum health.\n-20% damage\n-25% resistance\n-15% critical hit\n-30% healing\n\nHowever:\nKilling creatures has a 40% chance to summon a zombie.\nKilling creatures has a 20% chance to summon a giant zombie.\nAdditionally:\nSummoned zombies receive 50% of the summoner's damage, speed, defense, and maximum health bonuses.\nSummoned zombies gain all positive potion effects currently existing on the summoner.\n\nNecora virus and its associated items are nullified.\nShadow plague and its associated items are nullified.",
   "moonstone.jei.deceased_contract.all": "It is an item that can only be discovered in dungeons while wearing the Necromancer Contract.",
-
-  "item.deceased_contract.tool.string.0": "杀死生物有15%的概率获得它们的血液",
-  "item.deceased_contract.tool.string.1": "拾取血液恢复15%最大生命值",
-  "item.deceased_contract.tool.string.2": "-20%伤害\n-25%抗性\n-15%暴击\n-30%治疗",
-  "item.deceased_contract.tool.string.3": "杀死生物有30%的概率召唤一只僵尸\n杀死生物有15%的概率召唤一只巨人僵尸\n召唤的僵尸最大生命值为20%",
-  "item.deceased_contract.tool.string.4": "召唤的僵尸获得50%召唤者的伤害，速度，防御，最大生命值的加成",
-  "item.deceased_contract.tool.string.5": "召唤的僵尸获得获得召唤者目前存在的所有正面药水状态",
-  "item.deceased_contract.tool.string.6": "Necora病毒及其附属物品无效化\n暗影瘟疫及其附属物品无效化",
-  "item.deceased_contract.tool.string.7": "你必须佩戴",
-  "item.deceased_contract.tool.string.8": "秒后才能取下",
-  "item.deceased_contract.tool.string.9": "目前，它是可以被取下的",
-
-
-  "item.moonstone.blood_all":"它发现于古城，但是需要佩戴封魔烛台才能发现",
-
   "item.moonstone.owner_blood_eye": "Desecrator",
   "moonstone.jei.item.moonstone.owner_blood_eye": "It is found in ancient cities but requires wearing the Sealing Candelabra to be discovered.\n\nReduces the attack interval of Blood Spawn by 20%.",
 
@@ -1334,30 +1334,49 @@
   "item.nightmare_base_black_eye_heart.tool.string.2": "And they will no longer receive any healing",
 
 
+"advancements.tooltip.nightmare_base_stone.text": "Obtain the Nightmare Obelisk",
+"advancements.tooltip.nightmare_base_stone.hand": "Obelisk of Nightmare",
 
-  "advancements.tooltip.nightmare_base_stone.text": "获得死兆方尖碑",
-  "advancements.tooltip.nightmare_base_stone.hand": "噩梦的方尖碑",
+"advancements.tooltip.nightmare_base_black_eye_heart.text": "Obtain the Embryo of a Dead Heart",
+"advancements.tooltip.nightmare_base_black_eye_heart.hand": "Unending Pain",
 
-  "advancements.tooltip.nightmare_base_black_eye_heart.text": "获得死心之胚",
-  "advancements.tooltip.nightmare_base_black_eye_heart.hand": "无休止的痛苦",
+"advancements.tooltip.nightmare_base_black_eye_eye.text": "Obtain the Tumor",
+"advancements.tooltip.nightmare_base_black_eye_eye.hand": "Omen Factor",
 
-  "advancements.tooltip.nightmare_base_black_eye_eye.text": "获得肉瘤",
-  "advancements.tooltip.nightmare_base_black_eye_eye.hand": "不详因子",
+"advancements.tooltip.nightmare_base_black_eye_red.text": "Obtain this lipstick",
+"advancements.tooltip.nightmare_base_black_eye_red.hand": "What an intense thrill!",
 
-  "advancements.tooltip.nightmare_base_black_eye_red.text": "获得这个口红",
-  "advancements.tooltip.nightmare_base_black_eye_red.hand": "真刺激啊！",
+"advancements.tooltip.nightmare_base_stone_meet.text": "Obtain Despair Resonance",
+"advancements.tooltip.nightmare_base_stone_meet.hand": "Nightmare Descends",
 
-  "advancements.tooltip.nightmare_base_stone_meet.text": "获得绝望共鸣",
-  "advancements.tooltip.nightmare_base_stone_meet.hand": "噩梦降至",
+"advancements.tooltip.nightmare_base_stone_brain.text": "Obtain the Apocalyptic Brain",
+"advancements.tooltip.nightmare_base_stone_brain.hand": "Madbrain",
 
-  "advancements.tooltip.nightmare_base_stone_brain.text": "获得末世之脑",
-  "advancements.tooltip.nightmare_base_stone_brain.hand": "疯狂大脑",
+"advancements.tooltip.nightmare_base_black_eye.text": "Obtain the Evil Eye of Contemplation",
+"advancements.tooltip.nightmare_base_black_eye.hand": "Eternal Gaze",
 
-  "advancements.tooltip.nightmare_base_black_eye.text": "获得邪念之窥眸",
-  "advancements.tooltip.nightmare_base_black_eye.hand": "永远凝视",
+"advancements.tooltip.nightmare_base_stone_virus.text": "Obtain the Nightecora Virus",
+"advancements.tooltip.nightmare_base_stone_virus.hand": "Hybrid Form",
 
-  "advancements.tooltip.nightmare_base_stone_virus.text": "获得Nightecora病毒",
-  "advancements.tooltip.nightmare_base_stone_virus.hand": "融合体",
+"moonstone.greed_dna.event": "Loot Strike Triggered!",
+
+"item.twelve_sword.tool.string.1": "Kill mobs to summon a sword array",
+"item.twelve_sword.tool.string.2": "Receive 1%0~120% damage increase near the sword array",
+"item.twelve_sword.tool.string.3": "Mobs inside the sword array will be attacked by falling Death Monument",
+"item.twelve_sword.tool.string.4": "Quantity depends on the number of your zodiac items",
+"item.moonstone.coffin.tool.string.1": "Only those who wield the power of life and death",
+"item.moonstone.coffin.tool.string.2": "can avoid the backlash of the Great Way's causality...",
+"item.moonstone.coffin.tool.string.3": "Release the ultimate darkness within the coffin",
+"item.moonstone.coffin_item": "A tiny treasure box from Atargard",
+"item.moonstone.coffin.tool.string": "A tiny treasure box from Atargard",
+
+"curios.modifiers.crystal": "When wearing crystals",
+"curios.modifiers.stone": "After wearing talismans",
+"item.moonstone.belt": "Jewelry Belt",
+
+"item.moonstone.rage_crystal": "Blood Rage Crystal",
+"item.moonstone.rage_crystal_big": "Large Blood Rage Crystal",
+"item.moonstone.rage_crystal_max": "War God Crystal",
 
 
 
@@ -1523,17 +1542,7 @@
   "advancements.tooltip.nightmare_base_insight_collapse.text": "Obtain this item",
   "advancements.tooltip.nightmare_base_insight_collapse.hand": "Strength of Collapse",
 
-  "moonstone.jei.item.moonstone.nightmare_base_insight_drug": "Complete all tasks in the medicine box",
-  "moonstone.jei.item.moonstone.nightmare_base_insight_insane": "Die or jump into the End portal to return to the Overworld",
-  "moonstone.jei.item.moonstone.nightmare_base_insight_collapse": "Kill the Ender Dragon",
 
-
-
-
-
-
-  "item.moonstone.coffin_item":"亚特格拉德的宝贝小匣子",
-  "item.moonstone.coffin.tool.string":"亚特格拉德的宝贝小匣子",
 
   "item.moonstone.nightmare_axe":"nightmare axe",
   "item.nightmare_axe.tool.string": "Kill creatures to summon the Chaos Battle Axe",
@@ -1541,22 +1550,10 @@
   "item.nightmare_axe.tool.string.2": "+25% damage",
   "item.nightmare_axe.tool.string.3": "+25% heal",
 
-  "item.moonstone.coffin.tool.string.1": "唯有那掌握生死轮回之力的人",
-  "item.moonstone.coffin.tool.string.2": "才能规避大道因果的反噬...",
-  "item.moonstone.coffin.tool.string.3": "释放棺椁内的终极黑暗吧",
 
-  "curios.modifiers.crystal": "佩戴水晶时",
-  "curios.modifiers.stone": "佩戴符石后",
+
   "curios.identifier.crystal": "crystal",
   "curios.identifier.stone": "stone",
-  "item.moonstone.belt":"珠宝腰带",
-
-
-  "item.moonstone.rage_crystal":"血怒水晶",
-  "item.moonstone.rage_crystal_big":"大血怒水晶",
-  "item.moonstone.rage_crystal_max":"战神晶体",
-
-
 
 
   "item.moonstone.nightmare_base_start":"§4Beginning of Nightmare",
@@ -1585,6 +1582,11 @@
   "advancements.tooltip.nightmare_base_start_power.text": "Obtain this item",
   "advancements.tooltip.nightmare_base_start_power.hand": "Strength of Collapse",
 
+  "moonstone.jei.item.moonstone.nightmare_base_insight_drug": "Complete all tasks in the medicine box",
+  "moonstone.jei.item.moonstone.nightmare_base_insight_insane": "Die or jump into the End portal to return to the Overworld",
+  "moonstone.jei.item.moonstone.nightmare_base_insight_collapse": "Kill the Ender Dragon",
+
+
   "moonstone.jei.item.moonstone.nightmare_base_start_power": "Kill the Guardian",
   "moonstone.jei.item.moonstone.nightmare_base_start_egg": "Kill the Sniffer",
   "moonstone.jei.item.moonstone.nightmare_base_start_pod": "Open dungeon chests, 25% chance, can only get one",
@@ -1593,14 +1595,6 @@
 
 
 
-
-  "moonstone.greed_dna.event": "战利品暴击已触发！",
-
-
-  "item.twelve_sword.tool.string.1": "杀死生物召唤剑阵",
-  "item.twelve_sword.tool.string.2": "在剑阵附近获得1%0~120%的伤害加成",
-  "item.twelve_sword.tool.string.3": "剑阵内的生物会被死界碑坠落攻击",
-  "item.twelve_sword.tool.string.4": "数量取决于你生肖物品的数量",
 
 
   "moonstone.jei.necora": "This is a zombie virus that requires gene recombination box to recombine. Right-click to insert:\n48 ATP high energy\n32 Darwinism\n64 Catalyst Switch\n24 Rapid Metabolism\n20 Metabolic Disorder\n12 Peptide Synthesis Enhancement\n24 Neurotransmitter Inhibition\n8 liquefactive necrosis\n1 Spirit Prism\nWhen you have collected all materials, you can proceed to the next step of your plan......\nFinally, right-click to use the gene recombination box item\nMake sure to free up space in your backpack!",
@@ -1804,105 +1798,103 @@
   "item.hollow.tool.string": "Increase fall damage by 100% and attack speed by 25%",
   "item.proliferative_bone.tool.string": "Increase armor and resilience by 25%, reduce speed by 15%",
 
+  "attribute.name.moonstone.zombie_attack_damage": "Zombie Attack Damage",
 
-  "attribute.name.moonstone.zombie_attack_damage": "僵尸的伤害",
+  "item.moonstone.muscle_conversion": "Muscle Conversion",
+  "item.muscle_conversion.tool.string": "Reduces player's own damage by 20%",
+  "item.muscle_conversion.tool.string.1": "Zombies summoned will inherit 50% of the player's attack power",
+  "item.muscle_conversion.tool.string.2": "Increases the damage of summoned zombies by 30%",
 
-  "item.moonstone.muscle_conversion": "肌肉转化",
-  "item.muscle_conversion.tool.string": "玩家本体伤害降低20%",
-  "item.muscle_conversion.tool.string.1": "召唤的僵尸继承玩家50%的攻击力",
-  "item.muscle_conversion.tool.string.2": "召唤的僵尸伤害提高30%",
+  "item.moonstone.skin_glucose_fermentation": "Glucose Fermentation",
+  "item.skin_glucose_fermentation.tool.string": "When summoned zombies are killed",
+  "item.skin_glucose_fermentation.tool.string.1": "The attacker will suffer damage based on 50% of the zombie's maximum health value and total armor",
 
+  "item.moonstone.white_blood_cells_are_abruptly_reduced": "Sudden Decrease in White Blood Cells",
+  "item.white_blood_cells_are_abruptly_reduced.tool.string": "Summoned zombies will add 15% of their recovered health to the player",
+  "item.white_blood_cells_are_abruptly_reduced.tool.string.1": "Summoned zombies will no longer recover health",
+  "item.moonstone.the_god_sword": "Malicious Cube",
+  "item.god_sword.tool.string": "A floating God Sword Soul will drift behind you",
+  "item.god_sword.tool.string.1": "It will slowly restore energy shield, with a maximum storage of 12 shields",
+  "item.god_sword.tool.string.2": "When the shield is attacked, it consumes energy and deals 250% equivalent damage to the attacker, causing a large amount of negative effects",
+  "item.god_sword.tool.string.3": "The player will gain a large number of beneficial effects",
+  "item.god_sword.tool.string.4": "Each shield restores 1% of the player's maximum health value per second",
+  "item.god_sword.tool.string.5": "The sword soul will approach nearby targets and cause damage equivalent to 10% of the player's attack attributes",
+  "item.god_sword.tool.string.6": "The damage will gradually increase, and the sword soul's laser damage is equivalent to the player initiating an attack",
 
-  "item.moonstone.skin_glucose_fermentation": "肌糖原酵解",
-  "item.skin_glucose_fermentation.tool.string": "召唤的僵尸被杀死时",
-  "item.skin_glucose_fermentation.tool.string.1": "攻击者会受到基于僵尸50%最大生命值和护甲总和的伤害",
+  "item.moonstone.the_owner_blood_stone": "Chain Bloodstone",
+  "item.the_owner_blood_stone.tool.string": "Killing creatures generates blood orbs",
+  "item.the_owner_blood_stone.tool.string.1": "Blood orbs will cause damage equivalent to 125% of the killed creature's health value",
+  "item.the_owner_blood_stone.tool.string.2": "And rush towards nearby creatures",
+  "item.the_owner_blood_stone.tool.string.3": "Blood orbs are equivalent to the player initiating an attack",
 
-  "item.moonstone.white_blood_cells_are_abruptly_reduced": "白细胞骤减",
-  "item.white_blood_cells_are_abruptly_reduced.tool.string": "召唤的僵尸会将15%恢复的生命值附加的玩家身上",
-  "item.white_blood_cells_are_abruptly_reduced.tool.string.1": "召唤的僵尸不再会恢复生命值",
-  "item.moonstone.the_god_sword": "恶意立方体",
-  "item.god_sword.tool.string": "在你的后面将漂浮神者剑魂",
-  "item.god_sword.tool.string.1": "他会缓慢恢复能量护盾，最大存储12面护盾",
-  "item.god_sword.tool.string.2": "护盾遭受攻击时，消耗能量并对攻击者造成250%的当量伤害并造成大量负面效果",
-  "item.god_sword.tool.string.3": "玩家将获得大量增益效果",
-  "item.god_sword.tool.string.4": "每有一面护盾都将每秒恢复玩家1%的最大生命值",
-  "item.god_sword.tool.string.5": "剑魂会附近目标并每次造成10%玩家攻击属性的伤害",
-  "item.god_sword.tool.string.6": "伤害会逐渐增加，剑魂的激光造成伤害相当于玩家发起了攻击",
+  "item.moonstone.phosphate_bond": "High-energy Phosphate Bond Breakage",
+  "item.phosphate_bond.tool.string": "Restores 10% of the player's maximum health when summoned zombies die",
+  "item.phosphate_bond.tool.string.1": "Summoned zombies can withstand a minimum of 6 hits",
+  "item.phosphate_bond.tool.string.2": "Summoned zombies will not recover health",
 
-  "item.moonstone.the_owner_blood_stone": "连锁血石",
-  "item.the_owner_blood_stone.tool.string": "杀死生物产生血球",
-  "item.the_owner_blood_stone.tool.string.1": "血球将造成125%被杀生物生命值的伤害",
-  "item.the_owner_blood_stone.tool.string.2": "并冲向附近的生物",
-  "item.the_owner_blood_stone.tool.string.3": "血球相当于你发起了一次攻击",
-
-  "item.moonstone.phosphate_bond": "高能磷酸键断裂",
-  "item.phosphate_bond.tool.string": "召唤的僵尸死亡后回复玩家10%最大生命值",
-  "item.phosphate_bond.tool.string.1": "召唤的僵尸最少能承受6次伤害",
-  "item.phosphate_bond.tool.string.2": "召唤的僵尸不会恢复生命值",
-
-
-  "item.moonstone.chemical_compound": "化合物合成",
-  "item.chemical_compound.tool.string": "每存在一只细胞僵尸，治疗增加25%",
-  "item.chemical_compound.tool.string.1": "每存在一只巨型细胞僵尸，伤害提高20%",
-  "item.chemical_compound.tool.string.2": "僵尸受伤有5%的概率使主人受到50%的当量伤害",
-  "item.chemical_compound.tool.string.3": "主人的攻击不会触发",
+  "item.moonstone.chemical_compound": "Chemical Compound Synthesis",
+  "item.chemical_compound.tool.string": "Heals increase by 25% for each cell zombie present",
+  "item.chemical_compound.tool.string.1": "Damage increases by 20% for each giant cell zombie present",
+  "item.chemical_compound.tool.string.2": "There's a 5% chance for the zombie's damage to deal 50% equivalent damage to the owner when injured",
+  "item.chemical_compound.tool.string.3": "The owner's attack will not trigger",
 
   "item.moonstone.ytgld_virus": "ytgld virus",
-  "item.ytgld_virus.tool.string.1": "你真的能主宰世界吗？",
-  "item.ytgld_virus.tool.string.2": "研究点数：",
-  "item.ytgld_virus.tool.string.3":"病毒点数：" ,
-  "item.ytgld_virus.tool.string.4":"这是一个极为危险的病毒" ,
-  "item.ytgld_virus.tool.string.5":"你必须在规定时间内将研究点数达到100%" ,
-  "item.ytgld_virus.tool.string.6": "来解锁终极湮灭基因",
-  "item.ytgld_virus.tool.string.7":"研究点数会影响你的正常生理状态",
-  "item.ytgld_virus.tool.string.8":"病毒也会在你的体内复制影响正常生命体征",
-  "item.ytgld_virus.tool.string.9":"所以你必须与时间赛跑",
-  "item.ytgld_virus.tool.string.10": "已获得研究点数的负面效果：",
-  "item.ytgld_virus.tool.string.11": "生命值:",
-  "item.ytgld_virus.tool.string.12": "护甲值:",
-  "item.ytgld_virus.tool.string.13": "近战伤害:",
-  "item.ytgld_virus.tool.string.14": "病毒带来的负面效果：",
-  "item.ytgld_virus.tool.string.15": "速度:",
-  "item.ytgld_virus.tool.string.16": "治疗:",
-  "item.ytgld_virus.tool.string.17": "抗性:",
-  "item.ytgld_virus.tool.string.18": "攻击速度:",
-  "item.ytgld_virus.tool.string.19":"主宰者啊，为世界带来永恒的终极黑暗吧！" ,
-  "item.ytgld_virus.tool.string.20":"你获得了：" ,
-  "item.ytgld_virus.tool.string.21":  "+300% 对高生命值生物的伤害" ,
-  "item.ytgld_virus.tool.string.22":  "+250% 对怪物的伤害" ,
-  "item.ytgld_virus.tool.string.23":  "+225% 对友好生物的伤害" ,
-  "item.ytgld_virus.tool.string.24":  "+200% 对玩家的伤害" ,
-  "item.ytgld_virus.tool.string.25":  "+150% 护甲" ,
-  "item.ytgld_virus.tool.string.26":  "+100% 击退抗性" ,
-  "item.ytgld_virus.tool.string.27":  "+100% 水下速度" ,
-  "item.ytgld_virus.tool.string.28":  "+80% 生命值" ,
-  "item.ytgld_virus.tool.string.29":  "+70% 攻速" ,
-  "item.ytgld_virus.tool.string.30":  "+65% 治疗" ,
-  "item.ytgld_virus.tool.string.31":  "+20% 速度" ,
-  "item.ytgld_virus.tool.string.32":  "+50% 触及距离" ,
-  "item.ytgld_virus.tool.string.33":  "+25% 攻击距离" ,
-  "item.ytgld_virus.tool.string.34":  "+20% 抗性" ,
-  "item.ytgld_virus.tool.string.35": "每次死亡都会减少1%研究进度",
-  "item.ytgld_virus.tool.string.36": "吃下灵质立方来抑制病毒的复制速度",
-  "item.ytgld_virus.tool.string.eat": "吃下灵质立方来激活病毒！",
+  "item.ytgld_virus.tool.string.1": "Can you really dominate the world?",
+  "item.ytgld_virus.tool.string.2": "Research Points:",
+  "item.ytgld_virus.tool.string.3": "Virus Points:",
+  "item.ytgld_virus.tool.string.4": "This is an extremely dangerous virus",
+  "item.ytgld_virus.tool.string.5": "You must reach 100% research points within the specified time",
+  "item.ytgld_virus.tool.string.6": "To unlock the ultimate annihilation gene",
+  "item.ytgld_virus.tool.string.7": "Research points will affect your normal physiological state",
+  "item.ytgld_virus.tool.string.8": "The virus will also replicate in your body, affecting normal vital signs",
+  "item.ytgld_virus.tool.string.9": "So you must race against time",
+  "item.ytgld_virus.tool.string.10": "Negative effects of acquired research points:",
+  "item.ytgld_virus.tool.string.11": "Health:",
+  "item.ytgld_virus.tool.string.12": "Armor:",
+  "item.ytgld_virus.tool.string.13": "Melee Damage:",
+  "item.ytgld_virus.tool.string.14": "Negative effects brought by the virus:",
+  "item.ytgld_virus.tool.string.15": "Speed:",
+  "item.ytgld_virus.tool.string.16": "Healing:",
+  "item.ytgld_virus.tool.string.17": "Resistance:",
+  "item.ytgld_virus.tool.string.18": "Attack Speed:",
+  "item.ytgld_virus.tool.string.19": "Overseer, bring eternal ultimate darkness to the world!",
+  "item.ytgld_virus.tool.string.20": "You have obtained:",
+  "item.ytgld_virus.tool.string.21": "+300% Damage to high health value creatures",
+  "item.ytgld_virus.tool.string.22": "+250% Damage to monsters",
+  "item.ytgld_virus.tool.string.23": "+225% Damage to friendly creatures",
+  "item.ytgld_virus.tool.string.24": "+200% Damage to players",
+  "item.ytgld_virus.tool.string.25": "+150% Armor",
+  "item.ytgld_virus.tool.string.26": "+100% Knockback Resistance",
+  "item.ytgld_virus.tool.string.27": "+100% Swimming Speed",
+  "item.ytgld_virus.tool.string.28": "+80% Health",
+  "item.ytgld_virus.tool.string.29": "+70% Attack Speed",
+  "item.ytgld_virus.tool.string.30": "+65% Healing",
+  "item.ytgld_virus.tool.string.31": "+20% Speed",
+  "item.ytgld_virus.tool.string.32": "+50% Reach Distance",
+  "item.ytgld_virus.tool.string.33": "+25% Attack Range",
+  "item.ytgld_virus.tool.string.34": "+20% Resistance",
+  "item.ytgld_virus.tool.string.35": "Each death will reduce 1% of research progress",
+  "item.ytgld_virus.tool.string.36": "Eat Ethereal Cubes to suppress the virus replication speed",
+  "item.ytgld_virus.tool.string.eat": "Eat Ethereal Cubes to activate the virus!",
 
+  "item.ytgld_virus.tool.string.37": "In the first stage, the player needs to kill creatures to increase points",
+  "item.ytgld_virus.tool.string.38": "You can eat Golden Apples to reduce the virus replication speed",
+  "item.ytgld_virus.tool.string.39": "Virus replication speed is 100%",
+  "item.ytgld_virus.tool.string.40": "When research points reach the threshold, you need to kill Wither to evolve!",
 
-  "item.ytgld_virus.tool.string.37": "在第一个阶段玩家需要杀死生物来增加点数",
-  "item.ytgld_virus.tool.string.38":"可以食用金苹果来降低病毒的增值速度",
-  "item.ytgld_virus.tool.string.39": "病毒增值速度为100%",
-  "item.ytgld_virus.tool.string.40": "研究点数达到阈值，需要杀死凋零来进化！",
+  "item.ytgld_virus.tool.string.41": "In the second stage, the player can only gain points by killing Wither Skeletons",
+  "item.ytgld_virus.tool.string.42": "You can only eat Ethereal Cubes to reduce the virus replication speed",
+  "item.ytgld_virus.tool.string.43": "Each death will reduce 1% of research points",
+  "item.ytgld_virus.tool.string.44": "Virus replication speed is 150%",
+  "item.ytgld_virus.tool.string.45": "When research points reach the threshold, you need to kill Ender Dragon to evolve!",
 
-  "item.ytgld_virus.tool.string.41": "在第二个阶段玩家只能杀死亡灵来获取点数",
-  "item.ytgld_virus.tool.string.42":"只可以食用灵质立方来降低病毒的增值速度",
-  "item.ytgld_virus.tool.string.43": "每次死亡都会减少1%的研究点数",
-  "item.ytgld_virus.tool.string.44": "病毒增值速度为150%",
-  "item.ytgld_virus.tool.string.45": "研究点数达到阈值，需要杀死末影龙来进化！",
+  "item.ytgld_virus.tool.string.46": "In this stage, the player can kill any creature to gain points",
+  "item.ytgld_virus.tool.string.47": "The player can no longer reduce the virus replication speed",
+  "item.ytgld_virus.tool.string.48": "All attribute decay caused by the virus increases by 50%",
+  "item.ytgld_virus.tool.string.49": "Virus replication speed is 200%",
 
-
-  "item.ytgld_virus.tool.string.46": "这个阶段玩家可以杀死任何生物来获得点数",
-  "item.ytgld_virus.tool.string.47":"玩家不再可以减少病毒增值速度",
-  "item.ytgld_virus.tool.string.48": "来自病毒的所有属性衰败增加50%",
-  "item.ytgld_virus.tool.string.49": "病毒增值速度为200%",
+  "death.attack.abyss.message": "You have been eroded by the Abyss",
+  "death.attack.sword_damage.message": "You have been impaled by a flying sword",
 
 
   "item.moonstone.rage_bottle": "Golden Bottle",
@@ -1985,6 +1977,15 @@
   "advancements.tooltip.nightmare_base.text": "Obtain this item",
   "advancements.tooltip.nightmare_base.hand": "Beginning",
   "item.moonstone.coffin":"葬神棺",
+
+
+
+
+
+
+
+
+
 
   "item.moonstone.owner_blood_earth":"Qiankun",
 

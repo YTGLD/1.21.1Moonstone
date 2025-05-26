@@ -81,7 +81,7 @@ public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>
         }
         if (entity.getType() == (EntityTs.ytgld.get()) ) {
             if (ConfigClient.Client.Shader.get()) {
-                MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
+                MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
             }
             matrices.pushPose();
             matrices.translate(0, 0.175, -0.15);

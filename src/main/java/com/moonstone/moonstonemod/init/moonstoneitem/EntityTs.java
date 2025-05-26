@@ -39,9 +39,6 @@ public class EntityTs {
     public static final DeferredHolder<EntityType<?>, EntityType<com.moonstone.moonstonemod.entity.zombie.red_entity>> red_entity = REGISTRY.register("red_entity",
             ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.zombie.red_entity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(16).build("red_entity"));
 
-
-    public static final DeferredHolder<EntityType<?>, EntityType<com.moonstone.moonstonemod.entity.nightmare.nightmare_giant>> nightmare_giant = REGISTRY.register("nightmare_giant",
-            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.nightmare.nightmare_giant::new, MobCategory.MONSTER).sized(0.9F, 2.9F).clientTrackingRange(16).build("nightmare_giant"));
     public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.bloodvruis.test_blood>> test_blood = REGISTRY.register("test_blood",
             ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.bloodvruis.test_blood::new, MobCategory.MONSTER).sized(1, 1).clientTrackingRange(16).build("test_blood"));
     public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.bloodvruis.blood_bat>> blood_bat = REGISTRY.register("blood_bat",
@@ -104,7 +101,6 @@ public class EntityTs {
         event.put(EntityTs.nightmare_entity.get(), Bat.createAttributes().build());
         event.put(EntityTs.red_entity.get(), Zombie.createAttributes().build());
 
-        event.put(EntityTs.nightmare_giant.get(), com.moonstone.moonstonemod.entity.nightmare.nightmare_giant.createAttributes().build());
         event.put(EntityTs.nightmare_giant_to.get(), com.moonstone.moonstonemod.entity.nightmare.nightmare_giant.createAttributes().build());
 
         event.put(EntityTs.test_blood.get(), Zombie.createAttributes().build());

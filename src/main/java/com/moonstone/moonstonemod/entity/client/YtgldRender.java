@@ -36,7 +36,7 @@ public class YtgldRender  extends MobRenderer<ytgld, NModel<ytgld>> {
     public void render(ytgld nightmareGiant, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         super.render(nightmareGiant, entityYaw, partialTicks, poseStack, buffer, packedLight);
         if (ConfigClient.Client.Shader.get()) {
-            MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
+            MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
         }
         Vec3 playerPos = nightmareGiant.position();
         float range =16;

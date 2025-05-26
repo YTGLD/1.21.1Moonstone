@@ -1,6 +1,7 @@
 package com.moonstone.moonstonemod.entity;
 
 import com.moonstone.moonstonemod.MoonStoneMod;
+import com.moonstone.moonstonemod.init.moonstoneitem.DamageTps;
 import com.moonstone.moonstonemod.init.moonstoneitem.Effects;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -100,7 +101,7 @@ public class flysword extends ThrowableItemProjectile {
             if (this.getOwner() instanceof LivingEntity living) {
                 if (!livingEntity.is(living)){
                     livingEntity.invulnerableTime = 0;
-                    livingEntity.hurt(this.damageSources().magic(), 2 + living.getMaxHealth()/20);
+                    livingEntity.hurt(DamageTps.swordDamage(living), 2 + living.getMaxHealth()/20);
                     (livingEntity).addEffect(new MobEffectInstance(Effects.fear,100,0));
                     this.discard();
                 }

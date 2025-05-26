@@ -2,6 +2,7 @@ package com.moonstone.moonstonemod.item.nightmare.super_nightmare;
 
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.init.items.Items;
+import com.moonstone.moonstonemod.init.moonstoneitem.DamageTps;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.nightmare;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -17,7 +18,7 @@ public class nightmare_base_reversal_orb extends nightmare implements SuperNight
     public static void LivingHealEvent(LivingHealEvent event){
         if (event.getEntity() instanceof Player player){
             if (Handler.hascurio(player, Items.nightmare_base_reversal_orb.get())){
-                player.hurt(player.damageSources().dryOut(),event.getAmount());
+                player.hurt(DamageTps.abyssDamage(player),event.getAmount());
                 event.setAmount(0);
             }
         }

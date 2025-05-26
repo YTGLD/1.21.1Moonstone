@@ -58,7 +58,7 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
     public void render(owner_blood entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
         super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
         if (ConfigClient.Client.Shader.get()) {
-            MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
+            MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
         }
         double x = Mth.lerp(p_114487_, entity.xOld, entity.getX());
         double y = Mth.lerp(p_114487_, entity.yOld, entity.getY());

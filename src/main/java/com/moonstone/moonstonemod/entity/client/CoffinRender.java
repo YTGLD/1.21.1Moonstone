@@ -35,7 +35,6 @@ public class CoffinRender <T extends coffin_entity> extends EntityRenderer<T> {
 
 
         if (ConfigClient.Client.Shader.get()) {
-            MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
         }
         poseStack.pushPose();

@@ -52,10 +52,8 @@ public class AtSwordRender <T extends AtSword> extends EntityRenderer<T> {
     public void render(T entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
         setT(poseStack, entity, bufferSource);
         if (ConfigClient.Client.Shader.get()) {
-            MoonPost.renderEffectForNextTick(MoonStoneMod.POST);
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
         }
-
         if (entity.isNoGravity()){
             double x = Mth.lerp(p_114487_, entity.xOld, entity.getX());
             double y = Mth.lerp(p_114487_, entity.yOld, entity.getY());
@@ -68,6 +66,7 @@ public class AtSwordRender <T extends AtSword> extends EntityRenderer<T> {
             }
             poseStack.popPose();
 
+
             poseStack.pushPose();
             poseStack.mulPose(Axis.YP.rotationDegrees(entity.tickCount*6));
             poseStack.scale(2,2,2);
@@ -77,7 +76,11 @@ public class AtSwordRender <T extends AtSword> extends EntityRenderer<T> {
             BakedModel model = itemRenderer.getModel(axeStack, Minecraft.getInstance().level, null, 0);
             itemRenderer.render(axeStack, ItemDisplayContext.NONE, false, poseStack, bufferSource, Minecraft.getInstance().getEntityRenderDispatcher().getPackedLightCoords(entity, 0.0F), OverlayTexture.NO_OVERLAY, model);
             renderSphere1(poseStack, bufferSource, 111, 0.135f);
+            renderSphere1(poseStack, bufferSource, 111, 0.235f);
+            renderSphere1(poseStack, bufferSource, 111, 0.335f);
             poseStack.popPose();
+
+
         }else {
             poseStack.pushPose();
             poseStack.scale(3,3,3);
@@ -90,6 +93,8 @@ public class AtSwordRender <T extends AtSword> extends EntityRenderer<T> {
             BakedModel model = itemRenderer.getModel(axeStack, Minecraft.getInstance().level, null, 0);
             itemRenderer.render(axeStack, ItemDisplayContext.NONE, false, poseStack, bufferSource, Minecraft.getInstance().getEntityRenderDispatcher().getPackedLightCoords(entity, 0.0F), OverlayTexture.NO_OVERLAY, model);
             renderSphere1(poseStack, bufferSource, 111, 0.135f);
+            renderSphere1(poseStack, bufferSource, 111, 0.235f);
+            renderSphere1(poseStack, bufferSource, 111, 0.335f);
             poseStack.popPose();
         }
 
