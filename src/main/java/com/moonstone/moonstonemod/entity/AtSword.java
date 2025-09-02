@@ -1,8 +1,10 @@
 package com.moonstone.moonstonemod.entity;
 
+import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.init.moonstoneitem.Effects;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
+import com.moonstone.moonstonemod.init.moonstoneitem.Particles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -101,7 +103,6 @@ public class AtSword extends SwordOfTwelve{
     public void playerTouch(Player entity) {
 
     }
-
     @Override
     public void tick() {
         super.tick();
@@ -121,9 +122,22 @@ public class AtSword extends SwordOfTwelve{
             double d2 = this.getZ() + (double)Mth.randomBetween(RandomSource.create(), -0.7F, 0.7F);
             this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK,blockstate ), d0, d1, d2, 0.0D, 0.0D, 0.0D);
 
+
         }else {
             addParticles();
+
+            this.setPos(this.position().x,
+                    this.position().y+Math.sin(this.tickCount/50f)/40f
+
+                    ,this.position().z);
+            if (Config.SERVER.entityParticle.get()) {
+                if (this.tickCount % 25 == 0) {
+                    this.level().addParticle(Particles.blue.get(), this.getX(), this.getY(), this.getZ(), 0, 0, 0);
+                }
+            }
+
             if (tickCount >= 600) {
+                this.level().explode(this.getOwner(),this.getX(),this.getY(),this.getZ(),2, Level.ExplosionInteraction.NONE);
                 this.discard();
             }
             if (target == null || !target.isAlive()) {

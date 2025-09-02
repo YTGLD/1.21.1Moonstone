@@ -88,14 +88,18 @@ public class Config {
                     .define("canFlySword", true);
 
             ytgld_curse = BUILDER
-                    .comment("终极湮灭病毒的增值速度，单位：刻，值越大速度越慢")
+                    .comment("远古病毒的增值速度，单位：刻，值越大速度越慢")
                     .defineInRange("ytgld_curse", 15, 1, 999999);
             ytgld_research = BUILDER
-                    .comment("终极湮灭病毒的研究速度，10点是0.1%")
+                    .comment("远古病毒的研究速度，10点是0.1%")
                     .defineInRange("ytgld_research", 10, 1, 999999);
             off_or_on_ytgld = BUILDER
-                    .comment("启用终极湮灭病毒")
+                    .comment("启用远古病毒")
                     .define("off_or_on_ytgld", true);
+
+            giveVirus = BUILDER
+                    .comment("第一次死亡给予远古病毒")
+                    .define("giveVirus", false);
 
             nightmare_moai = BUILDER
                     .comment("深渊石球的附魔等级加成")
@@ -131,6 +135,13 @@ public class Config {
             blockParticle = BUILDER
                     .comment("一些（诺克萨斯纹章/决裁徽章/符石）的粒子效果")
                     .define("blockParticle", true);
+            entityParticle = BUILDER
+                    .comment("一些实体的粒子效果")
+                    .define("entityParticle", true);
+
+            god_lead = BUILDER
+                    .comment("血虐之铅杀死生物后冷却会清除")
+                    .define("god_lead", true);
 
 
 
@@ -159,6 +170,12 @@ public class Config {
         }
         BUILDER.build();
     }
+    public   ModConfigSpec.BooleanValue god_lead ;
+
+
+
+
+
 
     public   ModConfigSpec.IntValue lootMan ;
 
@@ -213,9 +230,11 @@ public class Config {
     public   ModConfigSpec.IntValue ytgld_research ;
     public   ModConfigSpec.IntValue ytgld_curse ;
     public   ModConfigSpec.BooleanValue off_or_on_ytgld ;
+    public   ModConfigSpec.BooleanValue giveVirus ;
 
 
     public   ModConfigSpec.BooleanValue blockParticle ;
+    public   ModConfigSpec.BooleanValue entityParticle ;
 
 
 

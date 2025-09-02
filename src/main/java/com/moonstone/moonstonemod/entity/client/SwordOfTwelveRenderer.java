@@ -39,7 +39,7 @@ public class SwordOfTwelveRenderer <T extends SwordOfTwelve> extends EntityRende
         }
         poseStack.pushPose();
         poseStack.scale(3,3,3);
-        poseStack.translate(0,0.33,0);
+        poseStack.translate(0,0.33-entity.tickCount/600f,0);
         poseStack.mulPose(Axis.ZP.rotationDegrees(225));
         renderSphere1(poseStack,bufferSource,111,0.35f);
 
@@ -48,6 +48,8 @@ public class SwordOfTwelveRenderer <T extends SwordOfTwelve> extends EntityRende
         ItemStack axeStack = nightmareAxe.getDefaultInstance();
         BakedModel model = itemRenderer.getModel(axeStack, Minecraft.getInstance().level, null, 0);
         itemRenderer.render(axeStack, ItemDisplayContext.NONE, false, poseStack, bufferSource, Minecraft.getInstance().getEntityRenderDispatcher().getPackedLightCoords(entity, 0.0F), OverlayTexture.NO_OVERLAY, model);
+
+
         poseStack.popPose();
         super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
     }

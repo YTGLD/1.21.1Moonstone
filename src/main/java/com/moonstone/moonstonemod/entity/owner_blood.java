@@ -1,11 +1,13 @@
 package com.moonstone.moonstonemod.entity;
 
+import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.EventHandler;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import com.moonstone.moonstonemod.init.items.Items;
+import com.moonstone.moonstonemod.init.moonstoneitem.Particles;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -82,7 +84,15 @@ public class owner_blood extends TamableAnimal {
     public void tick() {
         super.tick();
         this.setNoGravity(true);
-
+        if (this.getOwner() instanceof Player player) {
+            if (Config.SERVER.entityParticle.get()) {
+                if (Handler.hascurio(player,Items.like_the_book.get())) {
+                    if (this.tickCount % 100 == 0) {
+                        this.level().addParticle(Particles.blood.get(), this.getX(), this.getY(), this.getZ(), 0, 0, 0);
+                    }
+                }
+            }
+        }
 
 
         LivingEntity owner = getOwner(); // 获取主人
@@ -222,9 +232,12 @@ public class owner_blood extends TamableAnimal {
 
                     attackBlood.setPos(this.position());
                     attackBlood.setOwner(this.getOwner());
-
                     this.level().addFreshEntity(attackBlood);
-
+                    if (Config.SERVER.entityParticle.get()) {
+                        if (Handler.hascurio(player,Items.like_the_book.get())) {
+                            this.level().addParticle(Particles.blood.get(), this.getX(), this.getY(), this.getZ(), 0, 0, 0);
+                        }
+                    }
 
                     playRemoveOneSound(this);
 

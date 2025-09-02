@@ -17,6 +17,7 @@ import java.util.OptionalDouble;
 import java.util.function.BiFunction;
 
 public class MRender extends RenderType {
+
     public MRender(String p_173178_, VertexFormat p_173179_, VertexFormat.Mode p_173180_, int p_173181_, boolean p_173182_, boolean p_173183_, Runnable p_173184_, Runnable p_173185_) {
         super(p_173178_, p_173179_, p_173180_, p_173181_, p_173182_, p_173183_, p_173184_, p_173185_);
     }
@@ -164,6 +165,20 @@ public class MRender extends RenderType {
                                     false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/p_blood.png"),
                                     false, false).build()).createCompositeState(false));
 
+    public static final RenderType BLOOD = create(
+            "lightning",
+            DefaultVertexFormat.POSITION_COLOR,
+            VertexFormat.Mode.QUADS,
+            1536,
+            false,
+            true,
+            RenderType.CompositeState.builder()
+                    .setShaderState(RENDERTYPE_LIGHTNING_SHADER)
+                    .setWriteMaskState(COLOR_DEPTH_WRITE)
+                    .setTransparencyState(LIGHTNING_TRANSPARENCY)
+                    .setOutputState(setOutputState)
+                    .setCullState(NO_CULL)
+                    .createCompositeState(false));
 
     public static final RenderType TRAIL =
             create("lines",
@@ -257,20 +272,24 @@ public class MRender extends RenderType {
                                             false,
                                             false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/mls.png"),
                                             false, false).build()).createCompositeState(false));
+    public static final RenderType BLUE =
+            create("blue",
+                    DefaultVertexFormat.POSITION,
+                    VertexFormat.Mode.QUADS,
+                    256,
+                    false,
+                    false,
+                    RenderType.CompositeState.builder()
+                            .setShaderState(RENDER_STATE_SHARD_MLS)
+                            .setCullState(NO_CULL)
+                            .setOutputState(setOutputState)
+                            .setTextureState(RenderStateShard.
+                                    MultiTextureStateShard.builder().
+                                    add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/mls.png"),
+                                            false,
+                                            false).add(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,"textures/mls.png"),
+                                            false, false).build()).createCompositeState(false));
 
-    public static final BiFunction<ResourceLocation, Boolean, RenderType> ENTITY_TRANSLUCENT_EMISSIVE = Util.memoize(
-            (p_286163_, p_286164_) -> {
-                RenderType.CompositeState rendertype$compositestate = RenderType.CompositeState.builder()
-                        .setShaderState(RENDERTYPE_ENTITY_TRANSLUCENT_EMISSIVE_SHADER)
-                        .setTextureState(new RenderStateShard.TextureStateShard(p_286163_, false, false))
-                        .setTransparencyState(TRANSLUCENT_TRANSPARENCY)
-                        .setCullState(NO_CULL)
-                        .setWriteMaskState(COLOR_WRITE)
-                        .setOverlayState(OVERLAY)
-                        .createCompositeState(p_286164_);
-                return create("entity_translucent_emissive", DefaultVertexFormat.NEW_ENTITY, VertexFormat.Mode.QUADS, 1536, true, true, rendertype$compositestate);
-            }
-    );
     public static RenderType gateways() {
         return GATEWAY;
     }

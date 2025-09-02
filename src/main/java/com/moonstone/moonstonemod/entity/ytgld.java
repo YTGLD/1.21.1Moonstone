@@ -5,6 +5,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
+import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.entity.nightmare.AInightmare;
@@ -15,6 +16,7 @@ import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.Effects;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
+import com.moonstone.moonstonemod.init.moonstoneitem.Particles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -202,16 +204,12 @@ public class ytgld extends nightmare_giant {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MOVEMENT_SPEED, (double)0.3f)
+                .add(Attributes.MOVEMENT_SPEED, 0)
 
-                .add(Attributes.ATTACK_DAMAGE, 5)
-                .add(Attributes.MAX_HEALTH, 100)
-                .add(Attributes.ARMOR, 10)
-                .add(Attributes.ENTITY_INTERACTION_RANGE, 5)
-                .add(AttReg.heal, 2)
-                .add(AttReg.alL_attack, 0)
+                .add(Attributes.ATTACK_DAMAGE, 0)
+                .add(Attributes.MAX_HEALTH, 0)
+                .add(Attributes.ARMOR, 0)
 
-                .add(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
 
                 ;
     }
@@ -221,11 +219,10 @@ public class ytgld extends nightmare_giant {
         Multimap<Holder<Attribute>, AttributeModifier>  modifierMultimap = HashMultimap.create();
         LivingEntity living = ytgld.getOwner();
         if (living!=null){
-            modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+"ytgld"), living.getAttributeValue(Attributes.ATTACK_DAMAGE)* 10, AttributeModifier.Operation.ADD_VALUE));
-            modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+"ytgld"), living.getAttributeValue(Attributes.MAX_HEALTH)* 25, AttributeModifier.Operation.ADD_VALUE));
-            modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+"ytgld"), living.getAttributeValue(Attributes.ARMOR)* 10, AttributeModifier.Operation.ADD_VALUE));
-            modifierMultimap.put(AttReg.heal, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+"ytgld"), living.getAttributeValue(AttReg.heal)* 2, AttributeModifier.Operation.ADD_VALUE));
-            modifierMultimap.put(AttReg.alL_attack, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+"ytgld"), living.getAttributeValue(AttReg.alL_attack)* 1, AttributeModifier.Operation.ADD_VALUE));
+            modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+"ytgld"), living.getAttributeValue(Attributes.ATTACK_DAMAGE)* 2, AttributeModifier.Operation.ADD_VALUE));
+            modifierMultimap.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+"ytgld"), living.getAttributeValue(Attributes.MAX_HEALTH)* 2, AttributeModifier.Operation.ADD_VALUE));
+            modifierMultimap.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+"ytgld"), living.getAttributeValue(Attributes.ARMOR)* 2, AttributeModifier.Operation.ADD_VALUE));
+            modifierMultimap.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("base_attack_damage"+"ytgld"), living.getAttributeValue(Attributes.MOVEMENT_SPEED)* 2, AttributeModifier.Operation.ADD_VALUE));
         }
         return modifierMultimap;
     }

@@ -25,6 +25,7 @@ import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
@@ -34,6 +35,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 import org.lwjgl.opengl.GL11;
 
 import java.util.List;
@@ -42,6 +45,7 @@ public class AtSwordRender <T extends AtSword> extends EntityRenderer<T> {
     public AtSwordRender(EntityRendererProvider.Context p_173917_) {
         super(p_173917_);
     }
+    private static final float HALF_SQRT_3 = (float)(Math.sqrt(3.0) / 2.0);
 
     @Override
     public boolean shouldRender(T livingEntity, Frustum camera, double camX, double camY, double camZ) {

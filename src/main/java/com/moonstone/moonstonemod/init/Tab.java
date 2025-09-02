@@ -371,6 +371,7 @@ public class Tab {
                 b.accept(new ItemStack(Items.killer.get()));
                 b.accept(new ItemStack(Items.as_amout.get()));
                 b.accept(new ItemStack(Items.million.get()));
+                b.accept(new ItemStack(Items.like_the_book.get()));
 
                 b.accept(new ItemStack(Items.owner_blood_eye.get()));
                 b.accept(new ItemStack(Items.owner_blood_attack_eye.get()));

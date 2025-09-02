@@ -2,11 +2,16 @@ package com.moonstone.moonstonemod.init.moonstoneitem;
 
 import com.moonstone.moonstonemod.MoonStoneMod;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.RangedAttribute;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+@EventBusSubscriber(modid = MoonStoneMod.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class AttReg {
     public static final DeferredRegister<Attribute> REGISTRY = DeferredRegister.create(BuiltInRegistries.ATTRIBUTE, MoonStoneMod.MODID);
     public static final DeferredHolder<Attribute,?> alL_attack = REGISTRY.register("allattack",()->{
@@ -37,9 +42,22 @@ public class AttReg {
     public static final DeferredHolder<Attribute,?> owner_blood_attack_speed = REGISTRY.register("owner_blood_attack_speed",()->{
         return new RangedAttribute("attribute.name.moonstone.owner_blood_attack_speed", 1, -1024, 1024).setSyncable(true);
     });
-
-
     public static final DeferredHolder<Attribute,?> zombie_attack_damage = REGISTRY.register("zombie_attack_damage",()->{
         return new RangedAttribute("attribute.name.moonstone.zombie_attack_damage", 1, -1024, 1024).setSyncable(true);
     });
+
+    @SubscribeEvent
+    public static void EntityAttributeCreationEvent(EntityAttributeModificationEvent event){
+        event.add(EntityType.PLAYER , AttReg.alL_attack,1);
+        event.add(EntityType.PLAYER , AttReg.heal,1);
+        event.add(EntityType.PLAYER , AttReg.cit,1);
+        event.add(EntityType.PLAYER , AttReg.dig,1);
+        event.add(EntityType.PLAYER , AttReg.hurt,1);
+        event.add(EntityType.PLAYER , AttReg.owner_blood_damage,1);
+        event.add(EntityType.PLAYER , AttReg.owner_blood_speed,1);
+        event.add(EntityType.PLAYER , AttReg.owner_blood_time,1);
+        event.add(EntityType.PLAYER , AttReg.owner_blood_attack_speed,1);
+        event.add(EntityType.PLAYER , AttReg.zombie_attack_damage,1);
+
+    }
 }

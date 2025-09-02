@@ -338,6 +338,7 @@ public class Items {
     public static final DeferredHolder<Item,?> white_blood_cells_are_abruptly_reduced =REGISTRY.register("white_blood_cells_are_abruptly_reduced", white_blood_cells_are_abruptly_reduced::new );
     public static final DeferredHolder<Item,?> skin_glucose_fermentation =REGISTRY.register("skin_glucose_fermentation", skin_glucose_fermentation::new );
     public static final DeferredHolder<Item,?> the_god_sword =REGISTRY.register("the_god_sword", god_sword::new );
+    public static final DeferredHolder<Item,?> like_the_book =REGISTRY.register("like_the_book", like_the_book::new );
 
     public static final DeferredHolder<Item,?> the_owner_blood_stone =REGISTRY.register("the_owner_blood_stone", the_owner_blood_stone::new );
     public static final DeferredHolder<Item,?>  ytgld_virus =REGISTRY.register("ytgld_virus", com.moonstone.moonstonemod.item.ytgld_virus::new );

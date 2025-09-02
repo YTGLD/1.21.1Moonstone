@@ -1,5 +1,6 @@
 package com.moonstone.moonstonemod.item.maxitem;
 
+import com.moonstone.moonstonemod.Config;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.CommonItem;
@@ -47,7 +48,9 @@ public class god_lead extends CommonItem implements Die {
                                     if (!living.isDeadOrDying()) {
                                         player.getCooldowns().addCooldown(Items.god_lead.get(), 200);
                                     }
-
+                                    if (!Config.SERVER.god_lead.get()){
+                                        player.getCooldowns().addCooldown(Items.god_lead.get(), 200);
+                                    }
                                     break;
                                 }
                             }

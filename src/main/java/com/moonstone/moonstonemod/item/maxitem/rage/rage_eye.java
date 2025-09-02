@@ -3,6 +3,8 @@ package com.moonstone.moonstonemod.item.maxitem.rage;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.moonstone.moonstonemod.Config;
+import com.moonstone.moonstonemod.Handler;
+import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
@@ -38,33 +40,35 @@ public class rage_eye extends Item implements ICurioItem,RAGE{
         float a  = (float) b;
         double c  =  Config.SERVER.rage_eye_copy.get();
         float copy  = (float) c;
+        if (!Handler.hascurio(player, Items.rage_eye.get())) {
 
-        if (stack.get(DataReg.tag)==null){
-            stack.set(DataReg.tag,new CompoundTag());
-        }
-        if (!(entity instanceof Player )){
-            if (stack.get(DataReg.tag)!=null) {
-                if (entity instanceof LivingEntity living) {
-                    if (living.getAttribute(Attributes.MAX_HEALTH) != null) {
-                        if (living.getAttribute(Attributes.MAX_HEALTH).getBaseValue()*copy < player.getAttributeValue(Attributes.MAX_HEALTH) * a) {
-                            stack.get(DataReg.tag).putFloat(health, (float) living.getAttribute(Attributes.MAX_HEALTH).getBaseValue()*copy);
-                        } else {
-                            stack.get(DataReg.tag).putFloat(health, (float) player.getAttributeValue(Attributes.MAX_HEALTH) * a);
+            if (stack.get(DataReg.tag) == null) {
+                stack.set(DataReg.tag, new CompoundTag());
+            }
+            if (!(entity instanceof Player)) {
+                if (stack.get(DataReg.tag) != null) {
+                    if (entity instanceof LivingEntity living) {
+                        if (living.getAttribute(Attributes.MAX_HEALTH) != null) {
+                            if (living.getAttribute(Attributes.MAX_HEALTH).getBaseValue() * copy < player.getAttributeValue(Attributes.MAX_HEALTH) * a) {
+                                stack.get(DataReg.tag).putFloat(health, (float) living.getAttribute(Attributes.MAX_HEALTH).getBaseValue() * copy);
+                            } else {
+                                stack.get(DataReg.tag).putFloat(health, (float) player.getAttributeValue(Attributes.MAX_HEALTH) * a);
+                            }
                         }
-                    }
-                    if (living.getAttribute(Attributes.ATTACK_DAMAGE) != null) {
-                        if (living.getAttribute(Attributes.ATTACK_DAMAGE).getBaseValue()*copy < player.getAttributeValue(Attributes.ATTACK_DAMAGE) * a) {
-                            stack.get(DataReg.tag).putFloat(damage, (float) living.getAttribute(Attributes.ATTACK_DAMAGE).getBaseValue()*copy);
-                        } else {
-                            stack.get(DataReg.tag).putFloat(damage, (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE) * a);
+                        if (living.getAttribute(Attributes.ATTACK_DAMAGE) != null) {
+                            if (living.getAttribute(Attributes.ATTACK_DAMAGE).getBaseValue() * copy < player.getAttributeValue(Attributes.ATTACK_DAMAGE) * a) {
+                                stack.get(DataReg.tag).putFloat(damage, (float) living.getAttribute(Attributes.ATTACK_DAMAGE).getBaseValue() * copy);
+                            } else {
+                                stack.get(DataReg.tag).putFloat(damage, (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE) * a);
 
+                            }
                         }
-                    }
-                    if (living.getAttribute(Attributes.ARMOR) != null) {
-                        if (living.getAttribute(Attributes.ARMOR).getBaseValue()*copy < player.getAttributeValue(Attributes.ARMOR) * a) {
-                            stack.get(DataReg.tag).putFloat(armor, (float) living.getAttribute(Attributes.ARMOR).getBaseValue()*copy);
-                        } else {
-                            stack.get(DataReg.tag).putFloat(armor, (float) player.getAttributeValue(Attributes.ARMOR) * a);
+                        if (living.getAttribute(Attributes.ARMOR) != null) {
+                            if (living.getAttribute(Attributes.ARMOR).getBaseValue() * copy < player.getAttributeValue(Attributes.ARMOR) * a) {
+                                stack.get(DataReg.tag).putFloat(armor, (float) living.getAttribute(Attributes.ARMOR).getBaseValue() * copy);
+                            } else {
+                                stack.get(DataReg.tag).putFloat(armor, (float) player.getAttributeValue(Attributes.ARMOR) * a);
+                            }
                         }
                     }
                 }

@@ -1,6 +1,7 @@
 package com.moonstone.moonstonemod.mixin.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.client.renderer.MoonPost;
 import com.moonstone.moonstonemod.event.old.NewEvent;
@@ -16,6 +17,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.client.ClientHooks;
+import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 import org.joml.Matrix4f;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -73,5 +76,11 @@ public abstract class LevelRendererMixin{
             ))
     private void renderLevel3(DeltaTracker deltaTracker, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightTexture lightTexture, Matrix4f frustumMatrix, Matrix4f projectionMatrix, CallbackInfo ci) {
         MoonPost.blitEffects(minecraft);
+    }
+    @Inject(method = "renderLevel",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/particle/ParticleEngine;render(Lnet/minecraft/client/renderer/LightTexture;Lnet/minecraft/client/Camera;FLnet/minecraft/client/renderer/culling/Frustum;Ljava/util/function/Predicate;)V"))
+    private void part1(DeltaTracker deltaTracker, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightTexture lightTexture, Matrix4f frustumMatrix, Matrix4f projectionMatrix, CallbackInfo ci) {
     }
 }

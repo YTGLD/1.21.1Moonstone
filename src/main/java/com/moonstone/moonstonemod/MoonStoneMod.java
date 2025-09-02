@@ -1,11 +1,10 @@
 package com.moonstone.moonstonemod;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.logging.LogUtils;
-import com.moonstone.moonstonemod.client.particle.blood;
-import com.moonstone.moonstonemod.client.particle.blue;
-import com.moonstone.moonstonemod.client.particle.popr;
-import com.moonstone.moonstonemod.client.particle.red;
+import com.moonstone.moonstonemod.client.particle.*;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.crafting.AllCrafting;
 import com.moonstone.moonstonemod.crafting.MoonRecipeProvider;
@@ -23,7 +22,12 @@ import com.moonstone.moonstonemod.init.items.DNAItems;
 import com.moonstone.moonstonemod.init.items.Drugs;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.*;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.LevelRenderer;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -38,8 +42,10 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.event.RegisterShadersEvent;
+import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import java.io.IOException;
@@ -51,15 +57,13 @@ public class MoonStoneMod {
 
     public static final String MODID = "moonstone";
     public static final Logger LOGGER = LogUtils.getLogger();
-
-    public static final ResourceLocation POST = ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,
-            "shaders/post/entity_outline.json");
-
     public static final ResourceLocation POST_Blood = ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID,
             "shaders/post/entity_outline_blood.json");
 
     public MoonStoneMod(IEventBus eventBus, ModContainer modContainer){
         NeoForge.EVENT_BUS.register(new AllEvent());
+        
+
         NeoForge.EVENT_BUS.register(new LootEvent());
         NeoForge.EVENT_BUS.register(new Village());
         NeoForge.EVENT_BUS.register(new LootTableEvent());
@@ -101,18 +105,92 @@ public class MoonStoneMod {
 
     }
 
+    public static RenderLevelStageEvent.Stage stage_particles ;
     @EventBusSubscriber(modid = MoonStoneMod.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
     public static class Client {
 
 
+        @SubscribeEvent
+        public static void RegisterStageEvent(RenderLevelStageEvent.RegisterStageEvent event) {
+            RenderType renderType = MRender.beacon.apply(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID, "textures/p_blood.png"), true);
+            stage_particles = event.register(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID, "moon_particles"),
+                    renderType);
+        }
+        public static void renderPoseStack(@NotNull PoseStack matrices, @NotNull VertexConsumer vertexConsumer, int light, float s,float a  ) {
+            int stacks = 10; // 垂直方向的分割数
+            int slices = 10; // 水平方向的分割数
+            for (int i = 0; i < stacks; ++i) {
+                float phi0 = (float) Math.PI * ((i + 0) / (float) stacks);
+                float phi1 = (float) Math.PI * ((i + 1) / (float) stacks);
 
+                for (int j = 0; j < slices; ++j) {
+                    float theta0 = (float) (2 * Math.PI) * ((j + 0) / (float) slices);
+                    float theta1 = (float) (2 * Math.PI) * ((j + 1) / (float) slices);
 
+                    float x0 = s * (float) Math.sin(phi0) * (float) Math.cos(theta0);
+                    float y0 = s * (float) Math.cos(phi0);
+                    float z0 = s * (float) Math.sin(phi0) * (float) Math.sin(theta0);
+
+                    float x1 = s * (float) Math.sin(phi0) * (float) Math.cos(theta1);
+                    float y1 = s * (float) Math.cos(phi0);
+                    float z1 = s * (float) Math.sin(phi0) * (float) Math.sin(theta1);
+
+                    float x2 = s * (float) Math.sin(phi1) * (float) Math.cos(theta1);
+                    float y2 = s * (float) Math.cos(phi1);
+                    float z2 = s * (float) Math.sin(phi1) * (float) Math.sin(theta1);
+
+                    float x3 = s * (float) Math.sin(phi1) * (float) Math.cos(theta0);
+                    float y3 = s * (float) Math.cos(phi1);
+                    float z3 = s * (float) Math.sin(phi1) * (float) Math.sin(theta0);
+
+                    vertexConsumer.addVertex(matrices.last().pose(), x0, y0, z0).setColor(1.0f, 0,0, a).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x1, y1, z1).setColor(1.0f, 0,0, a).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x2, y2, z2).setColor(1.0f, 0,0, a).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x3, y3, z3).setColor(1.0f, 0,0, a).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                }
+            }
+        }
+        public static void renderPoseStack2(@NotNull PoseStack matrices, @NotNull VertexConsumer vertexConsumer, int light, float s,float a ) {
+            int stacks = 20; // 垂直方向的分割数
+            int slices = 20; // 水平方向的分割数
+            for (int i = 0; i < stacks; ++i) {
+                float phi0 = (float) Math.PI * ((i + 0) / (float) stacks);
+                float phi1 = (float) Math.PI * ((i + 1) / (float) stacks);
+
+                for (int j = 0; j < slices; ++j) {
+                    float theta0 = (float) (2 * Math.PI) * ((j + 0) / (float) slices);
+                    float theta1 = (float) (2 * Math.PI) * ((j + 1) / (float) slices);
+
+                    float x0 = s * (float) Math.sin(phi0) * (float) Math.cos(theta0);
+                    float y0 = s * (float) Math.cos(phi0);
+                    float z0 = s * (float) Math.sin(phi0) * (float) Math.sin(theta0);
+
+                    float x1 = s * (float) Math.sin(phi0) * (float) Math.cos(theta1);
+                    float y1 = s * (float) Math.cos(phi0);
+                    float z1 = s * (float) Math.sin(phi0) * (float) Math.sin(theta1);
+
+                    float x2 = s * (float) Math.sin(phi1) * (float) Math.cos(theta1);
+                    float y2 = s * (float) Math.cos(phi1);
+                    float z2 = s * (float) Math.sin(phi1) * (float) Math.sin(theta1);
+
+                    float x3 = s * (float) Math.sin(phi1) * (float) Math.cos(theta0);
+                    float y3 = s * (float) Math.cos(phi1);
+                    float z3 = s * (float) Math.sin(phi1) * (float) Math.sin(theta0);
+
+                    vertexConsumer.addVertex(matrices.last().pose(), x0, y0, z0).setColor(1.0f, 0,0, a).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x1, y1, z1).setColor(1.0f, 0,0, a).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x2, y2, z2).setColor(1.0f, 0,0, a).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                    vertexConsumer.addVertex(matrices.last().pose(), x3, y3, z3).setColor(1.0f, 0,0, a).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
+                }
+            }
+        }
         @SubscribeEvent
         public static void registerFactories(RegisterParticleProvidersEvent event) {
             event.registerSpriteSet(Particles.gold.get(), red.Provider::new);
             event.registerSpriteSet(Particles.blue.get(), blue.Provider::new);
             event.registerSpriteSet(Particles.popr.get(), popr.Provider::new);
             event.registerSpriteSet(Particles.blood.get(), blood.Provider::new);
+
         }
         @SubscribeEvent
         public static void EntityRenderersEvent(EntityRenderersEvent.RegisterRenderers event) {

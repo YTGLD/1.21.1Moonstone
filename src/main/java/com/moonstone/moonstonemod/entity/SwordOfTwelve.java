@@ -22,7 +22,6 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class SwordOfTwelve extends Arrow {
 
@@ -61,7 +60,8 @@ public class SwordOfTwelve extends Arrow {
             }
             player.level().playSound(
                     null, player.getX(), player.getY(), player.getZ(), SoundEvents.MACE_SMASH_GROUND_HEAVY, player.getSoundSource(), 0.2F, 0.2F
-            );}
+            );
+        }
         Vec3 position = this.position();
         float is = 5;
         List<LivingEntity> ess = this.level().getEntitiesOfClass(LivingEntity.class, new AABB(position.x - is, position.y - is, position.z - is, position.x + is, position.y + is, position.z + is));
@@ -73,7 +73,6 @@ public class SwordOfTwelve extends Arrow {
         }
 
     }
-
     @Override
     public void playerTouch(Player entity) {
 

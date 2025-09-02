@@ -129,6 +129,7 @@
   "item.immortal.tool.string.6": "A person who is rumored to have the power of life and death...",
   "item.immortal.tool.string.7": "You can control the power of the Supreme Dao...",
   "item.immortal.tool.string.8": "But ...., at what cost？",
+  "item.immortal.tool.string.9": "Drink an ominous potion to transform a nearby Nightmare Giant...",
 
   "item.nightmareanchor.tool.string": "Died while wearing it.",
   "item.nightmareanchor.tool.string.1": "Record the location of this death.",
@@ -1179,6 +1180,7 @@
   "item.the_blood_book.tool.string.3": "Blood Grower's fire speed is increased by 30%",
   "item.the_blood_book.tool.string.4": "Blood Spirit Grower's Lifespan is reduced by 60%",
   "item.the_blood_book.tool.string.5": "Comes with all the features of the Graver and the Blasphemer",
+  "item.the_blood_book.tool.string.7": "Blood Spirit Growers release particles to attack creatures, recovering 1 health upon hit",
   "item.the_blood_book.tool.string.6": "Each hit of the Blood Soul Grower is equivalent to an attack from you",
 
 
@@ -1953,6 +1955,22 @@
   "item.at_a_book.tool.string.lvl.20": "Half Supreme",
   "item.at_a_book.tool.string.lvl.21": "Extreme Region",
   "attribute.name.moonstone.res": "Resistance",
+
+
+
+
+
+  "item.moonstone.like_the_book": "Ancient Book",
+  "item.like_the_book.tool.string": "Makes the Blood Spirit Grower release a particle effect!" ,
+  "item.like_the_book.tool.string.1": "Nothing else",
+
+
+
+
+
+
+
+
 
 
   "item.moonstone.smithing_food":"The earth is clumped",

@@ -34,27 +34,27 @@ public class killer  extends Item implements ICurioItem, Blood , TextEvt.Twelve{
 
     }
 
-    @Override
-    public void curioTick(SlotContext slotContext, ItemStack stack) {
-        if (stack.get(DataReg.tag)==null){
-            stack.set(DataReg.tag,new CompoundTag());
-        }
-        if (slotContext.entity() instanceof Player player){
-
-            float lv = player.getHealth() / player.getMaxHealth();
-
-            lv *= 100;
-            int now = (int) (100 -(lv));
+        @Override
+        public void curioTick(SlotContext slotContext, ItemStack stack) {
             if (stack.get(DataReg.tag)==null){
                 stack.set(DataReg.tag,new CompoundTag());
             }
-            if (stack.get(DataReg.tag)!=null){
-                stack.get(DataReg.tag).putInt(uDead,now);
+            if (slotContext.entity() instanceof Player player){
+    
+                float lv = player.getHealth() / player.getMaxHealth();
+    
+                lv *= 100;
+                int now = (int) (100 -(lv));
+                if (stack.get(DataReg.tag)==null){
+                    stack.set(DataReg.tag,new CompoundTag());
+                }
+                if (stack.get(DataReg.tag)!=null){
+                    stack.get(DataReg.tag).putInt(uDead,now);
+                }
+    
+                player.getAttributes().addTransientAttributeModifiers(ad(stack));
             }
-
-            player.getAttributes().addTransientAttributeModifiers(ad(stack));
         }
-    }
 
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {

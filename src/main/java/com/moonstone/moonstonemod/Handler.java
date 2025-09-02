@@ -340,6 +340,8 @@ public class Handler {
             addSquare(vertexConsumer, poseStack, up1, up2, down1, down2, a);
         }
     }
+
+
     public static void renderBlack(PoseStack poseStack, MultiBufferSource bufferSource, Vec3 start, Vec3 end, float a, RenderType renderType, float r) {
         VertexConsumer vertexConsumer = bufferSource.getBuffer(renderType);
 

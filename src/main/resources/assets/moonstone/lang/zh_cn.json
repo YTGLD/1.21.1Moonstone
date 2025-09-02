@@ -1007,6 +1007,7 @@
   "item.the_blood_book.tool.string.4": "血灵增生体的血珠寿命降低70%",
   "item.the_blood_book.tool.string.5": "自带刻画者和渎圣者的所有功能",
   "item.the_blood_book.tool.string.6": "血灵增生体每次命中都相当于你发起了一次攻击",
+  "item.the_blood_book.tool.string.7": "血灵增生体会释放粒子攻击生物，击中后恢复1点生命值",
   "item.moonstone.evil_mob": "邪念体",
   "item.moonstone.god_lead": "血虐之铅",
   "item.moonstone.malice_die": "恶意之殇",
@@ -2050,9 +2051,12 @@
   "item.undead_blood_charm.tool.string.2": "标记对你有仇恨的生物，每次恢复生命都会对他造成50%恢复量的伤害",
   "item.undead_blood_charm.tool.string.3": "对亡灵造成额外50%的伤害",
   "item.undead_blood_charm.tool.string.4": "治疗增加50%",
-  "item.undead_blood_charm.tool.string.5": "受到伤害增加40%"
+  "item.undead_blood_charm.tool.string.5": "受到伤害增加40%",
+  "item.immortal.tool.string.9": "喝下不详之瓶来转变附近的梦魇巨人...",
 
-
+  "item.moonstone.like_the_book": "古书",
+  "item.like_the_book.tool.string": "让血灵增生体释放粒子效果！",
+  "item.like_the_book.tool.string.1": "除此之外，没有特别的了"
 }
 
 

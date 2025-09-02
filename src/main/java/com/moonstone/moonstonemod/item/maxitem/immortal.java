@@ -124,6 +124,8 @@ public class immortal extends Item implements ICurioItem, Blood {
            tooltip.add(Component.translatable("item.immortal.tool.string.4").withStyle(ChatFormatting.RED));
            tooltip.add(Component.literal(""));
            tooltip.add(Component.translatable("item.immortal.tool.string.5").withStyle(ChatFormatting.RED));
+           tooltip.add(Component.literal(""));
+           tooltip.add(Component.translatable("item.immortal.tool.string.9").withStyle(ChatFormatting.RED));
        }else {
            tooltip.add(Component.translatable("key.keyboard.left.shift").withStyle(ChatFormatting.DARK_RED));
            tooltip.add(Component.literal(""));
