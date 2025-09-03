@@ -3,7 +3,7 @@ package com.moonstone.moonstonemod.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import com.moonstone.moonstonemod.ConfigClient;
+import com.ytgld.seeking_immortals.ClientConfig;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
@@ -28,7 +28,7 @@ public class Sword {
                  @NotNull MultiBufferSource vertexConsumers,
                  int light,
                  @NotNull Entity entity) {
-        if (ConfigClient.Client.Shader.get()) {
+        if (com.ytgld.seeking_immortals.ClientConfig.CLIENT_CONFIG.Shader.get()) {
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
         }
         if (entity instanceof LivingEntity living) {

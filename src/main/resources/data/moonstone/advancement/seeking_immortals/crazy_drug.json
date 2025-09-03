@@ -1,0 +1,41 @@
+{
+  "parent": "moonstone:seeking_immortals/root",
+  "criteria": {
+    "crazy_drug": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "moonstone:crazy_drug"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tooltip.crazy_drug.text"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "moonstone:crazy_drug"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tooltip.crazy_drug.hand"
+    }
+  },
+  "requirements": [
+    [
+      "crazy_drug"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

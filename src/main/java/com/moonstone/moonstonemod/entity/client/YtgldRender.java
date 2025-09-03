@@ -1,7 +1,7 @@
 package com.moonstone.moonstonemod.entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.moonstone.moonstonemod.ConfigClient;
+import com.ytgld.seeking_immortals.ClientConfig;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
@@ -35,7 +35,7 @@ public class YtgldRender  extends MobRenderer<ytgld, NModel<ytgld>> {
     @Override
     public void render(ytgld nightmareGiant, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         super.render(nightmareGiant, entityYaw, partialTicks, poseStack, buffer, packedLight);
-        if (ConfigClient.Client.Shader.get()) {
+        if (com.ytgld.seeking_immortals.ClientConfig.CLIENT_CONFIG.Shader.get()) {
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
         }
         Vec3 playerPos = nightmareGiant.position();

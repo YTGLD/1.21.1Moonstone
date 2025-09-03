@@ -1,6 +1,6 @@
 package com.moonstone.moonstonemod.item.man;
 
-import com.moonstone.moonstonemod.Config;
+import com.ytgld.seeking_immortals.Config;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.contents.ManBundleContents;
 import com.moonstone.moonstonemod.init.items.Drugs;

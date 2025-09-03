@@ -2,7 +2,7 @@ package com.moonstone.moonstonemod.item.maxitem.uncommon.common;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.moonstone.moonstonemod.Config;
+import com.ytgld.seeking_immortals.Config;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.CommonItem;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.IBattery;
 import net.minecraft.core.Holder;

@@ -1,6 +1,15 @@
 {
   "replace": false,
   "values": [
+
+    "moonstone:nightmare_base",
+    "moonstone:immortal",
+    "moonstone:disintegrating_stone",
+    "moonstone:biochemistry",
+    "moonstone:crazy_drug",
+    "moonstone:the_divine_fall_ring",
+    "moonstone:alchemy_pot",
+
     "moonstone:max_blood_eye",
     "moonstone:dna",
 
@@ -37,7 +46,6 @@
     "moonstone:soulbook",
     "moonstone:nine_sword_book",
     "moonstone:the_blood_book",
-    "moonstone:nightmare_base",
 
     "moonstone:immortal",
 

@@ -1,0 +1,41 @@
+{
+  "parent": "moonstone:seeking_immortals/disintegrating_stone",
+  "criteria": {
+    "falling_immortals": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "moonstone:falling_immortals"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tooltip.falling_immortals.text"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "moonstone:falling_immortals"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tooltip.falling_immortals.hand"
+    }
+  },
+  "requirements": [
+    [
+      "falling_immortals"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,41 @@
+{
+  "parent": "moonstone:seeking_immortals/nightmare_base_black_eye_red",
+  "criteria": {
+    "muddy_jewels": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "moonstone:muddy_jewels"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tooltip.muddy_jewels.text"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "moonstone:muddy_jewels"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tooltip.muddy_jewels.hand"
+    }
+  },
+  "requirements": [
+    [
+      "muddy_jewels"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

@@ -1,6 +1,6 @@
 package com.moonstone.moonstonemod.entity;
 
-import com.moonstone.moonstonemod.Config;
+import com.ytgld.seeking_immortals.Config;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.init.moonstoneitem.Effects;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;

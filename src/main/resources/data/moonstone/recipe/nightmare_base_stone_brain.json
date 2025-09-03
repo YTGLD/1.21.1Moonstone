@@ -2,10 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "moonstone:ectoplasmcube"
-    },
-    {
-      "item": "moonstone:ectoplasmprism"
+      "item": "minecraft:diamond"
     },
     {
       "item": "moonstone:nightmare_virus"

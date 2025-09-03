@@ -2,7 +2,7 @@ package com.moonstone.moonstonemod.item.decorated;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.moonstone.moonstonemod.Config;
+import com.ytgld.seeking_immortals.Config;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.entity.blood;
 import com.moonstone.moonstonemod.entity.extend.MoonTamableAnimal;
@@ -169,7 +169,7 @@ public class deceased_contract extends TheNecoraIC {
                 return true;
             }
         }
-        return com.moonstone.moonstonemod.Config.SERVER.canUnequipMoonstoneItem.get();
+        return com.ytgld.seeking_immortals.Config.SERVER.canUnequipMoonstoneItem.get();
     }
 
     private void addLoot(Entity entity ,

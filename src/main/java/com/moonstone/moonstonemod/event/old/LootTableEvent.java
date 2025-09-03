@@ -1,6 +1,6 @@
 package com.moonstone.moonstonemod.event.old;
 
-import com.moonstone.moonstonemod.Config;
+import com.ytgld.seeking_immortals.Config;
 import com.moonstone.moonstonemod.init.items.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;

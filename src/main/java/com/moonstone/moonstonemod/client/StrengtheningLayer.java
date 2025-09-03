@@ -3,13 +3,12 @@ package com.moonstone.moonstonemod.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import com.moonstone.moonstonemod.ConfigClient;
+import com.ytgld.seeking_immortals.ClientConfig;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.client.renderer.MoonPost;
 import com.moonstone.moonstonemod.entity.bloodvruis.test_blood;
-import com.moonstone.moonstonemod.entity.owner_blood;
 import com.moonstone.moonstonemod.entity.zombie.blood_zombie;
 import com.moonstone.moonstonemod.entity.zombie.blood_zombie_boom;
 import com.moonstone.moonstonemod.entity.zombie.red_entity;
@@ -17,31 +16,17 @@ import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.EntityTs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 
 public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>> extends  RenderLayer {
     public StrengtheningLayer(RenderLayerParent<T, M> p_117346_) {
@@ -71,7 +56,7 @@ public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>
             new CircleCubeBoom(matrices, vertexConsumers, light, entity);
         }
         if (entity.getType() == (EntityTs.nightmare_giant_to.get()) ) {
-            if (ConfigClient.Client.Shader.get()) {
+            if (com.ytgld.seeking_immortals.ClientConfig.CLIENT_CONFIG.Shader.get()) {
                 MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
             }
             matrices.pushPose();
@@ -80,7 +65,7 @@ public class StrengtheningLayer<T extends LivingEntity, M extends EntityModel<T>
             matrices.popPose();
         }
         if (entity.getType() == (EntityTs.ytgld.get()) ) {
-            if (ConfigClient.Client.Shader.get()) {
+            if (com.ytgld.seeking_immortals.ClientConfig.CLIENT_CONFIG.Shader.get()) {
                 MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
             }
             matrices.pushPose();

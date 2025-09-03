@@ -124,28 +124,6 @@ public abstract class GameRendererMixin  {
                    }
                }
            }
-
-           if (Handler.hascurio(player,Items.nightmare_base_black_eye.get())){
-               float fs = player.getPersistentData().getFloat("blurEffectOFNightmare_base_black_eye");
-               if (moonstone1_21_1$getPlayerLookTarget(player.level(), player) != null && moonstone1_21_1$getPlayerLookTarget(player.level(), player) instanceof LivingEntity) {
-
-                   if (fs<5){
-                       player.getPersistentData().putFloat("blurEffectOFNightmare_base_black_eye", fs + 0.1f);
-                   }
-
-
-               } else {
-                   if (fs>0){
-                       player.getPersistentData().putFloat("blurEffectOFNightmare_base_black_eye", fs - 0.05f);
-                   }
-               }
-               if (fs>0) {
-                   if (this.blurEffect != null) {
-                       this.blurEffect.setUniform("Radius", player.getPersistentData().getFloat("blurEffectOFNightmare_base_black_eye"));
-                       this.blurEffect.process(deltaTracker.getGameTimeDeltaTicks());
-                   }
-               }
-           }
        }
     }
     @Unique

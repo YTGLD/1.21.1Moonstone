@@ -2,7 +2,7 @@ package com.moonstone.moonstonemod.item;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.moonstone.moonstonemod.Config;
+import com.ytgld.seeking_immortals.Config;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
@@ -295,7 +295,7 @@ public class ytgld_virus extends TheNecoraIC {
                 return true;
             }
         }
-        return com.moonstone.moonstonemod.Config.SERVER.canUnequipMoonstoneItem.get();
+        return com.ytgld.seeking_immortals.Config.SERVER.canUnequipMoonstoneItem.get();
     }
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {

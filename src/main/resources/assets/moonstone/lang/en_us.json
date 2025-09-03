@@ -1,5 +1,4 @@
 {
-  "key.moonstone.r": "技能",
   "key.categories.moonstone": "月之石",
   "curios.modifiers.necora": "when necora",
   "key.moonstone.category": "Moonstone",
@@ -8,7 +7,6 @@
   "item.moonstone.tooltips.off": "功能已开启",
   "item.moonstone.tooltips.on": "功能已关闭",
   "key.moonstone.y": "skill",
-  "moonstone.super_nightmare.name": "This item can only be used while wearing the Nightmare Pedestal",
   "moonstone.nightmare.name": "This item can only be used with the Eye of the Abyss",
   "allevent.moonstone.cannot": "You must take out the duplicate items in the Heart of Plenty",
   "itemGroup.tabmoonstone.blood": "Moonstone : Blood",
@@ -118,17 +116,6 @@
   "item.moonstone.nanorobot": "Nano-robot",
   "item.moonstone.thedoomstone": "Ancient core stone",
   "item.moonstone.thefruit": "Paleo-fruit",
-
-  "item.moonstone.immortal": "§4The seal of immortal reincarnation",
-  "item.immortal.tool.string": "When attacked, there is an 80% chance to evade and reflect 50% of the damage to the attacker",
-  "item.immortal.tool.string.1": "If the attacker's health is greater than 70%, 150% of the damage is reflected and the invincibility frame is broken",
-  "item.immortal.tool.string.2": "Applies a Withered Buff to nearby mobs every 5 seconds, up to a maximum of level 5",
-  "item.immortal.tool.string.3": "Applied creatures have 20% less resistance, armor, healing, and 5% damage per level, movement speed, and attack speed",
-  "item.immortal.tool.string.4": "If you are killed, deal 20% of current health as piercing damage to the attacker and attach 10 levels of Decay (10 seconds).",
-  "item.immortal.tool.string.5": "Abyss and Nightmare items are neutralized",
-  "item.immortal.tool.string.6": "A person who is rumored to have the power of life and death...",
-  "item.immortal.tool.string.7": "You can control the power of the Supreme Dao...",
-  "item.immortal.tool.string.8": "But ...., at what cost？",
   "item.immortal.tool.string.9": "Drink an ominous potion to transform a nearby Nightmare Giant...",
 
   "item.nightmareanchor.tool.string": "Died while wearing it.",
@@ -140,8 +127,6 @@
   "item.nightmareanchor.tool.string.6": "Only those who bear the fear of the Nightmare",
   "item.nightmareanchor.tool.string.7": "To be eligible to use this prop",
 
-  "effect.moonstone.dead": "枯朽",
-
   "item.nightmarecharm.tool.string": "Reduces curses from Nightmare-eye by 15%",
   "item.nightmarecharm.tool.string.1": "*overlay calculation",
   "item.nightmarecharm.tool.string.2": "+1 curios slot",
@@ -151,8 +136,6 @@
 
   "item.nightmareeye.tool.string": "Increase damage taken by 33%",
   "item.nightmareeye.tool.string.1": "Most of your attributes will be reduced by 25%",
-  "item.nightmareeye.tool.string.2": "Can not Unequip ",
-
 
   "item.nightmaremoai.tool.string": "+2 Enchantment level of the enchanted product",
   "item.nightmaremoai.tool.string.1": "Only those who bear the fear of the Nightmare",
@@ -236,13 +219,11 @@
   "item.redamout.tool.string": "Attacks have a chance to send enemies flying",
   "item.redamout.tool.string.1": "Probability of getting Strength II when injured",
 
-  "curios.identifier.nightmare": "§4噩梦之槽",
   "curios.identifier.medicine": "medicine",
   "curios.identifier.necora": "DNA",
   "curios.identifier.ncrdna": "ncr dna",
   "curios.identifier.dna": "dna",
   "curios.modifiers.ncrdna": "necora",
-  "curios.modifiers.nightmare": "§4接受噩梦洗礼时",
   "curios.modifiers.dna": "DNA",
   "curios.modifiers.medicine": "medicine",
 
@@ -401,7 +382,6 @@
   "item.moonstone.atpoverdose": "atpoverdose",
   "item.moonstone.autolytic": "autolytic",
   "item.moonstone.putrefactive": "putrefactive",
-  "item.moonstone.apple": "apple",
   "item.moonstone.ambush": "ambush",
   "item.moonstone.fermentation": "fermentation",
   "item.moonstone.dna": "dna",
@@ -929,12 +909,6 @@
   "entity.moonstone.owner_blood": "owner blood",
 
 
-  "attribute.name.moonstone.allattack": "all damage",
-  "attribute.name.moonstone.cit": "cit damage",
-  "attribute.name.moonstone.heal": "heal",
-
-
-
 
   "item.moonstone.evil_blood": "evil blood",
   "item.evil_blood.tool.string": "Summon a ？ to assist you in battle",
@@ -1072,7 +1046,6 @@
   "item.body_stone.tool.string.6": "+2% excavation speed",
   "item.body_stone.tool.string.7": "+3% resistance and retreat",
   "item.body_stone.tool.string.8": "+0.4% speed, melee damage, attack speed",
-  "attribute.name.moonstone.dig": "dig",
 
   "item.moonstone.luck_ring":"luck ring",
   "item.luck_ring.tool.string.1":"when 5 exp level:",
@@ -1228,7 +1201,6 @@
 
   "moonstone.jei.necora.all": "Requires wearing Necora virus to be found in dungeons and mines",
   "moonstone.jei.necora.treasure.all": "Requires wearing Necora virus to be found in treasure loot",
-  "moonstone.jei.necora.giant_nightmare.all": "Requires wearing Nightmare Giant genetic fragment to be found in treasure loot",
 
   "moonstone.jei.necora.bnabush.all": "Requires wearing Necora virus to be found in treasure loot",
 
@@ -1254,7 +1226,6 @@
   "moonstone.jei.quadriceps": ": Jump 500 times, requires wearing a medical kit",
   "moonstone.jei.reanimation": ": Eat 8 golden apples, requires wearing a medical kit",
   "moonstone.jei.blood.all": "： found in treasure",
-  "moonstone.jei.nightmare": ": Requires wearing nightmare eye to be found in dungeons and mines",
 
   "moonstone.jei.fortunecrystal": "It can not only be crafted but also exchanged with the toolsmith villagers.",
   "moonstone.jei.mayhemcrystal": "It can not only be crafted but also exchanged with the weaponsmith villagers.",
@@ -1292,73 +1263,10 @@
 
 
 
-  "item.moonstone.nightmare_base": "§4Nightmare Base",
-  "item.nightmare_base.tool.string": "-15% damage,health,armor",
-  "item.nightmare_base.tool.string.1": "Evil Thought Antimony, Blood Cruel Lead, Malicious Mourning Nullification",
-
-  "item.moonstone.nightmare_base_stone": "§4Deadly Obelisk",
-  "item.nightmare_base_stone.tool.string": "Damage taken increases by 300% when health is full",
-  "item.nightmare_base_stone.tool.string.1": "But you can unlock the following items",
-  "item.moonstone.nightmare_base_stone_meet": "§4Despair Resonance",
-  "item.nightmare_base_stone_meet.tool.string.1": "Enhance the following accessories",
-  "item.moonstone.ectoplasmstar.nightmare_base_stone_meet": "Double luck, and each point of luck increases healing by 2.5%",
   "item.moonstone.ectoplasmstar.mayhemcrystal": "Damage amplification increases by 50%",
   "item.moonstone.ectoplasmstar.maxamout": "All effect BUFF levels increase by 2",
   "item.moonstone.ectoplasmstar.maxamout.1": "All trigger effects add 100%",
   "item.moonstone.ectoplasmstar.maxamout.2": "Reflection damage increase by 400%",
-  "item.moonstone.nightmare_base_stone_virus": "§4Nightecora Virus",
-  "item.nightmare_base_stone_virus.tool.string": "Damage increases by 100%",
-  "item.nightmare_base_stone_virus.tool.string.1": "Healing increases by 100%",
-  "item.nightmare_base_stone_virus.tool.string.2": "Critical hit chance increases by 100%",
-  "item.nightmare_base_stone_virus.tool.string.3": "Any damage received will additionally inflict a penalty of 25% of the maximum health, unaffected by any bonuses",
-
-  "item.moonstone.nightmare_base_stone_brain": "§4Apocalypse Brain",
-  "item.nightmare_base_stone_brain.tool.string": "Damage reduced by 100% when at full health",
-  "item.nightmare_base_stone_brain.tool.string.1": "Damage increased by 50% when not at full health",
-  "item.nightmare_base_stone_brain.tool.string.2": "Resistance increased by 50% when not at full health",
-
-  "item.moonstone.nightmare_base_black_eye": "§4Evil Eye of Insight",
-  "item.nightmare_base_black_eye.tool.string": "Blurred vision from the injury that recovers over time",
-  "item.nightmare_base_black_eye.tool.string.1": "But you can unlock the following items",
-  "item.moonstone.nightmare_base_black_eye_eye": "§4Dreadful Tumor",
-  "item.nightmare_base_black_eye_eye.tool.string": "Creatures under your gaze will be unable to move",
-  "item.nightmare_base_black_eye_eye.tool.string.1": "They will also receive a large amount of negative BUFFs",
-  "item.nightmare_base_black_eye_eye.tool.string.2": "When you look at any creature, you will gain a 100% damage bonus",
-
-  "item.moonstone.nightmare_base_black_eye_red": "§4Sinful Red Lip",
-  "item.nightmare_base_black_eye_red.tool.string": "Killing creatures increases all attributes by 5%",
-  "item.nightmare_base_black_eye_red.tool.string.1": "Up to a maximum increase of 50%",
-  "item.nightmare_base_black_eye_red.tool.string.2": "These attributes will decrease over time",
-
-  "item.moonstone.nightmare_base_black_eye_heart": "§4Heart of Despair",
-  "item.nightmare_base_black_eye_heart.tool.string": "Nearby creatures take 25% more damage",
-  "item.nightmare_base_black_eye_heart.tool.string.1": "They will restore health to you",
-  "item.nightmare_base_black_eye_heart.tool.string.2": "And they will no longer receive any healing",
-
-
-"advancements.tooltip.nightmare_base_stone.text": "Obtain the Nightmare Obelisk",
-"advancements.tooltip.nightmare_base_stone.hand": "Obelisk of Nightmare",
-
-"advancements.tooltip.nightmare_base_black_eye_heart.text": "Obtain the Embryo of a Dead Heart",
-"advancements.tooltip.nightmare_base_black_eye_heart.hand": "Unending Pain",
-
-"advancements.tooltip.nightmare_base_black_eye_eye.text": "Obtain the Tumor",
-"advancements.tooltip.nightmare_base_black_eye_eye.hand": "Omen Factor",
-
-"advancements.tooltip.nightmare_base_black_eye_red.text": "Obtain this lipstick",
-"advancements.tooltip.nightmare_base_black_eye_red.hand": "What an intense thrill!",
-
-"advancements.tooltip.nightmare_base_stone_meet.text": "Obtain Despair Resonance",
-"advancements.tooltip.nightmare_base_stone_meet.hand": "Nightmare Descends",
-
-"advancements.tooltip.nightmare_base_stone_brain.text": "Obtain the Apocalyptic Brain",
-"advancements.tooltip.nightmare_base_stone_brain.hand": "Madbrain",
-
-"advancements.tooltip.nightmare_base_black_eye.text": "Obtain the Evil Eye of Contemplation",
-"advancements.tooltip.nightmare_base_black_eye.hand": "Eternal Gaze",
-
-"advancements.tooltip.nightmare_base_stone_virus.text": "Obtain the Nightecora Virus",
-"advancements.tooltip.nightmare_base_stone_virus.hand": "Hybrid Form",
 
 "moonstone.greed_dna.event": "Loot Strike Triggered!",
 
@@ -1382,219 +1290,8 @@
 
 
 
-  "item.moonstone.nightmare_virus":"nightmare virus",
-
-  "item.moonstone.nightmare_base_reversal":"§4Reversal Object",
-
-  "item.nightmare_base_reversal.tool.string": "Every death reduces attributes to 0%",
-  "item.nightmare_base_reversal.tool.string.2": "Attributes gradually recover at a rate of 4% per second after resurrection",
-  "item.nightmare_base_reversal.tool.string.3": "Poison is fatal for you",
-
-  "item.moonstone.nightmare_base_reversal_orb": "§4Reversal Orb",
-  "item.nightmare_base_reversal_orb.tool.string": "Healing will only reduce health",
-  "item.nightmare_base_reversal_orb.tool.string.2": "Resets health to full every 10 seconds",
-
-  "item.moonstone.nightmare_base_reversal_card": "§4Unstable Card",
-  "item.nightmare_base_reversal_card.tool.string": "The speed of attribute recovery during each resurrection is reduced to 2%",
-  "item.nightmare_base_reversal_card.tool.string.2": "But can only recover up to 150% of the original",
-
-  "item.moonstone.nightmare_base_reversal_mysterious": "§4Mysterious Object",
-  "item.nightmare_base_reversal_mysterious.tool.string": "Suppress the negative effects of the Nightmare Base at the cost of reducing all attributes by 10%",
-
-
-  "moonstone.jei.item.moonstone.nightmare_base.all": ", requires wearing:",
-
-  "moonstone.jei.item.moonstone.nightmare_base_black_eye_heart": "Trigger the Undying Totem acquisition when the following conditions are met: Poisoned, Withering, Slowness, Blindness, and on Fire",
-  "moonstone.jei.item.moonstone.nightmare_base_black_eye_eye": "Kill the Guardian",
-  "moonstone.jei.item.moonstone.nightmare_base_black_eye_red": "Found in Ancient Cities, about 5% chance",
-
-  "moonstone.jei.item.moonstone.nightmare_base_stone_brain": "Kill Zombies to obtain materials, but only one of this material can be obtained",
-  "moonstone.jei.item.moonstone.nightmare_base_stone_meet": "Kill the Ender Dragon",
-  "moonstone.jei.item.moonstone.nightmare_base_stone_virus": "Triggered by receiving Withering damage to get an Undying Totem",
-
-  "moonstone.jei.item.moonstone.nightmare_base_reversal_card": "Kill the Ender Dragon",
-  "moonstone.jei.item.moonstone.nightmare_base_reversal_mysterious": "Open chests in Ancient Cities while wearing Reversal Orb, 100% chance, but can only obtain one",
-  "moonstone.jei.item.moonstone.nightmare_base_reversal_orb": "Kill yourself with poison damage from the Reversal Object",
-
-  "item.moonstone.nightmare_base_redemption":"§4'Redemption'",
-  "item.nightmare_base_redemption.tool.string": "Increase 15% decay of Nightmare Base attributes",
-  "advancements.tooltip.nightmare_base_redemption.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_redemption.hand": "Rumor",
-
-  "item.moonstone.nightmare_base_redemption_deception":"§4Deception",
-  "item.nightmare_base_redemption_deception.tool.string": "Resist lethal damage, restore all health",
-  "item.nightmare_base_redemption_deception.tool.string.1": "And gain 7 seconds of invincibility and calm the rage of nearby creatures, cooldown 60 seconds",
-  "advancements.tooltip.nightmare_base_redemption_deception.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_redemption_deception.hand": "Sealed Rumor",
-
-
-  "item.moonstone.nightmare_base_redemption_degenerate":"§4Degeneration",
-  "item.nightmare_base_redemption_degenerate.tool.string": "Immune to magic damage",
-  "item.nightmare_base_redemption_degenerate.tool.string.1": "Immune to fall damage",
-  "item.nightmare_base_redemption_degenerate.tool.string.2": "Immune to fire damage",
-  "advancements.tooltip.nightmare_base_redemption_degenerate.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_redemption_degenerate.hand": "Song of Shadows",
-
-
-  "item.moonstone.nightmare_base_redemption_down_and_out":"§4Down and Out",
-  "item.nightmare_base_redemption_down_and_out.tool.string": "Reduce 35% decay of Nightmare Base attributes, if it drops to negative, it turns into a positive attribute increase",
-  "advancements.tooltip.nightmare_base_redemption_down_and_out.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_redemption_down_and_out.hand": "River of History",
-
-  "moonstone.jei.item.moonstone.nightmare_base_redemption_deception": "Kill 100 Pillagers under an ominous sign",
-  "moonstone.jei.item.moonstone.nightmare_base_redemption_degenerate": "Kill 100 Villagers under the Village Hero effect",
-  "moonstone.jei.item.moonstone.nightmare_base_redemption_down_and_out": "Complete a failed raid",
-
-  "advancements.tooltip.nightmare_base_reversal_card.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_reversal_card.hand": "Reversal Reversal",
-  "advancements.tooltip.nightmare_base_reversal_mysterious.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_reversal_mysterious.hand": "Mysterious Corpse",
-  "advancements.tooltip.nightmare_base_reversal_orb.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_reversal_orb.hand": "Poor Acting",
-  "advancements.tooltip.nightmare_base_reversal.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_reversal.hand": "Reincarnation",
-
-
-
-
-
-
-
-
-
-
-
-  "item.moonstone.nightmare_base_fool":"§4Fool's Danger",
-  "item.nightmare_base_fool.tool.string": "Starting from 2 pieces, each additional accessory will reduce health by 1%",
-  "item.nightmare_base_fool.tool.string.1": "Starting from 5 pieces, each additional accessory will reduce damage by 2%",
-  "item.nightmare_base_fool.tool.string.2": "Damage and health penalty of 50% or less.",
-
-  "advancements.tooltip.nightmare_base_fool.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_fool.hand": "Choice",
-
-  "item.moonstone.nightmare_base_fool_betray":"§4Possession Pendant",
-  "item.nightmare_base_fool_betray.tool.string": "Makes some types of nearby creatures actively ally with you",
-  "item.nightmare_base_fool_betray.tool.string.1": "Allying creatures gain positive BUFFs consistent with you",
-  "item.nightmare_base_fool_betray.tool.string.2": "The master of the possessed servant loses 10% of maximum health",
-  "item.nightmare_base_fool_betray.tool.string.3": "Cooldown increases by 5 seconds for each target possessed",
-  "advancements.tooltip.nightmare_base_fool_betray.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_fool_betray.hand": "Why is this",
-
-
-  "item.moonstone.nightmare_base_fool_bone":"§4Dangerous Skull",
-  "item.nightmare_base_fool_bone.tool.string": "If a creature's attack target is you",
-  "item.nightmare_base_fool_bone.tool.string.1": "Then your damage to it is doubled",
-  "item.nightmare_base_fool_bone.tool.string.2": "And attacks have a 30% chance to break the invincibility frame",
-  "advancements.tooltip.nightmare_base_fool_bone.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_fool_bone.hand": "Do slimes have bones?",
-
-
-  "item.moonstone.nightmare_base_fool_soul":"§4Wraith Soul",
-  "item.nightmare_base_fool_soul.tool.string": "Fool's Danger damage penalty judgment increased from 5 to 14",
-  "item.nightmare_base_fool_soul.tool.string.1": "Fool's Danger life penalty judgment increased from 2 to 9",
-  "item.nightmare_base_fool_soul.tool.string.2": "Each accessory worn increases healing by 3%",
-  "item.nightmare_base_fool_soul.tool.string.3": "Each Nightmare accessory increases health by 6",
-  "advancements.tooltip.nightmare_base_fool_soul.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_fool_soul.hand": "River of History",
-
-  "moonstone.jei.item.moonstone.nightmare_base_fool_betray": "Kill the Ender Dragon",
-  "moonstone.jei.item.moonstone.nightmare_base_fool_bone": "Kill the Guardian",
-  "moonstone.jei.item.moonstone.nightmare_base_fool_soul": "Kill the Wither",
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  "item.moonstone.nightmare_base_insight":"§4Nightmare Insight",
-  "item.nightmare_base_insight.tool.string": "Reduce the enchantment level of enchanted items by 1",
-  "item.nightmare_base_insight.tool.string.1": "Reduce the enchantment level of enchanted items by 50%",
-
-  "advancements.tooltip.nightmare_base_insight.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_insight.hand": "The Pain of Stagnation",
-
-  "item.moonstone.nightmare_base_insight_drug":"§4Madness Potion",
-  "item.nightmare_base_insight_drug.tool.string": "Damage, armor, health increase by 100%",
-  "item.nightmare_base_insight_drug.tool.string.1": "But for each accessory worn, this bonus will decrease by 8%",
-  "advancements.tooltip.nightmare_base_insight_drug.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_insight_drug.hand": "Eternal Life",
-
-  "item.moonstone.nightmare_base_insight_insane":"§4Insanity Stone",
-  "item.nightmare_base_insight_insane.tool.string": "When you slay a creature",
-  "item.nightmare_base_insight_insane.tool.string.1": "Restore health based on the intensity of the slain creature",
-  "item.nightmare_base_insight_insane.tool.string.2": "And the damage of the next attack increases by 150%",
-  "advancements.tooltip.nightmare_base_insight_insane.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_insight_insane.hand": "War God Stone",
-
-
-  "item.moonstone.nightmare_base_insight_collapse":"§4Destruction Mirror",
-  "item.nightmare_base_insight_collapse.tool.string": "Double the number of universal accessory slots",
-  "advancements.tooltip.nightmare_base_insight_collapse.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_insight_collapse.hand": "Strength of Collapse",
-
-
-
-  "item.moonstone.nightmare_axe":"nightmare axe",
-  "item.nightmare_axe.tool.string": "Kill creatures to summon the Chaos Battle Axe",
-  "item.nightmare_axe.tool.string.1": "For each nearby Chaos Waraxe:",
-  "item.nightmare_axe.tool.string.2": "+25% damage",
-  "item.nightmare_axe.tool.string.3": "+25% heal",
-
-
-
   "curios.identifier.crystal": "crystal",
   "curios.identifier.stone": "stone",
-
-
-  "item.moonstone.nightmare_base_start":"§4Beginning of Nightmare",
-  "item.nightmare_base_start.tool.string": "Armor is nullified",
-  "item.nightmare_base_start.tool.string.1": "Every time you take damage, it forcibly reduces 1 health point",
-  "advancements.tooltip.nightmare_base_start.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_start.hand": "The 'Immortal'",
-
-  "item.moonstone.nightmare_base_start_pod":"§4Immortal Bud",
-  "item.nightmare_base_start_pod.tool.string": "Resistance increased by 20%",
-  "advancements.tooltip.nightmare_base_start_pod.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_start_pod.hand": "Immortal Flower, Immortal Fruit",
-
-
-  "item.moonstone.nightmare_base_start_egg":"§4Origin Egg",
-  "item.nightmare_base_start_egg.tool.string": "Luck +10",
-  "item.nightmare_base_start_egg.tool.string.1": "All damage +20%",
-  "item.nightmare_base_start_egg.tool.string.2": "Healing +50%",
-
-  "advancements.tooltip.nightmare_base_start_egg.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_start_egg.hand": "A lazy egg",
-
-  "item.moonstone.nightmare_base_start_power":"§4Astonishing Power",
-  "item.nightmare_base_start_power.tool.string": "For each positive potion effect present",
-  "item.nightmare_base_start_power.tool.string.1": "All your attributes increase by 2%",
-  "advancements.tooltip.nightmare_base_start_power.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base_start_power.hand": "Strength of Collapse",
-
-  "moonstone.jei.item.moonstone.nightmare_base_insight_drug": "Complete all tasks in the medicine box",
-  "moonstone.jei.item.moonstone.nightmare_base_insight_insane": "Die or jump into the End portal to return to the Overworld",
-  "moonstone.jei.item.moonstone.nightmare_base_insight_collapse": "Kill the Ender Dragon",
-
-
-  "moonstone.jei.item.moonstone.nightmare_base_start_power": "Kill the Guardian",
-  "moonstone.jei.item.moonstone.nightmare_base_start_egg": "Kill the Sniffer",
-  "moonstone.jei.item.moonstone.nightmare_base_start_pod": "Open dungeon chests, 25% chance, can only get one",
-
-
-
 
 
 
@@ -1992,8 +1689,6 @@
   "moonstone.twelve.10": "酉",
   "moonstone.twelve.11": "戌",
   "moonstone.twelve.12": "亥",
-  "advancements.tooltip.nightmare_base.text": "Obtain this item",
-  "advancements.tooltip.nightmare_base.hand": "Beginning",
   "item.moonstone.coffin":"葬神棺",
 
 
@@ -2003,6 +1698,671 @@
 
 
 
+  "itemGroup.moonstone": "Seeking Immortals: Nightmare Chapter",
+  "attrib.moonstone.critical": "Critical Hit",
+
+  "moonstone.jei.necora.giant_nightmare.all": "Requires wearing Nightmare Giant genetic fragment to be found in treasure loot",
+
+  "moonstone.jei.nightmare": ": Requires wearing nightmare eye to be found in dungeons and mines",
+  "curios.identifier.nightmare": "Nightmare Slot",
+  "curios.modifiers.nightmare": "When undergoing the Nightmare Baptism",
+  "moonstone.super_nightmare.name": "Only those wearing the Nightmare Base",
+  "moonstone.super_nightmare.name.1": "can use this item",
+  "item.nightmareeye.tool.string.2": "Cannot be removed",
+
+
+  "item.moonstone.blood_god":" Divine Blood Ancestor Talisman",
+  "item.blood_god.tool.string.1": "Increases maximum health by 25%",
+  "item.blood_god.tool.string.2": "Increases health regeneration by 40%",
+  "item.blood_god.tool.string.3": "Increases the speed of drinking potions by 25%",
+  "item.blood_god.tool.string.4": "You take up to 5 damage",
+  "item.blood_god.tool.string.5": "Damage over 5 will be converted to an equal amount of bleeding",
+  "item.blood_god.tool.string.6": "Drinking healing potions reduces bleeding damage to 50% of its original value",
+  "item.blood_god.tool.string.7": "Drinking potion reduces bleed damage to 95% of its original size",
+  "item.blood_god.tool.string.8": "30 second cooldown",
+
+  "moonstone.jei.item.moonstone.blood_god": "Requires 500 kills, 5000 healing, 10000 damage dealt",
+  "item.blood_god.tool.string.9": "Removed the Curse of Death",
+  "moonstone.configuration.神血祖符": "Divine blood ancestral talisman",
+  "moonstone.config.blood_god_kill": "Number of kills required",
+  "moonstone.configuration.blood_god_kill": "Divine Blood Ancestor Talisman - Kill",
+  "moonstone.config.blood_god_heal": "Number of treatments needed",
+  "moonstone.configuration.blood_god_heal": "Divine Blood Ancestor Talisman - Healing",
+
+  "moonstone.config.blood_god_damage": "The amount of damage that needs to be done",
+  "moonstone.configuration.blood_god_damage": "Divine Blood Ancestor Talisman - Damage",
+
+
+  "attribute.name.moonstone.allattack": "universalDamage",
+  "attribute.name.moonstone.cit": "criticalDamage",
+  "attribute.name.moonstone.heal": "healing",
+  "attribute.name.moonstone.dig": "diggingSpeed",
+
+  "item.moonstone.lotus":"混沌尊骨",
+
+
+  "item.moonstone.wolf":"Lonely Wolf",
+  "item.wolf.tool.string": "Killing each type of creature will increase your life and armor by 1 point",
+  "item.wolf.tool.string.1": "You deal an additional 25% damage to creatures you have previously killed",
+  "item.wolf.tool.string.2": "Mark nearby units that you have patrolled",
+  "item.wolf.tool.string.3": "Each time you are injured, the damage is transferred to them; if a unit dies, the item enters a 5-second cooldown",
+  "moonstone.item.kill": "You haven't worn it yet, you haven't killed a creature",
+  "advancements.tooltip.wolf.text": "Obtain this item",
+  "advancements.tooltip.wolf.hand": "One Leaf Boat",
+  "moonstone.jei.item.moonstone.wolf": "Have your wolf kill the Warden",
+
+
+
+
+  "item.moonstone.nightmare_base": "Nightmare Base",
+  "item.nightmare_base.tool.string": "-30% damage,health,armor",
+  "item.nightmare_base.tool.string.1": "Evil Thought Antimony, Blood Cruel Lead, Malicious Mourning Nullification",
+
+  "item.moonstone.nightmare_base_stone": "Deadly Obelisk",
+  "item.nightmare_base_stone.tool.string": "Damage taken increases by 500% when health is full",
+  "item.nightmare_base_stone.tool.string.2": "10 seconds cooling",
+  "item.nightmare_base_stone.tool.string.1": "But you can unlock the following items",
+  "item.moonstone.nightmare_base_stone_meet": "Despair Resonance",
+  "item.moonstone.ectoplasmstar.nightmare_base_stone_meet": "Double luck, and each point of luck increases healing by 2.5%",
+  "item.moonstone.nightmare_base_stone_virus": "Nightecora Virus",
+  "item.nightmare_base_stone_virus.tool.string": "Damage increases by 100%",
+  "item.nightmare_base_stone_virus.tool.string.1": "Healing increases by 100%",
+  "item.nightmare_base_stone_virus.tool.string.2": "Critical hit chance increases by 100%",
+  "item.nightmare_base_stone_virus.tool.string.3": "Any damage received will additionally inflict a penalty of 25% of the maximum health, unaffected by any bonuses",
+
+  "item.moonstone.nightmare_base_stone_brain": "Apocalypse Brain",
+  "item.nightmare_base_stone_brain.tool.string": "Damage reduced by 100% when at full health",
+  "item.nightmare_base_stone_brain.tool.string.1": "Damage increased by 50% when not at full health",
+  "item.nightmare_base_stone_brain.tool.string.2": "Resistance increased by 50% when not at full health",
+
+  "item.moonstone.nightmare_base_black_eye": "Evil Eye of Insight",
+  "item.nightmare_base_black_eye.tool.string": "Blurred vision from the injury that recovers over time",
+  "item.nightmare_base_black_eye.tool.string.1": "But you can unlock the following items",
+  "item.moonstone.nightmare_base_black_eye_eye": "Dreadful Tumor",
+  "item.nightmare_base_black_eye_eye.tool.string": "Creatures under your gaze will be unable to move",
+  "item.nightmare_base_black_eye_eye.tool.string.1": "They will also receive a large amount of negative BUFFs",
+  "item.nightmare_base_black_eye_eye.tool.string.2": "When you look at any creature, you will gain a 25% damage bonus",
+
+  "item.moonstone.nightmare_base_black_eye_red": "Sinful Red Lip",
+  "item.nightmare_base_black_eye_red.tool.string": "Killing creatures increases all attributes by 5%",
+  "item.nightmare_base_black_eye_red.tool.string.1": "Up to a maximum increase of 50%",
+  "item.nightmare_base_black_eye_red.tool.string.2": "These attributes will decrease over time",
+
+  "item.moonstone.nightmare_base_black_eye_heart": "Heart of Despair",
+  "item.nightmare_base_black_eye_heart.tool.string": "Nearby creatures take 25% more damage",
+  "item.nightmare_base_black_eye_heart.tool.string.1": "They will restore health to you",
+  "item.nightmare_base_black_eye_heart.tool.string.2": "And they will no longer receive any healing",
+
+
+  "advancements.tooltip.nightmare_base_stone.text": "Obtain the Obelisk of Death",
+  "advancements.tooltip.nightmare_base_stone.hand": "Obelisk of Nightmares",
+
+  "advancements.tooltip.nightmare_base_black_eye_heart.text": "Obtain the Embryo of Death",
+  "advancements.tooltip.nightmare_base_black_eye_heart.hand": "Endless pain",
+
+  "advancements.tooltip.nightmare_base_black_eye_eye.text": "Get sarcoma",
+  "advancements.tooltip.nightmare_base_black_eye_eye.hand": "Unknown factor",
+
+  "advancements.tooltip.nightmare_base_black_eye_red.text": "Get this lipstick",
+  "advancements.tooltip.nightmare_base_black_eye_red.hand": "That's exciting!" ,
+
+  "advancements.tooltip.nightmare_base_stone_meet.text": "Get Desperate Resonance",
+  "advancements.tooltip.nightmare_base_stone_meet.hand": "Nightmare descends",
+
+  "advancements.tooltip.nightmare_base_stone_brain.text": "Get the Brain of the End Times",
+  "advancements.tooltip.nightmare_base_stone_brain.hand": "Crazy Brain",
+
+  "advancements.tooltip.nightmare_base_black_eye.text": "Gain the Eyes of Evil Thoughts",
+  "advancements.tooltip.nightmare_base_black_eye.hand": "Forever Staring",
+
+  "advancements.tooltip.nightmare_base_stone_virus.text": "Get Nightecora virus",
+  "advancements.tooltip.nightmare_base_stone_virus.hand": "fusion",
+  "item.moonstone.nightmare_virus":"nightmare virus",
+
+  "item.moonstone.nightmare_base_reversal":"Reversal Object",
+
+  "item.nightmare_base_reversal.tool.string": "Every death reduces attributes to 0%",
+  "item.nightmare_base_reversal.tool.string.2": "Attributes gradually recover at a rate of 4% per second after resurrection",
+  "item.nightmare_base_reversal.tool.string.3": "Poison is fatal for you",
+
+  "item.moonstone.nightmare_base_reversal_orb": "Reversal Orb",
+  "item.nightmare_base_reversal_orb.tool.string": "Healing will only reduce health",
+  "item.nightmare_base_reversal_orb.tool.string.2": "Resets health to full every 10 seconds",
+
+  "item.moonstone.nightmare_base_reversal_card": "Unstable Card",
+  "item.nightmare_base_reversal_card.tool.string": "The speed of attribute recovery during each resurrection is reduced to 2%",
+  "item.nightmare_base_reversal_card.tool.string.2": "But can only recover up to 150% of the original",
+
+  "item.moonstone.nightmare_base_reversal_mysterious": "Mysterious Object",
+  "item.nightmare_base_reversal_mysterious.tool.string": "Suppress the negative effects of the Nightmare Base at the cost of reducing all attributes by 10%",
+
+
+  "moonstone.jei.item.moonstone.nightmare_base.all": ", requires wearing:",
+
+  "moonstone.jei.item.moonstone.nightmare_base_black_eye_heart": "Trigger the Undying Totem acquisition when the following conditions are met: Poisoned, Withering, Slowness, Blindness, and on Fire",
+  "moonstone.jei.item.moonstone.nightmare_base_black_eye_eye": "Kill the Guardian",
+  "moonstone.jei.item.moonstone.nightmare_base_black_eye_red": "Found in Ancient Cities, about 5% chance",
+
+  "moonstone.jei.item.moonstone.nightmare_base_stone_brain": "Kill Zombies to obtain materials, but only one of this material can be obtained",
+  "moonstone.jei.item.moonstone.nightmare_base_stone_meet": "Kill the Ender Dragon",
+  "moonstone.jei.item.moonstone.nightmare_base_stone_virus": "Triggered by receiving Withering damage to get an Undying Totem",
+
+  "moonstone.jei.item.moonstone.nightmare_base_reversal_card": "Kill the Ender Dragon",
+  "moonstone.jei.item.moonstone.nightmare_base_reversal_mysterious": "Open chests in Ancient Cities while wearing Reversal Orb, 100% chance, but can only obtain one",
+  "moonstone.jei.item.moonstone.nightmare_base_reversal_orb": "Kill yourself with poison damage from the Reversal Object",
+
+  "item.moonstone.nightmare_base_redemption":"'Redemption'",
+  "item.nightmare_base_redemption.tool.string": "Increase 15% decay of Nightmare Base attributes",
+  "advancements.tooltip.nightmare_base_redemption.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_redemption.hand": "Rumor",
+
+  "item.moonstone.nightmare_base_redemption_deception":"Deception",
+  "item.nightmare_base_redemption_deception.tool.string": "Resist lethal damage, restore all health",
+  "item.nightmare_base_redemption_deception.tool.string.1": "And gain 7 seconds of invincibility and calm the rage of nearby creatures, cooldown 60 seconds",
+  "advancements.tooltip.nightmare_base_redemption_deception.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_redemption_deception.hand": "Sealed Rumor",
+
+
+  "item.moonstone.nightmare_base_redemption_degenerate":"Degeneration",
+  "item.nightmare_base_redemption_degenerate.tool.string": "Immune to magic damage",
+  "item.nightmare_base_redemption_degenerate.tool.string.1": "Immune to fall damage",
+  "item.nightmare_base_redemption_degenerate.tool.string.2": "Immune to fire damage",
+  "advancements.tooltip.nightmare_base_redemption_degenerate.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_redemption_degenerate.hand": "Song of Shadows",
+
+
+  "item.moonstone.nightmare_base_redemption_down_and_out":"Down and Out",
+  "item.nightmare_base_redemption_down_and_out.tool.string": "Reduce 35% decay of Nightmare Base attributes, if it drops to negative, it turns into a positive attribute increase",
+  "advancements.tooltip.nightmare_base_redemption_down_and_out.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_redemption_down_and_out.hand": "River of History",
+
+  "moonstone.jei.item.moonstone.nightmare_base_redemption_deception": "Kill 100 Pillagers under an ominous sign",
+  "moonstone.jei.item.moonstone.nightmare_base_redemption_degenerate": "Kill 100 Villagers under the Village Hero effect",
+  "moonstone.jei.item.moonstone.nightmare_base_redemption_down_and_out": "Complete a failed raid",
+
+  "advancements.tooltip.nightmare_base_reversal_card.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_reversal_card.hand": "Reversal Reversal",
+  "advancements.tooltip.nightmare_base_reversal_mysterious.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_reversal_mysterious.hand": "Mysterious Corpse",
+  "advancements.tooltip.nightmare_base_reversal_orb.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_reversal_orb.hand": "Poor Acting",
+  "advancements.tooltip.nightmare_base_reversal.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_reversal.hand": "Reincarnation",
+
+
+
+
+  "item.moonstone.end_bone":"End Bone",
+  "item.end_bone.tool.string": "Reduces speed by 50% and damage received by 80% when at full health",
+  "item.end_bone.tool.string.1": "When at full health, damage received is reflected back to the attacker at 700% of the original amount",
+
+  "advancements.tooltip.end_bone.text": "Obtain this item",
+  "advancements.tooltip.end_bone.hand": "Unbreakable!",
+
+  "moonstone.jei.item.moonstone.end_bone": "Obtained by killing the Guardian, one player can only get one",
+
+
+
+
+
+
+
+
+
+  "item.moonstone.nightmare_base_fool":"Fool's Danger",
+  "item.nightmare_base_fool.tool.string": "Starting from 2 pieces, each additional accessory will reduce health by 1%",
+  "item.nightmare_base_fool.tool.string.1": "Starting from 5 pieces, each additional accessory will reduce damage by 2%",
+  "item.nightmare_base_fool.tool.string.2": "Damage and health penalty of 50% or less.",
+
+  "advancements.tooltip.nightmare_base_fool.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_fool.hand": "Choice",
+
+  "item.moonstone.nightmare_base_fool_betray":"Possession Pendant",
+  "item.nightmare_base_fool_betray.tool.string": "Makes some types of nearby creatures actively ally with you",
+  "item.nightmare_base_fool_betray.tool.string.1": "Allying creatures gain positive BUFFs consistent with you",
+  "item.nightmare_base_fool_betray.tool.string.2": "The master of the possessed servant loses 10% of maximum health",
+  "item.nightmare_base_fool_betray.tool.string.3": "Cooldown increases by 5 seconds for each target possessed",
+  "advancements.tooltip.nightmare_base_fool_betray.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_fool_betray.hand": "Why is this",
+
+
+  "item.moonstone.nightmare_base_fool_bone":"Dangerous Skull",
+  "item.nightmare_base_fool_bone.tool.string": "If a creature's attack target is you",
+  "item.nightmare_base_fool_bone.tool.string.1": "Then your damage to it is doubled",
+  "item.nightmare_base_fool_bone.tool.string.2": "And attacks have a 30% chance to break the invincibility frame",
+  "advancements.tooltip.nightmare_base_fool_bone.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_fool_bone.hand": "Do slimes have bones?",
+
+
+  "item.moonstone.nightmare_base_fool_soul":"Wraith Soul",
+  "item.nightmare_base_fool_soul.tool.string": "Fool's Danger damage penalty judgment increased from 5 to 14",
+  "item.nightmare_base_fool_soul.tool.string.1": "Fool's Danger life penalty judgment increased from 2 to 9",
+  "item.nightmare_base_fool_soul.tool.string.2": "Each accessory worn increases healing by 3%",
+  "item.nightmare_base_fool_soul.tool.string.3": "Each Nightmare accessory increases health by 6",
+  "advancements.tooltip.nightmare_base_fool_soul.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_fool_soul.hand": "River of History",
+
+  "moonstone.jei.item.moonstone.nightmare_base_fool_betray": "Kill the Ender Dragon",
+  "moonstone.jei.item.moonstone.nightmare_base_fool_bone": "Kill the Guardian",
+  "moonstone.jei.item.moonstone.nightmare_base_fool_soul": "Kill the Wither",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  "item.moonstone.nightmare_base_insight":"Nightmare Insight",
+  "item.nightmare_base_insight.tool.string": "Reduce the enchantment level of enchanted items by 1",
+  "item.nightmare_base_insight.tool.string.1": "Reduce the enchantment level of enchanted items by 50%",
+
+  "advancements.tooltip.nightmare_base_insight.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_insight.hand": "The Pain of Stagnation",
+
+  "item.moonstone.nightmare_base_insight_drug":"Madness Potion",
+  "item.nightmare_base_insight_drug.tool.string": "Damage, armor, health increase by 100%",
+  "item.nightmare_base_insight_drug.tool.string.1": "But for each accessory worn, this bonus will decrease by 8%",
+  "advancements.tooltip.nightmare_base_insight_drug.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_insight_drug.hand": "Eternal Life",
+
+  "item.moonstone.nightmare_base_insight_insane":"Insanity Stone",
+  "item.nightmare_base_insight_insane.tool.string": "When you slay a creature",
+  "item.nightmare_base_insight_insane.tool.string.1": "Restore health based on the intensity of the slain creature",
+  "item.nightmare_base_insight_insane.tool.string.2": "And the damage of the next attack increases by 150%",
+  "advancements.tooltip.nightmare_base_insight_insane.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_insight_insane.hand": "War God Stone",
+
+
+  "item.moonstone.nightmare_base_insight_collapse":"Destruction Mirror",
+  "item.nightmare_base_insight_collapse.tool.string": "Double the number of universal accessory slots",
+  "advancements.tooltip.nightmare_base_insight_collapse.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_insight_collapse.hand": "Strength of Collapse",
+
+  "moonstone.jei.item.moonstone.nightmare_base_insight_drug": "Given when the player has 9 different positive potion statuses",
+  "moonstone.jei.item.moonstone.nightmare_base_insight_insane": "Die or jump into the End portal to return to the Overworld",
+  "moonstone.jei.item.moonstone.nightmare_base_insight_collapse": "Kill the Ender Dragon",
+
+
+
+  "item.moonstone.tricky_puppets": "Tricky Puppet",
+  "item.tricky_puppets.tool.string": "Allows you to mark container blocks within a radius of 20 blocks",
+  "item.tricky_puppets.tool.string.1": "Marked blocks will emit light as you get closer to them",
+  "item.tricky_puppets.tool.string.2": "You can see through blocks to them",
+  "advancements.tooltip.tricky_puppets.text": "Obtain this item",
+  "advancements.tooltip.tricky_puppets.hand": "Creak",
+  "moonstone.jei.item.moonstone.tricky_puppets": "Found in Woodland Mansions, probability 75%, one player can only obtain one",
+
+
+  "item.moonstone.apple": "Skewed Fruit",
+  "item.apple.tool.string": "Max Health is fixed at 30",
+  "item.apple.tool.string.1": "Damage taken is fixed at 2",
+  "item.apple.tool.string.2": "Attack damage is fixed at 10",
+
+  "advancements.tooltip.apple.text": "Obtain this item",
+  "advancements.tooltip.apple.hand": "Skewed Scale",
+  "moonstone.jei.item.moonstone.apple": "Obtained by killing a creature with health greater than 30 times your max health, only one per player",
+
+
+
+  "item.moonstone.ring": "Soul Memory Potion Ring",
+  "item.ring.tool.string": "Eternal Power, Resistance, Health Regeneration, Urgency, Health Boost",
+  "item.ring.tool.string.1": "For every 3rd level or higher potion effect obtained",
+  "item.ring.tool.string.2": "Reduce potion duration by 10%",
+  "item.ring.tool.string.3": "When any potion effect ends, you will recover 4 health points",
+  "item.ring.tool.string.4": "If the potion effect is negative, recover 10% of your max health",
+
+  "advancements.tooltip.ring.text": "Obtain this item",
+  "advancements.tooltip.ring.hand": "An inch of time is worth an inch of gold",
+  "moonstone.jei.item.moonstone.ring": "Triggers the Totem of the Undead when more than 10 negative buffs are obtained, only one per player",
+
+  "item.moonstone.immortal": " Seal of Immortal Reincarnation",
+  "item.immortal.tool.string": "80% chance to evade and reflect 50% of damage to the attacker",
+  "item.immortal.tool.string.1": "If the attacker is >70%, reflect 150% of the damage and break the invincibility frame",
+  "item.immortal.tool.string.2": "Apply a Withered Buff to nearby mobs every 5 seconds, up to a maximum of level 5",
+  "item.immortal.tool.string.3": "Applied creatures have 20% less Resistance, Armor, Heal, and 5% Damage, Movement Speed, Attack Speed per level",
+  "item.immortal.tool.string.4": "If you are killed, deal 20% of the attacker's current health as piercing damage and add level 10 Wither (10s)",
+  "item.immortal.tool.string.5": "Abyss and Nightmare items neutralized",
+  "item.immortal.tool.string.6": "It is rumored that a person who wields the power of the cycle of life and death...",
+  "item.immortal.tool.string.7": "Простовання простовання...",
+  "item.immortal.tool.string.8": "But... At what cost? ",
+  "effect.moonstone.dead": "decay",
+  "effect.moonstone.bone_god": "Death mark",
+
+  "advancements.tooltip.immortal.text": "“I've long been tired of reincarnation again and again”",
+  "advancements.tooltip.immortal.hand": "Step into reincarnation",
+
+
+
+  "item.moonstone.candle": "Evil Ancient Candle",
+  "item.candle.tool.string": "Increases damage taken by 1000% when at full health",
+  "item.candle.tool.string.1": "But always retains 1 health point",
+  "item.candle.tool.string.2": "Gains invincibility protection based on damage taken at full health",
+  "item.candle.tool.string.3": "Gain 0.05 seconds of invincibility for every 10 health points (not exceeding 5 seconds)",
+  "item.candle.tool.string.4": "During any period of invincibility protection",
+  "item.candle.tool.string.5": "Increases damage and healing by 100%",
+  "item.candle.tool.string.6": "Exempts from injury penalties of the Death Omen Obelisk",
+  "advancements.tooltip.candle.text": "Fix Death Omen's curse, but at what cost?",
+  "advancements.tooltip.candle.hand": "Eternal Agony",
+  "moonstone.jei.item.moonstone.candle": "Crafting to obtain",
+
+  "item.moonstone.nightmare_axe":"nightmare axe",
+  "item.nightmare_axe.tool.string": "Kill creatures to summon the Chaos Battle Axe",
+  "item.nightmare_axe.tool.string.1": "For each nearby Chaos Waraxe:",
+  "item.nightmare_axe.tool.string.2": "+25% damage",
+  "item.nightmare_axe.tool.string.3": "+25% heal",
+
+
+
+
+  "item.moonstone.hypocritical_self_esteem":"Hypocritical Self-Esteem",
+  "item.hypocritical_self_esteem.tool.string": "You will gain the following boosts for each entity nearby.",
+  "item.hypocritical_self_esteem.tool.string.1": "If you have suffered the curse of Malevolent Gaze.. then:",
+  "item.hypocritical_self_esteem.tool.string.2": "   Bite nearby creatures, dealing 20% of your displayed damage every 0.5 seconds",
+  "item.hypocritical_self_esteem.tool.string.3": "   Damage increases by 20% for each additional target",
+  "item.hypocritical_self_esteem.tool.string.4": "   Each bite will absorb health from the target and weaken them",
+  "advancements.tooltip.hypocritical_self_esteem.text": "Obtain this item",
+  "advancements.tooltip.hypocritical_self_esteem.hand": "Do not destroy the self-esteem of the weak",
+  "moonstone.jei.item.moonstone.hypocritical_self_esteem": "In the presence of withered state, deliver the final blow to the Ender Dragon with an empty hand; only one player can obtain it",
+
+
+  "item.moonstone.nightmare_base_start":"Beginning of Nightmare",
+  "item.nightmare_base_start.tool.string": "Armor is nullified",
+  "item.nightmare_base_start.tool.string.1": "Every time you take damage, it forcibly reduces 1 health point",
+  "item.nightmare_base_start.tool.string.2": "Does not trigger when the health is below 10",
+  "advancements.tooltip.nightmare_base_start.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_start.hand": "The 'Immortal'",
+
+  "item.moonstone.nightmare_base_start_pod":"Immortal Bud",
+  "item.nightmare_base_start_pod.tool.string": "Resistance increased by 20%",
+  "advancements.tooltip.nightmare_base_start_pod.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_start_pod.hand": "Immortal Flower, Immortal Fruit",
+
+
+  "item.moonstone.nightmare_base_start_egg":"Origin Egg",
+  "item.nightmare_base_start_egg.tool.string": "Luck +10",
+  "item.nightmare_base_start_egg.tool.string.1": "All damage +20%",
+  "item.nightmare_base_start_egg.tool.string.2": "Healing +50%",
+
+  "advancements.tooltip.nightmare_base_start_egg.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_start_egg.hand": "A lazy egg",
+
+  "item.moonstone.nightmare_base_start_power":"Astonishing Power",
+  "item.nightmare_base_start_power.tool.string": "For each positive potion effect present",
+  "item.nightmare_base_start_power.tool.string.1": "All your attributes increase by 2%",
+  "advancements.tooltip.nightmare_base_start_power.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base_start_power.hand": "Strength of Collapse",
+
+  "moonstone.jei.item.moonstone.nightmare_base_start_power": "Kill the Guardian",
+  "moonstone.jei.item.moonstone.nightmare_base_start_egg": "Kill the Sniffer",
+  "moonstone.jei.item.moonstone.nightmare_base_start_pod": "Open dungeon chests, 25% chance, can only get one",
+
+  "advancements.tooltip.nightmare_base.text": "Obtain this item",
+  "advancements.tooltip.nightmare_base.hand": "Beginning",
+
+  "item.moonstone.disintegrating_stone":" Split Stone",
+  "item.disintegrating_stone.tool.string": "This item's stats increase as you install more mods",
+  "item.disintegrating_stone.tool.string.1": "Cosmetic items from any mod will be neutralized",
+  "item.disintegrating_stone.tool.string.2": "The upper limit is 1800%",
+  "advancements.tooltip.disintegrating_stone.text": "Get this item",
+  "advancements.tooltip.disintegrating_stone.hand": "The sky is falling apart",
+  "item.moonstone.eye":"Evil Eyes",
+  "item.eye.tool.string.1": "Tear the creatures you look at, weaken them and restore your health",
+  "item.eye.tool.string.2": "Assuming you are at full health at the time of the bite, the excess recovered health will be stored in the item",
+  "item.eye.tool.string.3": "When you take critical damage and have more than 200% of your Max Health",
+  "item.eye.tool.string.4": "Consume all your health and avoid this death incidentally restoring you to full health",
+  "item.eye.tool.string.5": "stored blood",
+  "item.eye.tool.string.6": "You need to look at mobs to get blood",
+
+
+
+  "item.moonstone.falling_immortals":"Falling Immortals",
+  "item.falling_immortals.tool.string.1": "You will no longer be subject to any form of property bonus or reduction",
+  "item.falling_immortals.tool.string.2": "damage fixed at 15",
+  "item.falling_immortals.tool.string.3": "Attack speed fixed at 4",
+  "item.falling_immortals.tool.string.4":"Max health is fixed at 30",
+  "item.falling_immortals.tool.string.5":"Damage taken is fixed at 2",
+  "item.falling_immortals.tool.string.6":"Armor is fixed at 10",
+
+  "moonstone.jei.item.moonstone.falling_immortals": "While wearing the Tilted Fruit, the Eye of Ender is held in the main hand to kill the withering (in fact, it will directly replace the Tilted Fruit with the Fallen Immortal)",
+  "advancements.tooltip.falling_immortals.text": "Obtain this item",
+  "advancements.tooltip.falling_immortals.hand": "The extinguishing of the flame of hope",
+
+  "item.moonstone.hidden_blade":" Hidden Blade",
+  "item.hidden_blade.tool.string.1": "Strike back when hit",
+  "item.hidden_blade.tool.string.2": "Critical Hit for 3 seconds after attack",
+  "item.hidden_blade.tool.string.3": "Attack Speed Increases Gradually While Dealing Non-Critical Damage",
+  "item.hidden_blade.tool.string.4": "Damage gradually increases as critical damage is dealt",
+  "advancements.tooltip.hidden_blade.text": "Obtain this item",
+  "advancements.tooltip.hidden_blade.hand": "Unknown Blade",
+  "effect.moonstone.blade": "edge",
+  "effect.moonstone.hidden": "hidden",
+  "effect.moonstone.invulnerable": "invulnerable",
+
+
+  "effect.moonstone.the_yoke_of_war": "yoke of war",
+  "item.moonstone.yoke": " shackles",
+  "moonstone.element.name": "Press ALT to view features",
+  "item.nightmare_base.element.string": "Supports devouring elements of:",
+  "item.yoke.tool.string": "Every 10 Elements of Destiny grants a level 1 Shackles of War buff",
+
+  "item.yoke.tool.string.1": "Increases damage by 10% and speed by 5% per level",
+  "item.yoke.tool.string.2": "Reduces armor and health by 10% per level",
+
+
+  "item.moonstone.muddy_jewels":" Muddy Jewels",
+  "item.muddy_jewels.tool.string.1": "Weakens 100% of the curse of the peep of evil thoughts",
+  "item.muddy_jewels.tool.string.2": "35% less perception of color",
+  "moonstone.jei.item.moonstone.muddy_jewels": "Kill the wither",
+
+  "advancements.tooltip.muddy_jewels.text": "Obtain this item",
+  "advancements.tooltip.muddy_jewels.hand": "Misty checkerboarder",
+
+
+  "moonstone.configuration.噩梦": "Nightmare",
+  "moonstone.configuration.无名邪眼": "Unnamed Evil Eye",
+  "moonstone.configuration.不朽轮回之印章": "Seal of Immortal Cycle",
+  "moonstone.configuration.裂天石": "Sky Splitting Stone",
+  "moonstone.configuration.邪念之窥眸": "Evil Thought Glimpse",
+  "moonstone.configuration.死兆方尖碑": "Death Omen Obelisk",
+  "moonstone.configuration.愚者之危": "Fool's Dilemma",
+  "moonstone.configuration.噩梦洞悉者": "Nightmare Insight",
+  "moonstone.configuration.“救赎”": "“Redemption”",
+  "moonstone.configuration.颠倒之物": "Reversal",
+  "moonstone.configuration.噩梦之起始": "Nightmare Origin",
+
+
+  "moonstone.configuration.nightmare_": "Nightmare",
+  "moonstone.configuration.Nightecora_": "Nightecora Virus",
+  "moonstone.configuration.nightmare_base_redemption_deception": "Deception",
+  "moonstone.configuration.nightmare_base_redemption_deception_time": "Deception 2",
+  "moonstone.configuration.nightmare_base_fool_bone_": "Fool's Dangerous Skull",
+  "moonstone.configuration.nightmare_base_insight_drug_": "Crazy Potion",
+  "moonstone.configuration.nightmare_base_insight_drug_2": "Crazy Potion 2",
+  "moonstone.configuration.nightmare_base_insight_insane_": "Madness Stone",
+  "moonstone.configuration.eye": "Unnamed Evil Eye",
+  "moonstone.configuration.immortal_": "Seal of Immortal Cycle",
+  "moonstone.configuration.disintegrating_stone": "Sky Splitting Stone",
+  "moonstone.configuration.nightmare_base_black_eye": "Evil Thought Glimpse",
+  "moonstone.configuration.nightmare_base_stone": "Death Omen Obelisk",
+  "moonstone.configuration.nightmare_base_fool": "Fool's Dilemma",
+  "moonstone.configuration.nightmare_base_insight": "Nightmare Insight",
+  "moonstone.configuration.nightmare_base_redemption": "Redemption",
+  "moonstone.configuration.nightmare_base_reversal": "Reversal",
+  "moonstone.configuration.nightmare_base_start": "Nightmare Origin",
+
+  "moonstone.config.nightmareBaseMaxItem": "The number of sins 'Nightmare Base' gives to the player",
+  "moonstone.config.Nightecora": "Extra life value penalty from Nightecora virus, unit: percentage",
+  "moonstone.config.nightmare_base_redemption_deception": "Health restored by 'Deception', unit: percentage",
+  "moonstone.config.nightmare_base_redemption_deception_time": "Health restored by 'Deception', unit: seconds",
+  "moonstone.config.nightmare_base_fool_bone": "Additional damage caused by Fool's Dangerous Skull, '2' is double",
+  "moonstone.config.nightmare_base_insight_drug": "Maximum attribute boost of Crazy Potion, unit: percentage",
+  "moonstone.config.nightmare_base_insight_drug_2": "Attribute decay per single item of Crazy Potion, unit: percentage",
+  "moonstone.config.nightmare_base_insight_insane": "Damage boost after killing a creature with Madness Stone, unit: percentage",
+  "moonstone.config.eye": "Soul extraction speed of 'Unnamed Evil Eye', 10 is 0.5 seconds, 20 is 1 second, unit: ticks",
+  "moonstone.config.immortal": "Probability of counterattack of Seal of Immortal Cycle",
+  "moonstone.config.disintegrating_stone": "Value given by a single module of Sky Splitting Stone",
+  "moonstone.config.nightmare_base_black_eye": "Near-sightedness effect switch",
+  "moonstone.config.nightmare_base_stone": "Damage received when injured at full health",
+  "moonstone.config.nightmare_base_fool": "Maximum penalty value, 0.5 is 50%",
+  "moonstone.config.nightmare_base_insight": "Enchantment reduction value",
+  "moonstone.config.nightmare_base_redemption": "Attribute decay ratio",
+  "moonstone.config.nightmare_base_reversal": "Minimum value reduced per death",
+  "moonstone.config.nightmare_base_start": "Armor value penalty",
+
+  "moonstone.config.give_nightmare_base_insight_drug": "The number of potions required to get the elixir of madness",
+
+  "moonstone.config.nightmare_base_black_eye_eye": "Sarcoma visual damage caused by creature",
+  "moonstone.config.nightmare_base_fool_soul": "Health bonus per cosmetic item",
+  "moonstone.config.nightmare_base_fool_soul2": "Healing bonus per cosmetic item",
+
+  "moonstone.config.ring": "potion level",
+
+  "moonstone.config.hypocritical_self_esteem": "Maximum number of claims",
+
+  "moonstone.config.candle": "Damage Ratio",
+  "moonstone.config.candle2": "Proportion of treatment",
+  "moonstone.config.candle3": "maximum invincibility duration",
+
+  "moonstone.config.wolf": "Check Radius",
+
+  "moonstone.configuration.惶恐肉瘤": "Fear of sarcoma",
+  "moonstone.configuration.幽怨之魂": "The soul of grievances",
+  "moonstone.configuration.灵念药戒": "Spiritual recitation of medicine",
+  "moonstone.configuration.虚伪的自尊": "Hypocritical self-esteem",
+  "moonstone.configuration.邪异古烛": "Evil is different from ancient candles",
+  "moonstone.configuration.孤狼": "Lone wolf",
+
+  "item.moonstone.defend_against_runestone":" Defend against runestone",
+  "item.defend_against_runestone.tool.string.1": "Has a chance to gain Resistance II when hit",
+  "item.defend_against_runestone.tool.string.2": "Chance to inflict Weakness II on the target when attacking",
+
+  "item.nightmare_base.tool.string.do": "HOWEVER........",
+
+
+
+  "item.moonstone.bone_or_god":" Blood Sacrifice Skull",
+  "item.bone_or_god.tool.string": "Any mob that tries to apply a negative buff to you will reap the consequences",
+  "item.bone_or_god.tool.string.1":"Immunity Negative Potion Status",
+  "item.bone_or_god.tool.string.2": "Pet attacks add 10% of the owner's panel damage",
+  "item.bone_or_god.tool.string.3":"Pet damage increased by 200%",
+  "item.bone_or_god.tool.string.4": "Pet resistance increased by 50%",
+  "item.bone_or_god.tool.string.5":"If the pet attached object does not attack the target, it will slowly restore health",
+  "moonstone.configuration.血祭神颅": "Blood sacrifice of the skull",
+  "moonstone.config.bone_or_god_give": "Number of pets killed",
+
+
+
+  "moonstone.jei.item.moonstone.bone_or_god": "Kill 100 pets to obtain",
+
+  "item.moonstone.revive_runestone":" Revive Runestone",
+  "item.moonstone.evil_thought_bone":"Evil thought bone",
+  "item.evil_thought_bone.tool.string": "Double the creature loot",
+
+  "item.moonstone.blood_ring":" sacrificial blood ring",
+  "item.blood_ring.tool.string.1": "Press R to sacrifice 50% of your current health",
+  "item.blood_ring.tool.string.2": "Gain for every 1 health sacrifice",
+  "item.blood_ring.tool.string.3": "damage, armor, speed and attackSpeed",
+  "item.blood_ring.tool.string.4": "The more health the sacrifice, the longer it lasts",
+  "item.blood_ring.tool.string.5": "The more sacrifices made at full health, the more rewards this item will have",
+  "moonstone.jei.item.moonstone.blood_ring": "受到3000点伤后害获取",
+  "moonstone.configuration.献祭血戒": "献祭血戒",
+  "moonstone.config.blood_ring": "需要的数值",
+
+
+  "curse.moonstone.evil_thought_bone.string": "The higher the hatred level of this item, the better the amplification",
+  "curse.moonstone.evil_thought_bone.string.do": "Increases by 1 level for every 800 critical damage dealt",
+  "curse.moonstone.evil_thought_bone.string.1": "2",
+  "curse.moonstone.evil_thought_bone.string.2": "2.5",
+  "curse.moonstone.evil_thought_bone.string.3": "3",
+  "curse.moonstone.evil_thought_bone.string.4": "3.5",
+  "attribute.name.moonstone.effect_number": "Number of potions to carry",
+  "key.moonstone.r": "Activate cosmetic ability",
+  "key.moonstone": "Seeking Immortals",
+  "item.nightmare_base_stone_meet.tool.string": "Aim at the creature and press the R key to hit",
+  "item.nightmare_base_stone_meet.tool.string.1": "Damage 10% of your health plus 2",
+
+  "item.moonstone.biochemistry":"The biochemistry",
+  "item.biochemistry.tool.string.1": "Drink 3 times when the vial is full",
+  "item.biochemistry.tool.string.2": "Each sin worn increases capacity",
+  "item.biochemistry.tool.string.3": "Press R to drink the potion in the bottle",
+  "item.biochemistry.tool.string.4": "to increase healing, speed, maximum health, and attack speed",
+  "item.biochemistry.tool.string.5": "restore 40% health at the same time",
+  "item.biochemistry.tool.string.6": "killing a creature may restore the amount of potion in the bottle",
+  "item.biochemistry.tool.string.7": "The more potions you drink, the better the attribute bonus and the longer it lasts",
+  "item.biochemistry.tool.string.8": "current attribute:",
+  "item.biochemistry.tool.string.9": "current duration:",
+  "item.biochemistry.tool.string.10": "It can also be drunk",
+  "item.biochemistry.tool.string.11": "The number of potions recovers over time",
+  "moonstone.jei.item.moonstone.biochemistry": "受到7000点伤害后获取",
+  "moonstone.configuration.刺鼻不死药": "刺鼻不死药",
+  "moonstone.config.biochemistry": "需要的数值",
+
+  "item.moonstone.crazy_drug":".Crazy immortality elixir",
+  "item.crazy_drug.tool.string.1": "Drink 10 times when the vial is full",
+  "item.crazy_drug.tool.string.2":"Each sin you wear increases capacity",
+  "item.crazy_drug.tool.string.3": "Press R to drink the potion in the bottle",
+  "item.crazy_drug.tool.string.4":"Increases damage, armor, speed, healing, attack speed, and maximum health",
+  "item.crazy_drug.tool.string.5": "Restores 10% of health at the same time",
+  "item.crazy_drug.tool.string.6":"But every drink reduces the cleanliness of the potion in the bottle",
+  "item.crazy_drug.tool.string.7": "Reduces attribute bonuses with no lower limit every time",
+  "item.crazy_drug.tool.string.8": "The cleanliness of the elixir slowly recovers over time",
+  "item.crazy_drug.tool.string.9":"The more potions you drink, the better the attribute bonus",
+  "item.crazy_drug.tool.string.15": "Current bonus",
+  "item.crazy_drug.tool.string.14": "Cooling",
+  "item.crazy_drug.tool.string.10":"Current attribute bonus:",
+  "item.crazy_drug.tool.string.11":"Cleanliness Reduction Per Current Reduction:",
+  "item.crazy_drug.tool.string.12":"Current Duration:",
+  "item.crazy_drug.tool.string.13": "How many times can you drink it:",
+  "moonstone.jei.item.moonstone.crazy_drug": "Get a full bottle of pungent immortals",
+  "advancements.tooltip.crazy_drug.text": "Obtain this item",
+  "advancements.tooltip.crazy_drug.hand": "Greedy for an insatiable death",
+  "item.revive_runestone.tool.string.1": "Damage Absorbs Chance Injury",
+  "item.revive_runestone.tool.string.2": "Attack has a chance to drain life",
+  "curse.moonstone.string": "Cursed",
+
+  "item.moonstone.strengthen_runestone":" Strengthen_Runestone",
+  "item.strengthen_runestone.tool.string.1": "Attack has a chance to gain Strength II",
+  "item.strengthen_runestone.tool.string.2": "Damage has a chance to reflect damage",
+
+  "item.moonstone.alchemy_pot":"Alchemy crucible",
+  "item.alchemy_pot.tool.string": "Press SHIFT to see some information",
+  "item.alchemy_pot.tool.string.1": "Right-click on the backpack interface to save the potion, and the status of the potion will take effect when worn",
+  "item.alchemy_pot.tool.string.2": "4 types can be deposited and an additional 30 seconds of validity time",
+  "item.alchemy_pot.tool.string.3": "The potion will lose its effect after training in the crucible",
+  "item.alchemy_pot.tool.string.4": "You can save a bucket in the backpack interface to clear potions",
+  "item.moonstone.vientiane_cauldron":"Vientiane cauldron",
+  "item.vientiane_cauldron.tool.string.1": "Deposited potion level plus one",
+  "item.vientiane_cauldron.tool.string.2": "Deposited potions are doubled in duration",
+  "item.vientiane_cauldron.tool.string.3": "Killing a creature will fill the potion for duration based on the amount of health of the killed creature",
+  "item.moonstone.concentrate":" Demon Blood Juice Ball",
+  "item.concentrate.tool.string.1": "Permanently add 2 universal cosmetic slots after eating",
+  "item.moonstone.concentrate.tool": "I don't want to eat this thing again!" ,
+  "item.moonstone.the_divine_fall_ring":" Divine Fall: Ring of Apocalypse",
+  "item.the_divine_fall_ring.tool.string.1": "Take it and you will be immune to darkness",
+  "item.the_divine_fall_ring.tool.string.2": "Take it and you will be immune to blindness",
+  "item.the_divine_fall_ring.tool.string.3": "Increase experience drops by 100%",
+  "item.the_divine_fall_ring.tool.string.4": "Increases damage by ten Life Armor",
+  "item.the_divine_fall_ring.tool.string.5": "Grant 10 seconds of invincibility on revive",
+  "item.the_divine_fall_ring.tool.string.6": "increase healing by 50%",
+  "item.the_divine_fall_ring.tool.string.7": "The lower the health, the higher the stats in all aspects",
+
+  "moonstone.jei.item.moonstone.defend_against_runestone": "Found in dungeons and mines, 10% chance, one player can only get one",
+  "moonstone.jei.item.moonstone.revive_runestone": "Found in dungeons and mines, 10% chance, one player can only get one",
+  "moonstone.jei.item.moonstone.strengthen_runestone": "Found in dungeons and mines, 10% chance, only one player can get one",
+
+  "item.eye.tool.string.7": "Strip the soul of the creature you are looking at",
+  "item.eye.tool.string.8": "Souls fly towards you, dealing a lot of debuffs and 4 magic damage if they hit a mob",
 
 
   "item.moonstone.owner_blood_earth":"Qiankun",

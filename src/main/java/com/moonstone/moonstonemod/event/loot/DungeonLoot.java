@@ -3,9 +3,8 @@ package com.moonstone.moonstonemod.event.loot;
 import com.google.common.base.Suppliers;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.moonstone.moonstonemod.Config;
+import com.ytgld.seeking_immortals.Config;
 import com.moonstone.moonstonemod.Handler;
-import com.moonstone.moonstonemod.event.old.AdvancementEvt;
 import com.moonstone.moonstonemod.event.old.BookEvt;
 import com.moonstone.moonstonemod.event.old.NewEvent;
 import com.moonstone.moonstonemod.init.items.BookItems;
@@ -17,6 +16,7 @@ import com.moonstone.moonstonemod.init.moonstoneitem.i.Iplague;
 import com.moonstone.moonstonemod.item.man.ManDNA;
 import com.moonstone.moonstonemod.item.man.greed_dna;
 import com.moonstone.moonstonemod.item.maxitem.book.the_blood_book;
+import com.ytgld.seeking_immortals.event.old.AdvancementEvt;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
@@ -96,8 +96,39 @@ public class DungeonLoot extends LootModifier {
             }
         }
     }
+    public void give(ObjectArrayList<ItemStack> generatedLoot,
+                     Entity entity,
+                     int lv,String name,
+                     Item must,
+                     Item give){
+        if (entity instanceof Player player ){
+            if (com.ytgld.seeking_immortals.Handler.hascurio(player, must)) {
+                CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
+                    Map<String, ICurioStacksHandler> curios = handler.getCurios();
+                    for (Map.Entry<String, ICurioStacksHandler> entry : curios.entrySet()) {
+                        ICurioStacksHandler stacksHandler = entry.getValue();
+                        IDynamicStackHandler stackHandler = stacksHandler.getStacks();
+                        for (int i = 0; i < stacksHandler.getSlots(); i++) {
+                            ItemStack stack = stackHandler.getStackInSlot(i);
+                            if (stack.is(must)) {
+                                if (Mth.nextInt(RandomSource.create(), 1, 100) <= lv) {
+                                    if (stack.get(com.ytgld.seeking_immortals.init.DataReg.tag) != null) {
+                                        if (!stack.get(com.ytgld.seeking_immortals.init.DataReg.tag).getBoolean(name)) {
+                                            generatedLoot.add(new ItemStack(give));
+                                            stack.get(com.ytgld.seeking_immortals.init.DataReg.tag).putBoolean(name, true);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
     @Override
     protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
+
         ResourceLocation s = context.getQueriedLootTableId();
         String idSting = String.valueOf(s);
         Entity entity = context.getParamOrNull(LootContextParams.THIS_ENTITY);
@@ -105,10 +136,6 @@ public class DungeonLoot extends LootModifier {
 
         if (idSting.contains("chests/")) {
             if (idSting.contains("ancient")) {
-                AdvancementEvt.addLoot(generatedLoot,entity,5);
-                AdvancementEvt.nightmare_base_reversal_mysteriousLOOT(generatedLoot,entity);
-
-
                 addLoot(generatedLoot, random, Items.blood_candle.get(), entity, List.of(
                         Items.owner_blood_eye.get(),
                         Items.owner_blood_attack_eye.get(),
@@ -137,9 +164,7 @@ public class DungeonLoot extends LootModifier {
                         Items.cell_scientist.get()
                 ), Config.SERVER.bat.get());
             }
-            if (idSting.contains("dungeon")) {
-                AdvancementEvt.nightmare_base_start_pod(generatedLoot, entity);
-            }
+
             if (idSting.contains("dungeon") || idSting.contains("mineshaft") || idSting.contains("city")||idSting.contains("treasure")) {
                 ManDNA.addLoot(generatedLoot,entity,Config.SERVER.lootMan.get());
 
@@ -363,6 +388,32 @@ public class DungeonLoot extends LootModifier {
         }
         if (entity instanceof Player player) {
             the_blood_book.tryDoLoot(generatedLoot, player);
+        }
+        {
+            if (idSting.contains("chests/")) {
+                if (idSting.contains("ancient")) {
+                    AdvancementEvt.addLoot(generatedLoot, entity, 5);
+                    AdvancementEvt.nightmare_base_reversal_mysteriousLOOT(generatedLoot, entity);
+
+                }
+            }
+
+            if (idSting.contains("chests/")){
+                if (idSting.contains("dungeon")||idSting.contains("mansion")){
+                    this.give(generatedLoot,entity,10,"defend_against_runestone", com.ytgld.seeking_immortals.init.Items.nightmare_base.get(), com.ytgld.seeking_immortals.init.Items.defend_against_runestone.get());
+                    this.give(generatedLoot,entity,10,"revive_runestone", com.ytgld.seeking_immortals.init.Items.nightmare_base.get(), com.ytgld.seeking_immortals.init.Items.revive_runestone.get());
+                    this.give(generatedLoot,entity,10,"strengthen_runestone", com.ytgld.seeking_immortals.init.Items.nightmare_base.get(), com.ytgld.seeking_immortals.init.Items.strengthen_runestone.get());
+                }
+            }
+
+            if (idSting.contains("chests/")) {
+                if (idSting.contains("dungeon")) {
+                    AdvancementEvt.nightmare_base_start_pod(generatedLoot, entity);
+                }
+                if (idSting.contains("mansion")) {
+                    AdvancementEvt.tricky_puppets(generatedLoot, entity);
+                }
+            }
         }
         return generatedLoot;
     }

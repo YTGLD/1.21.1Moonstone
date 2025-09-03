@@ -1,15 +1,13 @@
 package com.moonstone.moonstonemod.entity.client;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
-import com.moonstone.moonstonemod.ConfigClient;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.client.renderer.MoonPost;
 import com.moonstone.moonstonemod.entity.owner_blood;
+import com.ytgld.seeking_immortals.ClientConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.BakedQuad;
@@ -26,7 +24,6 @@ import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.client.model.IQuadTransformer;
@@ -41,8 +38,6 @@ import java.nio.IntBuffer;
 import java.util.List;
 
 import static net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY;
-import static org.lwjgl.opengl.GL11C.GL_ONE_MINUS_SRC_ALPHA;
-import static org.lwjgl.opengl.GL11C.GL_SRC_ALPHA;
 
 public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
     public OwnerBloodRenderer(EntityRendererProvider.Context p_173917_) {
@@ -57,7 +52,7 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
     @Override
     public void render(owner_blood entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
         super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
-        if (ConfigClient.Client.Shader.get()) {
+        if (com.ytgld.seeking_immortals.ClientConfig.CLIENT_CONFIG.Shader.get()) {
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
         }
         double x = Mth.lerp(p_114487_, entity.xOld, entity.getX());
@@ -66,9 +61,6 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
         if (entity.hasTrail()) {
             poseStack.pushPose();
             poseStack.translate(-x, -y, -z);
-            if (ConfigClient.Client.light.get()) {
-                setMatrices(poseStack, bufferSource, entity);
-            }
             renderTrail(entity, p_114487_, poseStack, bufferSource, 220/255f, 20/255f, 60/255f, 240);
             poseStack.popPose();
         }

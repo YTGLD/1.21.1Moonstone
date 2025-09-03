@@ -1,0 +1,41 @@
+{
+  "parent": "moonstone:seeking_immortals/nightmare_base_start",
+  "criteria": {
+    "wolf": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "moonstone:wolf"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tooltip.wolf.text"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "moonstone:wolf"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tooltip.wolf.hand"
+    }
+  },
+  "requirements": [
+    [
+      "wolf"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

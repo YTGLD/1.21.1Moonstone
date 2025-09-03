@@ -7,7 +7,6 @@ import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.AttReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.ectoplasm;
-import com.moonstone.moonstonemod.item.nightmare.super_nightmare.nightmare_base_stone_meet;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
@@ -24,67 +23,7 @@ import top.theillusivec4.curios.api.SlotContext;
 import java.util.List;
 
 public class ectoplasmstar extends ectoplasm {
-    @Override
-    public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
-        if (slotContext.entity() instanceof Player player) {
-            if (!player.level().isClientSide) {
-                slotContext.entity().getAttributes().addTransientAttributeModifiers(att(player));
-                slotContext.entity().getAttributes().addTransientAttributeModifiers(att2(player));
-            }
-        }
-    }
 
-    @Override
-    public void curioTick(SlotContext slotContext, ItemStack stack) {
-        if (slotContext.entity() instanceof Player player) {
-            if (Handler.hascurio(player, Items.nightmare_base_stone_meet.get())){
-                if (stack.get(DataReg.tag) != null) {
-                    stack.get(DataReg.tag).putBoolean(nightmare_base_stone_meet.curse,true);
-                }else {
-                    stack.set(DataReg.tag,new CompoundTag());
-                }
-            }
-
-        }
-    }
-
-    @Override
-    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
-        if (slotContext.entity() instanceof Player player) {
-            if (!Handler.hascurio(player, Items.nightmare_base_stone_meet.get())){
-                if (stack.get(DataReg.tag) != null) {
-                    stack.get(DataReg.tag).putBoolean(nightmare_base_stone_meet.curse,false);
-                }else {
-                    stack.set(DataReg.tag,new CompoundTag());
-                }
-            }
-            slotContext.entity().getAttributes().removeAttributeModifiers(att(player));
-            slotContext.entity().getAttributes().removeAttributeModifiers(att2(player));
-        }
-    }
-
-    public Multimap<Holder<Attribute>, AttributeModifier> att(Player player){
-        Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
-        int s = 20;
-        if (Handler.hascurio(player, Items.nightmare_base_stone_meet.get())){
-            s*=2;
-        }
-
-        modifierMultimap.put(Attributes.LUCK, new AttributeModifier(ResourceLocation.withDefaultNamespace("ectoplasmstar"), s, AttributeModifier.Operation.ADD_VALUE));
-        return modifierMultimap;
-    }
-    public Multimap<Holder<Attribute>, AttributeModifier> att2(Player player){
-        Multimap<Holder<Attribute>, AttributeModifier> modifierMultimap = HashMultimap.create();
-        float s = player.getLuck();
-        s /= 100;
-        if (Handler.hascurio(player, Items.nightmare_base_stone_meet.get())){
-            modifierMultimap.put(AttReg.heal, new AttributeModifier(ResourceLocation.withDefaultNamespace("ectoplasmstar"), s*2.5f, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        }
-
-        modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.withDefaultNamespace("ectoplasmstar"), s/2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        modifierMultimap.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.withDefaultNamespace("ectoplasmstar"), s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        return modifierMultimap;
-    }
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);

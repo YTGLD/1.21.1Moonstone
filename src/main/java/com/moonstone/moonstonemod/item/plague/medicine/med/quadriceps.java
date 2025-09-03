@@ -2,7 +2,7 @@ package com.moonstone.moonstonemod.item.plague.medicine.med;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.moonstone.moonstonemod.Config;
+import com.ytgld.seeking_immortals.Config;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.medIC;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.medicinebox;
 import net.minecraft.ChatFormatting;

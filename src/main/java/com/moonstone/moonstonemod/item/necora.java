@@ -136,7 +136,7 @@ public class necora extends TheNecoraIC {
                 return true;
             }
         }
-        return com.moonstone.moonstonemod.Config.SERVER.canUnequipMoonstoneItem.get();
+        return com.ytgld.seeking_immortals.Config.SERVER.canUnequipMoonstoneItem.get();
     }
 
 

@@ -1,0 +1,41 @@
+{
+  "parent": "moonstone:seeking_immortals/falling_immortals",
+  "criteria": {
+    "yoke": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "moonstone:yoke"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tooltip.yoke.text"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "moonstone:yoke"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tooltip.yoke.hand"
+    }
+  },
+  "requirements": [
+    [
+      "yoke"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": true
+}

@@ -7,7 +7,6 @@ import com.moonstone.moonstonemod.entity.zombie.cell_giant;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.item.nightmare.Nightmare;
-import com.moonstone.moonstonemod.item.nightmare.super_nightmare.SuperNightmare;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
@@ -163,22 +162,10 @@ public class Handler {
                     }
                 }
                 if (CuriosApi.getCuriosInventory(player).isPresent()
-                        && !CuriosApi.getCuriosInventory(player).get().isEquipped(Items.nightmare_base.get())) {
-                    if (curio instanceof SuperNightmare) {
-                        return false;
-                    }
-                }
-                if (CuriosApi.getCuriosInventory(player).isPresent()
                         && (!CuriosApi.getCuriosInventory(player).get().isEquipped(Items.nightmareeye.get())
                         && !CuriosApi.getCuriosInventory(player).get().isEquipped(Items.evil_mob.get()))
                 ) {
                     if (curio instanceof Nightmare) {
-                        return false;
-                    }
-                }
-                if (CuriosApi.getCuriosInventory(player).isPresent()
-                        && CuriosApi.getCuriosInventory(player).get().isEquipped(Items.nightmare_base.get())) {
-                    if (curio == Items.evil_mob.get() || curio == Items.god_lead.get() || curio == Items.malice_die.get()) {
                         return false;
                     }
                 }

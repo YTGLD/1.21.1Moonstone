@@ -3,7 +3,7 @@ package com.moonstone.moonstonemod.entity.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import com.moonstone.moonstonemod.ConfigClient;
+import com.ytgld.seeking_immortals.ClientConfig;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.client.renderer.MoonPost;
@@ -99,7 +99,7 @@ public class TheSwordRender extends EntityRenderer<the_sword> {
     @Override
     public void render(the_sword entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
         super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
-        if (ConfigClient.Client.Shader.get()) {
+        if (com.ytgld.seeking_immortals.ClientConfig.CLIENT_CONFIG.Shader.get()) {
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
         }
         if (entity.getTarget()!=null) {
@@ -163,9 +163,6 @@ public class TheSwordRender extends EntityRenderer<the_sword> {
         if (entity.hasTrail()) {
             poseStack.pushPose();
             poseStack.translate(-x, -y, -z);
-            if (ConfigClient.Client.light.get()) {
-                setMatrices(poseStack, bufferSource, entity,integer);
-            }
             renderTrail(entity, p_114487_, poseStack, bufferSource, 152/255f, 245/255f, 255/255f, 240);
             poseStack.popPose();
         }

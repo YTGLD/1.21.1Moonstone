@@ -8,7 +8,6 @@ import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.UnCommonItem;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Die;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Iwar;
-import com.moonstone.moonstonemod.item.nightmare.super_nightmare.nightmare_base_stone_meet;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -26,36 +25,8 @@ public class mayhemcrystal extends UnCommonItem  implements Iwar , Die {
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, ResourceLocation id, ItemStack stack) {
         Multimap<Holder<Attribute>, AttributeModifier>modifierMultimap = HashMultimap.create();
         float s  = 0.3f;
-        if (Handler.hascurio(slotContext.entity(), Items.nightmare_base_stone_meet.get())){
-            s*=1.5f;
-        }
         modifierMultimap.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(id, s, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         return modifierMultimap;
-    }
-    @Override
-    public void curioTick(SlotContext slotContext, ItemStack stack) {
-        if (slotContext.entity() instanceof Player player) {
-            if (Handler.hascurio(player, Items.nightmare_base_stone_meet.get())){
-                if (stack.get(DataReg.tag) != null) {
-                    stack.get(DataReg.tag).putBoolean(nightmare_base_stone_meet.curse,true);
-                }else {
-                    stack.set(DataReg.tag,new CompoundTag());
-                }
-            }
-        }
-    }
-
-    @Override
-    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
-        if (slotContext.entity() instanceof Player player) {
-            if (!Handler.hascurio(player, Items.nightmare_base_stone_meet.get())){
-                if (stack.get(DataReg.tag) != null) {
-                    stack.get(DataReg.tag).putBoolean(nightmare_base_stone_meet.curse,false);
-                }else {
-                    stack.set(DataReg.tag,new CompoundTag());
-                }
-            }
-        }
     }
 }
 

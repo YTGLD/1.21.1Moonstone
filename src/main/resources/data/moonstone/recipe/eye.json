@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:ender_eye"
+    },
+    {
+      "tag": "curios:nightmare"
+    },
+    {
+      "tag": "curios:nightmare"
+    },
+    {
+      "tag": "curios:nightmare"
+    },
+    {
+      "tag": "curios:nightmare"
+    },
+    {
+      "tag": "curios:nightmare"
+    },
+    {
+      "tag": "curios:nightmare"
+    }
+  ],
+  "result": {
+    "id": "moonstone:eye",
+    "count": 1
+  }
+}

@@ -5,10 +5,11 @@ import com.moonstone.moonstonemod.book;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.BloodItem;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.apple;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.medicinebox;
-import com.moonstone.moonstonemod.item.*;
 import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
 import com.moonstone.moonstonemod.item.blood.magic.undead_blood_charm;
+import com.moonstone.moonstonemod.item.bloodvirus;
+import com.moonstone.moonstonemod.item.coffin;
 import com.moonstone.moonstonemod.item.ectoplasm.*;
 import com.moonstone.moonstonemod.item.ectoplasm.soul.soulbattery;
 import com.moonstone.moonstonemod.item.ectoplasm.soul.soulcube;
@@ -23,8 +24,8 @@ import com.moonstone.moonstonemod.item.maxitem.rage.*;
 import com.moonstone.moonstonemod.item.maxitem.uncommon.common.*;
 import com.moonstone.moonstonemod.item.maxitem.uncommon.magnet;
 import com.moonstone.moonstonemod.item.nanodoom.*;
+import com.moonstone.moonstonemod.item.necora;
 import com.moonstone.moonstonemod.item.nightmare.*;
-import com.moonstone.moonstonemod.item.nightmare.super_nightmare.*;
 import com.moonstone.moonstonemod.item.plague.ALL.*;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.Skill.batskill;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.*;
@@ -39,6 +40,7 @@ import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.me.watergen;
 import com.moonstone.moonstonemod.item.plague.TheNecora.god.*;
 import com.moonstone.moonstonemod.item.plague.crafting_box;
 import com.moonstone.moonstonemod.item.plague.medicine.med.*;
+import com.moonstone.moonstonemod.item.universe;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -250,43 +252,6 @@ public class Items {
     public static final DeferredHolder<Item,?> owner_blood_effect_eye =REGISTRY.register("owner_blood_effect_eye", BloodItem::new);
     public static final DeferredHolder<Item,?> owner_blood_vex =REGISTRY.register("owner_blood_vex", BloodItem::new);
     public static final DeferredHolder<Item,?> owner_blood_earth =REGISTRY.register("owner_blood_earth", BloodItem::new);
-    public static final DeferredHolder<Item,?> nightmare_base_black_eye =REGISTRY.register("nightmare_base_black_eye", nightmare_base_black_eye::new);
-    public static final DeferredHolder<Item,?> nightmare_base =REGISTRY.register("nightmare_base", nightmare_base::new);
-
-    public static final DeferredHolder<Item,?> nightmare_base_black_eye_eye =REGISTRY.register("nightmare_base_black_eye_eye", nightmare_base_black_eye_eye::new);
-    public static final DeferredHolder<Item,?> nightmare_base_black_eye_heart =REGISTRY.register("nightmare_base_black_eye_heart", nightmare_base_black_eye_heart::new);
-
-    public static final DeferredHolder<Item,?> nightmare_base_black_eye_red =REGISTRY.register("nightmare_base_black_eye_red", nightmare_base_black_eye_red::new);
-    public static final DeferredHolder<Item,?> nightmare_base_stone =REGISTRY.register("nightmare_base_stone", nightmare_base_stone::new);
-    public static final DeferredHolder<Item,?> nightmare_base_stone_meet =REGISTRY.register("nightmare_base_stone_meet", nightmare_base_stone_meet::new);
-
-    public static final DeferredHolder<Item,?> nightmare_base_stone_virus =REGISTRY.register("nightmare_base_stone_virus", nightmare_base_stone_virus::new);
-    public static final DeferredHolder<Item,?> nightmare_base_stone_brain =REGISTRY.register("nightmare_base_stone_brain", nightmare_base_stone_brain::new);
-
-    public static final DeferredHolder<Item,?> nightmare_virus =REGISTRY.register("nightmare_virus", nightmare_virus::new);
-    public static final DeferredHolder<Item,?> nightmare_base_reversal =REGISTRY.register("nightmare_base_reversal", nightmare_base_reversal::new);
-
-    public static final DeferredHolder<Item,?> nightmare_base_reversal_orb =REGISTRY.register("nightmare_base_reversal_orb", nightmare_base_reversal_orb::new);
-    public static final DeferredHolder<Item,?> nightmare_base_reversal_card =REGISTRY.register("nightmare_base_reversal_card", nightmare_base_reversal_card::new);
-    public static final DeferredHolder<Item,?> nightmare_base_reversal_mysterious =REGISTRY.register("nightmare_base_reversal_mysterious", nightmare_base_reversal_mysterious::new);
-
-    public static final DeferredHolder<Item,?> nightmare_base_redemption =REGISTRY.register("nightmare_base_redemption", nightmare_base_redemption::new);
-    public static final DeferredHolder<Item,?> nightmare_base_redemption_deception =REGISTRY.register("nightmare_base_redemption_deception", nightmare_base_redemption_deception::new);
-    public static final DeferredHolder<Item,?> nightmare_base_redemption_degenerate =REGISTRY.register("nightmare_base_redemption_degenerate", nightmare_base_redemption_degenerate::new);
-    public static final DeferredHolder<Item,?> nightmare_base_redemption_down_and_out =REGISTRY.register("nightmare_base_redemption_down_and_out", nightmare_base_redemption_down_and_out::new);
-    public static final DeferredHolder<Item,?> nightmare_base_fool =REGISTRY.register("nightmare_base_fool", nightmare_base_fool::new);
-    public static final DeferredHolder<Item,?> nightmare_base_fool_soul =REGISTRY.register("nightmare_base_fool_soul", nightmare_base_fool_soul::new);
-    public static final DeferredHolder<Item,?> nightmare_base_fool_bone =REGISTRY.register("nightmare_base_fool_bone", nightmare_base_fool_bone::new);
-    public static final DeferredHolder<Item,?> nightmare_base_fool_betray =REGISTRY.register("nightmare_base_fool_betray", nightmare_base_fool_betray::new);
-    public static final DeferredHolder<Item,?> nightmare_base_insight =REGISTRY.register("nightmare_base_insight", nightmare_base_insight::new);
-    public static final DeferredHolder<Item,?> nightmare_base_insight_drug =REGISTRY.register("nightmare_base_insight_drug", nightmare_base_insight_drug::new);
-    public static final DeferredHolder<Item,?> nightmare_base_insight_insane =REGISTRY.register("nightmare_base_insight_insane", nightmare_base_insight_insane::new);
-    public static final DeferredHolder<Item,?> nightmare_base_insight_collapse =REGISTRY.register("nightmare_base_insight_collapse", nightmare_base_insight_collapse::new);
-    public static final DeferredHolder<Item,?> nightmare_base_start =REGISTRY.register("nightmare_base_start", nightmare_base_start::new);
-    public static final DeferredHolder<Item,?> nightmare_base_start_pod =REGISTRY.register("nightmare_base_start_pod", nightmare_base_start_pod::new);
-    public static final DeferredHolder<Item,?> nightmare_base_start_egg =REGISTRY.register("nightmare_base_start_egg", nightmare_base_start_egg::new);
-
-    public static final DeferredHolder<Item,?> nightmare_base_start_power =REGISTRY.register("nightmare_base_start_power", nightmare_base_start_power::new);
     public static final DeferredHolder<Item,?> god_head =REGISTRY.register("god_head", god_head::new);
     public static final DeferredHolder<Item,?> nightmare_axe =REGISTRY.register("nightmare_axe", nightmare_axe::new);
     public static final DeferredHolder<Item,?> crafting_box =REGISTRY.register("crafting_box", crafting_box::new);

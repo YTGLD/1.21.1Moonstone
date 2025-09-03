@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+
+
     "moonstone:nightmare_base_black_eye",
     "moonstone:nightmare_base_black_eye_eye",
     "moonstone:nightmare_base_black_eye_heart",
@@ -28,6 +30,31 @@
     "moonstone:nightmare_base_start",
     "moonstone:nightmare_base_start_pod",
     "moonstone:nightmare_base_start_egg",
-    "moonstone:nightmare_base_start_power"
+    "moonstone:nightmare_base_start_power",
+    "moonstone:tricky_puppets",
+    "moonstone:end_bone",
+    "moonstone:candle",
+    "moonstone:apple",
+    "moonstone:ring",
+    "moonstone:hypocritical_self_esteem",
+    "moonstone:wolf",
+    "moonstone:eye",
+    "moonstone:falling_immortals",
+    "moonstone:muddy_jewels",
+    "moonstone:hidden_blade",
+
+    "moonstone:blood_god",
+    "moonstone:defend_against_runestone",
+    "moonstone:revive_runestone",
+    "moonstone:strengthen_runestone",
+    "moonstone:lotus",
+    "moonstone:evil_thought_bone",
+
+    "moonstone:blood_ring",
+    "moonstone:vientiane_cauldron",
+
+    "moonstone:bone_or_god",
+    "moonstone:yoke"
+
   ]
 }

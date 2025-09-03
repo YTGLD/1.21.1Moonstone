@@ -2,16 +2,14 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "moonstone:nightmare_head"
+      "item": "minecraft:nether_star"
     },
     {
-      "item": "moonstone:ectoplasmprism"
+      "item": "minecraft:dragon_head"
     },
     {
-      "item": "moonstone:maxamout"
+      "tag": "curios:nightmare"
     },
-
-
     {
       "tag": "curios:nightmare"
     },

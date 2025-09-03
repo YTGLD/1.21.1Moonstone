@@ -2,7 +2,7 @@ package com.moonstone.moonstonemod.entity.nightmare;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.moonstone.moonstonemod.ConfigClient;
+import com.ytgld.seeking_immortals.ClientConfig;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.client.renderer.MRender;
 import com.moonstone.moonstonemod.client.renderer.MoonPost;

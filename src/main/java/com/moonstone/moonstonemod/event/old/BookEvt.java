@@ -1,7 +1,7 @@
 package com.moonstone.moonstonemod.event.old;
 
 
-import com.moonstone.moonstonemod.Config;
+import com.ytgld.seeking_immortals.Config;
 import com.moonstone.moonstonemod.init.moonstoneitem.DataReg;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.*;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Die;

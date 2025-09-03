@@ -13,7 +13,6 @@ import com.moonstone.moonstonemod.init.moonstoneitem.i.INightmare;
 import com.moonstone.moonstonemod.init.moonstoneitem.i.Iplague;
 import com.moonstone.moonstonemod.item.man.ManDNA;
 import com.moonstone.moonstonemod.item.necora;
-import com.moonstone.moonstonemod.item.nightmare.super_nightmare.nightmare_base;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -82,33 +81,6 @@ public abstract class GuiGraphicsMixin {
                 }
                 MGuiGraphics.blit(guiGraphics, ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID, "textures/necora.png"), x - 8, y - 8, 0, 0, 32, 32, 32, 32, 1, 0, 0, s);
             }
-            if (stack.getItem() instanceof nightmare_base){
-                int tickCount = living.tickCount;
-
-
-
-                float[][] positions = {
-                        {x - 8/10f, y - 8/10f},
-                        {x + 24/10f, y - 8/10f},
-                        {x - 8/10f, y + 24/10f},
-                        {x + 24/10f, y + 24/10f},
-                        {x + 56/10f, y - 8/10f},
-                        {x + 56/10f, y + 24/10f},
-                        {x - 8/10f, y + 56/10f},
-                        {x + 24/10f, y + 56/10f},
-                        {x + 5/10f, y + 5/10f}
-                };
-                double[] alphaFactors = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0};
-                for (int i = 0; i < 9; i++) {
-                    float s = (float) Math.sin((double) tickCount / 50 * alphaFactors[i]);
-                    if (s < 0) {
-                        s = -s;
-                    }
-                    float red = 1 - (i/10f);
-                    MGuiGraphics.blit(guiGraphics, ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID, "textures/gui/necora_red.png"), positions[i][0]-6, positions[i][1]-6, 0, 0, 24, 24, 24, 24, red, 0, 1, s);
-                }
-            }
-
         }
     }
 

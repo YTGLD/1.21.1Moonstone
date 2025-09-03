@@ -50,7 +50,7 @@ public class nightmareeye extends nightmare {
                 return true;
             }
         }
-        return com.moonstone.moonstonemod.Config.SERVER.canUnequipMoonstoneItem.get();
+        return com.ytgld.seeking_immortals.Config.SERVER.canUnequipMoonstoneItem.get();
     }
 
     public static Multimap<Holder<Attribute>, AttributeModifier> un_un_pla(Player player, ItemStack stack) {

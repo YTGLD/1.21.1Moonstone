@@ -23,7 +23,6 @@ import com.moonstone.moonstonemod.item.maxitem.rage.*;
 import com.moonstone.moonstonemod.item.nanodoom.as_amout;
 import com.moonstone.moonstonemod.item.nanodoom.million;
 import com.moonstone.moonstonemod.item.nightmare.*;
-import com.moonstone.moonstonemod.item.nightmare.super_nightmare.*;
 import com.moonstone.moonstonemod.item.plague.ALL.dna;
 import com.moonstone.moonstonemod.item.plague.BloodVirus.dna.bat_cell;
 import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.giant_boom_cell;
@@ -111,12 +110,10 @@ public class NewEvent {
     }
     @SubscribeEvent
     public void LivingHealEvent(LivingHealEvent event) {
-        nightmare_base_reversal_orb.LivingHealEvent(event);
         nightmare_orb.nightmare_orb_heal(event);
          nightmare_head.LivingHealEvent(event);
         Enchants.threatHeal(event);
         DungeonLoot.heal(event);
-        nightmare_base_black_eye_heart.heal(event);
         nightmare_axe.heals(event);
         undead_blood_charm.LivingHealEvent(event);
         rage_lock.LivingHealEvent(event);
@@ -139,7 +136,6 @@ public class NewEvent {
     @SubscribeEvent
     public void LivingHealEvent(LivingDeathEvent event) {
         nightmare_heart.Nig(event);
-        nightmare_base_reversal.LivingDeathEvent(event);
         nightmare_head.LivingDeathEvent(event);
         max_eye.Die(event);
         blood_snake.Die(event);
@@ -151,8 +147,6 @@ public class NewEvent {
         dna.dieD(event);
         rage_blood_head.Did(event);
         sword_soul.evil(event);
-        nightmare_base_black_eye_red.kill(event);
-        nightmare_base_insight_insane.LivingDeathEvents(event);
         nightmare_axe.Nig(event);
         immortal.livDead(event);
         coffin.coffins(event);
@@ -203,16 +197,6 @@ public class NewEvent {
         million.hurt(event);
         nine_sword_book.att(event);
         book.hurt(event);
-        nightmare_base_stone_virus.h(event);
-        nightmare_base_black_eye_eye.attLook(event);
-        nightmare_base_black_eye_heart.hurt(event);
-        nightmare_base_stone.LivingHurtEvent(event);
-        nightmare_base_stone_brain.hurts(event);
-        nightmare_base_redemption_deception.LivingIncomingDamageEvent(event);
-        nightmare_base_fool_bone.attLook(event);
-        nightmare_base_insight_insane.damage(event);
-        nightmare_base_start.damage(event);
-        nightmare_base_start_pod.damage(event);
         nightmare_axe.att(event);
         immortal.hEvt(event);
         undead_blood_charm.LivingIncomingDamageEvent(event);
@@ -267,55 +251,10 @@ public class NewEvent {
         }
 
     }
-    @OnlyIn(Dist.CLIENT)
-    @SubscribeEvent
-    public void RenderTooltipEven4t(RenderTooltipEvent.Color tooltipEvent){
-         ItemStack stack =  tooltipEvent.getItemStack();
-         if (stack.is(Items.ectoplasmstar)){
-             if (stack.get(DataReg.tag)!=null){
-                 if (stack.get(DataReg.tag).getBoolean(nightmare_base_stone_meet.curse)){
-                     tooltipEvent.setBorderEnd(0xFFff70b2);
-                     tooltipEvent.setBorderStart(0xFFff70b2);
-
-                     tooltipEvent.setBackgroundEnd(0xFF230613);
-                     tooltipEvent.setBackgroundStart(0xFF230613);
-                 }
-             }
-         }
-        if (stack.is(Items.mayhemcrystal)){
-            if (stack.get(DataReg.tag)!=null){
-                if (stack.get(DataReg.tag).getBoolean(nightmare_base_stone_meet.curse)){
-                    tooltipEvent.setBorderEnd(0xFFff70b2);
-                    tooltipEvent.setBorderStart(0xFFff70b2);
-
-                    tooltipEvent.setBackgroundEnd(0xFF230613);
-                    tooltipEvent.setBackgroundStart(0xFF230613); }
-            }
-        }
-        if (stack.is(Items.maxamout)){
-            if (stack.get(DataReg.tag)!=null){
-                if (stack.get(DataReg.tag).getBoolean(nightmare_base_stone_meet.curse)){
-                    tooltipEvent.setBorderEnd(0xFFff70b2);
-                    tooltipEvent.setBorderStart(0xFFff70b2);
-
-                    tooltipEvent.setBackgroundEnd(0xFF230613);
-                    tooltipEvent.setBackgroundStart(0xFF230613);  }
-            }
-        }
-    }
     @SubscribeEvent
     public void Night(ItemTooltipEvent event) {
         ItemStack stack = event.getItemStack();
         Player player = event.getEntity();
-        if (stack.getItem() instanceof SuperNightmare){
-            if (!Handler.hascurio(player,Items.nightmare_base.get())) {
-                event.getToolTip().add(1, Component.literal(""));
-                event.getToolTip().add(1, Component.translatable("moonstone.super_nightmare.name").withStyle(ChatFormatting.DARK_RED));
-            }else {
-                event.getToolTip().add(1, Component.literal(""));
-                event.getToolTip().add(1, Component.translatable("moonstone.super_nightmare.name").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F))));
-            }
-        }
         if (stack.getItem() instanceof Nightmare){
             if (!Handler.hascurio(player,Items.nightmareeye.get())) {
                 event.getToolTip().add(1, Component.literal(""));
@@ -325,22 +264,6 @@ public class NewEvent {
                 event.getToolTip().add(1, Component.translatable("moonstone.nightmare.name").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0XFFCD853F))));
             }
         }
-
-        if (Handler.hascurio(player,Items.nightmare_base_stone_meet.get())){
-            if (stack.is(Items.ectoplasmstar)){
-                event.getToolTip().add(Component.translatable("item.moonstone.ectoplasmstar.nightmare_base_stone_meet").withStyle(ChatFormatting.DARK_RED));
-            }
-            if (stack.is(Items.mayhemcrystal)){
-                event.getToolTip().add(Component.translatable("item.moonstone.ectoplasmstar.mayhemcrystal").withStyle(ChatFormatting.DARK_RED));
-
-            }
-            if (stack.is(Items.maxamout)){
-                event.getToolTip().add(Component.translatable("item.moonstone.ectoplasmstar.maxamout").withStyle(ChatFormatting.DARK_RED));
-                event.getToolTip().add(Component.translatable("item.moonstone.ectoplasmstar.maxamout.1").withStyle(ChatFormatting.DARK_RED));
-                event.getToolTip().add(Component.translatable("item.moonstone.ectoplasmstar.maxamout.2").withStyle(ChatFormatting.DARK_RED));
-            }
-        }
-
     }
     @SubscribeEvent
     public void PlayerInteractEvent(PlayerInteractEvent.EntityInteract event) {
