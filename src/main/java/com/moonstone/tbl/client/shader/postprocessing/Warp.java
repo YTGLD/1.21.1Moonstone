@@ -9,14 +9,14 @@ import net.minecraft.client.renderer.PostChain;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceProvider;
-import com.moonstone.tbl.common.TBL;
+import com.moonstone.tbl.common.MoonstoneTBL;
 
 import javax.annotation.Nullable;
 import java.io.IOException;
 
 public class Warp extends PostChain implements AutoCloseable {
 
-	public static final ResourceLocation GAS_PARTICLE_TEXTURE = TBL.prefix("textures/particle/gas_cloud.png");
+	public static final ResourceLocation GAS_PARTICLE_TEXTURE = MoonstoneTBL.prefix("textures/particle/gas_cloud.png");
 
 	// Attributes
 	private float scale = 40.0F;
@@ -54,7 +54,7 @@ public class Warp extends PostChain implements AutoCloseable {
 	public Uniform u_warpY;
 
 	public Warp(TextureManager textureManager, ResourceProvider resourceProvider, RenderTarget screenTarget) throws IOException, JsonSyntaxException {
-		super(textureManager, resourceProvider, screenTarget, ResourceLocation.fromNamespaceAndPath(TBL.ID, "shaders/post/warp.json"));
+		super(textureManager, resourceProvider, screenTarget, ResourceLocation.fromNamespaceAndPath(MoonstoneTBL.ID, "shaders/post/warp.json"));
 
 		/* 	PostChain structure:
 		 * 		0 - 	Warp shader 		= WARP_INDEX

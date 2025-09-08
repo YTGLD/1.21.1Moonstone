@@ -5,6 +5,6 @@ import net.neoforged.bus.api.IEventBus;
 public class ClientRegistrationEvents {
 	public static void initClient(IEventBus eventbus) {
 		ClientEvents.init();
-		eventbus.addListener(BetweenlandsShaders::registerShaders);
+		eventbus.addListener(MoonstoneBLShaders::registerShaders);
 	}
 }

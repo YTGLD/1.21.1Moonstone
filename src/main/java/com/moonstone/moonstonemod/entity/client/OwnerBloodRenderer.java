@@ -43,7 +43,7 @@ public class OwnerBloodRenderer  extends EntityRenderer<owner_blood> {
             WorldShader shader = ShaderHelper.INSTANCE.getWorldShader();
             ShaderHelper.INSTANCE.require();
             if (shader != null) {
-                shader.addLight(new LightSource(entity.getX(), entity.getY(), entity.getZ(), 12, 2.25f, 0.2f, 0.2f));
+                shader.addLight(new LightSource(entity.getX(), entity.getY(), entity.getZ(), 13, 2.7f, 0.2f, 0.2f));
             }
         }
         double x = Mth.lerp(p_114487_, entity.xOld, entity.getX());

@@ -13,7 +13,7 @@ import net.minecraft.server.packs.resources.ResourceProvider;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 import com.moonstone.tbl.client.shader.ShaderHelper;
 import com.moonstone.tbl.client.shader.postprocessing.DiffBlitDepth;
-import com.moonstone.tbl.common.TBL;
+import com.moonstone.tbl.common.MoonstoneTBL;
 
 import javax.annotation.Nullable;
 import java.io.IOException;
@@ -27,7 +27,7 @@ import static net.neoforged.neoforge.client.event.RenderLevelStageEvent.Stage.AF
  */
 public class ShaderHandler {
 
-    public static final ResourceLocation DIFFBLITDEPTH_LOCAL = ResourceLocation.fromNamespaceAndPath(TBL.ID, "shaders/post/diffblitdepth.json");
+    public static final ResourceLocation DIFFBLITDEPTH_LOCAL = ResourceLocation.fromNamespaceAndPath(MoonstoneTBL.ID, "shaders/post/diffblitdepth.json");
 
 	@Nullable
 	public static DiffBlitDepth diffBlitDepth;
