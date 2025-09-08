@@ -37,7 +37,7 @@ public class nightmare_base_start extends nightmare implements SuperNightmare,  
     public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
         if (slotContext.entity() instanceof Player player){
             if (CuriosApi.getCuriosInventory(player).isPresent()
-                    && CuriosApi.getCuriosInventory(player).get().isEquipped(Items.immortal.get())){
+                    && CuriosApi.getCuriosInventory(player).get().isEquipped(com.moonstone.moonstonemod.init.items.Items.immortal.get())){
                 return true;
             }
             if (player.isCreative()){

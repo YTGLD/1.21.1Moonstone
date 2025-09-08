@@ -29,6 +29,9 @@ import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.plague.TheNecora.god.GodAmbush;
 import com.moonstone.moonstonemod.item.plague.TheNecora.god.GodPutrefactive;
 import com.moonstone.moonstonemod.item.ytgld_virus;
+import com.ytgld.seeking_immortals.event.CurioHurtEvent;
+import com.ytgld.seeking_immortals.item.nightmare.eye;
+import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.nightmare_base_stone;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -95,6 +98,11 @@ public class NewEvent {
                 }
             });
         }
+    }
+    @SubscribeEvent
+    public void CurioLivingIncomingDamageEvent(CurioHurtEvent event){
+
+       immortal.CurioHurt(event);
     }
     @SubscribeEvent
     public  void FinishLivingEntityUseItemEvent(LivingEntityUseItemEvent.Finish event){
@@ -198,7 +206,6 @@ public class NewEvent {
         nine_sword_book.att(event);
         book.hurt(event);
         nightmare_axe.att(event);
-        immortal.hEvt(event);
         undead_blood_charm.LivingIncomingDamageEvent(event);
         rage_lock.LivingIncomingDamageEvent(event);
         pain_candle.Hurt(event);

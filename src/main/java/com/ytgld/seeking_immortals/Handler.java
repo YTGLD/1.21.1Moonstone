@@ -89,7 +89,7 @@ public class Handler {
     public static boolean hascurio(LivingEntity entity, Item curio) {
 
         if (CuriosApi.getCuriosInventory(entity).isPresent()) {
-            if (CuriosApi.getCuriosInventory(entity).get().isEquipped(Items.immortal.get())||CuriosApi.getCuriosInventory(entity).get().isEquipped(Items.the_divine_fall_ring.get())) {
+            if (CuriosApi.getCuriosInventory(entity).get().isEquipped(com.moonstone.moonstonemod.init.items.Items.immortal.get())||CuriosApi.getCuriosInventory(entity).get().isEquipped(Items.the_divine_fall_ring.get())) {
                 if (curio instanceof nightmare) {
                     return false;
                 }

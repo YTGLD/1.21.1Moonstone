@@ -2,6 +2,9 @@ package com.moonstone.moonstonemod.entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.tbl.client.shader.LightSource;
+import com.tbl.client.shader.ShaderHelper;
+import com.tbl.client.shader.postprocessing.WorldShader;
 import com.ytgld.seeking_immortals.ClientConfig;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
@@ -23,6 +26,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
@@ -37,13 +41,28 @@ public class AttackBloodRender extends EntityRenderer<attack_blood> {
 
     @Override
     public void render(attack_blood entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
-        if (com.ytgld.seeking_immortals.ClientConfig.CLIENT_CONFIG.Shader.get()) {
+        if (ClientConfig.CLIENT_CONFIG.Shader.get()) {
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
         }
-
+        if (entity.canSee) {
+            if (ShaderHelper.INSTANCE.isWorldShaderActive()) {
+                WorldShader shader = ShaderHelper.INSTANCE.getWorldShader();
+                ShaderHelper.INSTANCE.require();
+                if (shader != null) {
+                    shader.addLight(new LightSource(entity.getX(), entity.getY(), entity.getZ(), 4, 1.25f, 0.2f, 0.2f));
+                }
+            }
+        }
+        double x = Mth.lerp(p_114487_, entity.xOld, entity.getX());
+        double y = Mth.lerp(p_114487_, entity.yOld, entity.getY());
+        double z = Mth.lerp(p_114487_, entity.zOld, entity.getZ());
+        poseStack.pushPose();
+        poseStack.translate(entity.getX()-x, entity.getY()-y,entity.getZ() -z);
         setT(poseStack, entity, bufferSource);
-
-        renderSphere1(poseStack,bufferSource,240,0.1f);
+        if (entity.canSee) {
+            renderSphere1(poseStack, bufferSource, 240, 0.1f);
+        }
+        poseStack.popPose();
 
         super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
     }

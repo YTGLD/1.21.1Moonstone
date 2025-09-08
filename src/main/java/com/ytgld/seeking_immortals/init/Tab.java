@@ -29,7 +29,7 @@ public class Tab {
                 b.accept(new ItemStack(Items.biochemistry.get()));
                 b.accept(new ItemStack(Items.crazy_drug.get()));
 
-                b.accept(new ItemStack(Items.immortal.get()));
+                b.accept(new ItemStack(com.moonstone.moonstonemod.init.items.Items.immortal.get()));
                 b.accept(new ItemStack(Items.eye.get()));
                 b.accept(new ItemStack(Items.disintegrating_stone.get()));
                 b.accept(new ItemStack(Items.falling_immortals.get()));

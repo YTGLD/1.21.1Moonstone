@@ -121,7 +121,6 @@ public class Tab {
                 b.accept(new ItemStack(Items.sleepgene.get()));
 
 
-                b.accept(new ItemStack(Items.apple.get()));
                 b.accept(new ItemStack(Items.medicinebox.get()));
 
 

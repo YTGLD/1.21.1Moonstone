@@ -16,10 +16,56 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.OptionalDouble;
 import java.util.function.BiFunction;
 
+import static org.lwjgl.opengl.GL11C.GL_LEQUAL;
+import static org.lwjgl.opengl.GL11C.GL_LESS;
+
 public class MRender extends RenderType {
+    protected static final OutputStateShard setOutputState = new OutputStateShard("set", () -> {
+        RenderTarget target = MoonPost.getRenderTargetFor(MoonStoneMod.POST_Blood);
+        if (target != null) {
+            target.copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
+            target.bindWrite(false);
+        }
+    }, () -> {
+        Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
+    });
 
     public MRender(String p_173178_, VertexFormat p_173179_, VertexFormat.Mode p_173180_, int p_173181_, boolean p_173182_, boolean p_173183_, Runnable p_173184_, Runnable p_173185_) {
         super(p_173178_, p_173179_, p_173180_, p_173181_, p_173182_, p_173183_, p_173184_, p_173185_);
+    }
+
+    public static final BiFunction<ResourceLocation, Boolean, RenderType> ENTITY_CUTOUT_NO_CULL1 = Util.memoize(
+            (p_286166_, p_286167_) -> {
+                RenderType.CompositeState rendertype$compositestate = RenderType.CompositeState.builder()
+                        .setShaderState(RENDERTYPE_ENTITY_CUTOUT_NO_CULL_SHADER)
+                        .setTextureState(new RenderStateShard.TextureStateShard(p_286166_, false, false))
+                        .setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY)
+                        .setCullState(NO_CULL)
+                        .setLightmapState(LIGHTMAP)
+                        .setOverlayState(OVERLAY)
+                        .createCompositeState(p_286167_);
+                return create("entity_cutout_no_cull", DefaultVertexFormat.NEW_ENTITY, VertexFormat.Mode.QUADS, 1536, true, false, rendertype$compositestate);
+            }
+    );
+    public static final BiFunction<ResourceLocation, Boolean, RenderType> ENTITY_CUTOUT_NO_CULL1outline = Util.memoize(
+            (p_286166_, p_286167_) -> {
+                RenderType.CompositeState rendertype$compositestate = RenderType.CompositeState.builder()
+                        .setShaderState(RENDERTYPE_ENTITY_CUTOUT_NO_CULL_SHADER)
+                        .setTextureState(new RenderStateShard.TextureStateShard(p_286166_, false, false))
+                        .setTransparencyState(TRANSLUCENT_TRANSPARENCY)
+                        .setCullState(NO_CULL)
+                        .setLightmapState(LIGHTMAP)
+                        .setOutputState(setOutputState)
+                        .setOverlayState(OVERLAY)
+                        .createCompositeState(p_286167_);
+                return create("entity_cutout_no_cull", DefaultVertexFormat.NEW_ENTITY, VertexFormat.Mode.QUADS, 1536, true, false, rendertype$compositestate);
+            }
+    );
+    public static RenderType entityCutoutNoCull1(ResourceLocation location) {
+        return ENTITY_CUTOUT_NO_CULL1.apply(location, false);
+    }
+    public static RenderType entityCutoutNoCull1outline(ResourceLocation location) {
+        return ENTITY_CUTOUT_NO_CULL1outline.apply(location, true);
     }
 
     private static ShaderInstance ShaderInstance_p_blood;
@@ -33,30 +79,26 @@ public class MRender extends RenderType {
     public static ShaderInstance Shader_snake;
 
 
-    protected static final OutputStateShard setOutputState = new OutputStateShard("set", () -> {
-        RenderTarget target = MoonPost.getRenderTargetFor(MoonStoneMod.POST_Blood);
-        if (target != null) {
-            target.copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
-            target.bindWrite(false);
-        }
-    }, () -> {
-        Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
-    });
-    public static final TransparencyStateShard TransparencyStateShard = new TransparencyStateShard("lightning_transparency", () -> {
+
+    public static final TransparencyStateShard UNIFIED_TRANSPARENCY_STATE = new TransparencyStateShard("unified_transparency", () -> {
         RenderSystem.enableDepthTest();
         RenderSystem.enableBlend();
-        RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
-        RenderSystem.depthFunc(519);
+        RenderSystem.blendFuncSeparate(
+                GlStateManager.SourceFactor.SRC_ALPHA,
+                GlStateManager.DestFactor.ONE,
+                GlStateManager.SourceFactor.ONE,
+                GlStateManager.DestFactor.ZERO
+        );
+        RenderSystem.depthFunc(GL_LESS);
         RenderSystem.depthMask(false);
 
     }, () -> {
         RenderSystem.disableBlend();
         RenderSystem.defaultBlendFunc();
         RenderSystem.depthMask(true);
-        RenderSystem.depthFunc(515);
+        RenderSystem.depthFunc(GL_LEQUAL);
         RenderSystem.disableDepthTest();
     });
-
 
     public static final RenderType LIGHTNING = create(
             "lightning",
@@ -70,7 +112,7 @@ public class MRender extends RenderType {
                     .setWriteMaskState(COLOR_DEPTH_WRITE)
                     .setDepthTestState(RenderStateShard.LEQUAL_DEPTH_TEST)
                     .setCullState(RenderStateShard.NO_CULL)
-                    .setTransparencyState(TransparencyStateShard)
+                    .setTransparencyState(UNIFIED_TRANSPARENCY_STATE)
                     .createCompositeState(false)
     );
     protected static final OutputStateShard BEACON = new OutputStateShard("set_beacon", () -> {

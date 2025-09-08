@@ -4,6 +4,8 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.logging.LogUtils;
+import com.moonstone.moonstonemod.client.model.SwordSoul2Use;
+import com.moonstone.moonstonemod.client.model.SwordSoul2UseOutline;
 import com.moonstone.moonstonemod.client.particle.blood;
 import com.moonstone.moonstonemod.client.particle.blue;
 import com.moonstone.moonstonemod.client.particle.popr;
@@ -26,7 +28,6 @@ import com.moonstone.moonstonemod.init.items.Drugs;
 import com.moonstone.moonstonemod.init.items.Items;
 import com.moonstone.moonstonemod.init.moonstoneitem.*;
 import com.ytgld.seeking_immortals.ClientConfig;
-import com.ytgld.seeking_immortals.SeekingImmortalsMod;
 import com.ytgld.seeking_immortals.client.particle.cube;
 import com.ytgld.seeking_immortals.event.key.ClientEvent;
 import com.ytgld.seeking_immortals.event.key.SINetworkHandler;
@@ -37,7 +38,7 @@ import com.ytgld.seeking_immortals.item.an_element.NightmareTooltip;
 import com.ytgld.seeking_immortals.item.nightmare.tip.ToolTip;
 import com.ytgld.seeking_immortals.test_entity.client.LightingRender;
 import com.ytgld.seeking_immortals.test_entity.client.OrbEntityRenderer;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.HolderLookup;
@@ -75,6 +76,7 @@ public class MoonStoneMod {
         SINetworkHandler.register(evt.registrar("1.0"));
     }
     public MoonStoneMod(IEventBus eventBus, ModContainer modContainer){
+
         {
             NeoForge.EVENT_BUS.register(new com.ytgld.seeking_immortals.event.old.NewEvent());
             NeoForge.EVENT_BUS.register(new AdvancementEvt());
@@ -129,6 +131,7 @@ public class MoonStoneMod {
         gen.addProvider(event.includeServer(), new MoonRecipeProvider(packOutput, lookupProvider));
 
     }
+
     @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent
@@ -136,7 +139,7 @@ public class MoonStoneMod {
             NeoForge.EVENT_BUS.register(new ClientEvent());
         }
 
-        @SubscribeEvent // on the mod event bus only on the physical client
+        @SubscribeEvent
         public static void registerBindings(RegisterKeyMappingsEvent event) {
             event.register(Keys.KEY_MAPPING_LAZY_R);
         }
@@ -150,12 +153,6 @@ public class MoonStoneMod {
             event.registerEntityRenderer(com.ytgld.seeking_immortals.init.EntityTs.orb_entity.get(), OrbEntityRenderer::new);
             event.registerEntityRenderer(com.ytgld.seeking_immortals.init.EntityTs.lighting.get(), LightingRender::new);
 
-        }
-        @SubscribeEvent
-        public static void RegisterStageEvent(RenderLevelStageEvent.RegisterStageEvent event) {
-            RenderType renderType = com.ytgld.seeking_immortals.renderer.MRender.beacon.apply(ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID, "textures/p_blood.png"), true);
-            stage_particles = event.register(ResourceLocation.fromNamespaceAndPath(SeekingImmortalsMod.MODID, "seeking_particles"),
-                    renderType);
         }
         @SubscribeEvent
         public static void registerFactories(RegisterParticleProvidersEvent event) {
@@ -184,16 +181,21 @@ public class MoonStoneMod {
             }
         }
     }
-    public static RenderLevelStageEvent.Stage stage_particles ;
+
+
     @EventBusSubscriber(modid = MoonStoneMod.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
     public static class Client {
-
+        public static ModelLayerLocation SWORD = register("use_sword_model");
+        public static ModelLayerLocation SWORDOut = register("use_sword_model");
 
         @SubscribeEvent
-        public static void RegisterStageEvent(RenderLevelStageEvent.RegisterStageEvent event) {
-            RenderType renderType = MRender.beacon.apply(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID, "textures/p_blood.png"), true);
-            stage_particles = event.register(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID, "moon_particles"),
-                    renderType);
+        public static void EntityRenderersEvent(EntityRenderersEvent.RegisterLayerDefinitions event) {
+            event.registerLayerDefinition(SWORD, SwordSoul2Use::createBodyLayer);
+            event.registerLayerDefinition(SWORDOut, SwordSoul2UseOutline::createBodyLayer);
+        }
+
+        private static ModelLayerLocation register(String model) {
+            return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(MoonStoneMod.MODID, "model"), model);
         }
         public static void renderPoseStack(@NotNull PoseStack matrices, @NotNull VertexConsumer vertexConsumer, int light, float s,float a  ) {
             int stacks = 10; // 垂直方向的分割数

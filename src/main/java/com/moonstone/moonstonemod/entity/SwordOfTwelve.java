@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SwordOfTwelve extends Arrow {
+    public int  yRot = 0;
 
     public SwordOfTwelve(EntityType<? extends SwordOfTwelve> entityType, Level level) {
         super(entityType, level);

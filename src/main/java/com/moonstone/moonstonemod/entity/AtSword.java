@@ -103,6 +103,7 @@ public class AtSword extends SwordOfTwelve{
     public void playerTouch(Player entity) {
 
     }
+    public int  yRot = 0;
     @Override
     public void tick() {
         super.tick();

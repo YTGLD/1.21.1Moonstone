@@ -13,7 +13,6 @@ import com.ytgld.seeking_immortals.item.nightmare.extend.MainNightmare;
 import com.ytgld.seeking_immortals.item.nightmare.extend.SuperNightmare;
 import com.ytgld.seeking_immortals.item.nightmare.fall.the_divine_fall_ring;
 import com.ytgld.seeking_immortals.item.nightmare.falling_immortals;
-import com.ytgld.seeking_immortals.item.nightmare.immortal;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.eye.nightmare_base_black_eye_eye;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.eye.nightmare_base_black_eye_heart;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.eye.nightmare_base_black_eye_red;
@@ -217,7 +216,6 @@ public class NewEvent {
     @SubscribeEvent
     public void LivingHealEvent(LivingDeathEvent event) {
         nightmare_base_reversal.LivingDeathEvent(event);
-        immortal.livDead(event);
         wolf.kill(event);
         nightmare_base_black_eye_red.kill(event);
         nightmare_base_insight_insane.LivingDeathEvents(event);

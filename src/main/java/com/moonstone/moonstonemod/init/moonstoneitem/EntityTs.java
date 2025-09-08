@@ -59,9 +59,9 @@ public class EntityTs {
             ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.blood::new, MobCategory.MISC).sized(0.5f, 0.5f).clientTrackingRange(16).build("blood"));
 
     public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.attack_blood>> attack_blood = REGISTRY.register("attack_blood",
-            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.attack_blood::new, MobCategory.MISC).sized(0.5f, 0.2f).clientTrackingRange(16).build("attack_blood"));
+            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.attack_blood::new, MobCategory.MISC).sized(0.1f, 0.2f).clientTrackingRange(50).build("attack_blood"));
     public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.owner_blood>> owner_blood = REGISTRY.register("owner_blood",
-            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.owner_blood::new, MobCategory.MISC).sized(0.5f, 0.2f).clientTrackingRange(16).build("owner_blood"));
+            ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.owner_blood::new, MobCategory.MISC).sized(0.1f, 0.1f).clientTrackingRange(50).build("owner_blood"));
      public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.bloodvruis.blood_orb_owner>> blood_orb_owner = REGISTRY.register("blood_orb_owner",
             ()-> EntityType.Builder.of(com.moonstone.moonstonemod.entity.bloodvruis.blood_orb_owner::new, MobCategory.MISC).sized(1, 1).clientTrackingRange(16).build("blood_orb_owner"));
     public static final DeferredHolder<EntityType<?>,EntityType<com.moonstone.moonstonemod.entity.bloodvruis.blood_orb_attack>> blood_orb_attack = REGISTRY.register("blood_orb_attack",

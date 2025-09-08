@@ -72,7 +72,6 @@ public class Items {
     public static final DeferredHolder<Item,?> candle =REGISTRY.register("candle", candle::new);
     public static final DeferredHolder<Item,?> apple =REGISTRY.register("apple", apple::new);
     public static final DeferredHolder<Item,?> ring =REGISTRY.register("ring", ring::new);
-    public static final DeferredHolder<Item,?> immortal =REGISTRY.register("immortal", immortal::new);
     public static final DeferredHolder<Item,?> hypocritical_self_esteem =REGISTRY.register("hypocritical_self_esteem", hypocritical_self_esteem::new);
     public static final DeferredHolder<Item,?> wolf =REGISTRY.register("wolf", wolf::new);
     public static final DeferredHolder<Item,?> eye =REGISTRY.register("eye", eye::new);

@@ -31,6 +31,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -38,51 +39,26 @@ public class owner_blood extends TamableAnimal {
     public owner_blood(EntityType<? extends owner_blood> p_21803_, Level p_21804_) {
         super(p_21803_, p_21804_);
         this.setNoGravity(true);
-        for (int i = 0; i < trailPositions.length; i++) {
-            trailPositions[i][0] = Vec3.ZERO;
-            trailPositions[i][1] = Vec3.ZERO;
-        }
     }
+    public int attackTime = 0;
     @Override
     public void die(@NotNull DamageSource p_21809_) {
 
     }
-    public static final int max = 128;
-    private int trailPointer = -1;
 
-    private final Vec3[][] trailPositions = new Vec3[max][2];
+    private final List<Vec3> trailPositions = new ArrayList<>();
 
-    public Vec3 getTrailPosition(int pointer, float partialTick) {
-        if (this.isRemoved()) {
-            partialTick = 1.0F;
-        }
-
-        int i = (this.trailPointer - pointer) & max-1;
-        int j = (this.trailPointer - pointer - 1) & max-1;
-
-        Vec3 d0 = this.trailPositions[j][0];
-        Vec3 d1 = this.trailPositions[i][0].subtract(d0);
-        return d0.add(d1.scale(partialTick));
-    }
-
-    public Vec3 getHelmetPosition() {
-        return this.position();
-    }
-
-    public void tickVisual() {
-        Vec3 blue = getHelmetPosition();
-        this.trailPointer = (this.trailPointer + 1) % this.trailPositions.length;
-        this.trailPositions[this.trailPointer][0] = blue;
-    }
-
-    public boolean hasTrail() {
-        return trailPointer != -1;
+    public List<Vec3> getTrailPositions() {
+        return trailPositions;
     }
 
 
     @Override
     public void tick() {
         super.tick();
+        if (attackTime > 0) {
+            attackTime --;
+        }
         this.setNoGravity(true);
         if (this.getOwner() instanceof Player player) {
             if (Config.SERVER.entityParticle.get()) {
@@ -94,7 +70,21 @@ public class owner_blood extends TamableAnimal {
             }
         }
 
-
+        {
+            Vec3 playerPos = this.position();
+            int range = 10;
+            List<owner_blood> imperialHematomas = this.level().getEntitiesOfClass(owner_blood.class, new AABB(playerPos.x - range, playerPos.y - range, playerPos.z - range, playerPos.x + range, playerPos.y + range, playerPos.z + range));
+            for (owner_blood imperialHematoma : imperialHematomas){
+                if (imperialHematoma.getOwner()!= null &&this.getOwner()!=null) {
+                    if (!imperialHematoma.is(this)){
+                        if (imperialHematoma.getOwner().is(this.getOwner())){
+                            imperialHematoma.discard();
+                            return;
+                        }
+                    }
+                }
+            }
+        }
         LivingEntity owner = getOwner(); // 获取主人
         LivingEntity target = getTarget(); // 获取目标
         Vec3 currentPos = this.position();
@@ -105,15 +95,16 @@ public class owner_blood extends TamableAnimal {
             this.setDeltaMovement(direction.x * (0.075f + 0.5), direction.y * (0.075f + 0.5), direction.z * (0.075f + 0.5));
         }
         if (owner != null){
+            float speed = 0.3f;
             double desiredDistance = 2; // 设置想要保持的距离
-            Vec3 targetPos = owner.position().add(0, 3, 0); // 获取玩家位置并抬高
+            Vec3 targetPos = owner.position().add(0, 3, 1); // 获取玩家位置并抬高
 
             Vec3 forward = owner.getLookAngle(); // 获取玩家的朝向向量
             Vec3 direction = forward.scale(-1).normalize(); // 计算背后的方向（逆向）
 
             Vec3 newTargetPos = targetPos.add(direction.scale(desiredDistance)); // 计算新的目标位置
 
-            this.setDeltaMovement(newTargetPos.subtract(currentPos).normalize().scale(0.15f)); // 设置对象的运动速度
+            this.setDeltaMovement(newTargetPos.subtract(currentPos).normalize().scale(speed)); // 设置对象的运动速度
         }
 
         if (this.getOwner() != null) {
@@ -130,8 +121,10 @@ public class owner_blood extends TamableAnimal {
                 }
             }
         }
-        if (level().isClientSide) {
-            tickVisual();
+        trailPositions.add(new Vec3(this.getX(), this.getY(), this.getZ()));
+
+        if (trailPositions.size() > 60) {
+            trailPositions.removeFirst();
         }
 
         Vec3 playerPos = this.position().add(0, 0.75, 0);
@@ -302,6 +295,7 @@ public class owner_blood extends TamableAnimal {
         return  true;
     }
     private void playRemoveOneSound(Entity p_186343_) {
+        attackTime = 10;
         p_186343_.playSound(SoundEvents.RESPAWN_ANCHOR_DEPLETE.value(), 0.8F, 0.8F + p_186343_.level().getRandom().nextFloat() * 0.4F);
     }
     @Override

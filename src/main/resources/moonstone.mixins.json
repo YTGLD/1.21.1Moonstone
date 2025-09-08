@@ -23,6 +23,8 @@
     "si_mixin.PlayerMixin"
   ],
   "client": [
+    "LevelRendererMixin",
+    "PostChainMixin",
     "client.AdvancementWidgetMixin",
     "client.ATabMixin",
     "client.CameraMixin",
@@ -40,7 +42,9 @@
     "si_mixin.client.GameRendererMixin",
     "si_mixin.client.GuiGraphicsMixin",
     "si_mixin.client.LevelRendererMixin",
-    "si_mixin.client.LivingEntityRendererMixin"
+    "si_mixin.client.LivingEntityRendererMixin",
+    "t.GameRendererMixin",
+    "t.LevelRendererMixin"
   ],
   "server": [],
   "injectors": {

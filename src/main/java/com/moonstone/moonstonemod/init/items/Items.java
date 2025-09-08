@@ -3,7 +3,6 @@ package com.moonstone.moonstonemod.init.items;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import com.moonstone.moonstonemod.book;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.BloodItem;
-import com.moonstone.moonstonemod.init.moonstoneitem.extend.apple;
 import com.moonstone.moonstonemod.init.moonstoneitem.extend.medicinebox;
 import com.moonstone.moonstonemod.item.blood.*;
 import com.moonstone.moonstonemod.item.blood.magic.blood_magic_box;
@@ -136,7 +135,6 @@ public class Items {
     public static final DeferredHolder<Item,?> ragegene =REGISTRY.register("ragegene",ragegene::new);
     public static final DeferredHolder<Item,?> sleepgene =REGISTRY.register("sleepgene",sleepgene::new);
     public static final DeferredHolder<Item,?> medicinebox =REGISTRY.register("medicinebox",medicinebox::new);
-    public static final DeferredHolder<Item,?> apple =REGISTRY.register("apple",apple::new);
 
 
 

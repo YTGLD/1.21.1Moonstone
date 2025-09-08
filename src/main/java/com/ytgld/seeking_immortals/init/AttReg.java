@@ -15,17 +15,16 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class AttReg {
     public static final DeferredRegister<Attribute> REGISTRY = DeferredRegister.create(BuiltInRegistries.ATTRIBUTE, SeekingImmortalsMod.MODID);
     public static final DeferredHolder<Attribute,?> alL_attack = REGISTRY.register("allattack",()->{
-        return new RangedAttribute("attribute.name.seeking_immortals.allattack", 1, -1024, 1024).setSyncable(true);
+        return new RangedAttribute("attribute.name.moonstone.allattack", 1, -1024, 1024).setSyncable(true);
     });
     public static final DeferredHolder<Attribute,?> heal = REGISTRY.register("heal",()->{
-        return new RangedAttribute("attribute.name.seeking_immortals.heal", 1, -1024, 1024).setSyncable(true);
+        return new RangedAttribute("attribute.name.moonstone.heal", 1, -1024, 1024).setSyncable(true);
     });
     public static final DeferredHolder<Attribute,?> cit = REGISTRY.register("cit",()->{
-        return new RangedAttribute("attribute.name.seeking_immortals.cit", 1, -1024, 1024).setSyncable(true);
+        return new RangedAttribute("attribute.name.moonstone.cit", 1, -1024, 1024).setSyncable(true);
     });
-
     public static final DeferredHolder<Attribute,?> effectNumber = REGISTRY.register("effect_number",()->{
-        return new RangedAttribute("attribute.name.seeking_immortals.effect_number", 1, -1024, 1024).setSyncable(true);
+        return new RangedAttribute("attribute.name.moonstone.effect_number", 1, -1024, 1024).setSyncable(true);
     });
     @SubscribeEvent
     public static void EntityAttributeCreationEvent(EntityAttributeModificationEvent event){

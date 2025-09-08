@@ -22,10 +22,6 @@ import static org.lwjgl.opengl.GL11C.GL_LESS;
 public class MRender extends RenderType {
 
 
-    public static RenderType entityShadowsEEKING(ResourceLocation location) {
-        return ENTITY_SHADOW.apply(location);
-    }
-
     public static final TransparencyStateShard UNIFIED_TRANSPARENCY_STATE = new TransparencyStateShard("unified_transparency", () -> {
         RenderSystem.enableDepthTest();
         RenderSystem.enableBlend();
@@ -59,30 +55,6 @@ public class MRender extends RenderType {
                     .setOutputState(WEATHER_TARGET)
                     .createCompositeState(false)
     );
-    public static final Function<ResourceLocation, RenderType> ENTITY_SHADOW = Util.memoize(
-            p_286151_ -> {
-                CompositeState rendertype$compositestate = CompositeState.builder()
-                        .setShaderState(RENDERTYPE_ENTITY_SHADOW_SHADER)
-                        .setTextureState(new TextureStateShard(p_286151_, false, false))
-                        .setTransparencyState(UNIFIED_TRANSPARENCY_STATE)
-                        .setCullState(NO_CULL)
-                        .setLightmapState(LIGHTMAP)
-                        .setOverlayState(OVERLAY)
-                        .setWriteMaskState(COLOR_WRITE)
-                        .setDepthTestState(LEQUAL_DEPTH_TEST)
-                        .setLayeringState(VIEW_OFFSET_Z_LAYERING)
-                        .createCompositeState(false);
-                return create("entity_shadow_seeking", DefaultVertexFormat.NEW_ENTITY, VertexFormat.Mode.QUADS, 1536, false, false, rendertype$compositestate);
-            }
-    );
-
-
-
-
-
-
-
-
 
 
     public MRender(String p_173178_, VertexFormat p_173179_, VertexFormat.Mode p_173180_, int p_173181_, boolean p_173182_, boolean p_173183_, Runnable p_173184_, Runnable p_173185_) {
