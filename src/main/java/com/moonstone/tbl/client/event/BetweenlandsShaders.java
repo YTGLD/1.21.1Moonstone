@@ -1,12 +1,12 @@
-package com.tbl.client.event;
+package com.moonstone.tbl.client.event;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.moonstone.moonstonemod.MoonStoneMod;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.neoforged.neoforge.client.event.RegisterShadersEvent;
-import com.tbl.client.handler.ShaderHandler;
-import com.tbl.client.shader.ShaderHelper;
-import com.tbl.common.TBL;
+import com.moonstone.tbl.client.handler.ShaderHandler;
+import com.moonstone.tbl.client.shader.ShaderHelper;
+import com.moonstone.tbl.common.TBL;
 
 import java.io.IOException;
 

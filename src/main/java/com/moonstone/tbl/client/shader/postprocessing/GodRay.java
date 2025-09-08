@@ -1,9 +1,9 @@
-package com.tbl.client.shader.postprocessing;
+package com.moonstone.tbl.client.shader.postprocessing;
 
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.resources.ResourceLocation;
-import com.tbl.common.TBL;
+import com.moonstone.tbl.common.TBL;
 
 public class GodRay extends PostProcessingEffect<GodRay> {
 	private RenderTarget occlusionMap = null;

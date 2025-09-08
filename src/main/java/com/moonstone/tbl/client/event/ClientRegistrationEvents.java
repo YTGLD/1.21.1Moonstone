@@ -1,4 +1,4 @@
-package com.tbl.client.event;
+package com.moonstone.tbl.client.event;
 
 import net.neoforged.bus.api.IEventBus;
 

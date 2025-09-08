@@ -7,7 +7,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import org.jetbrains.annotations.ApiStatus;
-import com.tbl.client.event.ClientRegistrationEvents;
+import com.moonstone.tbl.client.event.ClientRegistrationEvents;
 
 @ApiStatus.Internal
 @Mod(value = SeekingImmortalsMod.MODID, dist = Dist.CLIENT)

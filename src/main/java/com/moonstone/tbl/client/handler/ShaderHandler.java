@@ -1,4 +1,4 @@
-package com.tbl.client.handler;
+package com.moonstone.tbl.client.handler;
 
 import com.all.ILevelRender;
 import com.google.gson.JsonSyntaxException;
@@ -11,9 +11,9 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceProvider;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
-import com.tbl.client.shader.ShaderHelper;
-import com.tbl.client.shader.postprocessing.DiffBlitDepth;
-import com.tbl.common.TBL;
+import com.moonstone.tbl.client.shader.ShaderHelper;
+import com.moonstone.tbl.client.shader.postprocessing.DiffBlitDepth;
+import com.moonstone.tbl.common.TBL;
 
 import javax.annotation.Nullable;
 import java.io.IOException;

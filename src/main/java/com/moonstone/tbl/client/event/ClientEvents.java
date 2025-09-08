@@ -1,7 +1,7 @@
-package com.tbl.client.event;
+package com.moonstone.tbl.client.event;
 
 import net.neoforged.neoforge.common.NeoForge;
-import com.tbl.client.handler.ShaderHandler;
+import com.moonstone.tbl.client.handler.ShaderHandler;
 
 public class ClientEvents {
 

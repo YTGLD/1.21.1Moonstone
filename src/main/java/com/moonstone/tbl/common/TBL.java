@@ -1,4 +1,4 @@
-package com.tbl.common;
+package com.moonstone.tbl.common;
 
 import com.moonstone.moonstonemod.MoonStoneMod;
 import net.minecraft.resources.ResourceLocation;

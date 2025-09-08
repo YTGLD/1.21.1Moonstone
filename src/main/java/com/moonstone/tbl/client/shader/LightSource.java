@@ -1,4 +1,4 @@
-package com.tbl.client.shader;
+package com.moonstone.tbl.client.shader;
 
 public class LightSource {
 	public final double x, y, z;

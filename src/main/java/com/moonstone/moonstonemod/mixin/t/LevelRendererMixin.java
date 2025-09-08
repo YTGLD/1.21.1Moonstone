@@ -1,7 +1,7 @@
 package com.moonstone.moonstonemod.mixin.t;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.tbl.client.handler.ShaderHandler;
+import com.moonstone.tbl.client.handler.ShaderHandler;
 import net.minecraft.client.Camera;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.renderer.*;
@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import javax.annotation.Nullable;
 
-import static com.tbl.client.handler.ShaderHandler.*;
+import static com.moonstone.tbl.client.handler.ShaderHandler.*;
 
 @Mixin(LevelRenderer.class)
 public abstract class LevelRendererMixin {

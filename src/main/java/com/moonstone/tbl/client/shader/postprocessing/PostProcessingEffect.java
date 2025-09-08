@@ -1,4 +1,4 @@
-package com.tbl.client.shader.postprocessing;
+package com.moonstone.tbl.client.shader.postprocessing;
 
 import java.io.StringWriter;
 import java.nio.ByteBuffer;

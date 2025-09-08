@@ -1,4 +1,4 @@
-package com.tbl.client.shader;
+package com.moonstone.tbl.client.shader;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
@@ -6,8 +6,8 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraft.server.packs.resources.ResourceProvider;
 import org.lwjgl.opengl.*;
-import com.tbl.client.shader.postprocessing.Tonemapper;
-import com.tbl.client.shader.postprocessing.WorldShader;
+import com.moonstone.tbl.client.shader.postprocessing.Tonemapper;
+import com.moonstone.tbl.client.shader.postprocessing.WorldShader;
 
 import javax.annotation.Nullable;
 

@@ -16,9 +16,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-import com.tbl.client.shader.LightSource;
-import com.tbl.client.shader.ShaderHelper;
-import com.tbl.client.shader.postprocessing.WorldShader;
+import com.moonstone.tbl.client.shader.LightSource;
+import com.moonstone.tbl.client.shader.ShaderHelper;
+import com.moonstone.tbl.client.shader.postprocessing.WorldShader;
 
 import java.awt.event.WindowFocusListener;
 

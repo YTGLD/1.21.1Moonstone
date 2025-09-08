@@ -1,8 +1,8 @@
-package com.tbl.client.shader.postprocessing;
+package com.moonstone.tbl.client.shader.postprocessing;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec3;
-import com.tbl.common.TBL;
+import com.moonstone.tbl.common.TBL;
 
 import java.util.Collections;
 import java.util.List;
