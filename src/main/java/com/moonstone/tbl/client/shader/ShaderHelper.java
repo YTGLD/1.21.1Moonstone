@@ -1,6 +1,7 @@
 package com.moonstone.tbl.client.shader;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.ytgld.seeking_immortals.ClientConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
@@ -52,75 +53,11 @@ public class ShaderHelper implements ResourceManagerReloadListener {
 	 * @return
 	 */
 	public boolean isWorldShaderActive() {
-		//return true;
-		return this.canUseShaders() && this.worldShader != null;
-	}
-
-	/**
-	 * Returns whether shaders are supported
-	 * @return
-	 */
-	public boolean isShaderSupported() {
-		this.checkCapabilities();
-		return this.shadersSupported;
-	}
-
-	/**
-	 * Returns whether HDR is active
-	 * @return
-	 */
-	public boolean isHDRActive() {
-		//return this.isHDRSupported();
-		return false;
-	}
-
-	/**
-	 * Returns whether HDR is supported
-	 * @return
-	 */
-	public boolean isHDRSupported() {
-		return this.isGL30Supported() && (this.isARBFloatBufferSupported() || this.isFloatBufferSupported());
-	}
-
-	/**
-	 * Returns whether GL 3.0 is supported
-	 * @return
-	 */
-	public boolean isGL30Supported() {
-		this.checkCapabilities();
-		return this.gl30Supported;
-	}
-
-	/**
-	 * Returns whether float buffers are supported
-	 * @return
-	 */
-	public boolean isFloatBufferSupported() {
-		return this.isGL30Supported();
-	}
-
-	/**
-	 * Returns whether ARB float buffers are supported
-	 * @return
-	 */
-	public boolean isARBFloatBufferSupported() {
-		this.checkCapabilities();
-		return this.arbFloatBufferSupported;
-	}
-
-	/**
-	 * Updates the capabilities
-	 */
-	private void checkCapabilities() {
-		if(!this.checked){
-			this.checked = true;
-			GLCapabilities contextCapabilities = GL.getCapabilities();
-			boolean supported = contextCapabilities.OpenGL21 || (contextCapabilities.GL_ARB_vertex_shader && contextCapabilities.GL_ARB_fragment_shader && contextCapabilities.GL_ARB_shader_objects);
-			boolean arbMultitexture = contextCapabilities.GL_ARB_multitexture && !contextCapabilities.OpenGL13;
-			int maxTextureUnits = arbMultitexture ? GL11.glGetInteger(ARBMultitexture.GL_MAX_TEXTURE_UNITS_ARB) : (!contextCapabilities.OpenGL20 ? GL11.glGetInteger(GL13.GL_MAX_TEXTURE_UNITS) : GL11.glGetInteger(GL20.GL_MAX_TEXTURE_IMAGE_UNITS));
-			this.shadersSupported = maxTextureUnits >= MIN_REQUIRED_TEX_UNITS;
-			this.gl30Supported = contextCapabilities.OpenGL30;
-			this.arbFloatBufferSupported = contextCapabilities.GL_ARB_texture_float;
+		if (ClientConfig.CLIENT_CONFIG.Shader.get()){
+			return true;
+		}else {
+			//return true;
+			return this.canUseShaders() && this.worldShader != null;
 		}
 	}
 
@@ -159,112 +96,6 @@ public class ShaderHelper implements ResourceManagerReloadListener {
 				ex.printStackTrace();
 			}
 		}
-	}
-
-	/**
-	 * Renders the main shader to the screen
-	 */
-	public void renderShaders(float partialTicks) {
-		RenderSystem.depthMask(false);
-		ShaderHelper.INSTANCE.getWorldShader().uploadUniforms(partialTicks);
-		ShaderHelper.INSTANCE.getWorldShader().process(partialTicks);
-
-		/*
-		if(this.shadersUpdated && this.worldShader != null && this.isRequired() && this.canUseShaders()) {
-			RenderTarget mainFramebuffer = Minecraft.getInstance().getMainRenderTarget();
-
-			RenderTarget blitFramebuffer;
-			RenderTarget targetFramebuffer1;
-			RenderTarget targetFramebuffer2;
-
-			//try(FramebufferStack.State ignored = FramebufferStack.push()) {
-				blitFramebuffer = this.blitBuffer.getFramebuffer(mainFramebuffer.viewWidth, mainFramebuffer.viewHeight);
-				targetFramebuffer1 = mainFramebuffer;
-				targetFramebuffer2 = blitFramebuffer;
-
-				int renderPasses = Mth.floor(this.worldShader.getLightSourcesAmount() / WorldShader.MAX_LIGHT_SOURCES_PER_PASS) + 1;
-				renderPasses = 1; //Multiple render passes are currently not recommended
-
-				//TODO verify
-				Minecraft.getInstance().levelRenderer.doEntityOutline(); //Minecraft.getInstance().entityRenderer.setupOverlayRendering();
-
-				targetFramebuffer2.clear(Minecraft.ON_OSX);
-
-				for(int i = 0; i < renderPasses; i++) {
-					//Renders the shader to the blitBuffer
-					this.worldShader.setRenderPass(i);
-					this.worldShader.create(targetFramebuffer2)
-					.setSource(targetFramebuffer1.getColorTextureId())
-					.setRestoreGlState(true)
-					.setMirrorY(false)
-					.setClearDepth(true)
-					.setClearColor(false)
-					.render(partialTicks);
-
-					//Ping-pong FBOs
-					RenderTarget previous = targetFramebuffer2;
-					targetFramebuffer2 = targetFramebuffer1;
-					targetFramebuffer1 = previous;
-				}
-
-				//Make sure texture unit is set to default
-				RenderSystem.activeTexture(33984);
-			//}
-
-			//Render last pass to the main framebuffer if necessary
-			if(targetFramebuffer1 != mainFramebuffer) {
-				float renderWidth = (float)targetFramebuffer1.viewWidth;
-				float renderHeight = (float)targetFramebuffer1.viewHeight;
-
-				RenderSystem.viewport(0, 0, (int)renderWidth, (int)renderHeight);
-				GL11.glMatrixMode(GL11.GL_PROJECTION);
-				GL11.glLoadIdentity();
-				GL11.glOrtho(0.0D, renderWidth, renderHeight, 0.0D, 1000.0D, 3000.0D);
-				GL11.glMatrixMode(GL11.GL_MODELVIEW);
-				GL11.glLoadIdentity();
-				GL11.glTranslatef(0.0F, 0.0F, -2000.0F);
-
-				RenderSystem.setShaderColor(1, 1, 1, 1);
-				targetFramebuffer1.bindRead();
-				RenderSystem.depthMask(false);
-				RenderSystem.colorMask(true, true, true, true);
-				Tesselator tessellator = Tesselator.getInstance();
-				BufferBuilder builder = tessellator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-				builder.addVertex(0.0F, targetFramebuffer1.viewHeight, 500.0F).setUv(0, 0);
-				builder.addVertex(targetFramebuffer1.viewWidth, targetFramebuffer1.viewHeight, 500.0F).setUv(1, 0);
-				builder.addVertex(targetFramebuffer1.viewWidth, 0.0F, 500.0F).setUv(1, 1);
-				builder.addVertex(0.0F, 0.0F, 500.0F).setUv(0, 1);
-				BufferUploader.drawWithShader(builder.buildOrThrow());
-				RenderSystem.depthMask(true);
-				RenderSystem.colorMask(true, true, true, true);
-			}
-
-			//Render additional post processing effects
-			this.worldShader.setRenderPass(0);
-			this.worldShader.renderPostEffects(partialTicks);
-
-			//Apply Tonemapping if supported
-			if(!this.isHDRActive() && this.toneMappingShader != null) {
-				this.toneMappingShader.delete();
-				this.toneMappingShader = null;
-			}
-			if(this.toneMappingShader != null) {
-				this.toneMappingShader.setExposure(1.0F);
-				this.toneMappingShader.setGamma(1.0F);
-				this.toneMappingShader.create(mainFramebuffer)
-				.setSource(mainFramebuffer.getColorTextureId())
-				.setBlitFramebuffer(blitFramebuffer)
-				.setRestoreGlState(true)
-				.setMirrorY(false)
-				.setClearDepth(false)
-				.setClearColor(false)
-				.render(partialTicks);
-			}
-
-			this.shadersUpdated = false;
-			this.required = false;
-		}
-		*/
 	}
 
 	/**

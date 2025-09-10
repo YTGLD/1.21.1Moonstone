@@ -47,17 +47,9 @@ public class nightmare extends Item implements ICurioItem, INightmare , Terror, 
             stack.set(DataReg.tag, new CompoundTag());
         }
     }
-
-
     @NotNull
     @Override
     public ICurio.DropRule getDropRule(SlotContext slotContext, DamageSource source, int lootingLevel, boolean recentlyHit, ItemStack stack) {
-        return ICurio.DropRule.ALWAYS_KEEP;
-    }
-
-    @NotNull
-    @Override
-    public ICurio.DropRule getDropRule(SlotContext slotContext, DamageSource source, boolean recentlyHit, ItemStack stack) {
         return ICurio.DropRule.ALWAYS_KEEP;
     }
 

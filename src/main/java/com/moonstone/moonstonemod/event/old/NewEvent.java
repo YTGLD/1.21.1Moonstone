@@ -29,6 +29,7 @@ import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.plague.TheNecora.god.GodAmbush;
 import com.moonstone.moonstonemod.item.plague.TheNecora.god.GodPutrefactive;
 import com.moonstone.moonstonemod.item.ytgld_virus;
+import com.ytgld.seeking_immortals.event.CurioDropEvent;
 import com.ytgld.seeking_immortals.event.CurioHurtEvent;
 import com.ytgld.seeking_immortals.item.nightmare.eye;
 import com.ytgld.seeking_immortals.item.nightmare.super_nightmare.nightmare_base_stone;
@@ -58,6 +59,7 @@ import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.entity.player.*;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.event.CurioDropsEvent;
 import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
@@ -98,11 +100,6 @@ public class NewEvent {
                 }
             });
         }
-    }
-    @SubscribeEvent
-    public void CurioLivingIncomingDamageEvent(CurioHurtEvent event){
-
-       immortal.CurioHurt(event);
     }
     @SubscribeEvent
     public  void FinishLivingEntityUseItemEvent(LivingEntityUseItemEvent.Finish event){
@@ -221,6 +218,8 @@ public class NewEvent {
         bone_dna.hollow(event);
         bone_dna.bone_spur(event);
         ytgld_virus.LivingHurt(event);
+        immortal.CurioHurt(event);
+
         if (event.getEntity().hasEffect(Effects.dead) && event.getEntity().getEffect(Effects.dead)!=null){
             float lvl = event.getEntity().getEffect(Effects.dead).getAmplifier();
             lvl *= 0.2f;

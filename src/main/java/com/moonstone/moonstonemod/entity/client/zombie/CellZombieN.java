@@ -1,6 +1,9 @@
 package com.moonstone.moonstonemod.entity.client.zombie;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.moonstone.tbl.client.shader.LightSource;
+import com.moonstone.tbl.client.shader.ShaderHelper;
+import com.moonstone.tbl.client.shader.postprocessing.WorldShader;
 import com.ytgld.seeking_immortals.ClientConfig;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
@@ -48,6 +51,13 @@ public class CellZombieN extends MobRenderer<nightmare_giant, NModel<nightmare_g
         super.render(nightmareGiant, entityYaw, partialTicks, poseStack, buffer, packedLight);
         if (com.ytgld.seeking_immortals.ClientConfig.CLIENT_CONFIG.Shader.get()) {
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
+        }
+        if (ShaderHelper.INSTANCE.isWorldShaderActive()) {
+            WorldShader shader = ShaderHelper.INSTANCE.getWorldShader();
+            ShaderHelper.INSTANCE.require();
+            if (shader != null) {
+                shader.addLight(new LightSource(nightmareGiant.getX(), nightmareGiant.getY(), nightmareGiant.getZ(), 12, 1.5f, 0.2f, 1.5f));
+            }
         }
         Vec3 playerPos = nightmareGiant.position();
         float range =16;

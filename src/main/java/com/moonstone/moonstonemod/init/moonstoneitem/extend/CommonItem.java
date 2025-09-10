@@ -14,7 +14,7 @@ public class CommonItem extends Item implements ICurioItem {
         super(new Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
     }
 
-     @NotNull
+    @NotNull
     @Override
     public ICurio.DropRule getDropRule(SlotContext slotContext, DamageSource source, int lootingLevel, boolean recentlyHit, ItemStack stack) {
         return ICurio.DropRule.ALWAYS_KEEP;

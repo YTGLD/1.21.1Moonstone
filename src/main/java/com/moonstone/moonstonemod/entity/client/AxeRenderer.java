@@ -2,6 +2,10 @@ package com.moonstone.moonstonemod.entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import com.moonstone.moonstonemod.entity.owner_blood;
+import com.moonstone.tbl.client.shader.LightSource;
+import com.moonstone.tbl.client.shader.ShaderHelper;
+import com.moonstone.tbl.client.shader.postprocessing.WorldShader;
 import com.ytgld.seeking_immortals.ClientConfig;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
@@ -12,6 +16,7 @@ import com.moonstone.moonstonemod.init.items.Items;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
@@ -32,56 +37,22 @@ public class AxeRenderer <T extends axe> extends EntityRenderer<T> {
     public AxeRenderer(EntityRendererProvider.Context p_173917_) {
         super(p_173917_);
     }
+    @Override
+    public boolean shouldRender(axe livingEntity, Frustum camera, double camX, double camY, double camZ) {
+        return true;
+    }
 
     @Override
     public void render(T entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
         setT(poseStack, entity, bufferSource);
         if (com.ytgld.seeking_immortals.ClientConfig.CLIENT_CONFIG.Shader.get()) {
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
-
         }
-
-        {
-            Vec3 playerPos = entity.position();
-            float range = 12;
-            List<Player> entities =
-                    entity.level().getEntitiesOfClass(Player.class,
-                            new AABB(playerPos.x - range,
-                                    playerPos.y - range,
-                                    playerPos.z - range,
-                                    playerPos.x + range,
-                                    playerPos.y + range,
-                                    playerPos.z + range));
-
-            for (Player player : entities) {
-
-                Vec3 entityPos = entity.position();
-                Vec3 nearbyEntityPos = player.position();
-
-                Vec3 end = nearbyEntityPos.subtract(entityPos);
-
-                Handler.renderLine(poseStack, bufferSource, new Vec3(0, 2, 0), end, 1, MRender.Snake_p_blood, 0.0003f);
-            }
-        }
-        {
-            Vec3 playerPos = entity.position();
-            float range =12;
-            List<axe> entities =
-                    entity.level().getEntitiesOfClass(axe.class,
-                            new AABB(playerPos.x - range,
-                                    playerPos.y - range,
-                                    playerPos.z - range,
-                                    playerPos.x + range,
-                                    playerPos.y + range,
-                                    playerPos.z + range));
-
-            for (axe player : entities) {
-                Vec3 entityPos = entity.position();
-                Vec3 nearbyEntityPos = player.position();
-
-                Vec3 end = nearbyEntityPos.subtract(entityPos);
-
-                Handler.renderLine(poseStack, bufferSource, new Vec3(0, 2, 0), end, 1, MRender.Snake(), 1f);
+        if (ShaderHelper.INSTANCE.isWorldShaderActive()) {
+            WorldShader shader = ShaderHelper.INSTANCE.getWorldShader();
+            ShaderHelper.INSTANCE.require();
+            if (shader != null) {
+                shader.addLight(new LightSource(entity.getX(), entity.getY(), entity.getZ(), 8, 1.5f, 0.2f, 1.5f));
             }
         }
         poseStack.pushPose();
@@ -94,6 +65,7 @@ public class AxeRenderer <T extends axe> extends EntityRenderer<T> {
         BakedModel model = itemRenderer.getModel(axeStack, Minecraft.getInstance().level, null, 0);
         itemRenderer.render(axeStack, ItemDisplayContext.NONE, false, poseStack, bufferSource, Minecraft.getInstance().getEntityRenderDispatcher().getPackedLightCoords(entity, 0.0F), OverlayTexture.NO_OVERLAY, model);
         poseStack.popPose();
+
         super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
     }
     private void setT(PoseStack matrices,

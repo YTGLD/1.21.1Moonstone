@@ -5,6 +5,10 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import com.moonstone.moonstonemod.entity.axe;
+import com.moonstone.tbl.client.shader.LightSource;
+import com.moonstone.tbl.client.shader.ShaderHelper;
+import com.moonstone.tbl.client.shader.postprocessing.WorldShader;
 import com.ytgld.seeking_immortals.ClientConfig;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
@@ -48,17 +52,19 @@ public class AtSwordRender <T extends AtSword> extends EntityRenderer<T> {
     private static final float HALF_SQRT_3 = (float)(Math.sqrt(3.0) / 2.0);
 
     @Override
-    public boolean shouldRender(T livingEntity, Frustum camera, double camX, double camY, double camZ) {
-        return true;
-    }
-
-    @Override
     public void render(T entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
         setT(poseStack, entity, bufferSource);
         if (com.ytgld.seeking_immortals.ClientConfig.CLIENT_CONFIG.Shader.get()) {
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
         }
         if (entity.isNoGravity()){
+            if (ShaderHelper.INSTANCE.isWorldShaderActive()) {
+                WorldShader shader = ShaderHelper.INSTANCE.getWorldShader();
+                ShaderHelper.INSTANCE.require();
+                if (shader != null) {
+                    shader.addLight(new LightSource(entity.getX(), entity.getY(), entity.getZ(), 16, 0.2f, 0.2f, 3));
+                }
+            }
             double x = Mth.lerp(p_114487_, entity.xOld, entity.getX());
             double y = Mth.lerp(p_114487_, entity.yOld, entity.getY());
             double z = Mth.lerp(p_114487_, entity.zOld, entity.getZ());
@@ -83,6 +89,13 @@ public class AtSwordRender <T extends AtSword> extends EntityRenderer<T> {
 
 
         }else {
+            if (ShaderHelper.INSTANCE.isWorldShaderActive()) {
+                WorldShader shader = ShaderHelper.INSTANCE.getWorldShader();
+                ShaderHelper.INSTANCE.require();
+                if (shader != null) {
+                    shader.addLight(new LightSource(entity.getX(), entity.getY(), entity.getZ(), 4, 0.3f, 0.2f, 2));
+                }
+            }
             poseStack.pushPose();
             poseStack.scale(3,3,3);
             poseStack.translate(0, 0.45 - entity.tickCount / 150F, 0);
@@ -103,57 +116,13 @@ public class AtSwordRender <T extends AtSword> extends EntityRenderer<T> {
 
         super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
     }
-    public void setMatrices(@NotNull PoseStack matrices,
-                            @NotNull MultiBufferSource vertexConsumers,
-                            @NotNull Entity ownerBlood) {
-        int rage = 25;
-        float posAdd = 1.001F;
-
-        BlockPos playerPos = ownerBlood.blockPosition();
-        Vec3 playerVec = new Vec3(playerPos.getX(), playerPos.getY(), playerPos.getZ());
-
-        for (int x = -rage; x <= rage; x++) {
-            for (int y = -rage; y <= rage; y++) {
-                for (int z = -rage; z <= rage; z++) {
-                    BlockPos currentPos = playerPos.offset(x, y, z);
-                    Vec3 currentVec = new Vec3(currentPos.getX(), currentPos.getY(), currentPos.getZ());
-                    BlockState blockState = ownerBlood.level().getBlockState(currentPos);
-                    if (!blockState.isEmpty() && blockState.canOcclude()) {
-                        matrices.pushPose();
-
-                        matrices.translate(currentPos.getX() + 0.5, currentPos.getY() + 0.5, currentPos.getZ() + 0.5);
-
-                        matrices.scale(posAdd, posAdd, posAdd);
-
-                        matrices.translate(-(currentPos.getX() + 0.5), -(currentPos.getY() + 0.5), -(currentPos.getZ() + 0.5));
-
-                        matrices.translate(currentPos.getX(), currentPos.getY(), currentPos.getZ());
-
-                        double distance = playerVec.distanceTo(currentVec);
-
-                        float alp = Math.max(0, 1 - (float) distance / rage);
-
-                        BakedModel bakedModel = Minecraft.getInstance().getBlockRenderer().getBlockModel(blockState);
-                        for (Direction direction : Direction.values()) {
-                            BlockPos offsetPos = currentPos.relative(direction);
-                            if (!ownerBlood.level().getBlockState(offsetPos).isSolid()) {
-                                List<BakedQuad> quads = bakedModel.getQuads(blockState, direction, RandomSource.create());
-                                for (BakedQuad quad : quads) {
-                                    vertexConsumers.getBuffer(MRender.LIGHTNING).putBulkData(matrices.last(), quad, new float[]{
-                                            1.32f, 1.32f, 1.32f, 1.32f
-                                    }, 0, 0, 1, alp, new int[]{240, 240, 240, 240}, OverlayTexture.NO_OVERLAY, true);
-                                }
-                            }
-                        }
-
-                        matrices.popPose();
-                    }
-                }
-            }
-        }
+    @Override
+    public boolean shouldRender(AtSword livingEntity, Frustum camera, double camX, double camY, double camZ) {
+        return true;
     }
-
     public void renderSphere1(@NotNull PoseStack matrices, @NotNull MultiBufferSource vertexConsumers, int light, float s) {
+        matrices.pushPose();
+        matrices.scale(0.1f,1,0.1f);
         int stacks = 8; // 垂直方向的分割数
         int slices = 8; // 水平方向的分割数
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(MRender.Bluer);
@@ -187,6 +156,7 @@ public class AtSwordRender <T extends AtSword> extends EntityRenderer<T> {
                 vertexConsumer.addVertex(matrices.last().pose(), x3, y3, z3).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
             }
         }
+        matrices.popPose();
     }
     private void setT(PoseStack matrices,
                       T entity,

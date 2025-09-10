@@ -3,6 +3,10 @@ package com.moonstone.moonstonemod.entity.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import com.moonstone.moonstonemod.entity.AtSword;
+import com.moonstone.tbl.client.shader.LightSource;
+import com.moonstone.tbl.client.shader.ShaderHelper;
+import com.moonstone.tbl.client.shader.postprocessing.WorldShader;
 import com.ytgld.seeking_immortals.ClientConfig;
 import com.moonstone.moonstonemod.Handler;
 import com.moonstone.moonstonemod.MoonStoneMod;
@@ -13,6 +17,7 @@ import com.moonstone.moonstonemod.init.items.Items;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
@@ -29,11 +34,20 @@ public class SwordOfTwelveRenderer <T extends SwordOfTwelve> extends EntityRende
     public SwordOfTwelveRenderer(EntityRendererProvider.Context p_173917_) {
         super(p_173917_);
     }
-
+    @Override
+    public boolean shouldRender(SwordOfTwelve livingEntity, Frustum camera, double camX, double camY, double camZ) {
+        return true;
+    }
     @Override
     public void render(T entity, float p_114486_, float p_114487_, PoseStack poseStack, MultiBufferSource bufferSource, int p_114490_) {
         setT(poseStack, entity, bufferSource);
-
+        if (ShaderHelper.INSTANCE.isWorldShaderActive()) {
+            WorldShader shader = ShaderHelper.INSTANCE.getWorldShader();
+            ShaderHelper.INSTANCE.require();
+            if (shader != null) {
+                shader.addLight(new LightSource(entity.getX(), entity.getY(), entity.getZ(), 4, 0.2f, 0.2f, 3));
+            }
+        }
         if (com.ytgld.seeking_immortals.ClientConfig.CLIENT_CONFIG.Shader.get()) {
             MoonPost.renderEffectForNextTick(MoonStoneMod.POST_Blood);
         }
@@ -54,6 +68,8 @@ public class SwordOfTwelveRenderer <T extends SwordOfTwelve> extends EntityRende
         super.render(entity, p_114486_, p_114487_, poseStack, bufferSource, p_114490_);
     }
     public void renderSphere1(@NotNull PoseStack matrices, @NotNull MultiBufferSource vertexConsumers, int light, float s) {
+        matrices.pushPose();
+        matrices.scale(0.1f,1,0.1f);
         int stacks = 8; // 垂直方向的分割数
         int slices = 8; // 水平方向的分割数
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(MRender.Bluer);
@@ -87,6 +103,7 @@ public class SwordOfTwelveRenderer <T extends SwordOfTwelve> extends EntityRende
                 vertexConsumer.addVertex(matrices.last().pose(), x3, y3, z3).setColor(1.0f, 1.0f, 1.0f, 1.0f).setOverlay(OverlayTexture.NO_OVERLAY).setUv(0, 0).setUv2(light, light).setNormal(1, 0, 0);
             }
         }
+        matrices.popPose();
     }
     private void setT(PoseStack matrices,
                       T entity,

@@ -120,28 +120,20 @@ public class immortal extends Item implements ICurioItem , INightmare, Terror {
                 .durability(1000000000).rarity(Rarity.UNCOMMON));
     }
 
-    public static void CurioHurt(CurioHurtEvent curioHurtEvent){
-        LivingIncomingDamageEvent event = curioHurtEvent.getEvent();
-        @Nullable CompoundTag compoundTag = curioHurtEvent.getStack().get(DataReg.tag);
+    public static void CurioHurt(LivingIncomingDamageEvent event){
         if (event.getSource().getEntity() instanceof LivingEntity living){
             if (event.getEntity() instanceof Player player){
                 int lvl = Mth.nextInt(RandomSource.create(),1,100);
-                if (com.ytgld.seeking_immortals.Handler.hascurio(player, com.moonstone.moonstonemod.init.items.Items.immortal.get())){
-                    if (compoundTag!=null) {
-                        if (lvl <= Config.SERVER.immortal.get()) {
-                            player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_HIT_PLAYER, SoundSource.NEUTRAL, 1F, 1F);
-                            if (living.getHealth() <= living.getMaxHealth() * 0.7f) {
-                                living.hurt(living.damageSources().dryOut(), event.getAmount() * 0.5f);
-                            } else {
-                                living.invulnerableTime = 0;
-                                living.hurt(living.damageSources().dryOut(), event.getAmount() * 1.5f);
-
-                            }
-                            event.setAmount(0);
-                            compoundTag.putInt(transmigrateTag, compoundTag.getInt(transmigrateTag) + 1);
+                if (com.ytgld.seeking_immortals.Handler.hascurio(player, com.moonstone.moonstonemod.init.items.Items.immortal.get())) {
+                    if (lvl <= Config.SERVER.immortal.get()) {
+                        player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_HIT_PLAYER, SoundSource.NEUTRAL, 1F, 1F);
+                        if (living.getHealth() <= living.getMaxHealth() * 0.7f) {
+                            living.hurt(living.damageSources().dryOut(), event.getAmount() * 0.5f);
+                        } else {
+                            living.invulnerableTime = 0;
+                            living.hurt(living.damageSources().dryOut(), event.getAmount() * 1.5f);
                         }
-                    }else {
-                        curioHurtEvent.getStack().set(DataReg.tag,new CompoundTag());
+                        event.setAmount(0);
                     }
                 }
             }
