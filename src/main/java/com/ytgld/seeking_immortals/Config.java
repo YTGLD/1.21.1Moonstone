@@ -82,11 +82,19 @@ public class Config {
     public   ModConfigSpec.BooleanValue entityParticle ;
 
 
+    public   ModConfigSpec.BooleanValue disEntity ;
 
 
 
 
     public Config(ModConfigSpec.Builder BUILDER){
+        {
+            BUILDER.push("月之石全局");
+            disEntity = BUILDER
+                    .comment("禁用模组的所有实体")
+                    .define("disEntity", false);
+            BUILDER.pop();
+        }
         BUILDER.push("月之石本体");
         {
             {

@@ -29,6 +29,7 @@ import com.moonstone.moonstonemod.item.plague.TheNecora.bnabush.giant_boom_cell;
 import com.moonstone.moonstonemod.item.plague.TheNecora.god.GodAmbush;
 import com.moonstone.moonstonemod.item.plague.TheNecora.god.GodPutrefactive;
 import com.moonstone.moonstonemod.item.ytgld_virus;
+import com.ytgld.seeking_immortals.Config;
 import com.ytgld.seeking_immortals.event.CurioDropEvent;
 import com.ytgld.seeking_immortals.event.CurioHurtEvent;
 import com.ytgld.seeking_immortals.item.nightmare.eye;
@@ -76,7 +77,15 @@ public class NewEvent {
     public static final String chromosome = "the_chromosome";
     public static final String bone = "the_bone";
     public static final String die_body = "the_die_body";
-
+    @SubscribeEvent
+    public void EntityTickEventPre(EntityTickEvent.Pre event){
+        Entity entity = event.getEntity();
+        if (BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).getNamespace().equals(MoonStoneMod.MODID)){
+            if (Config.SERVER.disEntity.get()) {
+                entity.discard();
+            }
+        }
+    }
     @SubscribeEvent
     public void LivingIncomingDamageEvent(LivingIncomingDamageEvent event){
         GodAmbush.LivingIncomingDamageEvent(event);

@@ -12,7 +12,6 @@ import java.io.IOException;
 
 public class DiffBlitDepth extends PostChain implements AutoCloseable {
 
-	// Input buffers
 	public RenderTarget BeforeTarget;
 	public RenderTarget AfterTarget;
 	public RenderTarget Output;

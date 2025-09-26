@@ -56,7 +56,7 @@ public class CellZombieN extends MobRenderer<nightmare_giant, NModel<nightmare_g
             WorldShader shader = ShaderHelper.INSTANCE.getWorldShader();
             ShaderHelper.INSTANCE.require();
             if (shader != null) {
-                shader.addLight(new LightSource(nightmareGiant.getX(), nightmareGiant.getY(), nightmareGiant.getZ(), 12, 1.5f, 0.2f, 1.5f));
+                shader.addLight(new LightSource(nightmareGiant.getX(), nightmareGiant.getY(), nightmareGiant.getZ(), 12, 3f, 0.2f, 2.5f));
             }
         }
         Vec3 playerPos = nightmareGiant.position();

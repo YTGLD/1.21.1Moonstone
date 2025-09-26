@@ -2251,15 +2251,15 @@
 
 
 
-  "item.moonstone.bone_or_god":" Blood Sacrifice Skull",
-  "item.bone_or_god.tool.string": "Any mob that tries to apply a negative buff to you will reap the consequences",
-  "item.bone_or_god.tool.string.1":"Immunity Negative Potion Status",
-  "item.bone_or_god.tool.string.2": "Pet attacks add 10% of the owner's panel damage",
-  "item.bone_or_god.tool.string.3":"Pet damage increased by 200%",
-  "item.bone_or_god.tool.string.4": "Pet resistance increased by 50%",
-  "item.bone_or_god.tool.string.5":"If the pet attached object does not attack the target, it will slowly restore health",
-  "moonstone.configuration.血祭神颅": "Blood sacrifice of the skull",
-  "moonstone.config.bone_or_god_give": "Number of pets killed",
+    "item.moonstone.bone_or_god":" Blood Sacrifice Skull",
+    "item.bone_or_god.tool.string": "Any mob that tries to apply a negative buff to you will reap the consequences",
+    "item.bone_or_god.tool.string.1":"Immunity Negative Potion Status",
+    "item.bone_or_god.tool.string.2": "Pet attacks add 10% of the owner's panel damage",
+    "item.bone_or_god.tool.string.3":"Pet damage increased by 200%",
+    "item.bone_or_god.tool.string.4": "Pet resistance increased by 50%",
+    "item.bone_or_god.tool.string.5":"If the pet attached object does not attack the target, it will slowly restore health",
+    "moonstone.configuration.血祭神颅": "Blood sacrifice of the skull",
+    "moonstone.config.bone_or_god_give": "Number of pets killed",
 
 
 

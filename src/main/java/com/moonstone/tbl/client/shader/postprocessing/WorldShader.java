@@ -4,8 +4,10 @@ import com.all.IPostChain;
 import com.google.gson.JsonSyntaxException;
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.shaders.Uniform;
+import com.moonstone.tbl.client.renderer.GLTextureObjectWrapper;
+import com.moonstone.tbl.client.shader.LightSource;
+import com.moonstone.tbl.common.MoonstoneTBL;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.PostChain;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.resources.ResourceLocation;
@@ -13,9 +15,6 @@ import net.minecraft.server.packs.resources.ResourceProvider;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
-import com.moonstone.tbl.client.renderer.GLTextureObjectWrapper;
-import com.moonstone.tbl.client.shader.LightSource;
-import com.moonstone.tbl.common.MoonstoneTBL;
 
 import javax.annotation.Nullable;
 import java.io.IOException;
@@ -24,89 +23,47 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-/**
- * TODO: Finish and add Starfield, OcclusionExtractor, Godrays, and Swirl shaders.
- */
 public class WorldShader extends PostChain implements AutoCloseable {;
 
 	public static final ResourceLocation GAS_PARTICLE_TEXTURE = MoonstoneTBL.prefix("gas_particle");
 
-	private RenderTarget depthBuffer;
-	private RenderTarget repellerShieldBuffer;
-	private RenderTarget gasParticlesBuffer;
+	private final RenderTarget depthBuffer;
 
 	private Matrix4f invertedModelviewProjectionMatrix;
-	private Matrix4f modelviewProjectionMatrix;
-	private Matrix4f modelviewMatrix;
-	private Matrix4f projectionMatrix;
-
-	public static final int MAX_LIGHT_SOURCES_PER_PASS = 32;
+    public static final int MAX_LIGHT_SOURCES_PER_PASS = 32;
 	private final List<LightSource> lightSources = new ArrayList<>();
 	public Vector3f cameraPos = new Vector3f();
 
-	private static final int WORLD_INDEX = 0;	// The world shader pass index
-	//Uniforms
-	@Nullable
-	public Uniform MVPUniform;
+	private static final int WORLD_INDEX = 0;
+
+
 	@Nullable
 	public Uniform invMVPUniform;
 	@Nullable
-	public Uniform projectionUniform;
+	private final Uniform lightSourcePositionUniforms;
 	@Nullable
-	public  Uniform viewPosUniform;
+	private final Uniform lightSourceColorUniforms;
 	@Nullable
-	public  Uniform renderPosUniform;
+	private final Uniform lightSourceRadiusUniforms;
 	@Nullable
-	private  Uniform lightSourcePositionUniforms;
-	@Nullable
-	private  Uniform lightSourceColorUniforms;
-	@Nullable
-	private  Uniform lightSourceRadiusUniforms;
-	@Nullable
-	private  Uniform lightSourceAmountUniform;
-	@Nullable
-	public Uniform worldTimeUniform;
-
-	//Effects
-	@Nullable
-	private Warp gasWarpEffect = null;
+	private final Uniform lightSourceAmountUniform;
 
 
-	public WorldShader(TextureManager textureManager, ResourceProvider resourceProvider, RenderTarget screenTarget) throws IOException, JsonSyntaxException {
+
+    public WorldShader(TextureManager textureManager, ResourceProvider resourceProvider, RenderTarget screenTarget) throws IOException, JsonSyntaxException {
 		super(textureManager, resourceProvider, screenTarget, ResourceLocation.fromNamespaceAndPath(MoonstoneTBL.ID, "shaders/post/world.json"));
-
-		/* 	PostChain structure:
-		 * 		0 - 	World shader 		= WORLD_INDEX
-		 * 		1 -	 	Blit to screen		= BLIT_INDEX
-		 */
-
-		// Get Uniforms
 		this.invMVPUniform = this.getUniform(WORLD_INDEX, "u_INVMVP");
-		this.viewPosUniform = this.getUniform(WORLD_INDEX, "u_viewPos");
-		this.renderPosUniform = this.getUniform(WORLD_INDEX, "u_renderPos");
-		Uniform fogModeUniform = this.getUniform(WORLD_INDEX, "u_fogMode");	// temp
-		this.MVPUniform = this.getUniform(WORLD_INDEX, "u_MVP");
-		this.worldTimeUniform = this.getUniform(WORLD_INDEX, "u_worldTime");
 
 		this.lightSourcePositionUniforms = this.getUniform(WORLD_INDEX, "u_lightSources_position");
 		this.lightSourceColorUniforms = this.getUniform(WORLD_INDEX, "u_lightSources_color");
 		this.lightSourceRadiusUniforms = this.getUniform(WORLD_INDEX, "u_lightSources_radius");
 		this.lightSourceAmountUniform = this.getUniform(WORLD_INDEX, "u_lightSourcesAmount");
 
-		// Set samplers
 		this.depthBuffer = this.getTempTarget("s_diffuse_depth");
-		this.repellerShieldBuffer = this.getTempTarget("s_repellerShield");
-		this.gasParticlesBuffer = this.getTempTarget("s_gasParticles");
 
-		// Setup additional effects
-		// TODO: consider separating from WorldShader into separate PostChain instances.
-		this.gasWarpEffect = new Warp(textureManager, resourceProvider, screenTarget);
-		//this.occlusionExtractor;
-		//this.godRayEffect;
-		//this.swirlEffect;
-		//this.groundFogEffect;
+        Warp gasWarpEffect = new Warp(textureManager, resourceProvider, screenTarget);
 
-		Minecraft.getInstance().getTextureManager().register(GAS_PARTICLE_TEXTURE, new GLTextureObjectWrapper(this.gasWarpEffect.gasTextureTarget.getColorTextureId()));
+		Minecraft.getInstance().getTextureManager().register(GAS_PARTICLE_TEXTURE, new GLTextureObjectWrapper(gasWarpEffect.gasTextureTarget.getColorTextureId()));
 	}
 
 	public void cleanUp() {
@@ -131,11 +88,9 @@ public class WorldShader extends PostChain implements AutoCloseable {;
 		return 0;
 	};
 
-	public void uploadUniforms(float partialTicks) {
+	public void uploadUniforms() {
 		this.invMVPUniform.set(invertedModelviewProjectionMatrix);
-		//this.MVPUniform.set(modelviewProjectionMatrix);
-		this.viewPosUniform.set(this.cameraPos);
-		//this.screenSize.set((float)Minecraft.getInstance().getWindow().getWidth(), (float)Minecraft.getInstance().getWindow().getHeight());
+
 
 		float[] positionBuff = new float[96];
 		float[] colorBuff = new float[96];
@@ -162,25 +117,16 @@ public class WorldShader extends PostChain implements AutoCloseable {;
 		lightSourceAmountUniform.set(Math.min(this.lightSources.size(), 32));
 	}
 
-		/**
-	 * Returns the depth buffer
-	 *
-	 * @return
-	 */
 	public RenderTarget getDepthBuffer() {
 		return this.depthBuffer;
 	}
-
-	/**
-	 * Updates following matrices: MV (Modelview), PM (Projection), MVP (Modelview x Projection), INVMVP (Inverted MVP)
-	 */
 	public void updateMatrices(final RenderLevelStageEvent event) {
 		this.cameraPos = event.getCamera().getPosition().toVector3f();
-		this.modelviewMatrix = event.getModelViewMatrix().transpose(new Matrix4f());
-		this.projectionMatrix = event.getProjectionMatrix().transpose(new Matrix4f());
+        Matrix4f modelviewMatrix = event.getModelViewMatrix().transpose(new Matrix4f());
+        Matrix4f projectionMatrix = event.getProjectionMatrix().transpose(new Matrix4f());
 		this.invertedModelviewProjectionMatrix = new Matrix4f();
 
-		Matrix4f MVP = this.modelviewMatrix.mul(this.projectionMatrix);
+		Matrix4f MVP = modelviewMatrix.mul(projectionMatrix);
 		MVP.invert(this.invertedModelviewProjectionMatrix);
 
 		this.invertedModelviewProjectionMatrix = invertedModelviewProjectionMatrix.assume(0);
@@ -191,55 +137,10 @@ public class WorldShader extends PostChain implements AutoCloseable {;
 		this.lightSources.add(light);
 	}
 
-	/**
-	 * Clears all dynamic light sources
-	 */
 	public void clearLights() {
 		this.lightSources.clear();
 	}
 
-	/**
-	 * Updates the shader textures
-	 *
-	 * @param partialTicks
-	 */
-	public void updateTextures(float partialTicks) {
-		ClientLevel level = Minecraft.getInstance().level;
-		if (level != null && !Minecraft.getInstance().isPaused()) {
-			//Update gas particles
-			this.updateGasParticlesTexture(level, partialTicks);
-
-			//Update starfield texture
-//			this.updateStarfieldTexture(partialTicks);
-
-			// Reset main render target
-			Minecraft.getInstance().getMainRenderTarget().bindWrite(true);
-		}
-	}
-
-	/**
-	 * Renders additional post processing effects such as god's rays, swirl etc.
-	 *
-	 * @param partialTicks
-	 */
-
-	private void updateGasParticlesTexture(ClientLevel level, float partialTicks) {
-		boolean hasCloud = true;//DefaultParticleBatches.GAS_CLOUDS_TEXTURED.getParticles().size() > 0 || DefaultParticleBatches.GAS_CLOUDS_HEAT_HAZE.getParticles().size() > 0;
-		if (hasCloud) {
-			//Update gas texture
-			this.gasWarpEffect.uploadUniforms(partialTicks);
-			this.gasWarpEffect.process(partialTicks);
-
-			// Retarget Minecraft MainRenderTarget
-			Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
-		}
-	}
-	/**
-	 * Used to target a specific PostPass uniform value.
-	 * @param index
-	 * @param name
-	 * @return uniform in PostPass index (index) with key of (name)
-	 */
 	public Uniform getUniform(int index, String name) {
 		if (this instanceof IPostChain iPostChain){
 			return iPostChain.moonstone1_21_1$passes().get(index).getEffect().getUniform(name);

@@ -31,10 +31,6 @@ public class ShaderHandler {
 
 	@Nullable
 	public static DiffBlitDepth diffBlitDepth;
-
-	/**
-	 * Initializes depth composite helpers
-	 */
     public static void loadWorldShader(ResourceProvider resourceProvider) {
         try {
             diffBlitDepth = new DiffBlitDepth(Minecraft.getInstance().getTextureManager(), resourceProvider, Minecraft.getInstance().getMainRenderTarget());
@@ -56,12 +52,17 @@ public class ShaderHandler {
 			if (Minecraft.getInstance().levelRenderer instanceof ILevelRender levelRender) {
 				// Fabulous graphics depth collector
 				if (levelRender.moonstone1_21_1$transparencyChain() != null) {
-					ShaderHelper.INSTANCE.getWorldShader().getDepthBuffer().copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
-					Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
+                    if (ShaderHelper.INSTANCE.getWorldShader() != null) {
+                        ShaderHelper.INSTANCE.getWorldShader().getDepthBuffer().copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
+                    }
+                    Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
 				}
 
-				ShaderHelper.INSTANCE.getWorldShader().updateMatrices(event);
-			}
+                if (ShaderHelper.INSTANCE.getWorldShader() != null) {
+                    ShaderHelper.INSTANCE.getWorldShader().updateMatrices(event);
+					ShaderHandler.renderWorldShader(event.getRenderTick());
+                }
+            }
 		}
 	}
 
@@ -71,7 +72,7 @@ public class ShaderHandler {
     public static void renderWorldShader(float partialTick) {
 		if (ShaderHelper.INSTANCE.canUseShaders()) {
             if (ShaderHelper.INSTANCE.getWorldShader() != null) {
-                ShaderHelper.INSTANCE.getWorldShader().uploadUniforms(partialTick);
+                ShaderHelper.INSTANCE.getWorldShader().uploadUniforms();
 				ShaderHelper.INSTANCE.getWorldShader().process(partialTick);
 				ShaderHelper.INSTANCE.getWorldShader().cleanUp();
 			}
@@ -89,12 +90,20 @@ public class ShaderHandler {
 				return;
 		}
 		// Composite changes after translucent batch on top of base buffer
-		ShaderHandler.diffBlitDepth.AfterTarget.copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
-		RenderSystem.enableDepthTest();
-		ShaderHandler.diffBlitDepth.process(Minecraft.getInstance().getTimer().getRealtimeDeltaTicks());
+        if (ShaderHandler.diffBlitDepth != null) {
+            ShaderHandler.diffBlitDepth.AfterTarget.copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
+        }
+        RenderSystem.enableDepthTest();
+		if (ShaderHandler.diffBlitDepth != null) {
+			ShaderHandler.diffBlitDepth.process(Minecraft.getInstance().getTimer().getRealtimeDeltaTicks());
+		}
 		// Set worldShader depth to diffBlitDepth output
-		ShaderHelper.INSTANCE.getWorldShader().getDepthBuffer().copyDepthFrom(ShaderHandler.diffBlitDepth.Output);
-		// Clean up
+        if (ShaderHelper.INSTANCE.getWorldShader() != null) {
+			if (ShaderHandler.diffBlitDepth != null) {
+				ShaderHelper.INSTANCE.getWorldShader().getDepthBuffer().copyDepthFrom(ShaderHandler.diffBlitDepth.Output);
+			}
+        }
+        // Clean up
 		Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
 	}
 
@@ -103,40 +112,21 @@ public class ShaderHandler {
 	 */
 	public static void onPreTranslucentBatch() {
 		// Set base buffer and cleanup
-		ShaderHandler.diffBlitDepth.Base.copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
-		Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
+        if (ShaderHandler.diffBlitDepth != null) {
+            ShaderHandler.diffBlitDepth.Base.copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
+        }
+        Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
 	}
 
 	/**
 	 * Sets before buffer for cutting out translucent render batch
 	 */
 	public static void onPostTranslucentBatch() {
-		ShaderHandler.diffBlitDepth.BeforeTarget.copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
-		Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
+        if (ShaderHandler.diffBlitDepth != null) {
+            ShaderHandler.diffBlitDepth.BeforeTarget.copyDepthFrom(Minecraft.getInstance().getMainRenderTarget());
+        }
+        Minecraft.getInstance().getMainRenderTarget().bindWrite(false);
 	}
-
-	/**
-	 * On render level stage AFTER_LEVEL call updateShaders
-	 */
-    public static void onRenderWorldLast(RenderLevelStageEvent event) {
-        if (event.getStage() == AFTER_LEVEL) {
-            updateShaders(event.getPartialTick().getRealtimeDeltaTicks());
-        }
-    }
-
-	/**
-	 * Calls shader instance to update and redraw shader textures
-	 */
-    private static void updateShaders(float partialTick) {
-        if(ShaderHelper.INSTANCE.canUseShaders()) {
-            //Initialize and update shaders and textures
-            ShaderHelper.INSTANCE.updateShaders(partialTick);
-        }
-    }
-
-	/**
-	 *  On GameRender.resize
-	 */
 	public static void resize(int width, int height) {
 		// Depth differential blit targets
 		if (ShaderHandler.diffBlitDepth != null) {

@@ -137,11 +137,6 @@ public class Handler {
         return false;
     }
 
-    //            if (hascurio(player,Items.deceased_contract.get())) {
-//                if (curio == Items.necora.get() || curio == Items.bloodvirus.get()) {
-//                    return false;
-//                }
-//            }
     public static boolean hascurio(LivingEntity entity, Item curio) {
         if (entity instanceof LivingEntity player) {
             if (player.getCapability(CuriosCapability.INVENTORY) != null) {

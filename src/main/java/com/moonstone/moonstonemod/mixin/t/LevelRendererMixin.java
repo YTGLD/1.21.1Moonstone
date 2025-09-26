@@ -22,25 +22,21 @@ public abstract class LevelRendererMixin {
 	@Shadow @Nullable private PostChain transparencyChain;
 
 	// Copy main render target depth to WorldShader depth buffer before depth is cleared
-	@Inject(method = "renderDebug", at = @At("HEAD"), remap = false)
+	@Inject(method = "renderDebug", at = @At("HEAD"))
 	public void renderDebugHook(PoseStack poseStack, MultiBufferSource buffer, Camera camera, CallbackInfo ci) {
 		onPreRenderDebug(poseStack, buffer, camera);
 	}
 
-	@Inject(method = "renderLevel", at = @At("RETURN"), remap = false)
-	public void renderLevel(DeltaTracker deltaTracker, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightTexture lightTexture, Matrix4f frustumMatrix, Matrix4f projectionMatrix, CallbackInfo ci) {
-		float f = deltaTracker.getGameTimeDeltaPartialTick(false);
-		ShaderHandler.renderWorldShader(f);
-	}
 
-	@Inject(method = "renderSectionLayer", at = @At("HEAD"), remap = false)
+
+	@Inject(method = "renderSectionLayer", at = @At("HEAD"))
 	public void translucentPatcherStart(RenderType renderType, double x, double y, double z, Matrix4f frustrumMatrix, Matrix4f projectionMatrix, CallbackInfo ci) {
 		// Translucent RenderType only, Fast & Fancy only
 		if (renderType != RenderType.translucent() || this.transparencyChain != null) return;
 		onPreTranslucentBatch();
 	}
 
-	@Inject(method = "renderSectionLayer", at = @At("RETURN"), remap = false)
+	@Inject(method = "renderSectionLayer", at = @At("RETURN"))
 	public void translucentPatcherEnd(RenderType renderType, double x, double y, double z, Matrix4f frustrumMatrix, Matrix4f projectionMatrix, CallbackInfo ci) {
 		if (renderType != RenderType.translucent() || this.transparencyChain != null) return;
 		onPostTranslucentBatch();

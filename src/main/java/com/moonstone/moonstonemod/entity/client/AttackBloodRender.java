@@ -49,7 +49,7 @@ public class AttackBloodRender extends EntityRenderer<attack_blood> {
                 WorldShader shader = ShaderHelper.INSTANCE.getWorldShader();
                 ShaderHelper.INSTANCE.require();
                 if (shader != null) {
-                    shader.addLight(new LightSource(entity.getX(), entity.getY(), entity.getZ(), 4, 1.25f, 0.2f, 0.2f));
+                    shader.addLight(new LightSource(entity.getX(), entity.getY(), entity.getZ(), 6, 2, 0.3f, 0.4f));
                 }
             }
         }
